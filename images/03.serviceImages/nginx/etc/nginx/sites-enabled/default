@@ -1,0 +1,21 @@
+
+server {
+        
+ listen 8000 default_server;
+        listen [::]:8000 default_server ipv6only=on;
+
+ 		
+        root /usr/share/nginx/html;
+        
+        index index.html index.htm;
+
+  
+        server_name localhost;
+
+        location / {
+
+        rewrite ^ https://$host:88$request_uri? redirect;
+                
+        }
+}
+       

@@ -1,0 +1,9 @@
+
+};
+
+zone "engines.internal" {
+type master;
+file "/var/lib/bind/engines/engines.dnsrecords";
+allow-update { key DDNS_UPDATE; };
+
+};

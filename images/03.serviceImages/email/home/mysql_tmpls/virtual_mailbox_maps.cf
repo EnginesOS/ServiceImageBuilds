@@ -1,0 +1,2 @@
+
+query = SELECT maildir FROM mailbox WHERE username='%s' AND active = true

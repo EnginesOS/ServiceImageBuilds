@@ -1,0 +1,35 @@
+define host{
+
+  use                     generic-host
+
+        host_name               HNAME;
+
+        alias           ; A longer name associated with the host
+
+        address         HNAME.docker;
+
+
+        hostgroups              Services;
+
+        }
+
+define command{
+        name            check_HNAME
+        command_name    check_HNAME
+        command_line    $USER1$/check_http -I $HOSTADDRESS$ -p PORT
+        }
+
+
+
+define service{
+
+        use             generic-service         ; Inherit default values from a template
+
+        host_name               HNAME
+
+        service_description     HTTP
+
+        check_command   check_HNAME
+
+        }
+

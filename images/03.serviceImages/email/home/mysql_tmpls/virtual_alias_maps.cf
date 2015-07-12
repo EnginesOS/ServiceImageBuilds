@@ -1,0 +1,2 @@
+
+query = SELECT goto FROM alias WHERE address='%s' AND active = true

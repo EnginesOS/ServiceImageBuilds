@@ -1,0 +1,2 @@
+
+query = SELECT domain FROM domain WHERE domain='%s' and backupmx = true

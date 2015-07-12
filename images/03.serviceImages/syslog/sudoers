@@ -1,0 +1,5 @@
+
+syslog ALL = (root) NOPASSWD: /usr/sbin/syslog-ng
+syslog ALL = (root) NOPASSWD: /home/_signal.sh
+#ALL ALL = (root) NOPASSWD: ALL
+

@@ -1,0 +1,15 @@
+@  IN SOA engines.internal. root.engines.internal. (
+                9999 ; serial
+                7200 ; refresh (2 hrs)
+                120 ; retry (2 mins)
+                604800 ; expire (1 weeks)
+                60 ; minimum (1 min)
+        )
+        IN      NS      ns.engines.internal.
+        IN      NS      local.engines.internal.
+
+
+local           A       127.0.0.1
+ns              A       172.17.42.1
+dns		CNAME	ns
+testhost        A       10.101.1.1
