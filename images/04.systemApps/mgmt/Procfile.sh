@@ -29,7 +29,7 @@ export  RAILS_ENV
 SECRET_KEY_BASE=`/usr/local/rbenv/shims/bundle exec rake secret`
 export SECRET_KEY_BASE RAILS_ENV
 
-cp -rp  /var/log/app
+rm -fr  /var/log/app
 
  
 

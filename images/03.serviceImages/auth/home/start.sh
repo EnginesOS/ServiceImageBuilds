@@ -6,7 +6,7 @@ PID_FILE=/var/run/sshd.pid
 export PID_FILE
 . /home/trap.sh
 
-mkdir -p /home/auth/logs/
+mkdir -p /home/auth/logs/ /engines/var/run/flags/
 
 if ! test -f /engines/var/run/flags/first_run.done
 	then
