@@ -14,12 +14,16 @@ cd images
 MasterImagesDir=`pwd`
 
 
-
+build_rest=0
 
 
 	for class in `ls $MasterImagesDir`
 		do 
 			cd $class
+			 if test $build_rest -ne 0
+			 	then
+			 		rm `find . -name last_built`
+			 	fi 
 			for dir in `ls .`
 			  do
 				cd $MasterImagesDir/$class/$dir
@@ -59,6 +63,7 @@ MasterImagesDir=`pwd`
 										fi
 										
 										touch last_built
+										build_rest=1
 							
 										docker rmi $( docker images -f "dangling=true" -q) 
 									else
