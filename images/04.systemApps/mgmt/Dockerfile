@@ -32,7 +32,7 @@ RUN /usr/local/rbenv/shims/gem install git bundle oink vmstat;\
  	chown 21000 /run/lock/apache2;\
  	mkdir -p /home/app/public/system;\
  	chown -R 21000 /home/app/public ;\
- 	usermod -G containers -a 
+ 	usermod -G containers -a engines
  #	;\
  #	echo "engines  ALL = (root) NOPASSWD: ALL " >>/etc/sudoers;\
  #	echo "" >>/etc/sudoers
