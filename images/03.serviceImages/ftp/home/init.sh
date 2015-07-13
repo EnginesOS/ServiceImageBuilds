@@ -11,7 +11,7 @@ export PID_FILE
 mkdir -p /engines/var/run/flags
 	
 	
-service_hash=`ssh -p 2222  -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /home/.ssh/access_rsa auth@auth.engines.internal /home/auth/static/scripts/ftp/get_access.sh`
+service_hash=`ssh -p 2222  -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /home/ftpd/.ssh/access_rsa auth@auth.engines.internal /home/auth/static/scripts/ftp/get_access.sh`
 
 
 n=1
