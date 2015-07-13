@@ -10,8 +10,9 @@ ADD home home
 ADD postfix/main.cf /etc/postfix/
 ADD postfix/master.cf /etc/postfix/
 ADD postfix/mailname /etc/postfix/mailname
+ADD postfix/transport /etc/postfix/
 
-RUN chown postfix /etc/postfix/;\
+RUN chown postfix /etc/postfix/ /etc/postfix/transport /etc/postfix/mailname  ;\
 	chown postfix /home/configurators/saved;\
 	chgrp postfix /home/configurators/*.sh
 	

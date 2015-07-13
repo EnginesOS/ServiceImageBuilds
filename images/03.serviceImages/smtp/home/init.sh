@@ -9,10 +9,13 @@ export PID_FILE
 mkdir -p /engines/var/run/flags/
 
 sudo /sbin/syslogd -R syslog.engines.internal:5140
-if test -f /etc/postfix/transport 
+if ! test -f /etc/postfix/transport 
 	then
-		sudo postmap /etc/postfix/transport
+	 echo "	*	smtp:" >/etc/postfix/transport
 	fi 
+
+sudo postmap /etc/postfix/transport
+
 sudo /usr/lib/postfix/master &
 touch  /engines/var/run/flags/startup_complete
 wait
