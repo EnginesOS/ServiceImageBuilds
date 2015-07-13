@@ -10,7 +10,9 @@ if test $1 = 'add' -o $1 = 'rm' -o $1 = 'access'
  				then
  					mkdir /home/ftpd/.ssh
  				fi
+ 				
  	 		ssh-keygen  -f /home/ftpd/.ssh/${1}_rsa -P "" > /dev/null
+ 	 		chown -R ftpd /home/ftpd/.ssh/
  	 		cat /home/ftpd/.ssh/${1}_rsa.pub | awk '{print $2}' 	 	
  	fi
  fi
