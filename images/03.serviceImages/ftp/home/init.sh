@@ -10,6 +10,12 @@ export PID_FILE
 
 mkdir -p /engines/var/run/flags
 	
+	while ! test -f  /home/ftpd/.ssh/access_rsa
+		do
+			sleep 10
+		done
+		
+	sleep 20
 	
 service_hash=`ssh -p 2222  -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /home/ftpd/.ssh/access_rsa auth@auth.engines.internal /home/auth/static/scripts/ftp/get_access.sh`
 
