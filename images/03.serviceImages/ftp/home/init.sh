@@ -60,7 +60,7 @@ fcnt=`expr $fcnt + 1`
     cp /home/sql.conf.tmpl /tmp/sql.conf.tmpl
 	echo "	SQLConnectInfo $database_name@$db_host $db_username $db_password " >> /tmp/sql.conf.tmpl
 	echo  "</IfModule> " >> /tmp/sql.conf.tmpl
-	cp /tmp/sql.conf.tmpl etc/proftpd/sql.conf
+	cp /tmp/sql.conf.tmpl /etc/proftpd/sql.conf
 
 sudo /usr/sbin/proftpd -n &
  touch  /engines/var/run/flags/startup_complete
