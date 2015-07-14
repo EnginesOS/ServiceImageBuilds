@@ -15,7 +15,7 @@ mkdir -p /engines/var/run/flags
 			sleep 10
 		done
 		
-	sleep 20
+	sleep 5
 	
 service_hash=`ssh -p 2222  -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /home/ftpd/.ssh/access_rsa auth@auth.engines.internal /home/auth/static/scripts/ftp/get_access.sh`
 
