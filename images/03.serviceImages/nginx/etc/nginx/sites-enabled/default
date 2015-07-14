@@ -14,7 +14,7 @@ server {
 
         location / {
 
-        rewrite ^ https://$host:88$request_uri? redirect;
+        rewrite ^ https://$host:10443$request_uri? redirect;
                 
         }
 }
