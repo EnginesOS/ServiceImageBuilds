@@ -2,7 +2,7 @@
 
 service_hash=$1
 
-echo $1 >/home/configurators/saved/default_domain
+echo $1 >/home/configurators/saved/email_admin_secret
 
 . /home/engines/scripts/functions.sh
 
@@ -36,9 +36,9 @@ fcnt=`expr $fcnt + 1`
         done
         
         
-   	if test  ${#defaultdomain} -gt 5
+   	if test  ${} -gt 5
 	then  
- 		echo smtp.${defaultdomain} > /etc/postfix/mailname
+ 		echo ${email_admin_secret} 
  			
  	fi
  
