@@ -3,6 +3,7 @@ From engines/servicebase:$release
 
 
 RUN adduser -q --disabled-password  -uid 22013 dovecot;\
+	adduser -q --disabled-password  -uid 22014 vmail;\
  	apt-get -y  update;\
  	 rm /usr/sbin/invoke-rc.d;\
         ln -s /bin/true /usr/sbin/invoke-rc.d;\ 	
