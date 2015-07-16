@@ -63,6 +63,10 @@ if test "$proto" = default
 	        else
 	        	 cert_name=engines
 	     fi
+	     	if test -f /etc/nginx/sites-enabled/http_${fqdn}.site
+	     		then
+	     			rm -f /etc/nginx/sites-enabled/http_${fqdn}.site
+	     	fi
 	    cat /tmp/site.name  | sed "/CERTNAME/s//$cert_name/" > /etc/nginx/sites-enabled/${proto}_${fqdn}.site
 	 else
 	 	cp /tmp/site.name /etc/nginx/sites-enabled/${proto}_${fqdn}.site
