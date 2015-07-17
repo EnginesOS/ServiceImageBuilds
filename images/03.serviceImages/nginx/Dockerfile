@@ -13,7 +13,7 @@ RUN usermod www-data -u 22005;\
 COPY home home
 
 COPY etc/nginx/ /etc/nginx
-RUN chown www-data -R /etc/nginx/sites-enabled
+RUN chown www-data -R /etc/nginx/sites-enabled /home/configurators/saved
 
 ENV ContUser www-data
 ENV ContGrp www-data
