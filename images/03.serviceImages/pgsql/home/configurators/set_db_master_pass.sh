@@ -2,7 +2,8 @@
 
 service_hash=$1
 
-echo $1 >/home/configurators/saved/db_master_pass
+#dont save plain text pass
+#echo $1 >/home/configurators/saved/db_master_pass
 
 . /home/engines/scripts/functions.sh
 
