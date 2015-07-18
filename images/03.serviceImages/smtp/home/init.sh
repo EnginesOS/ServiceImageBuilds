@@ -13,7 +13,11 @@ if ! test -f /etc/postfix/transport
 	then
 	 echo "	*	smtp:" >/etc/postfix/transport
 	fi 
-
+if ! test -f /etc/postfix/mailname
+	then
+		echo "not.set" > /etc/postfix/mailname
+	fi
+		
 sudo postmap /etc/postfix/transport
 
 sudo /usr/lib/postfix/master &
