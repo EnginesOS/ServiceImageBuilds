@@ -22,6 +22,7 @@ RUN chown bind /var/run/named;\
 	
 	
 COPY home home
+RUN /home/setup.sh 
 USER bind
 
 
