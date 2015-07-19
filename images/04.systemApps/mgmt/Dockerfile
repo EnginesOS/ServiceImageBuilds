@@ -46,7 +46,7 @@ RUN /usr/local/rbenv/shims/gem install git bundle oink vmstat;\
 ADD 000-default.conf /etc/apache2/sites-enabled/
 ADD SSL-default.conf /etc/apache2/sites-enabled/
 ADD	passenger.conf  /etc/apache2/mods-enabled/
-ADD Procfile.sh /home/app/
+#ADD Procfile.sh /home/app/
 
 CMD ["/home/start.sh"]
 USER 21000
