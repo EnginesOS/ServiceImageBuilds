@@ -16,8 +16,9 @@ done
 chown $fw_user -R /client/log/
 chown $fw_user -R /client/var/log
 mkdir -p /client/state/flags
-chown $fw_user -R /client/state/run
-
+chown $fw_user -R /client/state
+chgrp 22020  -R /client/state
+chmod g+w  -R /client/state
 
 if test -f /dest/fs/.persistant
  then
