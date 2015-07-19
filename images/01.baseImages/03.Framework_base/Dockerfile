@@ -1,5 +1,5 @@
 FROM  engines/base:$release
-ADD engines /home/engines
+ADD home /home
 RUN apt-get -y update;\
 	apt-get install -y ca-certificates mysql-client postgresql-client git-core imagemagick gawk sqlite3 bison  git-core sudo;\
 	mkdir -p /home/fs;\
