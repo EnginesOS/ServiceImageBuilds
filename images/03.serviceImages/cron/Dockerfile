@@ -31,4 +31,4 @@ COPY home home
 COPY sudoers /etc/	
 USER cron
 
-CMD ["/home/init.sh"]
+CMD ["/home/start.sh"]

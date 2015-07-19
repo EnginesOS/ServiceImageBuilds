@@ -18,4 +18,4 @@ RUN chown dyndns -R /home/dyndns ;\
 ENV ContUser dyndns
 ENV ContGrp dyndns
 USER dyndns
-CMD ["/home/init.sh"]
+CMD ["/home/start.sh"]

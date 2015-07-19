@@ -14,4 +14,4 @@ ADD home home
 ENV ContUser mongo
 ENV ContGrp mongo
 USER mongo
-CMD ["/home/init.sh"]
+CMD ["/home/start.sh"]

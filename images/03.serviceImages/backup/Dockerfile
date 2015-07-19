@@ -40,7 +40,7 @@ VOLUME /backup_src/engines
 VOLUME /local_backup_dests
 
 USER backup
-CMD		["/home/init.sh"]
+CMD		["/home/start.sh"]
 
 
 

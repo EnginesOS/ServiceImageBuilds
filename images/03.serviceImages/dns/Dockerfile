@@ -28,4 +28,4 @@ USER bind
 ENV ContUser bind
 ENV ContGrp bind
 
-CMD ["/home/init.sh"]
+CMD ["/home/start.sh"]

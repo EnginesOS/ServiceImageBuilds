@@ -34,4 +34,4 @@ ADD 000-default.conf /etc/apache2/sites-enabled/
 ENV ContUser postfix
 ENV ContGrp postfix
 USER postfix
-CMD ["/home/init.sh"]
+CMD ["/home/start.sh"]

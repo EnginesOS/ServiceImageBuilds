@@ -20,4 +20,4 @@ ENV ContGrp www-data
 
 USER 22005
 
-CMD ["/home/init.sh"]
+CMD ["/home/start.sh"]

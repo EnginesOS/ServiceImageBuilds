@@ -19,4 +19,4 @@ ADD home home
 
 USER proftpd
 
-CMD ["/home/init.sh"]
+CMD ["/home/start.sh"]
