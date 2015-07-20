@@ -11,6 +11,7 @@ RUN apt-get -y update;\
 
 ADD named.conf.local /etc/bind/named.conf.local
 ADD named.conf.options etc/bind/
+COPY engines /home/bind
 ADD templates /etc/bind/templates
 COPY sudoers /etc/	
 ADD engines.internal.domain /var/lib/bind/engines/engines.dnsrecords
