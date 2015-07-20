@@ -6,16 +6,18 @@ service_hash=$1
 
 load_service_hash_to_environment
 
-#FIXME make engines.internal settable
 
-	if  test -n ${domainname}
+
+	if ! test -z ${domainname}
 	 then
 	 	cat  /etc/bind/templates/config_file_zone_entry.tmpl | sed " /DOMAIN/s//${domainname}/g" > /home/bind/engines/domains/${domainname}
 	 	cat /etc/bind/templates/selfhosted.tmpl | sed "/DOMAIN/s//${domainname}/g" | sed "/IP/s//${ip}/g" > /home/bind/engines/zones/named.conf.${domainname}
 	 	cat /home/bind/engines/domains/* > /home/bind/engines/domains.hosted
-	 	
+	 	kill -HUP `cat /var/run/named/named.pid`
 	 	exit
 	 fi
+
+#FIXME make engines.internal settable
 
 	if test -z ${hostname}
 	then
