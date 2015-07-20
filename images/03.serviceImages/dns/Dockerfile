@@ -15,7 +15,7 @@ ADD named.conf.options etc/bind/
 ADD templates /etc/bind/templates
 COPY sudoers /etc/	
 ADD engines.internal.domain /var/lib/bind/engines/engines.dnsrecords
-
+COPY home home
 RUN chown bind /var/run/named;\
 	chown bind /var/lib/bind/engines;\
 	usermod -G containers -a bind;\
@@ -24,7 +24,7 @@ RUN chown bind /var/run/named;\
 	
 	
 	
-COPY home home
+
 RUN /home/setup.sh 
 USER bind
 
