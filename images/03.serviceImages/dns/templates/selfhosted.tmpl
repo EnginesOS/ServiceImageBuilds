@@ -1,0 +1,16 @@
+@  IN SOA DOMAIN. root.DOMAIN. (
+                9999 ; serial
+                7200 ; refresh (2 hrs)
+                120 ; retry (2 mins)
+                604800 ; expire (1 weeks)
+                60 ; minimum (1 min)
+        )
+        IN      NS      ns.DOMAIN.
+        IN      NS      local.DOMAIN.
+
+
+local           A       127.0.0.1
+ns              A       IP
+dns		CNAME	ns
+DOMAIN.			A		IP
+*.DOMAIN.        A       IP

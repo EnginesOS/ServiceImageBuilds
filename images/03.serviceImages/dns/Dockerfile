@@ -5,7 +5,9 @@ RUN apt-get -y update;\
 	apt-get -y install bind9 syslogd;\
 	apt-get clean;\
     mkdir -p /var/lib/bind/engines;\
-    mkdir -p /var/run/named
+    mkdir -p /var/run/named ;\
+    mkdir -p /home/bind/engines/zones/ ;\
+    chown bind -R  /home/bind/
 
 ADD named.conf.local /etc/bind/named.conf.local
 ADD named.conf.options etc/bind/

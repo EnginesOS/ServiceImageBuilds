@@ -8,6 +8,15 @@ load_service_hash_to_environment
 
 #FIXME make engines.internal settable
 
+	if test -n ${domainname}
+	 then
+	 	cat  /home/templates/config_file_zone_entry.tmpl | sed " /DOMAIN/s//${domainname}/g" > /home/bind/domains/${domainname}
+	 	cat /home/templates/selfhosted.tmpl | sed "/DOMAIN/s//${domainname}/g" | sed "/IP/s//${ip}/g" > /home/bind/engines/zones/named.conf.${domainname}
+	 	cat /home/bind/domains/* > /home/bind/engines/domains.hosted
+	 	
+	 	exit
+	 fi
+
 	if test -z ${hostname}
 	then
 		echo Error:Missing hostname

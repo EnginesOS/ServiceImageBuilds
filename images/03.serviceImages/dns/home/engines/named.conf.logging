@@ -1,0 +1,54 @@
+logging {
+   channel default_debug {
+   file "/var/log/named/named.run" versions 3 size 5m;
+   severity dynamic;
+   print-time yes;
+   };
+
+channel queries_channel {
+   file "/var/log/named/queries.log" versions 3 size 5m;
+   severity debug 3;
+   print-category yes;
+   print-severity yes;
+   print-time yes;
+   };
+
+channel security_channel {
+   file "/var/log/named/security.log" versions 3 size 5m;
+   severity debug 3;
+   print-category yes;
+   print-severity yes;
+   print-time yes;
+   };
+
+channel update_security_channel {
+   file "/var/log/named/updates.log" versions 3 size 5m;
+   severity debug 3;
+   print-category yes;
+   print-severity yes;
+   print-time yes;
+   };
+
+channel dnssec_channel {
+   file "/var/log/named/dnssec.log" versions 3 size 5m;
+   severity debug 3;
+   print-category yes;
+   print-severity yes;
+   print-time yes;
+   };
+
+channel xfers_channel {
+   file "/var/log/named/zone_transfers.log" versions 3 size 5m;
+   severity debug 3;
+   print-category yes;
+   print-severity yes;
+   print-time yes;
+   };
+
+category queries { queries_channel; };
+category security { security_channel; };
+category update-security { update_security_channel; };
+category dnssec { dnssec_channel; };
+category xfer-out { xfers_channel; };
+
+};

@@ -5,4 +5,4 @@ acl "trusted" {
      10.0.0.0/8;
  };
 
-include "/etc/bind/engines/named.conf.engines";
+include "/home/bind/engines/named.conf.engines";

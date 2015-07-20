@@ -1,0 +1,2 @@
+include "/home/bind/engines/named.conf.logging";
+include "/home/bind/engines/domains.hosted";

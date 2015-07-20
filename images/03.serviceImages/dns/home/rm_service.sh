@@ -6,7 +6,15 @@ service_hash=$1
 
 load_service_hash_to_environment
 
-
+	if test -n ${domainname}
+	 then
+	 	rm /home/bind/domains/${domainname}
+	 	cat /home/templates/selfhosted.tmpl | sed "/DOMAIN/s//${domainname}/g" | sed "/IP/s//${ip}/g" > /tmp/.dns
+	 	rm /home/bind/engines/zones/named.conf.${domainname}
+	 	cat /home/bind/domains/* > /home/bind/engines/domains.hosted
+	 	
+	 	exit
+	 fi
 
 	if test -z ${hostname}
 	then
