@@ -6,3 +6,5 @@ echo ":email_admin_secret=:"
 #	else
 #		echo ":email_admin_secret=Not Saved:"
 #fi
+echo ":email_admin_secret=Not Saved:"
+exit 0

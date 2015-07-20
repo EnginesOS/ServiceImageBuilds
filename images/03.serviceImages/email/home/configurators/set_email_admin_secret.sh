@@ -45,5 +45,5 @@ fcnt=`expr $fcnt + 1`
  	cp 	/tmp/config.inc.php  /home/app/config.inc.php
  			
  	fi
- 
+ exit 0
 

@@ -6,3 +6,4 @@ then
 else
 	echo "Not Set"
 fi
+exit 0

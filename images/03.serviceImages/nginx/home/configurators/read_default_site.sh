@@ -7,3 +7,4 @@ if test -f /home/configurators/saved/default_site
 		echo ":default_site=Not Set:"
 fi
 
+exit 0

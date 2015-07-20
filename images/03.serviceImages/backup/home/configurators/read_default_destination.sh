@@ -6,3 +6,5 @@ if test -f /home/configurators/saved/default_destination
 	else
 		echo "Not Set"
 fi
+
+exit 0

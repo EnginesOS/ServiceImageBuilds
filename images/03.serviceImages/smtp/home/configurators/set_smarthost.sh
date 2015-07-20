@@ -85,3 +85,5 @@ echo "$smarthost_hostname $smarthost_username:$smarthost_password" > /etc/postfi
 #chown  /etc/postfix/smarthost_passwd
 chmod 600 /etc/postfix/smarthost_passwd
 sudo postmap   /etc/postfix/smarthost_passwd     
+
+exit 0

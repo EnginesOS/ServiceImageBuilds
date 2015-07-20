@@ -8,3 +8,5 @@ if test -f /home/configurators/saved/system_backup
 	else
 		echo "Not Set"
 fi
+
+exit 0

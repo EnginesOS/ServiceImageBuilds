@@ -42,4 +42,4 @@ fcnt=`expr $fcnt + 1`
  			
  	fi
  
-
+exit 0
