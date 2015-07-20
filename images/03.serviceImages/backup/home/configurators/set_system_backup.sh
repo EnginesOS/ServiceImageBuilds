@@ -73,6 +73,6 @@ echo "TARGET_PASS='$pass'"  >>$Backup_ConfigDir/system_files/conf
 				fi
 				
 
-       
+       exit 0
 
   
