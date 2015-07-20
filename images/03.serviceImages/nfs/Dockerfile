@@ -27,4 +27,4 @@ RUN 	chmod 600 /etc/nss-mysql-root.conf ;\
 COPY	 ganesha.conf   /usr/local/etc/ganesha.conf
 COPY 	home /home
 USER nfs
-CMD ["/home/init.sh"]
+CMD ["/home/start.sh"]
