@@ -20,7 +20,7 @@ RUN chown bind /var/run/named;\
 	chown bind /var/lib/bind/engines;\
 	usermod -G containers -a bind;\
 	mkdir -p /etc/bind/keys/;\
-	chown bind -R /etc/bind/keys/ /etc/bind/named.conf.default-zones
+	chown bind -R /etc/bind/keys/ /etc/bind/named.conf.default-zones  /home/bind/engines/domains.hosted 
 	
 	
 	
