@@ -1,0 +1,30 @@
+#/bin/sh
+
+service_hash=$1
+
+echo $1 >/home/configurators/saved/ca_setup
+
+. /home/engines/scripts/functions.sh
+
+load_service_hash_to_environment
+
+
+echo $1 |grep = >/dev/null
+        if test $? -ne 0
+        then
+                exit
+        fi
+
+echo $person >/home/configurators/saved/ca_setup
+echo $organisation >>/home/configurators/saved/ca_setup
+echo $city >>/home/configurators/saved/ca_setup
+echo $state >>/home/configurators/saved/ca_setup
+echo $country >>/home/configurators/saved/ca_setup
+echo $domainname CA  >>/home/configurators/saved/ca_setup
+echo "" >>/home/configurators/saved/ca_setup
+echo "" >>/home/configurators/saved/ca_setup
+
+        openssl genrsa -out /home/certs/store/key/system_CA.key 2048
+        openssl req -x509 -new -nodes -key /home/certs/store/key/system_CA.key -days 1024 -out /home/certs/store/ca/system_CA.pem < /home/configurators/saved/ca_setup
+        
+        
