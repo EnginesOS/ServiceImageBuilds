@@ -10,7 +10,7 @@ RUN apt-get -y update;\
 COPY home home
 COPY sudoers /etc/sudoers.d/engine
 RUN 	mkdir -p /home/certs/saved /home/certs/store/ca /home/certs/store/keys /home/certs/store/certs ;\
-		chown certs /home/certs/saved /home/certs/store/
+		chown certs /home/certs/saved /home/certs/store/ /home/configurators/saved/ca_setup
 USER certs
 
 CMD ["/home/start.sh"]
