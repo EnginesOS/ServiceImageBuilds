@@ -28,7 +28,7 @@ RUN apt-get -y update;\
 
 
 COPY home home
-COPY sudoers /etc/	
+COPY sudoers /etc/sudoers.d/engine
 USER cron
 
 CMD ["/home/start.sh"]
