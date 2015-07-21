@@ -2,6 +2,12 @@
 
 service_hash=$1
 
+if test -f /home/certs/store/ca/system_CA.key
+	then	
+		echo "CA Exists"
+		exit 127
+	fi
+
 echo $1 >/home/configurators/saved/ca_setup
 
 . /home/engines/scripts/functions.sh
