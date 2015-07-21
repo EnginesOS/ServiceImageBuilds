@@ -4,7 +4,7 @@ RUN apt-get -y update;\
 	usermod -G containers -a certs ;\
 	apt-get -y install openssl;\
 	apt-get clean ;\
-	cd /tmp; \
+
   
 
 COPY home home
