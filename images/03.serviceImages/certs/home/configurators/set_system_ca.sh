@@ -24,7 +24,7 @@ echo $domainname CA  >>/home/configurators/saved/ca_setup
 echo "" >>/home/configurators/saved/ca_setup
 echo "" >>/home/configurators/saved/ca_setup
 
-        openssl genrsa -out /home/certs/store/key/system_CA.key 2048
-        openssl req -x509 -new -nodes -key /home/certs/store/key/system_CA.key -days 1024 -out /home/certs/store/ca/system_CA.pem < /home/configurators/saved/ca_setup
+        openssl genrsa -out /home/certs/store/ca/system_CA.key 2048
+        openssl req -x509 -new -nodes -key /home/certs/store/ca/system_CA.key -days 1024 -out /home/certs/store/ca/system_CA.pem < /home/configurators/saved/ca_setup
         
         
