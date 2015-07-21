@@ -6,7 +6,7 @@ service_hash=$1
 
 load_service_hash_to_environment
 
-	if test -n ${domainname}
+	if ! test -z ${domainname}
 	 then
 	 	rm /home/bind/engines/domains/${domainname}
 	 
