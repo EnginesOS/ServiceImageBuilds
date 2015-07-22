@@ -15,11 +15,11 @@ if test -z "${cert_name}"
     fi
 openssl genrsa -out  /home/certs/store/keys/${cert_name}.key 2048
 
-echo $person >/home/certs/saved/${cert_name}_setup
-echo $organisation >>/home/certs/saved/${cert_name}_setup
-echo $city >>/home/certs/saved/${cert_name}_setup
+echo $country >/home/certs/saved/${cert_name}_setup
 echo $state >>/home/certs/saved/${cert_name}_setup
-echo $country >>/home/certs/saved/${cert_name}_setup
+echo $city >>/home/certs/saved/${cert_name}_setup
+echo $organisation >>/home/certs/saved/${cert_name}_setup
+echo $person >>/home/certs/saved/${cert_name}_setup
 echo \*.$domainname  >>/home/certs/saved/${cert_name}_setup
 echo "" >>/home/certs/saved/${cert_name}_setup
 echo "" >>/home/certs/saved/${cert_name}_setup
