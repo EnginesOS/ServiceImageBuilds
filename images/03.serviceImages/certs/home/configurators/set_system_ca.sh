@@ -20,12 +20,11 @@ echo $1 |grep = >/dev/null
         then
                 exit
         fi
-
+echo $country >>/home/configurators/saved/ca_setup
+echo $state >>/home/configurators/saved/ca_setup
+echo $city >>/home/configurators/saved/ca_setup
 echo $person >/home/configurators/saved/ca_setup
 echo $organisation >>/home/configurators/saved/ca_setup
-echo $city >>/home/configurators/saved/ca_setup
-echo $state >>/home/configurators/saved/ca_setup
-echo $country >>/home/configurators/saved/ca_setup
 echo $domainname CA  >>/home/configurators/saved/ca_setup
 echo "" >>/home/configurators/saved/ca_setup
 echo "" >>/home/configurators/saved/ca_setup
