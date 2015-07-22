@@ -8,7 +8,11 @@ service_hash=`echo  "$*" | sed "/\*/s//STAR/g"`
 load_service_hash_to_environment
 
 #FIXME make engines.internal settable
-
+if test -z "${cert_name}"
+	then
+		echo Error:Missing cert_name
+        exit -1
+    fi
 openssl genrsa -out  /home/certs/store/keys/${cert_name}.key 2048
 
 echo $person >/home/certs/saved/${cert_name}_setup
