@@ -25,7 +25,7 @@ echo "" >>/home/certs/saved/${cert_name}_setup
 echo "" >>/home/certs/saved/${cert_name}_setup
 echo "" >>/home/certs/saved/${cert_name}_setup
 openssl req -new -key /home/certs/store/keys/${cert_name}.key -out /home/certs/saved/${cert_name}.csr < /home/certs/saved/${cert_name}_setup
-openssl x509 -req -in /home/certs/saved/${cert_name}.csr -CA /home/certs/store/ca/system_CA.pem -CAkey /home/certs/store/ca/system_CA.key -CAcreateserial -out /home/certs/store/certs/${cert_name}.crt -days 500
+openssl x509 -req -in /home/certs/saved/${cert_name}.csr -CA /home/certs/store/ca/certs/system_CA.pem -CAkey /home/certs/store/ca/keys/system_CA.key -CAcreateserial -out /home/certs/store/certs/${cert_name}.crt -days 500
 
 echo "Success"
 exit 0
