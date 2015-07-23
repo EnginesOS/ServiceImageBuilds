@@ -1,6 +1,6 @@
 #!/bin/bash
 PATH="/usr/local/rbenv/bin:$PATH"
-test ! test -d /var/log/apache2
+if ! test -d /var/log/apache2
 	then
 		mkdir  /var/log/apache2
 	fi
