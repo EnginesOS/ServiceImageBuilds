@@ -1,14 +1,22 @@
 #!/bin/bash
 PATH="/usr/local/rbenv/bin:$PATH"
-mkdir /var/log/apache2
+test ! test -d /var/log/apache2
+	then
+		mkdir  /var/log/apache2
+	fi
 cd /home/app/
-rm /home/app/app/config/newrelic.yml
+
+if test -f /home/app/app/config/newrelic.yml
+	then
+		rm /home/app/app/config/newrelic.yml
+	fi
+	
 git fetch origin master
 git reset --hard FETCH_HEAD
 git pull --depth 1 origin master
 
-cat /home/app/Gemfile |grep -v rubyracer >/tmp/gf
-cp /tmp/gf  /home/app/Gemfile 
+#cat /home/app/Gemfile |grep -v rubyracer >/tmp/gf
+#cp /tmp/gf  /home/app/Gemfile 
 
 cp /home/newrelic.yml /home/app/
 
@@ -18,24 +26,27 @@ RAILS_ENV=production
 
 export  RAILS_ENV
 
-/usr/local/rbenv/shims/bundle install
+echo installing Gems
+/usr/local/rbenv/shims/bundle install >/dev/null
+echo migrating database 
+/usr/local/rbenv/shims/bundle exec rake db:migrate 
 
-/usr/local/rbenv/shims/bundle exec rake db:migrate
+/usr/local/rbenv/shims/bundle exec rake db:seed >/dev/null
 
-/usr/local/rbenv/shims/bundle exec rake db:seed
-
-/usr/local/rbenv/shims/bundle exec rake assets:precompile
+echo precompiling assests
+/usr/local/rbenv/shims/bundle exec rake assets:precompile  >/dev/null
 
 SECRET_KEY_BASE=`/usr/local/rbenv/shims/bundle exec rake secret`
 export SECRET_KEY_BASE RAILS_ENV
 
-mkdir  /var/log/app
+if ! test -d /var/log/app
+	then
+		mkdir  /var/log/app
+	fi
 
  rm -rf /home/app/log 
 
 ln -s /var/log/app /home/app/log 
-
-
 
 
 PID_FILE=/var/run/apache2/apache2.pid
