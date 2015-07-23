@@ -1,7 +1,7 @@
 #!/bin/sh
 
 
-PID_FILE=/home/certs/.pid
+PID_FILE=/tmp/.pid
 export PID_FILE
 . /home/trap.sh
 
@@ -14,7 +14,7 @@ touch /engines/var/run/flags/startup_complete
 	while test 4 -ne 3
 	do 
 	    sleep 500 &
-	    echo $! >/home/certs/.pid
+	    echo $! >/tmp/.pid
 		wait 
 	done	
 
