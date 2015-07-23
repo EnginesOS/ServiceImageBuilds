@@ -2,7 +2,7 @@
 
 service_hash=$1
 
-if test -f /home/certs/store/ca/system_CA.key
+if test -f /home/certs/store/ca/keys/system_CA.key
 	then	
 		echo "CA Exists"
 		exit 127
@@ -28,8 +28,10 @@ echo $organisation >>/home/configurators/saved/ca_setup
 echo $domainname CA  >>/home/configurators/saved/ca_setup
 echo "" >>/home/configurators/saved/ca_setup
 echo "" >>/home/configurators/saved/ca_setup
-
-        openssl genrsa -out /home/certs/store/ca/system_CA.key 2048
-        openssl req -x509 -new -nodes -key /home/certs/store/ca/system_CA.key -days 1024 -out /home/certs/store/ca/system_CA.pem < /home/configurators/saved/ca_setup
+mkdir /home/certs/store/ca/keys/
+mkdir /home/certs/store/ca/certs/
+chmod og-rwx /home/certs/store/ca/keys/
+        openssl genrsa -out /home/certs/store/ca/keys/system_CA.key 2048
+        openssl req -x509 -new -nodes -key /home/certs/store/ca/keys/system_CA.key -days 1024 -out /home/certs/store/ca/certs/system_CA.pem < /home/configurators/saved/ca_setup
         
         
