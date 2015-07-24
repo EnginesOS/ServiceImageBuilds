@@ -38,7 +38,7 @@ RUN /usr/local/rbenv/shims/gem install git bundle oink vmstat;\
  	 echo "engines ALL = (root) NOPASSWD: /opt/engines/scripts/_setup_service_key_dir.sh" >> /etc/sudoers.d/engines;\
  	echo "engines ALL = (root) NOPASSWD: /opt/engines/scripts/_setup_service_dir.sh" >> /etc/sudoers.d/engines
  
- 	
+COPY functions.sh  /home/engines/scripts/functions.sh
 
 #After after chmod so not rewritable
 
