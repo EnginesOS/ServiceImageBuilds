@@ -2,7 +2,7 @@
 
 service_hash=$1
 
-echo $1 >/home/configurators/saved/default_site
+echo $1 >/home/configurators/saved/default_site_url
 
 . /home/engines/scripts/functions.sh
 
