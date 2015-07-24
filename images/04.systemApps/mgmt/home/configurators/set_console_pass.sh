@@ -36,9 +36,9 @@ fcnt=`expr $fcnt + 1`
         done
         
         
-   	if test -n $ssh_master_pass
+   	if test -n $console_pass
 	then  
-		echo '$ssh_master_pass:$ssh_master_pass'  | chpasswd
+		echo '$console_pass:$console_pass'  | chpasswd
 	
  			
  	fi
