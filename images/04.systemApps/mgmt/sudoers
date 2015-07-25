@@ -1,3 +1,8 @@
 engines ALL = (root) NOPASSWD: /opt/engines/scripts/_setup_service_key_dir.sh
 engines ALL = (root) NOPASSWD: /opt/engines/scripts/_system_update.sh
 
+engines ALL = (root) NOPASSWD: /opt/engines/scripts/_setup_service_key_dir.sh
+engines ALL = (root) NOPASSWD: /opt/engines/scripts/_setup_service_dir.sh
+engines ALL = (root) NOPASSWD: /opt/engines/scripts/_install_ca.sh
+engines ALL = (root) NOPASSWD: /opt/engines/scripts/_install_cert.sh
+
