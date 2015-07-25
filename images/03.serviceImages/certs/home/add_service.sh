@@ -7,12 +7,17 @@ service_hash=`echo  "$*" | sed "/\*/s//STAR/g"`
 
 load_service_hash_to_environment
 
+
 #FIXME make engines.internal settable
 if test -z "${cert_name}"
 	then
 		echo Error:Missing cert_name
         exit -1
     fi
+    
+    mkdir -p /home/certs/store/public/keys/
+    mkdir -p /home/certs/store/public/certs
+    
 openssl genrsa -out  /home/certs/store/public/keys/${cert_name}.key 2048
 
 echo $country >/home/certs/saved/${cert_name}_setup
@@ -25,7 +30,7 @@ echo "" >>/home/certs/saved/${cert_name}_setup
 echo "" >>/home/certs/saved/${cert_name}_setup
 echo "" >>/home/certs/saved/${cert_name}_setup
 openssl req -new -key /home/certs/store/public/keys/${cert_name}.key -out /home/certs/saved/${cert_name}.csr < /home/certs/saved/${cert_name}_setup
-openssl x509 -req -in /home/certs/saved/${cert_name}.csr -CA /home/certs/store/public/ca/certs/system_CA.pem -CAkey /home/certs/store/private/ca/keys/system_CA.key -CAcreateserial -out /home/certs/store/public/certs/${cert_name}.crt -days 500
+openssl x509 -req -in /home/certs/saved/${cert_name}.csr -CA /home/certs/store/public/certs/system_CA.pem -CAkey /home/certs/store/private/ca/keys/system_CA.key -CAcreateserial -out /home/certs/store/public/certs/${cert_name}.crt -days 500
 
 echo "Success"
 exit 0
