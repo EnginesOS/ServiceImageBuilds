@@ -36,11 +36,11 @@ fcnt=`expr $fcnt + 1`
         done
         
         
-   	if test -n $ssh_master_pass
+   	if test -n $console_password
 	then  
-		echo '$ssh_master_pass:$ssh_master_pass'  | chpasswd
-	
- 			
+		
+	ssh  -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /home/engines/.ssh/mgmt/update_engines_console_password engines@172.17.42.1 /opt/engines/bin/update_engines_console_password.sh $console_password
+ 		exit $?	
  	fi
  
 
