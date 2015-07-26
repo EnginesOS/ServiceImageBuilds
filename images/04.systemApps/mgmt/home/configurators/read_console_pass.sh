@@ -1,6 +1,6 @@
 #!/bin/bash
 
 
-		echo ":ssh_master_pass=Not Saved:"
+		echo ":console_password=Not Saved:"
 
 

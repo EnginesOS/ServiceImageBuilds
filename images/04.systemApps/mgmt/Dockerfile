@@ -34,11 +34,10 @@ RUN /usr/local/rbenv/shims/gem install git bundle oink vmstat;\
  	mkdir -p /home/app/public/system;\
  	chown -R 21000 /home/app/public ;\
  	usermod -G containers -a engines;\
- 	rm /var/run/apache2/apache2.pid;\
- 	 echo "engines ALL = (root) NOPASSWD: /opt/engines/scripts/_setup_service_key_dir.sh" >> /etc/sudoers.d/engines;\
- 	echo "engines ALL = (root) NOPASSWD: /opt/engines/scripts/_setup_service_dir.sh" >> /etc/sudoers.d/engines
- 
+ 	rm /var/run/apache2/apache2.pid
  	
+ 
+COPY functions.sh  /home/engines/scripts/functions.sh
 
 #After after chmod so not rewritable
 
