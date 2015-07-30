@@ -35,6 +35,12 @@ else
 	chown -R ${fw_user}.${data_gid}  /dest/fs/
 	chmod g+w -R /dest/fs/
 	
+	if test -d /home/app_src
+		then
+			cp -rp /home/app_src/* /dest/fs/
+	fi
+			
+	
 	touch /dest/fs/.persistant
 fi
 
