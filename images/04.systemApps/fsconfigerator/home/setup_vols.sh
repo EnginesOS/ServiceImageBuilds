@@ -38,6 +38,7 @@ else
 	if test -d /home/app_src
 		then
 			cp -rp /home/app_src/* /dest/fs/
+			
 	fi
 			
 	
