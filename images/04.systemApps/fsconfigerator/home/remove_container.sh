@@ -11,7 +11,12 @@ for cmd in $*
  		rm -r /client/log/*
  		;;
  	fs)	
- 		rm -r /dest/fs/*
+ 	    files=`ls -a /dest/fs/ | sed "/^.$/s///" | sed "/^..$/s///"`
+ 	    if test -n $files
+ 	    	then
+ 	    	    cd  /dest/fs/	    
+ 				rm -r $files
+ 			fi
  		;;
  	all)
  		rm -r /client/log/*
