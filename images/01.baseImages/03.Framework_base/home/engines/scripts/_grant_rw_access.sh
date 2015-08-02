@@ -9,6 +9,6 @@
 fi
 path=`echo $entered_path |sed '/[ ;\\\"\`]/s///g ' | sed '/\.\./s///g'`
 #FIXME needs to handle target of symbolic link
-echo chmod g+w /home/$path
+echo chmod g+w $recursive /home/$path
  chmod g+w $recursive /home/$path
  
