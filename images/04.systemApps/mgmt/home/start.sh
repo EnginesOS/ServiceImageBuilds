@@ -30,8 +30,10 @@ echo installing Gems
 /usr/local/rbenv/shims/bundle install >/dev/null
 echo migrating database 
 /usr/local/rbenv/shims/bundle exec rake db:migrate 
-
-/usr/local/rbenv/shims/bundle exec rake db:seed >/dev/null
+if ! test `/home/app/db/production.sqlite3 "SELECT EXISTS (SELECT * FROM sqlite_master WHERE type='table' AND name='users');"` -eq 1
+	then
+		/usr/local/rbenv/shims/bundle exec rake db:seed >/dev/null
+fi
 
 echo precompiling assests
 /usr/local/rbenv/shims/bundle exec rake assets:precompile  >/dev/null
