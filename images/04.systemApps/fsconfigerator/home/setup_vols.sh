@@ -40,7 +40,9 @@ else
 			cp -rp /home/app_src/* /dest/fs/
 			
 	fi
-			
+	chown -R ${fw_user}.${data_gid}  /dest/fs/
+	chmod g+w -R /dest/fs/
+		
 	
 	touch /dest/fs/.persistant
 fi
