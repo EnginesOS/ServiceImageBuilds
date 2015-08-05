@@ -139,7 +139,10 @@ echo "src type $src_type"
         fi
 
 
-
+if test $dest_proto = "s3"
+	then	
+		$dest_proto="s3+http://"
+	fi
 
 cp /home/tmpl/duply_conf $Backup_ConfigDir/$1/conf
 

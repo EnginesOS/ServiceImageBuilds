@@ -22,3 +22,4 @@ ADD ports.conf /etc/apache2/
 
 ENV ContUser www-data
 ENV ContGrp www-data
+ENv PHP_VERSION	5.5

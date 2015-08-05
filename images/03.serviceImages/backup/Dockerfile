@@ -2,7 +2,7 @@ FROM	engines/servicebase:$release
 
 
 RUN apt-get -y update;\
-	apt-get -y install mysql-client vim  python duply ncftp  python-paramiko python-gobject-2 build-essential gcc make syslogd ;\
+	apt-get -y install mysql-client vim  python duply python-boto ncftp  python-paramiko python-gobject-2 build-essential gcc make syslogd ;\
 	apt-get clean 
 ADD etc  etc
 

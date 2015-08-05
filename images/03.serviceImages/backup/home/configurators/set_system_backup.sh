@@ -19,7 +19,10 @@ load_service_hash_to_environment
 dest=$dest_proto://$dest_address/$dest_folder
 user=$dest_user
 pass=$dest_pass
-
+if test $dest_proto = "s3"
+	then	
+		$dest_proto="s3+http://"
+	fi
 
 				if test  $include_system = "true"
 					then
