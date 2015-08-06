@@ -1,1 +1,1 @@
-engines/cron:$release
+engines/registry:$release
