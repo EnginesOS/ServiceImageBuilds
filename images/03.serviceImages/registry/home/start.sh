@@ -9,7 +9,9 @@ export PID_FILE
 mkdir -p /engines/var/run/flags/
 
 cd /home/registry
-/usr/local/rbenv/shims/ruby server.rb &
+cd /usr/local/rbenv/shims/ruby/EnginesSystemRegistry/src/
+git pull
+/usr/local/rbenv/shims/ruby/EnginesSystemRegistry/src/server.rb &
 pid=$!
 echo $pid >/tmp/pid
 
