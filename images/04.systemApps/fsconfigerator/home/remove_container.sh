@@ -1,42 +1,32 @@
 #!/bin/sh -x
 
-function remove_dir_contents {
-	pd=`pwd`
- 	    files=`ls -a $dir | sed "/^.$/s///" | sed "/^..$/s///"`
- 	    if test -n $files
- 	    	then
- 	    	    cd   $dir	    
- 				rm -r $files
- 			fi
- 			
- 	cd $pd
-}
+
 
 for cmd in $*
  do
   case $cmd in
  	state)
  	     dir="/client/state/"
- 		remove_dir_contents
+ 		/home/remove_dir_contents.sh $dir
  		;;
  	logs)
  		dir="/client/log/"
- 		remove_dir_contents
+ 		/home/remove_dir_contents.sh $dir
  		;;
  	fs)	
  		dir="/dest/fs/"
- 		remove_dir_contents
+ 		/home/remove_dir_contents.sh $dir
  	    
  		;;
  	all)
  		dir="/client/log/"
- 		remove_dir_contents
+ 		/home/remove_dir_contents.sh $dir
  		
  		dir="//client/state/"
- 		remove_dir_contents
+ 		/home/remove_dir_contents.sh $dir
  		
  		dir="/dest/fs/"
- 		remove_dir_contents
+ 		/home/remove_dir_contents.sh $dir
  		
  		;;
   esac
