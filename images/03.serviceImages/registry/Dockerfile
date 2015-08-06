@@ -17,7 +17,9 @@ RUN apt-get -y update;\
 	mkdir -p /home/registry;\
 	cd /home/registry;\
 	/usr/local/rbenv/shims/gem install rubytree;\
-	git clone https://github.com/EnginesOS/EnginesSystemRegistry
+	mkdir -p  /opt/engines/run/service_manager/;\
+	git clone https://github.com/EnginesOS/EnginesSystemRegistry ;\
+	chown -R registry /opt/engines/run/service_manager/ /home/registry
 
 
 COPY home home
