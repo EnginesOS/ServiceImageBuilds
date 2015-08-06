@@ -6,7 +6,7 @@ ENV ruby_version 2.2.2
 ENV  RBENV_ROOT /usr/local/rbenv
 
 RUN apt-get -y update;\
-	apt-get -y install build-essential;\
+	apt-get -y install build-essential libssl-dev libreadline-dev zlib1g-dev ;\
 	echo "Y" | adduser -q  --uid 22023 --home /home/registry --disabled-password registry;\
 	usermod -G containers -a registry ;\
 	mkdir -p /usr/local/ ; cd /usr/local/ ; git clone git://github.com/sstephenson/rbenv.git /usr/local/rbenv;\ 
