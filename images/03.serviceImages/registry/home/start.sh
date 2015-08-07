@@ -17,5 +17,5 @@ echo $pid >/tmp/pid
 
 touch /engines/var/run/flags/startup_complete  
 wait 
-
+kill -TERM  $pid
 rm -f /engines/var/run/flags/startup_complete
