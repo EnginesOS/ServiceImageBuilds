@@ -6,8 +6,11 @@ dir=$1
  	    files=`ls -a $dir | sed "/^.$/s///" | sed "/^..$/s///"`
  	    if test -n $files
  	    	then
- 	    	    cd   $dir	    
- 				rm -r $files
+ 	    	    cd   $dir	  
+ 	    	    	if  test -n $files
+ 	    	    	 then   
+ 						rm -r $files
+ 					fi
  			fi
  			
  	#cd $pd
