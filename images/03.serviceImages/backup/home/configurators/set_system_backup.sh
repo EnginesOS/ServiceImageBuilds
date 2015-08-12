@@ -14,6 +14,9 @@ load_service_hash_to_environment
 Backup_ConfigDir=/home/backup/.duply/
 export
 
+if test -f /home/configurators/saved/
+then
+
 service_hash=`cat /home/configurators/saved/default_destination`
 load_service_hash_to_environment
 dest=$dest_proto://$dest_address/$dest_folder
@@ -78,4 +81,4 @@ echo "TARGET_PASS='$pass'"  >>$Backup_ConfigDir/system_files/conf
 
        exit 0
 
-  
+  fi

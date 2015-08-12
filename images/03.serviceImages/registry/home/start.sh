@@ -11,7 +11,7 @@ mkdir -p /engines/var/run/flags/
 cd /home/registry
 cd /home/registry/EnginesSystemRegistry/src/
 git pull
-/usr/local/rbenv/shims/ruby /home/registry/EnginesSystemRegistry/src/server.rb &
+/usr/local/rbenv/shims/ruby /home/registry/EnginesSystemRegistry/src/server.rb  > /var/log/regsitry.log&
 pid=$!
 echo $pid >/tmp/pid
 
