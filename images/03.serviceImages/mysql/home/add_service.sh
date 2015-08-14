@@ -46,7 +46,7 @@ if ! test -z $full_access
  		if test $full_access = true
  			then
  				Q5="UPDATE mysql.user SET Super_Priv='Y' WHERE user='$dbusername' AND host='%';"
- 	     elsif test $full_access = grant 
+ 	     elif test $full_access = grant 
  	     		Q5="GRANT ALL  PRIVILEGES ON ${BTICK}$database_name${BTICK}.* TO '$db_username'@'%' IDENTIFIED BY '$db_password' WITH GRANT OPTION;"
  			fi
  fi
