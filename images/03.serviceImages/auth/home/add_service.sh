@@ -45,7 +45,7 @@ if  test $command = "access"
 		pass=`dd if=/dev/urandom count=6 bs=1  | od -h | awk '{ print $2$3$4}'`
 		echo "
 			create user 'auth_$service'@'%' identified by '$pass';
-			GRANT SELECT,INSERT,UPDATE on auth.* to 'auth_$service'@'%';" | mysql -h $dbhost -u $dbuser --password=$dbpasswd $dbname 
+			GRANT SELECT on auth.* to 'auth_$service'@'%';" | mysql -h $dbhost -u $dbuser --password=$dbpasswd $dbname 
 	
 		echo ":db_username=auth_$service:db_password=$pass:database_name=$dbname:db_host=$dbhost:" > /home/auth/static/access/$service/access
 		

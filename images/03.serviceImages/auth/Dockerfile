@@ -19,7 +19,8 @@ RUN	ssh-keygen -f /home/auth/ssh/ssh_host_rsa_key  -N '' -t rsa;\
 
 RUN chown -R auth /home/auth;\
  mkdir -p  /home/auth/static;\
- chown root /home/auth/static
+ chown root /home/auth/static;\
+ chmod g-w /home/auth
 #;\
 #	/usr/sbin/kdb5_util create -s;\
 #	 /usr/sbin/kadmin.local -q "addprinc administrator/admin"
