@@ -38,7 +38,7 @@ if test -z $collation
 
 Q1="CREATE DATABASE IF NOT EXISTS ${BTICK}$database_name${BTICK}   DEFAULT CHARACTER SET utf8
   DEFAULT COLLATE $collation ;"
-Q2="GRANT ALL ON ${BTICK}$database_name${BTICK}.* TO '$db_username'@'%' IDENTIFIED BY '$db_password';"
+Q2="GRANT ALL  PRIVILEGES ON ${BTICK}$database_name${BTICK}.* TO '$db_username'@'%' IDENTIFIED BY '$db_password';"
 Q3="Grant Create User on *.* to '$db_username'@'%';"
 Q4="FLUSH PRIVILEGES;"
 if ! test -z $full_access
@@ -47,7 +47,7 @@ if ! test -z $full_access
  			then
  				Q5="UPDATE mysql.user SET Super_Priv='Y' WHERE user='$dbusername' AND host='%';"
  	     elsif test $full_access = grant 
- 	     		Q5="UPDATE mysql.user SET Grant_Priv ='Y' WHERE user='$dbusername' AND host='%';"
+ 	     		Q5="GRANT ALL  PRIVILEGES ON ${BTICK}$database_name${BTICK}.* TO '$db_username'@'%' IDENTIFIED BY '$db_password' WITH GRANT OPTION;"
  			fi
  fi
 
