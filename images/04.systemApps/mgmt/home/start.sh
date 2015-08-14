@@ -11,12 +11,19 @@ if test -f /home/app/app/config/newrelic.yml
 		rm /home/app/app/config/newrelic.yml
 	fi
 	
+mv /home/app/Gemfile  /tmp/gf
+	
 git fetch origin master
 git reset --hard FETCH_HEAD
 git pull --depth 1 origin master
 
-#cat /home/app/Gemfile |grep -v rubyracer >/tmp/gf
-#cp /tmp/gf  /home/app/Gemfile 
+if ! test -f /home/app/Gemfile
+ then
+   cp /tmp/gf /home/app/Gemfile
+ else
+	cat /home/app/Gemfile |grep -v rubyracer >/tmp/gf
+	cp /tmp/gf  /home/app/Gemfile
+fi 
 
 cp /home/newrelic.yml /home/app/
 
