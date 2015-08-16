@@ -22,12 +22,7 @@ if test -z $fqdn
  	echo "Error:no proto in nginx service hash"
  	exit -1
  fi
- 
-   if test -z $name
- then
- 	echo "Error:no name in nginx service hash"
- 	exit -1
- fi
+
 
 	if test -f /etc/nginx/sites-enabled/${proto}_${fqdn}.site
 	 then
