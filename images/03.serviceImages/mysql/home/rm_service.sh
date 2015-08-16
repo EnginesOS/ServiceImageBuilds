@@ -25,10 +25,9 @@ if test -z $db_username
 		exit -1
 	fi
 
-
-Q1="Drop DATABASE  ${BTICK}$database_name${BTICK}   ;"
-Q2="DELETE FROM user where user='$db_username';"
-Q3="FLUSH PRIVILEGES;"
+Q1="DELETE FROM user where user='$db_username';"
+Q2="FLUSH PRIVILEGES;"
+Q3="Drop DATABASE  ${BTICK}$database_name${BTICK}   ;"
 SQL="${Q1}${Q2}${Q3}"
 
 #echo "$SQL"
