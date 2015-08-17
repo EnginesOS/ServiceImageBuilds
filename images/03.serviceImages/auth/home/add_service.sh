@@ -47,7 +47,7 @@ if  test $command = "access"
 			create user 'auth_$service'@'%' identified by '$pass';
 			GRANT SELECT on auth.* to 'auth_$service'@'%';" | mysql -h $dbhost -u $dbuser --password=$dbpasswd $dbname 
 		echo "create user 'auth_$service'@'%' identified by '$pass';
-			GRANT SELECT on auth.* to 'auth_$service'@'%'; | mysql -h $dbhost -u $dbuser --password=$dbpasswd $dbname " >/tmp/add_access.log
+			GRANT SELECT on auth.* to 'auth_$service'@'%'; | mysql -h $dbhost -u $dbuser --password=$dbpasswd $dbname " >>/tmp/add_access.log
 		echo ":db_username=auth_$service:db_password=$pass:database_name=$dbname:db_host=$dbhost:" > /home/auth/static/access/$service/access
 		
 	else
