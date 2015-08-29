@@ -50,7 +50,7 @@ export SECRET_KEY_BASE RAILS_ENV
 
 if ! test -d /var/log/app
 	then
-		mkdir  /var/log/app
+		mkdir /var/log/app
 	fi
 
  rm -rf /home/app/log 
