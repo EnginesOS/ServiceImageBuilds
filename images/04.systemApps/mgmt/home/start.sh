@@ -50,7 +50,7 @@ export SECRET_KEY_BASE RAILS_ENV
 
 if ! test -d /var/log/app
 	then
-		mkdir  /var/log/app
+		mkdir /var/log/app
 	fi
 
  rm -rf /home/app/log 
@@ -63,6 +63,7 @@ PID_FILE=/var/run/apache2/apache2.pid
 export PID_FILE
 . /home/trap.sh
 
+/opt/engine/scripts/clear_flags.sh
 
 /usr/sbin/apache2ctl -DFOREGROUND &
 touch  /engines/var/run/flags/startup_complete

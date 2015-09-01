@@ -9,6 +9,7 @@ if test -f /home/certs/store/private/ca/keys/system_CA.key
 	fi
 
 echo $1 >/home/configurators/saved/ca_setup
+echo $1 >/home/configurators/saved/ca_params
 
 . /home/engines/scripts/functions.sh
 
