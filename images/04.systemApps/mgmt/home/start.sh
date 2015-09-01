@@ -63,7 +63,7 @@ PID_FILE=/var/run/apache2/apache2.pid
 export PID_FILE
 . /home/trap.sh
 
-/opt/engine/scripts/clear_flags.sh
+/home/clear_flags.sh
 
 /usr/sbin/apache2ctl -DFOREGROUND &
 touch  /engines/var/run/flags/startup_complete
