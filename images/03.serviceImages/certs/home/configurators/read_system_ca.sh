@@ -1,2 +1,2 @@
 #/bin/sh
-cat  //home/configurators/saved/ca_params
+cat  /home/configurators/saved/ca_params
