@@ -34,7 +34,7 @@ RAILS_ENV=production
 export  RAILS_ENV
 
 echo installing Gems
-/usr/local/rbenv/shims/bundle install >/dev/null
+/usr/local/rbenv/shims/bundle install --standalone >/dev/null
 echo migrating database 
 /usr/local/rbenv/shims/bundle exec rake db:migrate 
 if ! test `sqlite3 /home/app/db/production.sqlite3 "SELECT EXISTS (SELECT * FROM users WHERE username='admin');"` -eq 1
