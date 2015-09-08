@@ -2,6 +2,8 @@
         listen 8000;
         server_name FQDN;
 		proxy_read_timeout 300s;
+		    access_log /var/log/nginx/FQDN/access.log;
+        error_log /var/log/nginx/FQDN/error.log;
         location / {
       proxy_set_header Upgrade $http_upgrade;
     proxy_set_header Connection "upgrade";  

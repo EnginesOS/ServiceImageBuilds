@@ -9,9 +9,13 @@ proxy_set_header Upgrade $http_upgrade;
     proxy_set_header X-Real-IP $remote_addr;
             proxy_pass http://SERVER.engines.internal:PORT;
         }
+            access_log /var/log/nginx/FQDN/access.log;
+        error_log /var/log/nginx/FQDN/error.log;
     }
 
 server {
+access_log /var/log/nginx/FQDN/ssl/access.log;
+        error_log /var/log/nginx/FQDN/ssl/error.log;
         listen 4430;
     server_name FQDN;
     proxy_read_timeout 300s;

@@ -73,7 +73,10 @@ if test "$proto" = default
 fi
 	 
 	 rm /tmp/site.*
-	 
+	 if ! test -d /var/log/nginx/$fqdn/ssl/
+	 	then
+	 		mkdir -p /var/log/nginx/$fqdn/ssl/
+	 	fi
 	 kill -HUP `cat /run/nginx/nginx.pid`
 	 
 	 echo Success

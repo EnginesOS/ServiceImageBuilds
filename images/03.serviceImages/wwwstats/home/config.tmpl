@@ -1,0 +1,23 @@
+
+# LogFile defines the web server log file to use.  If not specified
+# here or on on the command line, input will default to STDIN.  If
+# the log filename ends in '.gz' (a gzip compressed file), or '.bz2'
+# (bzip2 compressed file), it will be decompressed on the fly as it
+# is being read.
+
+#LogFile        /var/lib/httpd/logs/access_log
+LogType        clf
+OutputDir      /var/lib/httpd/htdocs/usage
+HistoryName    webalizer.hist
+Incremental    no
+IncrementalName        webalizer.current
+ReportTitle    Usage Statistics for
+HostName       www.webalizer.org
+HTMLExtension  html
+
+PageType        htm*
+PageType        cgi
+UseHTTPS       no
+DNSCache       dns_cache.db
+GeoDB	yes
+GeoDBDatabase  /usr/share/GeoDB/GeoDB.dat
