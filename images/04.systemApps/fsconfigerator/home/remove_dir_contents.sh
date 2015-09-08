@@ -4,7 +4,7 @@
 	#pd=`pwd
 dir=$1
  	    files=`ls -a $dir | sed "/^.$/s///" | sed "/^..$/s///"`
- 	    if test -n $files
+ 	    if test -n "$files"
  	    	then
  	    	    cd   $dir	  	    	    	
  				rm -r $files
