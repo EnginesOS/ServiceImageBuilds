@@ -17,7 +17,7 @@ RUN apt-get -y remove  build-essential gcc make ;\
 	apt-get -y clean 
 
 ADD 000-default.conf /etc/apache2/sites-enabled/ 
-
+ADD ports.conf /etc/apache2/
 COPY home home
 
 USER wwwstats
