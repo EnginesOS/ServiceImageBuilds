@@ -7,7 +7,7 @@ export PID_FILE
 
 mkdir -p /engines/var/run/flags/
 
-sudo -n  /usr/sbin/apache2ctl  -DFOREGROUND & 
+/usr/sbin/apache2ctl  -DFOREGROUND & 
 touch /engines/var/run/flags/startup_complete  
 wait 
 rm -f /engines/var/run/flags/startup_complete
