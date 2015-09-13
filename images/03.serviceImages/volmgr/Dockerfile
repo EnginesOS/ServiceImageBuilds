@@ -1,5 +1,5 @@
 FROM engines/servicebase:$release
-RUN echo "Y" | adduser  -D -h /home/volmgr -u 22007 volmgr;\
+RUN adduser -q --disabled-password --home /home/volmgr -uid 22007 volmgr;\
 	usermod -G containers -a volmgr
 	
 VOLUME /var/fs/
