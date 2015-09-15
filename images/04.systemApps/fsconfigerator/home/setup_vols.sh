@@ -20,14 +20,14 @@ chown $fw_user -R /client/state
 chgrp 22020  -R /client/state
 chmod g+w  -R /client/state
 
-if test -f /dest/fs/.persistant
+if test -f /dest/fs/.persistant_lock
  then
   chown -R $fw_user /dest/fs/
 else
   dirs=`ls /home/fs_src/ | egrep -v "local"`
 	for dir in $dirs
 		do
-			cp -r  /home/fs_src/$dir/* /dest/fs/	
+			cp -rn  /home/fs_src/$dir/* /dest/fs/	
 			
 		done
 	#if no presistance dirs/files need to set permission here
