@@ -1,4 +1,4 @@
-FROM busybox
+FROM engines/base_image:alpha 
 ADD home /home/
 VOLUME /client/var/log
 VOLUME /client/log
