@@ -7,7 +7,9 @@ proxy_set_header Host $host;
 proxy_set_header Upgrade $http_upgrade;
     proxy_set_header Connection "upgrade";
     proxy_set_header X-Real-IP $remote_addr;
-            proxy_pass http://SERVER.engines.internal:PORTFOLDER;
+            proxy_pass http://SERVER.engines.internal:PORT/;
+            proxy_set_header Host $host;
+            FOLDER
         }
             access_log /var/log/nginx/FQDN/http/access.log;
         error_log /var/log/nginx/FQDN/http/error.log;
@@ -35,7 +37,9 @@ proxy_set_header Host $host;
 proxy_set_header Upgrade $http_upgrade;
     proxy_set_header Connection "upgrade";
     proxy_set_header X-Real-IP $remote_addr;
-            proxy_pass http://SERVER.engines.internal:PORTFOLDER;
+            proxy_pass http://SERVER.engines.internal:PORT/;
+            proxy_set_header Host $host;
+            FOLDER
         }
     }
 
