@@ -1,11 +1,11 @@
-FROM busybox
-RUN echo "Y" | adduser  -D -h /home/volmgr -u 22007 volmgr
-
-VOLUME /fs/
+FROM engines/servicebase:$release
+RUN adduser -q --disabled-password --home /home/volmgr -uid 22007 volmgr;\
+	usermod -G containers -a volmgr
+	
+VOLUME /var/fs/
 
 ENV ContUser volmgr
 ENV ContGrp volmgr
-
-ADD home/start.sh /home/start.sh
-
+USER volmgr
+COPY 	home/ /home
 CMD ["/home/start.sh"]
