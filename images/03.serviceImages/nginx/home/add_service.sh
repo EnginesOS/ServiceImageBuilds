@@ -53,9 +53,14 @@ cat /tmp/site.fqdn  | sed "/PORT/s//$port/" > /tmp/site.port
 cat /tmp/site.port  | sed "/SERVER/s//$parent_engine/" > /tmp/site.name
 
 
-www_path=`echo $internal_dir |sed "s/\///g"`
-www_path=`echo -n '\/'$www_path`
-cat /tmp/site.name | sed "/FOLDER/s//$www_path/" > /tmp/site.path
+www_path=`echo $internal_dir  |sed "s/^\///" |sed "s/\/$//"`
+
+#cat /tmp/site.name | sed "/FOLDER/s//redirect/" > /tmp/site.path
+
+    rewrite='rewrite \^\/'$www_path'\/\(\.\*\) \/'$www_path'\/\$1  break;\
+        rewrite \^\/\(\.\*\) \/'$www_path'\/\$1  break; '
+
+cat /tmp/site.name | sed "/FOLDER/s//$rewrite/" >  /tmp/site.path
 
 
 if test "$proto" = default 
