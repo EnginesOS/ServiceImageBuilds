@@ -56,10 +56,12 @@ cat /tmp/site.port  | sed "/SERVER/s//$parent_engine/" > /tmp/site.name
 www_path=`echo $internal_dir  |sed "s/^\///" |sed "s/\/$//"`
 
 #cat /tmp/site.name | sed "/FOLDER/s//redirect/" > /tmp/site.path
-
+rewrite=""
+   if ! test -z $www_path
+ then
     rewrite='rewrite \^\/'$www_path'\/\(\.\*\) \/'$www_path'\/\$1  break;\
-        rewrite \^\/\(\.\*\) \/'$www_path'\/\$1  break; '
-
+        rewrite \^\/\(\.\*\) $fqdn\/'$www_path'\/\$1  break; '
+fi
 cat /tmp/site.name | sed "/FOLDER/s//$rewrite/" >  /tmp/site.path
 
 

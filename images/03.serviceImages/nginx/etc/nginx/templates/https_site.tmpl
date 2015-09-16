@@ -15,7 +15,7 @@
         access_log /var/log/nginx/FQDN/https/access.log;
         error_log /var/log/nginx/FQDN/https/error.log;
         location / {
-        
+        FOLDER
 proxy_set_header Host $host;
     proxy_set_header X-Real-IP $remote_addr;
     proxy_set_header Upgrade $http_upgrade;
