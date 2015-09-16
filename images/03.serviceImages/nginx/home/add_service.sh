@@ -50,7 +50,8 @@ template="/etc/nginx/templates/${proto}_site.tmpl"
 
 cat $template | sed "/FQDN/s//$fqdn/" > /tmp/site.fqdn
 cat /tmp/site.fqdn  | sed "/PORT/s//$port/" > /tmp/site.port
-cat /tmp/site.port  | sed "/SERVER/s//$parent_engine/" > /tmp/site.name
+cat /tmp/site.port  | sed "/SERVER/s//$parent_engine/" > /tmp/site.name.1
+cat /tmp/site.name.1 | sed "/FOLDER/s//\/$internal_dir/" > /tmp/site.name
 
 if test "$proto" = default 
  then
