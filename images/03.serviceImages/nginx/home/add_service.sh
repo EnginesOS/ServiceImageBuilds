@@ -50,8 +50,13 @@ template="/etc/nginx/templates/${proto}_site.tmpl"
 
 cat $template | sed "/FQDN/s//$fqdn/" > /tmp/site.fqdn
 cat /tmp/site.fqdn  | sed "/PORT/s//$port/" > /tmp/site.port
-cat /tmp/site.port  | sed "/SERVER/s//$parent_engine/" > /tmp/site.name.1
-cat /tmp/site.name.1 | sed "/FOLDER/s//\/$internal_dir/" > /tmp/site.name
+cat /tmp/site.port  | sed "/SERVER/s//$parent_engine/" > /tmp/site.name
+
+
+www_path=`echo $internal_dir |sed "s/\///g"`
+www_path=`echo -n '\/'$www_path`
+cat /tmp/site.name | sed "/FOLDER/s//$www_path/" > /tmp/site.path
+
 
 if test "$proto" = default 
  then
@@ -68,9 +73,9 @@ if test "$proto" = default
 	     		then
 	     			rm -f /etc/nginx/sites-enabled/http_${fqdn}.site
 	     	fi
-	    cat /tmp/site.name  | sed "/CERTNAME/s//$cert_name/" > /etc/nginx/sites-enabled/${proto}_${fqdn}.site
+	    cat /tmp/site.path  | sed "/CERTNAME/s//$cert_name/" > /etc/nginx/sites-enabled/${proto}_${fqdn}.site
 	 else
-	 	cp /tmp/site.name /etc/nginx/sites-enabled/${proto}_${fqdn}.site
+	 	cp /tmp/site.path /etc/nginx/sites-enabled/${proto}_${fqdn}.site
 fi
 	 
 	 rm /tmp/site.*
