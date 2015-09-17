@@ -1,6 +1,7 @@
  server {
         listen 4430;
     server_name FQDN;
+     add_header Strict-Transport-Security "max-age=31536000; includeSubdomains";
     proxy_read_timeout 300s;
     ssl on;
     ssl_session_cache    shared:SSL:1m;
@@ -16,7 +17,7 @@
         error_log /var/log/nginx/FQDN/https/error.log;
         location / {
         FOLDER
-    proxy_set_header Strict-Transport-Security "max-age=31536000; includeSubdomains";
+   
 	proxy_pass http://SERVER.engines.internal:PORT/;
     proxy_set_header Upgrade $http_upgrade;
     proxy_set_header Connection "upgrade";  
