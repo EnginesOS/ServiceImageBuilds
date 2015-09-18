@@ -13,6 +13,7 @@ RUN echo "Y" | adduser -q --uid 22674 --home /home/python --disabled-password py
     wget https://bootstrap.pypa.io/get-pip.py get-pip.py;\ 
 	python get-pip.py;\
 	chown python -R	/usr/local/lib/python2.7/dist-packages/;\
+	ln -s /usr/include/freetype2 /usr/include/freetype2/freetype;\
 	rm /tmp/*
     
 ADD home home
