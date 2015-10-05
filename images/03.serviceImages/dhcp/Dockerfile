@@ -12,6 +12,6 @@ ENV ContGrp dhcpd
 
 USER dhcpd
 
-copy dhcpd.conf /etc/dhcpd/
+copy dhcpd.conf /home/
 
 CMD ["/home/start.sh"]
