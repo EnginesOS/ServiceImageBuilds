@@ -10,7 +10,7 @@ RUN apt-get -y update;\
 		ln -s /bin/true /usr/sbin/start;\
 		ln -s /bin/true /usr/sbin/start-stop-daemon;\
 		ln -s /bin/true /usr/sbin/service;\
-	apt-get -y install isc-dhcp-server
+	apt-get -y install isc-dhcp-server;\
 	apt-get clean;\
 	/usr/sbin/usermod -u 22025 dhcpd
 	
