@@ -34,7 +34,7 @@ RUN /usr/local/rbenv/shims/gem install git bundle oink vmstat;\
  	mkdir -p /home/app/public/system;\
  	chown -R 21000 /home/app/public ;\
  	usermod -G containers -a engines;\
- 	rm /var/run/apache2/apache2.pid
+ 	rm -f /var/run/apache2/apache2.pid
  	
  
 COPY functions.sh  /home/engines/scripts/functions.sh
