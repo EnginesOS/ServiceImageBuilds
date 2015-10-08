@@ -9,14 +9,19 @@ load_service_hash_to_environment
 
 #FIXME make engines.internal settable
 
-	if test -z "${cron_job}"
+	if test -z "${service_name}"
 	then
-		echo Error:Missing cron_job
+		echo Error:Missing service_name
         exit -1
     fi
-  	if test -z ${title}
+  	if test -z ${user}
 	then
-		echo Error:missing title
+		echo Error:missing user
+        exit -1
+    fi  
+     	if test -z ${group}
+	then
+		echo Error:missing group
         exit -1
     fi  
     	if test -z ${parent_engine}
@@ -25,7 +30,7 @@ load_service_hash_to_environment
         exit -1
     fi  
     
-    sudo /home/engines/scripts/create_volume.sh ${parent_engine} ${name} ${user} ${group}
+    sudo /home/engines/scripts/create_volume.sh ${parent_engine} ${service_name} ${user} ${group}
     if $? -eq 0
 	then 
 		echo "Success"
