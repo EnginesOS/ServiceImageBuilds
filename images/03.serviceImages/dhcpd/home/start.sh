@@ -6,7 +6,11 @@ PID_FILE=/var/run/dhcpd.pid
 export PID_FILE
 
 . /home/trap.sh
+touch /tmp/start_dhcpd
 
+while test -f /tmp/start_dhcpd
+ do
+   rm /tmp/start_dhcpd  
 if ! test -f /etc/dhcp/dhcpd.conf
    then		
 	touch /engines/var/run/flags/wait_for_dhcpd.conf
@@ -25,19 +29,13 @@ sudo -n /usr/sbin/dhcpd  -cf /etc/dhcp/dhcpd.conf -pf /var/run/dhcpd.pid  -f &
 if ! test -f /var/run/dhcpd.pid
 then
 	sudo /home/clear_dhcpd_conf.sh
-	touch /tmp/restart_dhcp
-	sleep 30
+	touch /tmp/start_dhcpd
 else
 	touch /engines/var/run/flags/startup_complete
 	wait  
  fi
-
-if test -f /tmp/restart_dhcp
- then
-   rm /tmp/restart_dhcp  
-   /home/start.sh 
 	   
-fi
+done 
 
 rm /engines/var/run/flags/startup_complete
 
