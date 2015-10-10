@@ -2,7 +2,7 @@ FROM  engines/servicebase:$release
 RUN apt-get -y update;\
 	 usermod www-data -u 22024 ;\
 	usermod -G containers -a www-data ;\
-	chown /home/wwwstats www-data 
+	chown www-data /home/wwwstats 
 	apt-get -y install apache2  build-essential gcc make zlib1g-dev libpng12-dev libgd-dev
 	
 RUN cd /tmp; \
