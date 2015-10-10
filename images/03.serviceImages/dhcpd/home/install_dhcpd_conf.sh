@@ -1,2 +1,2 @@
 #!/bin/sh
-cp /tmp/dhcpd.conf /etc/dhcpd/
+cp /tmp/dhcpd.conf /etc/dhcp/
