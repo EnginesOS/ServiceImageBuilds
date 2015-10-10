@@ -18,10 +18,12 @@ if ! test -f /etc/dhcpd/dhcpd.conf
 	done 	
    fi
 
-
+rm /engines/var/run/flags/wait_for_dhcpd.conf
 sudo -n syslogd  -R syslog.engines.internal:5140
 sudo -n /usr/sbin/dhcpd  -cf /etc/dhcpd/dhcpd.conf -pf /var/run/dhcpd.pid  -f & 
 touch /engines/var/run/flags/startup_complete
 wait  
 
 rm /engines/var/run/flags/startup_complete
+
+
