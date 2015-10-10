@@ -1,7 +1,7 @@
 
 
 
-
+dhcpd ALL = (root) NOPASSWD: /home/clear_dhcpd_conf.sh
 dhcpd ALL = (root) NOPASSWD: /home/install_dhcpd_conf.sh
 dhcpd ALL = (root) NOPASSWD: /sbin/syslogd
 dhcpd ALL = (root) NOPASSWD: /usr/sbin/dhcpd

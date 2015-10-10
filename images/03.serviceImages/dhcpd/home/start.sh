@@ -7,7 +7,7 @@ export PID_FILE
 
 . /home/trap.sh
 
-if ! test -f /etc/dhcpd/dhcpd.conf
+if ! test -f /etc/dhcp/dhcpd.conf
    then		
 	touch /engines/var/run/flags/wait_for_dhcpd.conf
 	echo $$ > /var/run/dhcpd.pid
@@ -21,6 +21,13 @@ if ! test -f /etc/dhcpd/dhcpd.conf
 rm /engines/var/run/flags/wait_for_dhcpd.conf
 sudo -n syslogd  -R syslog.engines.internal:5140
 sudo -n /usr/sbin/dhcpd  -cf /etc/dhcp/dhcpd.conf -pf /var/run/dhcpd.pid  -f & 
+#Handle Crash Service must stay up for configurator
+if ! test -f /var/run/dhcpd.pid
+then
+	sudo /home/clear_dhcpd_conf.sh
+	/home/start.sh
+
+fi
 touch /engines/var/run/flags/startup_complete
 wait  
  
