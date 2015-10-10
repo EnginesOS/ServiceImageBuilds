@@ -2,7 +2,7 @@
 mkdir -p /engines/var/run/flags/
 
 
- PID_FILE=/var/run/dhcpd.pid
+PID_FILE=/var/run/dhcpd.pid
 export PID_FILE
 
 . /home/trap.sh
@@ -25,15 +25,18 @@ sudo -n /usr/sbin/dhcpd  -cf /etc/dhcp/dhcpd.conf -pf /var/run/dhcpd.pid  -f &
 if ! test -f /var/run/dhcpd.pid
 then
 	sudo /home/clear_dhcpd_conf.sh
-	/home/start.sh
+	touch /tmp/restart_dhcp
+	sleep 30
+else
+	touch /engines/var/run/flags/startup_complete
+	wait  
+ fi
 
-fi
-touch /engines/var/run/flags/startup_complete
-wait  
- 
 if test -f /tmp/restart_dhcp
  then
-   /home/start.sh
+   rm /tmp/restart_dhcp  
+   /home/start.sh 
+	   
 fi
 
 rm /engines/var/run/flags/startup_complete
