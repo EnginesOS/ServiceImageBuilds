@@ -4,9 +4,11 @@ option domain-name-servers ENGINES_IP, OPTIONAL_DNS;
 default-lease-time DEFAULT_LEASE; #6000
 max-lease-time MAX_LEASE; #14800
 
+shared-network "dnet" {
 subnet SUBNET netmask NETMASK {
   range RANGE_MIN RANGE_MAX;
   option routers GATEWAY;
+subnet 172.0.0.0 netmask 255.0.0.0 { }
 }
 
 #blank for consumers
