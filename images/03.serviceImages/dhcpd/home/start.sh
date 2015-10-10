@@ -11,7 +11,7 @@ if ! test -f /etc/dhcpd/dhcpd.conf
    then		
 	touch /engines/var/run/flags/wait_for_dhcpd.conf
 	echo $$ > /var/run/dhcpd.pid
-	while ! test -f /etc/dhcpd/dhcpd.conf
+	while ! test -f /etc/dhcp/dhcpd.conf
 		do		 
 		sleep 60 &
 		wait
@@ -20,7 +20,7 @@ if ! test -f /etc/dhcpd/dhcpd.conf
 
 rm /engines/var/run/flags/wait_for_dhcpd.conf
 sudo -n syslogd  -R syslog.engines.internal:5140
-sudo -n /usr/sbin/dhcpd  -cf /etc/dhcpd/dhcpd.conf -pf /var/run/dhcpd.pid  -f & 
+sudo -n /usr/sbin/dhcpd  -cf /etc/dhcp/dhcpd.conf -pf /var/run/dhcpd.pid  -f & 
 touch /engines/var/run/flags/startup_complete
 wait  
  
