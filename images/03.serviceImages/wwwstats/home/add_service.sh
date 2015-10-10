@@ -6,4 +6,17 @@ service_hash=$1
 
 load_service_hash_to_environment
 
+if test -z $fqdn
+ then
+ 	echo "fqdn not set"
+ 	exit 127
+ fi
+
+if test -z $protocols
+ then
+ 	echo "protocols not set"
+ 	exit 127
+ fi
+
+
 
