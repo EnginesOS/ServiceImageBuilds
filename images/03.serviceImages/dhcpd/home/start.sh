@@ -23,6 +23,11 @@ sudo -n syslogd  -R syslog.engines.internal:5140
 sudo -n /usr/sbin/dhcpd  -cf /etc/dhcpd/dhcpd.conf -pf /var/run/dhcpd.pid  -f & 
 touch /engines/var/run/flags/startup_complete
 wait  
+ 
+if test -f /tmp/restart_dhcp
+ then
+   /home/start.sh
+fi
 
 rm /engines/var/run/flags/startup_complete
 
