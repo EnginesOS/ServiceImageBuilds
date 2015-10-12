@@ -15,8 +15,8 @@ if test -z $fqdn
 
 mkdir -p /home/wwwstats/confs/
 
-cat /home/http_conf.tmpl | sed -e "/FQDN/s//$fqdn/" > /home/wwwstats/confs/https/$fqdn
-cat /home/https_conf.tmpl | sed -e "/FQDN/s//$fqdn/" > /home/wwwstats/confs/http/$fqdn
+cat /home/http_conf.tmpl | sed -e "/FQDN/s//$fqdn/" > /home/wwwstats/confs/http/$fqdn
+cat /home/https_conf.tmpl | sed -e "/FQDN/s//$fqdn/" > /home/wwwstats/confs/https/$fqdn
  
 mkdir -p /home/wwwstats/output/$fqdn/http/
 mkdir -p /home/wwwstats/output/$fqdn/https/
