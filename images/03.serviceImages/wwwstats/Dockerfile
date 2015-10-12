@@ -12,7 +12,7 @@ RUN cd /tmp; \
   	cd webalizer-2.23-08;\
   	./configure --enable-dns --enable-bz2 --enable-geoip ;\
   	make;\
-  	make install DESTDIR=/usr/local/
+  	make install 
   	
 RUN apt-get -y remove  build-essential gcc make ;\
 	apt-get -y clean 
