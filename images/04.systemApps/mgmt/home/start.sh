@@ -13,9 +13,9 @@ if test -f /home/app/app/config/newrelic.yml
 	
 mv /home/app/Gemfile  /tmp/gf
 	
-git fetch origin master
+git fetch origin beta-rc
 git reset --hard FETCH_HEAD
-git pull --depth 1 origin master
+git pull --depth 1 origin beta-rc
 
 if ! test -f /home/app/Gemfile
  then
