@@ -4,7 +4,9 @@ RUN echo "Y" | adduser -q --disabled-password --home /var/spool/postfix -uid 220
 RUN apt-get -y update;\
 	apt-get -y install postfix syslogd;\
 	apt-get clean;\
-	usermod -G containers -a postfix
+	usermod -G containers -a postfix;\
+	 ln -s /etc/resolv.conf /var/spool/postfix/etc/;\
+	 ln -s /etc/services /var/spool/postfix/etc/
 ADD home home
 
 ADD postfix/main.cf /etc/postfix/

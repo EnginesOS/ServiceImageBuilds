@@ -20,7 +20,9 @@ RUN cd /tmp/;\
 	 ln -s /etc/php5/mods-available/imap.ini /etc/php5/apache2/conf.d/;\
 	 chgrp www-data /home/app/templates_c/;\
 	 chmod g+w /home/app/templates_c;\
-	 usermod -G containers -a postfix
+	 usermod -G containers -a postfix;\
+	 ln -s /etc/resolv.conf /var/spool/postfix/etc/;\
+	 ln -s /etc/services /var/spool/postfix/etc/
 	 
 	 
 
