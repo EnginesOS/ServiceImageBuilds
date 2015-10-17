@@ -24,6 +24,7 @@ RUN apt-get -y  --force-yes update;\
 
 ADD init.sh /home/
 ADD trap.sh /home/
+ADD no_init.sh /home/
 
 #increment build line to trigger upgrade NEED to Automate
 ENV	build 20151005
