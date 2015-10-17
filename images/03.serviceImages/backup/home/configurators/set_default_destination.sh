@@ -13,5 +13,5 @@ if test -f /home/configurators/saved/system_backup
  	/home/configurators/set_system_backup.sh `cat /home/configurators/saved/system_backup`
  fi
 
-#FIX ME Need to reload  system backup or does gui do this ?
+
 exit 0

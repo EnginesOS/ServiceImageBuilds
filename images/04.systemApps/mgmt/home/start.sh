@@ -10,9 +10,12 @@ if test -f /home/app/app/config/newrelic.yml
 	then
 		rm /home/app/app/config/newrelic.yml
 	fi
-	
-mv /home/app/Gemfile  /tmp/gf
-	
+
+if  test -f /home/app/Gemfile	
+	then
+	mv /home/app/Gemfile  /tmp/gf
+	fi
+
 git fetch origin beta-rc
 git reset --hard FETCH_HEAD
 git pull --depth 1 origin beta-rc
@@ -34,7 +37,7 @@ RAILS_ENV=production
 export  RAILS_ENV
 
 echo installing Gems
-/usr/local/rbenv/shims/bundle install --standalone >/dev/null
+/usr/local/rbenv/shims/bundle install --standalone 
 echo migrating database 
 /usr/local/rbenv/shims/bundle exec rake db:migrate 
 if ! test `sqlite3 /home/app/db/production.sqlite3 "SELECT EXISTS (SELECT * FROM users WHERE username='admin');"` -eq 1
