@@ -20,6 +20,7 @@ RUN apt-get -y remove  build-essential gcc make ;\
 ADD 000-default.conf /etc/apache2/sites-enabled/ 
 ADD ports.conf /etc/apache2/
 COPY home home
+COPY home/templates home/templates
 
 USER www-data
 
