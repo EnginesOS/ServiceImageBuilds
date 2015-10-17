@@ -13,8 +13,8 @@ if test -z $fqdn
  fi
 
 
-mkdir -p /home/wwwstats/confs/
-
+mkdir -p /home/wwwstats/confs/http
+mkdir -p /home/wwwstats/confs/https
 cat /home/templates/http_config.tmpl | sed -e "/FQDN/s//$fqdn/" > /home/wwwstats/confs/http/$fqdn
 cat /home/templates/https_config.tmpl | sed -e "/FQDN/s//$fqdn/" > /home/wwwstats/confs/https/$fqdn
  
