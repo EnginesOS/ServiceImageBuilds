@@ -9,8 +9,8 @@ RUN apt-get -y update;\
 	 ln -s /etc/services /var/spool/postfix/etc/
 ADD home home
 
-ADD postfix/main.cf /etc/postfix/
 ADD postfix/master.cf /etc/postfix/
+ADD postfix/main.cf /etc/postfix/
 ADD postfix/mailname /etc/postfix/mailname
 ADD postfix/transport /etc/postfix/
 
