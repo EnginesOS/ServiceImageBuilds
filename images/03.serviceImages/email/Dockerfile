@@ -29,7 +29,8 @@ ADD postfix/mailname /etc/postfix/mailname
 
 ADD _config.inc.php  /home/app/
 ADD config.inc.php  /home/app/
-RUN chown postfix /home/app/config.inc.php /etc/postfix/mysql
+RUN postmap /etc/postfix/transport/;\
+	chown postfix /home/configurators/saved/ /etc/postfix/mailname /etc/postfix/transport.db /etc/postfix/transport /home/app/config.inc.php /etc/postfix/mysql
 ADD 000-default.conf /etc/apache2/sites-enabled/ 
 	
 	

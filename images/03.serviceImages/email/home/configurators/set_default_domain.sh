@@ -38,10 +38,10 @@ fcnt=`expr $fcnt + 1`
         
    	if test  ${#defaultdomain} -gt 5
 	then
- 
+
  	   echo email.${defaultdomain} > /etc/postfix/mailname 	
-                echo "*	:" > /etc/postfix/transport
- 		echo ${defaultdomain} :[email.engines.internal]	>> /etc/postfix/transport	
+        echo "*	smtp:smtp.engines.internal" > /etc/postfix/transport
+ 		echo ${defaultdomain} :[local]	>> /etc/postfix/transport	
 		postmap /etc/postfix/transport
  	fi
  
