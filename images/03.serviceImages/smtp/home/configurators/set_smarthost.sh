@@ -47,6 +47,12 @@ fcnt=`expr $fcnt + 1`
 		else
 			echo "*	smtp:"  > /etc/postfix/transport
 		fi 
+		if test -f /home/configurators/saved/default_domain
+		  then
+		    domain=`cat /home/configurators/saved/default_domain`
+		    echo "[$domain] :local" >> /etc/postfix/transport
+		   fi
+		    
 		#chown root.root /etc/postfix/transport
 		chmod 600 /etc/postfix/transport
 		sudo postmap /etc/postfix/transport

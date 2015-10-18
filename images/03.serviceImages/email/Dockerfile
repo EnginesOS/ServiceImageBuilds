@@ -5,9 +5,7 @@ RUN apt-get -y update;\
 	apt-get clean
 ADD home home
 
-ADD postfix/main.cf /etc/postfix/
-ADD postfix/master.cf /etc/postfix/
-ADD postfix/mailname /etc/postfix/mailname
+
 
 ADD postgrey /etc/default/postgrey
 ADD sudoers /etc/
@@ -21,10 +19,13 @@ RUN cd /tmp/;\
 	 chgrp www-data /home/app/templates_c/;\
 	 chmod g+w /home/app/templates_c;\
 	 usermod -G containers -a postfix;\
-	 ln -s /etc/resolv.conf /var/spool/postfix/etc/;\
-	 ln -s /etc/services /var/spool/postfix/etc/
+	 /usr/sbin/postfix -c /etc/postfix/ -set-permissions;\
+	 cp /etc/resolv.conf /var/spool/postfix/etc/;\
+	 cp /etc/services /var/spool/postfix/etc/
 	 
-	 
+ADD postfix/main.cf /etc/postfix/
+ADD postfix/master.cf /etc/postfix/
+ADD postfix/mailname /etc/postfix/mailname
 
 ADD _config.inc.php  /home/app/
 ADD config.inc.php  /home/app/
