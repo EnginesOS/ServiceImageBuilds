@@ -26,7 +26,7 @@ RUN cd /tmp/;\
 ADD postfix/main.cf /etc/postfix/
 ADD postfix/master.cf /etc/postfix/
 ADD postfix/mailname /etc/postfix/mailname
-
+ADD postfix/transport /etc/postfix/transport
 ADD _config.inc.php  /home/app/
 ADD config.inc.php  /home/app/
 RUN postmap /etc/postfix/transport/;\
