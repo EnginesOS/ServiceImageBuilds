@@ -8,10 +8,10 @@ load_service_hash_to_environment
 
 
 
-	if ! test -z ${domainname}
+	if ! test -z ${domain_name}
 	 then
-	 	cat  /etc/bind/templates/config_file_zone_entry.tmpl | sed " /DOMAIN/s//${domainname}/g" > /home/bind/engines/domains/${domainname}
-	 	cat /etc/bind/templates/selfhosted.tmpl | sed "/DOMAIN/s//${domainname}/g" | sed "/IP/s//${ip}/g" > /home/bind/engines/zones/named.conf.${domainname}
+	 	cat  /etc/bind/templates/config_file_zone_entry.tmpl | sed " /DOMAIN/s//${domain_name}/g" > /home/bind/engines/domains/${domain_name}
+	 	cat /etc/bind/templates/selfhosted.tmpl | sed "/DOMAIN/s//${domain_name}/g" | sed "/IP/s//${ip}/g" > /home/bind/engines/zones/named.conf.${domain_name}
 	 	cat /home/bind/engines/domains/* > /home/bind/engines/domains.hosted
 	 	kill -HUP `cat /var/run/named/named.pid`
 	 	exit
