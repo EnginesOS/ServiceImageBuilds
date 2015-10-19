@@ -14,7 +14,7 @@ ADD postfix/main.cf /etc/postfix/
 ADD postfix/mailname /etc/postfix/mailname
 ADD postfix/transport /etc/postfix/
 
-RUN /usr/sbin/postfix -c /etc/postfix/ -set-permissions;\
+RUN /usr/sbin/postfix -c /etc/postfix/ set-permissions;\
 	postmap /etc/postfix/transport;\
 	touch /etc/postfix/transport.smart;\
 	chown postfix /etc/postfix/ /etc/postfix/transport /etc/postfix/transport.smart /etc/postfix/transport.db /etc/postfix/mailname  ;\
