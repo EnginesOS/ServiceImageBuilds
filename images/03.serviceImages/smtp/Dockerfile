@@ -16,7 +16,8 @@ ADD postfix/transport /etc/postfix/
 
 RUN /usr/sbin/postfix -c /etc/postfix/ -set-permissions;\
 	postmap /etc/postfix/transport;\
-	chown postfix /etc/postfix/ /etc/postfix/transport /etc/postfix/transport.db /etc/postfix/mailname  ;\
+	touch /etc/postfix/transport.smart;\
+	chown postfix /etc/postfix/ /etc/postfix/transport /etc/postfix/transport.smart /etc/postfix/transport.db /etc/postfix/mailname  ;\
 	chown postfix /home/configurators/saved;\
 	chgrp postfix /home/configurators/*.sh
 	
