@@ -21,11 +21,12 @@ if ! test -f /etc/dhcp/dhcpd.conf
 		wait
 	done 	
    fi
-
+rm /var/run/dhcpd.pid
 rm /engines/var/run/flags/wait_for_dhcpd.conf
 sudo -n syslogd  -R syslog.engines.internal:5140
 sudo -n /usr/sbin/dhcpd  -cf /etc/dhcp/dhcpd.conf -pf /var/run/dhcpd.pid  -f & 
 #Handle Crash Service must stay up for configurator
+sleep 2 
 if ! test -f /var/run/dhcpd.pid
 then
 	sudo /home/clear_dhcpd_conf.sh
