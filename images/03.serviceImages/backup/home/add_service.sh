@@ -50,9 +50,6 @@ load_service_hash_to_environment
  echo "$*" >>/var/log/backup/addbackup.log
 
 Backup_ConfigDir=/home/backup/.duply/
-#
-# makebackconf.sh  publifydb  publify:mysql:publifydb:publifydb@mysql.engines.internal/publifydb ftp:engback:back_eng@203.14.203.141/publifydb
-#bash makebackconf.sh publify publify:fs:publifyfs ftp:engback:back_eng@203.14.203.141/publify
 
 
 #For Engine
@@ -65,44 +62,29 @@ Backup_ConfigDir=/home/backup/.duply/
 #dest_pass
 #:parent_engine
 
+dirname= $Backup_ConfigDir/$parent_engine_$name_$src_type
 
-
-mkdir -p $Backup_ConfigDir/$name
+mkdir -p $dirname
 
         if test $src_type = "fs"
           then
-                src=/backup_src/volumes/$src_vol
+               	src=/backup_src/volumes/$src_vol
           elsif test $src_type = 'engine'
-           mkdir -p $Backup_ConfigDir/$name
-						cat /home/tmpl/duply_sql_pre >  $Backup_ConfigDir/$name/pre
-                		cp /home/tmpl/duply_sql_post  $Backup_ConfigDir/$name/post
-                		chmod u+x $Backup_ConfigDir/$name/pre
-                		chmod u+x $Backup_ConfigDir/$name/post
-                		
-                		cp /home/tmpl/duply_conf $Backup_ConfigDir/$name/conf
-                		src=/backup_src/engines/$parent_engine
-                		echo "SOURCE='$src'" >>$Backup_ConfigDir/$name/conf
-
-echo "TARGET='$dest'" >>$Backup_ConfigDir/system/conf
-echo "TARGET_USER='$user'"  >>$Backup_ConfigDir/system/conf
-echo "TARGET_PASS='$pass'"  >>$Backup_ConfigDir/system/conf
-           
+       
+    			src=/backup_src/engines/$parent_engine  
            else
-echo "src type $src_type"
-
-                echo "#!/bin/sh " > $Backup_ConfigDir/$name/pre
-                echo "dbflavor=$flavor" >> $Backup_ConfigDir/$name/pre
-                echo "dbhost=$dbhost" >> $Backup_ConfigDir/$name/pre
-                echo "dbname=$dbname" >> $Backup_ConfigDir/$name/pre
-                echo "dbuser=$dbuser" >> $Backup_ConfigDir/$name/pre
-                echo "dbpass=$dbpass" >> $Backup_ConfigDir/$name/pre
-                cat /home/tmpl/duply_sql_pre >  $Backup_ConfigDir/$name/pre
-
-                cp /home/tmpl/duply_sql_post  $Backup_ConfigDir/$name/post
-                chmod u+x $Backup_ConfigDir/$name/pre
-                 chmod u+x $Backup_ConfigDir/$name/post
-                 src=/home/backup/sql_dumps
-                
+				echo "src type $src_type"
+                echo "#!/bin/sh " >  $dirname/pre
+                echo "dbflavor=$flavor" >>  $dirname/pre
+                echo "dbhost=$dbhost" >>  $dirname/pre
+                echo "dbname=$dbname" >>  $dirname/pre
+                echo "dbuser=$dbuser" >>  $dirname/pre
+                echo "dbpass=$dbpass" >>  $dirname/pre
+                cat /home/tmpl/duply_sql_pre >>   $dirname/pre
+                cp /home/tmpl/duply_sql_post   $dirname/post
+                chmod u+x  $dirname/pre
+                chmod u+x  $dirname/post
+                src=/home/backup/sql_dumps                
         fi
 
 #dest_proto=`echo $3 |cut -f1 -d:`
@@ -110,27 +92,37 @@ echo "src type $src_type"
         if test $dest_proto = "file"
                 then
                  #path=`echo $3 |cut -f4 -d:`
-                  dest=/var/lib/engines/local_backup_dests/$path
-          else
-                #first=`echo $3 |cut -f1 -d@`
-                #user=`echo $first |cut -f2 -d:`
-                #pass=`echo $first |cut -f3 -d:`
-                #rest=`echo $3 |cut -f2 -d@`
-                #host=`echo $rest |cut -f1 -d/`
-                #path=`echo $rest |cut -f2 -d/`
-                dest="$dest_proto://$host/$path"
-        fi
-
-
-if test $dest_proto = "s3"
-	then	
-		$dest_proto="s3+http://"
+                  dest=/var/lib/engines/local_backup_dests/$path         
+        elif test $dest_proto = "s3"	
+			   dest_proto="s3+http://" 
+	    else
+              dest="$dest_proto://$host/$path"
 	fi
 
-cp /home/tmpl/duply_conf $Backup_ConfigDir/$name/conf
+cp /home/tmpl/duply_conf  $dirname/conf
 
-echo "SOURCE='$src'" >>$Backup_ConfigDir/$name/conf
-echo "TARGET='$dest'" >>$Backup_ConfigDir/$name/conf
-echo "TARGET_USER='$user'"  >>$Backup_ConfigDir/$name/conf
-echo "TARGET_PASS='$pass'"  >>$Backup_ConfigDir/$name/conf
+echo "SOURCE='$src'" >> $dirname/conf
+echo "TARGET='$dest'" >> $dirname/conf
+echo "TARGET_USER='$user'"  >> $dirname/conf
+echo "TARGET_PASS='$pass'"  >> $dirname/conf
+
+if test $src_type = 'engine'
+  then
+	cp -rp $dirname $dirname_db
+	cp -rp $dirname $dirname_fs
+	cd $dirname_db
+	echo "#!/bin/sh " >  $dirname/pre
+                echo "dbflavor=$flavor" >>  $dirname/pre
+                echo "dbhost=$dbhost" >>  $dirname/pre
+                echo "dbname=$dbname" >>  $dirname/pre
+                echo "dbuser=$dbuser" >>  $dirname/pre
+                echo "dbpass=$dbpass" >>  $dirname/pre
+                cat /home/tmpl/duply_sql_pre >>   $dirname/pre
+                cp /home/tmpl/duply_sql_post   $dirname/post
+                chmod u+x  $dirname/pre
+                chmod u+x  $dirname/post
+                src=/home/backup/sql_dumps                
+           echo "SOURCE='$src'" >> $dirname/conf
+   fi
+           
                  
