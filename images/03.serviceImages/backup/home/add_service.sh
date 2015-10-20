@@ -127,10 +127,10 @@ if test $dest_proto = "s3"
 		$dest_proto="s3+http://"
 	fi
 
-cp /home/tmpl/duply_conf $Backup_ConfigDir/$1/conf
+cp /home/tmpl/duply_conf $Backup_ConfigDir/$name/conf
 
-echo "SOURCE='$src'" >>$Backup_ConfigDir/$1/conf
-echo "TARGET='$dest'" >>$Backup_ConfigDir/$1/conf
-echo "TARGET_USER='$user'"  >>$Backup_ConfigDir/$1/conf
-echo "TARGET_PASS='$pass'"  >>$Backup_ConfigDir/$1/conf
+echo "SOURCE='$src'" >>$Backup_ConfigDir/$name/conf
+echo "TARGET='$dest'" >>$Backup_ConfigDir/$name/conf
+echo "TARGET_USER='$user'"  >>$Backup_ConfigDir/$name/conf
+echo "TARGET_PASS='$pass'"  >>$Backup_ConfigDir/$name/conf
                  
