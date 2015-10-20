@@ -17,35 +17,10 @@ echo $1 >/home/configurators/saved/system_backup
 Backup_ConfigDir=/home/backup/.duply/
 
 
-dest=$dest_proto://$dest_address/$dest_folder
-user=$dest_user
-pass=$dest_pass
 
-	#		if test $# -get 1
-	#			then
-	#			
-	#			fi 
-
-	case $src_type in
-		engine)		
-			
-						
-
-
-service_hash=$1
-
-. /home/engines/scripts/functions.sh
 
 load_service_hash_to_environment
 
-
-
-#args backupname src_url dest_url
-#src_url engine:fs:volume or engine:mysql|pgsql|..:user:pass@host/dbname
-#publify publify:fs:publifyfs
-#dest_url proto:user:pass@host/dir
-#file:::/backups/
-#ftp:back:backup@somehost.domain.com/dir
 
  echo "$*" >>/var/log/backup/addbackup.log
 
