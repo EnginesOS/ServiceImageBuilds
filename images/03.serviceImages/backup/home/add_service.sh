@@ -27,33 +27,9 @@ pass=$dest_pass
 	#			fi 
 
 	case $src_type in
-		engine)
-		
-		;;
-		
-						mkdir -p $Backup_ConfigDir/system
-						cat /home/tmpl/duply_sql_pre >  $Backup_ConfigDir/system/pre
-                		cp /home/tmpl/duply_sql_post  $Backup_ConfigDir/system/post
-                		chmod u+x $Backup_ConfigDir/system/pre
-                		chmod u+x $Backup_ConfigDir/system/post
-                		
-                		cp /home/tmpl/duply_conf $Backup_ConfigDir/system/conf
-                		src=/backup_src/engines
-                		echo "SOURCE='$src'" >>$Backup_ConfigDir/system/conf
-
-echo "TARGET='$dest'" >>$Backup_ConfigDir/system/conf
-echo "TARGET_USER='$user'"  >>$Backup_ConfigDir/system/conf
-echo "TARGET_PASS='$pass'"  >>$Backup_ConfigDir/system/conf
-
-
-
-
-
-
-
-
-
-
+		engine)		
+			
+						
 
 
 service_hash=$1
@@ -91,33 +67,40 @@ Backup_ConfigDir=/home/backup/.duply/
 
 
 
-mkdir -p $Backup_ConfigDir/$1
+mkdir -p $Backup_ConfigDir/$name
 
         if test $src_type = "fs"
           then
                 src=/backup_src/volumes/$src_vol
-          else
+          elsif test $src_type = 'engine'
+           mkdir -p $Backup_ConfigDir/$name
+						cat /home/tmpl/duply_sql_pre >  $Backup_ConfigDir/$name/pre
+                		cp /home/tmpl/duply_sql_post  $Backup_ConfigDir/$name/post
+                		chmod u+x $Backup_ConfigDir/$name/pre
+                		chmod u+x $Backup_ConfigDir/$name/post
+                		
+                		cp /home/tmpl/duply_conf $Backup_ConfigDir/$name/conf
+                		src=/backup_src/engines/$parent_engine
+                		echo "SOURCE='$src'" >>$Backup_ConfigDir/$name/conf
+
+echo "TARGET='$dest'" >>$Backup_ConfigDir/system/conf
+echo "TARGET_USER='$user'"  >>$Backup_ConfigDir/system/conf
+echo "TARGET_PASS='$pass'"  >>$Backup_ConfigDir/system/conf
+           
+           else
 echo "src type $src_type"
-#                part=`echo $2 | cut -f 1 -d@`
-#                flavor=`echo $part | cut -f 2 -d:`
-#                dbuser=`echo $part | cut -f 3 -d:`
-#                dbpass=`echo $part | cut -f 4 -d:`
 
-#                end=`echo $2 | cut -f 2 -d@`
-#                dbhost=`echo $end |cut -f 1 -d/`
-#                dbname=`echo $end |cut -f 2 -d/`
+                echo "#!/bin/sh " > $Backup_ConfigDir/$name/pre
+                echo "dbflavor=$flavor" >> $Backup_ConfigDir/$name/pre
+                echo "dbhost=$dbhost" >> $Backup_ConfigDir/$name/pre
+                echo "dbname=$dbname" >> $Backup_ConfigDir/$name/pre
+                echo "dbuser=$dbuser" >> $Backup_ConfigDir/$name/pre
+                echo "dbpass=$dbpass" >> $Backup_ConfigDir/$name/pre
+                cat /home/tmpl/duply_sql_pre >  $Backup_ConfigDir/$name/pre
 
-                echo "#!/bin/sh " > $Backup_ConfigDir/$1/pre
-                echo "dbflavor=$flavor" >> $Backup_ConfigDir/$1/pre
-                echo "dbhost=$dbhost" >> $Backup_ConfigDir/$1/pre
-                echo "dbname=$dbname" >> $Backup_ConfigDir/$1/pre
-                echo "dbuser=$dbuser" >> $Backup_ConfigDir/$1/pre
-                echo "dbpass=$dbpass" >> $Backup_ConfigDir/$1/pre
-                cat /home/tmpl/duply_sql_pre >  $Backup_ConfigDir/$1/pre
-
-                cp /home/tmpl/duply_sql_post  $Backup_ConfigDir/$1/post
-                chmod u+x $Backup_ConfigDir/$1/pre
-                 chmod u+x $Backup_ConfigDir/$1/post
+                cp /home/tmpl/duply_sql_post  $Backup_ConfigDir/$name/post
+                chmod u+x $Backup_ConfigDir/$name/pre
+                 chmod u+x $Backup_ConfigDir/$name/post
                  src=/home/backup/sql_dumps
                 
         fi
