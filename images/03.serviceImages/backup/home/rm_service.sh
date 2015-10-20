@@ -6,10 +6,12 @@ service_hash=$1
 . /home/engines/scripts/functions.sh
 
 load_service_hash_to_environment
-dirname=$Backup_ConfigDir/$parent_engine_$name_$src_type
+
 
 Backup_ConfigDir=/home/backup/.duply/
- echo "$*" >>/var/log/backup//rmbackup.log
+dirname=$Backup_ConfigDir/${parent_engine}_${name}_${src_type}
+
+ echo "${dirname}: $*" >>/var/log/backup//rmbackup.log
 if test -n $1
 	then
 		rm -r $dirname
