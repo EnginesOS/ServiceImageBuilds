@@ -108,9 +108,10 @@ echo "TARGET_PASS='$pass'"  >> $dirname/conf
 
 if test $src_type = 'engine'
   then
-	cp -rp $dirname $dirname_db
-	cp -rp $dirname $dirname_fs
+	cp -rp $dirname ${dirname}_db
+	mv $dirname ${dirname}_fs
 	cd $dirname_db
+	dirname=$dirname_db
 	echo "#!/bin/sh " >  $dirname/pre
                 echo "dbflavor=$flavor" >>  $dirname/pre
                 echo "dbhost=$dbhost" >>  $dirname/pre
@@ -121,7 +122,9 @@ if test $src_type = 'engine'
                 cp /home/tmpl/duply_sql_post   $dirname/post
                 chmod u+x  $dirname/pre
                 chmod u+x  $dirname/post
-                src=/home/backup/sql_dumps                
+                src=/home/backup/sql_dumps         
+                       cat $dirname/conf | grep -v SOURCE >/tmp/t
+                       mv /tmp/t $dirname/conf
            echo "SOURCE='$src'" >> $dirname/conf
    fi
            
