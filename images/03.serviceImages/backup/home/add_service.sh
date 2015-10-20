@@ -1,22 +1,14 @@
 #!/bin/bash
 
-
 service_hash=$1
-
-
 
 . /home/engines/scripts/functions.sh
 
 echo $1 >/home/configurators/saved/system_backup
 
-
-
-
  echo "$*" >>/var/log/backup/addbackup.log
 
 Backup_ConfigDir=/home/backup/.duply/
-
-
 
 
 load_service_hash_to_environment
@@ -44,8 +36,8 @@ mkdir -p $dirname
         if test $src_type = "fs"
           then
                	src=/backup_src/volumes/$src_vol
-          elsif test $src_type = 'engine'
-       
+          elif test $src_type = 'engine'
+       	   then
     			src=/backup_src/engines/$parent_engine  
            else
 				echo "src type $src_type"
