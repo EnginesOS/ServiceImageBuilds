@@ -76,12 +76,32 @@ if test "$proto" = default
 	        else
 	        	 cert_name=engines
 	     fi
+		if test -f /etc/nginx/sites-enabled/http_https_${fqdn}.site
+	     		then
+	     			rm -f /etc/nginx/sites-enabled/http_https_${fqdn}.site
+	     	fi
+		if test -f /etc/nginx/sites-enabled/https_${fqdn}.site
+	     		then
+	     			rm -f /etc/nginx/sites-enabled/https_${fqdn}.site
+	     	fi
 	     	if test -f /etc/nginx/sites-enabled/http_${fqdn}.site
 	     		then
 	     			rm -f /etc/nginx/sites-enabled/http_${fqdn}.site
 	     	fi
 	    cat /tmp/site.path  | sed "/CERTNAME/s//$cert_name/" > /etc/nginx/sites-enabled/${proto}_${fqdn}.site
-	 else
+	 else  #Proto is http
+		if test -f /etc/nginx/sites-enabled/http_${fqdn}.site
+	     		then
+	     			rm -f /etc/nginx/sites-enabled/http_${fqdn}.site
+	     	fi
+		if test -f /etc/nginx/sites-enabled/http_https_${fqdn}.site
+	     		then
+	     			rm -f /etc/nginx/sites-enabled/http_https_${fqdn}.site
+	     	fi
+		if test -f /etc/nginx/sites-enabled/https_${fqdn}.site
+	     		then
+	     			rm -f /etc/nginx/sites-enabled/https_${fqdn}.site
+	     	fi
 	 	cp /tmp/site.path /etc/nginx/sites-enabled/${proto}_${fqdn}.site
 fi
 	 
