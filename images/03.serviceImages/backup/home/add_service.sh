@@ -94,6 +94,7 @@ mkdir -p $dirname
                  #path=`echo $3 |cut -f4 -d:`
                   dest=/var/lib/engines/local_backup_dests/$path         
         elif test $dest_proto = "s3"	
+        	then
 			   dest_proto="s3+http://" 
 	    else
               dest="$dest_proto://$host/$path"
