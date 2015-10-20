@@ -21,10 +21,10 @@ dest=$dest_proto://$dest_address/$dest_folder
 user=$dest_user
 pass=$dest_pass
 
-			if test $# -get 1
-				then
-				
-				fi 
+	#		if test $# -get 1
+	#			then
+	#			
+	#			fi 
 
 	case $src_type in
 		engine)
