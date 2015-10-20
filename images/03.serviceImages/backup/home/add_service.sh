@@ -62,7 +62,7 @@ Backup_ConfigDir=/home/backup/.duply/
 #dest_pass
 #:parent_engine
 
-dirname= $Backup_ConfigDir/$parent_engine_$name_$src_type
+dirname=$Backup_ConfigDir/$parent_engine_$name_$src_type
 
 mkdir -p $dirname
 
