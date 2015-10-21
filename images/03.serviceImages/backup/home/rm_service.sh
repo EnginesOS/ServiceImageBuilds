@@ -6,10 +6,11 @@ service_hash=$1
 . /home/engines/scripts/functions.sh
 
 load_service_hash_to_environment
-echo name $name
+Backup_ConfigDir=/home/backup/.duply/
+echo name $backup_name
 echo parent_engine $parent_engine
 echo src_type $src_type
-dirname=${parent_engine}_${name}_${src_type}
+dirname=${parent_engine}_${backup_name}_${src_type}
 dirname=${Backup_ConfigDir}/$dirname
 
 echo dirname $dirname

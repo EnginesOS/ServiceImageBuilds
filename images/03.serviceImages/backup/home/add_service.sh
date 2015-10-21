@@ -19,19 +19,10 @@ load_service_hash_to_environment
 Backup_ConfigDir=/home/backup/.duply/
 
 
-#For Engine
-#name
-#parent_engine
-#dest_proto
-#dest_folder
-#dest_address
-#dest_user
-#dest_pass
-#:parent_engine
-echo name $name
+echo name $backup_name
 echo parent_engine $parent_engine
 echo src_type $src_type
-dirname=${parent_engine}_${name}_${src_type}
+dirname=${parent_engine}_${backup_name}_${src_type}
 dirname=${Backup_ConfigDir}/$dirname
 
 
