@@ -7,9 +7,8 @@ service_hash=$1
 
 load_service_hash_to_environment
 
-
-Backup_ConfigDir=/home/backup/.duply/
-dirname=$Backup_ConfigDir/${parent_engine}_${name}_${src_type}
+dirname=${parent_engine}_${name}_${src_type}
+dirname=${Backup_ConfigDir}/$dirname
 
  echo "${dirname}: $*" >>/var/log/backup//rmbackup.log
 if test -n $1

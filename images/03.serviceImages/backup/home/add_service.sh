@@ -29,8 +29,8 @@ Backup_ConfigDir=/home/backup/.duply/
 #dest_pass
 #:parent_engine
 
-dirname=$Backup_ConfigDir/${parent_engine}_${name}_${src_type}
-
+dirname=${parent_engine}_${name}_${src_type}
+dirname=${Backup_ConfigDir}/$dirname
 mkdir -p $dirname
 
         if test $src_type = "fs"
