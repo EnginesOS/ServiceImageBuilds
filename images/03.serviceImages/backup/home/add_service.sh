@@ -27,6 +27,10 @@ dirname=${Backup_ConfigDir}/$dirname
 
 
 echo dirname $dirname
+if test -d $dirname
+ then 
+   rm -rf $dirname
+  fi
 mkdir -p $dirname
 
         if test $src_type = "fs"
@@ -72,6 +76,16 @@ echo "TARGET_PASS='$pass'"  >> $dirname/conf
 
 if test $src_type = 'engine'
   then
+  
+   if test -d ${dirname}_fs
+		 	then
+		 		rm -rf ${dirname}_fs
+		 fi
+		 if test -d ${dirname}_db
+		 	then
+		 		rm -rf ${dirname}_db
+		 fi		 
+		 
 	cp -rp $dirname ${dirname}_db
 	mv $dirname ${dirname}_fs
 	cd ${dirname}_db

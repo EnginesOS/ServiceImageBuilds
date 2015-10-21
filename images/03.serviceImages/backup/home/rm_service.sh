@@ -18,12 +18,12 @@ echo dirname $dirname
  echo "${dirname}: $*" >>/var/log/backup//rmbackup.log
 if test -n $1
 	then
-		rm -rf $dirname
-		 if test -f ${dirname}_fs
+		
+		 if test -d ${dirname}_fs
 		 	then
 		 		rm -rf ${dirname}_fs
 		 fi
-		 if test -f ${dirname}_db
+		 if test -d ${dirname}_db
 		 	then
 		 		rm -rf ${dirname}_db
 		 fi		 
