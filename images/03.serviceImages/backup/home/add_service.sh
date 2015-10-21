@@ -78,8 +78,8 @@ if test $src_type = 'engine'
   then
 	cp -rp $dirname ${dirname}_db
 	mv $dirname ${dirname}_fs
-	cd $dirname_db
-	dirname=$dirname_db
+	cd ${dirname}_db
+	dirname=${dirname}_db
 	echo "#!/bin/sh " >  $dirname/pre
                 echo "dbflavor=$flavor" >>  $dirname/pre
                 echo "dbhost=$dbhost" >>  $dirname/pre
