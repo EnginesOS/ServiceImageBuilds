@@ -28,9 +28,14 @@ Backup_ConfigDir=/home/backup/.duply/
 #dest_user
 #dest_pass
 #:parent_engine
-
+echo name $name
+echo parent_engine $parent_engine
+echo src_type $src_type
 dirname=${parent_engine}_${name}_${src_type}
 dirname=${Backup_ConfigDir}/$dirname
+
+
+echo dirname $dirname
 mkdir -p $dirname
 
         if test $src_type = "fs"
