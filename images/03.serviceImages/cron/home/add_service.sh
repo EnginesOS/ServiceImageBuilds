@@ -42,7 +42,7 @@ fi
 
 if test $action_type == "web"
 	then
-		cmd="wget http://${parent_engine}.engines.internal:8000/$cmd"
+		cmd="wget http://${parent_engine}.engines.internal:8000$cmd"
 	else
 		cmd="docker exec ${parent_engine} $cmd"
 	fi
