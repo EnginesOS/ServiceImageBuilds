@@ -18,7 +18,7 @@ RUN apt-get -y update;\
 	cd /home/registry;\
 	/usr/local/rbenv/shims/gem install rubytree;\
 	mkdir -p  /opt/engines/run/service_manager/;\	
-	chown -R registry /opt/engines/run/service_manager/ /home/registry";\
+	chown -R registry /opt/engines/run/service_manager/ /home/registry /var/log/;\
 	git  config  --global user.email "registry@engines.onl";\
 	git  config  --global  user.name "Engines System Registry";\
 	git clone https://github.com/EnginesOS/EnginesSystemRegistry ;\
