@@ -16,7 +16,7 @@ RUN apt-get -y update;\
 	apt-get -y clean ;\
 	mkdir -p /home/registry;\
 	cd /home/registry;\
-	/usr/local/rbenv/shims/gem install rubytree;\
+	/usr/local/rbenv/shims/gem install rest-client rubytree;\
 	mkdir -p  /opt/engines/run/service_manager/;\	
 	chown -R registry /opt/engines/run/service_manager/ /home/registry /var/log/;\
 	git  config  --global user.email "registry@engines.onl";\
