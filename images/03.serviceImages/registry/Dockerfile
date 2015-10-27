@@ -13,7 +13,8 @@ RUN apt-get -y update;\
 	cd /usr/local/rbenv ; git clone git://github.com/sstephenson/ruby-build.git /usr/local/rbenv/plugins/ruby-buil;\
 	cd /usr/local/rbenv   ;echo 'export PATH="/usr/local/rbenv/bin:$PATH:/usr/local/rbenv/shims/"' >> ~/.bashrc ; echo 'eval "$(rbenv init -)"' >> ~/.bashrc ; exec $SHELL ;/usr/local/rbenv/plugins/ruby-build/install.sh  ;/usr/local/rbenv/bin/rbenv install $ruby_version ; /usr/local/rbenv/bin/rbenv global $ruby_version;\
 	/usr/local/rbenv/bin/rbenv rehash;\
-	apt-get -y clean ;\
+	apt-get -y clean 
+RUN
 	mkdir -p /home/registry;\
 	cd /home/registry;\
 	/usr/local/rbenv/shims/gem install rest-client rubytree;\
@@ -22,6 +23,7 @@ RUN apt-get -y update;\
 	git  config  --global user.email "registry@engines.onl";\
 	git  config  --global  user.name "Engines System Registry";\
 	git clone https://github.com/EnginesOS/EnginesSystemRegistry ;\
+	cd EnginesSystemRegistry ;\
 	git checkout beta-rc
 
 COPY home home
