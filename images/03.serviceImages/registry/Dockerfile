@@ -25,9 +25,10 @@ RUN	mkdir -p /home/registry;\
 	
 USER registry
 	
-RUN git  config  --global user.email "registry@engines.onl";\
-	git  config  --global  user.name "Engines System Registry";\
+RUN  cd /home/registry;\
 	git clone https://github.com/EnginesOS/EnginesSystemRegistry ;\
+	git  config  --global user.email "registry@engines.onl";\
+	git  config  --global  user.name "Engines System Registry";\
 	cd EnginesSystemRegistry ;\
 	git checkout beta-rc
 
