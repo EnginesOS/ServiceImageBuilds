@@ -2,7 +2,7 @@
 
 pid=$$
 echo $pid >/tmp/pid
-PID_FILE=/tmp/pid
+PID_FILE=/engines/var/run/registry.pid
 export PID_FILE
 . /home/trap.sh
 
@@ -12,10 +12,11 @@ mkdir -p /engines/var/run/flags/
 cd /home/registry
 cd /home/registry/EnginesSystemRegistry/src/
 git pull
+cd ..
  rm -f /tmp/registry.lock
-/usr/local/rbenv/shims/ruby /home/registry/EnginesSystemRegistry/src/server.rb  > /var/log/regsitry.log&
-pid=$!
-echo $pid >/tmp/pid
+#/usr/local/rbenv/shims/ruby /home/registry/EnginesSystemRegistry/src/server.rb  > /var/log/regsitry.log&
+/usr/local/rbenv/shims/thin  -C config.yaml -R config.ru start > /var/log/regsitry.log&
+
 
 touch /engines/var/run/flags/startup_complete  
 wait 
