@@ -19,7 +19,7 @@ COPY home home
 	
 RUN	mkdir -p /home/registry;\
 	cd /home/registry;\
-	/usr/local/rbenv/shims/gem install rest-client sinatra json rubytree;\
+	/usr/local/rbenv/shims/gem install rest-client sinatra thin json rubytree;\
 	mkdir -p  /opt/engines/run/service_manager/;\	
 	chown -R registry /opt/engines/run/service_manager/ /home/registry /var/log/
 	
