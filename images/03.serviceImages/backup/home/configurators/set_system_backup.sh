@@ -14,7 +14,7 @@ load_service_hash_to_environment
 Backup_ConfigDir=/home/backup/.duply/
 export
 
-if test -f /home/configurators/saved/
+if test -f /home/configurators/saved/default_destination
 then
 
 service_hash=`cat /home/configurators/saved/default_destination`
@@ -24,7 +24,7 @@ user=$dest_user
 pass=$dest_pass
 if test $dest_proto = "s3"
 	then	
-		$dest_proto="s3+http://"
+		dest_proto="s3+http://"
 	fi
 
 				if test  $include_system = "true"
@@ -42,7 +42,7 @@ echo "TARGET_PASS='$pass'"  >>$Backup_ConfigDir/system/conf
 					then
 						src=/home/backup/sql_dumps
 						mkdir -p $Backup_ConfigDir/system_databases
-						cat /home/tmpl/dumpall.sh >  $Backup_ConfigDir/system_databases/pre
+						cat /home/tmpl/system_dumpall.sh >  $Backup_ConfigDir/system_databases/pre
                 		cp /home/tmpl/dumpall_post.sh  $Backup_ConfigDir/system_databases/post
                 		chmod u+x $Backup_ConfigDir/system_databases/pre
                 		chmod u+x $Backup_ConfigDir/system_databases/post

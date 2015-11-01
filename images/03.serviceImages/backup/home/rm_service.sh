@@ -6,13 +6,27 @@ service_hash=$1
 . /home/engines/scripts/functions.sh
 
 load_service_hash_to_environment
-
-
 Backup_ConfigDir=/home/backup/.duply/
- echo "$*" >>/var/log/backup//rmbackup.log
+echo name $backup_name
+echo parent_engine $parent_engine
+echo src_type $src_type
+dirname=${parent_engine}_${backup_name}_${src_type}
+dirname=${Backup_ConfigDir}/$dirname
+
+echo dirname $dirname
+
+ echo "${dirname}: $*" >>/var/log/backup//rmbackup.log
 if test -n $1
 	then
-		rm -r $Backup_ConfigDir/$1
+		
+		 if test -d ${dirname}_fs
+		 	then
+		 		rm -rf ${dirname}_fs
+		 fi
+		 if test -d ${dirname}_db
+		 	then
+		 		rm -rf ${dirname}_db
+		 fi		 
 	fi
 
       

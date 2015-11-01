@@ -43,10 +43,19 @@ fcnt=`expr $fcnt + 1`
 				smarthost_port=25
 		    fi
 
-		echo "*	smtp:$smarthost_hostname:$smarthost_port"  > /etc/postfix/transport
+		echo "*	smtp:$smarthost_hostname:$smarthost_port"  > /etc/postfix/transport.smart
+		cp /etc/postfix/transport.smart /etc/postfix/transport
 		else
+		    rm -r /etc/postfix/transport.smart
+		    tocuh /etc/postfix/transport.smart
 			echo "*	smtp:"  > /etc/postfix/transport
 		fi 
+		if test -f /home/configurators/saved/default_domain
+		  then
+		    domain=`cat /home/configurators/saved/default_domain`
+		    echo "[$domain] :local" >> /etc/postfix/transport
+		   fi
+		    
 		#chown root.root /etc/postfix/transport
 		chmod 600 /etc/postfix/transport
 		sudo postmap /etc/postfix/transport
