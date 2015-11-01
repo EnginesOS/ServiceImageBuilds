@@ -22,4 +22,4 @@ touch /engines/var/run/flags/startup_complete
 wait 
 kill -TERM  $pid
 rm -f /engines/var/run/flags/startup_complete
-rm -f /tmp/pid
+
