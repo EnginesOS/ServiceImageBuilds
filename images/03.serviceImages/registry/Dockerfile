@@ -13,16 +13,25 @@ RUN apt-get -y update;\
 	cd /usr/local/rbenv ; git clone git://github.com/sstephenson/ruby-build.git /usr/local/rbenv/plugins/ruby-buil;\
 	cd /usr/local/rbenv   ;echo 'export PATH="/usr/local/rbenv/bin:$PATH:/usr/local/rbenv/shims/"' >> ~/.bashrc ; echo 'eval "$(rbenv init -)"' >> ~/.bashrc ; exec $SHELL ;/usr/local/rbenv/plugins/ruby-build/install.sh  ;/usr/local/rbenv/bin/rbenv install $ruby_version ; /usr/local/rbenv/bin/rbenv global $ruby_version;\
 	/usr/local/rbenv/bin/rbenv rehash;\
-	apt-get -y clean ;\
-	mkdir -p /home/registry;\
+	apt-get -y clean 
+	
+COPY home home	
+	
+RUN	mkdir -p /home/registry;\
 	cd /home/registry;\
-	/usr/local/rbenv/shims/gem install rubytree;\
-	mkdir -p  /opt/engines/run/service_manager/;\
-	git clone https://github.com/EnginesOS/EnginesSystemRegistry ;\
-	chown -R registry /opt/engines/run/service_manager/ /home/registry
-
-
-COPY home home
+	/usr/local/rbenv/shims/gem install rest-client sinatra thin json rubytree;\
+	mkdir -p  /opt/engines/run/service_manager/;\	
+	chown -R registry /opt/engines/run/service_manager/ /home/registry /var/log/
+	
 USER registry
+	
+RUN  cd /home/registry;\
+	git clone https://github.com/EnginesOS/EnginesSystemRegistry ;\
+	git  config  --global user.email "registry@engines.onl";\
+	git  config  --global  user.name "Engines System Registry";\
+	cd EnginesSystemRegistry ;\
+	git checkout beta-rc
+
+
 
 CMD ["/home/start.sh"]

@@ -8,12 +8,11 @@ RUN adduser -q --disabled-password  dyndns -uid 22021;\
 	
 
 COPY home home
-COPY dyndns.conf /home/dyndns/
 COPY sudoers /etc/	
 RUN chown dyndns -R /home/dyndns ;\
-	chmod og-rw home/dyndns/dyndns.conf;\	
 	groupadd -g 22020 containers;\
-	usermod -G containers -a dyndns
+	usermod -G containers -a dyndns;\
+	chown dyndns /home/configurators/saved
 
 ENV ContUser dyndns
 ENV ContGrp dyndns
