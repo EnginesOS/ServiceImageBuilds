@@ -30,7 +30,7 @@ RUN  cd /home/registry;\
 	git  config  --global user.email "registry@engines.onl";\
 	git  config  --global  user.name "Engines System Registry";\
 	cd EnginesSystemRegistry ;\
-	git checkout beta-rc
+	git checkout current
 
 
 
