@@ -3,7 +3,7 @@ ENV ruby_version 2.2.2
 ENV ContUser ruby
 ENV ContGrp ruby
 ENV  RBENV_ROOT /usr/local/rbenv
-
+ENV PATH $PATH:/usr/local/rbenv/shims/
 RUN mkdir ~/node_js_src && cd $_;wget -N http://nodejs.org/dist/node-latest.tar.gz;tar xzvf node-latest.tar.gz && cd node-v*;./configure; make ;make install;\
 	groupadd ruby;\
 	echo "Y" | adduser -q --ingroup ruby --uid 22672 --home /home/ruby --disabled-password ruby;\
