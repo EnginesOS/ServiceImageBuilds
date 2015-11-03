@@ -8,9 +8,14 @@ COPY sendmail /usr/bin/
 
 ADD sources.list /etc/apt/
 
+ADD init.sh /home/
+ADD trap.sh /home/
+ADD no_init.sh /home/
+
 RUN apt-get -y  --force-yes update;\
 	apt-get -y  --force-yes upgrade;\
 	apt-get -y  --force-yes update;\
+	/home/no_init.sh ;\
 	apt-get -y  --fix-missing install   unzip curl dnsutils git  wget bzip2 zlibc sendEmail;\ 
 	apt-get clean;\
 	mkdir -p /var/run;\
@@ -22,9 +27,7 @@ RUN apt-get -y  --force-yes update;\
 	groupadd -g 22020 containers ;\
 	apt-mark hold tzdata
 
-ADD init.sh /home/
-ADD trap.sh /home/
-ADD no_init.sh /home/
+
 
 #increment build line to trigger upgrade NEED to Automate
 ENV	build 20151005

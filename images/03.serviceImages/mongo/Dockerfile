@@ -4,6 +4,7 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10 ; echo
     echo "Y" | adduser -q --disabled-password -uid 22008 mongo;\
     apt-get -y update;\
 	apt-get upgrade -y;\
+	/home/no_init.sh ;\	
     apt-get install -y mongodb-org;\
 	apt-get clean;\
 	usermod -G containers -a mongo;\

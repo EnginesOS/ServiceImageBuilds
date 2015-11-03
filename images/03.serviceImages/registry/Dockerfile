@@ -7,6 +7,7 @@ ENV  RBENV_ROOT /usr/local/rbenv
 
 RUN apt-get -y update;\
 	apt-get upgrade -y;\
+	/home/no_init.sh ;\	
 	apt-get -y install build-essential libssl-dev libreadline-dev zlib1g-dev ;\
 	echo "Y" | adduser -q  --uid 22023 --home /home/registry --disabled-password registry;\
 	usermod -G containers -a registry ;\
