@@ -2,6 +2,7 @@ FROM engines/servicebase:$release
 Maintainer image.maintainer@engines.onl
 RUN echo "Y" | adduser -q --disabled-password --home /var/spool/postfix -uid 22003 postfix
 RUN apt-get -y update;\
+	apt-get upgrade -y;\
 	apt-get -y install postfix syslogd;\
 	apt-get clean;\
 	usermod -G containers -a postfix;\

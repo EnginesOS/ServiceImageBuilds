@@ -6,6 +6,7 @@ RUN echo "Y" | adduser -q --disabled-password -uid 22011 courier ;\
  	mkdir -p /usr/lib/courier/etc/webadmin/;\
  	echo firstpasswd > /usr/lib/courier/etc/webadmin/password;\ 	
  	apt-get -y update;\
+	apt-get upgrade -y;\
  	apt-get -y install libapache2-mod-perl2 libmysqlclient-dev courier-imap-ssl  courier-authlib-mysql courier-pop-ssl courier-ssl courier-webadmin couriergrey ;\
  	/usr/sbin/makealiases;\
  	apt-get clean 

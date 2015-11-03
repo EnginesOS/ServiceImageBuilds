@@ -1,5 +1,6 @@
 FROM  engines/servicebase:$release
 RUN apt-get -y update;\
+	apt-get upgrade -y;\
 	 usermod www-data -u 22024 ;\
 	usermod -G containers -a www-data ;\
 	mkdir -p /home/wwwstats/output /var/run/apache2;\

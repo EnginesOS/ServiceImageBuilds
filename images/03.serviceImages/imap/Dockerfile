@@ -5,6 +5,7 @@ From engines/servicebase:$release
 RUN adduser -q --disabled-password  -uid 22013 dovecot;\
 	adduser -q --disabled-password  -uid 22014 vmail;\
  	apt-get -y  update;\
+	apt-get upgrade -y;\
  	 rm /usr/sbin/invoke-rc.d;\
         ln -s /bin/true /usr/sbin/invoke-rc.d;\ 	
 	apt-get -y install syslogd  dovecot-core dovecot-imapd  dovecot-pop3d  dovecot-sieve dovecot-lmtpd dovecot-mysql ;\

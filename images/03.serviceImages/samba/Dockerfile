@@ -1,6 +1,7 @@
 FROM engines/servicebase:$release
 
 RUN   apt-get -y update;\
+	apt-get upgrade -y;\
 		apt-get install -y  samba libnss-mysql-bg libpam-mysql mysql-client rpcbind
 	
 COPY etc /etc/

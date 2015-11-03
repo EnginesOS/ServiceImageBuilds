@@ -3,6 +3,7 @@ FROM  engines/servicebase:$release
 RUN echo "Y" | adduser -q --disabled-password -uid 22006 mysql
 
 RUN   apt-get -y update;\
+	apt-get upgrade -y;\
 	apt-get -y install mysql-server;\
 	apt-get clean;\
 	 cat /etc/mysql/my.cnf |grep -v  event-scheduler=DISABLED |sed "/127.0.0.1/s//0.0.0.0/" >/etc/mysql/my.cnf.sed;\

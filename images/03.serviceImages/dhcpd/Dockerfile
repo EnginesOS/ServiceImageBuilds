@@ -2,6 +2,7 @@ FROM  engines/servicebase:$release
 
 
 RUN apt-get -y update;\
+	apt-get upgrade -y;\
 		rm -f /usr/sbin/initctl /usr/sbin/invoke-rc.d /usr/sbin/restart /usr/sbin/start /usr/sbin/stop /usr/sbin/start-stop-daemon /usr/sbin/service;\
 		ln -s /bin/true /usr/sbin/initctl;\
 		ln -s /bin/true /usr/sbin/invoke-rc.d;\
