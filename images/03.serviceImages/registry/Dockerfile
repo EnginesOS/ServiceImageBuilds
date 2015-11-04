@@ -6,6 +6,8 @@ ENV ruby_version 2.2.2
 ENV  RBENV_ROOT /usr/local/rbenv
 
 RUN apt-get -y update;\
+	apt-get upgrade -y;\
+	/home/no_init.sh ;\	
 	apt-get -y install build-essential libssl-dev libreadline-dev zlib1g-dev ;\
 	echo "Y" | adduser -q  --uid 22023 --home /home/registry --disabled-password registry;\
 	usermod -G containers -a registry ;\
@@ -30,7 +32,7 @@ RUN  cd /home/registry;\
 	git  config  --global user.email "registry@engines.onl";\
 	git  config  --global  user.name "Engines System Registry";\
 	cd EnginesSystemRegistry ;\
-	git checkout beta-rc
+	git checkout current
 
 
 

@@ -3,6 +3,8 @@ FROM  engines/servicebase:$release
 
 RUN usermod www-data -u 22005;\
 	apt-get -y update;\
+	apt-get upgrade -y;\
+	/home/no_init.sh ;\	
 	apt-get -y install nginx;\
 	apt-get clean;\
 	mkdir -p /var/lib/nginx /var/run/nginx/ ;\ 

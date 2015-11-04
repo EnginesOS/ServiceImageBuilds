@@ -4,6 +4,7 @@ ENV ContUser rstudio
 ENV ContGrp rstudio
 
 RUN apt-get -y update;\
+	apt-get upgrade -y;\
 	echo deb http://cran.csiro.au/ trusty >> /etc/apt/sources.list;\
 	apt-get -y install r-base r-base-dev;\
 	R -e "install.packages('shiny', repos='http://cran.rstudio.com/')";\
