@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/bash
 service_hash=$1
 
 echo $1 >/home/configurators/saved/hostname
