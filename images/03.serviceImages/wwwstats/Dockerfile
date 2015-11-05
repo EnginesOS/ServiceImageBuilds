@@ -1,9 +1,12 @@
 FROM  engines/servicebase:$release
 RUN apt-get -y update;\
-	echo "Y" | adduser -q --disabled-password --home /home/wwwstats -uid 22024 wwwstats;\	
-	usermod -G containers -a wwwstats ;\
-	apt-get -y install  apache2  build-essential gcc make zlib1g-dev libpng12-dev libgd-dev;\
-	chown wwwstats -R /var/log/apache2 /run/
+	apt-get upgrade -y;\
+	/home/no_init.sh ;\	
+	 usermod www-data -u 22024 ;\
+	usermod -G containers -a www-data ;\
+	mkdir -p /home/wwwstats/output /var/run/apache2;\
+	chown www-data -R /home/wwwstats /var/run/apache2;\ 
+	apt-get -y install apache2  build-essential gcc make zlib1g-dev libpng12-dev libgd-dev
 	
 RUN cd /tmp; \
   	wget ftp://ftp.mrunix.net/pub/webalizer/webalizer-2.23-08-src.tgz;\
@@ -11,7 +14,7 @@ RUN cd /tmp; \
   	cd webalizer-2.23-08;\
   	./configure --enable-dns --enable-bz2 --enable-geoip ;\
   	make;\
-  	make install DESTDIR=/usr/local/
+  	make install 
   	
 RUN apt-get -y remove  build-essential gcc make ;\
 	apt-get -y clean 
@@ -19,7 +22,8 @@ RUN apt-get -y remove  build-essential gcc make ;\
 ADD 000-default.conf /etc/apache2/sites-enabled/ 
 ADD ports.conf /etc/apache2/
 COPY home home
+COPY home/templates home/templates
 
-USER wwwstats
+USER www-data
 
 CMD ["/home/start.sh"]

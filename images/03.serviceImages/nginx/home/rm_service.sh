@@ -29,7 +29,7 @@ if test -z $fqdn
 	 	rm /etc/nginx/sites-enabled/${proto}_${fqdn}.site	 
 	 	kill -HUP `cat /var/run/nginx/nginx.pid`
 	else
-		echo Warning:config /etc/nginx/sites-enabled/${proto}_${fqdn}.site not found
+		echo Success with Warning:config /etc/nginx/sites-enabled/${proto}_${fqdn}.site not found
 		exit 0
 	fi
 	 

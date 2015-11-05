@@ -1,13 +1,13 @@
 FROM  engines/servicebase:$release
 RUN echo "Y" | adduser -q --disabled-password --home /var/spool/postfix -uid 22003 postfix
 RUN apt-get -y update;\
+	apt-get upgrade -y;\
+	/home/no_init.sh ;\	
 	apt-get -y install apache2 libapache2-mod-php5 php5-mysql php5-mcrypt  php5-gd php5-apcu php5-dev  postfix syslogd  php5-imap postfix-mysql postgrey;\
 	apt-get clean
 ADD home home
 
-ADD postfix/main.cf /etc/postfix/
-ADD postfix/master.cf /etc/postfix/
-ADD postfix/mailname /etc/postfix/mailname
+
 
 ADD postgrey /etc/default/postgrey
 ADD sudoers /etc/
@@ -20,13 +20,20 @@ RUN cd /tmp/;\
 	 ln -s /etc/php5/mods-available/imap.ini /etc/php5/apache2/conf.d/;\
 	 chgrp www-data /home/app/templates_c/;\
 	 chmod g+w /home/app/templates_c;\
-	 usermod -G containers -a postfix
+	 usermod -G containers -a postfix;\
+	touch  /etc/postfix/smarthost_passwd;\
+	 /usr/sbin/postfix -c /etc/postfix/ set-permissions;\
+	 cp /etc/resolv.conf /var/spool/postfix/etc/;\
+	 cp /etc/services /var/spool/postfix/etc/
 	 
-	 
-
+ADD postfix/main.cf /etc/postfix/
+ADD postfix/master.cf /etc/postfix/
+ADD postfix/mailname /etc/postfix/mailname
+ADD postfix/transport /etc/postfix/transport
 ADD _config.inc.php  /home/app/
 ADD config.inc.php  /home/app/
-RUN chown postfix /home/app/config.inc.php /etc/postfix/mysql
+RUN postmap /etc/postfix/transport;\
+	chown postfix /etc/postfix/smarthost_passwd /home/configurators/saved/ /etc/postfix/mailname /etc/postfix/transport.db /etc/postfix/transport /home/app/config.inc.php /etc/postfix/mysql
 ADD 000-default.conf /etc/apache2/sites-enabled/ 
 	
 	

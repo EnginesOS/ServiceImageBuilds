@@ -2,17 +2,25 @@ FROM engines/servicebase:$release
 Maintainer image.maintainer@engines.onl
 RUN echo "Y" | adduser -q --disabled-password --home /var/spool/postfix -uid 22003 postfix
 RUN apt-get -y update;\
+	apt-get upgrade -y;\
+	/home/no_init.sh ;\	
 	apt-get -y install postfix syslogd;\
 	apt-get clean;\
-	usermod -G containers -a postfix
+	usermod -G containers -a postfix;\
+	 cp /etc/resolv.conf /var/spool/postfix/etc/;\
+	 cp /etc/services /var/spool/postfix/etc/
 ADD home home
 
-ADD postfix/main.cf /etc/postfix/
 ADD postfix/master.cf /etc/postfix/
+ADD postfix/main.cf /etc/postfix/
 ADD postfix/mailname /etc/postfix/mailname
 ADD postfix/transport /etc/postfix/
 
-RUN chown postfix /etc/postfix/ /etc/postfix/transport /etc/postfix/mailname  ;\
+RUN /usr/sbin/postfix -c /etc/postfix/ set-permissions;\
+	postmap /etc/postfix/transport;\
+	touch /etc/postfix/transport.smart;\
+	touch /etc/postfix/smarthost_passwd;\
+	chown postfix /etc/postfix/ /etc/postfix/smarthost_passwd /etc/postfix/smarthost_passwd /etc/postfix/transport /etc/postfix/transport.smart /etc/postfix/transport.db /etc/postfix/mailname  ;\
 	chown postfix /home/configurators/saved;\
 	chgrp postfix /home/configurators/*.sh
 	

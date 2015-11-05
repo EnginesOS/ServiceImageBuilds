@@ -3,8 +3,8 @@ FROM  engines/passenger:$release
 RUN /usr/sbin/addgroup --gid 999 docker;\
 	apt-get -y install telnet openssl-dev;\
 	echo "Y" | adduser -q --uid 21000 --gid 999 --home /home/engines --disabled-password engines;\
-	 /usr/local/rbenv/bin/rbenv  install 2.2.2;\
-	 /usr/local/rbenv/bin/rbenv  global 2.2.2
+	 /usr/local/rbenv/bin/rbenv  install $ruby_version;\
+	 /usr/local/rbenv/bin/rbenv  global $ruby_version
 ADD home home
 ADD profile /home/engines/.profile
 
@@ -21,7 +21,7 @@ RUN	git init
 
 ADD gitconfig /home/app/.git/config
 ADD sudoers /etc/
-RUN /usr/local/rbenv/shims/gem install git bundle oink vmstat;\	
+RUN /usr/local/rbenv/shims/gem install git bundle oink vmstat rest-client;\	
 	mkdir -p /home/engines/.ssh/mgmt;\
 	chown -R 21000 /home/app/ /home/engines /var/log/apache2/;\
 	chmod -R g+w /usr/local/rbenv/versions/ ;chgrp -R docker /usr/local/rbenv/versions/;\
@@ -33,8 +33,7 @@ RUN /usr/local/rbenv/shims/gem install git bundle oink vmstat;\
  	chown 21000 /run/lock/apache2;\
  	mkdir -p /home/app/public/system;\
  	chown -R 21000 /home/app/public ;\
- 	usermod -G containers -a engines;\
- 	rm /var/run/apache2/apache2.pid
+ 	usermod -G containers -a engines
  	
  
 COPY functions.sh  /home/engines/scripts/functions.sh
@@ -46,5 +45,7 @@ ADD SSL-default.conf /etc/apache2/sites-enabled/
 ADD	passenger.conf  /etc/apache2/mods-enabled/
 #ADD Procfile.sh /home/app/
 
+
+		
 CMD ["/home/start.sh"]
 USER 21000

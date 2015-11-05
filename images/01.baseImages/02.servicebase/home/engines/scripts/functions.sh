@@ -29,11 +29,11 @@ fcnt=`expr $fcnt + 1`
         do
                 nvp="`echo $service_hash |cut -f$n -d:`"
                 n=`expr $n + 1`
-                name=`echo $nvp |cut -f1 -d=`
-                value=`echo $nvp |cut -f2 -d=`
-                if test ${#name} -gt 0
+                hashe_var_name=`echo $nvp |cut -f1 -d=`
+                hashe_var_value=`echo $nvp |cut -f2 -d=`
+                if test ${#hashe_var_name} -gt 0
                 	then
-                		export $name="$value"
+                		export $hashe_var_name="$hashe_var_value"
                 	fi
         done
 }

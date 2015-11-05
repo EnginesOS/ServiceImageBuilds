@@ -76,16 +76,40 @@ if test "$proto" = default
 	        else
 	        	 cert_name=engines
 	     fi
+		if test -f /etc/nginx/sites-enabled/http_https_${fqdn}.site
+	     		then
+	     			rm -f /etc/nginx/sites-enabled/http_https_${fqdn}.site
+	     	fi
+		if test -f /etc/nginx/sites-enabled/https_${fqdn}.site
+	     		then
+	     			rm -f /etc/nginx/sites-enabled/https_${fqdn}.site
+	     	fi
 	     	if test -f /etc/nginx/sites-enabled/http_${fqdn}.site
 	     		then
 	     			rm -f /etc/nginx/sites-enabled/http_${fqdn}.site
 	     	fi
 	    cat /tmp/site.path  | sed "/CERTNAME/s//$cert_name/" > /etc/nginx/sites-enabled/${proto}_${fqdn}.site
-	 else
+	 else  #Proto is http
+		if test -f /etc/nginx/sites-enabled/http_${fqdn}.site
+	     		then
+	     			rm -f /etc/nginx/sites-enabled/http_${fqdn}.site
+	     	fi
+		if test -f /etc/nginx/sites-enabled/http_https_${fqdn}.site
+	     		then
+	     			rm -f /etc/nginx/sites-enabled/http_https_${fqdn}.site
+	     	fi
+		if test -f /etc/nginx/sites-enabled/https_${fqdn}.site
+	     		then
+	     			rm -f /etc/nginx/sites-enabled/https_${fqdn}.site
+	     	fi
 	 	cp /tmp/site.path /etc/nginx/sites-enabled/${proto}_${fqdn}.site
 fi
-	 
-	 rm /tmp/site.*
+
+mkdir -p /tmp/last_run
+cp 	 /site.* /tmp/last_run
+
+rm /tmp/site.*
+
 	 if ! test -d /var/log/nginx/$fqdn/https/
 	 	then
 	 		mkdir -p /var/log/nginx/$fqdn/https/
@@ -94,6 +118,7 @@ fi
  	then
  		mkdir -p /var/log/nginx/$fqdn/http/
  	fi
-	 kill -HUP `cat /run/nginx/nginx.pid`
+ 	
+ kill -HUP `cat /run/nginx/nginx.pid`
 	 
 	 echo Success

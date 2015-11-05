@@ -3,11 +3,11 @@
 				        filemode = true
 				        bare = false
 				        logallrefupdates = true
-				[branch "master"]
+				[branch "beta-rc"]
 				[remote "origin"]
 				        url = https://github.com/EnginesOS/SystemGui.git
 				        fetch = +refs/heads/*:refs/remotes/origin/*
-				[branch "master"]
+				[branch "beta-rc"]
 				        remote = origin
-				        merge = refs/heads/master
+				        merge = refs/heads/beta-rc
 				

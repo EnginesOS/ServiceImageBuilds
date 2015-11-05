@@ -8,9 +8,14 @@ COPY sendmail /usr/bin/
 
 ADD sources.list /etc/apt/
 
+ADD init.sh /home/
+ADD trap.sh /home/
+ADD no_init.sh /home/
+
 RUN apt-get -y  --force-yes update;\
 	apt-get -y  --force-yes upgrade;\
 	apt-get -y  --force-yes update;\
+	/home/no_init.sh ;\
 	apt-get -y  --fix-missing install   unzip curl dnsutils git  wget bzip2 zlibc sendEmail;\ 
 	apt-get clean;\
 	mkdir -p /var/run;\
@@ -22,22 +27,14 @@ RUN apt-get -y  --force-yes update;\
 	groupadd -g 22020 containers ;\
 	apt-mark hold tzdata
 
-ADD init.sh /home/
-ADD trap.sh /home/
 
-#increment build line to trigger upgrade
-ENV	build 20150515
+
+#increment build line to trigger upgrade NEED to Automate
+ENV	build 20151005
 
 RUN 	apt-get -y  --force-yes update;\
 		apt-get upgrade -y;\
-		apt-get clean ;\
-		rm -f /usr/sbin/initctl /usr/sbin/invoke-rc.d /usr/sbin/restart /usr/sbin/start /usr/sbin/stop /usr/sbin/start-stop-daemon /usr/sbin/service;\
-		ln -s /bin/true /usr/sbin/initctl;\
-		ln -s /bin/true /usr/sbin/invoke-rc.d;\
-		ln -s /bin/true /usr/sbin/restart;\
-		ln -s /bin/true /usr/sbin/stop;\
-		ln -s /bin/true /usr/sbin/start;\
-		ln -s /bin/true /usr/sbin/start-stop-daemon;\
-		ln -s /bin/true /usr/sbin/service
+		apt-get clean 	
+		
 		
 CMD ["/home/init.sh"]
