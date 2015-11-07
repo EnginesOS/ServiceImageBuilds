@@ -35,8 +35,7 @@ load_service_hash_to_environment
 	then
 		 update_line=" update add $fqdn_str 30 CNAME ${parent_engine}.engines.internal"
        else
-       update_line=" update add $fqdn_str 30 A $ip"
-        
+       update_line=" update add $fqdn_str 30 A $ip"        
     fi  
     
 
