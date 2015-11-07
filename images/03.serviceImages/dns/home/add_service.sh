@@ -16,6 +16,7 @@ load_service_hash_to_environment
 	 	cat /etc/bind/templates/selfhosted.tmpl | sed "/DOMAIN/s//${domain_name}/g" | sed "/IP/s//${ip}/g" > /home/bind/engines/zones/named.conf.${domain_name}
 	 	cat /home/bind/engines/domains/* > /home/bind/engines/domains.hosted
 	 	kill -HUP `cat /var/run/named/named.pid`
+	 	echo Success
 	 	exit
 	   fi
 	 fi
