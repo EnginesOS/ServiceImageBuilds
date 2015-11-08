@@ -27,7 +27,9 @@ else
   dirs=`ls /home/fs_src/ | egrep -v "local"`
 	for dir in $dirs
 		do
-			cp -rnp  /home/fs_src/$dir/* /dest/fs/				
+		    dir=`echo $dir | sed "/\$/s///"`
+			cp -rnp  /home/fs_src/$dir /dest/fs/	
+			touch /dest/fs/$dir/.persistant
     done
 	#if no presistance dirs/files need to set permission here
 	
@@ -36,9 +38,10 @@ else
 	
 	if test -d /home/app_src
 		then
-			cp -rp /home/app_src /dest/fs			
-			chown -R ${fw_user}.${data_gid}  /dest/fs/
-			chmod g+w -R /dest/fs/		
+			cp -rp /home/app_src /dest/fs/app			
+			chown -R ${fw_user}.${data_gid}  /dest/fs/app 	
+			chmod g+w -R /dest/fs/app	
+			touch /dest/fs/app/.persistant		
     fi
     
 	touch /dest/fs/.persistant
