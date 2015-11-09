@@ -13,7 +13,7 @@ RUN usermod www-data -u 22005;\
 	
 
 COPY home home
-
+COPY 502.html /usr/share/nginx/html/
 COPY etc/nginx/ /etc/nginx
 RUN chown www-data -R /etc/nginx/sites-enabled /home/configurators/saved
 
