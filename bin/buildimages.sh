@@ -1,13 +1,20 @@
 #/bin/bash
 
-it test "$1" == -h
+it test "$1" = -h
  then
   echo "Usage\
   build all changed images $0\
   build all changed images and push freshly built $0 -p\
   build all changed images and push all images $0 -pushall \
+  build all images and push all images $0 -buildall \
   push all images $0 -pushonly "
  fi
+ 
+ if test "$1" = "-buildall"
+ 	then
+ 		1="-p"
+ 		rm `find . -name last_built`
+ 	fi
 
 if test -f release
 then
@@ -19,10 +26,7 @@ fi
 export release
 cd images
 MasterImagesDir=`pwd`
-
-
 build_rest=0
-
 
 	for class in `ls $MasterImagesDir`
 		do 
