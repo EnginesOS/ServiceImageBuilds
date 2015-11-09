@@ -29,6 +29,8 @@ build_rest=0
 				cd $MasterImagesDir/$class/$dir
 					if test -f TAG
 						then 
+						tag_r=`cat TAG`
+						tag=$(eval "echo $tag_r")
 						
 						if ! test -f ./last_built
 							then
@@ -37,12 +39,12 @@ build_rest=0
 							new=`find . -newer ./last_built`
 					    fi
 							
-							if test 1 -lt `echo $new |wc -c`
+							if test $1 = "-push"
+								then
+									docker push ${tag}
+							elif test 1 -lt `echo $new |wc -c`
 							then
-															
-						
-							tag_r=`cat TAG`
-							tag=$(eval "echo $tag_r")
+		
 							echo "----------------------"
 							echo "Building $tag"
 								if test -f setup.sh
