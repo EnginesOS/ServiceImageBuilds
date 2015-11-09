@@ -1,6 +1,13 @@
 #/bin/bash
 
-
+it test "$1" == -h
+ then
+  echo "Usage\
+  build all changed images $0\
+  build all changed images and push freshly built $0 -p\
+  build all changed images and push all images $0 -pushall \
+  push all images $0 -pushonly "
+ fi
 
 if test -f release
 then
