@@ -39,7 +39,7 @@ build_rest=0
 							new=`find . -newer ./last_built`
 					    fi
 							
-							if test $1 = "-push"
+							if test $1 = "-pushonly"
 								then
 									docker push ${tag}
 							elif test 1 -lt `echo $new |wc -c`
@@ -74,7 +74,12 @@ build_rest=0
 								fi
 						fi
 							echo "===========$tag==========="
-					fi
+					
+					if test $1 = "-pushall"
+								then
+									docker push ${tag}
+								fi
+				  fi
 			done
 		cd $MasterImagesDir
 			 
