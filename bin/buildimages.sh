@@ -1,6 +1,6 @@
 #/bin/bash
 
-it test "$1" = -h
+if test "$1" = -h
  then
   echo "Usage\
   build all changed images $0\
