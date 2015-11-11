@@ -50,7 +50,7 @@ build_rest=0
 							new=`find . -newer ./last_built`
 					    fi
 							
-							if test $1 = "-pushonly"
+							if test "$1" = "-pushonly"
 								then
 									docker push ${tag}
 							elif test 1 -lt `echo $new |wc -c`
@@ -86,7 +86,7 @@ build_rest=0
 						fi
 							echo "===========$tag==========="
 					
-					if test $1 = "-pushall"
+					if test "$1" = "-pushall"
 								then
 									docker push ${tag}
 								fi
