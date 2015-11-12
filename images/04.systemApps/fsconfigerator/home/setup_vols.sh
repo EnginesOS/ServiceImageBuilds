@@ -38,10 +38,10 @@ else
 	
 	if test -d /home/app_src
 		then
-			cp -rp /home/app_src /dest/fs/app			
-			chown -R ${fw_user}.${data_gid}  /dest/fs/app 	
-			chmod g+w -R /dest/fs/app	
-			touch /dest/fs/app/.persistant		
+			cp -rp /home/app_src /dest/app			
+			chown -R ${fw_user}.${data_gid}  /dest/app 	
+			chmod g+w -R /dest/app	
+			touch /dest/app/.persistant		
     fi
     
 	touch /dest/fs/.persistant
