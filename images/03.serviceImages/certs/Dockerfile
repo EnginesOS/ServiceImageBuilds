@@ -11,8 +11,9 @@ RUN apt-get -y update;\
 
 COPY home home
 COPY sudoers /etc/sudoers.d/engine
-RUN 	mkdir -p /home/certs/saved /home/certs/store/ca /home/certs/store/keys /home/certs/store/certs ;\
-		chown certs -R /home/certs/saved /home/certs/store/ /home/configurators/saved/
+RUN 	mkdir -p /home/certs/saved /home/certs/store/ca /home/certs/store/keys /home/certs/store/certs /home/certs/home;\
+		chown certs -R /home/certs/saved /home/certs/store/ /home/configurators/saved/ /home/certs/home
+ENV HOME /home/certs/home
 USER certs
 
 CMD ["/home/start.sh"]
