@@ -8,6 +8,7 @@ if test "$1" = -h
   build all changed images and push all images $0 -pushall \
   build all images and push all images $0 -buildall \
   push all images $0 -pushonly "
+  exit
  fi
  
  if test "$1" = "-buildall"

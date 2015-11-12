@@ -33,7 +33,7 @@ else
     done
 	#if no presistance dirs/files need to set permission here
 	
-	chown -R ${fw_user}.${data_gid}  /dest/fs/
+	chown -R ${fw_user}.${data_gid}  /dest/fs
 	chmod g+w -R /dest/fs/
 	
 	if test -d /home/app_src
