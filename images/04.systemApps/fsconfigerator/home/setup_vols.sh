@@ -49,4 +49,4 @@ fi
 
 touch /client/state/flags/volume_setup_complete
 
- 
+ exit 0
