@@ -16,7 +16,8 @@ load_service_hash_to_environment
 	 	cat /etc/bind/templates/selfhosted.tmpl | sed "/DOMAIN/s//${domain_name}/g" | sed "/IP/s//${ip}/g" > /home/bind/engines/zones/named.conf.${domain_name}
 	 	cat /home/bind/engines/domains/* > /home/bind/engines/domains.hosted
 	 	kill -HUP `cat /var/run/named/named.pid`
-	 	exit
+	 	echo Success
+	 	exit 0
 	   fi
 	 fi
 
@@ -34,8 +35,7 @@ load_service_hash_to_environment
 	then
 		 update_line=" update add $fqdn_str 30 CNAME ${parent_engine}.engines.internal"
        else
-       update_line=" update add $fqdn_str 30 A $ip"
-        
+       update_line=" update add $fqdn_str 30 A $ip"        
     fi  
     
 
@@ -48,12 +48,13 @@ load_service_hash_to_environment
 	echo send >> /tmp/.dns_cmd
 	nsupdate -k /etc/bind/keys/ddns.private /tmp/.dns_cmd
 	
-	if test $? -ge 0
+	if test $? -eq 0
 	then
 		echo Success
+		exit 0
 	else
 	file=`cat /tmp/.dns_cmd`
 		echo Error:With nsupdate $file
-		exit -1
+		exit 128
 	fi
 	

@@ -1,6 +1,21 @@
 #/bin/bash
 
-
+if test "$1" = -h
+ then
+  echo "Usage\
+  build all changed images $0\
+  build all changed images and push freshly built $0 -p\
+  build all changed images and push all images $0 -pushall \
+  build all images and push all images $0 -buildall \
+  push all images $0 -pushonly "
+  exit
+ fi
+ 
+ if test "$1" = "-buildall"
+ 	then
+ 		1="-p"
+ 		rm `find . -name last_built`
+ 	fi
 
 if test -f release
 then
@@ -12,10 +27,7 @@ fi
 export release
 cd images
 MasterImagesDir=`pwd`
-
-
 build_rest=0
-
 
 	for class in `ls $MasterImagesDir`
 		do 
@@ -29,6 +41,8 @@ build_rest=0
 				cd $MasterImagesDir/$class/$dir
 					if test -f TAG
 						then 
+						tag_r=`cat TAG`
+						tag=$(eval "echo $tag_r")
 						
 						if ! test -f ./last_built
 							then
@@ -37,12 +51,12 @@ build_rest=0
 							new=`find . -newer ./last_built`
 					    fi
 							
-							if test 1 -lt `echo $new |wc -c`
+							if test "$1" = "-pushonly"
+								then
+									docker push ${tag}
+							elif test 1 -lt `echo $new |wc -c`
 							then
-															
-						
-							tag_r=`cat TAG`
-							tag=$(eval "echo $tag_r")
+		
 							echo "----------------------"
 							echo "Building $tag"
 								if test -f setup.sh
@@ -72,7 +86,12 @@ build_rest=0
 								fi
 						fi
 							echo "===========$tag==========="
-					fi
+					
+					if test "$1" = "-pushall"
+								then
+									docker push ${tag}
+								fi
+				  fi
 			done
 		cd $MasterImagesDir
 			 

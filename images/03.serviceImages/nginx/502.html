@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>Engines</title>
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+  <meta content="utf-8" http-equiv="encoding">
+</head>
+<body style='font-family: Arial; text-align: center; background-color: #5481df; color: #fff;'>
+  <h3>Please wait for the application to respond</h3>
+  <p id='notice'>Retry in <span id='time_counter'>15</span> second<span id='pluralizer'>s</span></p>
+</body>
+</html>
+
+<script>
+
+var reload = function() {
+
+  setTimeout(function () {
+    var t_holder = document.getElementById('time_counter');
+    var t = (parseInt(t_holder.innerHTML) - 1);
+    var p_holder = document.getElementById('pluralizer');
+    if (t == 0) {
+      document.getElementById('notice').innerHTML = 'Retrying...'
+      window.location.reload();
+    } else if (t == 1) {
+      p_holder.innerHTML = ''
+      t_holder.innerHTML = t;
+      reload();
+    } else {
+      p_holder.innerHTML = 's'
+      t_holder.innerHTML = t;
+      reload();
+    };
+  }, 1000);
+
+};
+
+reload();
+
+</script>
