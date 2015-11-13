@@ -7,7 +7,7 @@ RUN apt-get -y update;\
 	apt-get clean;\
 	mkdir /var/run/dbus/;\
 	rm -f /var/run/dbus/pid;\
-    chown avahi -R   /var/run/ /home/avahi/hosts/
+    chown avahi -R   /var/run/
 
 COPY sudoers /etc/sudoers.d/avahi
 COPY home home
