@@ -6,6 +6,7 @@ RUN apt-get -y update;\
 	apt-get -y install syslogd avahi-daemon dbus python python-avahi;\
 	apt-get clean;\
 	mkdir /var/run/dbus/;\
+	rm -f /var/run/dbus/pid;\
     chown avahi -R  /home/avahi/ /var/run/
 
 COPY sudoers /etc/sudoers.d/avahi
