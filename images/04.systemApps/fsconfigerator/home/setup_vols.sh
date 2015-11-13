@@ -36,7 +36,7 @@ else
 #	for dir in $dirs
 #		do
 #		    dir=`echo $dir | sed "/\$/s///"`
-#			cp -rnp  /home/fs_src/$dir /dest/fs/	
+#			cp -rnp  /home/fs_src/$dir/. /dest/fs/	
 #			touch /dest/fs/$dir/.persistant
 #    done
 	#if no presistance dirs/files need to set permission here
