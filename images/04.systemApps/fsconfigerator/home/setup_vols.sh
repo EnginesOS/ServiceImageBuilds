@@ -1,4 +1,4 @@
-#/bin/sh -x
+#!/bin/sh -x
 
 #VOLUME /client/var/log
 #VOLUME /client/log
@@ -28,9 +28,8 @@ else
 	cd /home/fs_src/
 	
 	for dest_dir in `ls /dest/fs/`
-	 do
-	 
-	   src_dir=`echo $dest_dir | sed "/_/s//\//g" "`
+	 do	 
+	   src_dir=`echo $dest_dir | sed "/_/s//\//g" `
 	   cp -rpn /home/fs_src/$src_dir /dest/fs/$dest_dir
 	 done
 #  dirs=`ls /home/fs_src/ | egrep -v "local"`
