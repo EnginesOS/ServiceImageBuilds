@@ -2,7 +2,7 @@
 
 
 
-
+avahi ALL = (root) NOPASSWD: /bin/dbus-daemon
 avahi ALL = (root) NOPASSWD: /sbin/syslogd
 avahi ALL = (root) NOPASSWD: /usr/sbin/avahi-daemon 
 avahi ALL = (root) NOPASSWD: /home/_signal.sh

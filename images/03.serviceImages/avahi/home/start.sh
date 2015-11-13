@@ -11,6 +11,7 @@ mkdir -p /engines/var/run/flags/
 
 
 sudo -n syslogd  -R syslog.engines.internal:5140
+sudo -n dbus-daemon --system --fork 
 sudo -n /usr/sbin/avahi-daemon & 
 echo $% >$PID_FILE
 /home/publish_aliases.sh
