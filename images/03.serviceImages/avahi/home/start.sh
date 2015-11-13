@@ -19,4 +19,7 @@ touch /home/avahi/hosts/engines.local
 touch /engines/var/run/flags/startup_complete
 wait  ` cat $PID_FILE`
 
+#REMOVE
+sleep 1000
+
 rm /engines/var/run/flags/startup_complete
