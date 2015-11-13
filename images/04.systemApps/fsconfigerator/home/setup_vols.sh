@@ -30,20 +30,14 @@ else
 	for dest_dir in `ls /dest/fs/`
 	 do	 
 	   src_dir=`echo $dest_dir | sed "/_/s//\//g" | sed " /\/home\/fs/s//\/home\/fs_src/" `
-	   cp -rpn $src_dir /dest/fs/$dest_dir
+	   cp -rpn $src_dir/. /dest/fs/$dest_dir
+	   chown -R ${fw_user}.${data_gid}  /dest/fs/$dir
 	 done
-#  dirs=`ls /home/fs_src/ | egrep -v "local"`
-#	for dir in $dirs
-#		do
-#		    dir=`echo $dir | sed "/\$/s///"`
-#			cp -rnp  /home/fs_src/$dir/. /dest/fs/	
-#			touch /dest/fs/$dir/.persistant
-			chown -R ${fw_user}.${data_gid}  /dest/fs/$dir
-#    done
+
 	#if no presistance dirs/files need to set permission here
 	
-	chown -R ${fw_user}.${data_gid}  /dest/fs/$dir
-	chmod g+w -R /dest/fs/
+	chown  ${fw_user}.${data_gid}  /dest/fs/
+	chmod g+w  /dest/fs/
 	
 	if test -d /home/app_src
 		then
