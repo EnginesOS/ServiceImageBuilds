@@ -7,11 +7,12 @@ RUN apt-get -y update;\
 	apt-get clean;\
 	mkdir /var/run/dbus/;\
 	rm -f /var/run/dbus/pid;\
-    chown avahi -R  /home/avahi/ /var/run/
+    chown avahi -R   /var/run/ /home/avahi/hosts/
 
 COPY sudoers /etc/sudoers.d/avahi
 COPY home home
-RUN usermod -G containers -a avahi
+RUN usermod -G containers -a avahi;\
+	 chown avahi -R  /home/avahi/
 	
 USER avahi
 
