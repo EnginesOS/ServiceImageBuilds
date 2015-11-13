@@ -29,8 +29,8 @@ else
 	
 	for dest_dir in `ls /dest/fs/`
 	 do	 
-	   src_dir=`echo $dest_dir | sed "/_/s//\//g" `
-	   cp -rpn /home/fs_src/$src_dir /dest/fs/$dest_dir
+	   src_dir=`echo $dest_dir | sed "/_/s//\//g" | sed " /\/home\/fs/s//\/home\/fs_src/" `
+	   cp -rpn $src_dir /dest/fs/$dest_dir
 	 done
 #  dirs=`ls /home/fs_src/ | egrep -v "local"`
 #	for dir in $dirs
