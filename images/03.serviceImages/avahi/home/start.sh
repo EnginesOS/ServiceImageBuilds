@@ -23,5 +23,5 @@ wait  ` cat $PID_FILE`
 
 #REMOVE
 sleep 1000
---nopidfile
+
 rm /engines/var/run/flags/startup_complete
