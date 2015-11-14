@@ -4,7 +4,7 @@ cd /home/avahi/hosts
 domains=""
 for host in `ls ` 
  do 
- domains="$domains $host.engines.local "
+ domains="$domains $host "
 done
 
 /home/avahi-alias.py $domains &

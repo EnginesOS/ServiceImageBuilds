@@ -10,6 +10,11 @@ TYPE_CNAME = 0x05
 
 TTL = 60
 
+def IP2Int(ip):
+    o = map(int, ip.split('.'))
+    res = (16777216 * o[0]) + (65536 * o[1]) + (256 * o[2]) + o[3]
+    return res
+    
 def publish_cname(cname):
     bus = dbus.SystemBus()
     server = dbus.Interface(bus.get_object(avahi.DBUS_NAME, avahi.DBUS_PATH_SERVER),
@@ -18,6 +23,7 @@ def publish_cname(cname):
             avahi.DBUS_INTERFACE_ENTRY_GROUP)
 
     rdata = createRR(server.GetHostNameFqdn())
+    
     cname = encode_dns(cname)
 
     group.AddRecord(avahi.IF_UNSPEC, avahi.PROTO_UNSPEC, dbus.UInt32(0),
