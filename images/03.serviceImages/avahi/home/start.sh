@@ -11,8 +11,8 @@ mkdir -p /engines/var/run/flags/
 
 
 sudo -n syslogd  -R syslog.engines.internal:5140
-sudo -n dbus-daemon --system --fork 
-sudo -n /usr/sbin/avahi-daemon & 
+sudo -n dbus-daemon --system --fork --nopidfile
+sudo -n /usr/sbin/avahi-daemon --no-chroot  & 
 echo $! >$PID_FILE
 touch /home/avahi/hosts/engines.local
 /home/publish_aliases.sh
@@ -21,5 +21,5 @@ wait  ` cat $PID_FILE`
 
 #REMOVE
 sleep 1000
-
+--nopidfile
 rm /engines/var/run/flags/startup_complete
