@@ -1,6 +1,11 @@
 #!/bin/bash
 
-cd /home/bind/domain_list
+if ! test -d /home/bind/domain_list/lan/
+ then
+ 	exit
+ fi
+ 
+cd /home/bind/domain_list/lan/
 
 service_hash=$1
 
@@ -16,5 +21,5 @@ load_service_hash_to_environment
 
 for domain in `ls `
  do
-   /home/add_service.sh :domain_name=$domain:ip=$ip:
+   /home/add_service.sh :domain_name=$domain:ip=$ip:ip_type=lan:
  done
