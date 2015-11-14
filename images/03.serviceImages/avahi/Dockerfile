@@ -8,7 +8,7 @@ RUN apt-get -y update;\
 	usermod avahi -u  22026 ;\
 	mkdir /var/run/dbus/;\
 	rm -f /var/run/dbus/pid;\
-    chown avahi -R   /var/run/
+    chown avahi -R   /var/run/ /etc/avahi/hosts
 
 COPY sudoers /etc/sudoers.d/avahi
 COPY home home
