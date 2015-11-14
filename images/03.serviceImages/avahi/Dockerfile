@@ -10,7 +10,7 @@ RUN apt-get -y update;\
 	rm -f /var/run/dbus/pid;\
     chown avahi -R   /var/run/ /etc/avahi/hosts
 
-COPY avahi-daemon.conf /etc/avahi/
+COPY avahi-daemon.conf /etc/avahi/avahi-daemon.conf
 COPY sudoers /etc/sudoers.d/avahi
 COPY home home
 RUN usermod -G containers -a avahi;\
