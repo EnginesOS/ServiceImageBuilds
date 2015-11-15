@@ -189,10 +189,10 @@ $CONF['page_size'] = '10';
 // a) a full mail address
 // b) only a localpart ('postmaster' => 'admin') - the alias target will point to the same domain
 $CONF['default_aliases'] = array (
-		'abuse' => 'abuse@change-this-to-your.domain.tld',
-		'hostmaster' => 'hostmaster@change-this-to-your.domain.tld',
-		'postmaster' => 'postmaster@change-this-to-your.domain.tld',
-		'webmaster' => 'webmaster@change-this-to-your.domain.tld'
+		'abuse' => 'abuse@DEFAULT_DOMAIN',
+		'hostmaster' => 'hostmaster@DEFAULT_DOMAIN',
+		'postmaster' => 'postmaster@DEFAULT_DOMAIN',
+		'webmaster' => 'webmaster@DEFAULT_DOMAIN'
 		);
 		
 		// Mailboxes
