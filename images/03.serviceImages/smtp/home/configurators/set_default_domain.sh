@@ -19,7 +19,7 @@ echo $1 |grep = >/dev/null
         
    	if test  ${#default_domain} -gt 5
 	then  
-		echo '/^(.*@)*.engines.internal$/     ${1}'${default_domain} > /etc/postfix/sender_canonical
+		echo '/^(.*@*)engines.internal$/     ${1}'${default_domain} > /etc/postfix/sender_canonical
 		
  		echo smtp.${default_domain} > /etc/postfix/mailname
  	    cp /etc/postfix/transport.smart /etc/postfix/transport 
