@@ -15,35 +15,16 @@ echo $1 |grep = >/dev/null
                 exit
         fi
 
-res="${1//[^:]}"
-echo $res
-fcnt=${#res}
-fcnt=`expr $fcnt + 1`
-
-        while test $fcnt -ge $n
-        do
-                nvp="`echo $1 |cut -f$n -d:`"
-                n=`expr $n + 1`
-                name=`echo $nvp |cut -f1 -d=`
-                if ! test -z $name 
-                	then
-                	value="`echo $nvp |cut -f2 -d=`"
-                		if ! test -z $value
-                			then
-                			export $name="$value"
-                		fi
-                fi
-        done
         
         
-   	if test  ${#defaultdomain} -gt 5
+   	if test  ${#default_domain} -gt 5
 	then  
-		echo '/^(.*@).*$/     ${1}'${defaultdomain} > /etc/postfix/sender_canonical
+		echo '/^(.*@)*.engines.internal$/     ${1}'${default_domain} > /etc/postfix/sender_canonical
 		
- 		echo smtp.${defaultdomain} > /etc/postfix/mailname
+ 		echo smtp.${default_domain} > /etc/postfix/mailname
  	    cp /etc/postfix/transport.smart /etc/postfix/transport 
                 echo "*	:" >> /etc/postfix/transport
- 		echo ${defaultdomain} :[email.engines.internal]	>> /etc/postfix/transport	
+ 		echo ${default_domain} :[email.engines.internal]	>> /etc/postfix/transport	
 		postmap /etc/postfix/transport
  	fi
  
