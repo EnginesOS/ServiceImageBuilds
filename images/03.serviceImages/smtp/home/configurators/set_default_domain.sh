@@ -38,6 +38,8 @@ fcnt=`expr $fcnt + 1`
         
    	if test  ${#defaultdomain} -gt 5
 	then  
+		echo '/^(.*@).*$/     ${1}'${defaultdomain} > /etc/postfix/sender_canonical
+		
  		echo smtp.${defaultdomain} > /etc/postfix/mailname
  	    cp /etc/postfix/transport.smart /etc/postfix/transport 
                 echo "*	:" >> /etc/postfix/transport
