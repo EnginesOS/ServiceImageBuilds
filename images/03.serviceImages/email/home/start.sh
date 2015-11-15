@@ -12,7 +12,8 @@ sudo -n postmap /etc/postfix/transport
 sudo -n postmap /etc/postfix/smarthost_passwd
 sudo -n /usr/lib/postfix/master &
 
-	
+/home/configurators.set_default_domain.sh :default_domain=$DEFAULT_DOMAIN:
+
  echo dbflavor=$dbflavor >/home/.dbenv
  echo dbhost=$dbhost >>/home/auth/.dbenv
  echo dbname=$dbname >>/home/.dbenv
