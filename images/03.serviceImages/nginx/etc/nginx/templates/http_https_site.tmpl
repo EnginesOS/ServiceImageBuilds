@@ -16,11 +16,15 @@
         }
         access_log /var/log/nginx/FQDN/http/access.log;
         error_log /var/log/nginx/FQDN/http/error.log;
+        error_page 502 /502.html;
     }
+    
+    
 
 server {
 access_log /var/log/nginx/FQDN/https/access.log;
         error_log /var/log/nginx/FQDN/https/error.log;
+        error_page 502 /502.html;
         listen 4430;
         resolver 172.17.42.1;
         add_header Strict-Transport-Security "max-age=31536000; includeSubdomains";

@@ -17,6 +17,7 @@
     ssl_prefer_server_ciphers on;
         access_log /var/log/nginx/FQDN/https/access.log;
         error_log /var/log/nginx/FQDN/https/error.log;
+        error_page 502 /502.html;
         location / {
         FOLDER
    

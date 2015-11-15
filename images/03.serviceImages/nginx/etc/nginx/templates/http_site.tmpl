@@ -6,6 +6,7 @@
 		proxy_read_timeout 300s;
 		    access_log /var/log/nginx/FQDN/http/access.log;
         error_log /var/log/nginx/FQDN/http/error.log;
+        error_page 502 /502.html;
         location / {        
 		FOLDER
 		
