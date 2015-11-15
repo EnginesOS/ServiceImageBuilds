@@ -12,6 +12,12 @@ load_service_hash_to_environment
 	 then
 	  if ! test ${domain_name} = engines.internal
 	   then
+	   	if test -z ${ip}
+			then
+				echo Error:Missing IP Address
+        		exit 128
+   		 fi
+	   touch /home/bind/domain_list/${ip_type}/${domain_name}
 	 	cat  /etc/bind/templates/config_file_zone_entry.tmpl | sed " /DOMAIN/s//${domain_name}/g" > /home/bind/engines/domains/${domain_name}
 	 	cat /etc/bind/templates/selfhosted.tmpl | sed "/DOMAIN/s//${domain_name}/g" | sed "/IP/s//${ip}/g" > /home/bind/engines/zones/named.conf.${domain_name}
 	 	cat /home/bind/engines/domains/* > /home/bind/engines/domains.hosted

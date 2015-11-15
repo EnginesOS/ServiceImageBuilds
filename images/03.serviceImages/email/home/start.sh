@@ -12,12 +12,13 @@ sudo -n postmap /etc/postfix/transport
 sudo -n postmap /etc/postfix/smarthost_passwd
 sudo -n /usr/lib/postfix/master &
 
-	
- #echo dbflavor=$dbflavor >/home/app/.dbenv
- #echo dbhost=$dbhost >>/home/auth/app/.dbenv
- #echo dbname=$dbname >>/home/app/.dbenv
- #echo dbpasswd=$dbpasswd >>/home/app/.dbenv
- #echo dbuser=$dbuser >>/home/app/.dbenv
+/home/configurators.set_default_domain.sh :default_domain=$DEFAULT_DOMAIN:
+
+ echo dbflavor=$dbflavor >/home/.dbenv
+ echo dbhost=$dbhost >>/home/auth/.dbenv
+ echo dbname=$dbname >>/home/.dbenv
+ echo dbpasswd=$dbpasswd >>/home/.dbenv
+ echo dbuser=$dbuser >>/home/.dbenv
  
 echo "user = $dbuser" >/tmp/.db
 echo "password = $dbpasswd" >>/tmp/.db
@@ -31,11 +32,8 @@ echo "dbname = $dbname" >>/tmp/.db
 		done
 rm /tmp/.db
 
-cat /home/app/_config.inc.php \
- | sed "/DBHOST/s//$dbhost/"\
-	| sed  "/DBNAME/s//$dbname/"\
-	| sed  "/DBUSER/s//$dbuser/"\
-	| sed   "/DBPASSWD/s//$dbpasswd/" > /home/app/config.inc.php
+/home/create_config.sh
+
 
 sudo -n  /usr/sbin/apache2ctl  -DFOREGROUND & 
 touch /engines/var/run/flags/startup_complete  

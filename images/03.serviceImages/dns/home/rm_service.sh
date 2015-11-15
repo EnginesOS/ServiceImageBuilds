@@ -9,7 +9,7 @@ load_service_hash_to_environment
 	if ! test -z ${domainname}
 	 then
 	 	rm /home/bind/engines/domains/${domainname}
-	 
+	  rm  /home/bind/domain_list/${ip_type}/${domain_name}
 	 	rm /home/bind/engines/zones/named.conf.${domainname}
 	 	cat /home/bind/engines/domains/* > /home/bind/engines/domains.hosted
 	 	kill -HUP `cat /var/run/named/named.pid`
