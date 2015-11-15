@@ -416,8 +416,8 @@ $CONF['header_text'] = ':: Postfix Admin ::';
 // Below information will be on all pages.
 // If you don't want the footer information to appear set this to 'NO'.
 $CONF['show_footer_text'] = 'YES';
-$CONF['footer_text'] = 'Return to change-this-to-your.domain.tld';
-$CONF['footer_link'] = 'http://change-this-to-your.domain.tld';
+$CONF['footer_text'] = 'DEFAULT_DOMAIN';
+$CONF['footer_link'] = 'http://DEFAULT_DOMAIN';
 
 // MOTD ("Motto of the day")
 // You can display a MOTD below the menu on all pages.
