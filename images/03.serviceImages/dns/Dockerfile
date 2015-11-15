@@ -17,7 +17,7 @@ COPY sudoers /etc/
 ADD engines.internal.domain /var/lib/bind/engines/engines.dnsrecords
 COPY home home
 RUN chown bind /var/run/named;\
-	chown bind /var/lib/bind/engines;\
+	chown bind /var/lib/bind/engines /home/bind/;\
 	usermod -G containers -a bind;\
 	mkdir -p /etc/bind/keys/ /home/bind/engines/domains /home/bind/engines/zones/;\
 	chown bind -R /etc/bind/keys/ /etc/bind/named.conf.default-zones  /home/bind/engines/domains.hosted /home/bind/engines/zones/ /home/bind/engines/domains/
@@ -27,6 +27,8 @@ RUN chown bind /var/run/named;\
 
 RUN /home/setup.sh 
 USER bind
+
+RUN mkdir -p /home/bind/domain_list/lan /home/bind/domain_list/gw
 
 
 ENV ContUser bind

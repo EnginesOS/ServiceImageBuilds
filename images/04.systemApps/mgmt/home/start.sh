@@ -15,11 +15,11 @@ if  test -f /home/app/Gemfile
 	then
 	mv /home/app/Gemfile  /tmp/gf
 	fi
-
-git fetch origin beta-rc
+release=`cat /opt/engines/release`
+git fetch origin $release
 git reset --hard FETCH_HEAD
-git pull --depth 1 origin beta-rc
-
+git pull --depth 1 origin  $release
+git branch  $release
 if ! test -f /home/app/Gemfile
  then
    cp /tmp/gf /home/app/Gemfile

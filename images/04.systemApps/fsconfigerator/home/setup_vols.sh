@@ -1,4 +1,4 @@
-#/bin/sh -x
+#!/bin/sh -x
 
 #VOLUME /client/var/log
 #VOLUME /client/log
@@ -22,23 +22,28 @@ chmod g+w  -R /client/state
 
 if test -f /dest/fs/.persistant_lock
  then
-  chown -R $fw_user /dest/fs/
+  chown -R $fw_user /dest/fs/*
 else
-  dirs=`ls /home/fs_src/ | egrep -v "local"`
-	for dir in $dirs
-		do
-			cp -rnp  /home/fs_src/$dir/* /dest/fs/				
-    done
+
+	cd /home/fs_src/
+	
+	for dest_dir in `ls /dest/fs/`
+	 do	 
+	   src_dir=`echo $dest_dir | sed "/_/s//\//g" | sed " /\/home\/fs/s//\/home\/fs_src/" `
+	   cp -rpn $src_dir/. /dest/fs/$dest_dir
+	   chown -R ${fw_user}.${data_gid}  /dest/fs/$dir
+	 done
+
 	#if no presistance dirs/files need to set permission here
 	
-	chown -R ${fw_user}.${data_gid}  /dest/fs/
-	chmod g+w -R /dest/fs/
+	chown  ${fw_user}.${data_gid}  /dest/fs/
+	#chmod g+w  /dest/fs/
 	
 	if test -d /home/app_src
 		then
-			cp -rp /home/app_src/* /dest/fs/			
-			chown -R ${fw_user}.${data_gid}  /dest/fs/
-			chmod g+w -R /dest/fs/		
+			cp -rp /home/app_src/.  /dest/fs/_home_app_/			
+			chown -R ${fw_user}.${data_gid}  /dest/fs/_home_app_/			
+			touch /dest/fs/_home_app_/.persistant
     fi
     
 	touch /dest/fs/.persistant
@@ -46,3 +51,4 @@ fi
 
 touch /client/state/flags/volume_setup_complete
 
+ exit 0
