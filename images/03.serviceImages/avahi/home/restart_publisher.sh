@@ -2,4 +2,4 @@
 
 
 kill -HUP `cat  /tmp/publish.pid`
-/home/publisher_aliases.sh
+/home/publish_aliases.sh
