@@ -2,7 +2,7 @@
 
 service_hash=$1
 
-echo $1 >/home/configurators/saved/dhcpd_settings
+echo $1 >/home/configurators/saved/dyndns_settings
 
 . /home/engines/scripts/functions.sh
 
