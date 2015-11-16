@@ -31,4 +31,5 @@ if test -z $login
 
 cat /home/providers/$provider/dyndns.conf.tmpl |sed --e /LOGIN/s//$login/ -e /PASSWORD/s//$password/ -e /DOMAIN/s//$domain_name/ >/home/dyndns/dyndns.conf 
 
-
+echo "success"
+exit 0
