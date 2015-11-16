@@ -2,7 +2,7 @@
 
 service_hash=$1
 
-echo $1 >/home/configurators/saved/dhcpd_settings
+echo $1 >/home/configurators/saved/dyndns_settings
 
 . /home/engines/scripts/functions.sh
 
@@ -29,6 +29,7 @@ if test -z $login
  	exit 127
  fi
 
-cat /home/dyndns.conf.tmpl |sed -e /PROVIDER/s//$provider/ -e /LOGIN/s//$login/ -e /PASSWORD/s//$password/ -e /DOMAIN/s//$domain_name/ >/home/dyndns/dyndns.conf 
+cat /home/providers/$provider/dyndns.conf.tmpl |sed --e /LOGIN/s//$login/ -e /PASSWORD/s//$password/ -e /DOMAIN/s//$domain_name/ >/home/dyndns/dyndns.conf 
 
-
+echo "success"
+exit 0
