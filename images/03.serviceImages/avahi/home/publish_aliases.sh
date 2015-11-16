@@ -8,5 +8,5 @@ for host in `ls `
 done
 
 /home/avahi-alias.py $domains &
-PUBLISHER_PID=$%
+PUBLISHER_PID=$!
 echo $PUBLISHER_PID >/tmp/publish.pid

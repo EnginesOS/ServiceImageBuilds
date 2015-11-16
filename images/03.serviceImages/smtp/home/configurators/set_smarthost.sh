@@ -29,7 +29,7 @@ echo $1 |grep = >/dev/null
 		cp /etc/postfix/transport.smart /etc/postfix/transport
 		else
 		    rm -r /etc/postfix/transport.smart
-		    tocuh /etc/postfix/transport.smart
+		    touch /etc/postfix/transport.smart
 			echo "*	smtp:"  > /etc/postfix/transport
 		fi 
 		if test -f /home/configurators/saved/default_domain
