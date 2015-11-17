@@ -21,7 +21,7 @@ sudo syslogd  -R syslog.engines.internal:5140
 mkdir -p /engines/var/run/flags/
 
 	ddclient  -daemon 300 -syslog -foreground -file /home/dyndns/dyndns.conf -cache /home/dyndns/cache   -pid /home/dyndns/dyndns.pid &
-	it ! test -f /home/dyndns/dyndns.pid
+	if ! test -f /home/dyndns/dyndns.pid
 	then
 	  touch /engines/var/run/flags/startup_failed
 	 else
