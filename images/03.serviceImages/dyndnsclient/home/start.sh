@@ -10,6 +10,7 @@ touch /tmp/start_dyndns
 if ! test -f /home/dyndns/dyndns.conf
 then 
 	touch /engines/var/run/flags/not_configured
+	sleep 20  #wait for system apply pending configuration
 	exit
 else
    rm -f /engines/var/run/flags/not_configured
