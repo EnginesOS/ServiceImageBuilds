@@ -30,6 +30,6 @@ if test -z $login
  fi
 
 cat /home/providers/$provider/dyndns.conf.tmpl |sed --e /LOGIN/s//$login/ -e /PASSWORD/s//$password/ -e /DOMAIN/s//$domain_name/ >/home/dyndns/dyndns.conf 
-
+chmod og-r /home/dyndns/dyndns.conf
 echo "Success"
 exit 0
