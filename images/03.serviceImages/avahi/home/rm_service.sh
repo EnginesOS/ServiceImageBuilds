@@ -12,10 +12,12 @@ if test -z ${hostname}
         exit 128
     fi
 
-
+ if test -f /home/avahi/hosts/${hostname}
+  then
 	rm /home/avahi/hosts/${hostname}
-	
-	/home/restart_publisher.sh
+ fi	
+ 
+touch /engines/var/run/flags/restart_required
   
 		echo Success
 		exit 0
