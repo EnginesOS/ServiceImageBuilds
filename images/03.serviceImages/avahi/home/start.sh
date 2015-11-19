@@ -9,6 +9,11 @@ export PID_FILE
 
 mkdir -p /engines/var/run/flags/
 
+if test -f /engines/var/run/flags/restart_required
+ then
+  rm -f /engines/var/run/flags/restart_required
+fi
+
 ip=`cat /home/lan_ip`
 echo "$ip mgmt.engines.local" >/etc/avahi/hosts
 

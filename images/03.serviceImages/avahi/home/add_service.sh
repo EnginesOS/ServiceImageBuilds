@@ -15,7 +15,7 @@ if test -z ${hostname}
 
 	touch /home/avahi/hosts/${hostname}
 	
-	/home/restart_publisher.sh
+	touch /engines/var/run/flags/restart_required
   
 		echo Success
 		exit 0
