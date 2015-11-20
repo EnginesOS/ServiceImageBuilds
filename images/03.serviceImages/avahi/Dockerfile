@@ -15,7 +15,7 @@ COPY sudoers /etc/sudoers.d/avahi
 COPY home home
 RUN usermod -G containers -a avahi;\
 	mkdir -p /home/avahi/hosts/;\
-	 chown avahi -R  /home/avahi/
+	 chown avahi -R  /home/avahi/ /etc/avahi/avahi-daemon.conf
 	
 USER avahi
 
