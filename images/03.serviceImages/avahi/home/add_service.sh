@@ -15,7 +15,11 @@ if test -z ${hostname}
 
 	touch /home/avahi/hosts/${hostname}.engines.local
 	ls /home/avahi/hosts/ > /home/avahi/hosts_list
-	kill -HUP `cat /tmp/avahi-publisher.pid`
+	if test -f /tmp/avahi-publisher.pid
+		then
+			kill -HUP `cat /tmp/avahi-publisher.pid`
+	fi
+
 	
 	ps -ax |grep -v grep |grep avahi-alias.py
 	
