@@ -34,14 +34,14 @@ touch /home/avahi/hosts/engines.local
 #/home/publish_aliases.sh
 touch /home/avahi/hosts/avahi.engines.local
 ls /home/avahi/hosts/ > /home/avahi/hosts_list
-python /home/avahi-alias.py &
-pid=$!
-echo $pid > $PID_FILE
+/home/publish_aliases.sh &
+
+
 touch /engines/var/run/flags/startup_complete
 
 wait 
 
-kill -TERM   $pid
+kill -TERM   'cat PID_FILE'
 
 sudo /home/kill_avahi.sh 
 sudo /home/kill_dbus.sh $dbus_pid
