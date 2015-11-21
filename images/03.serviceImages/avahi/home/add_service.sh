@@ -17,6 +17,13 @@ if test -z ${hostname}
 	ls /home/avahi/hosts/ > /home/avahi/hosts_list
 	kill -HUP `cat /tmp/avahi-publisher.pid`
 	
+	ps -ax |grep -v grep |grep avahi-alias.py
+	
+	 if test $? -ne 0
+	  then
+			python /home/avahi-alias.py &
+			echo $! >/tmp/avahi-publisher.pid
+	fi
   
 		echo Success
 		exit 0
