@@ -21,8 +21,9 @@ if test -z ${hostname}
 	
 	 if test $? -ne 0
 	  then
+	  		echo "avahi publisher had crashed"
 			python /home/avahi-alias.py &
-			echo $! >/tmp/avahi-publisher.pid
+			echo $! >/tmp/avahi-publisher.pid			
 	fi
   
 		echo Success
