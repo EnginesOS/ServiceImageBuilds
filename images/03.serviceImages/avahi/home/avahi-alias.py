@@ -47,13 +47,29 @@ def createRR(name):
     out.append('\0')
     return ''.join(out)
 
-if __name__ == '__main__':
-    import time, sys, locale
-    for each in sys.argv[1:]:
-        name = unicode(each, locale.getpreferredencoding())
-        publish_cname(name)
+def advertise_cnames():
     try:
-        # Just loop forever
+        hosts_file = open("/home/avahi/hosts_list", "r")
+        content = [x.strip('\n') for x in hosts_file.readlines()]
+        hosts_file.close()
+        for each in content:
+                print " host %s" % (each)
+                name = unicode(each, locale.getpreferredencoding())
+                publish_cname(name)
+                # Just loop forever
         while 1: time.sleep(60)
     except KeyboardInterrupt:
-        print "Exiting"
+        print "Reloading"
+        return
+
+
+if __name__ == '__main__':
+    import time, sys, locale
+    while 1:
+        try:
+                advertise_cnames()
+        except KeyboardInterrupt:
+                print "Reloading"
+                continue
+        continue
+

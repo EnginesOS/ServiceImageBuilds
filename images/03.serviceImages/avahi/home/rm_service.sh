@@ -16,8 +16,8 @@ if test -z ${hostname}
   then
 	rm /home/avahi/hosts/${hostname}
  fi	
- 
-touch /engines/var/run/flags/restart_required
+ 	ls /home/avahi/hosts/ > /home/avahi/hosts_list
+	kill -HUP `cat /tmp/avahi-publisher.pid`
   
 		echo Success
 		exit 0
