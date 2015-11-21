@@ -13,7 +13,7 @@ if test -z ${hostname}
     fi
 
 
-	touch /home/avahi/hosts/${hostname}
+	touch /home/avahi/hosts/${hostname}.engines.local
 	ls /home/avahi/hosts/ > /home/avahi/hosts_list
 	kill -HUP `cat /tmp/avahi-publisher.pid`
 	

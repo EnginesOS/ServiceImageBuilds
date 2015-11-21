@@ -32,6 +32,8 @@ sudo -n /usr/sbin/avahi-daemon --no-chroot  &
 echo $! >/tmp/avahi-daemon.pid
 touch /home/avahi/hosts/engines.local
 #/home/publish_aliases.sh
+touch /home/avahi/hosts/avahi
+ls /home/avahi/hosts/ > /home/avahi/hosts_list
 python /home/avahi-alias.py &
 echo $! > $PID_FILE
 touch /engines/var/run/flags/startup_complete
