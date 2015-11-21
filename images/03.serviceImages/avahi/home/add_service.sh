@@ -14,8 +14,9 @@ if test -z ${hostname}
 
 
 	touch /home/avahi/hosts/${hostname}
+	ls /home/avahi/hosts/ > /home/avahi/hosts_list
+	kill -HUP `cat /tmp/avahi-publisher.pid`
 	
-	touch /engines/var/run/flags/restart_required
   
 		echo Success
 		exit 0

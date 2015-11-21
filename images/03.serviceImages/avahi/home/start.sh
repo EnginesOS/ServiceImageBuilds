@@ -2,7 +2,7 @@
 
 
 
-PID_FILE=/var/run/avahi-daemon/pid
+PID_FILE=/tmp/avahi-publisher.pid
 export PID_FILE
 . /home/trap.sh
 
@@ -29,12 +29,15 @@ dbus_pid=$!
 echo $dbus_pid >/tmp/dbus.pid
 
 sudo -n /usr/sbin/avahi-daemon --no-chroot  & 
-#echo $! >$PID_FILE
+echo $! >/tmp/avahi-daemon.pid
 touch /home/avahi/hosts/engines.local
-/home/publish_aliases.sh
+#/home/publish_aliases.sh
+python /home/avahi-alias.py &
+echo $! > $PID_FILE
 touch /engines/var/run/flags/startup_complete
 wait  ` cat $PID_FILE`
 
+sudo /home/kill_avahi.sh 
 sudo /home/kill_dbus.sh $dbus_pid
 sudo /home/engines/scripts/_kill_syslog.sh
 
