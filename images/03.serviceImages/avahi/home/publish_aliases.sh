@@ -1,12 +1,6 @@
 #!/bin/bash
-
-cd /home/avahi/hosts
-domains=""
-for host in `ls ` 
- do 
- 	domains="$domains $host.engines.local "
+while test 1 -ne 0
+do
+python /home/avahi-alias.py 
+echo $! > /tmp/avahi-publisher.pid
 done
-
-/home/avahi-alias.py $domains &
-PUBLISHER_PID=$!
-echo $PUBLISHER_PID >/tmp/publish.pid
