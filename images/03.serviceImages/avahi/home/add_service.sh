@@ -13,10 +13,23 @@ if test -z ${hostname}
     fi
 
 
-	touch /home/avahi/hosts/${hostname}
+	touch /home/avahi/hosts/${hostname}.engines.local
+	ls /home/avahi/hosts/ > /home/avahi/hosts_list
+	if test -f /tmp/avahi-publisher.pid
+		then
+			kill -HUP `cat /tmp/avahi-publisher.pid`
+	fi
+
 	
-	touch /engines/var/run/flags/restart_required
-  
+#	ps -ax |grep -v grep |grep avahi-alias.py
+#
+#	 if test $? -ne 0
+#	  then
+#	  		echo "avahi publisher had crashed"
+#			python /home/avahi-alias.py &
+#			echo $! >/tmp/avahi-publisher.pid			
+#	fi
+#
 		echo Success
 		exit 0
 
