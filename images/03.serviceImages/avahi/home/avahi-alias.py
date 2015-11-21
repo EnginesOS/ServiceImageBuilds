@@ -52,12 +52,15 @@ def advertise_cnames():
         hosts_file = open("/home/avahi/hosts_list", "r")
         content = [x.strip('\n') for x in hosts_file.readlines()]
         hosts_file.close()
-        for each in content:
-                print " host %s" % (each)
-                name = unicode(each, locale.getpreferredencoding())
-                publish_cname(name)
+        delay = 1
+        while 1:
+                time.sleep(delay)
+                for each in content:
+                        print " host %s" % (each)
+                        name = unicode(each, locale.getpreferredencoding())
+                        publish_cname(name)
                 # Just loop forever
-        while 1: time.sleep(60)
+                delay = 60
     except KeyboardInterrupt:
         print "Reloading"
         return
