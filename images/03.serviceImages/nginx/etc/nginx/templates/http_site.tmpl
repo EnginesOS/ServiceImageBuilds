@@ -24,3 +24,28 @@
 		}
     }
 
+server {
+        listen 8000;
+        server_name SERVER.engines.local;
+        resolver 172.17.42.1;	
+        add_header Accept-Ranges bytes;
+		proxy_read_timeout 300s;
+		    access_log /var/log/nginx/FQDN/http/access.log;
+        error_log /var/log/nginx/FQDN/http/error.log;
+        error_page 502 /502.html;
+        location / {        
+		FOLDER
+		
+	proxy_pass http://SERVER.engines.internal:PORT/;
+    proxy_set_header Upgrade $http_upgrade;
+  #  proxy_set_header Connection "upgrade";  
+    proxy_set_header X-Real-IP $remote_addr;    
+    proxy_set_header Host FQDN;
+   proxy_set_header X-Forwarded-For $remote_addr;
+    add_header Strict-Transport-Security "max-age=31536000; includeSubdomains";
+  add_header Accept-Ranges bytes;
+    
+        }
+         location /502.html{
+		}
+    }
