@@ -15,6 +15,9 @@ if  test -f /home/app/Gemfile
 	then
 	mv /home/app/Gemfile  /tmp/gf
 	fi
+	
+	echo -n  `grep mgmt /etc/hosts|awk '{print $1}' |cut -d. -f-3`.1 > /opt/engines/etc/net/management
+	
 release=`cat /opt/engines/release`
 git fetch origin $release
 git reset --hard FETCH_HEAD
