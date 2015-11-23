@@ -12,9 +12,7 @@ RUN /usr/sbin/usermod -u 22671 www-data;\
 	usermod -G containers -a www-data
 	
 ENV APACHE_LOCK_DIR /var/run/apache2/lock/
-	#now in framework
-	#echo "www-data ALL=(data-user) NOPASSWD: /home/engines/scripts/_revoke_rw_access.sh" >> /etc/sudoers;\
-	#echo "www-data ALL=(data-user) NOPASSWD: /home/engines/scripts/_grant_rw_access.sh " >> /etc/sudoers
+	
 	
 ADD home home
 ADD 30-sendmail.ini /etc/php5/apache2/conf.d/

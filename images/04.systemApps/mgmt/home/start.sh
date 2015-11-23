@@ -44,8 +44,12 @@ if ! test `sqlite3 /home/app/db/production.sqlite3 "SELECT EXISTS (SELECT * FROM
 	then
 		/usr/local/rbenv/shims/bundle exec rake db:seed >/dev/null
 fi
+echo building thumb 
+nails
+bundle exec rake paperclip:refresh:thumbnails CLASS=ApplicationDisplayProperties
 
 echo precompiling assests
+
 /usr/local/rbenv/shims/bundle exec rake assets:precompile  >/dev/null
 
 SECRET_KEY_BASE=`/usr/local/rbenv/shims/bundle exec rake secret`
