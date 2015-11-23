@@ -45,6 +45,7 @@ if test -z $fqdn
         exit -1
  fi
 	 
+	 echo $1 > /home/consumers/saved/${proto}_$fqdn
 
 template="/etc/nginx/templates/${proto}_site.tmpl"
 

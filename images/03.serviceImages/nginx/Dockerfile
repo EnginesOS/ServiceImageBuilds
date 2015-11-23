@@ -15,7 +15,8 @@ RUN usermod www-data -u 22005;\
 COPY home home
 COPY 502.html /usr/share/nginx/html/
 COPY etc/nginx/ /etc/nginx
-RUN chown www-data -R /etc/nginx/sites-enabled /home/configurators/saved
+RUN mkdir -p /home/consumers/saved/;\
+	chown www-data -R /etc/nginx/sites-enabled /home/configurators/saved  /home/consumers/saved/
 
 ENV ContUser www-data
 ENV ContGrp www-data
