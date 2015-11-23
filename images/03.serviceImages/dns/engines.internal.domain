@@ -10,6 +10,5 @@
 
 
 local           A       127.0.0.1
-ns              A       172.17.42.1
-dns		CNAME	ns
-testhost        A       10.101.1.1
+
+
