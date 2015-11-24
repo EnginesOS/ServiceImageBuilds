@@ -23,7 +23,11 @@ if test -z $fqdn
  	exit -1
  fi
 
-
+if test -f /home/consumers/saved/${proto}_$fqdn
+ then
+ 	rm -f /home/consumers/saved/${proto}_$fqdn
+ fi
+ 
 	if test -f /etc/nginx/sites-enabled/${proto}_${fqdn}.site
 	 then
 	 	rm /etc/nginx/sites-enabled/${proto}_${fqdn}.site	 
