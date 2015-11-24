@@ -1,7 +1,7 @@
  server {
         listen 4430;
     server_name FQDN;
-    resolver 172.17.42.1;
+  #  resolver 172.17.42.1;
     add_header Accept-Ranges bytes;
      add_header Strict-Transport-Security "max-age=31536000; includeSubdomains";
     proxy_read_timeout 300s;

@@ -20,7 +20,7 @@ interfaces=`cat /home/net/gateway_interface`
 interfaces=$interfaces , docker0
 
 cat /home/avahi/templates/avahi-daemon.conf.tmpl | sed "/INTERFACES/s//$interfaces/" > /tmp/avahi-daemon.conf
-cp /tmp/avahi.conf /etc/avahi/avahi-daemon.conf
+cp /tmp/avahi-daemon.conf /etc/avahi/avahi-daemon.conf
 
 sudo -n syslogd  -R syslog.engines.internal:5140
 
