@@ -13,7 +13,7 @@ if test -z ${hostname}
     fi
 
 
-	touch /home/avahi/hosts/${hostname}.engines.local
+	touch /home/avahi/hosts/${hostname}.local
 	ls /home/avahi/hosts/ > /home/avahi/hosts_list
 	if test -f /tmp/avahi-publisher.pid
 		then

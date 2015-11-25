@@ -15,7 +15,7 @@ if test -f /engines/var/run/flags/restart_required
 fi
 
 ip=`cat /home/net/ip`
-echo "$ip mgmt.engines.local" >/etc/avahi/hosts
+echo "$ip mgmt.local" >/etc/avahi/hosts
 interfaces=`cat /home/net/gateway_interface`
 interfaces=$interfaces , docker0
 
@@ -32,7 +32,7 @@ sudo -n /usr/sbin/avahi-daemon --no-chroot  &
 echo $! >/tmp/avahi-daemon.pid
 touch /home/avahi/hosts/engines.local
 #/home/publish_aliases.sh
-touch /home/avahi/hosts/avahi.engines.local
+touch /home/avahi/hosts/avahi.local
 ls /home/avahi/hosts/ > /home/avahi/hosts_list
 /home/publish_aliases.sh &
 
