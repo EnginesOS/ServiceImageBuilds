@@ -2,7 +2,7 @@
         listen 8000;
         server_name FQDN;
 		proxy_read_timeout 300s;
-		#resolver 172.17.42.1;
+		# resolver RESOLV_IP;
 		
         location / {
             FOLDER            		
@@ -27,7 +27,7 @@
         listen 8000;
         server_name SERVER.local;
 		proxy_read_timeout 300s;
-		#resolver 172.17.42.1;
+	# resolver RESOLV_IP;
 		
         location / {
             FOLDER            		
@@ -53,7 +53,7 @@ access_log /var/log/nginx/FQDN/https/access.log;
         error_log /var/log/nginx/FQDN/https/error.log;
         error_page 502 /502.html;
         listen 4430;
-       # resolver 172.17.42.1;
+   #  resolver RESOLV_IP;
         add_header Strict-Transport-Security "max-age=31536000; includeSubdomains";
         add_header Accept-Ranges bytes;
     server_name FQDN;
