@@ -60,14 +60,14 @@ cat /tmp/site.engine_name | sed "/RESOLV_IP/s//$resolv_ip/" > /tmp/site.res
 
 www_path=`echo $internal_dir  |sed "s/^\///" |sed "s/\/$//"`
 
-#cat /tmp/site.res| sed "/FOLDER/s//redirect/" > /tmp/site.path
+
 rewrite=""
    if ! test -z $www_path
  then
     rewrite='rewrite \^\/'$www_path'\/\(\.\*\) \/'$www_path'\/\$1  break;\
         rewrite \^\/\(\.\*\) $fqdn\/'$www_path'\/\$1  break; '
 fi
-cat /tmp/site.name | sed "/FOLDER/s//$rewrite/" >  /tmp/site.path
+cat /tmp/site.res | sed "/FOLDER/s//$rewrite/" >  /tmp/site.path
 
 
 if test "$proto" = default 
