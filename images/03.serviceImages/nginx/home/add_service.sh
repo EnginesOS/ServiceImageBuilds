@@ -6,6 +6,7 @@ service_hash=$1
 
 load_service_hash_to_environment
 
+
 if test -z $fqdn
  then
  	echo Error:no FQDN in nginx service hash
@@ -49,14 +50,17 @@ if test -z $fqdn
 
 template="/etc/nginx/templates/${proto}_site.tmpl"
 
+resolv_ip=`cat /home/net/management`
+
+
 cat $template | sed "/FQDN/s//$fqdn/" > /tmp/site.fqdn
 cat /tmp/site.fqdn  | sed "/PORT/s//$port/" > /tmp/site.port
-cat /tmp/site.port  | sed "/SERVER/s//$parent_engine/" > /tmp/site.name
-
+cat /tmp/site.port  | sed "/SERVER/s//$parent_engine/" > /tmp/site.engine_name
+cat /tmp/site.engine_name | sed "/RESOLV_IP/s//$resolv_ip/" > /tmp/site.res
 
 www_path=`echo $internal_dir  |sed "s/^\///" |sed "s/\/$//"`
 
-#cat /tmp/site.name | sed "/FOLDER/s//redirect/" > /tmp/site.path
+#cat /tmp/site.res| sed "/FOLDER/s//redirect/" > /tmp/site.path
 rewrite=""
    if ! test -z $www_path
  then
