@@ -1,7 +1,7 @@
  server {
         listen 8000;
         server_name FQDN;
-       resolver RESOLV_IP;
+       # resolver RESOLV_IP;
         add_header Accept-Ranges bytes;
 		proxy_read_timeout 300s;
 		    access_log /var/log/nginx/FQDN/http/access.log;
@@ -27,7 +27,7 @@
 server {
         listen 8000;
         server_name SERVER.local;
-     resolver RESOLV_IP;
+     # resolver RESOLV_IP;
         add_header Accept-Ranges bytes;
 		proxy_read_timeout 300s;
 		    access_log /var/log/nginx/FQDN/http/access.log;
