@@ -1,7 +1,7 @@
 FROM  engines/passenger:$release
 
 RUN /usr/sbin/addgroup --gid 999 docker;\
-	apt-get -y install telnet openssl-dev;\
+	apt-get -y install telnet openssl-dev libcurl4-openssl-dev;\
 	echo "Y" | adduser -q --uid 21000 --gid 999 --home /home/engines --disabled-password engines;\
 	 /usr/local/rbenv/bin/rbenv  install $ruby_version;\
 	 /usr/local/rbenv/bin/rbenv  global $ruby_version
