@@ -21,7 +21,7 @@ RUN	git init
 
 ADD gitconfig /home/app/.git/config
 ADD sudoers /etc/
-RUN /usr/local/rbenv/shims/gem install git bundle oink vmstat rest-client net_http_unix yajl-ruby streamly;\	
+RUN /usr/local/rbenv/shims/gem install git bundle oink vmstat rest-client net_http_unix yajl-ruby ;\	
 	mkdir -p /home/engines/.ssh/mgmt;\
 	chown -R 21000 /home/app/ /home/engines /var/log/apache2/;\
 	chmod -R g+w /usr/local/rbenv/versions/ ;chgrp -R docker /usr/local/rbenv/versions/;\
