@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. /home/.dbenv
+. /home/email/.dbenv
 
 if test -f /home/configurators/saved/default_domain
 	then

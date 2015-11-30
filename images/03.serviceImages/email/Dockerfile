@@ -34,9 +34,11 @@ ADD _config.inc.php  /home/app/
 ADD config.inc.php  /home/app/
 ADD htaccess /home/app/.htaccess
 RUN postmap /etc/postfix/transport;\
-	chown postfix /etc/postfix/smarthost_passwd /home/configurators/saved/ /etc/postfix/mailname /etc/postfix/transport.db /etc/postfix/transport /home/app/config.inc.php /etc/postfix/mysql
+     postmap  etc/postfix/smarthost_passwd;\
+	chown postfix /etc/postfix/smarthost_passwd* /home/configurators/saved/ /etc/postfix/mailname /etc/postfix/transport.db /etc/postfix/transport /home/app/config.inc.php /etc/postfix/mysql
 ADD 000-default.conf /etc/apache2/sites-enabled/ 
 	
+run mkdir /home/email ; chown postfix /home/email 
 	
 
 ENV ContUser postfix
