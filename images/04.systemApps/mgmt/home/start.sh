@@ -16,7 +16,21 @@ if  test -f /home/app/Gemfile
 	mv /home/app/Gemfile  /tmp/gf
 	fi
 	
-	#echo -n  `grep mgmt /etc/hosts|awk '{print $1}' |cut -d. -f-3`.1 > /opt/engines/etc/net/management
+
+
+export RUBY_GC_HEAP_GROWTH_FACTOR=1.1
+
+#You can also set how much memory Ruby is allowed to allocate off-heap4 before Ruby runs minor GC. You may want to lower that threshold:
+
+export RUBY_GC_MALLOC_LIMIT=4000100
+export RUBY_GC_MALLOC_LIMIT_MAX=16000100
+export RUBY_GC_MALLOC_LIMIT_GROWTH_FACTOR=1.1
+
+#Similarly, you may want to reduce how much memory Ruby allocates off-heap before it runs a full major GC:
+
+export RUBY_GC_OLDMALLOC_LIMIT=16000100
+export RUBY_GC_OLDMALLOC_LIMIT_MAX=16000100
+
 	
 release=`cat /opt/engines/release`
 git fetch origin $release

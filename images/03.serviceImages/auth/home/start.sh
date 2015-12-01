@@ -47,9 +47,9 @@ echo "startup complete"
   if test -f $PID_FILE
   	then
   	echo "waiting"
-  	sleep 50 &
+  	sleep 500 &
 		wait 
-		echo $SIGNAL
+		#echo $SIGNAL
   fi
  done
 
