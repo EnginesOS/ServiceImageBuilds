@@ -21,7 +21,7 @@ COPY home home
 	
 RUN	mkdir -p /home/registry;\
 	cd /home/registry;\
-	/usr/local/rbenv/shims/gem install rest-client sinatra thin json rubytree;\
+	/usr/local/rbenv/shims/gem install rest-client sinatra thin yajl-ruby rubytree;\
 	mkdir -p  /opt/engines/run/service_manager/;\	
 	chown -R registry /opt/engines/run/service_manager/ /home/registry /var/log/
 	
@@ -32,7 +32,7 @@ RUN  cd /home/registry;\
 	git  config  --global user.email "registry@engines.onl";\
 	git  config  --global  user.name "Engines System Registry";\
 	cd EnginesSystemRegistry ;\
-	git checkout current
+	git checkout $release
 
 
 

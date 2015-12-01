@@ -1,7 +1,7 @@
 FROM  engines/passenger:$release
 
 RUN /usr/sbin/addgroup --gid 999 docker;\
-	apt-get -y install telnet openssl-dev;\
+	apt-get -y install telnet openssl-dev libcurl4-openssl-dev;\
 	echo "Y" | adduser -q --uid 21000 --gid 999 --home /home/engines --disabled-password engines;\
 	 /usr/local/rbenv/bin/rbenv  install $ruby_version;\
 	 /usr/local/rbenv/bin/rbenv  global $ruby_version
@@ -21,7 +21,7 @@ RUN	git init
 
 ADD gitconfig /home/app/.git/config
 ADD sudoers /etc/
-RUN /usr/local/rbenv/shims/gem install git bundle oink vmstat rest-client;\	
+RUN /usr/local/rbenv/shims/gem install git bundle oink vmstat rest-client net_http_unix yajl-ruby ;\	
 	mkdir -p /home/engines/.ssh/mgmt;\
 	chown -R 21000 /home/app/ /home/engines /var/log/apache2/;\
 	chmod -R g+w /usr/local/rbenv/versions/ ;chgrp -R docker /usr/local/rbenv/versions/;\
