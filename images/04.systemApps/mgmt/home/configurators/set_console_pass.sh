@@ -38,8 +38,8 @@ fcnt=`expr $fcnt + 1`
         
    	if test -n $console_password
 	then  
-		subnet=`grep mgmt /etc/hosts|awk '{print $1}' |cut -d. -f-3`
-	ssh  -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /home/engines/.ssh/mgmt/update_engines_console_password engines@${subnet}.1 /opt/engines/bin/update_engines_console_password.sh $console_password
+		mgmt_ip=`cat /opt/engines/etc/net/management`
+	ssh  -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /home/engines/.ssh/mgmt/update_engines_console_password engines@${mgmt_ip} /opt/engines/bin/update_engines_console_password.sh $console_password
  		exit $?	
  	fi
  
