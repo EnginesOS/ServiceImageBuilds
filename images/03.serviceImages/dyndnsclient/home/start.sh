@@ -6,6 +6,7 @@ export PID_FILE
 
 touch /tmp/start_dyndns
 
+mkdir -p /engines/var/run/flags
 
 if ! test -f /home/dyndns/dyndns.conf
 then 
