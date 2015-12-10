@@ -111,7 +111,7 @@ if test "$proto" = default
 fi
 
 mkdir -p /tmp/last_run
-cp 	 /site.* /tmp/last_run
+cp 	/tmp/site.* /tmp/last_run
 
 rm /tmp/site.*
 
