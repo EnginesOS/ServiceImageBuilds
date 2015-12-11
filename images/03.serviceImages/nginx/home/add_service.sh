@@ -56,7 +56,7 @@ if ! test -z $engine_count
  then
  	if test $engine_count -gt 1
  	 then
- 	 	while test $cnt -lt  $engine_count
+ 	 	while test $cnt -le  $engine_count
  	 		do
  	 		if test $cnt -ne 1
  	 			then
