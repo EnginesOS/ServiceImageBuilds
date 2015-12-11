@@ -1,3 +1,11 @@
+
+ 		upstream SERVER_app {
+ 		ip_hash;
+ 		SERVERS
+ 		#server SERVER.engines.internal:PORT;
+ 		}
+ 	
+ 	
  server {
         listen 4430;
     server_name FQDN;
@@ -21,7 +29,7 @@
         location / {
         FOLDER
    
-	proxy_pass http://SERVER.engines.internal:PORT/;
+	proxy_pass http://SERVER_app/;
     proxy_set_header Upgrade $http_upgrade;
    # proxy_set_header Connection "upgrade";  
     proxy_set_header X-Real-IP $remote_addr;    
