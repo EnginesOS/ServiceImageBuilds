@@ -50,23 +50,25 @@ if test -z $fqdn
 
 template="/etc/nginx/templates/${proto}_site.tmpl"
 
-resolv_ip=`cat /home/net/management`
+resolv_ip=`cat /opt/engines/etc/net/management`
 servers="server SERVER.engines.internal:PORT;"
+cnt=1
 if ! test -z $engine_count
  then
  	if test $engine_count -gt 1
  	 then
  	 	while test $cnt -le  $engine_count
  	 		do
- 	 		if test $cnt -ne 1
- 	 			then
- 	 				n=$cnt
- 	 	     fi
- 	 		servers="$servers server SERVER$n.engines.internal:PORT;\n"
- 	 			
+ 	 		    if test $cnt -ne 1
+ 	 			  then
+ 	 				n=$cnt 	 	   
+ 	 				servers="$servers server SERVER$n.engines.internal:PORT;\n"
+ 	 			fi
+ 	 		  cnt=`expr $cnt + 1 `			
  	 		done 
  	fi
  fi
+ 
 cat $template | sed "/SERVERS/s//$servers/" > /tmp/servers.tmpl
 
 cat /tmp/servers.tmpl | sed "/FQDN/s//$fqdn/" > /tmp/site.fqdn
