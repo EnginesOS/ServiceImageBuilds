@@ -3,7 +3,7 @@
  		ip_hash;
  		server SERVER.engines.internal:PORT/;
  		}
- 	}
+ 	
 
  server {
         listen 8000;
@@ -29,7 +29,12 @@
          location /502.html{
 		}
     }
- 
+ }
+ https {
+ 		upstream engine {
+ 		ip_hash;
+ 		server SERVER.engines.internal:PORT/;
+ 		}
 server {
 access_log /var/log/nginx/FQDN/https/access.log;
         error_log /var/log/nginx/FQDN/https/error.log;
