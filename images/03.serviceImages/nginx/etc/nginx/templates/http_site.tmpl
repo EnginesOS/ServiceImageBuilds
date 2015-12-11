@@ -1,7 +1,7 @@
- http {
+
  		upstream engine {
  		ip_hash;
- 		server SERVER.engines.internal:PORT/;
+ 		server SERVER.engines.internal;
  		}
  
  server {
@@ -16,7 +16,7 @@
         location / {        
 		FOLDER
 		
-	proxy_pass http://engine;
+	proxy_pass http://engine:PORT/;
 	#proxy_pass http://SERVER.engines.internal:PORT/;
     proxy_set_header Upgrade $http_upgrade;
   #  proxy_set_header Connection "upgrade";  
@@ -30,7 +30,7 @@
          location /502.html{
 		}
     }
-}
+
 #server {
 #       listen 8000;
 #       server_name SERVER.local;

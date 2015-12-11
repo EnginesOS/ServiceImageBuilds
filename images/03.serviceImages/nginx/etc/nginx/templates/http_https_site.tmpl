@@ -1,7 +1,7 @@
- http {
+
  		upstream engine {
  		ip_hash;
- 		server SERVER.engines.internal:PORT/;
+ 		server SERVER.engines.internal;
  		}
  	
 
@@ -13,7 +13,7 @@
 		
         location / {
             FOLDER            		
-	proxy_pass http://engine;
+	proxy_pass http://engine:PORT/;
     proxy_set_header Upgrade $http_upgrade;
     #proxy_set_header Connection "upgrade";  
     proxy_set_header X-Real-IP $remote_addr;    
@@ -29,12 +29,7 @@
          location /502.html{
 		}
     }
- }
- https {
- 		upstream engine {
- 		ip_hash;
- 		server SERVER.engines.internal:PORT/;
- 		}
+ 
 server {
 access_log /var/log/nginx/FQDN/https/access.log;
         error_log /var/log/nginx/FQDN/https/error.log;
@@ -58,7 +53,7 @@ access_log /var/log/nginx/FQDN/https/access.log;
 
         location / {
             FOLDER            		
-	proxy_pass http://engine;
+	proxy_pass http://engine:PORT/;
     proxy_set_header Upgrade $http_upgrade;
    # proxy_set_header Connection "upgrade";  
     proxy_set_header X-Real-IP $remote_addr;    
@@ -68,5 +63,5 @@ access_log /var/log/nginx/FQDN/https/access.log;
         }
         location /502.html{
 		}
-    }
+ 
 
