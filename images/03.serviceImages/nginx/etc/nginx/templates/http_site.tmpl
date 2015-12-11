@@ -1,5 +1,5 @@
 
- 	upstream SERVER_app {
+ 	upstream FQDN_app {
  		ip_hash;
  		SERVERS
  		#server SERVER.engines.internal:PORT;
@@ -17,7 +17,7 @@
         location / {        
 		FOLDER
 
-	proxy_pass http://SERVER_app/;
+	proxy_pass http://FQDN_app/;
     proxy_set_header Upgrade $http_upgrade;
 
     proxy_set_header X-Real-IP $remote_addr;    
