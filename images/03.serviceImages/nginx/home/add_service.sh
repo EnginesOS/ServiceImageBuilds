@@ -62,7 +62,7 @@ if ! test -z $engine_count
  	 		    if test $cnt -ne 1
  	 			  then
  	 				n=$cnt 	 	   
- 	 				servers="$servers server SERVER$n.engines.internal:PORT;\n"
+ 	 				servers="$servers `echo server SERVER$n.engines.internal:PORT;`"
  	 			fi
  	 		  cnt=`expr $cnt + 1 `			
  	 		done 
@@ -71,9 +71,9 @@ if ! test -z $engine_count
  
 cat $template | sed "/SERVERS/s//$servers/" > /tmp/servers.tmpl
 
-cat /tmp/servers.tmpl | sed "/FQDN/s//$fqdn/" > /tmp/site.fqdn
-cat /tmp/site.fqdn  | sed "/PORT/s//$port/" > /tmp/site.port
-cat /tmp/site.port  | sed "/SERVER/s//$parent_engine/" > /tmp/site.engine_name
+cat /tmp/servers.tmpl | sed "/FQDN/s//$fqdn/g" > /tmp/site.fqdn
+cat /tmp/site.fqdn  | sed "/PORT/s//$port/g" > /tmp/site.port
+cat /tmp/site.port  | sed "/SERVER/s//$parent_engine/g" > /tmp/site.engine_name
 cat /tmp/site.engine_name | sed "/RESOLV_IP/s//$resolv_ip/" > /tmp/site.res
 
 www_path=`echo $internal_dir  |sed "s/^\///" |sed "s/\/$//"`
