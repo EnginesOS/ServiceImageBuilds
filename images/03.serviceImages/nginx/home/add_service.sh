@@ -62,7 +62,7 @@ if ! test -z $engine_count
  	 		    if test $cnt -ne 1
  	 			  then
  	 				n=$cnt 	 	   
- 	 				servers="$servers `echo server SERVER$n.engines.internal:PORT;`"
+ 	 				servers="$servers server SERVER$n.engines.internal:PORT;"
  	 			fi
  	 		  cnt=`expr $cnt + 1 `			
  	 		done 
