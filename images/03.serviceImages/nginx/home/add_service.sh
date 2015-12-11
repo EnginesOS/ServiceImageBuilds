@@ -51,9 +51,25 @@ if test -z $fqdn
 template="/etc/nginx/templates/${proto}_site.tmpl"
 
 resolv_ip=`cat /home/net/management`
+servers="server SERVER.engines.internal:PORT;"
+if ! test -z $engine_count
+ then
+ 	if test $engine_count -gt 1
+ 	 then
+ 	 	while test $cnt -lt  $engine_count
+ 	 		do
+ 	 		if test $cnt -ne 1
+ 	 			then
+ 	 				n=$cnt
+ 	 	     fi
+ 	 		servers="$servers server SERVER$n.engines.internal:PORT;\n"
+ 	 			
+ 	 		done 
+ 	fi
+ fi
+cat $template | sed "/SERVERS/s//$servers/" > /tmp/servers.tmpl
 
-
-cat $template | sed "/FQDN/s//$fqdn/" > /tmp/site.fqdn
+cat /tmp/servers.tmpl | sed "/FQDN/s//$fqdn/" > /tmp/site.fqdn
 cat /tmp/site.fqdn  | sed "/PORT/s//$port/" > /tmp/site.port
 cat /tmp/site.port  | sed "/SERVER/s//$parent_engine/" > /tmp/site.engine_name
 cat /tmp/site.engine_name | sed "/RESOLV_IP/s//$resolv_ip/" > /tmp/site.res
