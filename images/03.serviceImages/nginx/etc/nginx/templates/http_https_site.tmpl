@@ -1,5 +1,5 @@
 
- 		upstream engine_application {
+ 		upstream SERVER_app {
  		ip_hash;
 		server SERVER.engines.internal:PORT;
  		}
@@ -13,7 +13,7 @@
 		
         location / {
             FOLDER            		
-	proxy_pass http://SERVER.engines.internal:PORT/;
+	proxy_pass http://SERVER_app/;
     proxy_set_header Upgrade $http_upgrade;
     proxy_set_header X-Real-IP $remote_addr;    
     proxy_set_header Host $host;
@@ -56,7 +56,7 @@ access_log /var/log/nginx/FQDN/https/access.log;
 
         location / {
             FOLDER            		
-	proxy_pass http://SERVER.engines.internal:PORT/;
+	proxy_pass http://SERVER_app:PORT/;
     proxy_set_header Upgrade $http_upgrade;
     proxy_set_header X-Real-IP $remote_addr;    
     proxy_set_header Host $host;

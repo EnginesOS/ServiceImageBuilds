@@ -1,7 +1,7 @@
 
- 		upstream engine {
+ 		upstream SERVER_app {
  		ip_hash;
- 		server SERVER.engines.internal;
+ 		server SERVER.engines.internal:PORT;
  		}
  	
  	
@@ -28,7 +28,7 @@
         location / {
         FOLDER
    
-	proxy_pass http://engine:PORT/;
+	proxy_pass http://SERVER_app/;
     proxy_set_header Upgrade $http_upgrade;
    # proxy_set_header Connection "upgrade";  
     proxy_set_header X-Real-IP $remote_addr;    
