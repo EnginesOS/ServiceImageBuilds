@@ -17,4 +17,4 @@ for backup in `ls $Backup_ConfigDir`
         
         
 
-        cat /var/log/backup/$bfn | sendmail -t $email -f $email -u "$subject" 
+        cat /var/log/backup/$bfn | sendmail -t $email -f $email -u \"$subject\" 
