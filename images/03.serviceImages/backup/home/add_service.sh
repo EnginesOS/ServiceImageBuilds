@@ -16,7 +16,7 @@ load_service_hash_to_environment
 
  echo "$*" >>/var/log/backup/addbackup.log
 
-Backup_ConfigDir=/home/backup/.duply/
+
 
 
 echo name $backup_name
@@ -33,7 +33,7 @@ if test -d $dirname
   fi
 mkdir -p $dirname
 
-        if test $src_type = "fs"
+        if test $src_type = "fs" 
           then
                	src=/backup_src/volumes/$src_vol
           elif test $src_type = 'engine'
