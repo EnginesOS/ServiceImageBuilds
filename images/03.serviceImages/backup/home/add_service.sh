@@ -64,15 +64,15 @@ mkdir -p $dirname
         	then
 			   dest_proto="s3+http://" 
 	    else
-              dest="$dest_proto://$host/$path"
+              dest="$dest_proto://$dest_address/$path"
 	fi
 
 cp /home/tmpl/duply_conf  $dirname/conf
 
 echo "SOURCE='$src'" >> $dirname/conf
 echo "TARGET='$dest'" >> $dirname/conf
-echo "TARGET_USER='$user'"  >> $dirname/conf
-echo "TARGET_PASS='$pass'"  >> $dirname/conf
+echo "TARGET_USER='$dest_user'"  >> $dirname/conf
+echo "TARGET_PASS='$dest_pass'"  >> $dirname/conf
 
 if test $src_type = 'engine'
   then
