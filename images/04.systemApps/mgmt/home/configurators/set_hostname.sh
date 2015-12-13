@@ -14,7 +14,6 @@ if test -z ${hostname}
 fi
 
 
-
 if  test -z ${domain_name} 
 	then  
 		 echo "Error: Missing domain_name"
