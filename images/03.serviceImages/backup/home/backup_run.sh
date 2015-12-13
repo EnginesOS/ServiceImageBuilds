@@ -1,4 +1,6 @@
 #!/bin/sh
+email=`/home/configurators/saved/backup_email_hash`
+
 Backup_ConfigDir=/home/backup/.duply/
 for backup in `ls $Backup_ConfigDir`
         do
@@ -7,8 +9,12 @@ for backup in `ls $Backup_ConfigDir`
                 duply $backup backup   --s3-use-new-style > /var/log/backup/$bfn
                 	if test $? -eq 0
                 		then
-                			echo "Sucessfully backed up $backup"
+                			subject="Sucessfully backed up $backup" 
                 		else
-                			echo "Problem with backup $backup"
+                			subject="Problem with backup $backup" 
                 	fi
         done
+        
+        
+
+        cat /var/log/backup/$bfn | sendmail -t $email -f $email -u "$subject" 
