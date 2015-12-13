@@ -1,5 +1,5 @@
 #!/bin/sh
-email=`/home/configurators/saved/backup_email_hash`
+email=`cat /home/configurators/saved/backup_email_hash`
 
 Backup_ConfigDir=/home/backup/.duply/
 for backup in `ls $Backup_ConfigDir`
