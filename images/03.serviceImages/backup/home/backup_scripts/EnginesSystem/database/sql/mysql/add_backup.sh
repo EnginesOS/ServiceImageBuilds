@@ -28,7 +28,7 @@ mkdir -p $dirname
                 cp /home/tmpl/duply_sql_post   $dirname/post
                 chmod u+x  $dirname/pre
                 chmod u+x  $dirname/post
-   
+    			src=/home/backup/sql_dumps/$dbname.sql
 
         if test $dest_proto = "file"
                 then
