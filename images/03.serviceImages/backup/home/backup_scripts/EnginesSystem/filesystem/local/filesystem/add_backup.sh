@@ -16,7 +16,11 @@ if test -d $dirname
    rm -rf $dirname
   fi
 mkdir -p $dirname
-	
+
+	if ! test -z "$email"
+ then
+ 	echo $email >$dirname/email 	
+ fi
 				dir=`echo $volume_src |sed "/\/var\/lib\/engines\//s///"`
                	src=/backup_src/volumes/$dir
     

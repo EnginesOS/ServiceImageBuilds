@@ -32,3 +32,5 @@ echo calling /home/backup_scripts/$publisher_namespace/$type_path/add_backup.sh 
 	/home/backup_scripts/$publisher_namespace/$type_path/add_backup.sh $1
 	shift
  done
+
+ exit 0

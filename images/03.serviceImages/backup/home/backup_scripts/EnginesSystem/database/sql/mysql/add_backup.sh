@@ -17,6 +17,10 @@ if test -d $dirname
   fi
 mkdir -p $dirname
 
+if ! test -z "$email"
+ then
+ 	echo $email >$dirname/email 	
+ fi
 
                 echo "#!/bin/sh " >  $dirname/pre
                 echo "dbflavor=$flavor" >>  $dirname/pre
