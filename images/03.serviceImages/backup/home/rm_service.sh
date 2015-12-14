@@ -7,9 +7,9 @@ service_hash=$1
 
 load_service_hash_to_environment
 Backup_ConfigDir=/home/backup/.duply/
-echo name $backup_name
-echo parent_engine $parent_engine
-echo src_type $src_type
+#echo name $backup_name
+#echo parent_engine $parent_engine
+#echo src_type $src_type
 dirname=${parent_engine}_${backup_name}_${src_type}
 dirname=${Backup_ConfigDir}/$dirname
 
@@ -28,5 +28,8 @@ if test -n $1
 		 		rm -rf ${dirname}_db
 		 fi		 
 	fi
+	
+	
+	exit 0
 
       
