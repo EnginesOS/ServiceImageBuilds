@@ -22,12 +22,13 @@ export dest
 export dest_user
 export dest_pass
 export parent_engine
-
-while ! test -z $2
+ shift
+while ! test -z $1
  do
-     shift
+    
 	service_hash=$1
-
-. /home/engines/scripts/functions.sh
+load_service_hash_to_environment
+echo calling /home/backup_scripts/$publisher_namespace/$type_path/add_backup.sh $1
 	/home/backup_scripts/$publisher_namespace/$type_path/add_backup.sh $1
+	shift
  done

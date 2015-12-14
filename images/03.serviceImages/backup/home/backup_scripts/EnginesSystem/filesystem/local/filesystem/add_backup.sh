@@ -2,7 +2,7 @@
  
  
 
-
+src_type=volume
 echo name $backup_name
 echo parent_engine $parent_engine
 echo src_type $src_type
@@ -17,7 +17,7 @@ if test -d $dirname
   fi
 mkdir -p $dirname
 	
-				dir=`echo $volume_src |sed "\/var\/lib\/engines\//s///"`
+				dir=`echo $volume_src |sed "/\/var\/lib\/engines\//s///"`
                	src=/backup_src/volumes/$dir
     
 
