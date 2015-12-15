@@ -3,7 +3,7 @@ ADD home /home
 ADD engines_sudoers /etc/sudoers.d/engines
 RUN apt-get -y update;\
 	apt-get upgrade -y;\
-	apt-get install -y  sendmail-bin ca-certificates mysql-client postgresql-client git-core imagemagick gawk sqlite3 bison  git-core sudo;\
+	apt-get install -y  sendmail-bin ca-certificates mysql-client postgresql-client git-core imagemagick gawk sqlite3 bison  sudo;\
 	mkdir -p /home/fs;\
 	apt-get clean;\
 	cat /etc/mail/submit.cf | sed "/^DS/s//DSsmtp.engines.internal/" > /tmp/submit.cf;\
