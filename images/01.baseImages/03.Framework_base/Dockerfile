@@ -10,7 +10,9 @@ RUN apt-get -y update;\
 	mv /tmp/submit.cf /etc/mail/submit.cf ;\
 	cat /etc/mail/sendmail.cf | sed "/^DS/s//DSsmtp.engines.internal/" > /tmp/sendmail.cf;\
 	mv /tmp/sendmail.cf /etc/mail/sendmail.cf ;\
-	adduser -q --disabled-password  -uid 11111 data-user
+	adduser -q --disabled-password  -uid 11111 data-user;\
+	chgrp containers /var/log/ ;\
+	chmod g+w /var/log/
 	
 #FIXME above with sendmail.cf should really use m4 macros and not a sed kludge
 	
