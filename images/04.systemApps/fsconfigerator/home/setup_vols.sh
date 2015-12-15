@@ -23,6 +23,8 @@ chmod g+w  -R /client/state
 if test -f /dest/fs/.persistant_lock
  then
   chown -R $fw_user /dest/fs/*
+  chmod g+w -R  /dest/fs/*
+  
 else
 
 	cd /home/fs_src/
@@ -37,7 +39,8 @@ else
 	#if no presistance dirs/files need to set permission here
 	
 	chown  ${fw_user}.${data_gid}  /dest/fs/
-	#chmod g+w  /dest/fs/
+	chmod g+w -R  /dest/fs/*
+	chmod g+rx ` find /dest/fs/ -type d`
 	
 	if test -d /home/app_src
 		then
@@ -46,6 +49,7 @@ else
 			touch /dest/fs/_home_app_/.persistant
     fi
     
+	touch /dest/fs/.persistant_lock
 	touch /dest/fs/.persistant
 fi
 
