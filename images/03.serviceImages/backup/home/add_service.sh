@@ -18,7 +18,9 @@ ts=`date`
 
 export Backup_ConfigDir
 export backup_name
-export dest
+export dest_folder
+export dest_proto
+export dest_address
 export dest_user
 export dest_pass
 export parent_engine

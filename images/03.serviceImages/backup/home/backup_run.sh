@@ -19,6 +19,6 @@ for backup in `ls $Backup_ConfigDir`
                 		else
                 			subject="Problem with backup $backup" 
                 	fi
-                 
-        		cat /var/log/backup/$bfn | sendmail -t $email -f $email -u \"$subject\"
+                 echo $email >> /var/log/backup/$bfn
+        		cat /var/log/backup/$bfn | sendmail -t $default_email -f $default_email -u \"$subject\"
         done 

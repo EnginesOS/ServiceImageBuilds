@@ -42,7 +42,7 @@ if ! test -z "$email"
         	then
 			   dest_proto="s3+http://" 
 	    else
-              dest="$dest_proto://$dest_address/$path"
+              dest="$dest_proto://$dest_address/$dest_folder"
 	fi
 
 cp /home/tmpl/duply_conf  $dirname/conf

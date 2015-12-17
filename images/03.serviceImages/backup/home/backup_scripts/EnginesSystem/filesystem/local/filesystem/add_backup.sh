@@ -28,12 +28,12 @@ mkdir -p $dirname
         if test $dest_proto = "file"
                 then
                  #path=`echo $3 |cut -f4 -d:`
-                  dest=/var/lib/engines/local_backup_dests/$path         
+                  dest=/var/lib/engines/local_backup_dests/$dest_folder         
         elif test $dest_proto = "s3"	
         	then
 			   dest_proto="s3+http://" 
 	    else
-              dest="$dest_proto://$dest_address/$path"
+              dest="$dest_proto://$dest_address/$dest_folder"
 	fi
 
 cp /home/tmpl/duply_conf  $dirname/conf
