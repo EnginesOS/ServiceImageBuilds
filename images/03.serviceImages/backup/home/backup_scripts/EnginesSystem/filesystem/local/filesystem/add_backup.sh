@@ -6,7 +6,7 @@ src_type=volume
 echo name $backup_name
 echo parent_engine $parent_engine
 echo src_type $src_type
-dirname=${parent_engine}_${backup_name}_${src_type}
+ dirname=${parent_engine}_${backup_name}_${src_type}
 dirname=${Backup_ConfigDir}/$dirname
 
 
@@ -16,6 +16,8 @@ if test -d $dirname
    rm -rf $dirname
   fi
 mkdir -p $dirname
+
+export dirname
 
 	if ! test -z "$email"
  then
@@ -42,4 +44,7 @@ echo "SOURCE='$src'" >> $dirname/conf
 echo "TARGET='$dest'" >> $dirname/conf
 echo "TARGET_USER='$dest_user'"  >> $dirname/conf
 echo "TARGET_PASS='$dest_pass'"  >> $dirname/conf
-
+	if test -z "$key"
+	then
+		echo "GPG_KEY='disabled'" >> $dirname/conf
+	fi

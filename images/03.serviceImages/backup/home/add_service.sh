@@ -15,6 +15,7 @@ load_service_hash_to_environment
 
 ts=`date`
  echo "$ts:$*" >>/var/log/backup/addbackup.log
+ 
 
 export Backup_ConfigDir
 export backup_name
@@ -31,7 +32,9 @@ while ! test -z $1
 	service_hash=$1
 load_service_hash_to_environment
 echo calling /home/backup_scripts/$publisher_namespace/$type_path/add_backup.sh $1
+
 	/home/backup_scripts/$publisher_namespace/$type_path/add_backup.sh $1
+
 	shift
  done
 
