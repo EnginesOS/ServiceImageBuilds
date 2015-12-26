@@ -1,12 +1,7 @@
 #!/bin/bash 
  
  src_type=mysql
-
-
-echo name $backup_name
-echo parent_engine $parent_engine
-echo src_type $src_type
-dirname=${parent_engine}_${backup_name}_${src_type}
+ dirname=${parent_engine}_${backup_name}_${src_type}
 dirname=${Backup_ConfigDir}/$dirname
 
 
@@ -16,6 +11,8 @@ if test -d $dirname
    rm -rf $dirname
   fi
 mkdir -p $dirname
+
+ts=`date +%d_%m_%y`
 
 if ! test -z "$email"
  then
@@ -32,7 +29,7 @@ if ! test -z "$email"
                 cp /home/tmpl/duply_sql_post   $dirname/post
                 chmod u+x  $dirname/pre
                 chmod u+x  $dirname/post
-    			src=/home/backup/sql_dumps/$dbname.sql
+    			src=/home/backup/sql_dumps/${dbname}_${ts}.sql
 
         if test $dest_proto = "file"
                 then
@@ -45,10 +42,13 @@ if ! test -z "$email"
               dest="$dest_proto://$dest_address/$dest_folder"
 	fi
 
-cp /home/tmpl/duply_conf  $dirname/conf
+
 
 echo "SOURCE='$src'" >> $dirname/conf
 echo "TARGET='$dest'" >> $dirname/conf
 echo "TARGET_USER='$dest_user'"  >> $dirname/conf
 echo "TARGET_PASS='$dest_pass'"  >> $dirname/conf
-
+	if test -z "$key"
+	then
+		echo "GPG_KEY='disabled'" >> $dirname/conf
+	fi
