@@ -1,7 +1,8 @@
 
+ts=`date +%d_%m_%y`
 
-         if test $dbflavor = "mysql"
+         if test $db_flavor = "mysql"
          	then
-         		mysqldump -h $dbhost -u $dbuser --password=$dbpass $dbname >    /home/backup/sql_dumps/$dbname.sql
+         		mysqldump -h $dbhost -u $dbuser --password=$dbpass $dbname >    /home/backup/sql_dumps/${dbname}_${ts}.sql
          fi   
     

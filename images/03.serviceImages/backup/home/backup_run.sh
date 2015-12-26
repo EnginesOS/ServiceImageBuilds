@@ -15,12 +15,15 @@ for backup in `ls $Backup_ConfigDir`
                 fi
                 	
                 duply $backup backup   --s3-use-new-style > /var/log/backup/$bfn
-                	if test $? -eq 0
+                
+                result=`grep "Finished state FAILED"  /var/log/backup/$bfn`
+                	if test $? -ne 0
                 		then
                 			subject="Sucessfully backed up $backup" 
                 		else
-                			subject="Problem with backup $backup" 
+                			subject="$backup: $result " 
                 	fi
+                	
                  echo $email >> /var/log/backup/$bfn
         		cat /var/log/backup/$bfn | sendmail -t $default_email -f $default_email -u \"$subject\"
         done 
