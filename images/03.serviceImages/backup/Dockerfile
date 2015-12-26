@@ -35,8 +35,8 @@ ADD crontab  /home/backup/fcron/spool/backup.orig
 RUN chown -R backup ~backup ;\
 	chown backup /home/configurators/saved;\
 	chgrp backup /home/configurators/*.sh ;\
-	add_group -g 1111 datauser ;\
-	 usermod -G datauser -a backup
+	addgroup -g 1111 datauser ;\
+	usermod -G datauser -a backup
 	
 	
 	
