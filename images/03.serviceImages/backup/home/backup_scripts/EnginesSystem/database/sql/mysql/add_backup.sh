@@ -42,13 +42,10 @@ if ! test -z "$email"
               dest="$dest_proto://$dest_address/$dest_folder"
 	fi
 
-
+/home/prep_conf.sh  $dirname/conf
 
 echo "SOURCE='$src'" >> $dirname/conf
 echo "TARGET='$dest'" >> $dirname/conf
 echo "TARGET_USER='$dest_user'"  >> $dirname/conf
 echo "TARGET_PASS='$dest_pass'"  >> $dirname/conf
-	if test -z "$key"
-	then
-		echo "GPG_KEY='disabled'" >> $dirname/conf
-	fi
+
