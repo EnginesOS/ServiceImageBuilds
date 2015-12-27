@@ -69,6 +69,7 @@ echo "TARGET_PASS='$pass'"  >>$Backup_ConfigDir/system_logs/conf
 				if test $include_files = "true"
 					then
 						mkdir -p $Backup_ConfigDir/system_files
+						echo /backup_src/volumes/mysql >  $Backup_ConfigDir/system_files/exclude
 						src=/backup_src/volumes/
 						cp /home/tmpl/duply_conf $Backup_ConfigDir/system_files/conf
 						echo "SOURCE='$src'" >>$Backup_ConfigDir/system_files/conf

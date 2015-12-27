@@ -15,7 +15,6 @@ RUN adduser -q --disabled-password  -uid 22013 dovecot;\
 	chown -R dovecot /var/run/dovecot/;\
 	usermod -G containers -a dovecot 
 	
-	
 ADD dovecot/conf.d /etc/dovecot/conf.d
 
 ADD dovecot/dovecot-sql.conf.ext /etc/dovecot/
