@@ -72,7 +72,7 @@ echo "TARGET_PASS='$pass'"  >>$Backup_ConfigDir/system_logs/conf
 						mkdir -p $Backup_ConfigDir/system_files
 						echo /backup_src/volumes/mysql >  $Backup_ConfigDir/system_files/exclude
 						src=/backup_src/volumes/
-						cp /home/tmpl/duply_conf $Backup_ConfigDir/system_files/conf
+						/home/prep_conf.sh  $Backup_ConfigDir/system_files/conf
 						echo "SOURCE='$src'" >>$Backup_ConfigDir/system_files/conf
 _dest=$dest/volumes				
 echo "TARGET='$_dest'" >>$Backup_ConfigDir/system_files/conf
