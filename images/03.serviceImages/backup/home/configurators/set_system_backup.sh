@@ -30,7 +30,7 @@ if test $dest_proto = "s3"
 				if test  $include_system = "true"
 					then
 						mkdir -p $Backup_ConfigDir/system
-                		cp /home/tmpl/duply_conf $Backup_ConfigDir/system/conf
+                		/home/prep_conf.sh $Backup_ConfigDir/system/conf
                 		src=/backup_src/engines
                 		echo "SOURCE='$src'" >>$Backup_ConfigDir/system/conf
 _dest=$dest/system
@@ -45,8 +45,9 @@ echo "TARGET_PASS='$pass'"  >>$Backup_ConfigDir/system/conf
 						cat /home/tmpl/system_dumpall.sh >  $Backup_ConfigDir/system_databases/pre
                 		cp /home/tmpl/dumpall_post.sh  $Backup_ConfigDir/system_databases/post
                 		chmod u+x $Backup_ConfigDir/system_databases/pre
-                		chmod u+x $Backup_ConfigDir/system_databases/post
-                		cp /home/tmpl/duply_conf $Backup_ConfigDir/system_databases/conf
+                		chmod u+x $Backup_ConfigDir/system_databases/pos
+                		/home/prep_conf.sh $Backup_ConfigDir/system_databases/conf
+
                 		echo "SOURCE='$src'" >>$Backup_ConfigDir/system_databases/conf
 _dest=$dest/databases
 echo "TARGET='$_dest'" >>$Backup_ConfigDir/system_databases/conf
@@ -57,8 +58,8 @@ echo "TARGET_PASS='$pass'"  >>$Backup_ConfigDir/system_databases/conf
 				if test $include_logs = "true"
 					then
 						mkdir -p $Backup_ConfigDir/system_logs
-						src=/backup_src/logs
-						cp /home/tmpl/duply_conf $Backup_ConfigDir/system_logs/conf
+						src=/backup_src/logs						
+						/home/prep_conf.sh $Backup_ConfigDir/system_logs/conf
 						echo "SOURCE='$src'" >>$Backup_ConfigDir/system_logs/conf
 _dest=$dest/logs
 echo "TARGET='$_dest'" >>$Backup_ConfigDir/system_logs/conf

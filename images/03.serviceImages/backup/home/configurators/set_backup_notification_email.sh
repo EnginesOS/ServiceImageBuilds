@@ -11,7 +11,7 @@ load_service_hash_to_environment
 
 if ! test -f /home/backup/.gnupg/key_created
 	then
-		/home/configurators/init_key.sh
+		/home/configurators/init_gpg_key.sh
 	fi
 
 
