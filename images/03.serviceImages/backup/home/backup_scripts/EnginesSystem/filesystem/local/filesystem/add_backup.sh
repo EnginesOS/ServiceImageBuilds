@@ -38,7 +38,8 @@ export dirname
               dest="$dest_proto://$dest_address/$dest_folder"
 	fi
 
-cp /home/tmpl/duply_conf  $dirname/conf
+
+/home/prep_conf.sh  $dirname/conf
 
 echo "SOURCE='$src'" >> $dirname/conf
 echo "TARGET='$dest'" >> $dirname/conf
