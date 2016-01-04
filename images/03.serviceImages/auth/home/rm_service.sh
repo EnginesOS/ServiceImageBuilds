@@ -25,9 +25,9 @@ if test -z $command
 		exit -1
 	fi
 	
-	rm /home/auth/static/ssh/keys/${service}_${command}_authorized_keys	
-	cat /home/auth/static/keys/*_authorized_keys > /home/auth/static/keys/authorized_keys
-chmod og-rwx /home/auth/static/keys/authorized_keys	
+	rm /home/auth/keys/${service}_${command}_authorized_keys	
+	cat /home/auth/keys/*_authorized_keys > /home/auth/keys/authorized_keys
+chmod og-rwx /home/auth/keys/authorized_keys	
 
 
 if test `echo  ${command} |grep access |wc -c ` -gt 2 
