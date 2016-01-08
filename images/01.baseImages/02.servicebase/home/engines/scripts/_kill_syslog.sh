@@ -4,7 +4,8 @@ if test -f /run/syslogd.pid
 	then
 		pid=`cat  /run/syslogd.pid `
 		kill -TERM  $pid
-			
+if test -f /run/syslogd.pid 
+ then			
 	pid=`cat  /run/syslogd.pid `
 	echo $pid |grep ^[0-9]
  	
@@ -13,7 +14,8 @@ if test -f /run/syslogd.pid
                 echo no wait for syslog
         else
 	              sleep 1 # cant wait on pid as not a child of this shell
-	fi							
+	fi
+  fi							
 fi
 	
 
