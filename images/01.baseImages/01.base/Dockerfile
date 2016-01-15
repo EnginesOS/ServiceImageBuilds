@@ -35,7 +35,8 @@ RUN	cd  /tmp ;\
 	 cp -r /home/src . ;\
 	 cd src ;\
 	 make json_to_env ;\
-	 cp json_to_env /home/engines/scripts
+	 mkdir -p /home/engines/bin;\
+	 cp json_to_env /home/engines/bin
 	 #apt-remove ... build-essential 
 
 
