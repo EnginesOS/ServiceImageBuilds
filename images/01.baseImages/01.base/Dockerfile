@@ -26,8 +26,9 @@ RUN apt-get -y  --force-yes update;\
 	apt-get clean;\
 	ln -s /usr/bin/sendmail /usr/sbin/sendmail;\
 	groupadd -g 22020 containers ;\
-	apt-mark hold tzdata ;\
-	cd  /tmp ;\
+	apt-mark hold tzdata 
+	
+RUN	cd  /tmp ;\
 	 git clone https://github.com/zserge/jsmn ;\
 	 cd jsmn ;\
 	 make ;\
