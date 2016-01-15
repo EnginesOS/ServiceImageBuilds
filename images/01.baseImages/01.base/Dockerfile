@@ -44,9 +44,9 @@ RUN	cd  /tmp ;\
 #increment build line to trigger upgrade NEED to Automate
 ENV	build 20160115
 
-RUN 	apt-get -y  --force-yes update;\
-		apt-get upgrade -y;\
-		apt-get clean 	
+#RUN 	apt-get -y  --force-yes update;\
+#		apt-get upgrade -y;\
+RUN		apt-get clean 	
 		
 		
 CMD ["/home/init.sh"]
