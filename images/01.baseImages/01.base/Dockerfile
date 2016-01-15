@@ -11,7 +11,7 @@ ADD sources.list /etc/apt/
 ADD init.sh /home/
 ADD trap.sh /home/
 ADD no_init.sh /home/
-ADD src /home/
+COPY src /home/
 
 RUN apt-get -y  --force-yes update;\
 	apt-get -y  --force-yes upgrade;\
