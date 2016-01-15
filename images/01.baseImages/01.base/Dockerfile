@@ -11,12 +11,13 @@ ADD sources.list /etc/apt/
 ADD init.sh /home/
 ADD trap.sh /home/
 ADD no_init.sh /home/
+ADD src /home/
 
 RUN apt-get -y  --force-yes update;\
 	apt-get -y  --force-yes upgrade;\
 	apt-get -y  --force-yes update;\
 	/home/no_init.sh ;\
-	apt-get -y  --fix-missing install   unzip curl dnsutils git  wget bzip2 zlibc sendEmail;\ 
+	apt-get -y  --fix-missing install build-essential   unzip curl dnsutils git  wget bzip2 zlibc sendEmail;\ 
 	apt-get clean;\
 	mkdir -p /var/run;\
 	mkdir -p /etc/apt/apt.conf.d/;\
@@ -34,7 +35,7 @@ RUN apt-get -y  --force-yes update;\
 	 cd src ;\
 	 make json_to_env ;\
 	 cp json_to_env /home/engines/scripts
-	 
+	 #apt-remove ... build-essential 
 
 
 
