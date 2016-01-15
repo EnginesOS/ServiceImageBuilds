@@ -28,6 +28,7 @@ RUN apt-get -y  --force-yes update;\
 	groupadd -g 22020 containers ;\
 	apt-mark hold tzdata 
 	
+	COPY src /home/src
 RUN	cd  /tmp ;\
 	 git clone https://github.com/zserge/jsmn ;\
 	 cd jsmn ;\
@@ -41,7 +42,7 @@ RUN	cd  /tmp ;\
 
 
 #increment build line to trigger upgrade NEED to Automate
-ENV	build 20151005
+ENV	build 20160115
 
 RUN 	apt-get -y  --force-yes update;\
 		apt-get upgrade -y;\
