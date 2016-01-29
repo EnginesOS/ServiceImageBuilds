@@ -35,8 +35,13 @@ if test -z $collation
 		exit -1
 	fi
 	
+	char_set=`echo $collation | cut -f1 -d_`
+	if test -t "$char_set"
+	 then
+	 	char_set=utf8
+	 fi
 
-Q1="CREATE DATABASE IF NOT EXISTS ${BTICK}$database_name${BTICK}   DEFAULT CHARACTER SET utf8
+Q1="CREATE DATABASE IF NOT EXISTS ${BTICK}$database_name${BTICK}   DEFAULT CHARACTER SET $char_set
   DEFAULT COLLATE $collation ;"
 Q2="GRANT ALL  PRIVILEGES ON ${BTICK}$database_name${BTICK}.* TO '$db_username'@'%' IDENTIFIED BY '$db_password';"
 Q3="Grant Create User on *.* to '$db_username'@'%';"
