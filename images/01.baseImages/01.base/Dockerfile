@@ -16,7 +16,7 @@ RUN apt-get -y  --force-yes update;\
 	apt-get -y  --force-yes upgrade;\
 	apt-get -y  --force-yes update;\
 	/home/no_init.sh ;\
-	apt-get -y  --fix-missing install   unzip curl dnsutils git  wget bzip2 zlibc sendEmail;\ 
+	apt-get -y  --fix-missing install build-essential   unzip curl dnsutils git  wget bzip2 zlibc sendEmail;\ 
 	apt-get clean;\
 	mkdir -p /var/run;\
 	mkdir -p /etc/apt/apt.conf.d/;\
@@ -25,25 +25,28 @@ RUN apt-get -y  --force-yes update;\
 	apt-get clean;\
 	ln -s /usr/bin/sendmail /usr/sbin/sendmail;\
 	groupadd -g 22020 containers ;\
-	apt-mark hold tzdata ;\
-	cd  /tmp ;\
+	apt-mark hold tzdata 
+	
+	COPY src /home/src
+RUN	cd  /tmp ;\
 	 git clone https://github.com/zserge/jsmn ;\
 	 cd jsmn ;\
 	 make ;\
 	 cp -r /home/src . ;\
 	 cd src ;\
 	 make json_to_env ;\
-	 cp json_to_env /home/engines/scripts
-	 
+	 mkdir -p /home/engines/bin;\
+	 cp json_to_env /home/engines/bin
+	 #apt-remove ... build-essential 
 
 
 
 #increment build line to trigger upgrade NEED to Automate
-ENV	build 20151005
+ENV	build 20160115
 
-RUN 	apt-get -y  --force-yes update;\
-		apt-get upgrade -y;\
-		apt-get clean 	
+#RUN 	apt-get -y  --force-yes update;\
+#		apt-get upgrade -y;\
+RUN		apt-get clean 	
 		
 		
 CMD ["/home/init.sh"]

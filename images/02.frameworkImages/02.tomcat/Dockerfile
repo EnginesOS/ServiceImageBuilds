@@ -3,11 +3,11 @@ FROM engines/frameworkbase:$release
 RUN apt-get -y  --force-yes update;\
 	apt-get -y  --force-yes upgrade;\
 	/usr/sbin/usermod -u 22671 www-data;\
-	apt-get install -y  --force-yes  tomcat8 ;\
+	apt-get install -y  --force-yes  tomcat7 ;\
 	apt-get clean ;\
-	ln -s /var/log/tomcat7 /usr/share/tomcat8/logs;\
- 	ln -s  /etc/tomcat7  /usr/share/tomcat8/conf;\
- 	ln -s /tmp /usr/share/tomcat8/temp;\
+	ln -s /var/log/tomcat7 /usr/share/tomcat7/logs;\
+ 	ln -s  /etc/tomcat7  /usr/share/tomcat7/conf;\
+ 	ln -s /tmp /usr/share/tomcat7/temp;\
  	usermod -G containers -a www-data
 
 ADD home home

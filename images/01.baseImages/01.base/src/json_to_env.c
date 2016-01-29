@@ -79,7 +79,7 @@ int main() {
         tok = malloc(sizeof(*tok) * tokcount);
         if (tok == NULL) {
                 fprintf(stderr, "malloc(): errno=%d\n", errno);
-                return 3;
+                return(3);
         }
 
         for (;;) {
@@ -121,8 +121,8 @@ again:
                         dump(js, tok, p.toknext, 0);
                         eof_expected = 1;
                 }
-        }
+        
 
-        return 0;
+        return(0);
 }
         
