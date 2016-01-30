@@ -1,8 +1,10 @@
 #! /bin/sh
 
 #taken from https://gist.github.com/specialunderwear/1218856
+# and edited 
+#eo removed
+
 cd /usr/share/locales
-./install-language-pack eo
 ./install-language-pack ia
 ./install-language-pack ie
 ./install-language-pack io
