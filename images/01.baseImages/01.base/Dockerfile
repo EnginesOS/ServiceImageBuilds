@@ -42,8 +42,7 @@ RUN	cd  /tmp ;\
 COPY install_utf8_langauges.sh /tmp
 
 RUN /tmp/install_utf8_langauges.sh;\
-	 rm /tmp/install_utf8_langauges.sh
-	 
+	 rm -r /tmp/*
 	 
 
 
