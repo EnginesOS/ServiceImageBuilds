@@ -37,9 +37,19 @@ RUN	cd  /tmp ;\
 	 make json_to_env ;\
 	 mkdir -p /home/engines/bin;\
 	 cp json_to_env /home/engines/bin
-	 #apt-remove ... build-essential 
+	 #apt-remove ... build-essential
+	 
+COPY install_utf8_langauges.sh /tmp
+
+RUN /tmp/install_utf8_langauges.sh;\
+	 rm /tmp/install_utf8_langauges.sh
+	 
+	 
 
 
+RUN mkdir /home/home_dir
+
+ENv HOME /home/home_dir
 
 #increment build line to trigger upgrade NEED to Automate
 ENV	build 20160115
