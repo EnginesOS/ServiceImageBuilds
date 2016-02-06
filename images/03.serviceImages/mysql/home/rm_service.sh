@@ -43,10 +43,10 @@ if test $? -eq 0
 		exit 0
 	fi
 	# dont return error but include note
-	echo $res | grep  "unknown database"
-	if test -eq 0
+	echo $res | grep  "Unknown database"
+	if test $? -eq 0
 	then 
-		echo "Database $db_username Not Found"
+		echo "Database $dbname Not Found"
 		exit 0
 	fi
 	
