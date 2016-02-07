@@ -4,9 +4,9 @@
 grep BLANK /var/lib/bind/engines/engines.dnsrecords >/dev/null
 if test $? -eq 0
  then
- ip=`grep dns /etc/hosts|awk '{print $1}' |cut -d. -f-3`
-ip=${ip}.1
-net=`echo $ip ||awk  ' BEGIN {  FS="."} {print $1 "." $2}'`
+ ip_r=`grep dns /etc/hosts|awk '{print $1}' |cut -d. -f-3`
+ip=${ip_r}.1
+net=`echo $ip_r |awk  ' BEGIN {  FS="."} {print $2 "." $1}'`
 cat  /etc/bind/templates/engines.internal.domain.tmpl |sed "/IP/s//$ip/" > /var/lib/bind/engines/engines.dnsrecords
 cat  /etc/bind/templates/engines.internal.in-addr.arpa.tmpl |sed "/NET/s//$net/g" > /var/lib/bind/engines/engines.in-addr.arpa.dnsrecords
  fi
