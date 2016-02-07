@@ -58,6 +58,22 @@ load_service_hash_to_environment
 	if test $? -eq 0
 	then
 		echo Success
+		#exit 0
+	else
+	file=`cat /tmp/.dns_cmd`
+		echo Error:With nsupdate $file
+		exit 128
+	fi
+	
+	echo server 127.0.0.1 > /tmp/.rdns_cmd
+	echo update delete ${ip}.in-addr.arpa. >> /tmp/.rdns_cmd
+	echo update add ${ip}.in-addr.arpa.  30 IN PTR $fqdn_str  >> /tmp/.rdns_cmd
+	echo send >> /tmp/.rdns_cmd
+	nsupdate -k /etc/bind/keys/ddns.private /tmp/.rdns_cmd
+	
+	if test $? -eq 0
+	then
+		echo Success
 		exit 0
 	else
 	file=`cat /tmp/.dns_cmd`

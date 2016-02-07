@@ -1,6 +1,13 @@
 
 };
 
+zone "17.172.IN-ADDR.ARPA" {
+type master;
+file "/var/lib/bind/engines/engines.in-addr.arpa.dnsrecords";
+allow-update { key DDNS_UPDATE; };
+
+};
+
 zone "engines.internal" {
 type master;
 file "/var/lib/bind/engines/engines.dnsrecords";
