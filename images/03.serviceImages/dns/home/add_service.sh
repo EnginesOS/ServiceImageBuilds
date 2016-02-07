@@ -65,9 +65,10 @@ load_service_hash_to_environment
 		exit 128
 	fi
 	
+	ip_reversed=`echo $ip |awk  ' BEGIN {  FS="."} {print $4 "." $3 "." $2 "." $1}'`
 	echo server 127.0.0.1 > /tmp/.rdns_cmd
-	echo update delete ${ip}.in-addr.arpa. >> /tmp/.rdns_cmd
-	echo update add ${ip}.in-addr.arpa.  30 IN PTR $fqdn_str  >> /tmp/.rdns_cmd
+	echo update delete ${ip_reversed}.in-addr.arpa. >> /tmp/.rdns_cmd
+	echo update add ${ip_reversed}.in-addr.arpa.  30 IN PTR $fqdn_str  >> /tmp/.rdns_cmd
 	echo send >> /tmp/.rdns_cmd
 	nsupdate -k /etc/bind/keys/ddns.private /tmp/.rdns_cmd
 	
@@ -76,7 +77,7 @@ load_service_hash_to_environment
 		echo Success
 		exit 0
 	else
-	file=`cat /tmp/.dns_cmd`
+	file=`cat /tmp/.rdns_cmd`
 		echo Error:With nsupdate $file
 		exit 128
 	fi
