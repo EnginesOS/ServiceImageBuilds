@@ -25,7 +25,7 @@ RUN chown bind /var/run/named;\
 	
 	
 
-RUN /home/setup.sh 
+#RUN /home/setup.sh 
 USER bind
 
 RUN mkdir -p /home/bind/domain_list/lan /home/bind/domain_list/gw
