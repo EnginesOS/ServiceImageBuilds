@@ -20,7 +20,7 @@ chown $fw_user -R /client/state
 chgrp 22020  -R /client/state
 chmod g+w  -R /client/state
 
-if test -f /dest/fs/.persistant_lock
+if test -f /dest/fs/.persistent_lock
  then
   chown -R $fw_user /dest/fs/*
   chmod g+w -R  /dest/fs/*
@@ -46,11 +46,11 @@ else
 		then
 			cp -rp /home/app_src/.  /dest/fs/_home_app_/			
 			chown -R ${fw_user}.${data_gid}  /dest/fs/_home_app_/			
-			touch /dest/fs/_home_app_/.persistant
+			touch /dest/fs/_home_app_/.persistent
     fi
     
-	touch /dest/fs/.persistant_lock
-	touch /dest/fs/.persistant
+	touch /dest/fs/.persistent_lock
+	touch /dest/fs/.persistent
 fi
 
 touch /client/state/flags/volume_setup_complete
