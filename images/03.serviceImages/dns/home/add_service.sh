@@ -2,12 +2,12 @@
 
 service_hash=$1
 
-#. /home/engines/scripts/functions.sh
+. /home/engines/scripts/functions.sh
 
-#load_service_hash_to_environment
+load_service_hash_to_environment
 
- echo \'$1\' /home/engines/bin/json_to_env >/tmp/.env
- . /tmp/.env
+ #echo \'$1\' /home/engines/bin/json_to_env >/tmp/.env
+ #. /tmp/.env
 
 
 
@@ -66,7 +66,7 @@ service_hash=$1
 		echo Error:With nsupdate $file
 		exit 128
 	fi
-	if test -z ${ip}
+	if ! test -z ${ip}
 		then
 			ip_reversed=`echo $ip |awk  ' BEGIN {  FS="."} {print $4 "." $3 "." $2 "." $1}'`
 			echo server 127.0.0.1 > /tmp/.rdns_cmd
