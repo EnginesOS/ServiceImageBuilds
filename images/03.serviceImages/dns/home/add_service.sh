@@ -66,7 +66,7 @@ load_service_hash_to_environment
 		echo Error:With nsupdate $file
 		exit 128
 	fi
-	if test -z ${ip}
+	if ! test -z ${ip}
 		then
 			ip_reversed=`echo $ip |awk  ' BEGIN {  FS="."} {print $4 "." $3 "." $2 "." $1}'`
 			echo server 127.0.0.1 > /tmp/.rdns_cmd
