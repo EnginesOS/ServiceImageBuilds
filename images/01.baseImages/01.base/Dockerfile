@@ -48,10 +48,10 @@ RUN /tmp/install_utf8_langauges.sh;\
 
 RUN mkdir /home/home_dir
 
-ENv HOME /home/home_dir
+ENV HOME /home/home_dir
 
 #increment build line to trigger upgrade NEED to Automate
-ENV	build 20160115
+ENV	build 20160215
 
 #RUN 	apt-get -y  --force-yes update;\
 #		apt-get upgrade -y;\

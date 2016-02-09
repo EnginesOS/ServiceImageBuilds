@@ -6,6 +6,8 @@ service_hash=$1
 
 load_service_hash_to_environment
 
+ #echo \'$1\' /home/engines/bin/json_to_env >/tmp/.env
+ #. /tmp/.env
 
 
 
@@ -58,10 +60,28 @@ load_service_hash_to_environment
 	if test $? -eq 0
 	then
 		echo Success
-		exit 0
+		#exit 0
 	else
 	file=`cat /tmp/.dns_cmd`
 		echo Error:With nsupdate $file
 		exit 128
 	fi
+	if ! test -z ${ip}
+		then
+			ip_reversed=`echo $ip |awk  ' BEGIN {  FS="."} {print $4 "." $3 "." $2 "." $1}'`
+			echo server 127.0.0.1 > /tmp/.rdns_cmd
+			echo update delete ${ip_reversed}.in-addr.arpa. >> /tmp/.rdns_cmd
+			echo update add ${ip_reversed}.in-addr.arpa.  30 IN PTR $fqdn_str  >> /tmp/.rdns_cmd
+			echo send >> /tmp/.rdns_cmd
+			nsupdate -k /etc/bind/keys/ddns.private /tmp/.rdns_cmd
 	
+				if test $? -eq 0
+					then
+						echo Success
+						exit 0
+				else	
+					file=`cat /tmp/.rdns_cmd`
+					echo Error:With nsupdate $file
+					exit 128
+				fi
+	 fi
