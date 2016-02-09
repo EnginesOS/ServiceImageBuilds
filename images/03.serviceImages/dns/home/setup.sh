@@ -19,5 +19,5 @@ key=`cat /etc/bind/keys/ddns.private |grep Key | cut -f2 -d" "`
 cp /etc/bind/templates/named.conf.default-zones.start /etc/bind/named.conf.default-zones;\
 
 echo "secret \"$key\";" >> /etc/bind/named.conf.default-zones;\
-cat /etc/bind/templates/named.conf.default-zones.end  | sed "/NET/s/$net//">> /etc/bind/named.conf.default-zones
+cat /etc/bind/templates/named.conf.default-zones.end  | sed "/NET/s//$net/">> /etc/bind/named.conf.default-zones
 chown bind -R /etc/bind/keys/
