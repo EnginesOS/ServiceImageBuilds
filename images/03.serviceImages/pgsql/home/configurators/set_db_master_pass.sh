@@ -5,9 +5,9 @@ service_hash=$1
 #dont save plain text pass
 #echo $1 >/home/configurators/saved/db_master_pass
 
-. /home/engines/scripts/functions.sh
+ echo $service_hash | /home/engines/bin/json_to_env >/tmp/.env
+ . /tmp/.env
 
-load_service_hash_to_environment
 
 
 echo $1 |grep = >/dev/null

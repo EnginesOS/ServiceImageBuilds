@@ -3,9 +3,9 @@ service_hash=$1
 
 echo $1 >/home/configurators/saved/hostname
 
-. /home/engines/scripts/functions.sh
+ echo $service_hash | /home/engines/bin/json_to_env >/tmp/.env
+ . /tmp/.env
 
-load_service_hash_to_environment
 
 if test -z ${hostname} 
 	then  
