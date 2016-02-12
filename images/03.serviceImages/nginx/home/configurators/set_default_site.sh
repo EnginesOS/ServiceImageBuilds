@@ -4,9 +4,9 @@ service_hash=$1
 
 echo $1 >/home/configurators/saved/default_site_url
 
-. /home/engines/scripts/functions.sh
+ echo $service_hash | /home/engines/bin/json_to_env >/tmp/.env
+ . /tmp/.env
 
-load_service_hash_to_environment
 
 
 #echo $1 |grep = >/dev/null

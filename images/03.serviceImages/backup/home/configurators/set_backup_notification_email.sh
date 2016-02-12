@@ -5,10 +5,14 @@ service_hash=$1
 
 echo $1 >/home/configurators/saved/backup_email_hash
 
-. /home/engines/scripts/functions.sh
 
-load_service_hash_to_environment
 
+#. /home/engines/scripts/functions.sh
+
+#load_service_hash_to_environment
+
+ echo $service_hash | /home/engines/bin/json_to_env >/tmp/.env
+ . /tmp/.env
 
 
 echo $backup_email >/home/configurators/saved/backup_email
