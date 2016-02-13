@@ -2,8 +2,7 @@
 
 service_hash=$1
 
-#dont save plain text pass
-#echo $1 >/home/configurators/saved/db_master_pass
+
 
  echo $service_hash | /home/engines/bin/json_to_env >/tmp/.env
  . /tmp/.env
