@@ -8,13 +8,6 @@ echo $1 >/home/configurators/saved/smarthost
  . /tmp/.env
 
 
-echo $1 |grep = >/dev/null
-        if test $? -ne 0
-        then
-                exit
-        fi
-
-
         
         
    	if test  ${#smarthost_hostname} -gt 5
