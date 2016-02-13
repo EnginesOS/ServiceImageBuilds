@@ -11,16 +11,12 @@ if test -f /home/certs/store/private/ca/keys/system_CA.key
 echo $1 >/home/configurators/saved/ca_setup
 echo $1 >/home/configurators/saved/ca_params
 
-. /home/engines/scripts/functions.sh
-
-load_service_hash_to_environment
 
 
-echo $1 |grep = >/dev/null
-        if test $? -ne 0
-        then
-                exit
-        fi
+ echo $service_hash | /home/engines/bin/json_to_env >/tmp/.env
+ . /tmp/.env
+
+
 echo $country >/home/configurators/saved/ca_setup
 echo $state >>/home/configurators/saved/ca_setup
 echo $city >>/home/configurators/saved/ca_setup

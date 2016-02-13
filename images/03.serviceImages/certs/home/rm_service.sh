@@ -1,11 +1,11 @@
 #!/bin/bash
 
 
-service_hash=`echo  "$1" | sed "/\*/s//STAR/g"`
-. /home/engines/scripts/functions.sh
+service_hash=$1
 
-load_service_hash_to_environment
 
+ echo $service_hash | /home/engines/bin/json_to_env >/tmp/.env
+ . /tmp/.env
 
 if test -z "${cert_name}"
 	then

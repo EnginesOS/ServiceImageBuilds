@@ -2,7 +2,13 @@
 
 service_hash=$1
 
-. /home/engines/scripts/functions.sh
+
+#. /home/engines/scripts/functions.sh
+
+#load_service_hash_to_environment
+
+ echo $service_hash | /home/engines/bin/json_to_env >/tmp/.env
+ . /tmp/.env
 
 echo $1 >/home/configurators/saved/system_backup
 
@@ -11,7 +17,7 @@ echo $1 >/home/configurators/saved/system_backup
 Backup_ConfigDir=/home/backup/.duply/
 
 
-load_service_hash_to_environment
+
 
 ts=`date`
  echo "$ts:$*" >>/var/log/backup/addbackup.log
