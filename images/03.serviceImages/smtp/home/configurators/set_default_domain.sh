@@ -8,11 +8,6 @@ echo $1 >/home/configurators/saved/default_domain
  . /tmp/.env
 
 
-echo $1 |grep = >/dev/null
-        if test $? -ne 0
-        then
-                exit
-        fi
 
         
         
