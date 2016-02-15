@@ -10,10 +10,11 @@ RUN echo "Y" |/usr/sbin/usermod -u  22012 syslog ;\
 ENV ContUser syslog
 ENV ContGrp syslog
 
-ADD home /home/
+ADD home /home
 ADD sudoers /etc/
 USER syslog
 
-RUN chgrp containers /home/configurators/saved
+RUN mkdir -p /home/configurators/saved ;\
+	 chgrp containers /home/configurators/saved
 
 CMD ["/home/start.sh"]
