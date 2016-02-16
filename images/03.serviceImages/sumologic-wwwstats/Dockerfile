@@ -12,9 +12,10 @@ ENV ContGrp syslog
 
 ADD home /home
 ADD sudoers /etc/
-USER syslog
+
 
 RUN mkdir -p /home/configurators/saved ;\
 	 chgrp containers /home/configurators/saved
 
+USER syslog
 CMD ["/home/start.sh"]
