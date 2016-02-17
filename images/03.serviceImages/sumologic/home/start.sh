@@ -35,4 +35,6 @@ if [ ! -e $sources_json ]; then
 fi
 
 sudo /opt/SumoCollector/collector console -- -t -i $access_id -k $access_key -n $collector_name -s $sources_json &
-wait $!
+pid=$!
+wait $pid
+kill -TERM $pid
