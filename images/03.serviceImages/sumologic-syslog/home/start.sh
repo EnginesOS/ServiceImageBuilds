@@ -1,6 +1,6 @@
 #/bin/bash
 #wait for configurators
-sleep 5
+sleep 10
 
 if test -f /home/configurators/saved/credentials
  then
@@ -11,7 +11,7 @@ if test -f /home/configurators/saved/credentials
  else
  	touch /engines/var/run/missing_configuration
  	echo "Not Configured"
- 	
+ 	sleep 500
  	exit
  fi
 access_id=$collector_id
