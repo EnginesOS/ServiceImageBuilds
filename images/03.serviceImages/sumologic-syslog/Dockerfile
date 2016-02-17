@@ -16,5 +16,6 @@ ADD sudoers /etc/
 
 RUN mkdir -p /home/configurators/saved ;\
 	 chgrp containers /home/configurators/saved
+COPY home/start.sh /run.sh
 USER syslog
 CMD ["/home/start.sh"]
