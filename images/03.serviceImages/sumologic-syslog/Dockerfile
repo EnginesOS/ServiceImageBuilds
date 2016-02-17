@@ -5,8 +5,9 @@ FROM engines/servicebase:$release
 RUN echo "Y" |/usr/sbin/usermod -u  22012 syslog ;\
  	apt-get -y update;\
 	apt-get upgrade -y;\
-	apt-get install -y sumocollector;\
-	groupadd -g 22020 containers ;\
+	wget -q -O /tmp/collector.deb https://collectors.sumologic.com/rest/download/deb/64 && \
+ 	dpkg -i /tmp/collector.deb && \
+ 	rm /tmp/collector.deb && \	
 	usermod -G containers -a syslog
 
 ENV ContUser syslog
