@@ -1,4 +1,6 @@
 #/bin/bash
+#wait for configurators
+sleep 5
 
 if test -f /home/configurators/saved/credentials
  then
