@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/bash
 #wait for configurators
 sleep 10
 
