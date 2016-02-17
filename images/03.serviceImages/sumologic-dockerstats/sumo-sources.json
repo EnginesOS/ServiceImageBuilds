@@ -1,14 +1,28 @@
 {
   "api.version": "v1",
   "sources": [
-    {
-      "sourceType" : "LocalFile",
-      "name": "localfile-collector-container",
-      "pathExpression": "/var/log/www/**",
-      "multilineProcessingEnabled": false,
-      "automaticDateParsing": true,
-      "forceTimeZone": false,
-      "category": "collector-container"
-    }
-	]
+        {
+            "name": "Docker-logs",
+            "category": "docker",
+            "allContainers": true,
+            "collectEvents": true,
+            "uri": "unix:///var/run/docker.sock",
+            "specifiedContainers": [],
+            "multilineProcessingEnabled": false,
+            "sourceType": "DockerLog"
+        },
+        {
+            "name": "Docker-stats",
+            "category": "docker",
+            "automaticDateParsing": true,
+            "forceTimeZone": false,
+            "cutoffTimestamp": 0,
+            "uri": "unix:///var/run/docker.sock",
+            "specifiedContainers": [],
+            "allContainers": true,
+            "multilineProcessingEnabled": false,
+            "certPath": "",
+            "sourceType": "DockerStats"
+        }
+   ]
 }
