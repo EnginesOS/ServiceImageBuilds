@@ -14,9 +14,9 @@ if test -f /home/configurators/saved/credentials
  	sleep 500
  	exit
  fi
-access_id=$collector_id
-access_key=$collector_key
-echo $access_id 
+#access_id=$collector_id
+#access_key=$collector_key
+#echo $access_id 
 
 collector_name=${collector_name:=collector_container}
 sources_json=${SUMO_SOURCES_JSON:=/home/sumo-sources.json}
