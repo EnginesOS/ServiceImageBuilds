@@ -8,7 +8,7 @@ export PID_FILE
 
 mkdir -p /engines/var/run/flags/
 
-sudo /sbin/syslogd -R syslog.engines.internal:5140
+sudo /sbin/syslogd -R syslog.engines.internal:514
 if ! test -f /etc/postfix/transport 
 	then
 	 echo "	*	smtp:" >/etc/postfix/transport

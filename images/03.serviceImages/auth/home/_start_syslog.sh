@@ -1,3 +1,3 @@
 #!/bin/sh
 
-syslogd -n   -R syslog.engines.internal:5140 &
+syslogd -n   -R syslog.engines.internal:514 &
