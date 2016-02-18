@@ -15,6 +15,13 @@ if test -f /home/configurators/saved/credentials
  	exit
  fi
 
+PID_FILE=opt/SumoCollector/collector.pid
+
+export PID_FILE
+. /home/trap.sh
+
+
+
 echo Access ID $access_id 
 
 collector_name=${collector_name:=collector_container}
@@ -34,6 +41,6 @@ if [ ! -e $sources_json ]; then
 fi
 
 sudo /opt/SumoCollector/collector console -- -t -i $access_id -k $access_key -n $collector_name -s $sources_json &
-pid=$!
-wait $pid
-kill -TERM $pid
+
+wait
+
