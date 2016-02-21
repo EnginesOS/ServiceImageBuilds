@@ -42,7 +42,21 @@ service_hash=$1
 		exit -1
 	fi
 	
+		ip_reversed=`echo $ip |awk  ' BEGIN {  FS="."} {print $4 "." $3 "." $2 "." $1}'`
+			echo server 127.0.0.1 > /tmp/.rdns_cmd
+			echo update delete ${ip_reversed}.in-addr.arpa. >> /tmp/.rdns_cmd
+			#echo update add ${ip_reversed}.in-addr.arpa.  30 IN PTR $fqdn_str  >> /tmp/.rdns_cmd
+			echo send >> /tmp/.rdns_cmd
+			nsupdate -k /etc/bind/keys/ddns.private /tmp/.rdns_cmd
 
 
-
+if test $? -ge 0
+	then
+		echo Success
+	else
+	file=`cat /tmp/.rdns_cmd`
+		echo Error:With nsupdate $file
+		exit -1
+	fi
+	
 
