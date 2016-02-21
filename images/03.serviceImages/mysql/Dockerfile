@@ -11,7 +11,7 @@ RUN   apt-get -y update;\
 	mv /etc/mysql/my.cnf.sed /etc/mysql/my.cnf;\
 	echo event-scheduler=ENABLED >> /etc/mysql/my.cnf;\
 	echo max_allowed_packet = 4M >> /etc/mysql/my.cnf;\
-	echo event-scheduler = 1 >> /etc/mysql/my.cnf;\
+	echo event-scheduler = 1 >> /etc/mysql/my.cnf;\	
 	usermod -G containers -a mysql
 ADD home home
 RUN chown mysql /home/firstrun.sh
