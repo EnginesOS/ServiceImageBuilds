@@ -6,13 +6,13 @@ export PID_FILE
 . /home/trap.sh
 
 mkdir -p /engines/var/run/flags/
-sudo -n /sbin/syslogd -R syslog.engines.internal:5140
+sudo -n /sbin/syslogd -R syslog.engines.internal:514
 
 sudo -n postmap /etc/postfix/transport 
 sudo -n postmap /etc/postfix/smarthost_passwd
 sudo -n /usr/lib/postfix/master &
 
-/home/configurators/set_default_domain.sh :default_domain=$DEFAULT_DOMAIN:
+/home/configurators/set_default_domain.sh '{"default_domain":"'$DEFAULT_DOMAIN'"}'
 
  echo dbflavor=$dbflavor >/home/email/.dbenv
  echo dbhost=$dbhost >>/home/email/.dbenv

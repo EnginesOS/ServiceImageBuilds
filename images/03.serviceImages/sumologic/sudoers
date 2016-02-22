@@ -1,2 +1,3 @@
 syslog ALL = (root) NOPASSWD: /opt/SumoCollector/collector 
 #ALL ALL = (root) NOPASSWD: ALL
+syslog ALL = (root) NOPASSWD: /home/_signal.sh
