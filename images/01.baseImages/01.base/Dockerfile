@@ -46,7 +46,7 @@ RUN /tmp/install_utf8_langauges.sh;\
 	 
 
 
-RUN mkdir /home/home_dir
+RUN mkdir /home/home_dir ; chgrp containers ; chmod g+w containers
 
 ENV HOME /home/home_dir
 
