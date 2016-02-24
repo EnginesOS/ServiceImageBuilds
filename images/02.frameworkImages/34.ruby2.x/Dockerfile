@@ -1,5 +1,5 @@
 FROM engines/frameworkbuild:$release
-ENV ruby_version 2.2.2
+ENV ruby_version 2.3.0
 ENV ContUser ruby
 ENV ContGrp ruby
 ENV  RBENV_ROOT /usr/local/rbenv
