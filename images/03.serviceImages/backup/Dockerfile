@@ -47,6 +47,7 @@ VOLUME /backup_src/engines
 VOLUME /local_backup_dests
 
 USER backup
+ENV HOME /home/backup
 CMD		["/home/start.sh"]
 
 

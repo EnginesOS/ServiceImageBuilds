@@ -45,9 +45,7 @@ RUN /tmp/install_utf8_langauges.sh;\
 	 rm -r /tmp/*
 	 
 
-ENV HOME /home/home_dir
 
-RUN mkdir $HOME ; chgrp containers $HOME; chmod g+w  $HOME
 
 
 #increment build line to trigger upgrade NEED to Automate
