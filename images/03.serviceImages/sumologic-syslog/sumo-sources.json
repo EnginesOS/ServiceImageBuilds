@@ -3,6 +3,7 @@
   "sources": [
     { 
       "sourceType": "Syslog",
+       "category": "syslog",      
       "name": "syslog-collector-container-tcp",
       "port": 514,
       "protocol": "TCP",
@@ -12,6 +13,7 @@
     },
     { 
       "sourceType": "Syslog",
+       "category": "syslog",      
       "name": "syslog-collector-container-udp",
       "port": 514,
       "protocol": "UDP",

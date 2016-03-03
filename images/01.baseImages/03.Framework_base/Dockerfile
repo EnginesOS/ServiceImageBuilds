@@ -17,3 +17,7 @@ RUN apt-get -y update;\
 #FIXME above with sendmail.cf should really use m4 macros and not a sed kludge
 	
 ADD sources.list /etc/apt/
+
+ENV HOME /home/home_dir
+
+RUN mkdir $HOME ; chgrp containers $HOME; chmod g+w  $HOME
