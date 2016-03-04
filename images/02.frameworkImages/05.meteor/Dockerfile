@@ -1,5 +1,5 @@
 FROM engines/node:$release
 
 
-UESR node
+USER node
 RUN	curl https://install.meteor.com | /bin/sh
