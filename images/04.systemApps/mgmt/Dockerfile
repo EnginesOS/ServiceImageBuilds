@@ -1,5 +1,5 @@
 FROM  engines/passenger:$release
-
+ENV ruby_version 2.2.2
 RUN /usr/sbin/addgroup --gid 999 docker;\
 	apt-get -y install telnet openssl-dev libcurl4-openssl-dev;\
 	echo "Y" | adduser -q --uid 21000 --gid 999 --home /home/engines --disabled-password engines;\
