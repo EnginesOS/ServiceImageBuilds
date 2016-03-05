@@ -1,12 +1,7 @@
 use DBNAME
 
-db.createUser(
-   {
-      user: "DBUSER",
-       pwd: "DBPASSWD",
-       roles: [
- { role: "readWrite", db: "DBNAME" }
-       ]
-    }
- )
+
+db.removeUser(DBUSER)
+db.dropDatabase()
+  
 
