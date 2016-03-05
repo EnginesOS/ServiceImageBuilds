@@ -22,7 +22,7 @@ if test -z $db_username
  cat /home/tmpls/destroy_db.tmpl | sed "/DBNAME/s//$database_name/" \
  								| sed "/DBUSER/s//$db_username/"  > /tmp/destroy_db_cmd.js
  pass=`cat /home/configurators/saved/db_master_pass`		
- mongo -p $pass -u $admin --authenticationDatabase "admin" /tmp/destroy_db_cmd.js&> /tmp/res
+ mongo -p $pass -u $admin --authenticationDatabase "admin" < /tmp/destroy_db_cmd.js&> /tmp/res
 res=`cat /tmp/res`
 
 echo $res | grep -v ERROR

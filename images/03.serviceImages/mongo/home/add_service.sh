@@ -34,7 +34,7 @@ if test -z $db_password
  								| sed "/DBUSER/s//$db_username/" \
  								| sed "/DBPASSWD/s//$db_password/"  > /tmp/create_cmd.js
  pass=`cat /home/configurators/saved/db_master_pass`		
- mongo -p $pass -u $admin --authenticationDatabase "admin" /tmp/create_cmd.js&> /tmp/res
+ mongo -p $pass -u $admin --authenticationDatabase "admin" < /tmp/create_cmd.js&> /tmp/res
 res=`cat /tmp/res`
 
 echo $res | grep -v ERROR
