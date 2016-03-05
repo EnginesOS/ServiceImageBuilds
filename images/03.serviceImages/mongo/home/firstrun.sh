@@ -1,6 +1,6 @@
 #!/bin/bash
 db_password=`dd if=/dev/urandom count=6 bs=1  | od -h | awk '{ print $2$3$4}'`
-echo $db_password > /home/configurators/saved/db_master_pass
+echo -n $db_password > /home/configurators/saved/db_master_pass
 cat /home/tmpls/first_run.tmpl | sed "/DBPASSWD/s//$db_password/"  > /tmp/first_run.js
  mongo < /tmp/first_run.js&> /tmp/res
 res=`cat /tmp/res`
