@@ -14,7 +14,7 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10 ; echo
 	
 ADD home home
 COPY mongod.conf /etc/
-RUN chown mongo /home/configurators/saved ;\ chmod 700 /home/configurators/saved
+RUN chown mongo /home/configurators/saved ; chmod 700 /home/configurators/saved
 ENV ContUser mongo
 ENV ContGrp mongo
 USER mongo
