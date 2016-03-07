@@ -10,7 +10,7 @@ export PID_FILE
 mkdir -p /engines/var/run/flags/
 
 
- mongod   -v  -f /etc/mongod.conf  --directoryperdb    --journal &
+ mongod   -v  -f /etc/mongod.conf  --directoryperdb  --dbpath /data/db/  --journal &
 touch  /engines/var/run/flags/startup_complete
 wait  
 
