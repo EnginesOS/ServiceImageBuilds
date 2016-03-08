@@ -12,7 +12,10 @@ RUN apt-get -y update;\
 	mv /tmp/sendmail.cf /etc/mail/sendmail.cf ;\
 	adduser -q --disabled-password  -uid 11111 data-user;\
 	chgrp containers /var/log/ ;\
-	chmod g+w /var/log/
+	chmod g+w /var/log/;\
+	mkdir -p /home/actionators/saved/;\
+	chgrp containers  /home/actionators/saved/;\
+	chmod g+w /home/actionators/saved/
 	
 #FIXME above with sendmail.cf should really use m4 macros and not a sed kludge
 	
