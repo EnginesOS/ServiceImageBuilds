@@ -15,6 +15,8 @@ cat /home/tmpls/change_pass.tmpl | sed "/DBPASSWD/s//$db_password/"  > /tmp/chan
  mongo  mongo -p $pass -u admin --authenticationDatabase admin < /tmp/change_pass_cmd.js&> /tmp/res
 res=`cat /tmp/res`
 
+echo $db_password > /home/configurators/saved/db_master_pass
+
 echo $res | grep -v ERROR
  
 if test $? -eq 0

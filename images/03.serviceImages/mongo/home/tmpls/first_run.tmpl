@@ -5,7 +5,8 @@ db.createUser(
       user: "admin",
        pwd: "DBPASSWD",
        roles: [
- 	{ role: "userAdminAnyDatabase", db: "admin" }
+ 	{ role: "userAdminAnyDatabase", db: "admin" },
+ 	{ role: "readAnyDatabase", db: "admin" }
        ]
     }
  )
