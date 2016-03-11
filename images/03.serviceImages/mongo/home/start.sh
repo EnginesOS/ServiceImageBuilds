@@ -13,7 +13,7 @@ mkdir -p /engines/var/run/flags/
  mongod   -v  -f /etc/mongod.conf  --directoryperdb  --dbpath /data/db/  --journal &
 pid=$!
 
-echo $echo >/var/run/engines/mongodb.pid
+echo -n $pid >/var/run/engines/mongodb.pid
 
 touch  /engines/var/run/flags/startup_complete
 wait  
