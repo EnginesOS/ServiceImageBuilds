@@ -1,6 +1,6 @@
 #!/bin/bash
-pass="pass"
 
+pass=`dd if=/dev/urandom count=6 bs=1  | od -h | awk '{ print $2$3$4}'`
  	#Run First Time on persistent DB
  	
  if ! test -f /var/lib/postgresql/conf
@@ -10,7 +10,7 @@ pass="pass"
 	 
 	cp -rp /var/lib/postgresql_firstrun/* /var/lib/postgresql/ 
 
-   pass=pass
+
    /usr/lib/postgresql/9.3/bin/postgres -D /var/lib/postgresql/9.3/main -c config_file=/etc/postgresql/9.3/main/postgresql.conf &
    pid=$!
    
