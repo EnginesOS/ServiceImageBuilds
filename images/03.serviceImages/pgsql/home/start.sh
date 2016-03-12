@@ -10,6 +10,7 @@ fi
  if ! test -f /home/postgres/.pgpass
   then
  cp /var/lib/postgresql/.pass /home/postgres/.pgpass
+ chmod 600 /home/postgres/.pgpass 
 fi
 
 PID_FILE=/var/run/postgresql/9.3-main.pid

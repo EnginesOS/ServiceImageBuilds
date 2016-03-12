@@ -13,8 +13,10 @@ pass=`dd if=/dev/urandom count=6 bs=1  | od -h | awk '{ print $2$3$4}'`
 
    /usr/lib/postgresql/9.3/bin/postgres -D /var/lib/postgresql/9.3/main -c config_file=/etc/postgresql/9.3/main/postgresql.conf &
    pid=$!
+
    echo "*:*:*:root:$pass" > /var/lib/postgresql/.pass
    cp /var/lib/postgresql/.pass /home/postgres/.pgpass
+    	chmod 600 /home/postgres/.pgpass /var/lib/postgresql/.pass
  	touch /var/lib/postgresql/conf 	
  #	psql template1 -c 'create extension hstore;'
 	 echo "ALTER ROLE postgres WITH ENCRYPTED PASSWORD '$pass'; " > /tmp/t.sql
