@@ -7,7 +7,10 @@ if ! test -f /engines/var/run/flags/first_run_done
 	 then
         bash /home/firstrun.sh         
 fi
-
+ if ! test -f /home/postgres/.pgpass
+  then
+ cp /var/lib/postgresql/.pass /home/postgres/.pgpass
+fi
 
 PID_FILE=/var/run/postgresql/9.3-main.pid
 export PID_FILE
