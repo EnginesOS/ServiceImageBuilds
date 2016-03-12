@@ -10,8 +10,7 @@ RUN apt-get update -y ;\
 ADD home home
 
 
-RUN kill -TERM `cat /var/run/postgresql/9.3-main.pid`;\
-	mv /var/lib/postgresql /var/lib/postgresql_firstrun;\
+RUN mv /var/lib/postgresql /var/lib/postgresql_firstrun;\
  	 sed "/ssl-cert-snakeoil\.pem/s//engines\.crt/"  /etc/postgresql/9.3/main/postgresql.conf > /etc/postgresql/9.3/main/postgresql.conf.new ;\ 	 
  	 cp /etc/postgresql/9.3/main/postgresql.conf.new /etc/postgresql/9.3/main/postgresql.conf;\ 
  	 sed "/ssl-cert-snakeoil\.key/s//engines\.key/"  /etc/postgresql/9.3/main/postgresql.conf > /etc/postgresql/9.3/main/postgresql.conf.new ;\
