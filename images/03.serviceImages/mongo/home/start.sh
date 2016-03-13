@@ -14,6 +14,10 @@ mkdir -p /engines/var/run/flags/
 pid=$!
 
 echo -n $pid >/var/run/engines/mongodb.pid
+if ! test -f /data/db/.priv/db_master_pass
+ then
+ 	/home/firstrun.sh
+ fi
 
 touch  /engines/var/run/flags/startup_complete
 wait  
