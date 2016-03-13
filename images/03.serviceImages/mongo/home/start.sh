@@ -14,8 +14,9 @@ mkdir -p /engines/var/run/flags/
 pid=$!
 
 echo -n $pid >/var/run/engines/mongodb.pid
-if ! test -f /data/db/.priv/db_master_pass
+if ! test -d /data/db/.priv
  then
+  mkdir -p /data/db/.priv
  	/home/firstrun.sh
  fi
 
