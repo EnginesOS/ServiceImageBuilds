@@ -23,7 +23,9 @@ RUN /usr/sbin/usermod -u 22671 www-data ;\
  	chown www-data /run/lock/apache2;\
  	mkdir   -p /var/www/.passenger ;\
  	chown www-data /var/www/.passenger ;\
- 	usermod -G containers -a www-data
+ 	usermod -G containers -a www-data ;\
+ 	passenger-config  build-native-support
+ 	
  	
 ADD 000-default.conf /etc/apache2/sites-enabled/
 ADD	passenger.conf  /etc/apache2/mods-enabled/
