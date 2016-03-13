@@ -1,4 +1,4 @@
 #!/bin/bash
 
-	echo '{"db_master_pass":"Not Saved"}'
+	echo '{"db_master_pass":""}'
 
