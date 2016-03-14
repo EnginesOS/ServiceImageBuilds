@@ -33,7 +33,8 @@ RUN /usr/local/rbenv/shims/gem install git bundle oink vmstat rest-client net_ht
  	chown 21000 /run/lock/apache2;\
  	mkdir -p /home/app/public/system;\
  	chown -R 21000 /home/app/public /home/configurators/saved;\
- 	usermod -G containers -a engines
+ 	usermod -G containers -a engines;\
+ 	passenger-config  build-native-support
  	
  
 COPY functions.sh  /home/engines/scripts/functions.sh
