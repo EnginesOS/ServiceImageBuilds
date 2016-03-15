@@ -39,8 +39,10 @@ else
  		fi
 	   src_dir=`echo $dest_dir | sed "/_/s//\//g" | sed " /\/home\/fs/s//\/home\/fs_src/" `
 	   cp -rpn $src_dir/. /dest/fs/$dest_dir
+	   	   touch /dest/fs/$dir/.persistent_lock
 	   chown -R ${fw_user}.${data_gid}  /dest/fs/$dir
-	   touch /dest/fs/$dir/.persistent_lock
+	   echo "touch /dest/fs/$dir/.persistent_lock"
+
 	touch /dest/fs/$dir/.persistent
 	 done
 
