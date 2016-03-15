@@ -45,7 +45,7 @@ chmod g+w  -R /client/state
 
 	#if no presistance dirs/files need to set permission here
 	
-	chown  ${fw_user}.${data_gid}  /dest/fs/
+	chown  21000.${data_gid}  /dest/fs/
 	chmod g+w -R  /dest/fs/*
 	chmod g+rx ` find /dest/fs/ -type d`
 	
