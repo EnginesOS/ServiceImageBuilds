@@ -48,13 +48,13 @@ else
 			chown -R ${fw_user}.${data_gid}  /dest/fs/_home_app_/			
 			touch /dest/fs/_home_app_/.persistent
     fi
-    chgrp 22020 /dest/fs/
-    chmod g+w /dest/fs/
+
 	touch /dest/fs/.persistent_lock
 	touch /dest/fs/.persistent
 	
 fi
 
+    
 touch /client/state/flags/volume_setup_complete
 
  exit 0
