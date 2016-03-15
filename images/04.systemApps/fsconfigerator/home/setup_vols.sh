@@ -57,8 +57,8 @@ else
 			touch /dest/fs/_home_app_/.persistent
     fi
 
-#	touch /dest/fs/.persistent_lock
-#	touch /dest/fs/.persistent
+	touch /dest/fs/.persistent_lock
+	touch /dest/fs/.persistent
 	
 fi
 
