@@ -31,6 +31,10 @@ else
 	
 	for dest_dir in `ls /dest/fs/`
 	 do	 
+	 if test -f /dest/fs/$dir/.persistent_lock
+ 		then
+ 		continue
+ 		fi
 	   src_dir=`echo $dest_dir | sed "/_/s//\//g" | sed " /\/home\/fs/s//\/home\/fs_src/" `
 	   cp -rpn $src_dir/. /dest/fs/$dest_dir
 	   chown -R ${fw_user}.${data_gid}  /dest/fs/$dir
@@ -56,7 +60,8 @@ else
 	
 fi
 
-    
+   chown engines /dest/fs/
+   
 touch /client/state/flags/volume_setup_complete
 
  exit 0
