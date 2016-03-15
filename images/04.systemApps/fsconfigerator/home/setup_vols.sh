@@ -33,6 +33,8 @@ else
 	 do	 
 	 if test -f /dest/fs/$dir/.persistent_lock
  		then
+ 		 chown -R $fw_user /dest/fs/$dir
+  		  chmod g+w -R  /dest/fs/$dir
  		continue
  		fi
 	   src_dir=`echo $dest_dir | sed "/_/s//\//g" | sed " /\/home\/fs/s//\/home\/fs_src/" `
@@ -60,8 +62,8 @@ else
 	
 fi
 
+   chown engines /home/fs/
    chown engines /dest/fs/
-   
 touch /client/state/flags/volume_setup_complete
 
  exit 0
