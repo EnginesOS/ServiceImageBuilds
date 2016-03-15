@@ -10,3 +10,4 @@ dir=$1
  				rm -r $files
  				echo "rm -r $files in $dir"
  			fi
+}
