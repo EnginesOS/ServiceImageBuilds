@@ -34,6 +34,8 @@ else
 	   src_dir=`echo $dest_dir | sed "/_/s//\//g" | sed " /\/home\/fs/s//\/home\/fs_src/" `
 	   cp -rpn $src_dir/. /dest/fs/$dest_dir
 	   chown -R ${fw_user}.${data_gid}  /dest/fs/$dir
+	   touch /dest/fs/$dir/.persistent_lock
+	touch /dest/fs/$dir/.persistent
 	 done
 
 	#if no presistance dirs/files need to set permission here
@@ -49,8 +51,8 @@ else
 			touch /dest/fs/_home_app_/.persistent
     fi
 
-	touch /dest/fs/.persistent_lock
-	touch /dest/fs/.persistent
+#	touch /dest/fs/.persistent_lock
+#	touch /dest/fs/.persistent
 	
 fi
 
