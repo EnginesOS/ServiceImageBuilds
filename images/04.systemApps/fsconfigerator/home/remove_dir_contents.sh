@@ -11,4 +11,4 @@ dir=$1
  				echo "rm -r $files in $dir"
  			fi 			
  			
-}
+#}
