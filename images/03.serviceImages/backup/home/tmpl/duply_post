@@ -1,0 +1,3 @@
+#!/bin/sh
+
+rm -r /home/backup/sql_dumps/*.sql

@@ -5,7 +5,7 @@ service_hash=$1
 
 #sed "/\"\[/s//\[/" |  "/\]\"/s//\]/"
 
- echo $service_hash | sed "/\"\[/s//\[/" | sed "/\]\"/s//\]/"  | /home/engines/bin/json_to_env >/tmp/.env
+ echo $service_hash | sed '/\\/s///g ' | sed "/\"\[/s//\[/" | sed "/\]\"/s//\]/"  | /home/engines/bin/json_to_env >/tmp/.env
  . /tmp/.env
 
 echo $1 >/home/configurators/saved/backup
@@ -29,17 +29,15 @@ export dest_address
 export dest_user
 export dest_pass
 export parent_engine
- shift
-while ! test -z $1
+
+n=0
+$array_cnt=${#publisher_namespace[@]}
+while test $n -le $array_cnt
  do
-     echo $1 | /home/engines/bin/json_to_env >/tmp/.env
- . /tmp/.env
-
-echo calling /home/backup_scripts/$publisher_namespace/$type_path/add_backup.sh $1
-
-	/home/backup_scripts/$publisher_namespace/$type_path/add_backup.sh $1
-
-	shift
+ src_type=`basename $type_path[$n]`
+ export src_type
+  /home/add_backup.sh /$publisher_namespace[$n]/$type_path[$n]/$parent_engine[$n]/$service_handle[$n]/
+  n=`expr $n + 1`
  done
 
  exit 0
