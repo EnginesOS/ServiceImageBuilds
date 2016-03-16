@@ -1,2 +1,2 @@
 #!/bin/bash
-ssh mgmt run_docker_backup.sh $1
+echo $1 | ssh  -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /home/.ssh/run_backup_on_engine engines@engines.internal  /opt/engines/scripts/run_backup_on_engine.sh
