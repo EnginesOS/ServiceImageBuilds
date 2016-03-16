@@ -3,12 +3,12 @@
 service_hash=$1
 
 
+#sed "/\"\[/s//\[/" |  "/\]\"/s//\]/"
 
-
- echo $service_hash | /home/engines/bin/json_to_env >/tmp/.env
+ echo $service_hash | sed "/\"\[/s//\[/" | sed "/\]\"/s//\]/"  | /home/engines/bin/json_to_env >/tmp/.env
  . /tmp/.env
 
-echo $1 >/home/configurators/saved/system_backup
+echo $1 >/home/configurators/saved/backup
 
  echo "$*" >>/var/log/backup/addbackup.log
 
@@ -32,9 +32,9 @@ export parent_engine
  shift
 while ! test -z $1
  do
-    
-	service_hash=$1
-load_service_hash_to_environment
+     echo $1 | /home/engines/bin/json_to_env >/tmp/.env
+ . /tmp/.env
+
 echo calling /home/backup_scripts/$publisher_namespace/$type_path/add_backup.sh $1
 
 	/home/backup_scripts/$publisher_namespace/$type_path/add_backup.sh $1
