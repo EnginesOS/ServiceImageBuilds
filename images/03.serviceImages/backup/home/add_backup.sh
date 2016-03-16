@@ -4,9 +4,9 @@
 
 
 echo name $backup_name
-echo parent_engine $parent_engine
+echo parent $parent
 echo src_type $src_type
- dirname=${parent_engine}_${backup_name}_${src_type}
+dirname=${parent}_${backup_name}_${src_type}
 dirname=${Backup_ConfigDir}/$dirname
 
 
@@ -27,8 +27,10 @@ export dirname
 #				dir=`echo $volume_src |sed "/\/var\/lib\/engines\//s///"`
  #              	src=/backup_src/volumes/$dir
  #else
- src=/tmp/big_tmp/
-   cat /home/tmpl/duply_pre | sed "/backup_cmd_prefix/s//$1/" >   $dirname/pre
+ mkdir -p /tmp/backup
+ src=/tmp/backup
+  echo $1 >   $dirname/pre_cmd_path
+   cat /home/tmpl/duply_pre  >   $dirname/pre
   cat /home/tmpl/duply_post  >    $dirname/post
     
 #fi

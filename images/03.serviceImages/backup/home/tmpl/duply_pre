@@ -1,6 +1,6 @@
 
 ts=`date +%d_%m_%y`
 
-ts=`date +%d_%m_%y`
-/home/run_docker_backup.sh backup_cmd_prefix > /tmp/big_tmp/backup.${ts}.gz
+
+/home/run_docker_backup.sh `cat pre_cmd_path` > /tmp/backup/backup.${ts}.gz
    

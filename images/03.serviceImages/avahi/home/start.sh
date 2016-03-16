@@ -30,6 +30,7 @@ echo $dbus_pid >/tmp/dbus.pid
 
 sudo -n /usr/sbin/avahi-daemon --no-chroot  & 
 echo $! >/tmp/avahi-daemon.pid
+
 touch /home/avahi/hosts/engines.local
 #/home/publish_aliases.sh
 touch /home/avahi/hosts/avahi.local
