@@ -54,6 +54,8 @@ mkdir -p /engines/var/run/flags/
 RAILS_ENV=production
 
 
+sshd_pid=`sudo /home/_start_sshd.sh`
+
 export  RAILS_ENV
 
 echo installing Gems
@@ -84,7 +86,9 @@ if ! test -d /var/log/app
 ln -s /var/log/app /home/app/log 
 
 
-PID_FILE=/var/run/apache2/apache2.pid
+
+PID_FILE=/var/run/engines/pids
+
 
 export PID_FILE
 . /home/trap.sh
@@ -92,8 +96,11 @@ export PID_FILE
 /home/clear_flags.sh
 
 /usr/sbin/apache2ctl -DFOREGROUND &
+apache_pid=$!
+
+echo -n "$apache_pid $sshd_pid" >> /var/run/engines/pids
 touch  /engines/var/run/flags/startup_complete
 wait 
 
-rm /var/run/apache2/apache2.pid
+rm PID_FILE
 rm /engines/var/run/flags/startup_complete
