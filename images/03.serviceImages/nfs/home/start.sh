@@ -1,6 +1,6 @@
 #!/bin/sh
 
-sudo syslogd -R syslog.engines.internal:514
+sudo -n syslogd -R syslog.engines.internal:514
 
 
 PID_FILE=/var/run/ganesha.pid
@@ -10,13 +10,13 @@ export PID_FILE
 mkdir -p /engines/var/run/flags
 
 		
-sudo /etc/init.d/rpcbind start
+sudo -n /etc/init.d/rpcbind start
 
-sudo  /usr/bin/ganesha.nfsd  -L /var/log/ganesha.log -F -f /usr/local/etc/ganesha.conf &
+sudo  -n /usr/bin/ganesha.nfsd  -L /var/log/ganesha.log -F -f /usr/local/etc/ganesha.conf &
 touch  /engines/var/run/flags/startup_complete
 wait  
 rm /engines/var/run/flags/startup_complete
-sudo /home/engines/scripts/_kill_syslog.sh
+sudo -n /home/engines/scripts/_kill_syslog.sh
 
 
 

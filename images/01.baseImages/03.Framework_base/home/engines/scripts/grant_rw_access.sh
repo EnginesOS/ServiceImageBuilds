@@ -10,4 +10,4 @@
 fi
 
 path=`echo $entered_path |sed '/[ ;\\\"\`]/s///g ' | sed '/\.\./s///g'`
-sudo -u data-user /home/engines/scripts/_grant_rw_access.sh $recursive $path
+sudo -n -u data-user /home/engines/scripts/_grant_rw_access.sh $recursive $path

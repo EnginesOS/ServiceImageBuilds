@@ -7,7 +7,7 @@ fi
  
 if ! test -f /engines/var/run/flags/ca-update
  	then
-		sudo /home/engines/scripts/_update_ca.sh		
+		sudo -n /home/engines/scripts/_update_ca.sh		
 fi
 
 

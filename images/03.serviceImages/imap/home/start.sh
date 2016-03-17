@@ -14,10 +14,10 @@ cat /home/_dovecot-sql.conf.ext \
 	| sed   "/DBPASSWD/s//$dbpasswd/" > /etc/dovecot/dovecot-sql.conf.ext
 #sudo /usr/sbin/rsyslogd  -n -s syslog.engines.internal:514 &
 
-sudo syslogd  -R syslog.engines.internal:514
+sudo -n  syslogd  -R syslog.engines.internal:514
 
-sudo /usr/sbin/dovecot -F &
+sudo -n /usr/sbin/dovecot -F &
 touch  /engines/var/run/flags/startup_complete
 wait
-sudo /home/engines/scripts/_kill_syslog.sh
+sudo -n /home/engines/scripts/_kill_syslog.sh
 rm /engines/var/run/flags/startup_complete

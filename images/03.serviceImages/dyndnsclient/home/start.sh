@@ -32,5 +32,5 @@ mkdir -p /engines/var/run/flags/
 	wait 
 	
 	rm /engines/var/run/flags/startup_complete
-	sudo /home/engines/scripts/_kill_syslog.sh
+	sudo -n /home/engines/scripts/_kill_syslog.sh
 

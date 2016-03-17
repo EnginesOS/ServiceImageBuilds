@@ -62,8 +62,10 @@ echo "TARGET_PASS='$pass'"  >>$Backup_ConfigDir/system/conf
 					fi
 				if test  $include_services = "true"
 					then
-						for service in $services
+					services=`grep -lr backup_support /opt/engines/etc/services/providers/ |uniq |sed "/\.yaml/s///"`
+						for service_path in $services						
 						 do
+						 service=`basename $service_path `
 						 if test $service = 'filesystem' -o $service = 'syslog'
 						  then
 						  continure

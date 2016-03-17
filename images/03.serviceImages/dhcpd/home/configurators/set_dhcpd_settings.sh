@@ -68,4 +68,4 @@ fi
 
 cat /home/dhcpd.conf.tmpl |sed -e /NETMASK/s//$netmask/ -e /DOMAIN_NAME/s//$domain_name/ -e /ENGINES_IP/s//$dns_server1/ -e /OPTIONAL_DNS/s//$dns_server2/ -e /DEFAULT_LEASE/s//$default_lease/ -e /MAX_LEASE/s//$max_lease/ -e /SUBNET/s//$subnet/ -e /RANGE_MIN/s//$start/ -e /RANGE_MAX/s//$end/ -e /GATEWAY/s//$default_gateway/ >/tmp/dhcpd.conf
 
-sudo /home/install_dhcpd_conf.sh
+sudo -n  /home/install_dhcpd_conf.sh

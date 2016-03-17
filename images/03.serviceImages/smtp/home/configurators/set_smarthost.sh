@@ -32,7 +32,7 @@ echo $1 >/home/configurators/saved/smarthost
 		    
 		#chown root.root /etc/postfix/transport
 		chmod 600 /etc/postfix/transport
-		sudo postmap /etc/postfix/transport
+		sudo -n postmap /etc/postfix/transport
 
 
 
@@ -67,6 +67,6 @@ echo $1 >/home/configurators/saved/smarthost
 echo "$smarthost_hostname $smarthost_username:$smarthost_password" > /etc/postfix/smarthost_passwd
 #chown  /etc/postfix/smarthost_passwd
 chmod 600 /etc/postfix/smarthost_passwd
-sudo postmap   /etc/postfix/smarthost_passwd     
+sudo -n postmap   /etc/postfix/smarthost_passwd     
 
 exit 0
