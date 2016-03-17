@@ -30,20 +30,27 @@ export dest_user
 export dest_pass
 parent=$parent_engine
 export parent
+export backup_type
 
-n=0
-array_cnt=${#publisher_namespace[@]}
-echo $n $array_cnt
-while test $n -lt $array_cnt
- do
- src_type=`basename ${type_path[n]}`
- echo $src_type
 
- 
- export src_type
-  /home/add_backup.sh ${parent_engine[n]}:${publisher_namespace[n]}/${type_path[n]}/${service_handle[n]}/
-echo "PASSED  ${parent_engine[n]}:${publisher_namespace[n]}/${type_path[n]}/${service_handle[n]}/"
-  n=`expr $n + 1`
- done
-
+if test $backup_up = 'engine_and_data'
+ then
+     /home/add_backup.sh ${parent_engine}:system
+	n=0
+	array_cnt=${#publisher_namespace[@]}
+	echo $n $array_cnt
+		while test $n -lt $array_cnt
+ 		 do
+ 			src_type=`basename ${type_path[n]}`
+ 			export src_type
+  			/home/add_backup.sh ${parent_engine[n]}:${publisher_namespace[n]}/${type_path[n]}/${service_handle[n]}/
+			echo "PASSED  ${parent_engine[n]}:${publisher_namespace[n]}/${type_path[n]}/${service_handle[n]}/"
+  			n=`expr $n + 1`
+ 		done
+  elif test $backup_up = 'engine_only'
+  then
+  /home/add_backup.sh ${parent_engine}:system
+  else
+    /home/add_backup.sh ${parent_engine}:${publisher_namespace}/${type_path}/${service_handle}/
+fi
  exit 0

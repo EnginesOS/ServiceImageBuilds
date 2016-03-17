@@ -20,7 +20,7 @@ if ! test -f /engines/var/run/flags/first_run.done
  echo dbname=$dbname >>/home/auth/.dbenv
  echo dbpasswd=$dbpasswd >>/home/auth/.dbenv
  echo dbuser=$dbuser >>/home/auth/.dbenv
-	
+chmod og-rwx  /home/auth/.dbenv
 
 
 #> kdb5_util create -r ENGINES.INTERNAL -s

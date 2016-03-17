@@ -9,7 +9,7 @@ echo src_type $src_type
 dirname=${parent}_${backup_name}_${src_type}
 dirname=${Backup_ConfigDir}/$dirname
 
-
+echo -n $backup_type > $dirname/backup_type
 echo dirname $dirname
 if test -d $dirname
  then 
@@ -23,17 +23,17 @@ export dirname
  then
  	echo $email >$dirname/email 	
  fi
- #if type differential
-#				dir=`echo $volume_src |sed "/\/var\/lib\/engines\//s///"`
- #              	src=/backup_src/volumes/$dir
- #else
- mkdir -p /tmp/backup
- src=/tmp/backup
-  echo $1 >   $dirname/pre_cmd_path
-   cat /home/tmpl/duply_pre  >   $dirname/pre
-  cat /home/tmpl/duply_post  >    $dirname/post
+if $backup_type == incr
+				dir=`echo $volume_src |sed "/\/var\/lib\/engines\//s///"`
+               	src=/backup_src/volumes/$dir
+ else
+ 	mkdir -p /tmp/backup
+ 	src=/tmp/backup
+  	echo $1 >   $dirname/pre_cmd_path
+  	cat /home/tmpl/duply_pre  >   $dirname/pre
+  	cat /home/tmpl/duply_post  >    $dirname/post
     
-#fi
+fi
         if test $dest_proto = "file"
                 then
                  #path=`echo $3 |cut -f4 -d:`
