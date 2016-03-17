@@ -11,5 +11,5 @@ then
  mkdir -p /var/run/sshd
 fi
 
-/usr/sbin/sshd   -D -E /var/logs/sshd/ssh.log &
-echo $!
+/usr/sbin/sshd   -D -E /var/logs/sshd/ssh.log 
+

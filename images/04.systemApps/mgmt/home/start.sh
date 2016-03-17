@@ -53,8 +53,8 @@ cp /home/newrelic.yml /home/app/
 mkdir -p /engines/var/run/flags/
 RAILS_ENV=production
 
-
-sshd_pid=`sudo /home/_start_sshd.sh`
+sudo /home/_start_sshd.sh &
+sshd_pid=$!
 
 export  RAILS_ENV
 
