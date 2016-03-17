@@ -8,7 +8,7 @@ if ! test -d /var/logs/sshd
 fi
 if ! test -d /var/run/sshd
 then 
- mkdir /var/run/sshd
+ mkdir -p /var/run/sshd
 fi
 
 /usr/sbin/sshd   -D -E /var/logs/sshd/ssh.log &
