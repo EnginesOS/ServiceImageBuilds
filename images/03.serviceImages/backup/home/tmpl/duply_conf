@@ -1,1 +1,2 @@
 tempdir=/backup_temp
+MAX_FULL_BACKUPS=5
