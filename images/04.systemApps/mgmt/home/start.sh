@@ -98,7 +98,7 @@ export PID_FILE
 /usr/sbin/apache2ctl -DFOREGROUND &
 apache_pid=$!
 
-echo -n "$apache_pid $sshd_pid" >> /var/run/engines/pids
+echo -n "$apache_pid $sshd_pid" > /var/run/engines/pids
 touch  /engines/var/run/flags/startup_complete
 wait 
 
