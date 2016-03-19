@@ -33,7 +33,7 @@ if test -z $db_password
  cat /home/tmpls/create_db.tmpl | sed "/DBNAME/s//$database_name/" \
  								| sed "/DBUSER/s//$db_username/" \
  								| sed "/DBPASSWD/s//$db_password/"  > /tmp/create_cmd.js
- pass=`cat /home/configurators/saved/db_master_pass`		
+ pass=`cat  /data/db/.priv/db_master_pass`		
  mongo -p $pass -u admin --authenticationDatabase admin < /tmp/create_cmd.js&> /tmp/res
 res=`cat /tmp/res`
 

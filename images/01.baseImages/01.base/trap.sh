@@ -39,7 +39,7 @@ trap_term()
 		then
 		if test -f /home/_signal.sh
 			then
-				sudo /home/_signal.sh $SIGNAL	$PID_FILE
+				sudo -n /home/_signal.sh $SIGNAL	$PID_FILE
 			else
 				kill -$SIGNAL `cat    $PID_FILE `	
 				pid=`cat    $PID_FILE `				
@@ -67,7 +67,7 @@ trap_hup()
 			then
 				if test -f /home/_signal.sh
 					then
-						sudo /home/_signal.sh $SIGNAL	$PID_FILE
+						sudo -n /home/_signal.sh $SIGNAL	$PID_FILE
 					else
 						kill -$SIGNAL `cat  $PID_FILE  `	
 				fi

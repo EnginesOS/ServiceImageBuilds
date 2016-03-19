@@ -4,7 +4,7 @@
 service_hash=$1
 
 
- echo $service_hash | /home/engines/bin/json_to_env >/tmp/.env
+ echo "$service_hash" | /home/engines/bin/json_to_env >/tmp/.env
  . /tmp/.env
 
 #FIXME make engines.internal settable
@@ -27,17 +27,17 @@ service_hash=$1
     
 mkdir -p /home/cron/entries/${parent_engine}/
 
-mins=`echo $cron_job | cut -d' ' -f1`
+mins=`echo "$cron_job" | cut -d' ' -f1`
  if [[ $mins == @* ]] 
   then
-  cmd=`echo $cron_job | cut -d' ' -f 2- `
+  cmd=`echo "$cron_job" | cut -d' ' -f 2- `
 	
   else
-    hrs=`echo $cron_job | cut -d' ' -f2`
-	day=`echo $cron_job | cut -d' ' -f3`
-	dow=`echo $cron_job | cut -d' ' -f4`
-	dom=`echo $cron_job | cut -d' ' -f5`
-	cmd=`echo $cron_job | cut -d' ' -f 6- `
+    hrs=`echo "$cron_job" | cut -d' ' -f2`
+	day=`echo "$cron_job" | cut -d' ' -f3`
+	dow=`echo "$cron_job" | cut -d' ' -f4`
+	dom=`echo "$cron_job" | cut -d' ' -f5`
+	cmd=`echo "$cron_job" | cut -d' ' -f 6- `
 fi 
 
 if test $action_type == "web"
@@ -53,7 +53,7 @@ if test $action_type == "web"
 		cmd="docker exec ${parent_engine} $cmd"
 	fi
 
-echo $mins $hrs $day $dow $dom $cmd  | sed "/STAR/s//\*/g" > /home/cron/entries/${parent_engine}/$title
+echo "$mins $hrs $day $dow $dom $cmd " > /home/cron/entries/${parent_engine}/$title
 
 /home/rebuild_crontab.sh
 

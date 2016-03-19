@@ -30,6 +30,7 @@ echo $dbus_pid >/tmp/dbus.pid
 
 sudo -n /usr/sbin/avahi-daemon --no-chroot  & 
 echo $! >/tmp/avahi-daemon.pid
+
 touch /home/avahi/hosts/engines.local
 #/home/publish_aliases.sh
 touch /home/avahi/hosts/avahi.local
@@ -43,8 +44,8 @@ wait
 
 kill -TERM   'cat PID_FILE'
 
-sudo /home/kill_avahi.sh 
-sudo /home/kill_dbus.sh $dbus_pid
-sudo /home/engines/scripts/_kill_syslog.sh
+sudo -n /home/kill_avahi.sh 
+sudo -n /home/kill_dbus.sh $dbus_pid
+sudo -n /home/engines/scripts/_kill_syslog.sh
 
 rm /engines/var/run/flags/startup_complete

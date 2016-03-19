@@ -1,5 +1,22 @@
 #!/bin/bash
 
+function add_service {
+/tmp/
+src=/tmp/backup_$service/
+						mkdir -p $Backup_ConfigDir/$service
+						echo -n $service >$Backup_ConfigDir/$service/service
+						 cp   /home/tmpl/service_pre.sh $Backup_ConfigDir/$service/pre
+                		cp /home/tmpl/service_post.sh  $Backup_ConfigDir/$service/post
+                		chmod u+x $Backup_ConfigDir/$service/pre
+                		chmod u+x $Backup_ConfigDir/$service/post
+                		/home/prep_conf.sh $Backup_ConfigDir/$service/conf
+
+                		echo "SOURCE='$src'" >>$Backup_ConfigDir/$service/conf
+_dest=$dest/databases
+echo "TARGET='$_dest'" >>$Backup_ConfigDir/$service/conf
+echo "TARGET_USER='$user'"  >>$Backup_ConfigDir/$service/conf
+echo "TARGET_PASS='$pass'"  >>$Backup_ConfigDir/$service/conf
+}
 service_hash=$1
 
 echo $1 >/home/configurators/saved/system_backup
@@ -28,56 +45,46 @@ if test $dest_proto = "s3"
 	fi
 
 				if test  $include_system = "true"
-					then
+					then					
 						mkdir -p $Backup_ConfigDir/system
-                		/home/prep_conf.sh $Backup_ConfigDir/system/conf
-                		src=/backup_src/engines
+						/home/prep_conf.sh $Backup_ConfigDir/system/conf
+                		cp /home/tmpl/system_prep.sh $Backup_ConfigDir/system/pre
+                		cp /home/tmpl/system_post.sh  $Backup_ConfigDir/system/post
+                		mkdir -p /tmp/system_backup
+ 						src=/tmp/system_backup
                 		echo "SOURCE='$src'" >>$Backup_ConfigDir/system/conf
+                	
 _dest=$dest/system
 echo "TARGET='$_dest'" >>$Backup_ConfigDir/system/conf
 echo "TARGET_USER='$user'"  >>$Backup_ConfigDir/system/conf
 echo "TARGET_PASS='$pass'"  >>$Backup_ConfigDir/system/conf
-					fi
-				if test  $include_databases = "true"
-					then
-						src=/home/backup/sql_dumps
-						mkdir -p $Backup_ConfigDir/system_databases
-						cat /home/tmpl/system_dumpall.sh >  $Backup_ConfigDir/system_databases/pre
-                		cp /home/tmpl/dumpall_post.sh  $Backup_ConfigDir/system_databases/post
-                		chmod u+x $Backup_ConfigDir/system_databases/pre
-                		chmod u+x $Backup_ConfigDir/system_databases/pos
-                		/home/prep_conf.sh $Backup_ConfigDir/system_databases/conf
 
-                		echo "SOURCE='$src'" >>$Backup_ConfigDir/system_databases/conf
-_dest=$dest/databases
-echo "TARGET='$_dest'" >>$Backup_ConfigDir/system_databases/conf
-echo "TARGET_USER='$user'"  >>$Backup_ConfigDir/system_databases/conf
-echo "TARGET_PASS='$pass'"  >>$Backup_ConfigDir/system_databases/conf
+					fi
+				if test  $include_services = "true"
+					then
+					services=`grep -lr backup_support /opt/engines/etc/services/providers/ |uniq |sed "/\.yaml/s///"`
+						for service_path in $services						
+						 do
+						 service=`basename $service_path `
+						 if test $service = 'filesystem' -o $service = 'syslog'
+						  then
+						  continure
+						  fi 
+							add_service 
+						done	
+						
 				fi
 				
 				if test $include_logs = "true"
 					then
-						mkdir -p $Backup_ConfigDir/system_logs
-						src=/backup_src/logs						
-						/home/prep_conf.sh $Backup_ConfigDir/system_logs/conf
-						echo "SOURCE='$src'" >>$Backup_ConfigDir/system_logs/conf
-_dest=$dest/logs
-echo "TARGET='$_dest'" >>$Backup_ConfigDir/system_logs/conf
-echo "TARGET_USER='$user'"  >>$Backup_ConfigDir/system_logs/conf
-echo "TARGET_PASS='$pass'"  >>$Backup_ConfigDir/system_logs/conf
+					service=syslog
+					add_service 
 				fi
 				
 				if test $include_files = "true"
 					then
-						mkdir -p $Backup_ConfigDir/system_files
-						echo /backup_src/volumes/mysql >  $Backup_ConfigDir/system_files/exclude
-						src=/backup_src/volumes/
-						/home/prep_conf.sh  $Backup_ConfigDir/system_files/conf
-						echo "SOURCE='$src'" >>$Backup_ConfigDir/system_files/conf
-_dest=$dest/volumes				
-echo "TARGET='$_dest'" >>$Backup_ConfigDir/system_files/conf
-echo "TARGET_USER='$user'"  >>$Backup_ConfigDir/system_files/conf
-echo "TARGET_PASS='$pass'"  >>$Backup_ConfigDir/system_files/conf
+					service=volmanager
+						add_service 
 				fi
 				
 

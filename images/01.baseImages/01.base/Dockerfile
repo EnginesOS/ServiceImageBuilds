@@ -54,6 +54,6 @@ ENV	build 20160215
 #RUN 	apt-get -y  --force-yes update;\
 #		apt-get upgrade -y;\
 RUN		apt-get clean 	
-		
+RUN mkdir /var/run/engines ; chgrp containers /var/run/engines; chmod g+w /var/run/engines	
 		
 CMD ["/home/init.sh"]

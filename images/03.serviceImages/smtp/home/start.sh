@@ -8,7 +8,7 @@ export PID_FILE
 
 mkdir -p /engines/var/run/flags/
 
-sudo /sbin/syslogd -R syslog.engines.internal:514
+sudo -n /sbin/syslogd -R syslog.engines.internal:514
 if ! test -f /etc/postfix/transport 
 	then
 	 echo "	*	smtp:" >/etc/postfix/transport
@@ -18,11 +18,11 @@ if ! test -f /etc/postfix/mailname
 		echo "not.set" > /etc/postfix/mailname
 	fi
 		
-sudo postmap /etc/postfix/transport
+sudo -n postmap /etc/postfix/transport
 
-sudo /usr/lib/postfix/master &
+sudo -n /usr/lib/postfix/master &
 touch  /engines/var/run/flags/startup_complete
 wait
 rm /engines/var/run/flags/startup_complete  
-sudo /home/engines/scripts/_kill_syslog.sh
+sudo -n /home/engines/scripts/_kill_syslog.sh
 

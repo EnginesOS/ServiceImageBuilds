@@ -24,7 +24,7 @@ export PID_FILE
 mkdir -p /engines/var/run/flags/
 
 
-sudo /home/setup.sh
+sudo -n /home/setup.sh
 
 sudo -n syslogd  -R syslog.engines.internal:514
 sudo -n /usr/sbin/named  -c /etc/bind/named.conf -f -u bind & 

@@ -1,2 +1,2 @@
 #/bin/bash
-sudo rm /etc/dhcp/dhcpd.conf
+sudo -n rm /etc/dhcp/dhcpd.conf

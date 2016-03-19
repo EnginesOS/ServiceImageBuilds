@@ -9,4 +9,6 @@ dir=$1
  	    	    cd   $dir	  	    	    	
  				rm -r $files
  				echo "rm -r $files in $dir"
- 			fi
+ 			fi 			
+ 			
+#}

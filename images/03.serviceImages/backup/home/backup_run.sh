@@ -13,8 +13,13 @@ for backup in `ls $Backup_ConfigDir`
                 	else
                 		email=$default_email
                 fi
-                	
-                duply $backup backup   --s3-use-new-style > /var/log/backup/$bfn
+                if test -f $Backup_ConfigDir/$backup/backup_type
+                  then
+                  	backup_type=`cat $Backup_ConfigDir/$backup/backup_type`
+                  else
+           			backup_type=full
+                fi
+                duply $backup backup   $backup_type --s3-use-new-style > /var/log/backup/$bfn
                 
                 result=`grep "Finished state FAILED"  /var/log/backup/$bfn`
                 	if test $? -ne 0
