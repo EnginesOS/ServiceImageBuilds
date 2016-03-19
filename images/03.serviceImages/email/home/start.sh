@@ -39,7 +39,7 @@ sudo -n  /usr/sbin/apache2ctl  -DFOREGROUND &
 touch /engines/var/run/flags/startup_complete  
 wait 
 rm -f /engines/var/run/flags/startup_complete
-sudo /home/engines/scripts/_kill_syslog.sh
+sudo -n /home/engines/scripts/_kill_syslog.sh
 
  
  

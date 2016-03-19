@@ -1,7 +1,7 @@
 FROM  engines/passenger:$release
 ENV ruby_version 2.2.2
 RUN /usr/sbin/addgroup --gid 999 docker;\
-	apt-get -y install telnet openssl-dev libcurl4-openssl-dev;\
+	apt-get -y install telnet openssh-server libcurl4-openssl-dev;\
 	echo "Y" | adduser -q --uid 21000 --gid 999 --home /home/engines --disabled-password engines;\
 	 /usr/local/rbenv/bin/rbenv  install $ruby_version;\
 	 /usr/local/rbenv/bin/rbenv  global $ruby_version
@@ -46,7 +46,7 @@ ADD SSL-default.conf /etc/apache2/sites-enabled/
 ADD	passenger.conf  /etc/apache2/mods-enabled/
 #ADD Procfile.sh /home/app/
 
-
+ENV HOME /home/engines/
 		
 CMD ["/home/start.sh"]
 USER 21000

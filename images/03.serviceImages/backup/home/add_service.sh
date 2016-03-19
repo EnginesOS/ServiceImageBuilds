@@ -3,12 +3,12 @@
 service_hash=$1
 
 
+echo $service_hash   | sed '/\"\[/s// \[/' | sed '/\\/s///g' | sed '/\]\"/s//\] /'| /home/engines/bin/json_to_env >/tmp/.env
 
-
- echo $service_hash | /home/engines/bin/json_to_env >/tmp/.env
+ 
  . /tmp/.env
 
-echo $1 >/home/configurators/saved/system_backup
+echo $1 >/home/configurators/saved/backup
 
  echo "$*" >>/var/log/backup/addbackup.log
 
@@ -28,18 +28,29 @@ export dest_proto
 export dest_address
 export dest_user
 export dest_pass
-export parent_engine
- shift
-while ! test -z $1
- do
-    
-	service_hash=$1
-load_service_hash_to_environment
-echo calling /home/backup_scripts/$publisher_namespace/$type_path/add_backup.sh $1
+parent=$parent_engine
+export parent
+export backup_type
 
-	/home/backup_scripts/$publisher_namespace/$type_path/add_backup.sh $1
 
-	shift
- done
-
+if test $backup_up = 'engine_and_data'
+ then
+     /home/add_backup.sh ${parent_engine}:system
+	n=0
+	array_cnt=${#publisher_namespace[@]}
+	echo $n $array_cnt
+		while test $n -lt $array_cnt
+ 		 do
+ 			src_type=`basename ${type_path[n]}`
+ 			export src_type
+  			/home/add_backup.sh ${parent_engine[n]}:${publisher_namespace[n]}/${type_path[n]}/${service_handle[n]}/
+			echo "PASSED  ${parent_engine[n]}:${publisher_namespace[n]}/${type_path[n]}/${service_handle[n]}/"
+  			n=`expr $n + 1`
+ 		done
+  elif test $backup_up = 'engine_only'
+  then
+  /home/add_backup.sh ${parent_engine}:system
+  else
+    /home/add_backup.sh ${parent_engine}:${publisher_namespace}/${type_path}/${service_handle}/
+fi
  exit 0

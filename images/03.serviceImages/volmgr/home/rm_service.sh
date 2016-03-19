@@ -20,7 +20,7 @@ service_hash="$1"
         exit -1
     fi  
     
- sudo /home/engines/scripts/delete_volume.sh ${parent_engine} ${service_name} 
+ sudo -n /home/engines/scripts/delete_volume.sh ${parent_engine} ${service_name} 
     if $? -eq 0
 	then 
 		echo "Success"

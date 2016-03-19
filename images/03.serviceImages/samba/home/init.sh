@@ -1,7 +1,7 @@
 #!/bin/sh
 
 
-sudo syslogd -R syslog.engines.internal:514
+sudo -n syslogd -R syslog.engines.internal:514
 
 #No need as uses exec
 PID_FILE=/var/run/ftpd.pid
@@ -60,7 +60,7 @@ fcnt=`expr $fcnt + 1`
 touch  /engines/var/run/flags/startup_complete
 
 
-exec sudo /usr/sbin/proftpd -n
+exec sudo -n /usr/sbin/proftpd -n
 
 
 

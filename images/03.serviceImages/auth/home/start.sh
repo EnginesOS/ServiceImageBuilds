@@ -20,7 +20,7 @@ if ! test -f /engines/var/run/flags/first_run.done
  echo dbname=$dbname >>/home/auth/.dbenv
  echo dbpasswd=$dbpasswd >>/home/auth/.dbenv
  echo dbuser=$dbuser >>/home/auth/.dbenv
-	
+chmod og-rwx  /home/auth/.dbenv
 
 
 #> kdb5_util create -r ENGINES.INTERNAL -s
@@ -35,9 +35,9 @@ if ! test -f /engines/var/run/flags/first_run.done
 
 
 SIGNAL=0
-sudo /home/_start_syslog.sh
-sudo /home/_start_sshd.sh
-sudo /home/_start_kerobos.sh &
+sudo -n /home/_start_syslog.sh
+sudo -n /home/_start_sshd.sh
+sudo -n /home/_start_kerobos.sh &
 
 touch /engines/var/run/flags/startup_complete
 echo "startup complete"

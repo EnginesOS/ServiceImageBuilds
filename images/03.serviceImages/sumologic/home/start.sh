@@ -40,7 +40,7 @@ if [ ! -e $sources_json ]; then
            exit -1
 fi
 
-sudo /opt/SumoCollector/collector console -- -t -i $access_id -k $access_key -n $collector_name -s $sources_json &
+sudo -n /opt/SumoCollector/collector console -- -t -i $access_id -k $access_key -n $collector_name -s $sources_json &
 touch  /engines/var/run/flags/startup_complete
 wait
 rm  /engines/var/run/flags/startup_complete
