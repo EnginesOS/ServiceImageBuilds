@@ -2,7 +2,7 @@ FROM  engines/servicebase:$release
 
 	
 
-ENV ruby_version 2.2.2
+ENV ruby_version 2.3.0
 ENV  RBENV_ROOT /usr/local/rbenv
 
 RUN apt-get -y update;\
@@ -18,10 +18,9 @@ RUN apt-get -y update;\
 	apt-get -y clean 
 	
 COPY home home	
-	
+RUN	/usr/local/rbenv/shims/gem install rest-client sinatra thin yajl-ruby rubytree
 RUN	mkdir -p /home/registry;\
 	cd /home/registry;\
-	/usr/local/rbenv/shims/gem install rest-client sinatra thin yajl-ruby rubytree;\
 	mkdir -p  /opt/engines/run/service_manager/;\	
 	chown -R registry /opt/engines/run/service_manager/ /home/registry /var/log/
 	
