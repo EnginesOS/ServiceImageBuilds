@@ -9,7 +9,8 @@ RUN /usr/sbin/usermod -u 22671 www-data;\
 	mkdir -p /etc/apache2/ /var/run/apache2/lock/;\
 	chown www-data -R /var/run/apache2	;\
 	chown www-data /var/www/;\
-	usermod -G containers -a www-data
+	usermod -G containers -a www-data;\
+	usermod -G smmsp -a www-data
 	
 ENV APACHE_LOCK_DIR /var/run/apache2/lock/
 	
