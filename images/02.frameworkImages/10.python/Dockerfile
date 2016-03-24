@@ -11,7 +11,7 @@ RUN echo "Y" | adduser -q --uid 22674 --home /home/python --disabled-password py
     mkdir ~/node_js_src && cd $_;wget -N http://nodejs.org/dist/node-latest.tar.gz;tar xzvf node-latest.tar.gz && cd node-v*;./configure; make ;make install;\
     usermod -G containers -a  python ;\
     cd /tmp;\
-    wget https://bootstrap.pypa.io/get-pip.py -o get-pip.py;\ 
+    wget --no-check-certificate https://bootstrap.pypa.io/get-pip.py ;\ 
 	python get-pip.py;\
 	chown python.python -R	/usr/local/lib/python2.7/dist-packages/;\
 	usermod -G python -a www-data;\
