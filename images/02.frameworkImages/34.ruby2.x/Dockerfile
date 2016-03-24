@@ -18,6 +18,8 @@ RUN mkdir ~/node_js_src && cd $_;wget -N http://nodejs.org/dist/node-latest.tar.
 	cp -rp  ~/.gemrc ~/.bashrc ~ruby;\
 	chmod -R g+w /usr/local/rbenv/versions/ ;chgrp -R ruby /usr/local/rbenv/versions/
 	
-RUN mkdir -p /home/home_dir/.bundle/;\
+
+RUN rm -r /home/home_dir/node_js_src;\
+	mkdir -p /home/home_dir/.bundle/;\
 	chgrp containers /home/home_dir/.bundle/;\
 	chmod g+w /home/home_dir/.bundle/
