@@ -15,7 +15,7 @@ RUN apt-get -y update;\
 	chmod g+w /var/log/;\
 	mkdir -p /home/actionators/saved/;\
 	chgrp containers  /home/actionators/saved/;\
-	chmod g+w /home/actionators/saved/
+	chmod g+w /home/actionators/saved/ 
 	
 #FIXME above with sendmail.cf should really use m4 macros and not a sed kludge
 	
