@@ -24,8 +24,8 @@ RUN apt-get -y  --force-yes update;\
 	ln -s /bin/true /sbin/initctl;\
 	apt-get clean;\
 	ln -s /usr/bin/sendmail /usr/sbin/sendmail;\
-	groupadd -g 22020 containers ;\
-	apt-mark hold tzdata 
+	groupadd -g 22020 containers 
+#	apt-mark hold tzdata 
 	
 	COPY src /home/src
 RUN	cd  /tmp ;\
@@ -36,8 +36,9 @@ RUN	cd  /tmp ;\
 	 cd src ;\
 	 make json_to_env ;\
 	 mkdir -p /home/engines/bin;\
-	 cp json_to_env /home/engines/bin
-	 #apt-remove ... build-essential
+	 cp json_to_env /home/engines/bin;\
+	 rm -r /home/src;\
+	 apt-remove ... build-essential
 	 
 COPY install_utf8_langauges.sh /tmp
 
