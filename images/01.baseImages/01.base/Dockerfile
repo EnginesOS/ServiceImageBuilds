@@ -37,8 +37,8 @@ RUN	cd  /tmp ;\
 	 make json_to_env ;\
 	 mkdir -p /home/engines/bin;\
 	 cp json_to_env /home/engines/bin;\
-	 rm -r /home/src;\
-	 apt-get remove  build-essential
+	 rm -r /home/src
+	# apt-get remove  build-essential
 	 
 COPY install_utf8_langauges.sh /tmp
 
