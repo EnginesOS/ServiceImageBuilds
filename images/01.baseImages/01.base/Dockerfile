@@ -38,7 +38,7 @@ RUN	cd  /tmp ;\
 	 mkdir -p /home/engines/bin;\
 	 cp json_to_env /home/engines/bin;\
 	 rm -r /home/src;\
-	 apt-remove ... build-essential
+	 apt-get remove  build-essential
 	 
 COPY install_utf8_langauges.sh /tmp
 
