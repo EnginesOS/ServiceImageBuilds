@@ -10,9 +10,9 @@ echo $1 >/home/configurators/saved/smarthost
 
         
         
-   	if test  ${#smarthost_hostname} -gt 5
+   	if ! test -z $smarthost_hostname
 	then 
-		if test 1 -lt ${#smarthost_port}
+		if ! test -z $smarthost_port
 			then
 				smarthost_port=25
 		    fi
@@ -38,10 +38,9 @@ echo $1 >/home/configurators/saved/smarthost
 
 
  
- if test -n $mail_namedefaultdomain
+ if ! test -z $mail_name
  then
  	echo $mail_name > /etc/postfix/mailname
- 
  fi
  
  if test -z $smarthost_username -a -z $smarthost_password
