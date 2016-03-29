@@ -10,14 +10,15 @@ echo $1 >/home/configurators/saved/smarthost
 
         
         
-   	if ! test -z $smarthost_hostname
+   	if ! test -z $smart_hostname
 	then 
-		if ! test -z $smarthost_port
+	
+		if ! test -z $smart_host_port
 			then
-				smarthost_port=25
+				smart_host_port=25
 		    fi
 
-		echo "*	smtp:$smarthost_hostname:$smarthost_port"  > /etc/postfix/transport.smart
+		echo "*	smtp:$smart_hostname:$smart_host_port"  > /etc/postfix/transport.smart
 		cp /etc/postfix/transport.smart /etc/postfix/transport
 		else
 		    rm -r /etc/postfix/transport.smart
@@ -26,8 +27,12 @@ echo $1 >/home/configurators/saved/smarthost
 		fi 
 		if test -f /home/configurators/saved/default_domain
 		  then
-		    domain=`cat /home/configurators/saved/default_domain`
-		    echo "[$domain] :local" >> /etc/postfix/transport
+		   cat /home/configurators/saved/default_domain | /home/engines/bin/json_to_env >/tmp/.2env
+		   . /tmp/.2env
+		   if test $deliver_local =eq 1
+		    then
+		     echo "[$domain_name] :email.engines.internal" >> /etc/postfix/transport
+		    fi
 		   fi
 		    
 		#chown root.root /etc/postfix/transport

@@ -20,15 +20,9 @@ echo ${domain_name} >/home/configurators/saved/domain
         echo  "*	:" >> /etc/postfix/transport
         if ! test -z $deliver_local 
           then
-            if test 'true'  = $deliver_local 
-             then
-                 touch /home/configurators/saved/domain/delivery_local
- 				echo ${domain_name} :[email.engines.internal]	>> /etc/postfix/transport
- 			else
- 			 if test -f /home/configurators/saved/domain/delivery_local
- 			  then
- 			 	rm /home/configurators/saved/domain/delivery_local
- 			 fi
+            if test  $deliver_local -eq 1 
+             then                 
+ 				echo ${domain_name} :[email.engines.internal]	>> /etc/postfix/transport 			
  			fi
  		fi	
 		postmap /etc/postfix/transport
