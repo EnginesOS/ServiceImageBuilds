@@ -7,6 +7,7 @@ echo $1 >/home/configurators/saved/default_domain
  echo $service_hash | /home/engines/bin/json_to_env >/tmp/.env
  . /tmp/.env
 
+echo ${domain_name} >/home/configurators/saved/domain
 
 
         
@@ -19,9 +20,15 @@ echo $1 >/home/configurators/saved/default_domain
         echo  "*	:" >> /etc/postfix/transport
         if ! test -z $deliver_local 
           then
-            if test 'true' $deliver_local 
+            if test 'true'  = $deliver_local 
              then
+                 touch /home/configurators/saved/domain/delivery_local
  				echo ${domain_name} :[email.engines.internal]	>> /etc/postfix/transport
+ 			else
+ 			 if test -f /home/configurators/saved/domain/delivery_local
+ 			  then
+ 			 	rm /home/configurators/saved/domain/delivery_local
+ 			 fi
  			fi
  		fi	
 		postmap /etc/postfix/transport
