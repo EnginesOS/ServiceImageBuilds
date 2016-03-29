@@ -12,12 +12,18 @@ echo $1 >/home/configurators/saved/default_domain
         
         
   
-		echo '/^(.*@*)engines.internal$/     ${1}'${default_domain} > /etc/postfix/sender_canonical
+		echo '/^(.*@*)engines.internal$/     ${1}'${domain_name} > /etc/postfix/sender_canonical
 		
- 		echo smtp.${default_domain} > /etc/postfix/mailname
+ 		echo smtp.${domain_name} > /etc/postfix/mailname
  	    cp /etc/postfix/transport.smart /etc/postfix/transport 
-        echo -n "*	:" >> /etc/postfix/transport
- 		echo ${default_domain} :[email.engines.internal]	>> /etc/postfix/transport	
+        echo  "*	:" >> /etc/postfix/transport
+        if ! test -z $deliver_local 
+          then
+            if test 'true' $deliver_local 
+             then
+ 				echo ${domain_name} :[email.engines.internal]	>> /etc/postfix/transport
+ 			fi
+ 		fi	
 		postmap /etc/postfix/transport
 
  
