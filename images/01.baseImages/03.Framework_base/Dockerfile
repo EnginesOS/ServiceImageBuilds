@@ -1,7 +1,8 @@
 FROM  engines/base:$release
 ADD home /home
 ADD engines_sudoers /etc/sudoers.d/engines
-RUN apt-get -y update;\
+RUN  apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ED8E640A;\
+	apt-get -y update;\
 	apt-get upgrade -y;\
 	apt-get install -y  sendmail-bin ca-certificates mysql-client postgresql-client git-core imagemagick gawk sqlite3 bison  sudo;\
 	mkdir -p /home/fs;\
