@@ -10,7 +10,7 @@ append_dot_mydomain = no
 #delay_warning_time = 4h
 
 sender_canonical_maps = regexp:/etc/postfix/sender_canonical
-
+smtp_use_tls=no
 readme_directory = no
 
 #FIXME SHOULD GENERATE THESES
