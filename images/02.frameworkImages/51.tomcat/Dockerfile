@@ -1,4 +1,4 @@
-FROM engines/frameworkbase:$release
+FROM engines/openjdk:$release
 
 RUN  apt-mark unhold tzdata ;\
 	apt-get -y  --force-yes update;\
