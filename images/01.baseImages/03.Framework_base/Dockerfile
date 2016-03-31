@@ -25,3 +25,7 @@ ADD sources.list /etc/apt/
 ENV HOME /home/home_dir
 
 RUN mkdir $HOME ; chgrp containers $HOME; chmod g+w  $HOME
+
+#COPY submit.mc /etc/mail
+#COPY sendmail.mc /etc/mail
+#RUN echo y y |sendmailconfig --no-reload
