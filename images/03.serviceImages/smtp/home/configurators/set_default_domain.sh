@@ -10,15 +10,15 @@ echo $1 >/home/configurators/saved/default_domain
 echo ${domain_name} >/home/configurators/saved/domain
 
 
-        echo "@*local  @${domain_name}" > /etc/postfix/generic
-         echo "@localhost  @${domain_name}" >> /etc/postfix/generic
-         echo "@  @${domain_name}" >> /etc/postfix/generic
-        postmap  /etc/postfix/generic
+#        echo "@*local  @${domain_name}" > /etc/postfix/generic
+#         echo "@localhost  @${domain_name}" >> /etc/postfix/generic
+#         echo "@  @${domain_name}" >> /etc/postfix/generic
+#        postmap  /etc/postfix/generic
         
-        echo "@/.+/ @${domain_name}"  /etc/postfix/sender_canonical
+        echo "/.+/ @${domain_name}"  /etc/postfix/sender_canonical
         postmap  /etc/postfix/sender_canonical
   
-		echo '/^(.*@*)engines.internal$/     ${1}'${domain_name} > /etc/postfix/sender_canonical
+		
 		
  		echo smtp.${domain_name} > /etc/postfix/mailname
  		
