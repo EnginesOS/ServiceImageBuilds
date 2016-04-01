@@ -13,16 +13,17 @@ if test "$1" = -h
  
  if test "$1" = "-buildall"
  	then
- 		1="-p"
+ 		shift
  		rm `find . -name last_built`
  	fi
  	
 if test "$1" = "-nocache"
  	then
- 		extra+=' --use-cache=false "
+ 		extra+=" --use-cache=false "
+ 		shift
  	fi
  	
- 	shift
+ 	
  	
 if test -f release
 then
