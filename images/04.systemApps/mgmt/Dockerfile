@@ -34,6 +34,8 @@ RUN /usr/local/rbenv/shims/gem install git bundle oink vmstat rest-client net_ht
  	mkdir -p /home/app/public/system;\
  	chown -R 21000 /home/app/public /home/configurators/saved;\
  	usermod -G containers -a engines;\
+ 	mkdir -p /usr/lib/src;\
+ 	cp -dpR /usr/share/passenger/ruby_extension_source /usr/lib/src/ruby_native_extension;\
  	passenger-config  build-native-support
  	
  
