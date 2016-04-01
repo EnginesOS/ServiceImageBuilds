@@ -44,4 +44,6 @@ recipient_delimiter = +
 inet_interfaces = all
 
 transport_maps = hash:/etc/postfix/transport
+smtp_generic_maps = hash:/etc/postfix/generic
+
 smtpd_client_restrictions=permit_mynetworks,permit_sasl_authenticated, check_relay_domains,reject

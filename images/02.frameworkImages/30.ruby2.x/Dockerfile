@@ -1,14 +1,15 @@
-FROM engines/frameworkbuild:$release
+FROM engines/node:$release
 ENV ruby_version 2.3.0
 ENV ContUser ruby
 ENV ContGrp ruby
 ENV  RBENV_ROOT /usr/local/rbenv
 ENV PATH $PATH:/usr/local/rbenv/shims/
-RUN mkdir ~/node_js_src && cd $_;wget -N http://nodejs.org/dist/node-latest.tar.gz;tar xzvf node-latest.tar.gz && cd node-v*;./configure; make ;make install; make clean;\
-	cd ../ ; rm -r node-latest.tar.gz node-v*;\
-	groupadd ruby;\
+
+	
+RUN	groupadd ruby;\
 	echo "Y" | adduser -q --ingroup ruby --uid 22672 --home /home/ruby --disabled-password ruby;\
 		usermod -G containers -a ruby;\
+		mkdir -p ~www-data ;\
 		chown www-data ~www-data ;\
 	mkdir -p /usr/local/ ; cd /usr/local/ ; git clone git://github.com/sstephenson/rbenv.git /usr/local/rbenv;\ 
 	cd /usr/local/rbenv ; git clone git://github.com/sstephenson/ruby-build.git /usr/local/rbenv/plugins/ruby-buil;\

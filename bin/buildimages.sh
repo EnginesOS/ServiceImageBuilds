@@ -16,7 +16,14 @@ if test "$1" = -h
  		1="-p"
  		rm `find . -name last_built`
  	fi
-
+ 	
+if test "$1" = "-nocache"
+ 	then
+ 		extra+=' --use-cache=false "
+ 	fi
+ 	
+ 	shift
+ 	
 if test -f release
 then
 	release=`cat release`
@@ -64,7 +71,7 @@ build_rest=0
 										./setup.sh
 									fi
 							 cat Dockerfile |  sed "/\$release/s//$release/" > Dockerfile.$release
-							 docker build --rm=true -t $tag -f Dockerfile.$release .
+							 docker build $extra --rm=true -t $tag -f Dockerfile.$release .
 								if test $? -eq 0
 									then
 										echo "Built $tag"
