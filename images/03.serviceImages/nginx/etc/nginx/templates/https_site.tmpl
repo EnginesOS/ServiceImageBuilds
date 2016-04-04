@@ -11,6 +11,7 @@
     server_name FQDN;
  # resolver RESOLV_IP;
     add_header Accept-Ranges bytes;
+   
      add_header Strict-Transport-Security "max-age=31536000; includeSubdomains";
     proxy_read_timeout 300s;
     ssl on;
@@ -34,6 +35,7 @@
    # proxy_set_header Connection "upgrade";  
     proxy_set_header X-Real-IP $remote_addr;    
     proxy_set_header Host $host;
+    proxy_set_header X-Forwarded-Proto https;
    proxy_set_header X-Forwarded-For $remote_addr;
 
         }

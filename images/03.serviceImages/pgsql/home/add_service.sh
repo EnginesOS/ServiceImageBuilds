@@ -51,7 +51,7 @@ echo "alter  ROLE $dbusername login; " >> /tmp/.c.sql
 
 if ! test -z $full_access
  then
- 		if $full_access == true
+ 		if test $full_access == true
  			then
  				echo "alter  ROLE $dbusername with superuser; " >> /tmp/.c.sql
  			fi

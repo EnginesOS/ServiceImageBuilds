@@ -43,9 +43,6 @@ if ! test -f /home/app/Gemfile
  else
 	cat /home/app/Gemfile |grep -v rubyracer >/tmp/gf
 	cp /tmp/gf  /home/app/Gemfile
-	#echo "gem 'net_http_unix'" >> /home/app/Gemfile
-	#echo "gem 'yajl-ruby'" >> /home/app/Gemfile
-
 fi 
 
 cp /home/newrelic.yml /home/app/
@@ -102,5 +99,5 @@ echo -n "$apache_pid $sshd_pid" > /var/run/engines/pids
 touch  /engines/var/run/flags/startup_complete
 wait 
 
-rm PID_FILE
+rm $PID_FILE
 rm /engines/var/run/flags/startup_complete
