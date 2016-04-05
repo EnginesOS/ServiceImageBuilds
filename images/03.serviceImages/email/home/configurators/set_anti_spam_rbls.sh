@@ -1,10 +1,6 @@
 #!/bin/bash
 
-service_hash=$1
 
-echo $1 >/home/configurators/saved/default_domain
- echo $service_hash | /home/engines/bin/json_to_env >/tmp/.env
- . /tmp/.env
 
 
 #reject_rbl_client zen.spamhaus.org,
@@ -15,16 +11,37 @@ echo $1 >/home/configurators/saved/default_domain
 #reject_rhsbl_sender dsn.rfc-ignorant.org,
 #permit
 #,check_policy_service inet:127.0.0.1:60000,permit
-    
-home/configurators/check_anti_spam_setting.sh zen.spamhaus.org ${zen_spamhaus_org}
-/home/configurators/check_anti_spam_setting.sh bl.spamcop.net ${bl_spamcop_net}
-/home/configurators/check_anti_spam_setting.sh cbl.abuseat.org ${cbl_abuseat_org}
-/home/configurators/check_anti_spam_setting.sh dnsbl.njabl.org ${dnsbl_njabl_org}
-/home/configurators/check_anti_spam_setting.sh dnsbl.sorbs.net ${dnsbl_sorbs_net}
-/home/configurators/check_anti_spam_setting.sh dsn.rfc-ignorant.org ${dsn_rfc-ignorant_org}
+config_dir=/home/configurators/saved/antispam/
 
-/home/configurators/rebuild_main.sh
-   	
+if test -f ${config_dir)/zen.spamhaus.org
+ then
+   ${zen_spamhaus_org} = true
+ fi
+ if test -f ${config_dir)/bl.spamcop.net
+ then
+   ${bl_spamcop_net} = true
+ fi
+ if test -f ${config_dir)/cbl.abuseat.org
+ then
+   ${cbl_abuseat_org} = true
+ fi
+ if test -f ${config_dir)/dnsbl.njabl.org
+ then
+   ${dnsbl_njabl_org} = true
+ fi
+ if test -f ${config_dir)/dnsbl.sorbs.net
+ then
+   ${dnsbl_sorbs_net} = true
+ fi
+ if test -f ${config_dir)/dsn.rfc-ignorant.org
+ then
+   ${dsn_rfc-ignorant_org} = true
+ fi
+ 
+ echo "{\"zen_spamhaus_org\":\"${zen_spamhaus_org}\",\"bl_spamcop_net\":\"${bl_spamcop_net}\",\"cbl_abuseat_org\":\"${cbl_abuseat_org}\",\"dnsbl_njabl_org\":\"${dnsbl_njabl_org}\",\"dnsbl_sorbs_net\":\"${dnsbl_sorbs_net}\",\"dsn_rfc-ignorant_org\":\"${dsn_rfc-ignorant_org}\"}"
+
+
+
    	
 	
 
