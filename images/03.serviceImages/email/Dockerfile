@@ -38,7 +38,7 @@ RUN postmap /etc/postfix/transport;\
 	chown postfix /etc/postfix/smarthost_passwd* /home/configurators/saved/ /etc/postfix/mailname /etc/postfix/transport.db /etc/postfix/transport /home/app/config.inc.php /etc/postfix/mysql
 ADD 000-default.conf /etc/apache2/sites-enabled/ 
 	
-run mkdir /home/email ; chown postfix /home/email 
+run mkdir /home/email ; chown postfix /home/email /home/configurators/saved/antispam/
 	
 
 ENV ContUser postfix
