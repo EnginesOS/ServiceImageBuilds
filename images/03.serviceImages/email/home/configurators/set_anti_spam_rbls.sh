@@ -2,7 +2,7 @@
 
 service_hash=$1
 
-echo $1 >/home/configurators/saved/default_domain
+echo $1 >/home/configurators/saved/rbl
  echo $service_hash | /home/engines/bin/json_to_env >/tmp/.env
  . /tmp/.env
 
@@ -23,7 +23,7 @@ echo $1 >/home/configurators/saved/default_domain
 /home/configurators/check_anti_spam_setting.sh dnsbl.sorbs.net ${dnsbl_sorbs_net}
 /home/configurators/check_anti_spam_setting.sh dsn.rfc-ignorant.org ${dsn_rfc-ignorant_org}
 
-/home/configurators/rebuild_main.sh
+sudo /home/configurators/rebuild_main.sh
    	
    	
 	
