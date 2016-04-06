@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if test $? -eq 2
+if test $# -eq 2
    	 then 
    	if test $2 -eq 1
    	 then 
@@ -11,5 +11,5 @@ if test $? -eq 2
    	    rm   /home/configurators/saved/antispam/$1
    	  fi
    	fi
- 
+ fi
 
