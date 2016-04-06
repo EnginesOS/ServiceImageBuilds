@@ -16,7 +16,7 @@ echo $1 >/home/configurators/saved/default_domain
 #permit
 #,check_policy_service inet:127.0.0.1:60000,permit
     
-home/configurators/check_anti_spam_setting.sh zen.spamhaus.org ${zen_spamhaus_org}
+/home/configurators/check_anti_spam_setting.sh zen.spamhaus.org ${zen_spamhaus_org}
 /home/configurators/check_anti_spam_setting.sh bl.spamcop.net ${bl_spamcop_net}
 /home/configurators/check_anti_spam_setting.sh cbl.abuseat.org ${cbl_abuseat_org}
 /home/configurators/check_anti_spam_setting.sh dnsbl.njabl.org ${dnsbl_njabl_org}
