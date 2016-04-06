@@ -27,7 +27,6 @@ RUN cd /tmp/;\
 	 cp /etc/services /var/spool/postfix/etc/
 	 
 ADD postfix/main.cf /etc/postfix/
-ADD tmpls /home
 ADD postfix/master.cf /etc/postfix/
 ADD postfix/mailname /etc/postfix/mailname
 ADD postfix/transport /etc/postfix/transport
