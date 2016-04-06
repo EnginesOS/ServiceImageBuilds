@@ -9,8 +9,7 @@ ADD home home
 
 
 
-ADD postgrey /etc/default/postgrey
-ADD sudoers /etc/
+
 RUN cd /tmp/;\
 	 wget http://downloads.sourceforge.net/project/postfixadmin/postfixadmin/postfixadmin-2.92/postfixadmin-2.92.tar.gz;\
 	 tar -xzpf postfixadmin-2.92.tar.gz;\
@@ -25,7 +24,9 @@ RUN cd /tmp/;\
 	 /usr/sbin/postfix -c /etc/postfix/ set-permissions;\
 	 cp /etc/resolv.conf /var/spool/postfix/etc/;\
 	 cp /etc/services /var/spool/postfix/etc/
-	 
+	
+ADD postgrey /etc/default/postgrey
+ADD sudoers /etc/sudoers.d/postfix	 
 ADD postfix/main.cf /etc/postfix/
 ADD postfix/master.cf /etc/postfix/
 ADD postfix/mailname /etc/postfix/mailname
