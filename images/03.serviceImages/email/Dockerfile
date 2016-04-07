@@ -20,7 +20,7 @@ RUN cd /tmp/;\
 	 chgrp www-data /home/app/templates_c/;\
 	 chmod g+w /home/app/templates_c;\
 	 usermod -G containers -a postfix;\
-	touch  /etc/postfix/smarthost_passwd;\
+	 touch  /etc/postfix/smarthost_passwd;\
 	 /usr/sbin/postfix -c /etc/postfix/ set-permissions;\
 	 cp /etc/resolv.conf /var/spool/postfix/etc/;\
 	 cp /etc/services /var/spool/postfix/etc/
@@ -39,7 +39,7 @@ RUN postmap /etc/postfix/transport;\
 	chown postfix /etc/postfix/smarthost_passwd* /home/configurators/saved/ /etc/postfix/mailname /etc/postfix/transport.db /etc/postfix/transport /home/app/config.inc.php /etc/postfix/mysql
 ADD 000-default.conf /etc/apache2/sites-enabled/ 
 	
-run mkdir /home/email ; chown postfix /home/email /home/configurators/saved/antispam/
+run mkdir /home/email ;/home/configurators/grey/; chown postfix /home/email /home/configurators/saved/antispam/ /home/configurators/grey/
 	
 
 ENV ContUser postfix

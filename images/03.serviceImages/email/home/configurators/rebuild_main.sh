@@ -10,8 +10,7 @@ done
  if test -f /home/configurators/saved/grey_listing_enabled
   then
   echo -n ",check_policy_service inet:127.0.0.1:60000 " >>  /home/configurators/saved/rbls.conf
-   postgrey --inet 127.0.0.1:60000 &
-   
+ 
   fi
 echo  ",permit"  >>  /home/configurators/saved/rbls.conf
 

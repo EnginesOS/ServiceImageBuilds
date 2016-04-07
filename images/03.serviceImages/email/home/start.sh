@@ -32,12 +32,13 @@ echo "dbname = $dbname" >>/tmp/.db
 		done
 rm /tmp/.db
 
+/home/create_config.sh
 
 sudo /home/configurators/rebuild_main.sh
 
 if test -f /home/configurators/saved/grey_listing_enabled
   then
- postgrey --inet 127.0.0.1:60000 &
+  /home/start_grey.sh
 fi
 
 sudo -n  /usr/sbin/apache2ctl  -DFOREGROUND & 
