@@ -34,6 +34,12 @@ rm /tmp/.db
 
 /home/create_config.sh
 
+sudo /home/configurators/rebuild_main.sh
+
+if test -f /home/configurators/saved/grey_listing_enabled
+  then
+  /home/start_grey.sh
+fi
 
 sudo -n  /usr/sbin/apache2ctl  -DFOREGROUND & 
 touch /engines/var/run/flags/startup_complete  
