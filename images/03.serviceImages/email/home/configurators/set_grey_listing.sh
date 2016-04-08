@@ -9,16 +9,19 @@ echo $1 >/home/configurators/saved/grey_listing
 
  
 if test -z $grey_list_delay
+then
 	echo $grey_list_delay > /home/configurators/grey/grey_list_delay
   fi
   
 if ! test -z $whitelist_addresses
+then
 	echo $whitelist_addresses > /home/configurators/grey/white_adresses
 else
  truncate --size 0 /home/configurators/grey/white_adresses
   fi
 
 if ! test -z $whitelist_clients
+then
 	echo $whitelist_clients > /home/configurators/grey/white_clients
 else
  truncate --size 0 /home/configurators/grey/white_clients
