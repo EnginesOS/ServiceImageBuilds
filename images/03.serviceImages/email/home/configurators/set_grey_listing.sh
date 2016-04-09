@@ -23,6 +23,8 @@ else
 if ! test -z $whitelist_clients
 then
 	echo $whitelist_clients > /home/configurators/grey/white_clients
+	echo smtp.engines.internal >> /home/configurators/grey/white_clients
+	echo email.engines.internal >> /home/configurators/grey/white_clients
 else
  truncate --size 0 /home/configurators/grey/white_clients
   fi
