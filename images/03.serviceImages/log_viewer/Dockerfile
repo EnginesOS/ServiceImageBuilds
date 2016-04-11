@@ -5,6 +5,7 @@ RUN   apt-get -y update;\
 	/home/no_init.sh ;\
 	apt-get install -y apache2 libapache2-mod-php5 php5-mysql php5-mcrypt  php5-gd php5-apcu php5-dev
 	
+ADD home home
 RUN	mkdir /home/app;\
 		git clone https://github.com/potsky/PimpMyLog.git
 	 
