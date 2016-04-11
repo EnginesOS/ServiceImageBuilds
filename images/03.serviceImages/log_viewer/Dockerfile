@@ -11,8 +11,10 @@ ADD home home
 RUN	mkdir /home/app;\
 		git clone https://github.com/potsky/PimpMyLog.git
 	 
-ADD 000-default.conf /etc/apache2/sites-enabled/ 
-		
+	
+ENV APACHE_LOCK_DIR /var/run/apache2/lock/
+	ADD 000-default.conf /etc/apache2/sites-enabled/
+ADD ports.conf /etc/apache2/	
 ENV ContUser www-data
 ENV ContGrp www-data
 USER www-data
