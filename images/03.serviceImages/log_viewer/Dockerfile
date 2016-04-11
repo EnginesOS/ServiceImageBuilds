@@ -15,6 +15,7 @@ RUN	mkdir /home/app;\
 ENV APACHE_LOCK_DIR /var/run/apache2/lock/
 	ADD 000-default.conf /etc/apache2/sites-enabled/
 ADD ports.conf /etc/apache2/	
+ADD apache_envvars /etc/apache2/	
 ENV ContUser www-data
 ENV ContGrp www-data
 USER www-data
