@@ -77,7 +77,7 @@ cat $template | sed "/SERVERS/s//$servers/" > /tmp/servers.tmpl
 cat /tmp/servers.tmpl | sed "/FQDN/s//$fqdn/g" > /tmp/site.fqdn
 cat /tmp/site.fqdn  | sed "/PORT/s//$port/g" > /tmp/site.port
 cat /tmp/site.port  | sed "/SERVER/s//$parent_engine/g" > /tmp/site.engine_name
-#cat /tmp/site.engine_name | sed "/RESOLV_IP/s//$resolv_ip/" > /tmp/site.res
+cat /tmp/site.engine_name | sed "/RESOLV_IP/s//$resolv_ip/" > /tmp/site.res
 
 www_path=`echo $internal_dir  |sed "s/^\///" |sed "s/\/$//"`
 
