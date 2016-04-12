@@ -51,7 +51,9 @@ if test -z $fqdn
 
 template="/etc/nginx/templates/${proto}_site.tmpl"
 
-resolv_ip=`cat /opt/engines/etc/net/management`
+#resolv_ip=`cat /opt/engines/etc/net/management`
+resolv_ip=`nslookup control |grep -e "Address: *[0-9]" |awk '{print $2}'`
+
 servers="server SERVER.engines.internal:PORT;"
 cnt=1
 if ! test -z $engine_count
@@ -75,7 +77,7 @@ cat $template | sed "/SERVERS/s//$servers/" > /tmp/servers.tmpl
 cat /tmp/servers.tmpl | sed "/FQDN/s//$fqdn/g" > /tmp/site.fqdn
 cat /tmp/site.fqdn  | sed "/PORT/s//$port/g" > /tmp/site.port
 cat /tmp/site.port  | sed "/SERVER/s//$parent_engine/g" > /tmp/site.engine_name
-cat /tmp/site.engine_name | sed "/RESOLV_IP/s//$resolv_ip/" > /tmp/site.res
+#cat /tmp/site.engine_name | sed "/RESOLV_IP/s//$resolv_ip/" > /tmp/site.res
 
 www_path=`echo $internal_dir  |sed "s/^\///" |sed "s/\/$//"`
 
