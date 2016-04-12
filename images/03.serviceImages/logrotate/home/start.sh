@@ -5,7 +5,7 @@ export PID_FILE
 . /home/trap.sh
 mkdir -p /engines/var/run/flags/
 
-/usr/sbin/logrotate /home/logrotate.conf &
+/usr/sbin/logrotate -f /home/logrotate.conf &
 pid=$%
 echo $pid >$PID_FILE
 

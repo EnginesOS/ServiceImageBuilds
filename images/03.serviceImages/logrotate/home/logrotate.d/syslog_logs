@@ -18,7 +18,7 @@ dateext
 
 }
 
-/var/log/syslog/main.log{
+/var/log/syslog/mail.log{
 copytruncate
 delaycompress
 rotate 30
@@ -27,7 +27,16 @@ compress
 dateext
 
 }
-/var/log/syslog/main.warn{
+/var/log/syslog/mail.info{
+copytruncate
+delaycompress
+rotate 30
+daily
+compress
+dateext
+
+}
+/var/log/syslog/mail.warn{
 copytruncate
 delaycompress
 rotate 30
