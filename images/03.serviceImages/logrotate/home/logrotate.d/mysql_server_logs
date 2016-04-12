@@ -1,0 +1,10 @@
+/var/log/engines/services/mysql_server/mysql/error.log {
+
+copytruncate
+delaycompress
+rotate 30
+daily
+compress
+dateext
+
+}

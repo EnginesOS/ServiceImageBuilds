@@ -1,0 +1,47 @@
+/var/log/syslog/daemon.log{
+copytruncate
+delaycompress
+rotate 30
+daily
+compress
+dateext
+
+}
+
+/var/log/syslog/error{
+copytruncate
+delaycompress
+rotate 30
+daily
+compress
+dateext
+
+}
+
+/var/log/syslog/main.log{
+copytruncate
+delaycompress
+rotate 30
+daily
+compress
+dateext
+
+}
+/var/log/syslog/main.warn{
+copytruncate
+delaycompress
+rotate 30
+daily
+compress
+dateext
+
+}
+/var/log/syslog/syslog{
+copytruncate
+delaycompress
+rotate 30
+daily
+compress
+dateext
+
+}

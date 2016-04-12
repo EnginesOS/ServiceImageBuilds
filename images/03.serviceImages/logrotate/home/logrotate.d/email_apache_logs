@@ -1,0 +1,18 @@
+ /var/log/engines/services/email/apache2/access.log{
+copytruncate
+delaycompress
+rotate 30
+daily
+compress
+dateext
+
+} 
+/var/log/engines/services/email/apache2/error.log{
+copytruncate
+delaycompress
+rotate 30
+daily
+compress
+dateext
+
+}

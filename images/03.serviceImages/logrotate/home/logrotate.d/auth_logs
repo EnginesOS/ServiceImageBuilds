@@ -1,0 +1,20 @@
+/var/log/engines/services/auth/kdc.log{
+
+copytruncate
+delaycompress
+rotate 30
+daily
+compress
+dateext
+
+}
+
+/var/log/engines/services/auth/kadmin.log{
+copytruncate
+delaycompress
+rotate 30
+daily
+compress
+dateext
+
+}

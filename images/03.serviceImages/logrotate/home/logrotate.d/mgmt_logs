@@ -1,4 +1,4 @@
-/var/logs/engines/services/mgmt/application/production.log {
+/var/log/engines/services/mgmt/application/production.log {
 
 copytruncate
 rotate 30
@@ -6,26 +6,26 @@ daily
 compress
 dateext
 missingok
+delaycompress
+}
+
+/var/log/engines/services/mgmt/apache2/access.log {
+copytruncate
+rotate 30
+daily
+compress
+dateext
+missingok
+delaycompress
 
 }
 
-/var/logs/engines/services/mgmt/apache2/access.log {
+/var/log/engines/services/mgmt/apache2/error.log {
 copytruncate
 rotate 30
 daily
 compress
 dateext
 missingok
-
-
-}
-
-/var/logs/engines/services/mgmt/apache2/error.log {
-copytruncate
-rotate 30
-daily
-compress
-dateext
-missingok
-
+delaycompress
 }

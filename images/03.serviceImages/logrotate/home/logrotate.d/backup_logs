@@ -1,0 +1,9 @@
+ /var/log/engines/services/backup/backup/cron.log{
+copytruncate
+delaycompress
+rotate 30
+daily
+compress
+dateext
+
+}

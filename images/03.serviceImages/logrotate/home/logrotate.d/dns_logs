@@ -1,0 +1,47 @@
+/var/log/engines/services/dns/named/zone_transfers.log{
+copytruncate
+delaycompress
+rotate 30
+daily
+compress
+dateext
+
+}
+
+/var/log/engines/services/dns/named/updates.log{
+copytruncate
+delaycompress
+rotate 30
+daily
+compress
+dateext
+
+}
+
+/var/log/engines/services/dns/named/security.log{
+copytruncate
+delaycompress
+rotate 30
+daily
+compress
+dateext
+
+}
+/var/log/engines/services/dns/named/queries.log{
+copytruncate
+delaycompress
+rotate 30
+daily
+compress
+dateext
+
+}
+/var/log/engines/services/dns/named/named.run{
+copytruncate
+delaycompress
+rotate 30
+daily
+compress
+dateext
+
+}
