@@ -24,8 +24,8 @@ if ! test -d
 	mkdir /home/saved/$parent_engine/
 fi
 
-eval string=`cat /home/tmpls/log_rotation_entry` 
-echo $string> /home/saved/$parent_engine/$service_handle.entry
+
+rm /home/saved/$parent_engine/$service_handle.entry
 
 cat /home/saved/$parent_engine/*entry > /home/logrotate.d/$parent_engine
 
