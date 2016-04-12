@@ -1,4 +1,4 @@
-$log_file_path{
+/var/log/engines/$log_file_path{
 copytruncate
 delaycompress
 rotate $rotate
