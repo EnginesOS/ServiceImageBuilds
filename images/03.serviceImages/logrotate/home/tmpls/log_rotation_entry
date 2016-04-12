@@ -1,0 +1,8 @@
+$log_file_path{
+copytruncate
+delaycompress
+rotate $rotate
+$cycle
+compress
+dateext
+}
