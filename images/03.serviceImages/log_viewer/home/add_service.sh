@@ -27,7 +27,7 @@ if ! test -d /home/saved/$parent_engine/
  raw)
  if test -z $ctype
   then
-   ctype=container
+   ctype=engine 
   fi
  log_file_path=${ctype}s/$parent_engine/$log_file_path
  ;;

@@ -93,11 +93,13 @@ export PID_FILE
 /home/clear_flags.sh
 
 /usr/sbin/apache2ctl -DFOREGROUND &
-apache_pid=$!
+apache_pid=`cat /var/run/apache2/apache2.pid`
+sshd_pid=`cat /var/run/sshd.pid`
 
 echo -n "$apache_pid $sshd_pid" > /var/run/engines/pids
 touch  /engines/var/run/flags/startup_complete
 wait 
-
 rm $PID_FILE
+
+
 rm /engines/var/run/flags/startup_complete
