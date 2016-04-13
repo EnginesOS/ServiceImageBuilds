@@ -10,6 +10,8 @@ if ! test -d /home/saved/$parent_engine/
  then
  	mkdir -p /home/saved/$parent_engine/
  fi
-echo `cat /home/tmpls/$log_type` > /home/saved/$parent_engine/$log_name 
+ 
+ string=`cat /home/tmpls/$log_type`
+eval echo $string > /home/saved/$parent_engine/$log_name 
 /home/build_config.sh
 
