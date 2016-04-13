@@ -13,7 +13,7 @@ if ! test -d /home/saved/$parent_engine/
  
  case $log_type in
  nginx)
- /var/log/engines/services/nginx/$parent_engine/$log_file_path
+ log_file_path=services/nginx/$parent_engine/$log_file_path
  ;;
  
  apache)
@@ -21,7 +21,7 @@ if ! test -d /home/saved/$parent_engine/
   then
    ctype=container
   fi
- log_file_path=/var/log/engines/${ctype}s/$parent_engine/$log_file_path
+ log_file_path=${ctype}s/$parent_engine/$log_file_path
  ;;
  
  raw)
@@ -29,13 +29,18 @@ if ! test -d /home/saved/$parent_engine/
   then
    ctype=container
   fi
- log_file_path=/var/log/engines/${ctype}s/$parent_engine/$log_file_path
+ log_file_path=${ctype}s/$parent_engine/$log_file_path
  ;;
  
  esac
  
  conf=/home/saved/$parent_engine/$log_name
-
+if ! test -f /var/log/engines/$log_file_path
+ then
+ 	echo "Log file must exist"
+ 	exit 127
+ fi
+ 
 echo  \"$parent_engine_$log_name\": { \"display\" : \"$parent_engine $log_name\", \"path\"    : \"/var/log/engines/$log_file_path\",  > /tmp/.conf
 cat  /home/tmpls/$log_type >>  /tmp/.conf
 mv  /tmp/.conf $conf
