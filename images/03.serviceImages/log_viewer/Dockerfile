@@ -9,9 +9,13 @@ RUN  usermod -u 22027 www-data;\
 	
 ADD home home
 RUN	git clone https://github.com/potsky/PimpMyLog.git ;\
-	mv /PimpMyLog /home/app
-		
+	mv /PimpMyLog /home/app 
+	
 ADD  config.user.php /home/app/
+	
+RUN mkdir /home/saved ; chown 22027 /home/saved /home/app/config.user.php
+		
+
 	
 ENV APACHE_LOCK_DIR /var/run/apache2/lock/
 	ADD 000-default.conf /etc/apache2/sites-enabled/
