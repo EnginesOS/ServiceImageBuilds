@@ -1,5 +1,4 @@
- 
-                           "refresh": 5,
+    "refresh": 5,
     "max": 50,
     "notify": false,
     "format": {
