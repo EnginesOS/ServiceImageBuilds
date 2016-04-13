@@ -1,8 +1,7 @@
-/var/log/engines/$log_file_path{
 copytruncate
 delaycompress
-rotate $rotate
-$cycle
+rotate ROTATE
+CYCLE
 compress
 dateext
 }
