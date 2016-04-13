@@ -1,18 +1,16 @@
- \"$parent_engine_$log_name\": {
-                        \"display\" : \"$parent_engine $log_name\",
-                        \"path\"    : \"/var/log/engines/$log_file_path\",
-                        \"refresh\" : 0,
-                        \"max\"     : 10,
-                        \"notify\"  : false,
-                        \"format\"  : {
-                                \"type\"         : \"Raw\",
-                                \"regex\"        : \"|^(.*)|\",
-                                \"export_title\" : \"URL\",
-                                \"match\"        : {
-                                        \"Line\"    : 1
+
+                        "refresh" : 0,
+                        "max"     : 10,
+                        "notify"  : false,
+                        "format"  : {
+                                "type"         : "Raw",
+                                "regex"        : "|^(.*)|",
+                                "export_title" : "URL",
+                                "match"        : {
+                                        "Line"    : 1
                                 },
-                                \"types\": {
-                                        \"Line\"     : \"txt\"
+                                "types": {
+                                        "Line"     : "txt"
                                 },
                         }
                 }

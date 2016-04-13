@@ -11,7 +11,10 @@ if ! test -d /home/saved/$parent_engine/
  	mkdir -p /home/saved/$parent_engine/
  fi
  
- string=`cat /home/tmpls/$log_type`
-eval echo $string > /home/saved/$parent_engine/$log_name 
-/home/build_config.sh
+ conf=/home/saved/$parent_engine/$log_name
 
+echo  \"$parent_engine_$log_name\": { \"display\" : \"$parent_engine $log_name\", \"path\"    : \"/var/log/engines/$log_file_path\",  > /tmp/.conf
+cat  /home/tmpls/$log_type >>  /tmp/.conf
+mv  /tmp/.conf $conf
+/home/build_config.sh
+ 
