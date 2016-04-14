@@ -11,6 +11,6 @@ for config_file in ` find /home/saved/ -type f`
 	   cat $config_file >> /home/app/config.user.php
 	   n=`expr $n + 1`
 	done
-echo '}\
-}\
+echo '}
+}
 ' >> /home/app/config.user.php

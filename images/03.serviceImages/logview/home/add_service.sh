@@ -37,8 +37,8 @@ if ! test -d /home/saved/$parent_engine/
  conf=/home/saved/$parent_engine/$log_name
 if ! test -f /var/log/engines/$log_file_path
  then
- 	echo "Log file must exist"
- 	exit 127
+ 	echo "Log does not exist"
+ 	exit
  fi
  
 echo  \"$parent_engine_$log_name\": { \"display\" : \"$parent_engine $log_name\", \"path\"    : \"/var/log/engines/$log_file_path\",  > /tmp/.conf
