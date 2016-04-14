@@ -30,7 +30,7 @@ if ! test -d /home/saved/$parent_engine/
  log_file_path=${ctype}s/$parent_engine/$log_file_path
  ;;
  
- raw)
+ raw*)
  if test -z $ctype
   then
    ctype=engine 
