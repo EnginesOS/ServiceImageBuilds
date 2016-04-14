@@ -1,0 +1,25 @@
+    
+           "refresh" : 0,
+                        "max"     : 10,
+                        "notify"  : false,
+                          "format"    : {
+                                "regex"        : "|^\\[(.*)\\] \\[(.*)\\] (\\[client (.*)\\] )*((?!\\[client ).*)(, referer: (.*))*$|U",
+                                "export_title" : "Log",
+                                "match"        : {
+                                        "Date"     : 1,
+                                        "IP"       : 4,
+                                        "Log"      : 5,
+                                        "Severity" : 2,
+                                        "Referer"  : 7
+                                },
+                                "types": {
+                                        "Date"     : "date:H:i:s",
+                                        "IP"       : "ip:http",
+                                        "Log"      : "pre",
+                                        "Severity" : "badge:severity",
+                                        "Referer"  : "link"
+                                },                              
+                        }
+                      
+                }
+                
