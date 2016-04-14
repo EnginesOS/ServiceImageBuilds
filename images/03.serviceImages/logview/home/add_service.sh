@@ -17,6 +17,10 @@ if ! test -d /home/saved/$parent_engine/
  nginx)
  log_file_path=services/nginx/$parent_engine/$log_file_path
  ;;
+
+ syslog)
+ log_file_path=syslog/$log_file_path
+ ;;
  
  apache)
  if test -z $ctype
