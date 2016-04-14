@@ -2,11 +2,11 @@
 
 service_hash=$1
 
-log_name=`echo $log_name | sed"/ /s//_/g"`
 
  echo $service_hash | /home/engines/bin/json_to_env >/tmp/.env
  . /tmp/.env
 
+log_name=`echo $log_name | sed "/ /s//_/g"`
 
 if ! test -d /home/saved/$parent_engine/
  then

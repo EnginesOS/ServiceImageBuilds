@@ -13,9 +13,11 @@ RUN	git clone https://github.com/potsky/PimpMyLog.git ;\
 	
 ADD  config.user.php /home/app/
 	
-RUN mkdir /home/saved ; chown 22027 /home/saved /home/app/config.user.php
-		
-
+RUN mkdir /home/saved ;\
+	chown 22027 /home/saved /home/app/config.user.php;\
+	usermod -G utmp -a www-data;\
+	usermod -G syslog -a www-data;\
+	usermod -G adm -a www-data
 	
 ENV APACHE_LOCK_DIR /var/run/apache2/lock/
 	ADD 000-default.conf /etc/apache2/sites-enabled/
