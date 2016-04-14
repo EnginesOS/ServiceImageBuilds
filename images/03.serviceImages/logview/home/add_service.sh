@@ -14,7 +14,7 @@ if ! test -d /home/saved/$parent_engine/
  fi
  
  case $log_type in
- nginx)
+ nginx*)
  log_file_path=services/nginx/$parent_engine/$log_file_path
  ;;
 
@@ -22,7 +22,7 @@ if ! test -d /home/saved/$parent_engine/
  log_file_path=syslog/$log_file_path
  ;;
  
- apache)
+ apache*)
  if test -z $ctype
   then
    ctype=container
