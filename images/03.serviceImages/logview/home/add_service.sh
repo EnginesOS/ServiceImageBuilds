@@ -2,9 +2,11 @@
 
 service_hash=$1
 
+log_name=`echo $log_name | sed"/ /s//_/g"`
 
  echo $service_hash | /home/engines/bin/json_to_env >/tmp/.env
  . /tmp/.env
+
 
 if ! test -d /home/saved/$parent_engine/
  then
@@ -35,14 +37,16 @@ if ! test -d /home/saved/$parent_engine/
  esac
  
  conf=/home/saved/$parent_engine/$log_name
-if ! test -f /var/log/engines/$log_file_path
- then
- 	echo "Log does not exist"
- 	exit
- fi
+
  
 echo  \"$parent_engine_$log_name\": { \"display\" : \"$parent_engine $log_name\", \"path\"    : \"/var/log/engines/$log_file_path\",  > /tmp/.conf
 cat  /home/tmpls/$log_type >>  /tmp/.conf
+if ! test -f /var/log/engines/$log_file_path
+ then
+ 	echo "Log does not exist"
+ 	mv  /tmp/.conf /tmp/$parent_engine_$log_name.rejected
+ 	exit
+ fi
 mv  /tmp/.conf $conf
 /home/build_config.sh
  
