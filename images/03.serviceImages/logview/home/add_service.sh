@@ -14,15 +14,25 @@ if ! test -d /home/saved/$parent_engine/
  fi
  
  case $log_type in
- nginx*)
- log_file_path=services/nginx/$parent_engine/$log_file_path
+ nginx_error_log)
+ log_file_path=services/nginx/nginx/$parent_engine.$log_file_path
+ ;;
+ nginx)
+ log_file_path=services/nginx/nginx/$parent_engine.$log_file_path
  ;;
 
  syslog)
  log_file_path=syslog/$log_file_path
  ;;
  
- apache*)
+ apache_error_log)
+ if test -z $ctype
+  then
+   ctype=container
+  fi
+ log_file_path=${ctype}s/$parent_engine/$log_file_path
+ ;;
+ apache)
  if test -z $ctype
   then
    ctype=container
@@ -30,7 +40,15 @@ if ! test -d /home/saved/$parent_engine/
  log_file_path=${ctype}s/$parent_engine/$log_file_path
  ;;
  
- raw*)
+ raw_dated)
+ if test -z $ctype
+  then
+   ctype=engine 
+  fi
+ log_file_path=${ctype}s/$parent_engine/$log_file_path
+ ;;
+ 
+ raw)
  if test -z $ctype
   then
    ctype=engine 
