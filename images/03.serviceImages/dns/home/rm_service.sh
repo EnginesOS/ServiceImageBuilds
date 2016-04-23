@@ -7,11 +7,11 @@ service_hash=$1
  echo $service_hash | /home/engines/bin/json_to_env >/tmp/.env
  . /tmp/.env
 
-	if ! test -z ${domainname}
-	 then
-	 	rm /home/bind/engines/domains/${domainname}
+	if ! test -z ${domain_name}
+	 then	
+	 	rm /home/bind/engines/domains/${domain_name}
 	  rm  /home/bind/domain_list/${ip_type}/${domain_name}
-	 	rm /home/bind/engines/zones/named.conf.${domainname}
+	 	rm /home/bind/engines/zones/named.conf.${domain_name}
 	 	cat /home/bind/engines/domains/* > /home/bind/engines/domains.hosted
 	 	kill -HUP `cat /var/run/named/named.pid`
 	 	exit
