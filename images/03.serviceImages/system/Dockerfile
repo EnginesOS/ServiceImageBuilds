@@ -1,0 +1,58 @@
+FROM  engines/servicebase:$release
+
+ENV ruby_version 2.3.0
+ENV  RBENV_ROOT /usr/local/rbenv
+
+RUN /usr/sbin/addgroup --gid 999 docker;\
+	apt-get -y install telnet openssh-server libcurl4-openssl-dev;\
+	echo "Y" | adduser -q --uid 21000 --gid 999 --home /home/engines --disabled-password engines;\
+	 /usr/local/rbenv/bin/rbenv  install $ruby_version;\
+	 /usr/local/rbenv/bin/rbenv  global $ruby_version;\
+	 mkdir -p  /opt/engines/run/system/;\	
+	chown -R engines /opt/engines/run/system/ /home/engines /var/log/
+
+RUN apt-get -y update;\
+	apt-get upgrade -y;\
+	/home/no_init.sh ;\	
+	apt-get -y install build-essential libssl-dev libreadline-dev zlib1g-dev ;\
+	mkdir -p /usr/local/ ; cd /usr/local/ ; git clone git://github.com/sstephenson/rbenv.git /usr/local/rbenv;\ 
+	cd /usr/local/rbenv ; git clone git://github.com/sstephenson/ruby-build.git /usr/local/rbenv/plugins/ruby-buil;\
+	cd /usr/local/rbenv   ;echo 'export PATH="/usr/local/rbenv/bin:$PATH:/usr/local/rbenv/shims/"' >> /home/engines/.bashrc ; echo 'eval "$(rbenv init -)"' >> ~/.bashrc ; exec $SHELL ;/usr/local/rbenv/plugins/ruby-build/install.sh  ;/usr/local/rbenv/bin/rbenv install $ruby_version ; /usr/local/rbenv/bin/rbenv global $ruby_version;\
+	/usr/local/rbenv/bin/rbenv rehash;\
+	apt-get -y clean 
+
+
+
+
+	
+ADD home home
+ADD profile /home/engines/.profile
+
+
+ENV ContUser engines
+ENV ContGrp ruby
+
+#need to create as linking sqllite
+RUN mkdir -p /home/app/db
+RUN chown engines /home/app/db
+
+WORKDIR /home/app/
+RUN	git init
+
+ADD gitconfig /home/app/.git/config
+ADD sudoers /etc/
+RUN /usr/local/rbenv/shims/gem install git bundle oink vmstat rest-client net_http_unix yajl-ruby ;\	
+	mkdir -p /home/engines/.ssh/mgmt;\
+	chmod -R g+w /usr/local/rbenv/versions/ ;chgrp -R docker /usr/local/rbenv/versions/;\
+	chown -R 21000 /usr/local/rbenv/versions/$ruby_version/lib/ruby/gems/2.1.0/extensions;\	
+ 	chown -R 21000 /home/app/public /home/configurators/saved;\
+ 	usermod -G containers -a engines
+ 	
+
+
+ENV HOME /home/engines/
+		
+USER 21000
+
+
+CMD ["/home/start.sh"]
