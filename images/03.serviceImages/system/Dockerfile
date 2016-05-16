@@ -41,7 +41,7 @@ RUN	git init
 
 ADD gitconfig /home/app/.git/config
 ADD sudoers /etc/
-RUN /usr/local/rbenv/shims/gem install git bundle oink vmstat rest-client net_http_unix yajl-ruby ;\	
+RUN /usr/local/rbenv/shims/gem install git bundle oink vmstat rest-client net_http_unix yajl-ruby  sinatra thin rubytree ;\	
 	mkdir -p /home/engines/.ssh/mgmt;\
 	chmod -R g+w /usr/local/rbenv/versions/ ;chgrp -R docker /usr/local/rbenv/versions/;\
 	chown -R 21000 /usr/local/rbenv/versions/$ruby_version/lib/ruby/gems/2.1.0/extensions;\	
