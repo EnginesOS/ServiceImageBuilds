@@ -8,9 +8,9 @@ echo $1 >/home/configurators/saved/grey_listing
 
 
  
-if test -z $grey_list_delay
+if ! test -z $grey_list_delay
 then
-	echo $grey_list_delay > /home/configurators/grey/grey_list_delay
+	echo -n $grey_list_delay > /home/configurators/grey/grey_list_delay
   fi
   
 if ! test -z $whitelist_addresses
@@ -23,6 +23,8 @@ else
 if ! test -z $whitelist_clients
 then
 	echo $whitelist_clients > /home/configurators/grey/white_clients
+	echo smtp.engines.internal >> /home/configurators/grey/white_clients
+	echo email.engines.internal >> /home/configurators/grey/white_clients
 else
  truncate --size 0 /home/configurators/grey/white_clients
   fi
@@ -34,7 +36,7 @@ if  test $enable_grey_listing -eq 1
  	/home/start_grey.sh
  else
      rm  /home/configurators/saved/grey_listing_enabled
-     /home/kill_grey.sh  
+    sudo /home/kill_grey.sh  
   fi    
 
 
