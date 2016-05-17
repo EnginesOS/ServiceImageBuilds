@@ -14,7 +14,7 @@ cd /opt/engines/
  /usr/local/rbenv/versions/2.3.0/bin/yard server &
  yard_pid=$!
  cd /home
-/usr/local/rbenv/versions/2.3.0/bin/thin    -C config.yaml -R ./config.ru start > /var/log/system.log
+/usr/local/rbenv/versions/2.3.0/bin/thin    -C config.yaml -R ./config.ru start > /var/log/system.log &
 
 
 touch /engines/var/run/flags/startup_complete  
