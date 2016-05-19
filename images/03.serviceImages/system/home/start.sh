@@ -1,5 +1,6 @@
 #!/bin/sh
 
+/home/clear_flags.sh
 
 PID_FILE=/engines/var/run/system.pid
 export PID_FILE

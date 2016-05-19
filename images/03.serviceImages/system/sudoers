@@ -2,12 +2,13 @@ engines ALL = (root) NOPASSWD: /opt/engines/scripts/_setup_service_key_dir.sh
 engines ALL = (root) NOPASSWD: /opt/engines/scripts/_setup_service_keys.sh
 engines ALL = (root) NOPASSWD: /opt/engines/scripts/_setup_service_dir.sh
 
-engines ALL = (root) NOPASSWD: /opt/engines/scripts/_system_update.sh
-engines ALL = (root) NOPASSWD: /home/_start_sshd.sh
-engines ALL = (root) NOPASSWD: /home/_signal.sh
-engines ALL = (root) NOPASSWD: /opt/engines/scripts/_install_ca.sh
-engines ALL = (root) NOPASSWD: /opt/engines/scripts/_install_cert.sh
-engines ALL = (root) NOPASSWD: /opt/engines/scripts/_remove_cert.sh
-engines ALL = (root) NOPASSWD: /opt/engines/scripts/_update_engines_system_software.sh
-engines ALL = (root) NOPASSWD: /opt/engines/bin/check_engines_system_update_status.sh
+#engines ALL = (root) NOPASSWD: /opt/engines/scripts/_system_update.sh
+#engines ALL = (root) NOPASSWD: /home/_start_sshd.sh
+#engines ALL = (root) NOPASSWD: /home/_signal.sh
+
+#engines ALL = (root) NOPASSWD: /opt/engines/scripts/_install_ca.sh
+#engines ALL = (root) NOPASSWD: /opt/engines/scripts/_install_cert.sh
+#engines ALL = (root) NOPASSWD: /opt/engines/scripts/_remove_cert.sh
+#engines ALL = (root) NOPASSWD: /opt/engines/scripts/_update_engines_system_software.sh
+#engines ALL = (root) NOPASSWD: /opt/engines/bin/check_engines_system_update_status.sh
 
