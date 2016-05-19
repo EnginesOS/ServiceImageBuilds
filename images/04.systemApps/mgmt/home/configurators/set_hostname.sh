@@ -24,5 +24,5 @@ if  test -z ${domain_name}
 		 echo "Error: Missing domain_name"
 	  exit 128
 fi
-/opt/engines/scripts/set_hostname.sh $hostname.$domain_name
+/opt/engines/system/scripts/system/set_hostname.sh $hostname.$domain_name
 exit 0
