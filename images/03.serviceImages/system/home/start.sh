@@ -14,7 +14,7 @@ mkdir -p /engines/var/run/flags/
 cd /home/
 
 cd /opt/engines/
- /usr/local/rbenv/versions/2.3.0/bin/yard server &
+ /usr/local/rbenv/versions/2.3.0/bin/yard server -B 0.0.0.0 &
  yard_pid=$!
  cd /home
 /usr/local/rbenv/versions/2.3.0/bin/thin    -C config.yaml -R ./config.ru start > /var/log/system.log &
