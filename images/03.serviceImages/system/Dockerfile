@@ -19,7 +19,7 @@ RUN 	mkdir -p /usr/local/ ; cd /usr/local/ ; git clone git://github.com/sstephen
 	
 RUN	/usr/local/rbenv/shims/gem install git bundle  vmstat rest-client net_http_unix ;\
 								yajl-ruby  sinatra sinatra_warden thin rubytree yard rdoc ;\
-									data_mapper 	dm-sqlite-adapter ;\
+								data_mapper dm-sqlite-adapter ;\
 	/usr/local/rbenv/bin/rbenv rehash
 	
 	
