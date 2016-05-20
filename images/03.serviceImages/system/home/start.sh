@@ -1,7 +1,9 @@
 #!/bin/sh
 
 /home/clear_flags.sh
-
+ip=`netstat -rn |grep ^0.0.0 | awk '{print $2}'`
+cat $ip > /engines/var/run/contro_ip
+export control_ip $ip
 PID_FILE=/engines/var/run/system.pid
 export PID_FILE
 . /home/trap.sh
