@@ -19,7 +19,7 @@ RUN 	mkdir -p /usr/local/ ; cd /usr/local/ ; git clone git://github.com/sstephen
 	
 RUN	/usr/local/rbenv/shims/gem install git bundle  rest-client net_http_unix ;\
 				/usr/local/rbenv/shims/gem install  yajl-ruby  sinatra thin rubytree yard  ;\
-			    /usr/local/rbenv/shims/gem install 	data_mapper dm-sqlite-adapter puma ;\
+			    /usr/local/rbenv/shims/gem install 	warden data_mapper dm-sqlite-adapter puma ;\
 	/usr/local/rbenv/bin/rbenv rehash
 	
 	
