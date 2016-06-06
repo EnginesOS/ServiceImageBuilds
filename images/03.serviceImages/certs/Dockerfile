@@ -15,5 +15,5 @@ RUN 	mkdir -p /home/certs/saved /home/certs/store/ca /home/certs/store/keys /hom
 		chown certs -R /home/certs/saved /home/certs/store/ /home/configurators/saved/ /home/certs/home
 ENV HOME /home/certs/home
 USER certs
-
+ENV ContUser certs
 CMD ["/home/start.sh"]

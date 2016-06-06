@@ -25,6 +25,6 @@ RUN 	 cp -rp /usr/lib/courier/courier/webmail/webadmin /usr/lib/cgi-bin;\
 
 ENV ContUser courier
 ENV ContGrp courier
-
+ENV ContUser courier
 ADD custom_start.sh /home/engines/scripts/
 CMD ["/home/init.sh"]

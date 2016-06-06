@@ -33,6 +33,6 @@ RUN  cd /home/registry;\
 	cd EnginesSystemRegistry ;\
 	git checkout $release
 
-
+ENV ContUser registry
 
 CMD ["/home/start.sh"]

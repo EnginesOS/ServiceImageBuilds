@@ -28,5 +28,5 @@ RUN chown -R auth /home/auth;\
 #	 /usr/sbin/kadmin.local -q "addprinc administrator/admin"
 
 USER auth
-
+Env	ContUser auth
 CMD ["/home/start.sh"]

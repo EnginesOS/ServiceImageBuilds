@@ -16,5 +16,5 @@ ENV ContGrp dhcpd
 COPY home /home/
 RUN chown dhcpd /home/configurators/saved
 USER dhcpd
- 
+ENV ContUser dhcpd
 CMD ["/home/start.sh"]

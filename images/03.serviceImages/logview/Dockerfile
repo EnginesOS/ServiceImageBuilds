@@ -26,4 +26,5 @@ ADD apache_envvars /etc/apache2/envvars
 ENV ContUser www-data
 ENV ContGrp www-data
 USER www-data
+ENV ContUser www-data
 CMD ["/home/start.sh"]	

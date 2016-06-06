@@ -31,5 +31,5 @@ RUN apt-get -y update;\
 COPY home home
 COPY sudoers /etc/sudoers.d/engine
 USER cron
-
+ENV ContUser cron
 CMD ["/home/start.sh"]

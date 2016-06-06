@@ -18,5 +18,7 @@ RUN mkdir -p /home/configurators/saved /home/logrotate.d /home/saved/ ;\
 
 
 
+
 USER logrotate
+ENV ContUser logrotate
 CMD ["/home/start.sh"]

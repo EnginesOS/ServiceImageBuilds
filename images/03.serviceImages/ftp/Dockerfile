@@ -20,5 +20,5 @@ RUN mkdir /ftp/;\
 ADD home home
 
 USER proftpd
-
+ENV ContUser proftpd
 CMD ["/home/start.sh"]
