@@ -32,15 +32,15 @@ ENV ContGrp ruby
 
 #need to create as linking sqllite
 RUN mkdir -p /home/app/db
-RUN chown engines /home/app/db
+RUN chown engines /home/app/db 
 
 WORKDIR /home/app/
 RUN	git init
 
 ADD gitconfig /home/app/.git/config
 ADD sudoers /etc/
-RUN mkdir -p /home/engines/.ssh/mgmt;\	
- 	chown -R 21000 /home/app/public /home/configurators/saved;\
+RUN mkdir -p /home/engines/.ssh/mgmt /home/app/tmp/ ;\	
+ 	chown -R 21000 /home/app/public /home/configurators/saved /home/app/tmp/;\
  	usermod -G containers -a engines
  	
 
