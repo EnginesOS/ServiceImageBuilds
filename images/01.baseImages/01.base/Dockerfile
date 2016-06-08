@@ -8,10 +8,8 @@ COPY sendmail /usr/bin/
 
 ADD sources.list /etc/apt/
 
-ADD init.sh /home/
-ADD trap.sh /home/
-ADD no_init.sh /home/
-
+ADD home /home/
+	
 RUN apt-get -y  --force-yes update;\
 	apt-get -y  --force-yes upgrade;\
 	apt-get -y  --force-yes update;\
@@ -24,11 +22,8 @@ RUN apt-get -y  --force-yes update;\
 	ln -s /bin/true /sbin/initctl;\
 	apt-get clean;\
 	ln -s /usr/bin/sendmail /usr/sbin/sendmail;\
-	groupadd -g 22020 containers 
-#	apt-mark hold tzdata 
-	
-	COPY src /home/src
-RUN	cd  /tmp ;\
+	groupadd -g 22020 containers ;\ 
+	cd  /tmp ;\
 	 git clone https://github.com/zserge/jsmn ;\
 	 cd jsmn ;\
 	 make ;\
@@ -37,24 +32,17 @@ RUN	cd  /tmp ;\
 	 make json_to_env ;\
 	 mkdir -p /home/engines/bin;\
 	 cp json_to_env /home/engines/bin;\
-	 rm -r /home/src
-	# apt-get remove  build-essential
+	 rm -r /home/src ;\
+	 apt-get remove  build-essential;\
+	 /home/install_utf8_langauges.sh;\
+	 rm -r /tmp/* /home/install_utf8_langauges.sh
 	 
-COPY install_utf8_langauges.sh /tmp
-
-RUN /tmp/install_utf8_langauges.sh;\
-	 rm -r /tmp/*
-	 
-
-
-
 
 #increment build line to trigger upgrade NEED to Automate
 ENV	build 20160215
 
-#RUN 	apt-get -y  --force-yes update;\
-#		apt-get upgrade -y;\
-RUN		apt-get clean 	
-RUN mkdir /var/run/engines ; chgrp containers /var/run/engines; chmod g+w /var/run/engines	
+
+RUN		apt-get clean ;\	
+ 		mkdir /var/run/engines ; chgrp containers /var/run/engines; chmod g+w /var/run/engines	
 		
 CMD ["/home/init.sh"]
