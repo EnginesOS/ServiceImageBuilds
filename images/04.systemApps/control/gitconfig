@@ -1,0 +1,13 @@
+[core]
+				        repositoryformatversion = 0
+				        filemode = true
+				        bare = false
+				        logallrefupdates = true
+				[branch "beta-rc"]
+				[remote "origin"]
+				        url = https://github.com/lachdoug/system_gui_v0_2.git
+				        fetch = +refs/heads/*:refs/remotes/origin/*
+				[branch "beta-rc"]
+				        remote = origin
+				        merge = refs/heads/beta-rc
+				
