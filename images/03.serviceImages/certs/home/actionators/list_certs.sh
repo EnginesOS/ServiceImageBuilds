@@ -9,6 +9,7 @@ if test -d /home/certs/store/public/certs/
  	for cert in $certs
  		do
  			if test $i -eq 0
+ 				then
  				i=1
  			else
  				echo ,
