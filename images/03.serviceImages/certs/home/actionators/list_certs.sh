@@ -1,17 +1,8 @@
 #!/bin/bash
 
-
-
-
-if test $1 = "default"
+if test -d /home/certs/store/public/certs/
  then
- domain_name=$2
- default=1
- else
-    domain_name=$1
- default=0
+ cd /home/certs/store/public/certs/
+ ls *.crt |sed "/\.crt/s///g"
  fi
- 
-cat - > /home/certs/$domain_name.crt
- 
   
