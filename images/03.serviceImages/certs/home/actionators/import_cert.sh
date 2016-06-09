@@ -13,7 +13,7 @@ if test $1 = "default"
  rm /home/certs/store/public/keys/$domain_name.key
  
  while read line; do
-  echo "reading: ${line}"
+ # echo "reading: ${line}"
   echo ${line} |grep  "BEGIN CERTIFICATE"
   	if test $? -eq 0
   		then
