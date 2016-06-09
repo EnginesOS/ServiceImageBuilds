@@ -1,8 +1,8 @@
 #!/bin/bash
 
-if test -f /home/certs/store/public/ca/certs/$1.crt
+if test -f /home/certs/store/public/certs/$1.crt
  then
- 	cat /home/certs/store/public/ca/certs/$1.crt
+ 	cat /home/certs/store/public/certs/$1.crt
  else
  	echo "Not Such Cert"
  	exit -1
