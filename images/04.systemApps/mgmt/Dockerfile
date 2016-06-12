@@ -34,7 +34,7 @@ WORKDIR /home/app/
 RUN	git init
 
 ADD gitconfig.tmpl /home/app/.git/config.tmpl
-RUN cat/home/app/.git/config.tmpl sed "/\$release/s//$release/" > /home/app/.git/config
+RUN cat /home/app/.git/config.tmpl sed "/\$release/s//$release/" > /home/app/.git/config
 #After after chmod so not rewritable
 
 ADD 000-default.conf /etc/apache2/sites-enabled/
