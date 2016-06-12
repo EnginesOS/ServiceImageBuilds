@@ -43,4 +43,4 @@ ADD	passenger.conf  /etc/apache2/mods-enabled/
 ENV HOME /home/app
 		
 CMD ["/home/start.sh"]
-USER 21000
+USER www-data
