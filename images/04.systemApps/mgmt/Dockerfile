@@ -33,8 +33,8 @@ RUN /usr/local/rbenv/shims/gem install git bundle oink vmstat rest-client net_ht
 WORKDIR /home/app/
 RUN	git init
 
-ADD gitconfig.src /home/app/.git/config.src
-RUN cat/home/app/.git/config.src sed "/\$release/s//$release/" > /home/app/.git/config
+ADD gitconfig.tmpl /home/app/.git/config.tmpl
+RUN cat/home/app/.git/config.tmpl sed "/\$release/s//$release/" > /home/app/.git/config
 #After after chmod so not rewritable
 
 ADD 000-default.conf /etc/apache2/sites-enabled/
