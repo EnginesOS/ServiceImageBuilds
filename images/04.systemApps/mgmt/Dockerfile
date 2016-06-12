@@ -19,8 +19,6 @@ ADD gitconfig /home/app/.git/config
 
 RUN /usr/local/rbenv/shims/gem install git bundle oink vmstat rest-client net_http_unix yajl-ruby ;\	
 	chown -R www-data /home/app/ /var/log/apache2/;\
-	chmod -R g+w /usr/local/rbenv/versions/ ;chgrp -R docker /usr/local/rbenv/versions/;\
-	chown -R www-data /usr/local/rbenv/versions/$ruby_version/lib/ruby/gems/$ruby_version/extensions;\
 	mkdir -p  /run/apache2;\
 	chown -R www-data /run/apache2 ;\
  	mkdir -p /run/lock/apache2 ;\
