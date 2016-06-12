@@ -4,7 +4,7 @@ RUN apt-get -y install telnet libcurl4-openssl-dev;\
 	 /usr/local/rbenv/bin/rbenv  install $ruby_version;\
 	 /usr/local/rbenv/bin/rbenv  global $ruby_version
 ADD home home
-
+ENV RELEASE $release
 
 
 ENV ContUser www-data
@@ -12,10 +12,7 @@ ENV ContGrp ruby
 
 
 
-WORKDIR /home/app/
-RUN	git init
 
-ADD gitconfig /home/app/.git/config
 
 RUN /usr/local/rbenv/shims/gem install git bundle oink vmstat rest-client net_http_unix yajl-ruby ;\	
 	chown -R www-data /home/app/ /var/log/apache2/;\
@@ -31,8 +28,13 @@ RUN /usr/local/rbenv/shims/gem install git bundle oink vmstat rest-client net_ht
  	passenger-config  build-native-support
  	
  
-COPY functions.sh  /home/engines/scripts/functions.sh
 
+
+WORKDIR /home/app/
+RUN	git init
+
+ADD gitconfig.src /home/app/.git/config.src
+RUN cat/home/app/.git/config.src sed "/\$release/s//$release/" > /home/app/.git/config
 #After after chmod so not rewritable
 
 ADD 000-default.conf /etc/apache2/sites-enabled/
