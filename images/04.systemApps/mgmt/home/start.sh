@@ -16,13 +16,20 @@ if  test -f /home/app/Gemfile
 	mv /home/app/Gemfile  /tmp/gf
 	fi
 	
+if ! test -f /home/fs/persistent/.setup	
+	then
+		cp -rp /home/app/public /home/fs/persistent/public
+		rm -r /home/app/public
+		ln -s /home/fs/persistent/public /home/app/public
+		touch /home/fs/persistent/.setup	
+	fi
 
 
 export RUBY_GC_HEAP_GROWTH_FACTOR=1.1
 
 #You can also set how much memory Ruby is allowed to allocate off-heap4 before Ruby runs minor GC. You may want to lower that threshold:
 
-export RUBY_GC_MALLOC_LIMIT=4000100
+export RUBY_GC_MALLOC_LIMIT=267000100
 export RUBY_GC_MALLOC_LIMIT_MAX=16000100
 export RUBY_GC_MALLOC_LIMIT_GROWTH_FACTOR=1.1
 
@@ -32,7 +39,7 @@ export RUBY_GC_OLDMALLOC_LIMIT=16000100
 export RUBY_GC_OLDMALLOC_LIMIT_MAX=16000100
 
 	
-release=`cat /opt/engines/release`
+release=$SYSTEM_RELEASE
 git fetch origin $release
 git reset --hard FETCH_HEAD
 git pull --depth 1 origin  $release
@@ -59,10 +66,11 @@ echo installing Gems
 /usr/local/rbenv/shims/bundle install --standalone 
 echo migrating database 
 /usr/local/rbenv/shims/bundle exec rake db:migrate 
-if ! test `sqlite3 /home/app/db/production.sqlite3 "SELECT EXISTS (SELECT * FROM users WHERE username='admin');"` -eq 1
-	then
+
+# "SELECT EXISTS (SELECT * FROM users WHERE username='admin');"` -eq 1
+
 		/usr/local/rbenv/shims/bundle exec rake db:seed >/dev/null
-fi
+
 echo building thumb nails
 bundle exec rake paperclip:refresh:thumbnails CLASS=ApplicationDisplayProperties
 
@@ -90,7 +98,7 @@ PID_FILE=/var/run/engines/pids
 export PID_FILE
 . /home/trap.sh
 
-/home/clear_flags.sh
+
 
 /usr/sbin/apache2ctl -DFOREGROUND &
 apache_pid=`cat /var/run/apache2/apache2.pid`

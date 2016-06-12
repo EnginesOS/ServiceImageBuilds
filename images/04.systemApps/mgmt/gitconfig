@@ -5,7 +5,7 @@
 				        logallrefupdates = true
 				[branch "beta-rc"]
 				[remote "origin"]
-				        url = https://github.com/EnginesOS/SystemGui.git
+				        url = https://github.com/lachdoug/system_gui_v0_2.git
 				        fetch = +refs/heads/*:refs/remotes/origin/*
 				[branch "beta-rc"]
 				        remote = origin
