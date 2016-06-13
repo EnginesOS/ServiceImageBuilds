@@ -15,17 +15,16 @@ ENV ContGrp ruby
 
 
 RUN /usr/local/rbenv/shims/gem install git bundle oink vmstat rest-client net_http_unix yajl-ruby ;\	
-	chown -R www-data /home/app/ /var/log/apache2/;\
-	mkdir -p  /run/apache2;\
-	chown -R www-data /run/apache2 ;\
- 	mkdir -p /run/lock/apache2 ;\
- 	a2enmod ssl;\
- 	chown www-data /run/lock/apache2;\
- 	mkdir -p /home/app/public/system;\
- 	chown -R www-data /home/app/public ;\
- 	mkdir -p /usr/lib/src;\
- 	cp -dpR /usr/share/passenger/ruby_extension_source /usr/lib/src/ruby_native_extension;\
+	mkdir -p /usr/lib/src;\
+ 	cp -dpR /usr/share/passenger/ruby_extension_source /usr/lib/src/ruby_native_extension;\ 	
  	passenger-config  build-native-support ;\
+ 	a2enmod ssl
+ 	
+RUN	chown -R www-data /home/app/ /var/log/apache2/;\
+	mkdir -p  /run/apache2  /run/lock/apache2  ;\
+	chown -R www-data /run/apache2 /run/lock/apache2;\
+ 	mkdir -p /home/app/public/system;\
+ 	chown -R www-data /home/app ;\ 	
  	usermod -G containers -a www-data 
  	
  
