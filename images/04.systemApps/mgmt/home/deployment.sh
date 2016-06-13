@@ -1,5 +1,6 @@
 #!/bin/bash
-release=$SYSTEM_RELEASE
+#release=$SYSTEM_RELEASE
+release=master
 git fetch origin $release
 git reset --hard FETCH_HEAD
 git pull --depth 1 origin  $release
@@ -14,12 +15,8 @@ fi
 
 cp /home/newrelic.yml /home/app/
 
-mkdir -p /engines/var/run/flags/
+
 RAILS_ENV=production
-
-
-
-
 
 echo installing Gems
 /usr/local/rbenv/shims/bundle install --standalone 

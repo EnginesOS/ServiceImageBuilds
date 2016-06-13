@@ -3,16 +3,12 @@ ENV ruby_version 2.2.2
 RUN apt-get -y install telnet libcurl4-openssl-dev;\	
 	 /usr/local/rbenv/bin/rbenv  install $ruby_version;\
 	 /usr/local/rbenv/bin/rbenv  global $ruby_version
-ADD home home
-ENV RELEASE $release
+
+
 
 
 ENV ContUser www-data
 ENV ContGrp ruby
-
-
-
-
 
 RUN /usr/local/rbenv/shims/gem install git bundle oink vmstat rest-client net_http_unix yajl-ruby ;\	
 	mkdir -p /usr/lib/src;\
@@ -20,6 +16,7 @@ RUN /usr/local/rbenv/shims/gem install git bundle oink vmstat rest-client net_ht
  	passenger-config  build-native-support ;\
  	a2enmod ssl
  	
+ADD home home
 RUN	chown -R www-data /home/app/ /var/log/apache2/;\
 	mkdir -p  /run/apache2  /run/lock/apache2  ;\
 	chown -R www-data /run/apache2 /run/lock/apache2;\
@@ -35,7 +32,7 @@ ADD	passenger.conf  /etc/apache2/mods-enabled/
 USER www-data
 WORKDIR /home/app/
 RUN	git init
-
+ENV RELEASE $release
 ADD gitconfig.tmpl /home/app/.git/config.tmpl
 RUN cat /home/app/.git/config.tmpl  | sed "/\$release/s//$release/" > /home/app/.git/config
 
