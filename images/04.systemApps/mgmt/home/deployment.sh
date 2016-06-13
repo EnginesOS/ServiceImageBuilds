@@ -1,4 +1,5 @@
 #!/bin/bash
+cd /home/app
 #release=$SYSTEM_RELEASE
 release=master
 git fetch origin $release

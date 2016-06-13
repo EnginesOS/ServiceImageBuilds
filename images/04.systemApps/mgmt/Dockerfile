@@ -40,7 +40,7 @@ RUN cat /home/app/.git/config.tmpl  | sed "/\$release/s//$release/" > /home/app/
 
 RUN /home/deployment.sh
 
-ADD profile /home/app/.profile
+ADD profile ~www-data/.profile
 
 ENV HOME /home/app
 		
