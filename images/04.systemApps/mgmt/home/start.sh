@@ -23,6 +23,10 @@ if ! test -f /home/fs/persistent/.setup
 /home/deployment.sh
 
 export  RAILS_ENV
+
+SECRET_KEY_BASE=`/usr/local/rbenv/shims/bundle exec rake secret`
+export SECRET_KEY_BASE RAILS_ENV
+
 echo migrating database 
 /usr/local/rbenv/shims/bundle exec rake db:migrate 
 
@@ -37,8 +41,7 @@ echo precompiling assests
 
 /usr/local/rbenv/shims/bundle exec rake assets:precompile  >/dev/null
 
-SECRET_KEY_BASE=`/usr/local/rbenv/shims/bundle exec rake secret`
-export SECRET_KEY_BASE RAILS_ENV
+
 
 export RUBY_GC_HEAP_GROWTH_FACTOR=1.1
 
