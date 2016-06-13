@@ -20,8 +20,9 @@ ADD home home
 RUN	chown -R www-data /home/app/ /var/log/apache2/;\
 	mkdir -p  /run/apache2  /run/lock/apache2  ;\
 	chown -R www-data /run/apache2 /run/lock/apache2;\
+ 	mkdir -p /home/app;\
  	mkdir -p /home/app/public/system;\
- 	chown -R www-data /home/app ;\ 	
+ 	chown -R www-data /home/app/;\ 	
  	usermod -G containers -a www-data 
  	
  
