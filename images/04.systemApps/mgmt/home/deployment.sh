@@ -1,11 +1,11 @@
 #!/bin/bash
 cd /home/app
-#release=$SYSTEM_RELEASE
+#release=$RELEASE
 release=master
 git fetch origin $release
 git reset --hard FETCH_HEAD
 git pull --depth 1 origin  $release
-git branch  $release
+
 if ! test -f /home/app/Gemfile
  then
    cp /tmp/gf /home/app/Gemfile
