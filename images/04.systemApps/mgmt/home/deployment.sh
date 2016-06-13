@@ -19,23 +19,8 @@ RAILS_ENV=production
 
 
 
-export  RAILS_ENV
+
 
 echo installing Gems
 /usr/local/rbenv/shims/bundle install --standalone 
-echo migrating database 
-/usr/local/rbenv/shims/bundle exec rake db:migrate 
 
-# "SELECT EXISTS (SELECT * FROM users WHERE username='admin');"` -eq 1
-
-		/usr/local/rbenv/shims/bundle exec rake db:seed >/dev/null
-
-echo building thumb nails
-bundle exec rake paperclip:refresh:thumbnails CLASS=ApplicationDisplayProperties
-
-echo precompiling assests
-
-/usr/local/rbenv/shims/bundle exec rake assets:precompile  >/dev/null
-
-SECRET_KEY_BASE=`/usr/local/rbenv/shims/bundle exec rake secret`
-export SECRET_KEY_BASE RAILS_ENV
