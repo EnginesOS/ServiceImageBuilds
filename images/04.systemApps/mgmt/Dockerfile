@@ -29,8 +29,11 @@ RUN /usr/local/rbenv/shims/gem install git bundle oink vmstat rest-client net_ht
  	usermod -G containers -a www-data 
  	
  
+ADD 000-default.conf /etc/apache2/sites-enabled/
+ADD SSL-default.conf /etc/apache2/sites-enabled/
+ADD	passenger.conf  /etc/apache2/mods-enabled/
 
-
+USER www-data
 WORKDIR /home/app/
 RUN	git init
 
@@ -40,14 +43,9 @@ RUN cat /home/app/.git/config.tmpl  | sed "/\$release/s//$release/" > /home/app/
 
 RUN /home/deployment.sh
 
-#After after chmod so not rewritable
 
-ADD 000-default.conf /etc/apache2/sites-enabled/
-ADD SSL-default.conf /etc/apache2/sites-enabled/
-ADD	passenger.conf  /etc/apache2/mods-enabled/
-#ADD Procfile.sh /home/app/
 
 ENV HOME /home/app
 		
 CMD ["/home/start.sh"]
-USER www-data
+
