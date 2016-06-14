@@ -29,6 +29,7 @@ RUN	chown -R www-data /var/log/apache2/;\
 #ADD 000-default.conf /etc/apache2/sites-enabled/
 ADD SSL-default.conf /etc/apache2/sites-enabled/
 ADD	passenger.conf  /etc/apache2/mods-enabled/
+ADD ports.conf /etc/apache2/
 
 USER www-data
 WORKDIR /home/app/
