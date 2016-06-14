@@ -35,7 +35,7 @@ echo migrating database
 		/usr/local/rbenv/shims/bundle exec rake db:seed >/dev/null
 
 echo building thumb nails
-bundle exec rake paperclip:refresh:thumbnails CLASS=ApplicationDisplayProperties
+#bundle exec rake paperclip:refresh:thumbnails CLASS=ApplicationDisplayProperties
 
 echo precompiling assests
 

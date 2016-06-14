@@ -17,7 +17,7 @@ RUN /usr/local/rbenv/shims/gem install git bundle oink vmstat rest-client net_ht
  	a2enmod ssl
  	
 ADD home home
-RUN	chown -R www-data /home/app/ /var/log/apache2/;\
+RUN	chown -R www-data /var/log/apache2/;\
 	mkdir -p  /run/apache2  /run/lock/apache2  ;\
 	chown -R www-data /run/apache2 /run/lock/apache2;\
  	mkdir -p /home/app;\
