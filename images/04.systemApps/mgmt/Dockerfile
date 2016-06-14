@@ -26,7 +26,7 @@ RUN	chown -R www-data /var/log/apache2/;\
  	usermod -G containers -a www-data 
  	
  
-ADD 000-default.conf /etc/apache2/sites-enabled/
+#ADD 000-default.conf /etc/apache2/sites-enabled/
 ADD SSL-default.conf /etc/apache2/sites-enabled/
 ADD	passenger.conf  /etc/apache2/mods-enabled/
 
