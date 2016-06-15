@@ -18,7 +18,7 @@ RUN /usr/sbin/usermod -u 22671 www-data ;\
  	usermod -G containers -a www-data ;\
  	passenger-config  build-native-support
  	
- 
+COPY etc/nginx/ /etc/nginx
 
 ENV ContUser www-data
 ENV ContGrp www-data
