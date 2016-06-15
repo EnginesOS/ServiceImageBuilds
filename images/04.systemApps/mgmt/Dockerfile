@@ -1,4 +1,4 @@
-FROM  engines/passenger:$release
+FROM  engines/ngpassenger:$release
 ENV ruby_version 2.2.2
 RUN apt-get -y install telnet libcurl4-openssl-dev;\
 	 /usr/sbin/usermod -u 22050 www-data;\
@@ -18,19 +18,14 @@ RUN /usr/local/rbenv/shims/gem install git bundle oink vmstat rest-client net_ht
  	a2enmod ssl
  	
 ADD home home
-RUN	chown -R www-data /var/log/apache2/;\
-	mkdir -p  /run/apache2  /run/lock/apache2  ;\
-	chown -R www-data /run/apache2 /run/lock/apache2;\
- 	mkdir -p /home/app;\
+
+RUN	mkdir -p /home/app;\
  	mkdir -p /home/app/public/system;\
  	chown -R www-data /home/app/;\ 	
  	usermod -G containers -a www-data 
  	
  
-#ADD 000-default.conf /etc/apache2/sites-enabled/
-ADD SSL-default.conf /etc/apache2/sites-enabled/
-ADD	passenger.conf  /etc/apache2/mods-enabled/
-ADD ports.conf /etc/apache2/
+
 
 USER www-data
 WORKDIR /home/app/

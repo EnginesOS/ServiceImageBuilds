@@ -11,7 +11,6 @@ RUN /usr/sbin/usermod -u 22671 www-data ;\
 	chmod 600 /etc/apt/sources.list.d/passenger.list;\
 	apt-get update -y ;\
 	apt-get install -y   nginx-extras  passenger-dev ;\
-	a2enmod passenger;\
 	apt-get clean ;\    
 	/usr/local/rbenv/shims/gem install passenger;\   
  	mkdir   -p /var/www/.passenger ;\
