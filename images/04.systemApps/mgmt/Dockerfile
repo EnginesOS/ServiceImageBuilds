@@ -1,6 +1,7 @@
 FROM  engines/passenger:$release
 ENV ruby_version 2.2.2
-RUN apt-get -y install telnet libcurl4-openssl-dev;\	
+RUN apt-get -y install telnet libcurl4-openssl-dev;\
+	 /usr/sbin/usermod -u 22050 www-data;\
 	 /usr/local/rbenv/bin/rbenv  install $ruby_version;\
 	 /usr/local/rbenv/bin/rbenv  global $ruby_version
 
