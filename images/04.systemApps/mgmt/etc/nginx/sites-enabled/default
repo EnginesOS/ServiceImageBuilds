@@ -29,8 +29,7 @@
         access_log /var/log/access.log;
         error_log /var/log/error.log;
         location / {
-        root /home/app/public;
-       
+        root /home/app/public;       
     }
 
 }

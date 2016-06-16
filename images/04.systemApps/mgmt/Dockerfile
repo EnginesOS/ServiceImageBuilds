@@ -41,7 +41,7 @@ ADD profile ~www-data/.profile
 ENV HOME /home/app
 
 COPY etc/nginx/ /etc/nginx
-COPY ruby_env /home/app/.env_vars
+COPY ruby_env /home/app/.ruby_env
 USER 0
 RUN chmod ugo+w -R /etc/nginx/sites-enabled/default /etc/nginx/;\
 	mkdir /var/run/nginx/;\
