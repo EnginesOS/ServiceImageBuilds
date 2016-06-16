@@ -2,7 +2,7 @@
  	
  server {
         listen 8001;
-    server_name mgmt;
+    server_name mgmt.current.engines.org;
     add_header Accept-Ranges bytes;
    
      add_header Strict-Transport-Security "max-age=31536000; includeSubdomains";
@@ -13,9 +13,11 @@
     ssl_certificate /opt/engines/etc/ssl/certs/engines.crt;
     ssl_certificate_key /opt/engines/etc/ssl/keys/engines.key;
     include /home/app/.env_vars;
+    include /home/app/.ruby_env;
  	passenger_enabled on;
  	passenger_load_shell_envvars on;
  	 	passenger_app_env development;
+ 	 	
  	 location /cable {
         passenger_app_group_name mgmt_action_cable;
         passenger_force_max_concurrent_requests_per_process 0;
