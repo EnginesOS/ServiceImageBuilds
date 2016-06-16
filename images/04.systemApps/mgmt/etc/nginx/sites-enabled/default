@@ -12,7 +12,7 @@
     ssl_session_timeout  10m;
     ssl_certificate /opt/engines/etc/ssl/certs/engines.crt;
     ssl_certificate_key /opt/engines/etc/ssl/keys/engines.key;
-    
+    include /home/app/.env_vars;
  	passenger_enabled on;
  	passenger_load_shell_envvars on;
  	 	passenger_app_env development;

@@ -25,6 +25,13 @@ export  RAILS_ENV
 SECRET_KEY_BASE=`/usr/local/rbenv/shims/bundle exec rake secret`
 export SECRET_KEY_BASE RAILS_ENV
 
+echo RAILS_ENV=$RAILS_ENV > /home/app/.env_vars
+echo SECRET_KEY_BASE=$SECRET_KEY_BASE >> /home/app/.env_vars
+echo SYSTEM_API_URL=$SYSTEM_API_URL >> /home/app/.env_vars
+echo SYSTEM_RELEASE=$SYSTEM_RELEASE >> /home/app/.env_vars
+
+
+
 echo migrating database 
 /usr/local/rbenv/shims/bundle exec rake db:migrate 
 
