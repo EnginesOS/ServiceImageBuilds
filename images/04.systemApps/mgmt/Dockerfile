@@ -1,11 +1,11 @@
 FROM  engines/ngpassenger:$release
 ENV ruby_version 2.2.2
-RUN apt-get -y install libcurl4-openssl-dev;\
-	apt-get -y install redis-server;\
-	 chown www-data  /var/lib/redis ;\
-	 /usr/sbin/usermod -u 22050 www-data;\
-	 /usr/local/rbenv/bin/rbenv  install $ruby_version;\
-	 /usr/local/rbenv/bin/rbenv  global $ruby_version
+RUN 	 /usr/sbin/usermod -u 22050 www-data;\
+		apt-get -y install libcurl4-openssl-dev;\
+		apt-get -y install redis-server;\
+		chown www-data  /var/lib/redis ;\
+	 	/usr/local/rbenv/bin/rbenv  install $ruby_version;\
+	 	/usr/local/rbenv/bin/rbenv  global $ruby_version
 
 
 
