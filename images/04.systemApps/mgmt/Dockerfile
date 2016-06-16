@@ -41,6 +41,8 @@ ADD profile ~www-data/.profile
 ENV HOME /home/app
 
 COPY etc/nginx/ /etc/nginx
+USER 0
 RUN chmod ugo+w /etc/nginx/sites-enabled/default
+USER www-data
 CMD ["/home/start.sh"]
 
