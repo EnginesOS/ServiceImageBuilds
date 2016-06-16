@@ -26,8 +26,7 @@
         error_log /var/log/error.log;
         location / {
         root /home/app/public;
-        passenger_root /usr/lib/ruby/vendor_ruby/phusion_passenger/locations.ini
-
+        passenger_root /usr/lib/ruby/vendor_ruby/phusion_passenger/locations.ini;
     }
 
 }
