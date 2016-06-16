@@ -18,6 +18,7 @@ if ! test -f /home/fs/persistent/.setup
 	fi
 
 /home/deployment.sh
+mkdir -p /engines/var/run/flags/
 
 export  RAILS_ENV
 
