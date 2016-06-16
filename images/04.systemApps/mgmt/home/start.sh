@@ -1,9 +1,6 @@
 #!/bin/bash
 PATH="/usr/local/rbenv/bin:$PATH"
-if ! test -d /var/log/apache2
-	then
-		mkdir  /var/log/apache2
-	fi
+
 cd /home/app/
 
 if test -f /home/app/app/config/newrelic.yml
@@ -69,7 +66,7 @@ ln -s /var/log/app /home/app/log
 
 
 
-PID_FILE=/var/run/apache2/apache2.pid
+PID_FILE=/var/run/nginx/nginx.pid
 
 
 export PID_FILE
@@ -77,7 +74,7 @@ export PID_FILE
 
 
 
-/usr/sbin/apache2ctl -DFOREGROUND &
+nginx &
 touch  /engines/var/run/flags/startup_complete
 wait 
 rm $PID_FILE
