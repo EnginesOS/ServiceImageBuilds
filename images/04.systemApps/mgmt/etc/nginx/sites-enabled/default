@@ -27,8 +27,7 @@
         location / {
         root /home/app/public;
         passenger_root /usr/lib/ruby/vendor_ruby/phusion_passenger/locations.ini
-    
-	
+
     }
 
 }

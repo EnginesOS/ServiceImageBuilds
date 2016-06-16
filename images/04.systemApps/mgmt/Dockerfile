@@ -39,6 +39,8 @@ RUN /home/deployment.sh
 ADD profile ~www-data/.profile
 
 ENV HOME /home/app
-		
+
+COPY etc/nginx/ /etc/nginx
+
 CMD ["/home/start.sh"]
 
