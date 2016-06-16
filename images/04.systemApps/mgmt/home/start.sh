@@ -7,7 +7,6 @@ if test -f /home/app/app/config/newrelic.yml
 	then
 		rm /home/app/app/config/newrelic.yml
 	fi
-
 	
 if ! test -f /home/fs/persistent/.setup	
 	then
@@ -16,6 +15,8 @@ if ! test -f /home/fs/persistent/.setup
 		ln -s /home/fs/persistent/public /home/app/public
 		touch /home/fs/persistent/.setup	
 	fi
+redis-server &
+redis_pid=$!
 
 /home/deployment.sh
 mkdir -p /engines/var/run/flags/
@@ -68,5 +69,6 @@ nginx &
 touch  /engines/var/run/flags/startup_complete
 wait 
 rm $PID_FILE
-
+kill -TERM $redis_pid
+wait $redis_pid
 rm /engines/var/run/flags/startup_complete
