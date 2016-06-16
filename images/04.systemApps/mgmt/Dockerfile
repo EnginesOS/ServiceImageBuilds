@@ -42,7 +42,8 @@ ENV HOME /home/app
 
 COPY etc/nginx/ /etc/nginx
 USER 0
-RUN chmod ugo+w /etc/nginx/sites-enabled/default
+RUN chmod ugo+w /etc/nginx/sites-enabled/default;\
+	chown www-data /var/lib/nginx/
 USER www-data
 CMD ["/home/start.sh"]
 
