@@ -20,17 +20,14 @@ if ! test -f /home/fs/persistent/.setup
 /home/deployment.sh
 mkdir -p /engines/var/run/flags/
 
-export  RAILS_ENV
 
 SECRET_KEY_BASE=`/usr/local/rbenv/shims/bundle exec rake secret`
-export SECRET_KEY_BASE RAILS_ENV
 
-echo RAILS_ENV=$RAILS_ENV > /home/app/.env_vars
-echo SECRET_KEY_BASE=$SECRET_KEY_BASE >> /home/app/.env_vars
-echo SYSTEM_API_URL=$SYSTEM_API_URL >> /home/app/.env_vars
-echo SYSTEM_RELEASE=$SYSTEM_RELEASE >> /home/app/.env_vars
-
-
+echo " passenger_env_var RAILS_ENV $RAILS_ENV;" > /home/app/.env_vars
+echo " passenger_env_var SECRET_KEY_BASE $SECRET_KEY_BASE;" >> /home/app/.env_vars
+echo " passenger_env_var SYSTEM_API_URL $SYSTEM_API_URL;">> /home/app/.env_vars
+echo " passenger_env_var SYSTEM_RELEASE $SYSTEM_RELEASE;" >> /home/app/.env_vars
+echo " passenger_env_var DATABASE_URL $rails_flavor://$dbuser:$dbpasswd@$dbhost/$dbname;" >> /home/app/.env_vars
 
 echo migrating database 
 /usr/local/rbenv/shims/bundle exec rake db:migrate 
@@ -46,23 +43,6 @@ echo precompiling assests
 
 /usr/local/rbenv/shims/bundle exec rake assets:precompile  >/dev/null
 
-
-
-export RUBY_GC_HEAP_GROWTH_FACTOR=1.1
-
-#You can also set how much memory Ruby is allowed to allocate off-heap4 before Ruby runs minor GC. You may want to lower that threshold:
-
-export RUBY_GC_MALLOC_LIMIT=267000100
-export RUBY_GC_MALLOC_LIMIT_MAX=16000100
-export RUBY_GC_MALLOC_LIMIT_GROWTH_FACTOR=1.1
-
-#Similarly, you may want to reduce how much memory Ruby allocates off-heap before it runs a full major GC:
-
-export RUBY_GC_OLDMALLOC_LIMIT=16000100
-export RUBY_GC_OLDMALLOC_LIMIT_MAX=16000100
-
-	
-
 if ! test -d /var/log/app
 	then
 		mkdir /var/log/app
@@ -73,19 +53,14 @@ if ! test -d /var/log/app
 ln -s /var/log/app /home/app/log 
 
 
-
 PID_FILE=/var/run/nginx/nginx.pid
-
 
 export PID_FILE
 . /home/trap.sh
-
-
 
 nginx &
 touch  /engines/var/run/flags/startup_complete
 wait 
 rm $PID_FILE
-
 
 rm /engines/var/run/flags/startup_complete
