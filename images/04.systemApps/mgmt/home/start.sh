@@ -3,6 +3,8 @@ PATH="/usr/local/rbenv/bin:$PATH"
 
 cd /home/app/
 
+mkdir /var/log/nginx /var/log/redis
+
 if test -f /home/app/app/config/newrelic.yml
 	then
 		rm /home/app/app/config/newrelic.yml
@@ -34,7 +36,7 @@ echo " passenger_env_var RAILS_ENV $RAILS_ENV;" > /home/app/.env_vars
 echo " passenger_env_var SECRET_KEY_BASE $SECRET_KEY_BASE;" >> /home/app/.env_vars
 echo " passenger_env_var SYSTEM_API_URL $SYSTEM_API_URL;">> /home/app/.env_vars
 echo " passenger_env_var SYSTEM_RELEASE $SYSTEM_RELEASE;" >> /home/app/.env_vars
-#echo " passenger_env_var DATABASE_URL $DATABASE_URL;" >> /home/app/.env_vars
+echo " passenger_env_var DATABASE_URL $DATABASE_URL;" >> /home/app/.env_vars
 
 echo migrating database 
 /usr/local/rbenv/shims/bundle exec rake db:migrate 
