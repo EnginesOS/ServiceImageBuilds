@@ -38,6 +38,10 @@ echo " passenger_env_var SYSTEM_API_URL $SYSTEM_API_URL;">> /home/app/.env_vars
 echo " passenger_env_var SYSTEM_RELEASE $SYSTEM_RELEASE;" >> /home/app/.env_vars
 echo " passenger_env_var DATABASE_URL $DATABASE_URL;" >> /home/app/.env_vars
 
+if test -f /home/app/env_production.rb
+	then
+cp	 env_production.rb /home/app/config/environments/production.rb
+fi
 echo migrating database 
 /usr/local/rbenv/shims/bundle exec rake db:migrate 
 
