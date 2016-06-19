@@ -4,6 +4,7 @@ PATH="/usr/local/rbenv/bin:$PATH"
 cd /home/app/
 
 mkdir /var/log/nginx /var/log/redis
+mkdir  /var/run/redis/
 
 if test -f /home/app/app/config/newrelic.yml
 	then
@@ -17,7 +18,7 @@ if ! test -f /home/fs/persistent/.setup
 		ln -s /home/fs/persistent/public /home/app/public
 		touch /home/fs/persistent/.setup	
 	fi
-redis-server &
+redis-server /etc/redis/redis.conf &
 redis_pid=$!
 
 /home/deployment.sh
