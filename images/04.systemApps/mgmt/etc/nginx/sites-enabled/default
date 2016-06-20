@@ -16,7 +16,7 @@
     include /home/app/.ruby_env;
  	passenger_enabled on;
  	passenger_load_shell_envvars on;
- 	 	passenger_app_env development;
+ 	 	passenger_app_env production;
  	 	 root /home/app/public;  
  	 location /cable {
         passenger_app_group_name mgmt_action_cable;
