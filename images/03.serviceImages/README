@@ -18,3 +18,10 @@ export PID_FILE
  wait
 rm /engines/var/run/flags/startup_complete
  cleanup
+ 
+ 
+ create /opt/engines/run/service/servicename/config.yaml
+ add any required service definitions under post and pre dirs
+ Pre is pre creation
+ post is port creatation
+ 
