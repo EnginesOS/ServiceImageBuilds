@@ -1,0 +1,7 @@
+
+logrotate ALL = (root) NOPASSWD: /usr/sbin/logrotate
+
+
+
+#must have blank after last sudoers line
+

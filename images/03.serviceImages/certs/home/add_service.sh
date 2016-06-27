@@ -15,6 +15,8 @@ if test -z "${cert_name}"
         exit -1
     fi
     
+ 
+    
     mkdir -p /home/certs/store/public/keys/
     mkdir -p /home/certs/store/public/certs
     

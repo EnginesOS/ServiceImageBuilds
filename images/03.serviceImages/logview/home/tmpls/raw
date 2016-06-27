@@ -1,0 +1,16 @@
+
+                        "refresh" : 0,
+                        "max"     : 10,
+                        "notify"  : false,
+                        "format"  : {
+                                "type"         : "Raw",
+                                "regex"        : "|^(.*)|",
+                                "export_title" : "URL",
+                                "match"        : {
+                                        "Line"    : 1
+                                },
+                                "types": {
+                                        "Line"     : "txt"
+                                }
+                        }
+                }

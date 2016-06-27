@@ -16,11 +16,9 @@ RUN	groupadd ruby;\
 	cd /usr/local/rbenv   ;echo 'export PATH="/usr/local/rbenv/bin:$PATH:/usr/local/rbenv/shims/"' >> ~/.bashrc ; echo 'eval "$(rbenv init -)"' >> ~/.bashrc ; exec $SHELL ; /usr/local/rbenv/bin/rbenv install $ruby_version ; /usr/local/rbenv/bin/rbenv global $ruby_version;\
 	echo "gem: --no-ri --no-rdoc" > ~/.gemrc;\
 	/usr/local/rbenv/bin/rbenv rehash;\
-	cp -rp  ~/.gemrc ~/.bashrc ~ruby;\
-	chmod -R g+w /usr/local/rbenv/versions/ ;chgrp -R ruby /usr/local/rbenv/versions/
-	
-
-RUN rm -r /home/home_dir/node_js_src;\
+	cp -rp  ~/.gemrc ~/.bashrc /home/ruby/;\
+	chmod -R g+w /usr/local/rbenv/versions/ ;chgrp -R ruby /usr/local/rbenv/versions/;\
+	 rm -r /home/home_dir/node_js_src;\
 	mkdir -p /home/home_dir/.bundle/;\
 	chgrp containers /home/home_dir/.bundle/;\
 	chmod g+w /home/home_dir/.bundle/

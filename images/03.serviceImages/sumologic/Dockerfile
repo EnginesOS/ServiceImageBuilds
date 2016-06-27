@@ -22,4 +22,5 @@ RUN mkdir -p /home/configurators/saved ;\
 	 chgrp containers /home/configurators/saved
 
 USER syslog
+ENV ContUser syslog
 CMD ["/home/start.sh"]

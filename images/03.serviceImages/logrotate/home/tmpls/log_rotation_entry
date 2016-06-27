@@ -1,0 +1,7 @@
+copytruncate
+delaycompress
+rotate ROTATE
+CYCLE
+compress
+dateext
+}

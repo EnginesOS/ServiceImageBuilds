@@ -18,4 +18,5 @@ RUN chown mongo /home/configurators/saved ; chmod 700 /home/configurators/saved
 ENV ContUser mongo
 ENV ContGrp mongo
 USER mongo
+ENV ContUser mongo
 CMD ["/home/start.sh"]

@@ -51,7 +51,9 @@ if test -z $fqdn
 
 template="/etc/nginx/templates/${proto}_site.tmpl"
 
-resolv_ip=`cat /opt/engines/etc/net/management`
+#resolv_ip=`cat /opt/engines/etc/net/management`
+resolv_ip=`nslookup control |grep -e "Address: *[0-9]" |awk '{print $2}'`
+
 servers="server SERVER.engines.internal:PORT;"
 cnt=1
 if ! test -z $engine_count

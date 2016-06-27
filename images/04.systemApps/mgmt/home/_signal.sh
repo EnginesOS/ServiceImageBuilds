@@ -1,3 +1,0 @@
-#!/bin/sh
-
-sudo kill -$1 `cat $2`

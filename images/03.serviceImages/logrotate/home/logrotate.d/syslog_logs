@@ -1,0 +1,56 @@
+/var/log/syslog/daemon.log{
+copytruncate
+delaycompress
+rotate 30
+daily
+compress
+dateext
+
+}
+
+/var/log/syslog/error{
+copytruncate
+delaycompress
+rotate 30
+daily
+compress
+dateext
+
+}
+
+/var/log/syslog/mail.log{
+copytruncate
+delaycompress
+rotate 30
+daily
+compress
+dateext
+
+}
+/var/log/syslog/mail.info{
+copytruncate
+delaycompress
+rotate 30
+daily
+compress
+dateext
+
+}
+/var/log/syslog/mail.warn{
+copytruncate
+delaycompress
+rotate 30
+daily
+compress
+dateext
+
+}
+/var/log/syslog/syslog{
+copytruncate
+delaycompress
+rotate 30
+daily
+compress
+dateext
+
+}

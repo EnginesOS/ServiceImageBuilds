@@ -1,0 +1,20 @@
+server {
+        listen 8000;
+        server_name SERVER_NAME;
+        add_header Accept-Ranges bytes;
+		access_log /var/log/access.log;
+        error_log /var/log/error.log;
+        error_page 502 /502.html;
+        location / {        
+		/home/app/WWW_DIR
+
+
+   
+    add_header Strict-Transport-Security "max-age=31536000; includeSubdomains";
+  add_header Accept-Ranges bytes;
+    
+        }
+         location /502.html{
+		}
+    }
+

@@ -1,77 +1,63 @@
 #!/bin/bash
 PATH="/usr/local/rbenv/bin:$PATH"
-if ! test -d /var/log/apache2
-	then
-		mkdir  /var/log/apache2
-	fi
+
 cd /home/app/
+
+mkdir /var/log/nginx /var/log/redis
+mkdir  /var/run/redis/
 
 if test -f /home/app/app/config/newrelic.yml
 	then
 		rm /home/app/app/config/newrelic.yml
 	fi
-
-if  test -f /home/app/Gemfile	
+	
+if ! test -f /home/fs/persistent/.setup	
 	then
-	mv /home/app/Gemfile  /tmp/gf
+		cp -rp /home/app/public /home/fs/persistent/public
+		rm -r /home/app/public
+		ln -s /home/fs/persistent/public /home/app/public
+		touch /home/fs/persistent/.setup	
 	fi
-	
+redis-server /etc/redis/redis.conf &
+redis_pid=$!
 
-
-export RUBY_GC_HEAP_GROWTH_FACTOR=1.1
-
-#You can also set how much memory Ruby is allowed to allocate off-heap4 before Ruby runs minor GC. You may want to lower that threshold:
-
-export RUBY_GC_MALLOC_LIMIT=4000100
-export RUBY_GC_MALLOC_LIMIT_MAX=16000100
-export RUBY_GC_MALLOC_LIMIT_GROWTH_FACTOR=1.1
-
-#Similarly, you may want to reduce how much memory Ruby allocates off-heap before it runs a full major GC:
-
-export RUBY_GC_OLDMALLOC_LIMIT=16000100
-export RUBY_GC_OLDMALLOC_LIMIT_MAX=16000100
-
-	
-release=`cat /opt/engines/release`
-git fetch origin $release
-git reset --hard FETCH_HEAD
-git pull --depth 1 origin  $release
-git branch  $release
-if ! test -f /home/app/Gemfile
- then
-   cp /tmp/gf /home/app/Gemfile
- else
-	cat /home/app/Gemfile |grep -v rubyracer >/tmp/gf
-	cp /tmp/gf  /home/app/Gemfile
-fi 
-
-cp /home/newrelic.yml /home/app/
-
+/home/deployment.sh
 mkdir -p /engines/var/run/flags/
-RAILS_ENV=production
 
-sudo -n /home/_start_sshd.sh &
-sshd_pid=$!
 
-export  RAILS_ENV
+SECRET_KEY_BASE=`/usr/local/rbenv/shims/bundle exec rake secret`
+export SECRET_KEY_BASE
 
-echo installing Gems
-/usr/local/rbenv/shims/bundle install --standalone 
+export RAILS_ENV
+
+DATABASE_URL=$rails_flavor://$dbuser:$dbpasswd@$dbhost/$dbname
+export DATABASE_URL
+
+echo " passenger_env_var RAILS_ENV $RAILS_ENV;" > /home/app/.env_vars
+echo " passenger_env_var SECRET_KEY_BASE $SECRET_KEY_BASE;" >> /home/app/.env_vars
+echo " passenger_env_var SYSTEM_API_URL $SYSTEM_API_URL;">> /home/app/.env_vars
+echo " passenger_env_var SYSTEM_RELEASE $SYSTEM_RELEASE;" >> /home/app/.env_vars
+echo " passenger_env_var DATABASE_URL $DATABASE_URL;" >> /home/app/.env_vars
+echo " passenger_env_var ACTION_CABLE_ALLOWED_REQUEST_ORIGINS $ACTION_CABLE_ALLOWED_REQUEST_ORIGINS;" >> /home/app/.env_vars
+echo " passenger_env_var ACTION_CABLE_URL $ACTION_CABLE_URL;" >> /home/app/.env_vars
+
+if test -f /home/app/env_production.rb
+	then
+cp	 env_production.rb /home/app/config/environments/production.rb
+fi
 echo migrating database 
 /usr/local/rbenv/shims/bundle exec rake db:migrate 
-if ! test `sqlite3 /home/app/db/production.sqlite3 "SELECT EXISTS (SELECT * FROM users WHERE username='admin');"` -eq 1
-	then
+
+# "SELECT EXISTS (SELECT * FROM users WHERE username='admin');"` -eq 1
+
 		/usr/local/rbenv/shims/bundle exec rake db:seed >/dev/null
-fi
+
 echo building thumb nails
-bundle exec rake paperclip:refresh:thumbnails CLASS=ApplicationDisplayProperties
+#bundle exec rake paperclip:refresh:thumbnails CLASS=ApplicationDisplayProperties
 
 echo precompiling assests
 
 /usr/local/rbenv/shims/bundle exec rake assets:precompile  >/dev/null
-
-SECRET_KEY_BASE=`/usr/local/rbenv/shims/bundle exec rake secret`
-export SECRET_KEY_BASE RAILS_ENV
 
 if ! test -d /var/log/app
 	then
@@ -83,21 +69,15 @@ if ! test -d /var/log/app
 ln -s /var/log/app /home/app/log 
 
 
-
-PID_FILE=/var/run/engines/pids
-
+PID_FILE=/var/run/nginx/nginx.pid
 
 export PID_FILE
 . /home/trap.sh
 
-/home/clear_flags.sh
-
-/usr/sbin/apache2ctl -DFOREGROUND &
-apache_pid=$!
-
-echo -n "$apache_pid $sshd_pid" > /var/run/engines/pids
+nginx &
 touch  /engines/var/run/flags/startup_complete
 wait 
-
 rm $PID_FILE
+kill -TERM $redis_pid
+wait $redis_pid
 rm /engines/var/run/flags/startup_complete

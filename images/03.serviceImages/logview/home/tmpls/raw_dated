@@ -1,0 +1,18 @@
+
+                        "refresh" : 0,
+                        "max"     : 10,
+                        "notify"  : false,
+                        "format"  : {
+                                "type"         : "Raw",
+                                "regex"        : "|(.*?) ([0-9]{1,2}) ([0-9]{1,2}:[0-9]{1,2}:[0-9]{1,2}) (.*)|",
+                                "export_title" : "URL",
+                                "match"        : {
+                                		"Date":	1,
+                                        "Message"    : 2
+                                },
+                                "types": {
+                                        "Line"     : "txt",
+                                        "Date"    : "date:H:i:s"
+                                }
+                        }
+                }

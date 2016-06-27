@@ -1,0 +1,35 @@
+
+ 	
+ server {
+        listen 8001;
+    server_name mgmt.current.engines.org;
+    add_header Accept-Ranges bytes;
+   
+     add_header Strict-Transport-Security "max-age=31536000; includeSubdomains";
+    proxy_read_timeout 300s;
+    ssl on;
+    ssl_session_cache    shared:SSL:1m;
+    ssl_session_timeout  10m;
+    ssl_certificate /opt/engines/etc/ssl/certs/engines.crt;
+    ssl_certificate_key /opt/engines/etc/ssl/keys/engines.key;
+    include /home/app/.env_vars;
+    include /home/app/.ruby_env;
+ 	passenger_enabled on;
+ 	passenger_load_shell_envvars on;
+ 	 	passenger_app_env production;
+ 	 	 root /home/app/public;  
+ 	 location /cable {
+        passenger_app_group_name mgmt_action_cable;
+        passenger_force_max_concurrent_requests_per_process 0;
+    }
+    ssl_verify_client off;
+    ssl_protocols        SSLv3 TLSv1 TLSv1.1 TLSv1.2;
+    ssl_ciphers RC4:HIGH:!aNULL:!MD5;
+    ssl_prefer_server_ciphers on;
+        access_log /var/log/access.log;
+        error_log /var/log/error.log;
+      
+
+}
+
+       

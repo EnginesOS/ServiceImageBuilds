@@ -1,0 +1,23 @@
+    "refresh": 5,
+    "max": 50,
+    "notify": false,
+    "type": "Syslog",
+      "format": {
+        "regex": "|(.*?) ([0-9]{1,2}) ([0-9]{1,2}:[0-9]{1,2}:[0-9]{1,2}) (\\S*) (\\S*) (\\S*) (.*)|",
+        "match": {
+            "Date": 3,
+        "Host": 4,
+        "Process": 5,
+        "Facility": 6,
+            "Message": 7
+        },
+        "types": {
+            "Date": "date:H:i:s",
+            "Source": "txt",
+            "Host": "txt",
+            "Process": "txt",
+            "Facility": "txt",
+            "Message": "txt"
+        }
+    }            
+}

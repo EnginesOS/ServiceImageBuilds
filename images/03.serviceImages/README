@@ -1,0 +1,27 @@
+Adding a Service
+Create a dir 
+ in the dir create a file called TAG and specify the service image name and release 
+ engines/servicename:$release
+ 
+ Add docker file and any other files require to the creation
+ add user that the service is going to run as and add mapping to /opt/engines/etc/container_uids
+ service starts with /home/start.sh
+ ensure you trap and handle the signals
+ #!/bin/bash
+ ###
+ PID_FILE=/var/run/service.pid
+export PID_FILE
+. /home/trap.sh
+
+ service &
+ touch /engines/var/run/flags/startup_complete
+ wait
+rm /engines/var/run/flags/startup_complete
+ cleanup
+ 
+ 
+ create /opt/engines/run/service/servicename/config.yaml
+ add any required service definitions under post and pre dirs
+ Pre is pre creation
+ post is port creatation
+ 

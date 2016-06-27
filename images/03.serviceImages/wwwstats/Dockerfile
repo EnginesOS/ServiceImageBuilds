@@ -25,5 +25,5 @@ COPY home home
 COPY home/templates home/templates
 
 USER www-data
-
+ENV ContUser www-data
 CMD ["/home/start.sh"]
