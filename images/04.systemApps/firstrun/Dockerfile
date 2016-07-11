@@ -33,7 +33,7 @@ RUN cat /home/app/.git/config.tmpl  | sed "/\$release/s//$release/" > /home/app/
 
 
 RUN /home/deployment.sh
-ADD config.yaml /home/app
+
 ADD config.ru /home/app
 
 ENV HOME /home/app
