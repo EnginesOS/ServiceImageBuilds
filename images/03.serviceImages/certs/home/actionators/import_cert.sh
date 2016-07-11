@@ -9,8 +9,10 @@ if test $1 = "default"
     domain_name=$1
  default=0
  fi
- rm /home/certs/store/public/certs/$domain_name.crt
- rm /home/certs/store/public/keys/$domain_name.key
+ rm /home/certs/store/public/certs/$domain_name.cr t&>/dev/null
+ 
+ rm /home/certs/store/public/keys/$domain_name.key &>/dev/null
+ 
  
  while read line; do
  # echo "reading: ${line}"
