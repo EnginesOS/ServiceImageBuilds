@@ -23,7 +23,7 @@ echo installing Gems
 grep thin /home/app/Gemfile >/dev/null
 if test $? -ne 0
  then
-  echo "gem 'thin'" >> home/app/Gemfile
+  echo "gem 'thin'" >> /home/app/Gemfile
 fi
 /usr/local/rbenv/shims/bundle install --standalone 
 
