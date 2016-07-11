@@ -28,11 +28,13 @@ WORKDIR /home/app/
 RUN	git init
 ENV RELEASE $release
 ADD gitconfig.tmpl /home/app/.git/config.tmpl
+
 RUN cat /home/app/.git/config.tmpl  | sed "/\$release/s//$release/" > /home/app/.git/config
 
 
 RUN /home/deployment.sh
-
+ADD config.yaml /home/app
+ADD config.ru /home/app
 
 ENV HOME /home/app
 
