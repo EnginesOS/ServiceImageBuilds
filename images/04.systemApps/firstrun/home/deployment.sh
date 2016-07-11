@@ -21,7 +21,7 @@ RAILS_ENV=production
 
 echo installing Gems
 grep thin /home/app/Gemfile >/dev/null
-if test ?$ -ne 0
+if test $? -ne 0
  then
   echo "gem 'thin'" >> home/app/Gemfile
 fi
