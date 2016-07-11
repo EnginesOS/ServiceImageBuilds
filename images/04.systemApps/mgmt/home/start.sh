@@ -32,8 +32,8 @@ export RAILS_ENV
 
 DATABASE_URL=$rails_flavor://$dbuser:$dbpasswd@$dbhost/$dbname
 export DATABASE_URL
-
-echo " passenger_env_var RAILS_ENV $RAILS_ENV;" > /home/app/.env_vars
+cp /home/ruby_env /home/app/.env_vars
+echo " passenger_env_var RAILS_ENV $RAILS_ENV;" >> /home/app/.env_vars
 echo " passenger_env_var SECRET_KEY_BASE $SECRET_KEY_BASE;" >> /home/app/.env_vars
 echo " passenger_env_var SYSTEM_API_URL $SYSTEM_API_URL;">> /home/app/.env_vars
 echo " passenger_env_var SYSTEM_RELEASE $SYSTEM_RELEASE;" >> /home/app/.env_vars
