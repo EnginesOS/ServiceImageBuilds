@@ -13,6 +13,7 @@ mkdir -p /engines/var/run/flags/
 
 cd /home/app
 
+/home/deployment.sh
 
 /usr/local/rbenv/versions/2.3.0/bin/thin    -C config.yaml -R ./config.ru start > /var/log/firstrun.log &
 
