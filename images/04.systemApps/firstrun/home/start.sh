@@ -15,7 +15,7 @@ cd /home/app
 
 /home/deployment.sh
 
-/usr/local/rbenv/shims/bunlde exec thin -C config.yaml -R ./config.ru start > /var/log/firstrun.log &
+/usr/local/rbenv/shims/bunlde exec thin  -R ./config.ru start > /var/log/firstrun.log &
 
 
 touch /engines/var/run/flags/startup_complete  
