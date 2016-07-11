@@ -1,4 +1,5 @@
-FROM engines/servicebase:$release
+FROM engines/ruby2.x
+#engines/servicebase:$release
 ENV ruby_version 2.2.2
 RUN 	 /usr/sbin/usermod -u 22050 www-data;\
 		apt-get -y update;\
