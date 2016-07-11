@@ -15,11 +15,12 @@ cd /home/app
 
 /home/deployment.sh
 
-/usr/local/rbenv/versions/2.3.0/bin/thin    -C config.yaml -R ./config.ru start > /var/log/firstrun.log &
+/usr/local/rbenv/shims/bunlde exec thin  -R ./config.ru start > /var/log/firstrun.log &
 
 
 touch /engines/var/run/flags/startup_complete  
 wait 
 kill -TERM  `cat /engines/var/run/firstrun.pid`
 rm -f /engines/var/run/flags/startup_complete
+sleep 600
 
