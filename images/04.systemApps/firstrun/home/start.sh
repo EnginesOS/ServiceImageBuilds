@@ -15,7 +15,7 @@ cd /home/app
 
 /home/deployment.sh
 
-thin    -C config.yaml -R ./config.ru start > /var/log/firstrun.log &
+/usr/local/rbenv/shims/thin -C config.yaml -R ./config.ru start > /var/log/firstrun.log &
 
 
 touch /engines/var/run/flags/startup_complete  

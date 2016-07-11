@@ -11,7 +11,7 @@ RUN 	 /usr/sbin/usermod -u 22050 www-data;\
 ENV ContUser www-data
 ENV ContGrp ruby
 
-RUN /usr/local/rbenv/shims/gem install thin bundle oink rest-client net_http_unix yajl-ruby 
+RUN /usr/local/rbenv/shims/gem install thin bundle oink rest-client net_http_unix sinatra json yajl-ruby 
  	
 ADD home home
 
@@ -20,7 +20,7 @@ RUN	mkdir -p /home/app;\
  	chown -R www-data /home/app/;\ 	
  	usermod -G containers -a www-data 
  	
- 
+
 
 
 USER www-data

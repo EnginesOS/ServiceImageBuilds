@@ -20,5 +20,5 @@ cp /home/newrelic.yml /home/app/
 RAILS_ENV=production
 
 echo installing Gems
-/usr/local/rbenv/shims/bundle install --standalone 
+#/usr/local/rbenv/shims/bundle install --standalone 
 
