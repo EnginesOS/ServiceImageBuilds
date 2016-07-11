@@ -5,7 +5,7 @@
     server_name mgmt.current.engines.org;
     add_header Accept-Ranges bytes;
    
-     add_header Strict-Transport-Security "max-age=31536000; includeSubdomains";
+   #  add_header Strict-Transport-Security "max-age=31536000; includeSubdomains";
     proxy_read_timeout 300s;
     ssl on;
     ssl_session_cache    shared:SSL:1m;
