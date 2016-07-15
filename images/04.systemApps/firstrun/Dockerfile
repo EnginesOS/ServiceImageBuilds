@@ -7,7 +7,6 @@ RUN 	 /usr/sbin/usermod -u 22050 www-data;\
 	 	/usr/local/rbenv/bin/rbenv  install $ruby_version;\
 	 	/usr/local/rbenv/bin/rbenv  global $ruby_version
 
-
 ENV ContUser www-data
 ENV ContGrp ruby
 
@@ -19,9 +18,6 @@ RUN	mkdir -p /home/app;\
  	mkdir -p /home/app/public/system;\
  	chown -R www-data /home/app/;\ 	
  	usermod -G containers -a www-data 
- 	
-
-
 
 USER www-data
 WORKDIR /home/app/
