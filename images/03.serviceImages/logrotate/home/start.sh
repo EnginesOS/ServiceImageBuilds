@@ -11,7 +11,7 @@ echo $pid >$PID_FILE
 
 
 touch  /engines/var/run/flags/startup_complete
-sleep 36000 &
+#sleep 36000 &
 wait  
 rm /engines/var/run/flags/startup_complete
 
