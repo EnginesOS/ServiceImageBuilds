@@ -20,7 +20,7 @@ RUN /usr/sbin/usermod -u 22671 www-data ;\
  	passenger-config  build-native-support
  	
 COPY etc/nginx/ /etc/nginx
-
+COPY ruby_env /home/
 ENV ContUser www-data
 ENV ContGrp www-data
 

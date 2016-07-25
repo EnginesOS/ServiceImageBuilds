@@ -10,7 +10,7 @@
     proxy_read_timeout 300s;
     
     include /home/app/.env_vars;
-   # include /home/app/.ruby_env;
+   
  	passenger_enabled on;
  	passenger_load_shell_envvars on;
  	 	passenger_app_env production;
