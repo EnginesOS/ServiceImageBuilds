@@ -9,7 +9,7 @@
    #  add_header Strict-Transport-Security "max-age=31536000; includeSubdomains";
     proxy_read_timeout 300s;
     
-    include /home/app/.env_vars;
+    include /home/.env_vars;
    
  	passenger_enabled on;
  	passenger_load_shell_envvars on;
