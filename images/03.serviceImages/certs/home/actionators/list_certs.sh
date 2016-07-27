@@ -4,7 +4,7 @@ if test -d /home/certs/store/public/certs/
  then
  cd /home/certs/store/public/certs/
  certs=`ls *.crt |sed "/\.crt/s///g"`
- echo '{"certs":['
+ echo -n '{"certs":['
  i=0
  	for cert in $certs
  		do
@@ -12,10 +12,10 @@ if test -d /home/certs/store/public/certs/
  				then
  				i=1
  			else
- 				echo ,
+ 				echo -n ,
  			fi
- 			echo '"'$cert'"'
+ 			echo -n '"'$cert'"'
  		done
- 	echo ']}'
+ 	echo -n ']}'
  fi
   

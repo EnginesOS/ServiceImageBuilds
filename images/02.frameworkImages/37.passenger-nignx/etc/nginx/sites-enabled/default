@@ -1,20 +1,27 @@
-server {
+
+
+ 	
+ server {
         listen 8000;
-        server_name SERVER_NAME;
-        add_header Accept-Ranges bytes;
-		access_log /var/log/access.log;
-        error_log /var/log/error.log;
-        error_page 502 /502.html;
-        location / {        
-		/home/app/WWW_DIR
-
-
+    server_name SERVER_NAME;
+    add_header Accept-Ranges bytes;
    
-    add_header Strict-Transport-Security "max-age=31536000; includeSubdomains";
-  add_header Accept-Ranges bytes;
+   #  add_header Strict-Transport-Security "max-age=31536000; includeSubdomains";
+    proxy_read_timeout 300s;
     
-        }
-         location /502.html{
-		}
+    include /home/.env_vars;
+   
+ 	passenger_enabled on;
+ 	passenger_load_shell_envvars on;
+ 	 	passenger_app_env production;
+ 	 	 root /home/app/public;  
+ 	 location /cable {
+        passenger_app_group_name action_cable;
+        passenger_force_max_concurrent_requests_per_process 0;
     }
+  
+        access_log /var/log/access.log;
+        error_log /var/log/error.log;
+      
 
+}

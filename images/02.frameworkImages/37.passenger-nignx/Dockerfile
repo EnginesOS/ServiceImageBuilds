@@ -1,4 +1,4 @@
-FROM engines/rails4:$release
+FROM engines/rails5:$release
 
 ENV RAILS_ENV production
 
@@ -14,13 +14,16 @@ RUN /usr/sbin/usermod -u 22671 www-data ;\
 	apt-get clean ;\    
 	/usr/local/rbenv/shims/gem install passenger;\   
  	mkdir   -p /var/www/.passenger ;\
- 	chown www-data /var/www/.passenger ;\
- 	usermod -G containers -a www-data ;\
- 	chown www-data /var/lib/nginx/ ;\
- 	passenger-config  build-native-support
+ 	chown www-data /var/www/.passenger 
  	
+ RUN usermod -G containers -a www-data ;\
+ 	chown www-data /var/lib/nginx/ ;\
+ 	passenger-config  build-native-support ;\
+ 	 touch /home/.env_vars ;\
+ 	 chown www-data /home/.env_vars /var/run/
+ 	 
 COPY etc/nginx/ /etc/nginx
-
+COPY ruby_env /home/
 ENV ContUser www-data
 ENV ContGrp www-data
 

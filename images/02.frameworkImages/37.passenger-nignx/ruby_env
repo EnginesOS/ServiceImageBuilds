@@ -1,0 +1,2 @@
+#Needs to be dynamic based on ram allocated to container
+passenger_env_var RUBY_GC_HEAP_GROWTH_FACTOR 1.1;
