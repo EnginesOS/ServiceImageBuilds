@@ -1,5 +1,5 @@
 
-FROM  engines/ruby2.x:$release
+FROM  engines/rails4:$release
 
 ADD Gems /home/
 RUN /usr/local/rbenv/shims/gem  install `cat /home/Gems`;\ 
