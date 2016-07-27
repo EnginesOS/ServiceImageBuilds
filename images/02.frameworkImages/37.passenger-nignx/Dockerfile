@@ -1,4 +1,4 @@
-FROM engines/rails4:$release
+FROM engines/rails5:$release
 
 ENV RAILS_ENV production
 
