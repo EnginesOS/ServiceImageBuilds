@@ -31,7 +31,7 @@ service_hash="$1"
     fi  
     
     sudo -n /home/engines/scripts/create_volume.sh ${parent_engine} ${service_name} ${user} ${group}
-    if $? -eq 0
+    if test $? -eq 0
 	then 
 		echo "Success"
 		exit 0
