@@ -15,18 +15,18 @@ echo ${domain_name} >/home/configurators/saved/domain
 #         echo "@  @${domain_name}" >> /etc/postfix/generic
 #        postmap  /etc/postfix/generic
         
-        echo "/.+/ @${domain_name}"  /etc/postfix/sender_canonical
+        echo "/.+/ @${domain_name}" > /etc/postfix/sender_canonical
         postmap  /etc/postfix/sender_canonical
   
 		
 		
  		echo smtp.${domain_name} > /etc/postfix/mailname
  		
- 		if test `wc -c /etc/postfix/transport.smart ` -gt 4
+ 		if test `wc -c /etc/postfix/transport.smart | cut -f 1 -d" " ` -gt 4
  		 then
  	    	cp /etc/postfix/transport.smart /etc/postfix/transport 
  	    else
-        	echo  "*	:" >> /etc/postfix/transport
+        	echo  "*	:" > /etc/postfix/transport
         fi
         if ! test -z $deliver_local 
           then

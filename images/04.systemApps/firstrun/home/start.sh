@@ -22,5 +22,5 @@ touch /engines/var/run/flags/startup_complete
 wait 
 kill -TERM  `cat /engines/var/run/firstrun.pid`
 rm -f /engines/var/run/flags/startup_complete
-sleep 600
+
 
