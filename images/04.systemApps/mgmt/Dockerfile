@@ -1,5 +1,5 @@
 FROM  engines/ngpassenger:$release
-ENV ruby_version 2.2.2
+ENV ruby_version 2.3.0
 RUN 	 /usr/sbin/usermod -u 22050 www-data;\
 		apt-get -y install libcurl4-openssl-dev;\
 		apt-get -y install redis-server;\
