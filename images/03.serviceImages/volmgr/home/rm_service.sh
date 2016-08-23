@@ -12,12 +12,12 @@ service_hash="$1"
   	if test -z ${service_name}
 	then
 		echo Error:missing service_name
-        exit -1
+        exit 127
     fi  
     	if test -z ${parent_engine}
 	then
 		echo Error:missing parent_engine
-        exit -1
+        exit 127
     fi  
     
  sudo -n /home/engines/scripts/delete_volume.sh ${parent_engine} ${service_name} 
