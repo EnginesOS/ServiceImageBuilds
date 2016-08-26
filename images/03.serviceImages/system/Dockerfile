@@ -3,7 +3,7 @@ FROM  engines/servicebase:$release
 RUN /usr/sbin/addgroup --gid 999 docker;\
 	/home/no_init.sh ;\	
 	apt-get -y install telnet libsqlite3-dev libcurl4-openssl-dev build-essential libssl-dev libreadline-dev zlib1g-dev ;\
-	apt-get -y clean ;\
+
 	echo "Y" | adduser -q --uid 21000 --gid 999 --home /home/engines --disabled-password engines;\
 	 mkdir -p  /opt/engines/run/system/;\	
 	chown -R engines /opt/engines/run/system/ /home/engines /var/log/;\
@@ -16,9 +16,9 @@ RUN 	mkdir -p /usr/local/ ; cd /usr/local/ ; git clone git://github.com/sstephen
 	cd /usr/local/rbenv ; git clone git://github.com/sstephenson/ruby-build.git /usr/local/rbenv/plugins/ruby-buil;\
 	cd /usr/local/rbenv   ;echo 'export PATH="/usr/local/rbenv/bin:$PATH:/usr/local/rbenv/shims/"' >> /home/engines/.bashrc ; echo 'eval "$(rbenv init -)"' >> ~/.bashrc ; exec $SHELL  ;/usr/local/rbenv/bin/rbenv install $ruby_version ; /usr/local/rbenv/bin/rbenv global $ruby_version
 	
-RUN	/usr/local/rbenv/shims/gem install git bundle  rest-client net_http_unix excon;\
-				/usr/local/rbenv/shims/gem install  yajl-ruby  sinatra thin rubytree yard sinatra-contrib  ;\
-			    /usr/local/rbenv/shims/gem install 	warden data_mapper dm-sqlite-adapter puma ;\
+RUN	/usr/local/rbenv/shims/gem install  --no-rdoc --no-ri  git bundle  rest-client net_http_unix excon;\
+				/usr/local/rbenv/shims/gem install  --no-rdoc --no-ri   yajl-ruby  sinatra thin rubytree yard sinatra-contrib  ;\
+			    /usr/local/rbenv/shims/gem install  --no-rdoc --no-ri 	warden data_mapper dm-sqlite-adapter puma ;\
 	/usr/local/rbenv/bin/rbenv rehash
 	
 	

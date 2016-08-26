@@ -7,9 +7,8 @@ RUN /usr/sbin/usermod -u 22671 www-data ;\
 	apt-get install -y apt-transport-https ca-certificates nginx ;\
 	echo deb https://oss-binaries.phusionpassenger.com/apt/passenger trusty main  >/etc/apt/sources.list.d/passenger.list;\ 
 	chmod 600 /etc/apt/sources.list.d/passenger.list;\
-	apt-get update -y ;\
 	apt-get install -y   nginx-extras  passenger-dev ;\
-	/usr/local/rbenv/shims/gem install passenger;\   
+	/usr/local/rbenv/shims/gem install	apt-get update -y ;\  passenger;\   
  	mkdir   -p /var/www/.passenger ;\
  	chown www-data /var/www/.passenger ;\
  	/home/post_build_clean.sh

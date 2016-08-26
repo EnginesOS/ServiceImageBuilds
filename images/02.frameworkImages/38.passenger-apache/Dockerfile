@@ -11,7 +11,7 @@ RUN /usr/sbin/usermod -u 22671 www-data ;\
 	apt-get install -y    libapache2-mod-passenger passenger-dev ;\
 	a2enmod passenger;\
     rm etc/apache2/sites-enabled/*;\
-	/usr/local/rbenv/shims/gem install passenger;\
+	/usr/local/rbenv/shims/gem install --no-rdoc --no-ri  passenger;\
     /usr/local/rbenv/shims/passenger-install-apache2-module -a --languages ruby,nodejs,python;\
 	mkdir -p /var/log/apache2 ;\
 	chown -R www-data /var/log/apache2 ;\

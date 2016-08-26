@@ -2,8 +2,8 @@ FROM  engines/ruby2.x:$release
 #FROM  engines/rails4:$release
 
 ADD Gems /home/
-RUN /usr/local/rbenv/shims/gem  install `cat /home/Gems`;\ 
-	/usr/local/rbenv/shims/gem install bundle;\
+RUN /usr/local/rbenv/shims/gem  install --no-rdoc --no-ri `cat /home/Gems`;\ 
+	/usr/local/rbenv/shims/gem --no-rdoc --no-ri install bundle;\
   	/usr/local/rbenv/bin/rbenv rehash;\
  	usermod -G containers -a ruby
  	
