@@ -5,7 +5,8 @@ RUN 	 /usr/sbin/usermod -u 22050 www-data;\
 		apt-get -y install redis-server;\
 		chown www-data  /var/lib/redis ;\
 	 	/usr/local/rbenv/bin/rbenv  install $ruby_version;\
-	 	/usr/local/rbenv/bin/rbenv  global $ruby_version
+	 	/usr/local/rbenv/bin/rbenv  global $ruby_version;\
+ 	/home/post_build_clean.sh
 
 
 

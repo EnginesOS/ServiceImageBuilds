@@ -2,8 +2,6 @@ FROM  engines/servicebase:$release
 
 
 RUN echo "Y" |/usr/sbin/usermod -u  22012 syslog ;\
- 	apt-get -y update;\
-	apt-get upgrade -y;\
 	/home/no_init.sh;\
 	 adduser --uid 22028 -q --home /home/logrotate --disabled-password logrotate;
 

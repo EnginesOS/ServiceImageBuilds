@@ -4,7 +4,7 @@ FROM  engines/servicebase:$release
 RUN apt-get -y update;\
 	/home/no_init.sh;\
 	apt-get -y install syslogd avahi-daemon dbus python python-avahi;\
-	apt-get clean;\
+ 		/home/post_build_clean.sh ;\
 	usermod avahi -u  22026 ;\	
 	mkdir /var/run/dbus/;\
 	rm -f /var/run/dbus/pid;\

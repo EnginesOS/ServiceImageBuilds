@@ -6,7 +6,8 @@ RUN adduser -q --disabled-password  dyndns -uid 22021;\
 	apt-get upgrade -y;\
 	/home/no_init.sh ;\	
 	apt-get -y install ddclient syslogd ;\
-	apt-get clean 
+ 	/home/post_build_clean.sh
+
 	
 
 COPY home home

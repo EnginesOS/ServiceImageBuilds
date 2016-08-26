@@ -2,14 +2,14 @@ FROM  engines/servicebase:$release
 
 
 RUN usermod www-data -u 22005;\
-	apt-get -y update;\
-	apt-get upgrade -y;\
+	apt-get update -y;\
 	/home/no_init.sh ;\	
 	apt-get -y install nginx;\
 	apt-get clean;\
 	mkdir -p /var/lib/nginx /var/run/nginx/ ;\ 
 	chown www-data /var/lib/nginx /var/run/nginx/ /etc/nginx/sites-enabled;\
-	usermod -G containers -a www-data 
+	usermod -G containers -a www-data ;\
+ 	/home/post_build_clean.sh
 	
 
 COPY home home

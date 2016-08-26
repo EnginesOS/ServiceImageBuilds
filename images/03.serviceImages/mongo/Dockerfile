@@ -6,10 +6,10 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10 ; echo
 	apt-get upgrade -y;\
 	/home/no_init.sh ;\	
     apt-get install -y mongodb-org;\
-	apt-get clean;\
 	usermod -G containers -a mongo;\
 	mkdir -p /var/lib/mongodb;\
-	chown mongo /var/lib/mongodb 
+	chown mongo /var/lib/mongodb ;\
+ 	/home/post_build_clean.sh
 	
 	
 ADD home home

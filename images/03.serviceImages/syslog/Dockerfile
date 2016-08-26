@@ -6,10 +6,10 @@ RUN echo "Y" |/usr/sbin/usermod -u  22012 syslog ;\
 	apt-get upgrade -y;\
 	/home/no_init.sh ;\	
  	apt-get -y install syslog-ng-core syslog-ng ;\
- 	apt-get clean ;\
  	mkdir -p /home/rlog/;\
  	chown syslog /var/lib/syslog-ng/ ;\
- 	usermod -G containers -a syslog
+ 	usermod -G containers -a syslog;\
+ 	/home/post_build_clean.sh
 #
 
 

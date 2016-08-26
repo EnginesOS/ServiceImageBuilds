@@ -9,10 +9,7 @@ RUN /usr/sbin/usermod -u 22671 www-data;\
 	chown www-data /var/www/;\
 	usermod -G containers -a www-data;\
 	usermod -G smmsp -a www-data;\
-	apt-get clean ;\
-		apt-get autoremove ;\
-		apt-get autoclean ;\		
-		rm -rf /tmp/*
+ 	/home/post_build_clean.sh
 	
 ENV APACHE_LOCK_DIR /var/run/apache2/lock/
 	

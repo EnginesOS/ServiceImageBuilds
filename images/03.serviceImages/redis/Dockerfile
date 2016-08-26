@@ -3,12 +3,11 @@ FROM  engines/servicebase:$release
 
 RUN adduser -q --disabled-password  redis -uid 22029;\
 	apt-get -y update;\
-	apt-get upgrade -y;\
 	/home/no_init.sh ;\	
 	apt-get -y install redis-server;\
-	apt-get clean;\
 	mkdir -p /var/lib/redis /var/run/redis/ ;\ 
-	usermod -G containers -a redis 
+	usermod -G containers -a redis ;\
+ 	/home/post_build_clean.sh
 	
 COPY redis.conf /etc/redis/
 COPY home home

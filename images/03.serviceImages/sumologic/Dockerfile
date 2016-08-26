@@ -4,11 +4,11 @@ FROM engines/servicebase:$release
 
 RUN echo "Y" |/usr/sbin/usermod -u  22012 syslog ;\
  	apt-get -y update;\
-	apt-get upgrade -y;\
 	wget -q -O /tmp/collector.deb https://collectors.sumologic.com/rest/download/deb/64 && \
  	dpkg -i /tmp/collector.deb && \
  	rm /tmp/collector.deb && \	
-	usermod -G containers -a syslog
+	usermod -G containers -a syslog;\
+ 	/home/post_build_clean.sh
 
 ENV ContUser syslog
 ENV ContGrp syslog

@@ -16,10 +16,7 @@ RUN echo "Y" | adduser -q --uid 22676 --home /home/lua --disabled-password lua;\
 	./configure;\
  	make build ;\
  	make install;\
- 	make clean;\
- 	apt-get clean ;\
-		apt-get autoremove ;\
-		apt-get autoclean ;\		
-		rm -rf /tmp/*
+ 	cd /;\ 	
+ 	/home/post_build_clean.sh
     
 ADD home home

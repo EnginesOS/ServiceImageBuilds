@@ -6,8 +6,8 @@ RUN echo "Y"| adduser --uid 22010 -q --home /home/ftpd --disabled-password proft
 	apt-get upgrade -y;\
 	/home/no_init.sh ;\	
   	apt-get -y install proftpd proftpd-mod-mysql syslogd  libpam-krb5;\
-	apt-get clean;\
-	usermod -G containers -a proftpd
+	usermod -G containers -a proftpd;\
+ 	/home/post_build_clean.sh
 
 
 COPY proftpd /etc/proftpd/

@@ -12,10 +12,7 @@ RUN /usr/sbin/usermod -u 22671 www-data ;\
 	/usr/local/rbenv/shims/gem install passenger;\   
  	mkdir   -p /var/www/.passenger ;\
  	chown www-data /var/www/.passenger ;\
-	apt-get clean ;\
-		apt-get autoremove ;\
-		apt-get autoclean ;\		
-		rm -rf /tmp/*
+ 	/home/post_build_clean.sh
  	
  RUN usermod -G containers -a www-data ;\
  	chown www-data /var/lib/nginx/ ;\

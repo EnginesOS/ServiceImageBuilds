@@ -6,7 +6,6 @@ RUN apt-get -y update;\
 	usermod -G docker -a cron ;\
 	usermod -G containers -a cron ;\
 	apt-get -y install build-essential gcc make syslogd;\
-	apt-get clean ;\
 	cd /tmp; \
   	wget ftp://ftp.seul.org/pub/fcron/fcron-3.2.0.src.tar.gz;\
   	tar -xzpf fcron-3.2.0.src.tar.gz;\
@@ -24,7 +23,7 @@ RUN apt-get -y update;\
 	rm -r /tmp/fcron-3.2.0 ;\
 	rm /tmp/fcron-3.2.0.src.tar.gz ;\
 	apt-get -y remove  build-essential gcc make ;\
-	apt-get -y clean 
+ 	/home/post_build_clean.sh
 
 
 

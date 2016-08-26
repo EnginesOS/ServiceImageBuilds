@@ -5,10 +5,10 @@ RUN apt-get -y update;\
 	apt-get upgrade -y;\
 	/home/no_init.sh ;\	
 	apt-get -y install postfix syslogd;\
-	apt-get clean;\
 	usermod -G containers -a postfix;\
 	 cp /etc/resolv.conf /var/spool/postfix/etc/;\
-	 cp /etc/services /var/spool/postfix/etc/
+	 cp /etc/services /var/spool/postfix/etc/;\
+ 	/home/post_build_clean.sh
 ADD home home
 
 ADD postfix/master.cf /etc/postfix/

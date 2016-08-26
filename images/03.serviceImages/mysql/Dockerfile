@@ -6,13 +6,13 @@ RUN   apt-get -y update;\
 	apt-get upgrade -y;\
 	/home/no_init.sh ;\	
 	apt-get -y install mysql-server;\
-	apt-get clean;\
 	 cat /etc/mysql/my.cnf |grep -v  event-scheduler=DISABLED |sed "/127.0.0.1/s//0.0.0.0/" >/etc/mysql/my.cnf.sed;\
 	mv /etc/mysql/my.cnf.sed /etc/mysql/my.cnf;\
 	echo event-scheduler=ENABLED >> /etc/mysql/my.cnf;\
 	echo max_allowed_packet = 4M >> /etc/mysql/my.cnf;\
 	echo event-scheduler = 1 >> /etc/mysql/my.cnf;\	
-	usermod -G containers -a mysql
+	usermod -G containers -a mysql;\
+ 	/home/post_build_clean.sh
 ADD home home
 RUN chown mysql /home/firstrun.sh
 

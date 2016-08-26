@@ -2,13 +2,13 @@ FROM  engines/servicebase:$release
 
 RUN /usr/sbin/addgroup --gid 999 docker;\
 apt-get -y update;\
-	apt-get upgrade -y;\
 	/home/no_init.sh ;\	
 	apt-get -y install telnet libsqlite3-dev libcurl4-openssl-dev build-essential libssl-dev libreadline-dev zlib1g-dev ;\
 	apt-get -y clean ;\
 	echo "Y" | adduser -q --uid 21000 --gid 999 --home /home/engines --disabled-password engines;\
 	 mkdir -p  /opt/engines/run/system/;\	
-	chown -R engines /opt/engines/run/system/ /home/engines /var/log/
+	chown -R engines /opt/engines/run/system/ /home/engines /var/log/;\
+ 	/home/post_build_clean.sh
 
 ENV ruby_version 2.3.0
 ENV  RBENV_ROOT /usr/local/rbenv
