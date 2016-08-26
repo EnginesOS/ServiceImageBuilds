@@ -1,10 +1,7 @@
 FROM engines/frameworkbase:$release
 
 RUN /usr/sbin/usermod -u 22671 www-data;\
-	apt-get update -y;\
-	apt-get upgrade -y;\
 	apt-get install -y  apache2 ;\
-	apt-get clean ;\
 	rm etc/apache2/sites-enabled/*;\
 	mkdir -p /etc/apache2/ /var/run/apache2;\
 	mkdir /home/rlog; \

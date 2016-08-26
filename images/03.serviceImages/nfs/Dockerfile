@@ -1,7 +1,6 @@
 FROM engines/servicebase:$release
 
-RUN   apt-get -y update;\
-	/home/no_init.sh ;\	
+RUN  /home/no_init.sh ;\	
 		apt-get install -y   libnss-mysql-bg libpam-mysql mysql-client rpcbind 
 	
 COPY etc /etc/

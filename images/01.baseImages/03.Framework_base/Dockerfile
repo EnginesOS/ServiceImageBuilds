@@ -2,9 +2,7 @@ FROM  engines/base:$release
 ADD home /home
 ADD engines_sudoers /etc/sudoers.d/engines
 ADD sources.list /etc/apt/
-RUN apt-get update -y;\ 
-	apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ED8E640A;\
-	apt-get install -y  sendmail-bin ca-certificates mysql-client postgresql-client git-core imagemagick gawk sqlite3 bison  sudo;\
+RUN apt-get install -y  sendmail-bin ca-certificates mysql-client postgresql-client git-core imagemagick gawk sqlite3 bison  sudo;\
 	mkdir -p /home/fs;\
 	apt-get clean
 	

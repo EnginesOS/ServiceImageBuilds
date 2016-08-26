@@ -1,8 +1,6 @@
 FROM  engines/servicebase:$release
 RUN echo "Y" | adduser -q --disabled-password --home /var/spool/postfix -uid 22003 postfix
-RUN apt-get -y update;\
-	apt-get upgrade -y;\
-	/home/no_init.sh ;\	
+RUN /home/no_init.sh ;\	
 	apt-get -y install apache2 libapache2-mod-php5 php5-mysql php5-mcrypt  php5-gd php5-apcu php5-dev  postfix syslogd  php5-imap postfix-mysql postgrey;\
 	
 ADD home home

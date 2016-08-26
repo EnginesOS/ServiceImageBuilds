@@ -4,8 +4,6 @@ From engines/servicebase:$release
 
 RUN adduser -q --disabled-password  -uid 22013 dovecot;\
 	adduser -q --disabled-password  -uid 22014 vmail;\
- 	apt-get -y  update;\
-	apt-get upgrade -y;\
 	/home/no_init.sh ;\		
 	apt-get -y install syslogd  dovecot-core dovecot-imapd  dovecot-pop3d  dovecot-sieve dovecot-lmtpd dovecot-mysql ;\
 	mkdir -p /var/mail ;\

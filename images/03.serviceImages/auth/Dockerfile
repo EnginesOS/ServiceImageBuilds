@@ -1,6 +1,5 @@
 FROM  engines/servicebase:$release
-RUN apt-get -y update;\
-	/home/no_init.sh ;\
+RUN /home/no_init.sh ;\
 	apt-get -y install syslogd openssh-server mysql-client krb5-kdc krb5-admin-server expect;\
 	echo "Y" | adduser -q --disabled-password --home /home/auth -uid 22017 auth;\
 	usermod -G containers -a auth ;\

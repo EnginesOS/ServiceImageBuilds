@@ -2,7 +2,6 @@ FROM  engines/servicebase:$release
 
 
 RUN adduser -q --disabled-password  redis -uid 22029;\
-	apt-get -y update;\
 	/home/no_init.sh ;\	
 	apt-get -y install redis-server;\
 	mkdir -p /var/lib/redis /var/run/redis/ ;\ 

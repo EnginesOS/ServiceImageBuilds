@@ -2,8 +2,6 @@ FROM  engines/servicebase:$release
 
 
 RUN echo "Y" |/usr/sbin/usermod -u  22012 syslog ;\
- 	apt-get -y update;\
-	apt-get upgrade -y;\
 	/home/no_init.sh ;\	
  	apt-get -y install syslog-ng-core syslog-ng ;\
  	mkdir -p /home/rlog/;\

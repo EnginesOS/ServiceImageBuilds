@@ -10,7 +10,6 @@ RUN /usr/sbin/usermod -u 22671 www-data ;\
 	apt-get update -y ;\
 	apt-get install -y    libapache2-mod-passenger passenger-dev ;\
 	a2enmod passenger;\
-	apt-get clean ;\
     rm etc/apache2/sites-enabled/*;\
 	/usr/local/rbenv/shims/gem install passenger;\
     /usr/local/rbenv/shims/passenger-install-apache2-module -a --languages ruby,nodejs,python;\

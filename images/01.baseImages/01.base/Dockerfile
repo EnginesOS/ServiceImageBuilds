@@ -10,7 +10,8 @@ ADD sources.list /etc/apt/
 
 ADD home /home/
 	
-RUN apt-get -y  --force-yes update;\
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ED8E640A;\
+	apt-get -y  --force-yes update;\
 	apt-get -y  --force-yes dist-upgrade;\
 	apt-get -y  --force-yes update;\
 	/home/no_init.sh ;\
@@ -20,22 +21,21 @@ RUN apt-get -y  --force-yes update;\
 	mkdir -p /etc/apt/apt.conf.d/;\
 	dpkg-divert --local --rename --add /sbin/initctl;\
 	ln -s /bin/true /sbin/initctl;\
-	apt-get clean;\
 	ln -s /usr/bin/sendmail /usr/sbin/sendmail;\
 	groupadd -g 22020 containers ;\ 
 	cd  /tmp ;\
-	 git clone https://github.com/zserge/jsmn ;\
-	 cd jsmn ;\
-	 make ;\
-	 cp -r /home/src . ;\
-	 cd src ;\
-	 make json_to_env ;\
-	 mkdir -p /home/engines/bin;\
-	 cp json_to_env /home/engines/bin;\
-	 rm -r /home/src ;\
-	 apt-get remove  build-essential;\
-	 /home/install_utf8_langauges.sh;\
-	 rm -r /tmp/* /home/install_utf8_langauges.sh
+	git clone https://github.com/zserge/jsmn ;\
+	cd jsmn ;\
+	make ;\
+	cp -r /home/src . ;\
+	cd src ;\
+	make json_to_env ;\
+	mkdir -p /home/engines/bin;\
+	cp json_to_env /home/engines/bin;\
+	rm -r /home/src ;\
+	apt-get remove  build-essential;\
+	/home/install_utf8_langauges.sh;\
+	rm -r /tmp/* /home/install_utf8_langauges.sh
 	 
 
 #increment build line to trigger upgrade NEED to Automate

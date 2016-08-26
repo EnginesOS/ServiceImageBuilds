@@ -1,7 +1,6 @@
 FROM  engines/servicebase:$release
 
 RUN /usr/sbin/addgroup --gid 999 docker;\
-apt-get -y update;\
 	/home/no_init.sh ;\	
 	apt-get -y install telnet libsqlite3-dev libcurl4-openssl-dev build-essential libssl-dev libreadline-dev zlib1g-dev ;\
 	apt-get -y clean ;\

@@ -1,9 +1,7 @@
 FROM  engines/servicebase:$release
 
 
-RUN apt-get -y update;\
-	apt-get upgrade -y;\
-	/home/no_init.sh ;\		
+RUN 	/home/no_init.sh ;\		
 	apt-get -y install isc-dhcp-server;\
  	/home/post_build_clean.sh;\
 	/usr/sbin/usermod -u 22025 dhcpd

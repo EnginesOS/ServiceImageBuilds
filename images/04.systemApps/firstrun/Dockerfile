@@ -2,7 +2,6 @@ FROM engines/ruby2.x
 #engines/servicebase:$release
 ENV ruby_version 2.2.2
 RUN 	 /usr/sbin/usermod -u 22050 www-data;\
-		apt-get -y update;\
 		apt-get -y install libcurl4-openssl-dev;\
 	 	/usr/local/rbenv/bin/rbenv  install $ruby_version;\
 	 	/usr/local/rbenv/bin/rbenv  global $ruby_version;\

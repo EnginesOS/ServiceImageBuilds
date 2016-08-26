@@ -17,8 +17,8 @@ RUN	groupadd ruby;\
 	echo "gem: --no-ri --no-rdoc" > ~/.gemrc;\
 	/usr/local/rbenv/bin/rbenv rehash;\
 	cp -rp  ~/.gemrc ~/.bashrc /home/ruby/;\
-	chmod -R g+w /usr/local/rbenv/versions/ ;chgrp -R ruby /usr/local/rbenv/versions/;\
 	 rm -r /home/home_dir/node_js_src;\
 	mkdir -p /home/home_dir/.bundle/;\
 	chgrp containers /home/home_dir/.bundle/;\
 	chmod g+w /home/home_dir/.bundle/
+	#chmod -R g+w /usr/local/rbenv/versions/ ;chgrp -R ruby /usr/local/rbenv/versions/;\
