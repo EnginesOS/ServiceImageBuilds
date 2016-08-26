@@ -10,7 +10,7 @@ ADD sources.list /etc/apt/
 
 ADD home /home/
 	
-ENV	build 20160826
+ENV	build 20160827
 	
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ED8E640A;\
 	apt-get -y  --force-yes update;\
