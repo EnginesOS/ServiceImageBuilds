@@ -10,6 +10,8 @@ ADD sources.list /etc/apt/
 
 ADD home /home/
 	
+ENV	build 20160826
+	
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ED8E640A;\
 	apt-get -y  --force-yes update;\
 	apt-get -y  --force-yes dist-upgrade;\
@@ -39,7 +41,7 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ED8E640A;\
 	 
 
 #increment build line to trigger upgrade NEED to Automate
-ENV	build 20160215
+
 
 
 RUN		apt-get clean ;\
