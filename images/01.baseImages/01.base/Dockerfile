@@ -11,7 +11,7 @@ ADD sources.list /etc/apt/
 ADD home /home/
 	
 RUN apt-get -y  --force-yes update;\
-	apt-get -y  --force-yes upgrade;\
+	apt-get -y  --force-yes dist-upgrade;\
 	apt-get -y  --force-yes update;\
 	/home/no_init.sh ;\
 	apt-get -y  --fix-missing install build-essential   unzip curl dnsutils git  wget bzip2 zlibc sendEmail;\ 
@@ -42,7 +42,10 @@ RUN apt-get -y  --force-yes update;\
 ENV	build 20160215
 
 
-RUN		apt-get clean ;\	
+RUN		apt-get clean ;\
+		apt-get autoremove ;\
+		apt-get autoclean ;\		
+		rm -rf /tmp/*;\
  		mkdir /var/run/engines ; chgrp containers /var/run/engines; chmod g+w /var/run/engines	
 		
 CMD ["/home/init.sh"]

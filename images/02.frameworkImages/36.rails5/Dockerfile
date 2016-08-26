@@ -1,5 +1,5 @@
-
-FROM  engines/rails4:$release
+FROM  engines/ruby2.x:$release
+#FROM  engines/rails4:$release
 
 ADD Gems /home/
 RUN /usr/local/rbenv/shims/gem  install `cat /home/Gems`;\ 
@@ -8,6 +8,7 @@ RUN /usr/local/rbenv/shims/gem  install `cat /home/Gems`;\
  	chmod -R g+w /usr/local/rbenv/versions/ ;\
  	chgrp -R ruby /usr/local/rbenv/versions/;\
  	usermod -G containers -a ruby
+ 	
 
 
 

@@ -5,8 +5,11 @@ RUN apt-mark unhold tzdata ;\
 	apt-get -y  --force-yes upgrade;\
 	/usr/sbin/usermod -u 22671 www-data;\
 	apt-get install -y  --force-yes openjdk-7-jre-headless ;\
+ 	usermod -G containers -a www-data ;\
 	apt-get clean ;\
- 	usermod -G containers -a www-data
+		apt-get autoremove ;\
+		apt-get autoclean ;\		
+		rm -rf /tmp/*
 
 ADD home home
 

@@ -1,9 +1,9 @@
 FROM  engines/base:$release
 ADD home /home
 ADD engines_sudoers /etc/sudoers.d/engines
-RUN  apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ED8E640A;\
-	apt-get -y update;\
-	apt-get upgrade -y;\
+ADD sources.list /etc/apt/
+RUN apt-get update -y;\ 
+	apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ED8E640A;\
 	apt-get install -y  sendmail-bin ca-certificates mysql-client postgresql-client git-core imagemagick gawk sqlite3 bison  sudo;\
 	mkdir -p /home/fs;\
 	apt-get clean
@@ -24,9 +24,13 @@ RUN	echo y y |sendmailconfig --no-reload;\
 	mkdir $HOME ; chgrp containers $HOME; chmod g+w  $HOME
 
 	
-ADD sources.list /etc/apt/
 
 
+
+RUN		apt-get clean ;\
+		apt-get autoremove ;\
+		apt-get autoclean ;\		
+		rm -rf /tmp/*
 
 
 
