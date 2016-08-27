@@ -4,8 +4,7 @@ ENV ruby_version 2.2.2
 RUN 	 /usr/sbin/usermod -u 22050 www-data;\
 		apt-get -y install libcurl4-openssl-dev;\
 	 	/usr/local/rbenv/bin/rbenv  install $ruby_version;\
-	 	/usr/local/rbenv/bin/rbenv  global $ruby_version;\
- 	/home/post_build_clean.sh
+	 	/usr/local/rbenv/bin/rbenv  global $ruby_version
 
 ENV ContUser www-data
 ENV ContGrp ruby
