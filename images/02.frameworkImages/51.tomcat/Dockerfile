@@ -5,7 +5,7 @@ RUN  apt-mark unhold tzdata ;
 	apt-get install -y  --force-yes  tomcat7 ;\
 	ln -s /var/log/tomcat7 /usr/share/tomcat7/logs;\
  	ln -s  /etc/tomcat7  /usr/share/tomcat7/conf;\
- 	ln -s /tmp /usr/share/tomcat7/temp;\
+ 	ln -s /tmp /usr/share/tomcat7/temp ;\
  	usermod -G containers -a www-data;\
  	/home/post_build_clean.sh
 
