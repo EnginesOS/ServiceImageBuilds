@@ -14,7 +14,7 @@ RUN 	 /usr/sbin/usermod -u 22050 www-data;\
 ENV ContUser www-data
 ENV ContGrp ruby
 
-RUN /usr/local/rbenv/shims/gem  --no-rdoc --no-ri install  bundle oink rest-client net_http_unix yajl-ruby ;\	
+RUN /usr/local/rbenv/shims/gem   install --no-rdoc --no-ri bundle oink rest-client net_http_unix yajl-ruby ;\	
 	mkdir -p /usr/lib/src;\
  	cp -dpR /usr/share/passenger/ruby_extension_source /usr/lib/src/ruby_native_extension;\ 	
  	passenger-config  build-native-support
