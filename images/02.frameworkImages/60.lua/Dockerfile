@@ -16,7 +16,7 @@ RUN echo "Y" | adduser -q --uid 22676 --home /home/lua --disabled-password lua;\
 	./configure;\
  	make build ;\
  	make install;\
- 	cd /tmp;\
-	rm -r /tmp/*
+ 	cd /;\ 	
+ 	/home/post_build_clean.sh
     
 ADD home home

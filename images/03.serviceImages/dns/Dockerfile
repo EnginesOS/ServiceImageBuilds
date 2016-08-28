@@ -1,13 +1,13 @@
 FROM  engines/servicebase:$release
 RUN echo "Y" | adduser -q --disabled-password --home /var/cache/bind -uid 22009 bind
 
-RUN apt-get -y update;\
-	apt-get -y install bind9 syslogd;\
-	apt-get clean;\
+RUN apt-get -y install bind9 syslogd;\
     mkdir -p /var/lib/bind/engines;\
     mkdir -p /var/run/named ;\
     mkdir -p /home/bind/engines/zones/ ;\
-    chown bind -R  /home/bind/
+    chown bind -R  /home/bind/   ;\
+ 	/home/post_build_clean.sh
+    
 
 ADD named.conf.local /etc/bind/named.conf.local
 ADD named.conf.options etc/bind/

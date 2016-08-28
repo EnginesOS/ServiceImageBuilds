@@ -37,7 +37,8 @@ RUN chown -R backup ~backup ;\
 	chgrp backup /home/configurators/*.sh ;\
 	addgroup --gid 11111 datauser ;\
 	usermod -G datauser -a backup ;\
-	usermod -G adm -a backup
+	usermod -G adm -a backup;\
+ 	/home/post_build_clean.sh
 	
 	
 	

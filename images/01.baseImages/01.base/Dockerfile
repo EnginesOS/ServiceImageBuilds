@@ -10,8 +10,24 @@ ADD sources.list /etc/apt/
 
 ADD home /home/
 	
-RUN apt-get -y  --force-yes update;\
-	apt-get -y  --force-yes upgrade;\
+ENV	build 20160827
+RUN	echo '#!/bin/sh' >/usr/sbin/policy-rc.d ;\
+	echo exit 101 >> /usr/sbin/policy-rc.d ;\
+	chmod +x /usr/sbin/policy-rc.d ;\
+	dpkg-divert --local --rename --add /sbin/initctl ;\
+	cp -a /usr/sbin/policy-rc.d /sbin/initctl ;\
+	echo 'force-unsafe-io' > /etc/dpkg/dpkg.cfg.d/docker-apt-speedup ;\
+	echo 'DPkg::Post-Invoke { "rm -f /var/cache/apt/archives/*.deb /var/cache/apt/archives/partial/*.deb /var/cache/apt/*.bin || true"; };' > /etc/apt/apt.conf.d/docker-clean ;\
+	echo 'APT::Update::Post-Invoke { "rm -f /var/cache/apt/archives/*.deb /var/cache/apt/archives/partial/*.deb /var/cache/apt/*.bin || true"; };' >> /etc/apt/apt.conf.d/docker-clean ;\
+	echo 'Dir::Cache::pkgcache ""; Dir::Cache::srcpkgcache "";' >> /etc/apt/apt.conf.d/docker-clean ;\
+	echo 'Acquire::GzipIndexes "true"; Acquire::CompressionTypes::Order:: "gz";' > /etc/apt/apt.conf.d/docker-gzip-indexes;\
+	sed -i 's/^#\s*\(deb.*universe\)$/\1/g' /etc/apt/sources.list
+
+#echo 'Acquire::Languages "none";' > /etc/apt/apt.conf.d/docker-no-languages ;\
+	
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ED8E640A;\
+	apt-get -y  --force-yes update;\
+	apt-get -y  --force-yes dist-upgrade;\
 	apt-get -y  --force-yes update;\
 	/home/no_init.sh ;\
 	apt-get -y  --fix-missing install build-essential   unzip curl dnsutils git  wget bzip2 zlibc sendEmail;\ 
@@ -20,29 +36,31 @@ RUN apt-get -y  --force-yes update;\
 	mkdir -p /etc/apt/apt.conf.d/;\
 	dpkg-divert --local --rename --add /sbin/initctl;\
 	ln -s /bin/true /sbin/initctl;\
-	apt-get clean;\
 	ln -s /usr/bin/sendmail /usr/sbin/sendmail;\
 	groupadd -g 22020 containers ;\ 
 	cd  /tmp ;\
-	 git clone https://github.com/zserge/jsmn ;\
-	 cd jsmn ;\
-	 make ;\
-	 cp -r /home/src . ;\
-	 cd src ;\
-	 make json_to_env ;\
-	 mkdir -p /home/engines/bin;\
-	 cp json_to_env /home/engines/bin;\
-	 rm -r /home/src ;\
-	 apt-get remove  build-essential;\
-	 /home/install_utf8_langauges.sh;\
-	 rm -r /tmp/* /home/install_utf8_langauges.sh
+	git clone https://github.com/zserge/jsmn ;\
+	cd jsmn ;\
+	make ;\
+	cp -r /home/src . ;\
+	cd src ;\
+	make json_to_env ;\
+	mkdir -p /home/engines/bin;\
+	cp json_to_env /home/engines/bin;\
+	rm -r /home/src ;\
+	apt-get remove  build-essential;\
+	/home/install_utf8_langauges.sh;\
+	rm -r /tmp/* /home/install_utf8_langauges.sh
 	 
 
 #increment build line to trigger upgrade NEED to Automate
-ENV	build 20160215
 
 
-RUN		apt-get clean ;\	
+
+RUN		apt-get clean ;\
+		apt-get autoremove ;\
+		apt-get autoclean ;\		
+		rm -rf /tmp/*;\
  		mkdir /var/run/engines ; chgrp containers /var/run/engines; chmod g+w /var/run/engines	
 		
 CMD ["/home/init.sh"]

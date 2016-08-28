@@ -1,12 +1,9 @@
 FROM  engines/servicebase:$release
-RUN apt-get -y update;\
-	apt-get upgrade -y;\
-	echo "Y" | adduser -q --disabled-password --home /home/cron -uid 22016 cron;\
+RUN 	echo "Y" | adduser -q --disabled-password --home /home/cron -uid 22016 cron;\
 	groupadd -g 999 docker;\
 	usermod -G docker -a cron ;\
 	usermod -G containers -a cron ;\
 	apt-get -y install build-essential gcc make syslogd;\
-	apt-get clean ;\
 	cd /tmp; \
   	wget ftp://ftp.seul.org/pub/fcron/fcron-3.2.0.src.tar.gz;\
   	tar -xzpf fcron-3.2.0.src.tar.gz;\
@@ -21,10 +18,8 @@ RUN apt-get -y update;\
 	mkdir -p /home/cron/doc /home/cron/man /home/cron/spool /home/cron/log/;\
 	chown -R cron /home/cron/;\
 	cd /home/cron;\
-	rm -r /tmp/fcron-3.2.0 ;\
-	rm /tmp/fcron-3.2.0.src.tar.gz ;\
 	apt-get -y remove  build-essential gcc make ;\
-	apt-get -y clean 
+ 	/home/post_build_clean.sh
 
 
 

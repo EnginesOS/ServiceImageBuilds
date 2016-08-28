@@ -1,10 +1,8 @@
 FROM  engines/servicebase:$release
 RUN echo "Y" | adduser -q --disabled-password --home /var/spool/postfix -uid 22003 postfix
-RUN apt-get -y update;\
-	apt-get upgrade -y;\
-	/home/no_init.sh ;\	
-	apt-get -y install apache2 libapache2-mod-php5 php5-mysql php5-mcrypt  php5-gd php5-apcu php5-dev  postfix syslogd  php5-imap postfix-mysql postgrey;\
-	apt-get clean
+RUN /home/no_init.sh ;\	
+	apt-get -y install apache2 libapache2-mod-php5 php5-mysql php5-mcrypt  php5-gd php5-apcu php5-dev  postfix syslogd  php5-imap postfix-mysql postgrey
+	
 ADD home home
 
 
@@ -23,7 +21,8 @@ RUN cd /tmp/;\
 	 touch  /etc/postfix/smarthost_passwd;\
 	 /usr/sbin/postfix -c /etc/postfix/ set-permissions;\
 	 cp /etc/resolv.conf /var/spool/postfix/etc/;\
-	 cp /etc/services /var/spool/postfix/etc/
+	 cp /etc/services /var/spool/postfix/etc/;\
+ 	/home/post_build_clean.sh
 	
 ADD postgrey /etc/default/postgrey
 ADD sudoers /etc/sudoers.d/postfix	 

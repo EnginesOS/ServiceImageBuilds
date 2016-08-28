@@ -1,13 +1,11 @@
 FROM engines/frameworkbase:$release
 
 RUN apt-mark unhold tzdata ;\
-	apt-get -y  --force-yes update;\
-	apt-get -y  --force-yes upgrade;\
 	/usr/sbin/usermod -u 22671 www-data;\
 	apt-get install -y  --force-yes openjdk-7-jre-headless ;\
-	apt-get clean ;\
- 	usermod -G containers -a www-data
-
+ 	usermod -G containers -a www-data ;\
+ 	/home/post_build_clean.sh
+ 	
 ADD home home
 
 

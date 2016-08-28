@@ -5,9 +5,7 @@ FROM  engines/servicebase:$release
 ENV ruby_version 2.3.0
 ENV  RBENV_ROOT /usr/local/rbenv
 
-RUN apt-get -y update;\
-	apt-get upgrade -y;\
-	/home/no_init.sh ;\	
+RUN /home/no_init.sh ;\	
 	apt-get -y install build-essential libssl-dev libreadline-dev zlib1g-dev ;\
 	echo "Y" | adduser -q  --uid 22023 --home /home/registry --disabled-password registry;\
 	usermod -G containers -a registry ;\
@@ -15,7 +13,7 @@ RUN apt-get -y update;\
 	cd /usr/local/rbenv ; git clone git://github.com/sstephenson/ruby-build.git /usr/local/rbenv/plugins/ruby-buil;\
 	cd /usr/local/rbenv   ;echo 'export PATH="/usr/local/rbenv/bin:$PATH:/usr/local/rbenv/shims/"' >> ~/.bashrc ; echo 'eval "$(rbenv init -)"' >> ~/.bashrc ; exec $SHELL ;/usr/local/rbenv/plugins/ruby-build/install.sh  ;/usr/local/rbenv/bin/rbenv install $ruby_version ; /usr/local/rbenv/bin/rbenv global $ruby_version;\
 	/usr/local/rbenv/bin/rbenv rehash;\
-	apt-get -y clean 
+ 	/home/post_build_clean.sh
 	
 COPY home home	
 RUN	/usr/local/rbenv/shims/gem install rest-client sinatra thin yajl-ruby rubytree
