@@ -4,7 +4,7 @@ PATH="/usr/local/rbenv/bin:$PATH"
 cd /home/app/
 
 mkdir /var/log/nginx /var/log/redis
-mkdir  /var/run/redis/
+mkdir  /var/run/redis/ /var/run/nginx
 
 if test -f /home/app/app/config/newrelic.yml
 	then
