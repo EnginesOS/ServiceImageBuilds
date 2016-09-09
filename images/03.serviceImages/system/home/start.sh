@@ -21,6 +21,6 @@ cd /opt/engines/
 
 touch /engines/var/run/flags/startup_complete  
 wait 
-kill -TERM  $pid 
+kill -TERM  `cat $PID_FILE`
 rm -f /engines/var/run/flags/startup_complete
 
