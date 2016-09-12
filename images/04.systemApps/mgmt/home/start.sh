@@ -3,8 +3,20 @@ PATH="/usr/local/rbenv/bin:$PATH"
 
 cd /home/app/
 
-mkdir /var/log/nginx /var/log/redis
-mkdir  /var/run/redis/ /var/run/nginx
+if ! test -d /var/log/redis
+ then
+	mkdir /var/log/redis /var/run/redis/
+fi
+
+ if ! test -d /var/run/nginx
+ then
+mkdir   /var/run/nginx /var/log/nginx 
+fi
+
+ if ! test -d /var/log/nginx
+ then
+mkdir   /var/log/nginx 
+fi
 
 if test -f /home/app/app/config/newrelic.yml
 	then
@@ -32,7 +44,10 @@ export RAILS_ENV
 
 DATABASE_URL=$rails_flavor://$dbuser:$dbpasswd@$dbhost/$dbname
 export DATABASE_URL
-cp /home/ruby_env /home/app/.env_vars
+ if test -f /home/ruby_env
+  then
+	cp /home/ruby_env /home/app/.env_vars
+  fi
 echo " passenger_env_var RAILS_ENV $RAILS_ENV;" >> /home/app/.env_vars
 echo " passenger_env_var SECRET_KEY_BASE $SECRET_KEY_BASE;" >> /home/app/.env_vars
 echo " passenger_env_var SYSTEM_API_URL $SYSTEM_API_URL;">> /home/app/.env_vars
@@ -50,10 +65,7 @@ echo migrating database
 
 # "SELECT EXISTS (SELECT * FROM users WHERE username='admin');"` -eq 1
 
-		/usr/local/rbenv/shims/bundle exec rake db:seed >/dev/null
-
-echo building thumb nails
-#bundle exec rake paperclip:refresh:thumbnails CLASS=ApplicationDisplayProperties
+/usr/local/rbenv/shims/bundle exec rake db:seed >/dev/null
 
 echo precompiling assests
 
@@ -77,7 +89,7 @@ export PID_FILE
 nginx &
 touch  /engines/var/run/flags/startup_complete
 wait 
-rm $PID_FILE
+
 kill -TERM $redis_pid
 wait $redis_pid
 rm /engines/var/run/flags/startup_complete
