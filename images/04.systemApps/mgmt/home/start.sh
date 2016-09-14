@@ -25,11 +25,17 @@ if test -f /home/app/app/config/newrelic.yml
 	
 if ! test -f /home/fs/persistent/.setup	
 	then
-		cp -rp /home/app/public /home/fs/persistent/public
-		rm -r /home/app/public
-		ln -s /home/fs/persistent/public /home/app/public
+		cp -rp /home/app/public/system /home/fs/persistent/
+		rm -r /home/app/public/system
+		ln -s /home/fs/persistent/system /home/app/public/system
 		touch /home/fs/persistent/.setup	
 	fi
+if ! test -h /home/app/public/system
+ then
+ 	rm -r /home/app/public/system
+	ln -s /home/fs/persistent/system /home/app/public/system
+ fi
+ 
 redis-server /etc/redis/redis.conf &
 redis_pid=$!
 
