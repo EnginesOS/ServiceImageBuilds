@@ -9,7 +9,7 @@ RUN 	 /usr/sbin/usermod -u 22050 www-data;\
 ENV ContUser www-data
 ENV ContGrp ruby
 
-RUN /usr/local/rbenv/shims/gem    install  --no-rdoc --no-ri  bundle 
+RUN /usr/local/rbenv/shims/gem install  --no-rdoc --no-ri  bundle 
  	
 ADD home home
 
