@@ -1,10 +1,10 @@
 FROM  engines/servicebase:$release
 
-RUN /usr/sbin/addgroup --gid 999 docker;\
+RUN /usr/sbin/addgroup --gid 21999 docker;\
 	/home/no_init.sh ;\	
 	apt-get -y install telnet libsqlite3-dev libcurl4-openssl-dev build-essential libssl-dev libreadline-dev zlib1g-dev ;\
 
-	echo "Y" | adduser -q --uid 21000 --gid 999 --home /home/engines --disabled-password engines;\
+	echo "Y" | adduser -q --uid 21000 --gid 21999 --home /home/engines --disabled-password engines;\
 	 mkdir -p  /opt/engines/run/system/;\	
 	chown -R engines /opt/engines/run/system/ /home/engines /var/log/;\
  	/home/post_build_clean.sh
