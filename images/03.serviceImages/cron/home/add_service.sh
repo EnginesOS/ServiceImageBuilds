@@ -50,7 +50,7 @@ if test $action_type == "web"
 	
 		cmd="wget http://${parent_engine}.engines.internal:8000$cmd  -o /tmp/out"
 	else
-		cmd="docker exec ${parent_engine} $cmd"
+		cmd="application_exec ${parent_engine} $cmd"
 	fi
 
 echo "$mins $hrs $day $dow $dom $cmd " > /home/cron/entries/${parent_engine}/$title
