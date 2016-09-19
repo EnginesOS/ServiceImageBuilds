@@ -4,7 +4,8 @@ if test $1 = 'add' -o $1 = 'rm' -o $1 = 'access'
  then
 	if test -f /home/ftpd/.ssh/${1}_rsa.pub
 		then
-	 		cat /home/ftpd/.ssh/${1}_rsa.pub | awk '{print $2}'	
+	 		key=`cat /home/ftpd/.ssh/${1}_rsa.pub | awk '{print $2}'`
+	 		echo -n $key 	
  		else
  			if ! test -d /home/ftpd/.ssh
  				then
@@ -13,7 +14,8 @@ if test $1 = 'add' -o $1 = 'rm' -o $1 = 'access'
  				
  	 		ssh-keygen  -f /home/ftpd/.ssh/${1}_rsa -P "" > /dev/null
  	 		chown -R proftpd /home/ftpd/.ssh/
- 	 		cat /home/ftpd/.ssh/${1}_rsa.pub | awk '{print $2}' 	 	
+ 	 		key=`cat /home/ftpd/.ssh/${1}_rsa.pub | awk '{print $2}'`
+ 	 		echo -n $key 	
  	fi
  fi
  
