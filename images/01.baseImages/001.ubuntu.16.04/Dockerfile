@@ -1,5 +1,6 @@
 FROM engines/xenial:$release
 
+COPY dpkg.conf.d /etc/dpkg/dpkg.cfg.d
 
 RUN echo '#!/bin/sh' > /usr/sbin/policy-rc.d \
 && echo 'exit 101' >> /usr/sbin/policy-rc.d \
@@ -19,4 +20,7 @@ RUN echo '#!/bin/sh' > /usr/sbin/policy-rc.d \
 \
 && echo 'Acquire::GzipIndexes "true"; Acquire::CompressionTypes::Order:: "gz";' > /etc/apt/apt.conf.d/docker-gzip-indexes
 # enable the universe
-RUN sed -i 's/^#\s*\(deb.*universe\)$/\1/g' /etc/apt/sources.list
+
+
+RUN sed -i 's/^#\s*\(deb.*universe\)$/\1/g' /etc/apt/sources.list;\
+	rm -rf /usr/share/doc/ /usr/share/man/ /usr/share/locale/ /var/cache/apt/archives 
