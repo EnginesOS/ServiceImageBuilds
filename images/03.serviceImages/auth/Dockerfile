@@ -18,7 +18,8 @@ RUN	ssh-keygen -f /home/auth/ssh/ssh_host_rsa_key  -N '' -t rsa;\
 	 chown -R auth /home/auth;\
  mkdir -p  /home/auth/static;\
  chown root /home/auth/static;\
- chmod g-w /home/auth
+ chmod g-w /home/auth;\
+	ln -s /home/.ssh /home/auth/
  
 #;\
 #	/usr/sbin/kdb5_util create -s;\

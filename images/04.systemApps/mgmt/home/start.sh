@@ -91,7 +91,7 @@ PID_FILE=/var/run/nginx/nginx.pid
 
 export PID_FILE
 . /home/trap.sh
-
+echo Starting Server
 nginx &
 touch  /engines/var/run/flags/startup_complete
 wait 
