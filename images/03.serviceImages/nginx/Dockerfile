@@ -2,7 +2,8 @@ FROM  engines/servicebase:$release
 
 
 RUN usermod www-data -u 22005;\
-	/home/no_init.sh ;\	
+	/home/no_init.sh ;\			
+apt-get update -y;\
 	apt-get -y install nginx;\
 	mkdir -p /var/lib/nginx /var/run/nginx/ ;\ 
 	chown www-data /var/lib/nginx /var/run/nginx/ /etc/nginx/sites-enabled;\

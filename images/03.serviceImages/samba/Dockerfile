@@ -1,6 +1,7 @@
 FROM engines/servicebase:$release
 
-RUN  /home/no_init.sh ;\	
+RUN  /home/no_init.sh ;\			
+apt-get update -y;\
 		apt-get install -y  samba libnss-mysql-bg libpam-mysql mysql-client rpcbind;\
  	/home/post_build_clean.sh
 	

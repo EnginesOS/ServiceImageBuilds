@@ -3,6 +3,7 @@ FROM engines/servicebase:$release
 RUN  usermod -u 22027 www-data;\ 
 	 usermod -G containers -a www-data;\
 	/home/no_init.sh ;\
+	apt-get  update;\
 	apt-get install -y apache2 libapache2-mod-php5 php5-mysql php5-mcrypt  php5-gd php5-apcu php5-dev;\
  	/home/post_build_clean.sh
 	
