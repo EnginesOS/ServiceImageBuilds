@@ -1,9 +1,6 @@
 #!/bin/bash
 
 
-
-#service_hash=`echo  "$*" | sed "/\*/s//STAR/g"`
-
 service_hash=$1
 
 
@@ -51,7 +48,8 @@ if  test $command = "access"
 			GRANT SELECT on auth.* to 'auth_$service'@'%';" | mysql -h $dbhost -u $dbuser --password=$dbpasswd $dbname 
 		echo "create user 'auth_$service'@'%' identified by '$pass';
 			GRANT SELECT on auth.* to 'auth_$service'@'%'; | mysql -h $dbhost -u $dbuser --password=$dbpasswd $dbname " >>/tmp/add_access.log
-		echo ":db_username=auth_$service:db_password=$pass:database_name=$dbname:db_host=$dbhost:" > /home/auth/static/access/$service/access
+		#echo ":db_username=auth_$service:db_password=$pass:database_name=$dbname:db_host=$dbhost:" > /home/auth/static/access/$service/access
+		echo '{"db_username":"auth_'$service'","db_password":"'$pass'","database_name":"'$dbname'","db_host":"'$dbhost'"}' > /home/auth/static/access/$service/access
 		
 	else
 			echo "command=\"/home/auth/static/scripts/${service}/${command}_service.sh\",no-port-forwarding,no-X11-forwarding,no-agent-forwarding,no-pty ssh-rsa $pubkey auth" >  /home/auth/keys/${service}_${command}_authorized_keys	
