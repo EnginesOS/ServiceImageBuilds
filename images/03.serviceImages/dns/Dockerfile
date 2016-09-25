@@ -18,7 +18,9 @@ ADD engines.internal.domain /var/lib/bind/engines/engines.dnsrecords
 COPY home home
 RUN chown bind /var/run/named;\
 	chown bind /var/lib/bind/engines /home/bind/;\
-	usermod -G containers -a bind;\
+	usermod -G containers -a bind;\;\
+	touch /home/bind/engines/forwarders;\
+	chown dhcpd /home/configurators/saved /home/bind/engines/forwarders ;\
 	mkdir -p /etc/bind/keys/ /home/bind/engines/domains /home/bind/engines/zones/;\
 	chown bind -R /etc/bind/keys/ /etc/bind/named.conf.default-zones  /var/lib/bind/engines/engines.dnsrecords /home/bind/engines/domains.hosted /home/bind/engines/zones/ /home/bind/engines/domains/
 	
