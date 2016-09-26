@@ -24,7 +24,8 @@ echo $1 >/home/configurators/saved/dns_forwarders
   then
     echo "$dns_server2; " >> /home/bind/engines/forwarders
  fi
-  echo " } >> /home/bind/engines/forwarders
+ 
+  echo " }; " >> /home/bind/engines/forwarders
   
   echo Success
   exit 0

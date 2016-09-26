@@ -5,12 +5,8 @@ options {
      allow-query { any; };
      allow-query-cache { trusted; };
 
-
-        // forwarders {
-        //      0.0.0.0;
-        // };
-
-      //	include "/home/bind/engines/forwarders";
+   	include "/home/bind/engines/forwarders";
+   	
         dnssec-validation auto;
 
         auth-nxdomain no;    # conform to RFC1035
