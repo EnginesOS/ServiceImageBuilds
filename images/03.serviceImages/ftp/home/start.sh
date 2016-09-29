@@ -1,12 +1,14 @@
 #!/bin/sh
 
-
 sudo syslogd -R syslog.engines.internal:514
-
 
 PID_FILE=/var/run/ftpd.pid
 export PID_FILE
 . /home/trap.sh
+
+/home/get_pubkey.sh access
+/home/get_pubkey.sh rm
+/home/get_pubkey.sh add
 
 mkdir -p /engines/var/run/flags
 	
@@ -17,13 +19,8 @@ mkdir -p /engines/var/run/flags
 		
 	sleep 5
 	
-service_hash=`ssh -p 2222  -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /home/ftpd/.ssh/access_rsa auth@auth.engines.internal /home/auth/static/scripts/ftp/get_access.sh`
+ssh -p 2222  -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /home/ftpd/.ssh/access_rsa auth@auth.engines.internal /home/auth/static/scripts/ftp/get_access.sh | /home/engines/bin/json_to_env >/tmp/.env
 
-
-
-
-
- echo \'$service_hash\' | /home/engines/bin/json_to_env >/tmp/.env
  . /tmp/.env
 
 if test -z $database_name

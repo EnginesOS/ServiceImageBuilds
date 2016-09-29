@@ -93,6 +93,7 @@ export PID_FILE
 . /home/trap.sh
 echo Starting Server
 nginx &
+echo Server Started
 touch  /engines/var/run/flags/startup_complete
 wait 
 

@@ -7,7 +7,7 @@ logging {
 
 channel queries_channel {
    file "/var/log/named/queries.log" versions 3 size 5m;
-   severity debug 3;
+   severity dynamic;
    print-category yes;
    print-severity yes;
    print-time yes;
@@ -15,7 +15,7 @@ channel queries_channel {
 
 channel security_channel {
    file "/var/log/named/security.log" versions 3 size 5m;
-   severity debug 3;
+   severity dynamic;
    print-category yes;
    print-severity yes;
    print-time yes;
@@ -23,7 +23,7 @@ channel security_channel {
 
 channel update_security_channel {
    file "/var/log/named/updates.log" versions 3 size 5m;
-   severity debug 3;
+   severity dynamic;
    print-category yes;
    print-severity yes;
    print-time yes;
@@ -31,7 +31,7 @@ channel update_security_channel {
 
 channel dnssec_channel {
    file "/var/log/named/dnssec.log" versions 3 size 5m;
-   severity debug 3;
+   severity dynamic;
    print-category yes;
    print-severity yes;
    print-time yes;
@@ -39,7 +39,7 @@ channel dnssec_channel {
 
 channel xfers_channel {
    file "/var/log/named/zone_transfers.log" versions 3 size 5m;
-   severity debug 3;
+   severity dynamic;
    print-category yes;
    print-severity yes;
    print-time yes;

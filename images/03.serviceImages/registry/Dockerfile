@@ -5,7 +5,8 @@ FROM  engines/servicebase:$release
 ENV ruby_version 2.3.0
 ENV  RBENV_ROOT /usr/local/rbenv
 
-RUN /home/no_init.sh ;\	
+RUN /home/no_init.sh ;\			
+apt-get update -y;\
 	apt-get -y install build-essential libssl-dev libreadline-dev zlib1g-dev ;\
 	echo "Y" | adduser -q  --uid 22023 --home /home/registry --disabled-password registry;\
 	usermod -G containers -a registry ;\
