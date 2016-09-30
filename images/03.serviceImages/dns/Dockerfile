@@ -1,7 +1,8 @@
 FROM  engines/servicebase:$release
 RUN echo "Y" | adduser -q --disabled-password --home /var/cache/bind -uid 22009 bind
 
-RUN apt-get -y install bind9 syslogd;\
+RUN apt-get -y update ;\
+	apt-get -y install bind9 syslogd;\
     mkdir -p /var/lib/bind/engines;\
     mkdir -p /var/run/named ;\
     mkdir -p /home/bind/engines/zones/ ;\
