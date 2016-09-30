@@ -8,11 +8,10 @@ RUN /usr/sbin/usermod -u 22671 www-data ;\
 	echo deb https://oss-binaries.phusionpassenger.com/apt/passenger trusty main  >/etc/apt/sources.list.d/passenger.list;\ 
 	chmod 600 /etc/apt/sources.list.d/passenger.list;\
 	apt-get update -y ;\
-	apt-get install -y    libapache2-mod-passenger passenger-dev ;\
-	a2enmod passenger;\
     rm etc/apache2/sites-enabled/*;\
 	/usr/local/rbenv/shims/gem install --no-rdoc --no-ri  passenger;\
     /usr/local/rbenv/shims/passenger-install-apache2-module -a --languages ruby,nodejs,python;\
+	a2enmod passenger;\
 	mkdir -p /var/log/apache2 ;\
 	chown -R www-data /var/log/apache2 ;\
 	a2enmod rewrite; \
@@ -25,6 +24,7 @@ RUN /usr/sbin/usermod -u 22671 www-data ;\
  	/home/post_build_clean.sh
  	
  	
+ #	apt-get install -y    libapache2-mod-passenger passenger-dev ;\
 ADD 000-default.conf /etc/apache2/sites-enabled/
 ADD	passenger.conf  /etc/apache2/mods-enabled/
 ADD ports.conf /etc/apache2/
