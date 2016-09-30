@@ -7,8 +7,7 @@ RUN /usr/local/rbenv/shims/gem  install --no-rdoc --no-ri `cat /home/Gems.full`;
   	/usr/local/rbenv/bin/rbenv rehash;\
  	usermod -G containers -a ruby
  	
- 		#chmod -R g+w /usr/local/rbenv/versions/ ;\
- 	#chgrp -R ruby /usr/local/rbenv/versions/;\
+ 
  	
 
 
