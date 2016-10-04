@@ -26,17 +26,17 @@ RUN	echo '#!/bin/sh' >/usr/sbin/policy-rc.d ;\
 #echo 'Acquire::Languages "none";' > /etc/apt/apt.conf.d/docker-no-languages ;\
 	
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ED8E640A;\
-	apt-get -y  --force-yes update;\
-	apt-get -y  --force-yes dist-upgrade;\
-	apt-get -y  --force-yes update;\
+	apt-get -y  update;\
+	apt-get -y  -dist-upgrade;\
+	apt-get -y   update;\
 	/home/no_init.sh ;\
-	apt-get -y  --fix-missing install build-essential   unzip curl dnsutils git  wget bzip2 zlibc sendEmail;\ 
+	apt-get -y  --fix-missing install build-essential unzip curl dnsutils git  wget bzip2 zlibc ;\ 
 	apt-get clean;\
 	mkdir -p /var/run;\
 	mkdir -p /etc/apt/apt.conf.d/;\
 	dpkg-divert --local --rename --add /sbin/initctl;\
+	rm /sbin/initctl;\
 	ln -s /bin/true /sbin/initctl;\
-	ln -s /usr/bin/sendmail /usr/sbin/sendmail;\
 	groupadd -g 22020 containers ;\ 
 	cd  /tmp ;\
 	git clone https://github.com/zserge/jsmn ;\
