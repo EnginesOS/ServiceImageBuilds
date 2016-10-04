@@ -27,7 +27,7 @@ RUN	echo '#!/bin/sh' >/usr/sbin/policy-rc.d ;\
 	
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ED8E640A;\
 	apt-get -y  update;\
-	apt-get --dist-upgrade;\
+	apt-get dist-upgrade;\
 	apt-get -y   update;\
 	/home/no_init.sh ;\
 	apt-get -y  --fix-missing install build-essential unzip curl dnsutils git  wget bzip2 zlibc ;\ 
