@@ -1,5 +1,5 @@
-#FROM ubuntu:14.04
-FROM engines/base_image:alpha 
+FROM engines/xenialbase:$release
+#FROM engines/base_image:alpha 
 
 ENV DEBIAN_FRONTEND noninteractive
 
