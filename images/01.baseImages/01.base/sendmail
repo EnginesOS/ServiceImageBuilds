@@ -1,3 +1,0 @@
-#!/bin/bash
-
-/usr/bin/sendemail $*  -o tls=no -s smtp.engines.internal:25
