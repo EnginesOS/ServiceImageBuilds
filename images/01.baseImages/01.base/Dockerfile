@@ -49,7 +49,7 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ED8E640A;\
 	cp json_to_env /home/engines/bin;\
 	rm -r /home/src ;\
 	apt-get remove  build-essential;\
-	/home/install_utf8_langauges.sh;\
+	/home/install_utf8_langauges.sh >& /dev/null;\
 	rm -r /tmp/* /home/install_utf8_langauges.sh
 	 
 
