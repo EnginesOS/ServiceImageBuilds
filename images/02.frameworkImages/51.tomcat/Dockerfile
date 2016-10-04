@@ -2,6 +2,7 @@ FROM engines/openjdk:$release
 
 RUN  apt-mark unhold tzdata ;\
 	/usr/sbin/usermod -u 22671 www-data;\
+	apt-get update -y ;\
 	apt-get install -y  --force-yes  tomcat7 ;\
 	ln -s /var/log/tomcat7 /usr/share/tomcat7/logs;\
  	ln -s  /etc/tomcat7  /usr/share/tomcat7/conf;\

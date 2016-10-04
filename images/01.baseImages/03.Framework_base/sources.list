@@ -1,6 +1,6 @@
-deb http://archive.ubuntu.com/ubuntu/ trusty main restricted universe multiverse
-deb http://archive.ubuntu.com/ubuntu/ trusty-updates main restricted
-deb http://security.ubuntu.com/ubuntu trusty-security main restricted universe
-deb http://archive.canonical.com/ubuntu trusty partner
-deb http://ppa.launchpad.net/mc3man/trusty-media/ubuntu trusty main
+deb http://archive.ubuntu.com/ubuntu/ xenial main restricted universe multiverse
+deb http://archive.ubuntu.com/ubuntu/ xenial-updates main restricted
+deb http://security.ubuntu.com/ubuntu xenial-security main restricted universe
+deb http://archive.canonical.com/ubuntu xenial partner
+deb http://ppa.launchpad.net/mc3man/xenial-media/ubuntu xenial main
 
