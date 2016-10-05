@@ -1,7 +1,6 @@
 FROM  engines/servicebase:$release
 RUN echo "Y" | adduser -q --disabled-password --home /var/spool/postfix -uid 22003 postfix
 RUN /home/no_init.sh ;\	
-cat /etc/apt/sources.list;\
 	echo "deb http://archive.canonical.com/ubuntu xenial partner"  >>   /etc/apt/sources.list ;\
 	apt-get -y update ;\	
 	apt-get -y install apache2  php-gettext php-mbstring libapache2-mod-php7.0 php-mysql php-mcrypt  php-gd php-apcu php-dev  postfix syslogd  php-imap postfix-mysql postgrey
