@@ -2,5 +2,5 @@ deb http://archive.ubuntu.com/ubuntu/ xenial main restricted universe multiverse
 deb http://archive.ubuntu.com/ubuntu/ xenial-updates main restricted
 deb http://security.ubuntu.com/ubuntu xenial-security main restricted universe
 deb http://archive.canonical.com/ubuntu xenial partner
-deb http://ppa.launchpad.net/mc3man/xenial-media/ubuntu xenial main
+#deb http://launchpad.net/ubuntu/ xenial main
 
