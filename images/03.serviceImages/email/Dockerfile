@@ -16,7 +16,7 @@ RUN cd /tmp/;\
 	 mv  postfixadmin-2.92 /home/app ;\
 	 mkdir -p /var/log/apache2 /etc/postfix/mysql;\
 	 chown www-data /var/log/apache2 ;\
-	 ln -s /etc/php5/mods-available/imap.ini /etc/php5/apache2/conf.d/;\
+	 ln -s /etc/php/7.0/mods-available/imap.ini /etc/php/7.0/apache2/conf.d/;\
 	 chgrp www-data /home/app/templates_c/;\
 	 chmod g+w /home/app/templates_c;\
 	 usermod -G containers -a postfix;\

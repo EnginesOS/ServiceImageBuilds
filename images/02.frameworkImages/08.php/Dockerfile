@@ -15,7 +15,7 @@ ENV APACHE_LOCK_DIR /var/run/apache2/lock/
 	
 	
 ADD home home
-ADD 30-sendmail.ini /etc/php5/apache2/conf.d/
+ADD 30-sendmail.ini /etc/php/7.0/apache2/conf.d/
 ADD 000-default.conf /etc/apache2/sites-enabled/
 ADD ports.conf /etc/apache2/
 
