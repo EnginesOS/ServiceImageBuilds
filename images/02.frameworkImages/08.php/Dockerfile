@@ -2,7 +2,7 @@ FROM engines/frameworkbase:$release
 
 RUN /usr/sbin/usermod -u 22671 www-data;\
 	apt-get update -y ;\
-	apt-get install -y  apache2 libapache2-mod-php5 php5-mysql php5-mcrypt  php5-gd php5-apcu php5-dev php-pear;\
+	apt-get install -y  apache2 libapache2-mod-php php-mysql php-mcrypt  php-gd php-apcu php-dev php-pear;\
 	rm etc/apache2/sites-enabled/*;\
 	mkdir -p /etc/apache2/ /var/run/apache2/lock/;\
 	chown www-data -R /var/run/apache2	;\
