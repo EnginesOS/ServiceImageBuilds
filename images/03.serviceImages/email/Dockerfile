@@ -2,7 +2,7 @@ FROM  engines/servicebase:$release
 RUN echo "Y" | adduser -q --disabled-password --home /var/spool/postfix -uid 22003 postfix
 RUN /home/no_init.sh ;\	
 apt-get -y update ;\	
-	apt-get -y install apache2  php-gettext php-mbstring libapache2-mod-php php-mysql php-mcrypt  php-gd php-apcu php-dev  postfix syslogd  php5-imap postfix-mysql postgrey
+	apt-get -y install apache2  php-gettext php-mbstring libapache2-mod-php7.0 php-mysql php-mcrypt  php-gd php-apcu php-dev  postfix syslogd  php-imap postfix-mysql postgrey
 	
 ADD home home
 
