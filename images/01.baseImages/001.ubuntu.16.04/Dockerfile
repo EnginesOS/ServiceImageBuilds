@@ -23,4 +23,4 @@ RUN echo '#!/bin/sh' > /usr/sbin/policy-rc.d \
 
 
 RUN sed -i 's/^#\s*\(deb.*universe\)$/\1/g' /etc/apt/sources.list;\
-	rm -rf /usr/share/doc/ /usr/share/man/ /usr/share/locale/ /var/cache/apt/archives 
+	rm -rf   /var/cache/apt/archives 
