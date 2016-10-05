@@ -3,6 +3,7 @@ FROM engines/servicebase:$release
 RUN  usermod -u 22027 www-data;\ 
 	 usermod -G containers -a www-data;\
 	/home/no_init.sh ;\
+	echo "deb http://archive.canonical.com/ubuntu xenial partner"  >>   /etc/apt/sources.list ;\
 	apt-get  update;\
 	apt-get install -y apache2 libapache2-mod-php php-gettext php-mbstring  php-mysql php-mcrypt  php-gd php-apcu php-dev;\
  	/home/post_build_clean.sh
