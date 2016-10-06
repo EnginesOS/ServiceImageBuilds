@@ -10,7 +10,7 @@ RUN adduser -q --disabled-password  dyndns -uid 22021;\
 	
 
 COPY home home
-COPY sudoers /etc/	
+COPY sudoers /etc/sudoers.d/dyndns	
 RUN chown dyndns -R /home/dyndns /var/cache/ddclient/ ;\
 	groupadd -g 22020 containers;\
 	usermod -G containers -a dyndns;\
