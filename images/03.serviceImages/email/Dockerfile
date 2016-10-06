@@ -3,7 +3,7 @@ RUN echo "Y" | adduser -q --disabled-password --home /var/spool/postfix -uid 220
 RUN /home/no_init.sh ;\	
 	echo "deb http://archive.canonical.com/ubuntu xenial partner"  >>   /etc/apt/sources.list ;\
 	apt-get -y update ;\	
-	apt-get -y install apache2  php-gettext php-mbstring libapache2-mod-php7.0 php-mysql php-mcrypt  php-gd php-apcu php-dev  postfix syslogd  php-imap postfix-mysql postgrey
+	apt-get -y install apache2  php-gettext php-mbstring libapache2-mod-php7.0 php-mysql php-mcrypt  php-gd php-apcu php-dev  postfix  inetutils-syslogd   php-imap postfix-mysql postgrey
 	
 ADD home home
 

@@ -4,7 +4,7 @@ FROM engines/servicebase:$release
 RUN adduser -q --disabled-password  dyndns -uid 22021;\
 	/home/no_init.sh ;\	
 	apt-get  update;\
-	apt-get -y install ddclient syslogd ;\
+	apt-get -y install ddclient  inetutils-syslogd  ;\
  	/home/post_build_clean.sh
 
 	

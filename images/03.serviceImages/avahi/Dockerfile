@@ -3,7 +3,7 @@ FROM  engines/servicebase:$release
 #RUN  
 RUN /home/no_init.sh;\
 	apt-get  update;\
-	apt-get -y install syslogd avahi-daemon dbus python python-avahi;\
+	apt-get -y install  inetutils-syslogd avahi-daemon dbus python python-avahi;\
  		/home/post_build_clean.sh ;\
 	usermod avahi -u  22026 ;\	
 	mkdir /var/run/dbus/;\
