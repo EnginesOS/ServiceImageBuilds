@@ -1,7 +1,7 @@
 FROM  engines/base:$release
 ADD home /home
 ADD engines_sudoers /etc/sudoers.d/engines
-ADD sources.list 
+ADD sources.list /etc/apt/
 RUN apt-get install -y  sendmail-bin ca-certificates mysql-client postgresql-client git-core imagemagick gawk sqlite3 bison  sudo;\
 	mkdir -p /home/fs;\
 	apt-get clean
