@@ -30,7 +30,7 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ED8E640A;\
 	apt-get dist-upgrade;\
 	apt-get -y   update;\
 	/home/no_init.sh ;\
-	apt-get -y  --fix-missing install build-essential unzip curl dnsutils git  wget bzip2 zlibc ;\ 
+	apt-get -y  --fix-missing install build-essential unzip curl python-software-properties  dnsutils git  wget bzip2 zlibc ;\ 
 	apt-get clean;\
 	mkdir -p /var/run;\
 	mkdir -p /etc/apt/apt.conf.d/;\
