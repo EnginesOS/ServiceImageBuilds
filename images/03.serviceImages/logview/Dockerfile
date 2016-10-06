@@ -12,7 +12,7 @@ ADD home home
 RUN	git clone https://github.com/potsky/PimpMyLog.git ;\
 	mv /PimpMyLog /home/app 
 	
-ADD  config.user.php /home/app/
+ADD config.user.php /home/app/
 	
 RUN mkdir /home/saved ;\
 	chown 22027 /home/saved /home/app/config.user.php;\
