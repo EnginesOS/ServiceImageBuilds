@@ -20,6 +20,7 @@ ADD dovecot/dovecot-sql.conf.ext /etc/dovecot/
 run chown dovecot /etc/dovecot/dovecot-sql.conf.ext
 ADD sudoers /etc/sudoers.d/dovecot
 ADD home home
+
 USER dovecot
 ENV ContUser dovecot
 CMD ["/home/start.sh"]
