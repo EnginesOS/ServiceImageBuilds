@@ -6,5 +6,5 @@
 # Delete man pages
 #path-exclude=/usr/share/man/*
 
-# Delete docs
-path-exclude=/usr/share/doc/*
+# Delete docs (breaks postgres-client
+#path-exclude=/usr/share/doc/*
