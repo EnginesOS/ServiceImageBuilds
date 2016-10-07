@@ -9,7 +9,5 @@ RUN apt-mark unhold tzdata ;\
  	
 ADD home home
 
-
-
 ENV ContUser www-data
 ENV ContGrp www-data

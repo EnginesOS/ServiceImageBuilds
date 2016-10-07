@@ -1,1 +1,1 @@
-engines/openjdk8:$release
+engines/openjdk7:$release
