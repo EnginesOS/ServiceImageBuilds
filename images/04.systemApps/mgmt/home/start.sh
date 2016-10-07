@@ -1,11 +1,6 @@
 #!/bin/bash
 PATH="/usr/local/rbenv/bin:$PATH"
-export RUBY_GC_HEAP_INIT_SLOTS=1000000 # 1M
-export RUBY_GC_HEAP_FREE_SLOTS=500000  # 0.5M
-export RUBY_GC_HEAP_GROWTH_FACTOR=1.1
-export RUBY_GC_HEAP_GROWTH_MAX_SLOTS=10000000 # 10M
-export RUBY_GC_MALLOC_LIMIT_MAX=100000000    # 250M
-export RUBY_GC_MALLOC_LIMIT_GROWTH_FACTOR=1.1
+
 cd /home/app/
 
 if ! test -d /var/log/redis
