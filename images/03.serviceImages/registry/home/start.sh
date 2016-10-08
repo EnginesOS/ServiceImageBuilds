@@ -1,6 +1,7 @@
 #!/bin/sh
 
 export RUBY_GC_MALLOC_LIMIT_GROWTH_FACTOR=1.1
+
 pid=$$
 echo $pid >/tmp/pid
 PID_FILE=/engines/var/run/registry.pid
