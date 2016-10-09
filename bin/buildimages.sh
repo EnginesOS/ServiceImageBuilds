@@ -1,4 +1,14 @@
 #/bin/bash
+es=`docker ps  |grep -v CON | awk '{print $1}'`
+if ! test -z "$es"
+then
+	docker stop $es
+fi
+es=`docker ps -a |grep -v CON | awk '{print $1}'`
+if ! test -z "$es"
+then
+	docker rm $es
+fi
 
 if test "$1" = -h
  then

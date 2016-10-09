@@ -1,5 +1,7 @@
 #!/bin/sh
 
+export RUBY_GC_MALLOC_LIMIT_GROWTH_FACTOR=1.1
+
 /home/clear_flags.sh
 control_ip=`netstat -rn |grep ^0.0.0 | awk '{print $2}'`
 echo $control_ip > /engines/var/run/control_ip

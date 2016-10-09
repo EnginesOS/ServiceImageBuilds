@@ -5,7 +5,7 @@ ENV RAILS_ENV production
 RUN /usr/sbin/usermod -u 22671 www-data ;\
  	apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 561F9B9CAC40B2F7 ;\
 	apt-get install -y apt-transport-https ca-certificates nginx ;\
-	echo deb https://oss-binaries.phusionpassenger.com/apt/passenger trusty main  >/etc/apt/sources.list.d/passenger.list;\ 
+	echo deb https://oss-binaries.phusionpassenger.com/apt/passenger xenial main  >/etc/apt/sources.list.d/passenger.list;\ 
 	chmod 600 /etc/apt/sources.list.d/passenger.list;\
 	apt-get update -y ;\
 	apt-get install -y   nginx-extras  passenger-dev ;\

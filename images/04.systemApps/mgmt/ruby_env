@@ -1,11 +1,7 @@
-#Needs to be dynamic based on ram allocated to container
+
+passenger_env_var RUBY_GC_HEAP_INIT_SLOTS 1000000 ;# 1M
+passenger_env_var RUBY_GC_HEAP_FREE_SLOTS 500000  ;# 0.5M
 passenger_env_var RUBY_GC_HEAP_GROWTH_FACTOR 1.1;
-#You can also set how much memory Ruby is allowed to allocate off-heap4 before Ruby runs minor GC. You may want to lower that threshold:
-passenger_env_var RUBY_GC_MALLOC_LIMIT 267000100;
-passenger_env_var RUBY_GC_MALLOC_LIMIT_MAX 16000100;
+passenger_env_var RUBY_GC_HEAP_GROWTH_MAX_SLOTS 10000000 ;# 10M
+passenger_env_var RUBY_GC_MALLOC_LIMIT_MAX 25000  ;  # 25M
 passenger_env_var RUBY_GC_MALLOC_LIMIT_GROWTH_FACTOR 1.1;
-
-#Similarly, you may want to reduce how much memory Ruby allocates off-heap before it runs a full major GC:
-
-passenger_env_var RUBY_GC_OLDMALLOC_LIMIT 16000100;
-passenger_env_var RUBY_GC_OLDMALLOC_LIMIT_MAX 16000100;

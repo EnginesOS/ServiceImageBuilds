@@ -10,4 +10,4 @@
  	 		echo -n $key 	
  	fi
 
- 
+ exit 0

@@ -17,7 +17,7 @@ RUN 	mkdir -p /usr/local/ ; cd /usr/local/ ; git clone git://github.com/sstephen
 	cd /usr/local/rbenv   ;echo 'export PATH="/usr/local/rbenv/bin:$PATH:/usr/local/rbenv/shims/"' >> /home/engines/.bashrc ; echo 'eval "$(rbenv init -)"' >> ~/.bashrc ; exec $SHELL  ;/usr/local/rbenv/bin/rbenv install $ruby_version ; /usr/local/rbenv/bin/rbenv global $ruby_version
 	
 RUN	/usr/local/rbenv/shims/gem install  --no-rdoc --no-ri  git bundle  rest-client net_http_unix excon;\
-				/usr/local/rbenv/shims/gem install  --no-rdoc --no-ri   yajl-ruby  sinatra thin rubytree yard sinatra-contrib  ;\
+				/usr/local/rbenv/shims/gem install  --no-rdoc --no-ri  gctools yajl-ruby  sinatra thin rubytree  sinatra-contrib  ;\
 			    /usr/local/rbenv/shims/gem install  --no-rdoc --no-ri 	warden data_mapper dm-sqlite-adapter puma ;\
 				/usr/local/rbenv/bin/rbenv rehash	;\
  	/home/post_build_clean.sh

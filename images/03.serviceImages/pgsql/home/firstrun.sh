@@ -11,7 +11,7 @@ pass=`dd if=/dev/urandom count=6 bs=1  | od -h | awk '{ print $2$3$4}'`
 	cp -rp /var/lib/postgresql_firstrun/* /var/lib/postgresql/ 
 
 
-   /usr/lib/postgresql/9.3/bin/postgres -D /var/lib/postgresql/9.3/main -c config_file=/etc/postgresql/9.3/main/postgresql.conf &
+   /usr/lib/postgresql/9.5/bin/postgres -D /var/lib/postgresql/9.5/main -c config_file=/etc/postgresql/9.5/main/postgresql.conf &
    pid=$!
 
    echo "*:*:*:root:$pass" > /var/lib/postgresql/.pass

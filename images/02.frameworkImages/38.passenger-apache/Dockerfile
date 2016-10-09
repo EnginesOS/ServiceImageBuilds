@@ -3,16 +3,15 @@ FROM engines/rails4:$release
 ENV RAILS_ENV production
 
 RUN /usr/sbin/usermod -u 22671 www-data ;\
+	apt-get update -y ;\
  	apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 561F9B9CAC40B2F7 ;\
 	apt-get install -y apt-transport-https ca-certificates apache2 apache2-mpm-worker apache2-threaded-dev libapr1-dev libaprutil1-dev ;\
-	echo deb https://oss-binaries.phusionpassenger.com/apt/passenger trusty main  >/etc/apt/sources.list.d/passenger.list;\ 
+	echo deb https://oss-binaries.phusionpassenger.com/apt/passenger xenial main  >/etc/apt/sources.list.d/passenger.list;\ 
 	chmod 600 /etc/apt/sources.list.d/passenger.list;\
-	apt-get update -y ;\
-	apt-get install -y    libapache2-mod-passenger passenger-dev ;\
-	a2enmod passenger;\
     rm etc/apache2/sites-enabled/*;\
 	/usr/local/rbenv/shims/gem install --no-rdoc --no-ri  passenger;\
     /usr/local/rbenv/shims/passenger-install-apache2-module -a --languages ruby,nodejs,python;\
+	a2enmod passenger;\
 	mkdir -p /var/log/apache2 ;\
 	chown -R www-data /var/log/apache2 ;\
 	a2enmod rewrite; \
@@ -25,6 +24,7 @@ RUN /usr/sbin/usermod -u 22671 www-data ;\
  	/home/post_build_clean.sh
  	
  	
+ #	apt-get install -y    libapache2-mod-passenger passenger-dev ;\
 ADD 000-default.conf /etc/apache2/sites-enabled/
 ADD	passenger.conf  /etc/apache2/mods-enabled/
 ADD ports.conf /etc/apache2/

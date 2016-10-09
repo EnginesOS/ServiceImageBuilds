@@ -10,12 +10,12 @@ ADD home home
 
 
 RUN mv /var/lib/postgresql /var/lib/postgresql_firstrun;\
- 	 sed "/ssl-cert-snakeoil\.pem/s//engines\.crt/"  /etc/postgresql/9.3/main/postgresql.conf > /etc/postgresql/9.3/main/postgresql.conf.new ;\ 	 
- 	 cp /etc/postgresql/9.3/main/postgresql.conf.new /etc/postgresql/9.3/main/postgresql.conf;\ 
- 	 sed "/ssl-cert-snakeoil\.key/s//engines\.key/"  /etc/postgresql/9.3/main/postgresql.conf > /etc/postgresql/9.3/main/postgresql.conf.new ;\
- 	 cp /etc/postgresql/9.3/main/postgresql.conf.new /etc/postgresql/9.3/main/postgresql.conf	;\
- 	 echo "listen_addresses = '*'" >> /etc/postgresql/9.3/main/postgresql.conf;\
- 	 echo "host all all 172.17.0.0/16  md5" >> /etc/postgresql/9.3/main/pg_hba.conf;\
+ 	 sed "/ssl-cert-snakeoil\.pem/s//engines\.crt/"  /etc/postgresql/9.5/main/postgresql.conf > /etc/postgresql/9.5/main/postgresql.conf.new ;\ 	 
+ 	 cp /etc/postgresql/9.5/main/postgresql.conf.new /etc/postgresql/9.5/main/postgresql.conf;\ 
+ 	 sed "/ssl-cert-snakeoil\.key/s//engines\.key/"  /etc/postgresql/9.5/main/postgresql.conf > /etc/postgresql/9.5/main/postgresql.conf.new ;\
+ 	 cp /etc/postgresql/9.5/main/postgresql.conf.new /etc/postgresql/9.5/main/postgresql.conf	;\
+ 	 echo "listen_addresses = '*'" >> /etc/postgresql/9.5/main/postgresql.conf;\
+ 	 echo "host all all 172.17.0.0/16  md5" >> /etc/postgresql/9.5/main/pg_hba.conf;\
  	 chown postgres /home/firstrun.sh;\
  	 usermod -G containers -a postgres
  	
@@ -26,4 +26,4 @@ ENV ContGrp  postgres
 USER postgres
 ENV ContUser  postgres
 CMD [ "/home/start.sh" ]
-#CMD /usr/lib/postgresql/9.3/bin/postgres -D /var/lib/postgresql/9.3/main -c config_file=/etc/postgresql/9.3/main/postgresql.conf
+#CMD /usr/lib/postgresql/9.5/bin/postgres -D /var/lib/postgresql/9.5/main -c config_file=/etc/postgresql/9.5/main/postgresql.conf

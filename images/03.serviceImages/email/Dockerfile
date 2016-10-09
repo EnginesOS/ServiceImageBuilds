@@ -1,8 +1,9 @@
 FROM  engines/servicebase:$release
 RUN echo "Y" | adduser -q --disabled-password --home /var/spool/postfix -uid 22003 postfix
 RUN /home/no_init.sh ;\	
-apt-get -y update ;\	
-	apt-get -y install apache2 libapache2-mod-php5 php5-mysql php5-mcrypt  php5-gd php5-apcu php5-dev  postfix syslogd  php5-imap postfix-mysql postgrey
+	echo "deb http://archive.canonical.com/ubuntu xenial partner"  >>   /etc/apt/sources.list ;\
+	apt-get -y update ;\	
+	apt-get -y install apache2  php-gettext php-mbstring libapache2-mod-php7.0 php-mysql php-mcrypt  php-gd php-apcu php-dev  postfix  inetutils-syslogd   php-imap postfix-mysql postgrey
 	
 ADD home home
 
@@ -15,7 +16,7 @@ RUN cd /tmp/;\
 	 mv  postfixadmin-2.92 /home/app ;\
 	 mkdir -p /var/log/apache2 /etc/postfix/mysql;\
 	 chown www-data /var/log/apache2 ;\
-	 ln -s /etc/php5/mods-available/imap.ini /etc/php5/apache2/conf.d/;\
+	 ln -s /etc/php/7.0/mods-available/imap.ini /etc/php/7.0/apache2/conf.d/;\
 	 chgrp www-data /home/app/templates_c/;\
 	 chmod g+w /home/app/templates_c;\
 	 usermod -G containers -a postfix;\
