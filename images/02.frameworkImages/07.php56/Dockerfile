@@ -2,7 +2,7 @@ FROM engines/frameworkbase:$release
 
 RUN /usr/sbin/usermod -u 22671 www-data;\
 	apt-get update -y ;\
-	apt-get install -y python-software-properties ;\
+	apt-get install -y  python-software-properties apt-file;\
 	add-apt-repository ppa:ondrej/php;\
 	apt-get install -y  apache2 libapache2-mod-php5.6 php5.6-gettext php5.6-mbstring php5.6-mysql php5.6-mcrypt  php5.6-gd php5.6-apcu php5.6-dev ;\
 	rm etc/apache2/sites-enabled/*;\
