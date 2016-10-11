@@ -1,4 +1,6 @@
 FROM engines/frameworkbase:$release
+ENV LC_ALL en_US.UTF-8
+ENV LANG en_US.UTF-8
 
 RUN /usr/sbin/usermod -u 22671 www-data;\
 	apt-get update -y ;\
