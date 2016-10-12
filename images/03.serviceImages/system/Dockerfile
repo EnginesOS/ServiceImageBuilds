@@ -9,7 +9,7 @@ RUN /usr/sbin/addgroup --gid 21999 edocker;\
 	 mkdir -p  /opt/engines/run/system/;\	
 	chown -R engines /opt/engines/run/system/ /home/engines /var/log/;\
 	usermod -G docker -a engines
- 	/home/post_build_clean.sh
+
 
 ENV ruby_version 2.3.0
 ENV  RBENV_ROOT /usr/local/rbenv
