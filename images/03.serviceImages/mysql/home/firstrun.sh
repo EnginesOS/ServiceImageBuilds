@@ -9,10 +9,10 @@ sleep 500
  	cd /home/mysql
  	mkdir -p /var/log/mysql
 	#/usr/bin/mysql_install_db
-	 mysqld --initialize   --explicit_defaults_for_timestamp 
+	 mysqld --initialize-insecure  --explicit_defaults_for_timestamp 
 	 
 	
-	 /usr/sbin/mysqld --skip-grant-tables --defaults-file=/etc/mysql/my.cnf --basedir=/usr --datadir=/var/lib/mysql --plugin-dir=/usr/lib/mysql/plugin --user=mysql --log-error=/var/log/mysql/error.log --pid-file=/var/run/mysqld/mysqld.pid --socket=/var/run/mysqld/mysqld.sock &
+	 /usr/sbin/mysqld --skip-grant-tables  --basedir=/usr --datadir=/var/lib/mysql --plugin-dir=/usr/lib/mysql/plugin --user=mysql --log-error=/var/log/mysql/error.log --pid-file=/var/run/mysqld/mysqld.pid --socket=/var/run/mysqld/mysqld.sock &
  pid=$!
  
  sleep 20
