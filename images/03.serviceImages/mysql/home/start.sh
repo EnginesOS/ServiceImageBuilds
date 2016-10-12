@@ -7,7 +7,10 @@ mkdir -p /engines/var/run/flags
         bash /home/firstrun.sh         
 fi
 
-
+if ! test -d  /var/run/mysqld/
+ then
+ 	mkdir -p /var/run/mysqld/
+ fi
 PID_FILE=/var/run/mysqld/mysqld.pid
 
 export PID_FILE
@@ -16,7 +19,7 @@ export PID_FILE
 SIGNAL=0
  	
 
- /usr/sbin/mysqld --defaults-file=/etc/mysql/my.cnf --basedir=/usr --datadir=/var/lib/mysql --plugin-dir=/usr/lib/mysql/plugin --user=mysql --log-error=/var/log/mysql/error.log --pid-file=/var/run/mysqld/mysqld.pid --socket=/var/run/mysqld/mysqld.sock --port=3306 &
+ /usr/sbin/mysqld --defaults-file=/etc/mysql/my.cnf --basedir=/usr --datadir=/var/lib/mysql --plugin-dir=/usr/lib/mysql/plugin --user=mysql --log-error=/var/log/mysql/error.log --pid-file=/var/run/mysqld/mysqld.pid --socket=/var/run/mysqld/mysqld.sock --bind-address=0.0.0.0 --port=3306 &
 touch  /engines/var/run/flags/startup_complete
 wait
 #
