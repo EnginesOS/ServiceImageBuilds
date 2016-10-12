@@ -1,4 +1,4 @@
-FROM engines/xenial:$release
+FROM engines/xenial:current
 
 COPY dpkg.conf.d /etc/dpkg/dpkg.cfg.d
 
