@@ -8,7 +8,9 @@ pass=`dd if=/dev/urandom count=6 bs=1  | od -h | awk '{ print $2$3$4}'`
  then
  	cd /home/mysql
  	mkdir -p /var/log/mysql
-	/usr/bin/mysql_install_db --force
+	#/usr/bin/mysql_install_db
+	 mysqld --initialize   --explicit_defaults_for_timestamp 
+	 
 	
 	 /usr/sbin/mysqld --defaults-file=/etc/mysql/my.cnf --basedir=/usr --datadir=/var/lib/mysql --plugin-dir=/usr/lib/mysql/plugin --user=mysql --log-error=/var/log/mysql/error.log --pid-file=/var/run/mysqld/mysqld.pid --socket=/var/run/mysqld/mysqld.sock &
  pid=$!
