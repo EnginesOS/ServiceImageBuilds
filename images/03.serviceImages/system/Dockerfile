@@ -21,8 +21,8 @@ RUN 	mkdir -p /usr/local/ ; cd /usr/local/ ; git clone git://github.com/sstephen
 RUN	/usr/local/rbenv/shims/gem install  --no-rdoc --no-ri  git bundle  rest-client net_http_unix excon;\
 				/usr/local/rbenv/shims/gem install  --no-rdoc --no-ri  gctools yajl-ruby  sinatra thin rubytree  sinatra-contrib  ;\
 			    /usr/local/rbenv/shims/gem install  --no-rdoc --no-ri 	warden data_mapper dm-sqlite-adapter puma ;\
-				/usr/local/rbenv/bin/rbenv rehash	;\
- 	/home/post_build_clean.sh
+				/usr/local/rbenv/bin/rbenv rehash;\
+ 				/home/post_build_clean.sh
 	
 ADD home home
 ADD profile /home/engines/.profile
