@@ -1,9 +1,9 @@
 #!/bin/bash
 pass=`dd if=/dev/urandom count=6 bs=1  | od -h | awk '{ print $2$3$4}'`
+ echo -n $pass > /var/lib/mysql/.pass
 
 
-
-
+sleep 500
  if ! test -d /var/lib/mysql/mysql
  then
  	cd /home/mysql
@@ -28,7 +28,7 @@ pass=`dd if=/dev/urandom count=6 bs=1  | od -h | awk '{ print $2$3$4}'`
 	echo "CREATE USER 'root'@'%' identified by '$pass';  grant all ON *.* TO  'root'@'%'  WITH GRANT OPTION; " |mysql  -S /var/run/mysqld/mysqld.sock  --protocol=socket -u root
 	 /usr/bin/mysqladmin  -S /var/run/mysqld/mysqld.sock  --protocol=socket -u root  password $pass
 	 
-	 echo -n $pass > /var/lib/mysql/.pass
+	
 	 kill -TERM $pid
 	 wait $pid
 	 touch /engines/var/run/flags/first_run_done
