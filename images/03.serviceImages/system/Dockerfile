@@ -1,13 +1,15 @@
 FROM  engines/servicebase:$release
 
-RUN /usr/sbin/addgroup --gid 21999 docker;\
+RUN /usr/sbin/addgroup --gid 21999 edocker;\
+	/usr/sbin/addgroup --gid 909 docker;\
 	/home/no_init.sh ;\	
 	apt-get update -y;\
 	apt-get -y install telnet libsqlite3-dev libcurl4-openssl-dev build-essential libssl-dev libreadline-dev zlib1g-dev ;\
 	echo "Y" | adduser -q --uid 21000 --gid 21999 --home /home/engines --disabled-password engines;\
 	 mkdir -p  /opt/engines/run/system/;\	
 	chown -R engines /opt/engines/run/system/ /home/engines /var/log/;\
- 	/home/post_build_clean.sh
+	usermod -G docker -a engines
+
 
 ENV ruby_version 2.3.0
 ENV  RBENV_ROOT /usr/local/rbenv
@@ -19,8 +21,8 @@ RUN 	mkdir -p /usr/local/ ; cd /usr/local/ ; git clone git://github.com/sstephen
 RUN	/usr/local/rbenv/shims/gem install  --no-rdoc --no-ri  git bundle  rest-client net_http_unix excon;\
 				/usr/local/rbenv/shims/gem install  --no-rdoc --no-ri  gctools yajl-ruby  sinatra thin rubytree  sinatra-contrib  ;\
 			    /usr/local/rbenv/shims/gem install  --no-rdoc --no-ri 	warden data_mapper dm-sqlite-adapter puma ;\
-				/usr/local/rbenv/bin/rbenv rehash	;\
- 	/home/post_build_clean.sh
+				/usr/local/rbenv/bin/rbenv rehash;\
+ 				/home/post_build_clean.sh
 	
 ADD home home
 ADD profile /home/engines/.profile
