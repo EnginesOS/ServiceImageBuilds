@@ -4,7 +4,7 @@ pass=`dd if=/dev/urandom count=6 bs=1  | od -h | awk '{ print $2$3$4}'`
 
 
 
- if ! test -f /var/lib/mysql/mysql
+ if ! test -d /var/lib/mysql/mysql
  then
  	cd /home/mysql
  	mkdir -p /var/log/mysql
