@@ -30,11 +30,11 @@ sudo -n syslogd  -R syslog.engines.internal:514
 sudo -n /usr/sbin/named  -c /etc/bind/named.conf -f -u bind &
 
 . /home/dns_functions.sh
-${hostname}=gateway
+${hostname}=lanhost
 $ip=`cat  /opt/engines/etc/net/ip`
 add_to_internal_domain
 $ip=`cat  /opt/engines/etc/net/public`
-${hostname}=public
+${hostname}=publichost
 add_to_internal_domain
 touch /engines/var/run/flags/startup_complete
 wait  
