@@ -1,11 +1,12 @@
 #!/bin/bash
 
-service_hash=$1
+if test $# -eq 0 
+ then
+ 	cat -  | /home/engines/bin/json_to_env>/tmp/.env
+ else
+	echo $1 | /home/engines/bin/json_to_env >/tmp/.env
+fi
 
-
-echo $service_hash   | sed '/\"\[/s// \[/' | sed '/\\/s///g' | sed '/\]\"/s//\] /'| /home/engines/bin/json_to_env >/tmp/.env
-
- 
  . /tmp/.env
 
 echo $1 >/home/configurators/saved/backup
