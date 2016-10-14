@@ -1,3 +1,5 @@
+
+
 function add_to_internal_domain {
 	if test -z ${hostname}
 	then
