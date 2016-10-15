@@ -1,10 +1,8 @@
 #!/bin/bash
 
-service_hash=$1
+cat - > /home/configurators/saved/dns_forwarders
 
-echo $1 >/home/configurators/saved/dns_forwarders
-
- echo $service_hash | /home/engines/bin/json_to_env >/tmp/.env
+ echo /home/configurators/saved/dns_forwarders | /home/engines/bin/json_to_env >/tmp/.env
  . /tmp/.env
 
  

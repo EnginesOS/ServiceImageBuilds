@@ -1,12 +1,10 @@
 #!/bin/bash
 
-service_hash=$1
-
-echo $1 >/home/configurators/saved/default_destination
+cat - > /home/configurators/saved/default_destination
             
 
 
- echo $service_hash | /home/engines/bin/json_to_env >/tmp/.env
+cat /home/configurators/saved/default_destination | /home/engines/bin/json_to_env >/tmp/.env
  . /tmp/.env
 
 if test -f /home/configurators/saved/system_backup

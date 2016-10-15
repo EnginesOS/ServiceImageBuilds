@@ -1,14 +1,7 @@
 #!/bin/bash
 
-service_hash=$1
-
-
-echo $1 >/home/configurators/saved/backup_email_hash
-
-
-
-
- echo $service_hash | /home/engines/bin/json_to_env >/tmp/.env
+cat - > /home/configurators/saved/backup_email_hash
+cat /home/configurators/saved/backup_email_hash | /home/engines/bin/json_to_env >/tmp/.env
  . /tmp/.env
 
 

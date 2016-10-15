@@ -1,6 +1,6 @@
 #!/bin/bash
 
-service_hash=$1
+
 
 if test -f /home/certs/store/private/ca/keys/system_CA.key
 	then	
@@ -13,12 +13,12 @@ if test -f /home/certs/store/private/ca/keys/system_CA.key
 	rm /home/certs/store/private/ca/keys/system_CA.key 
 	fi
 
-echo $1 >/home/configurators/saved/ca_setup
-echo $1 >/home/configurators/saved/ca_params
+cat - >/home/configurators/saved/ca_setup
+cp /home/configurators/saved/ca_setup /home/configurators/saved/ca_params
 
 
 
- echo $service_hash | /home/engines/bin/json_to_env >/tmp/.env
+cat /home/configurators/saved/ca_setup | /home/engines/bin/json_to_env >/tmp/.env
  . /tmp/.env
 
 

@@ -20,7 +20,7 @@ PID_FILE=/var/run/named/named.pid
 export PID_FILE
 . /home/trap.sh
 
-
+#478757da
 mkdir -p /engines/var/run/flags/
 
 

@@ -1,10 +1,10 @@
 #!/bin/bash
 
-service_hash=$1
 
-echo $1 >/home/configurators/saved/dyndns_settings
 
- echo $service_hash | /home/engines/bin/json_to_env >/tmp/.env
+cat - >/home/configurators/saved/dyndns_settings
+
+cat  /home/configurators/saved/dyndns_settings | /home/engines/bin/json_to_env >/tmp/.env
  . /tmp/.env
 
 

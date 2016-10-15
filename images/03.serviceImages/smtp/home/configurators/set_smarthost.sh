@@ -1,10 +1,8 @@
 #!/bin/bash
 
-service_hash=$1
+cat - >/home/configurators/saved/smarthost
 
-echo $1 >/home/configurators/saved/smarthost
-
- echo $service_hash | /home/engines/bin/json_to_env >/tmp/.env
+cat /home/configurators/saved/smarthost | /home/engines/bin/json_to_env >/tmp/.env
  . /tmp/.env
 
 
