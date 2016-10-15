@@ -1,10 +1,12 @@
 #!/bin/bash
 
+if test $# -eq 0 
+ then
+ 	cat -  | /home/engines/bin/json_to_env>/tmp/.env
+ else
+	echo $1 | /home/engines/bin/json_to_env >/tmp/.env
+fi
 
-service_hash=$1
-
-
- echo $service_hash | /home/engines/bin/json_to_env >/tmp/.env
  . /tmp/.env
 
 if test -z "${cert_name}"

@@ -1,10 +1,8 @@
 #!/bin/bash
 
-service_hash=$1
+cat - >/home/configurators/saved/credentials
 
-echo $1 >/home/configurators/saved/credentials
+cat /home/configurators/saved/credentials | /home/engines/bin/json_to_env >/tmp/.env
 
- echo $service_hash | /home/engines/bin/json_to_env >/tmp/.env
-
- 
+ . /tmp/.env
 exit 0

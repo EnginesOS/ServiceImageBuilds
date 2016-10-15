@@ -1,10 +1,8 @@
 #!/bin/bash
 
-service_hash=$1
+cat - >/home/configurators/saved/default_site_url
 
-echo $1 >/home/configurators/saved/default_site_url
-
- echo $service_hash | /home/engines/bin/json_to_env >/tmp/.env
+cat /home/configurators/saved/default_site_url | /home/engines/bin/json_to_env >/tmp/.env
  . /tmp/.env
 
 

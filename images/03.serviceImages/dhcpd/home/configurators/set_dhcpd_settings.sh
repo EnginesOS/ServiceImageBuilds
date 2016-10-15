@@ -1,13 +1,11 @@
 #!/bin/bash
 
-service_hash=$1
-
-echo $1 >/home/configurators/saved/dhcpd_settings
+cat - > /home/configurators/saved/dhcpd_settings
 
 
 
 
- echo $service_hash | /home/engines/bin/json_to_env >/tmp/.env
+ echo /home/configurators/saved/dhcpd_settings | /home/engines/bin/json_to_env >/tmp/.env
  . /tmp/.env
 
 if test -z $domain_name

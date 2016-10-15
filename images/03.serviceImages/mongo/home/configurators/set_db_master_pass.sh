@@ -1,9 +1,6 @@
 #!/bin/bash
 
-service_hash=$1
-
-
- echo $service_hash | /home/engines/bin/json_to_env >/tmp/.env
+ca1 - | /home/engines/bin/json_to_env >/tmp/.env
  . /tmp/.env
 if test -z $db_master_pass
  then 

@@ -1,12 +1,13 @@
 #!/bin/bash
 
-service_hash=$1
+if test $# -eq 0 
+ then
+ 	cat -  | /home/engines/bin/json_to_env>/tmp/.env
+ else
+	echo $1 | /home/engines/bin/json_to_env >/tmp/.env
+fi
 
-
-
- echo $service_hash | /home/engines/bin/json_to_env >/tmp/.env
  . /tmp/.env
-
 	if ! test -z ${domain_name}
 	 then	
 	 	rm /home/bind/engines/domains/${domain_name}

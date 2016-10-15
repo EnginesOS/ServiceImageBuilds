@@ -1,11 +1,15 @@
 #!/bin/bash
 
-service_hash=$1
+. /home/dns_functions.sh
 
- echo $service_hash | /home/engines/bin/json_to_env >/tmp/.env
+if test $# -eq 0 
+ then
+ 	cat -  | /home/engines/bin/json_to_env >/tmp/.env
+ else
+	echo $1 | /home/engines/bin/json_to_env >/tmp/.env
+fi
+
  . /tmp/.env
-
-
 
 	if ! test -z ${domain_name}
 	 then
@@ -21,6 +25,9 @@ service_hash=$1
 	 	cat /etc/bind/templates/selfhosted.tmpl | sed "/DOMAIN/s//${domain_name}/g" | sed "/IP/s//${ip}/g" > /home/bind/engines/zones/named.conf.${domain_name}
 	 	cat /home/bind/engines/domains/* > /home/bind/engines/domains.hosted
 	 	kill -HUP `cat /var/run/named/named.pid`
+	 	${domain_name}=engines.internal
+	 	${hostname}=public
+	 	add_to_internal_domain
 	 	echo Success
 	 	exit 0
 	   fi
@@ -28,30 +35,7 @@ service_hash=$1
 
 #FIXME make engines.internal settable
 
-	if test -z ${hostname}
-	then
-		echo Error:Missing hostname
-        exit 128
-    fi
-    
-    fqdn_str=${hostname}.engines.internal
-    
-  	if test -z ${ip}
-	then
-		 update_line=" update add $fqdn_str 30 CNAME ${parent_engine}.engines.internal"
-       else
-       update_line=" update add $fqdn_str 30 A $ip"        
-    fi  
-    
-
-	
-	echo server 127.0.0.1 > /tmp/.dns_cmd
-	echo update delete $fqdn_str >> /tmp/.dns_cmd
-	echo send >> /tmp/.dns_cmd
-	echo $update_line >> /tmp/.dns_cmd
-	#echo update add $fqdn_str 30 A $ip >> /tmp/.dns_cmd
-	echo send >> /tmp/.dns_cmd
-	nsupdate -k /etc/bind/keys/ddns.private /tmp/.dns_cmd
+add_to_internal_domain
 	
 	if test $? -eq 0
 	then
@@ -62,6 +46,8 @@ service_hash=$1
 		echo Error:With nsupdate $file
 		exit 128
 	fi
+	
+	
 	if ! test -z ${ip}
 		then
 			ip_reversed=`echo $ip |awk  ' BEGIN {  FS="."} {print $4 "." $3 "." $2 "." $1}'`

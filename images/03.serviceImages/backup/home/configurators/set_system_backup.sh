@@ -17,13 +17,9 @@ echo "TARGET='$_dest'" >>$Backup_ConfigDir/$service/conf
 echo "TARGET_USER='$user'"  >>$Backup_ConfigDir/$service/conf
 echo "TARGET_PASS='$pass'"  >>$Backup_ConfigDir/$service/conf
 }
-service_hash=$1
 
-echo $1 >/home/configurators/saved/system_backup
-
-
-
- echo $service_hash | /home/engines/bin/json_to_env >/tmp/.env
+cat - >/home/configurators/saved/system_backup
+cat  /home/configurators/saved/system_backup | /home/engines/bin/json_to_env >/tmp/.env
  . /tmp/.env
 
  echo "$*" >>/var/log/backup/addbackup.log
