@@ -8,7 +8,8 @@ export PID_FILE
 
 mkdir -p /engines/var/run/flags/
 
-sudo -n syslogd  -R syslog.engines.internal:514
+sudo -n /home/engines/scripts/_start_syslog.sh
+
 
 mkdir -p /home/backup/sql_dumps/
 

@@ -22,7 +22,7 @@ interfaces=$interfaces , docker0
 cat /home/templates/avahi-daemon.conf.tmpl | sed "/INTERFACES/s//$interfaces/" > /tmp/avahi-daemon.conf
 cp /tmp/avahi-daemon.conf /etc/avahi/avahi-daemon.conf
 
-sudo -n syslogd  -R syslog.engines.internal:514
+sudo -n /home/engines/scripts/_start_syslog.sh
 
 sudo -n dbus-daemon --system --fork --nopidfile
 dbus_pid=$!

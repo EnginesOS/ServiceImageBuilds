@@ -1,6 +1,7 @@
 #!/bin/sh
 
-sudo -n syslogd -R syslog.engines.internal:514
+sudo -n /home/engines/scripts/_start_syslog.sh
+
 
 
 PID_FILE=/var/run/ganesha.pid

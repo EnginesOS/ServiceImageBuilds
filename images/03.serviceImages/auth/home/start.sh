@@ -35,7 +35,7 @@ chmod og-rwx  /home/auth/.dbenv
 
 
 SIGNAL=0
-sudo -n /home/_start_syslog.sh
+sudo -n /home/engines/scripts/_start_syslog.sh
 sudo -n /home/_start_sshd.sh
 sudo -n /home/_start_kerobos.sh &
 

@@ -1,6 +1,6 @@
 
 
-backup ALL = (root) NOPASSWD: /sbin/syslogd
+backup ALL = (root) NOPASSWD: /home/engines/scripts/_start_syslog.sh
 
 
 backup ALL = (root) NOPASSWD: /home/engines/scripts/_kill_syslog.sh

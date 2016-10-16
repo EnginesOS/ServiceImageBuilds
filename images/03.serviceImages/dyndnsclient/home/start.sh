@@ -17,7 +17,8 @@ else
    rm -f /engines/var/run/flags/not_configured
 fi
 
-sudo syslogd  -R syslog.engines.internal:514
+sudo /home/engines/scripts/_start_syslog.sh
+
 
 mkdir -p /engines/var/run/flags/
 

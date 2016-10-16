@@ -1,7 +1,7 @@
 FROM  engines/servicebase:$release
 RUN /home/no_init.sh ;\
 	apt-get  update;\
-	apt-get -y install inetutils-syslogd openssh-server mysql-client krb5-kdc krb5-admin-server expect;\
+	apt-get -y install  openssh-server mysql-client krb5-kdc krb5-admin-server expect;\
 	echo "Y" | adduser -q --disabled-password --home /home/auth -uid 22017 auth;\
 	usermod -G containers -a auth ;\
  	/home/post_build_clean.sh

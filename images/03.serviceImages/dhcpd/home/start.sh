@@ -16,7 +16,8 @@ exit
    fi
 rm /var/run/dhcpd.pid
 
-sudo -n syslogd  -R syslog.engines.internal:514
+sudo -n /home/engines/scripts/_start_syslog.sh
+
 sudo -n /usr/sbin/dhcpd  -cf /etc/dhcp/dhcpd.conf -pf /var/run/dhcpd.pid  -f & 
 
 	touch /engines/var/run/flags/startup_complete

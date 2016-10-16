@@ -9,7 +9,8 @@ export PID_FILE
 mkdir -p /engines/var/run/flags/
 
 
-sudo -n syslogd  -R syslog.engines.internal:514
+sudo -n /home/engines/scripts/_start_syslog.sh
+
 /home/cron/sbin/fcron -f -p  /home/cron/log/cron.log &
 touch /engines/var/run/flags/startup_complete  
 wait 

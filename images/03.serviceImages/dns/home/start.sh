@@ -26,7 +26,8 @@ mkdir -p /engines/var/run/flags/
 
 sudo -n /home/setup.sh
 
-sudo -n syslogd  -R syslog.engines.internal:514
+sudo -n /home/engines/scripts/_start_syslog.sh
+
 sudo -n /usr/sbin/named  -c /etc/bind/named.conf -f -u bind &
 
 . /home/dns_functions.sh

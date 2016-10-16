@@ -1,6 +1,7 @@
 
 
-cron ALL = (root) NOPASSWD: /sbin/syslogd
+cron ALL = (root) NOPASSWD: /home/engines/scripts/_start_syslog.sh
+
 
 cron ALL = (root) NOPASSWD: /home/engines/scripts/_kill_syslog.sh
 

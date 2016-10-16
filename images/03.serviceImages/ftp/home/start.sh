@@ -1,6 +1,7 @@
 #!/bin/sh
 
-sudo syslogd -R syslog.engines.internal:514
+sudo /home/engines/scripts/_start_syslog.sh
+
 
 PID_FILE=/var/run/ftpd.pid
 export PID_FILE

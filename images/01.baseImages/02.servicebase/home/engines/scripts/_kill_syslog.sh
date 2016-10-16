@@ -1,12 +1,12 @@
 #!/bin/sh
 
-if test -f /var/run/syslogd.pid  
+if test -f /var/run/rsyslogd.pid  
 	then
-		pid=`cat  /var/run/syslogd.pid  `
+		pid=`cat  /var/run/rsyslogd.pid  `
 		kill -TERM  $pid
-if test -f /var/run/syslogd.pid  
+if test -f /var/run/rsyslogd.pid  
  then			
-	pid=`cat /var/run/syslogd.pid  `
+	pid=`cat /var/run/rsyslogd.pid  `
 	echo $pid |grep ^[0-9]
  	
 	if test $? -ne 0

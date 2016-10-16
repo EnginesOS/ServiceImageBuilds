@@ -6,7 +6,8 @@ export PID_FILE
 . /home/trap.sh
 
 mkdir -p /engines/var/run/flags/
-sudo -n /sbin/syslogd -R syslog.engines.internal:514
+sudo -n /home/engines/scripts/_start_syslog.sh
+
 
 sudo -n postmap /etc/postfix/transport 
 sudo -n postmap /etc/postfix/smarthost_passwd

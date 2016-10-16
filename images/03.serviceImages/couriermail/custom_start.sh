@@ -1,6 +1,7 @@
 #!/bin/bash
 rm -f /run/apache2/apache2.pid 
-/etc/init.d/rsyslog start
+sudo -n /home/engines/scripts/_start_syslog.sh
+
 /usr/lib/courier/courierctl.start
 /usr/sbin/esmtpd start
 /usr/sbin/imapd-ssl start

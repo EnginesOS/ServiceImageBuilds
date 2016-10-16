@@ -30,7 +30,7 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ED8E640A;\
 	apt-get dist-upgrade;\
 	apt-get -y   update;\
 	/home/no_init.sh ;\
-	apt-get -y  --fix-missing install git language-pack-en-base  apt-file software-properties-common build-essential unzip curl  dnsutils git  wget bzip2 zlibc ;\ 
+	apt-get -y  --fix-missing install rsyslog git language-pack-en-base  apt-file software-properties-common build-essential unzip curl  dnsutils git  wget bzip2 zlibc ;\ 
 	apt-get clean;\
 	mkdir -p /var/run;\
 	mkdir -p /etc/apt/apt.conf.d/;\
@@ -50,7 +50,9 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ED8E640A;\
 	rm -r /home/src ;\
 	apt-get remove  build-essential;\
 	/home/install_utf8_langauges.sh ;\
-	rm -r /tmp/* /home/install_utf8_langauges.sh
+	rm -r /tmp/* /home/install_utf8_langauges.sh;\
+	rm /etc/rsyslog.d/50-default.conf ;\
+	
 	 
 
 RUN		apt-get clean ;\
