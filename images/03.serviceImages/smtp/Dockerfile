@@ -25,7 +25,7 @@ RUN /usr/sbin/postfix -c /etc/postfix/ set-permissions;\
 	chown postfix /home/configurators/saved;\
 	chgrp postfix /home/configurators/*.sh
 	
-ADD sudoers /etc/sudoers
+ADD sudoers /etc/sudoers.d/smtp
 
    
 ENV ContUser postfix

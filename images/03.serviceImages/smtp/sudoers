@@ -1,6 +1,5 @@
 
 postfix ALL = (root) NOPASSWD: /usr/lib/postfix/master
-
 postfix ALL = (root) NOPASSWD: /sbin/syslogd
 postfix ALL = (root) NOPASSWD: /usr/sbin/postmap
 postfix ALL = (root) NOPASSWD: /home/_signal.sh
