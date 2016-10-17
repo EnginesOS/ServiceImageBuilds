@@ -25,7 +25,9 @@ RUN 	echo "Y" | adduser -q --disabled-password --home /home/cron -uid 22016 cron
 
 
 COPY home home
-COPY sudoers /etc/sudoers.d/engine
+COPY sudoers /etc/sudoers.d/engines
+RUN	chmod -R go-rw /etc/sudoers /etc/sudoers.d/
 USER cron
+	
 ENV ContUser cron
 CMD ["/home/start.sh"]

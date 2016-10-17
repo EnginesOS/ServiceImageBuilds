@@ -13,7 +13,8 @@ ENV ContUser dhcpd
 ENV ContGrp dhcpd
 
 COPY home /home/
-RUN chown dhcpd /home/configurators/saved
+RUN chown dhcpd /home/configurators/saved/;\
+	chmod -R go-rw /etc/sudoers /etc/sudoers.d/
 USER dhcpd
 ENV ContUser dhcpd
 CMD ["/home/start.sh"]

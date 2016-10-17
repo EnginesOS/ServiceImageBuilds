@@ -27,7 +27,9 @@ RUN /usr/sbin/postfix -c /etc/postfix/ set-permissions;\
 	
 ADD sudoers /etc/sudoers.d/smtp
 
-   
+
+RUN	chmod -R go-rw /etc/sudoers /etc/sudoers.d/
+
 ENV ContUser postfix
 ENV ContGrp postfix
 USER postfix

@@ -19,7 +19,8 @@ ADD sudoers /etc/
 
 RUN mkdir -p /home/configurators/saved ;\
 	chmod g+w /home/configurators/saved ;\
-	 chgrp containers /home/configurators/saved
+	 chgrp containers /home/configurators/saved ;\
+	chmod -R go-rw /etc/sudoers /etc/sudoers.d/
 
 USER syslog
 ENV ContUser syslog

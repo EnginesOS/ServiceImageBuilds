@@ -18,6 +18,7 @@ ENV ContUser syslog
 ENV ContGrp syslog
 ADD syslog-ng.conf /etc/syslog-ng/
 ADD home /home/
-ADD sudoers /etc/
+ADD sudoers /etc/sudoers.d/syslog
+RUN	chmod -R go-rw /etc/sudoers /etc/sudoers.d/
 USER syslog
 CMD ["/home/start.sh"]

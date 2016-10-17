@@ -42,7 +42,8 @@ ADD gitconfig /home/app/.git/config
 ADD sudoers /etc/
 RUN mkdir -p /home/engines/.ssh/mgmt /home/app/tmp/ ;\	
  	chown -R 21000 /home/app/public /home/configurators/saved /home/app/tmp/;\
- 	usermod -G containers -a engines
+ 	usermod -G containers -a engines  ;\
+	chmod -R go-rw /etc/sudoers /etc/sudoers.d/
  	
 
 

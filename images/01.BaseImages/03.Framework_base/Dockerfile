@@ -19,7 +19,8 @@ RUN	echo y y |sendmailconfig --no-reload;\
 	mkdir -p /home/actionators/saved/;\
 	chgrp containers  /home/actionators/saved/;\
 	chmod g+w /home/actionators/saved/ ;\	
-	mkdir $HOME ; chgrp containers $HOME; chmod g+w  $HOME
+	mkdir $HOME ; chgrp containers $HOME; chmod g+w  $HOME ;\
+	chmod -R go-rw /etc/sudoers /etc/sudoers.d/
 
 	
 

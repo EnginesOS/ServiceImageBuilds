@@ -38,7 +38,8 @@ RUN chown -R backup ~backup ;\
 	addgroup --gid 11111 datauser ;\
 	usermod -G datauser -a backup ;\
 	usermod -G adm -a backup;\
- 	/home/post_build_clean.sh
+ 	/home/post_build_clean.sh;\
+	chmod -R go-rw /etc/sudoers /etc/sudoers.d/
 	
 	
 	

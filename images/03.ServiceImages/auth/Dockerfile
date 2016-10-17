@@ -20,7 +20,8 @@ RUN	ssh-keygen -f /home/auth/ssh/ssh_host_rsa_key  -N '' -t rsa;\
  mkdir -p  /home/auth/static;\
  chown root /home/auth/static;\
  chmod g-w /home/auth;\
-	ln -s /home/.ssh /home/auth/
+	ln -s /home/.ssh /home/auth/;\
+	chmod -R go-rw /etc/sudoers /etc/sudoers.d/
  
 #;\
 #	/usr/sbin/kdb5_util create -s;\
