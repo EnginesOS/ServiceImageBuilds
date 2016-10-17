@@ -51,7 +51,7 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ED8E640A;\
 	apt-get remove  build-essential;\
 	/home/install_utf8_langauges.sh ;\
 	rm -r /tmp/* /home/install_utf8_langauges.sh;\
-	rm /etc/rsyslog.d/50-default.conf ;\
+	rm /etc/rsyslog.d/50-default.conf 
 	
 	
 ADD rsyslog.conf /etc/ 
