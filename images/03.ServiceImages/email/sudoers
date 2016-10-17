@@ -1,0 +1,18 @@
+
+postfix ALL = (root) NOPASSWD: /usr/lib/postfix/master
+
+postfix ALL = (root) NOPASSWD: //home/engines/scripts/_start_syslog.sh
+
+postfix ALL = (root) NOPASSWD: /usr/sbin/postmap
+postfix ALL = (root) NOPASSWD: /usr/sbin/apache2ctl
+postfix ALL = (root) NOPASSWD: /home/_signal.sh
+postfix ALL = (root) NOPASSWD: /home/configurators/rebuild_main.sh
+postfix ALL = (root) NOPASSWD: /home/engines/scripts/_kill_syslog.sh
+postfix ALL = (root) NOPASSWD: /usr/sbin/postgrey
+postfix ALL = (root) NOPASSWD: /home/kill_grey.sh  
+#for debugging only
+#ALL ALL = (root) NOPASSWD: ALL
+
+
+#must have blank after last sudoers line
+

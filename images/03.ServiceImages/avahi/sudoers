@@ -1,0 +1,13 @@
+
+
+
+
+avahi ALL = (root) NOPASSWD: /bin/dbus-daemon
+avahi ALL = (root) NOPASSWD: /home/engines/scripts/_start_syslog.sh
+avahi ALL = (root) NOPASSWD: /usr/sbin/avahi-daemon 
+avahi ALL = (root) NOPASSWD: /home/_signal.sh
+avahi ALL = (root) NOPASSWD: /home/engines/scripts/_kill_syslog.sh
+avahi ALL = (root) NOPASSWD: /home/kill_dbus.sh
+avahi ALL = (root) NOPASSWD: /home/kill_avahi.sh
+#must have blank after last sudoers line
+

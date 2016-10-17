@@ -1,8 +1,0 @@
-
-proftpd ALL = (root) NOPASSWD: /usr/sbin/proftpd
-
-proftpd ALL = (root) NOPASSWD: /sbin/syslogd
-proftpd ALL = (root) NOPASSWD: /home/engines/scripts/_kill_syslog.sh
-
-#must have blank after last sudoers line
-

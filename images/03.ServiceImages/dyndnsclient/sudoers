@@ -1,0 +1,7 @@
+
+dyndns ALL = (root) NOPASSWD: /home/engines/scripts/_start_syslog.sh
+
+dyndns ALL = (root) NOPASSWD: /home/engines/scripts/_kill_syslog.sh
+
+#must have blank after last sudoers line
+

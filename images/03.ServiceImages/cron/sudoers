@@ -1,0 +1,9 @@
+
+
+cron ALL = (root) NOPASSWD: /home/engines/scripts/_start_syslog.sh
+
+
+cron ALL = (root) NOPASSWD: /home/engines/scripts/_kill_syslog.sh
+
+#must have blank after last sudoers line
+

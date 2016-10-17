@@ -1,9 +1,0 @@
-
-
-
-dovecot ALL = (root) NOPASSWD: /sbin/syslogd
-dovecot ALL = (root) NOPASSWD: /usr/sbin/dovecot 
-dovecot ALL = (root) NOPASSWD: /home/engines/scripts/_kill_syslog.sh
-
-
-
