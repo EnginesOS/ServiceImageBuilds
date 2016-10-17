@@ -41,7 +41,7 @@ RUN postmap /etc/postfix/transport;\
 ADD 000-default.conf /etc/apache2/sites-enabled/ 
 	
 RUN mkdir -p /home/email /home/configurators/grey/; chown postfix /home/email /home/configurators/saved/antispam/ /home/configurators/grey//;\
-	chmod -R go-rw /etc/sudoers /etc/sudoers.d/
+	chmod -R go-rw /etc/sudoers /etc/sudoers.d/postfix
 	
 
 ENV ContUser postfix
