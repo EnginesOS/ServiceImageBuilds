@@ -21,7 +21,7 @@ if ! test -f /etc/postfix/mailname
 		
 sudo -n postmap /etc/postfix/transport
 
-sudo -n /usr/lib/postfix/master &
+sudo -n /usr/lib/postfix/sbin/master &
 touch  /engines/var/run/flags/startup_complete
 wait
 rm /engines/var/run/flags/startup_complete  

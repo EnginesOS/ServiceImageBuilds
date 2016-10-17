@@ -11,7 +11,7 @@ sudo -n /home/engines/scripts/_start_syslog.sh
 
 sudo -n postmap /etc/postfix/transport 
 sudo -n postmap /etc/postfix/smarthost_passwd
-sudo -n /usr/lib/postfix/master &
+sudo -n /usr/lib/postfix/sbin/master &
 
 /home/configurators/set_default_domain.sh '{"default_domain":"'$DEFAULT_DOMAIN'"}'
 
