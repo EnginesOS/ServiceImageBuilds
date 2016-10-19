@@ -54,7 +54,7 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ED8E640A;\
 	rm /etc/rsyslog.d/50-default.conf 
 	
 	
-ADD rsyslog.conf /etc/ 
+ADD rsyslog.conf /etc/
 
 RUN		apt-get clean ;\
 		apt-get autoremove ;\
