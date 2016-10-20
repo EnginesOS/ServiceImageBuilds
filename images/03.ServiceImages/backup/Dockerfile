@@ -3,7 +3,7 @@ FROM	engines/servicebase:$release
 
 RUN apt-get -y update;\
 	/home/no_init.sh ;\
-	apt-get -y install mysql-client vim  python duply python-boto ncftp  python-paramiko python-gobject-2 build-essential gcc make   ;\
+	apt-get -y install mysql-client vim lftp python duply python-boto ncftp  python-paramiko python-gobject-2 build-essential gcc make   ;\
 	apt-get clean 
 ADD etc  etc
 
