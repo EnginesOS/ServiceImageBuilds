@@ -6,7 +6,7 @@ RUN adduser -q --disabled-password  -uid 22013 dovecot;\
 	adduser -q --disabled-password  -uid 22014 vmail;\
 	/home/no_init.sh ;\	
 	apt-get -y  update;\	
-	apt-get -y install    dovecot-core dovecot-imapd  dovecot-pop3d  dovecot-sieve dovecot-lmtpd dovecot-mysql ;\
+	apt-get -y install    dovecot-core=1:2.2.22-1ubuntu2 dovecot-imapd=1:2.2.22-1ubuntu2  dovecot-pop3d=1:2.2.22-1ubuntu2  dovecot-sieve=1:2.2.22-1ubuntu2 dovecot-lmtpd=1:2.2.22-1ubuntu2 dovecot-mysql=1:2.2.22-1ubuntu2 ;\
 	mkdir -p /var/mail ;\
 	chown dovecot /var/mail ;\
 	mkdir -p /var/run/dovecot;\
