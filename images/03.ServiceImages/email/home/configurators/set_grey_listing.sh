@@ -1,8 +1,8 @@
 #!/bin/bash
 
-service_hash=$1
+service_hash=`cat -`
 
-echo $1 >/home/configurators/saved/grey_listing
+echo $service_hash >/home/configurators/saved/grey_listing
  echo $service_hash | /home/engines/bin/json_to_env >/tmp/.env
  . /tmp/.env
 

@@ -1,8 +1,8 @@
 #!/bin/bash
 
-service_hash=$1
+service_hash=`cat -`
 
-echo $1 >/home/configurators/saved/default_domain
+echo $service_hash >/home/configurators/saved/default_domain
  echo $service_hash | /home/engines/bin/json_to_env >/tmp/.env
  . /tmp/.env
 
