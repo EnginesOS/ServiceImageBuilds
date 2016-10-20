@@ -1,9 +1,8 @@
 #!/bin/bash
 
-service_hash=`cat -`
 
-echo $service_hash >/home/configurators/saved/rbl
- echo $service_hash | /home/engines/bin/json_to_env >/tmp/.env
+cat - >/home/configurators/saved/rbl
+cat  echo $service_hash  | /home/engines/bin/json_to_env >/tmp/.env
  . /tmp/.env
 
 

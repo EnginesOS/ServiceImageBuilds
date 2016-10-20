@@ -1,10 +1,10 @@
 #!/bin/bash
 
-service_hash=`cat -`
 
-echo $service_hash >/home/configurators/saved/email_admin_secret
 
- echo $service_hash | /home/engines/bin/json_to_env >/tmp/.env
+cat - >/home/configurators/saved/email_admin_secret
+
+cat  /home/configurators/saved/email_admin_secret| /home/engines/bin/json_to_env >/tmp/.env
  . /tmp/.env
 
 
