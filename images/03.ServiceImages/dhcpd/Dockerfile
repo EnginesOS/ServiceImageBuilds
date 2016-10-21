@@ -16,7 +16,8 @@ COPY home /home/
 RUN chown dhcpd /home/configurators/saved/;\
 	chmod -R go-rw /etc/sudoers /etc/sudoers.d/  ;\
 	mkdir -p /var/lib/dhcp/ ;\
-	touch /var/lib/dhcp/dhcpd.leases ;\
+	touch /var/lib/dhcp/dhcpd.leases 
+	
 USER dhcpd
 ENV ContUser dhcpd
 CMD ["/home/start.sh"]
