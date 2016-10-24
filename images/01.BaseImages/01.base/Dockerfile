@@ -4,10 +4,7 @@ FROM engines/xenialbase:$release
 ENV DEBIAN_FRONTEND noninteractive
 
 COPY invoke-rc.d /usr/sbin/
-
-
 ADD sources.list /etc/apt/
-
 ADD home /home/
 	
 ENV	build 20161007
@@ -21,11 +18,8 @@ RUN	echo '#!/bin/sh' >/usr/sbin/policy-rc.d ;\
 	echo 'APT::Update::Post-Invoke { "rm -f /var/cache/apt/archives/*.deb /var/cache/apt/archives/partial/*.deb /var/cache/apt/*.bin || true"; };' >> /etc/apt/apt.conf.d/docker-clean ;\
 	echo 'Dir::Cache::pkgcache ""; Dir::Cache::srcpkgcache "";' >> /etc/apt/apt.conf.d/docker-clean ;\
 	echo 'Acquire::GzipIndexes "true"; Acquire::CompressionTypes::Order:: "gz";' > /etc/apt/apt.conf.d/docker-gzip-indexes;\
-	sed -i 's/^#\s*\(deb.*universe\)$/\1/g' /etc/apt/sources.list
-
-#echo 'Acquire::Languages "none";' > /etc/apt/apt.conf.d/docker-no-languages ;\
-	
-RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ED8E640A;\
+	sed -i 's/^#\s*\(deb.*universe\)$/\1/g' /etc/apt/sources.list ;\
+ 	apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ED8E640A;\
 	apt-get -y  update;\
 	apt-get -y upgrade;\
 	apt-get -y dist-upgrade;\
@@ -52,15 +46,14 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ED8E640A;\
 	apt-get remove  build-essential;\
 	/home/install_utf8_langauges.sh ;\
 	rm -r /tmp/* /home/install_utf8_langauges.sh;\
-	rm /etc/rsyslog.d/50-default.conf 
-	
-	
-ADD rsyslog.conf /etc/
+	rm /etc/rsyslog.d/50-default.conf;\ 
+	apt-get clean ;\
+	apt-get autoremove ;\
+	apt-get autoclean ;\		
+	rm -rf /tmp/*;\
+ 	mkdir /var/run/engines ;\
+ 	chgrp containers /var/run/engines; chmod g+w /var/run/engines	
 
-RUN		apt-get clean ;\
-		apt-get autoremove ;\
-		apt-get autoclean ;\		
-		rm -rf /tmp/*;\
- 		mkdir /var/run/engines ; chgrp containers /var/run/engines; chmod g+w /var/run/engines	
-		
+ADD rsyslog.conf /etc/		
+
 CMD ["/home/init.sh"]

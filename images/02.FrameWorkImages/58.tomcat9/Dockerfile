@@ -3,7 +3,7 @@ FROM engines/openjdk9:$release
 RUN  apt-mark unhold tzdata ;\
 	/usr/sbin/usermod -u 22671 www-data;\
 	apt-get update -y ;\
-	apt-get install -y  --force-yes  tomcat9 ;\
+	apt-get install -y tomcat9 ;\
 	ln -s /var/log/tomcat9 /usr/share/tomcat9/logs;\
  	ln -s  /etc/tomcat9  /usr/share/tomcat9/conf;\
  	ln -s /tmp /usr/share/tomcat9/temp ;\
