@@ -7,11 +7,8 @@ if ! test -d /home/bind/domain_list/lan/
  
 cd /home/bind/domain_list/lan/
 
-service_hash=$1
+ip=$2
 
-. /home/engines/scripts/functions.sh
-
-load_service_hash_to_environment
 
   if test -z ${ip}
 	then
@@ -21,5 +18,6 @@ load_service_hash_to_environment
 
 for domain in `ls `
  do
-   /home/add_service.sh :domain_name=$domain:ip=$ip:ip_type=lan:
+   echo '{"domain_name":"'$domain'","ip":"'$ip'","ip_type":"lan"}' | /home/add_service.sh 
+   #:domain_name=$domain:ip=$ip:ip_type=lan:
  done

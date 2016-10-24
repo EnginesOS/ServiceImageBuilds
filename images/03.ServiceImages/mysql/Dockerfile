@@ -7,6 +7,7 @@ apt-get update -y;\
 	apt-get -y install mysql-server;\
 	echo max_allowed_packet = 4M >> /etc/mysql/mysql.conf.d/mysqld.cnf;\
 	echo event-scheduler = 1 >> /etc/mysql/mysql.conf.d/mysqld.cnf;\
+	echo 'sql_mode=""' 	>> /etc/mysql/mysql.conf.d/mysqld.cnf;\
 	usermod -G containers -a mysql;\
  	/home/post_build_clean.sh
 

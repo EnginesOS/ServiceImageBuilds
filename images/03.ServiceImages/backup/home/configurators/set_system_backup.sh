@@ -18,11 +18,11 @@ echo "TARGET_USER='$user'"  >>$Backup_ConfigDir/$service/conf
 echo "TARGET_PASS='$pass'"  >>$Backup_ConfigDir/$service/conf
 }
 
-cat - >/home/configurators/saved/system_backup
+cat - > /home/configurators/saved/system_backup
 cat  /home/configurators/saved/system_backup | /home/engines/bin/json_to_env >/tmp/.env
  . /tmp/.env
 
- echo "$*" >>/var/log/backup/addbackup.log
+cat home/configurators/saved/system_backup >>/var/log/backup/addbackup.log
 
 Backup_ConfigDir=/home/backup/.duply/
 export
@@ -30,8 +30,9 @@ export
 if test -f /home/configurators/saved/default_destination
 then
 
-service_hash=`cat /home/configurators/saved/default_destination`
-load_service_hash_to_environment
+cat /home/configurators/saved/default_destination | /home/engines/bin/json_to_env >/tmp/.env
+ . /tmp/.env
+
 dest=$dest_proto://$dest_address/$dest_folder
 user=$dest_user
 pass=$dest_pass

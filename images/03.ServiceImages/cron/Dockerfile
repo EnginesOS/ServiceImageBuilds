@@ -6,9 +6,9 @@ RUN 	echo "Y" | adduser -q --disabled-password --home /home/cron -uid 22016 cron
 	apt-get  update;\
 	apt-get -y install build-essential gcc make   ;\
 	cd /tmp; \
-  	wget ftp://ftp.seul.org/pub/fcron/fcron-3.2.0.src.tar.gz;\
-  	tar -xzpf fcron-3.2.0.src.tar.gz;\
-  	cd fcron-3.2.0;\
+  	wget ftp://ftp.seul.org/pub/fcron/fcron-3.3.0.src.tar.gz;\
+  	tar -xzpf fcron-3.3.0.src.tar.gz;\
+  	cd fcron-3.3.0;\
   	./configure --with-run-non-privileged --with-rootname=cron\
   	 --without-sendmail\
 	--with-rootgroup=cron --with-username=cron --with-groupname=cron\

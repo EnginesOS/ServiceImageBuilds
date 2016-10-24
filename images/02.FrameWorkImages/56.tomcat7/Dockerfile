@@ -3,7 +3,7 @@ FROM engines/openjdk8:$release
 RUN  apt-mark unhold tzdata ;\
 	/usr/sbin/usermod -u 22671 www-data;\
 	apt-get update -y ;\
-	apt-get install -y  --force-yes  tomcat8 ;\
+	apt-get install -y   tomcat8 ;\
 	ln -s /var/log/tomcat8 /usr/share/tomcat8/logs;\
  	ln -s  /etc/tomcat8  /usr/share/tomcat8/conf;\
  	ln -s /tmp /usr/share/tomcat8/temp ;\

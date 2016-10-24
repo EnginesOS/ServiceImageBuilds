@@ -20,16 +20,11 @@ RUN	echo y y |sendmailconfig --no-reload;\
 	chgrp containers  /home/actionators/saved/;\
 	chmod g+w /home/actionators/saved/ ;\	
 	mkdir $HOME ; chgrp containers $HOME; chmod g+w  $HOME ;\
-	chmod -R go-rw /etc/sudoers /etc/sudoers.d/
-
-	
-
-
-
-RUN		apt-get clean ;\
-		apt-get autoremove ;\
-		apt-get autoclean ;\		
-		rm -rf /tmp/*
+	chmod -R go-rw /etc/sudoers /etc/sudoers.d/;\
+	apt-get clean ;\
+	apt-get autoremove ;\
+	apt-get autoclean ;\		
+	rm -rf /tmp/*
 
 
 

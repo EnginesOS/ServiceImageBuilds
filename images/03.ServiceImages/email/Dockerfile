@@ -11,9 +11,9 @@ ADD home home
 
 
 RUN cd /tmp/;\
-	 wget http://downloads.sourceforge.net/project/postfixadmin/postfixadmin/postfixadmin-2.92/postfixadmin-2.92.tar.gz;\
-	 tar -xzpf postfixadmin-2.92.tar.gz;\
-	 mv  postfixadmin-2.92 /home/app ;\
+	 wget http://downloads.sourceforge.net/project/postfixadmin/postfixadmin/postfixadmin-3.0/postfixadmin-3.0.tar.gz;\
+	 tar -xzpf postfixadmin-3.0.tar.gz;\
+	 mv  postfixadmin-3.0 /home/app ;\
 	 mkdir -p /var/log/apache2 /etc/postfix/mysql;\
 	 chown www-data /var/log/apache2 ;\
 	 ln -s /etc/php/7.0/mods-available/imap.ini /etc/php/7.0/apache2/conf.d/;\

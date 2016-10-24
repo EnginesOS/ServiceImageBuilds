@@ -8,6 +8,6 @@ echo $service |\
       -o StrictHostKeyChecking=no\
        -i /home/.ssh/run_backup_on_service\
         engines@mgmt.engines.internal\
-          /opt/engines/scripts/run_backup_on_service.sh > /tmp/backup_$service/backup.${ts}.gz
+          /opt/engines/system/scripts/backup/run_backup_on_service.sh > /tmp/backup_$service.${ts}.gz
 
       

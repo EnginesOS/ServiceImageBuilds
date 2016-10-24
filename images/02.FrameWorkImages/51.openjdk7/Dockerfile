@@ -4,7 +4,7 @@ RUN apt-mark unhold tzdata ;\
 	/usr/sbin/usermod -u 22671 www-data;\
 	add-apt-repository ppa:openjdk-r/ppa  ;\
 	apt-get update -y ;\
-	apt-get install -y  --force-yes openjdk-7-jdk-headless ;\
+	apt-get install -y openjdk-7-jdk-headless ;\
  	usermod -G containers -a www-data ;\
  	/home/post_build_clean.sh
  	
