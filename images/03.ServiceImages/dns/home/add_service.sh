@@ -20,6 +20,13 @@ fi
 				echo Error:Missing IP Address
         		exit 128
    		 fi
+   		 
+   		 if ! test -z $internal_only
+   		 then
+   		 	ip_type=lan
+   		 else
+   		 	ip_type=gw
+   		 fi
 	   touch /home/bind/domain_list/${ip_type}/${domain_name}
 	 	cat  /etc/bind/templates/config_file_zone_entry.tmpl | sed " /DOMAIN/s//${domain_name}/g" > /home/bind/engines/domains/${domain_name}
 	 	cat /etc/bind/templates/selfhosted.tmpl | sed "/DOMAIN/s//${domain_name}/g" | sed "/IP/s//${ip}/g" > /home/bind/engines/zones/named.conf.${domain_name}
