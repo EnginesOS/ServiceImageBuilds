@@ -11,26 +11,28 @@ fi
 
  . /tmp/.env
 
-	if ! test -z ${domain_name}
+	if ! test -z $domain_name
 	 then
-	  if ! test ${domain_name} = engines.internal
+	  if ! test $domain_name = engines.internal
 	   then
 	   
-		 if test -z ${ip}
+		 if ! test -z $self_hosted 
+		  then
+		   if $self_hosted = true
 			then
-			  if ! test -z $internal_only
+			  	if ! test -z $internal_only
    		         then
    		    		 	ip_type=lan
    		    		 	ip=`cat /opt/engines/etc/net/ip`
    		         else
    		 	           ip_type=gw
    		 	           ip=`cat /opt/engines/etc/net/public`
-   		     fi
+   		 	    fi
    		   else
    		     ip_type=gw
+   		   fi
    		 fi
-   		 
-   		 
+   		    		 
 	   touch /home/bind/domain_list/${ip_type}/${domain_name}
 	 	cat  /etc/bind/templates/config_file_zone_entry.tmpl | sed " /DOMAIN/s//${domain_name}/g" > /home/bind/engines/domains/${domain_name}
 	 	cat /etc/bind/templates/selfhosted.tmpl | sed "/DOMAIN/s//${domain_name}/g" | sed "/IP/s//${ip}/g" > /home/bind/engines/zones/named.conf.${domain_name}
@@ -58,23 +60,24 @@ add_to_internal_domain
 		exit 128
 	fi
 	
-	
-	if ! test -z ${ip}
-		then
-			ip_reversed=`echo $ip |awk  ' BEGIN {  FS="."} {print $4 "." $3 "." $2 "." $1}'`
-			echo server 127.0.0.1 > /tmp/.rdns_cmd
-			echo update delete ${ip_reversed}.in-addr.arpa. >> /tmp/.rdns_cmd
-			echo update add ${ip_reversed}.in-addr.arpa.  30 IN PTR $fqdn_str  >> /tmp/.rdns_cmd
-			echo send >> /tmp/.rdns_cmd
-			nsupdate -k /etc/bind/keys/ddns.private /tmp/.rdns_cmd
-	
-				if test $? -eq 0
-					then
-						echo Success
-						exit 0
-				else	
-					file=`cat /tmp/.rdns_cmd`
-					echo Error:With nsupdate $file
-					exit 128
-				fi
-	 fi
+#
+#	if ! test -z ${ip}
+#		then
+#			ip_reversed=`echo $ip |awk  ' BEGIN {  FS="."} {print $4 "." $3 "." $2 "." $1}'`
+#			echo server 127.0.0.1 > /tmp/.rdns_cmd
+#			echo update delete ${ip_reversed}.in-addr.arpa. >> /tmp/.rdns_cmd
+#			echo update add ${ip_reversed}.in-addr.arpa.  30 IN PTR $fqdn_str  >> /tmp/.rdns_cmd
+#			echo send >> /tmp/.rdns_cmd
+#			nsupdate -k /etc/bind/keys/ddns.private /tmp/.rdns_cmd
+#
+#				if test $? -eq 0
+#					then
+#						echo Success
+#						exit 0
+#				else	
+#					file=`cat /tmp/.rdns_cmd`
+#					echo Error:With nsupdate $file
+#					exit 128
+#				fi
+#	 fi
+#
