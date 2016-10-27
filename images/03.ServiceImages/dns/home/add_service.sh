@@ -15,18 +15,22 @@ fi
 	 then
 	  if ! test ${domain_name} = engines.internal
 	   then
-	   	if test -z ${ip}
+	   
+		 if test -z ${ip}
 			then
-				echo Error:Missing IP Address
-        		exit 128
+			  if ! test -z $internal_only
+   		         then
+   		    		 	ip_type=lan
+   		    		 	ip=`cat /opt/engines/etc/net/ip`
+   		         else
+   		 	           ip_type=gw
+   		 	           ip=`cat /opt/engines/etc/net/public`
+   		     fi
+   		   else
+   		     ip_type=gw
    		 fi
    		 
-   		 if ! test -z $internal_only
-   		 then
-   		 	ip_type=lan
-   		 else
-   		 	ip_type=gw
-   		 fi
+   		 
 	   touch /home/bind/domain_list/${ip_type}/${domain_name}
 	 	cat  /etc/bind/templates/config_file_zone_entry.tmpl | sed " /DOMAIN/s//${domain_name}/g" > /home/bind/engines/domains/${domain_name}
 	 	cat /etc/bind/templates/selfhosted.tmpl | sed "/DOMAIN/s//${domain_name}/g" | sed "/IP/s//${ip}/g" > /home/bind/engines/zones/named.conf.${domain_name}
