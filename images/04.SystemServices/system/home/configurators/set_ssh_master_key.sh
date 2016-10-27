@@ -2,10 +2,10 @@
 
 service_hash=$1
 
-echo $1 >/home/configurators/saved/ssh_master_key
+cat - >/home/configurators/saved/ssh_master_key
 
 
- echo $service_hash | /home/engines/bin/json_to_env >/tmp/.env
+ echo - | /home/engines/bin/json_to_env >/tmp/.env
  . /tmp/.env
 
 
