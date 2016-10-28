@@ -14,6 +14,7 @@ fi
 
 if test $ip = null
 	then
+	 	echo unset ip
 		unset ip
 	fi
 	
@@ -21,33 +22,30 @@ if test $ip = null
 	 then
 	  if ! test $domain_name = engines.internal
 	   then	   
-		 if ! test -z $self_hosted 
-		  then
-		   if $self_hosted = true
-			then
-			  	if ! test -z $internal_only
+		  if test -z $ip  
+		   then
+			  	if  test  $ip_type = lan 
    		         then   		         
-   		    		 	ip_type=lan
    		    		 	ip=`cat /opt/engines/etc/net/ip`
-   		         elif   test  $internal_only = false
+   		         elif   test  $ip_type = gw 
    		          then
-   		         	   ip_type=gw
-   		 	           ip=`cat /opt/engines/etc/net/public`  
-   		         else
-   		 	           ip_type=gw
-   		 	           ip=`cat /opt/engines/etc/net/public`
+   		 	           ip=`cat /opt/engines/etc/net/public`     		     
    		 	    fi
-   		   else
-   		     ip_type=gw
-   		   fi   		    		    	
-	   		touch /home/bind/domain_list/${ip_type}/${domain_name}
-	 		cat  /etc/bind/templates/config_file_zone_entry.tmpl | sed " /DOMAIN/s//${domain_name}/g" > /home/bind/engines/domains/${domain_name}
-	 		cat /etc/bind/templates/selfhosted.tmpl | sed "/DOMAIN/s//${domain_name}/g" | sed "/IP/s//${ip}/g" > /home/bind/engines/zones/named.conf.${domain_name}
-	 		cat /home/bind/engines/domains/* > /home/bind/engines/domains.hosted
-	 		kill -HUP `cat /var/run/named/named.pid`
-	 	fi
+   		 	else
+   		 		ip_type=gw
+   		 	fi
+   		 	
+   		 	it ! test -z $ip_type
+   		 	   then 		    	
+	   				touch /home/bind/domain_list/${ip_type}/${domain_name}
+	 				cat  /etc/bind/templates/config_file_zone_entry.tmpl | sed " /DOMAIN/s//${domain_name}/g" > /home/bind/engines/domains/${domain_name}
+	 				cat /etc/bind/templates/selfhosted.tmpl | sed "/DOMAIN/s//${domain_name}/g" | sed "/IP/s//${ip}/g" > /home/bind/engines/zones/named.conf.${domain_name}
+	 				cat /home/bind/engines/domains/* > /home/bind/engines/domains.hosted
+	 				kill -HUP `cat /var/run/named/named.pid`
+	 		
+				fi		   
+	    hostname=`echo $domain_name | sed "/\./s//_/g"`
 	 	domain_name=engines.internal
-	 	hostname=public
 	 	add_to_internal_domain
 	 	echo Success
 	 	exit 0
