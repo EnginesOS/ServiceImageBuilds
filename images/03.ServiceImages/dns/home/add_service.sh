@@ -20,30 +20,31 @@ if test $ip = null
 	if ! test -z $domain_name
 	 then
 	  if ! test $domain_name = engines.internal
-	   then
-	   
+	   then	   
 		 if ! test -z $self_hosted 
 		  then
 		   if $self_hosted = true
 			then
 			  	if ! test -z $internal_only
-   		         then
+   		         then   		         
    		    		 	ip_type=lan
    		    		 	ip=`cat /opt/engines/etc/net/ip`
+   		         elif   test  $internal_only = false
+   		         	   ip_type=gw
+   		 	           ip=`cat /opt/engines/etc/net/public`  
    		         else
    		 	           ip_type=gw
    		 	           ip=`cat /opt/engines/etc/net/public`
    		 	    fi
    		   else
    		     ip_type=gw
-   		   fi
-   		 fi
-   		    		 
-	   touch /home/bind/domain_list/${ip_type}/${domain_name}
-	 	cat  /etc/bind/templates/config_file_zone_entry.tmpl | sed " /DOMAIN/s//${domain_name}/g" > /home/bind/engines/domains/${domain_name}
-	 	cat /etc/bind/templates/selfhosted.tmpl | sed "/DOMAIN/s//${domain_name}/g" | sed "/IP/s//${ip}/g" > /home/bind/engines/zones/named.conf.${domain_name}
-	 	cat /home/bind/engines/domains/* > /home/bind/engines/domains.hosted
-	 	kill -HUP `cat /var/run/named/named.pid`
+   		   fi   		    		    	
+	   		touch /home/bind/domain_list/${ip_type}/${domain_name}
+	 		cat  /etc/bind/templates/config_file_zone_entry.tmpl | sed " /DOMAIN/s//${domain_name}/g" > /home/bind/engines/domains/${domain_name}
+	 		cat /etc/bind/templates/selfhosted.tmpl | sed "/DOMAIN/s//${domain_name}/g" | sed "/IP/s//${ip}/g" > /home/bind/engines/zones/named.conf.${domain_name}
+	 		cat /home/bind/engines/domains/* > /home/bind/engines/domains.hosted
+	 		kill -HUP `cat /var/run/named/named.pid`
+	 	fi
 	 	domain_name=engines.internal
 	 	hostname=public
 	 	add_to_internal_domain
