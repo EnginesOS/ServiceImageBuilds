@@ -30,6 +30,7 @@ if test $ip = null
    		    		 	ip_type=lan
    		    		 	ip=`cat /opt/engines/etc/net/ip`
    		         elif   test  $internal_only = false
+   		          then
    		         	   ip_type=gw
    		 	           ip=`cat /opt/engines/etc/net/public`  
    		         else
