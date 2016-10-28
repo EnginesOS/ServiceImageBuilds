@@ -9,8 +9,14 @@ if test $# -eq 0
 	echo $1 | /home/engines/bin/json_to_env >/tmp/.env
 fi
 
+
  . /tmp/.env
 
+if test $ip = null
+	then
+		unset ip
+	fi
+	
 	if ! test -z $domain_name
 	 then
 	  if ! test $domain_name = engines.internal
