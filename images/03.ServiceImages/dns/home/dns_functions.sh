@@ -7,11 +7,13 @@ function add_to_internal_domain {
         exit 128
     fi
     
-    fqdn_str=${hostname}.engines.internal
+    host=`echo ${hostname} | sed "/[_.]/s//-/g"`
+    engine=`echo ${parent_engine} | sed "/[_.]/s//-/g"`
+    fqdn_str=${host}.engines.internal
     
   	if test -z ${ip}
 	then
-		 update_line=" update add $fqdn_str 30 CNAME ${parent_engine}.engines.internal"
+		 update_line=" update add $fqdn_str 30 CNAME ${engine}.engines.internal"
        else
        update_line=" update add $fqdn_str 30 A $ip"        
     fi  

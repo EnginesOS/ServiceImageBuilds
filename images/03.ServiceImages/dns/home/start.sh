@@ -29,6 +29,7 @@ sudo -n /home/setup.sh
 sudo -n /home/engines/scripts/_start_syslog.sh
 
 sudo -n /usr/sbin/named  -c /etc/bind/named.conf -f -u bind &
+touch /engines/var/run/flags/startup_complete
 
 . /home/dns_functions.sh
 hostname=lanhost
@@ -37,7 +38,7 @@ add_to_internal_domain
 ip=`cat  /opt/engines/etc/net/public`
 hostname=publichost
 add_to_internal_domain
-touch /engines/var/run/flags/startup_complete
+
 wait  
 
 rm /engines/var/run/flags/startup_complete
