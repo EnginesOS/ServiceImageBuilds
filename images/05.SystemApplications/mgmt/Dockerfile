@@ -47,7 +47,7 @@ COPY etc/nginx/ /etc/nginx
 COPY ruby_env /home/app/.ruby_env
 USER 0
 RUN chmod ugo+w -R /etc/nginx/sites-enabled/default /etc/nginx/;\
-	mkdir /var/run/nginx/;\
+	mkdir /var/run/nginx/ /var/log/nginx;\
 	chown www-data /var/run/;\
 	chown www-data /var/run/nginx/;\
 	chown www-data /var/log/nginx/
