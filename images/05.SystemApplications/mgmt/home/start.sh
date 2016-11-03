@@ -47,8 +47,13 @@ SECRET_KEY_BASE=`/usr/local/rbenv/shims/bundle exec rake secret`
 export SECRET_KEY_BASE
 
 export RAILS_ENV
-
-DATABASE_URL=$rails_flavor://$dbuser:$dbpasswd@$dbhost/$dbname
+mkdir -p /home/fs/persistent/db/
+ if ! test -f /home/fs/persistent/db/database.sqllite
+  then
+		touch /home/fs/persistent/db/database.sqllite
+  fi
+#DATABASE_URL=$rails_flavor://$dbuser:$dbpasswd@$dbhost/$dbname
+DATABASE_URL=sqlite3:/home/fs/persistent/db/database.sqllite
 export DATABASE_URL
  if test -f /home/ruby_env
   then
