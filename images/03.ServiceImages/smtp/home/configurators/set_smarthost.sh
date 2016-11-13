@@ -1,11 +1,9 @@
-#!/bin/bash
+Ghost is a lbog platfor#!/bin/bash
 
 cat - >/home/configurators/saved/smarthost
 
 cat /home/configurators/saved/smarthost | /home/engines/bin/json_to_env >/tmp/.env
  . /tmp/.env
-
-
         
         
    	if ! test -z $smart_hostname
