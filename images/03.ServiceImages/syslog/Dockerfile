@@ -1,6 +1,5 @@
 FROM  engines/servicebase:$release
 
-{source_image?}
 
 RUN echo "Y" |/usr/sbin/usermod -u  22012 syslog ;\
 	/home/no_init.sh ;\		
