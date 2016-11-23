@@ -6,10 +6,9 @@ if test -f /home/certs/store/private/ca/keys/system_CA.key
 	then	
 	#	echo "CA Exists"
 	#	exit 127
-	fs=`ls  -l --time-style==+%j_%C_%y_%H_%m Makefile |cut -f6 -d" "`
-	cp /home/certs/store/public/ca/certs/system_CA.pem  /home/certs/store/public/ca/certs/system_CA.pem
+	cp /home/certs/store/public/ca/certs/system_CA.pem  /home/certs/store/public/ca/certs/system_CA.pem.bak
 #	rm /home/certs/store/public/ca/certs/system_CA.pem
-	cp /home/certs/store/private/ca/keys/system_CA.key  /home/certs/store/private/ca/keys/system_CA.key
+	cp /home/certs/store/private/ca/keys/system_CA.key  /home/certs/store/private/ca/keys/system_CA.key.bak
 	#rm /home/certs/store/private/ca/keys/system_CA.key 
 	fi
 
