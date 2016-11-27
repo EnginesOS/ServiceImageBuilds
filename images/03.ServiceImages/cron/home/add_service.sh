@@ -16,6 +16,11 @@ fi
 		echo Error:Missing cron_job
         exit -1
     fi
+    if test -z "${when}"
+	then
+		echo Error:Missing when
+        exit -1
+    fi
   	if test -z ${title}
 	then
 		echo Error:missing title
@@ -29,33 +34,17 @@ fi
     
 mkdir -p /home/cron/entries/${parent_engine}/
 
-mins=`echo "$cron_job" | cut -d' ' -f1`
- if [[ $mins == @* ]] 
-  then
-  cmd=`echo "$cron_job" | cut -d' ' -f 2- `
-	
-  else
-    hrs=`echo "$cron_job" | cut -d' ' -f2`
-	day=`echo "$cron_job" | cut -d' ' -f3`
-	dow=`echo "$cron_job" | cut -d' ' -f4`
-	dom=`echo "$cron_job" | cut -d' ' -f5`
-	cmd=`echo "$cron_job" | cut -d' ' -f 6- `
-fi 
+
 
 if test $action_type == "web"
 	then
-	echo $cmd|grep -e ^/ >/dev/null
-	if test $? -ne 0
-         then
-           cmd=/$cmd
-         fi
-	
-		cmd="wget http://${parent_engine}.engines.internal:8000$cmd  -o /tmp/out"
+
+		cmd="curl http://${parent_engine}.engines.internal:8000$cron_job  -o /tmp/out"
 	else
-		cmd="application_exec ${parent_engine} $cmd"
+		cmd="curl http://172.17.0.1:2380/v0/cron/engine/${parent_engine}/$title/run"
 	fi
 
-echo "$mins $hrs $day $dow $dom $cmd " > /home/cron/entries/${parent_engine}/$title
+echo "$when $cmd " > /home/cron/entries/${parent_engine}/$title
 
 /home/rebuild_crontab.sh
 
