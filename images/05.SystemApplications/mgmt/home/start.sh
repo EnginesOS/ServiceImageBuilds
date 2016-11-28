@@ -15,7 +15,7 @@ fi
 
  if ! test -d /var/log/nginx
  then
-mkdir   /var/log/nginx 
+	mkdir   /var/log/nginx 
 fi
 
 if test -f /home/app/app/config/newrelic.yml
@@ -36,8 +36,8 @@ if ! test -h /home/app/public/system
 	ln -s /home/fs/persistent/system /home/app/public/system
  fi
  
-redis-server /etc/redis/redis.conf &
-redis_pid=$!
+#redis-server /etc/redis/redis.conf &
+#redis_pid=$!
 
 /home/deployment.sh
 mkdir -p /engines/var/run/flags/
@@ -64,8 +64,8 @@ echo " passenger_env_var SECRET_KEY_BASE $SECRET_KEY_BASE;" >> /home/app/.env_va
 echo " passenger_env_var SYSTEM_API_URL $SYSTEM_API_URL;">> /home/app/.env_vars
 echo " passenger_env_var SYSTEM_RELEASE $SYSTEM_RELEASE;" >> /home/app/.env_vars
 echo " passenger_env_var DATABASE_URL $DATABASE_URL;" >> /home/app/.env_vars
-echo " passenger_env_var ACTION_CABLE_ALLOWED_REQUEST_ORIGINS $ACTION_CABLE_ALLOWED_REQUEST_ORIGINS;" >> /home/app/.env_vars
-echo " passenger_env_var ACTION_CABLE_URL $ACTION_CABLE_URL;" >> /home/app/.env_vars
+#echo " passenger_env_var ACTION_CABLE_ALLOWED_REQUEST_ORIGINS $ACTION_CABLE_ALLOWED_REQUEST_ORIGINS;" >> /home/app/.env_vars
+#echo " passenger_env_var ACTION_CABLE_URL $ACTION_CABLE_URL;" >> /home/app/.env_vars
 
 if test -f /home/app/env_production.rb
 	then
@@ -102,6 +102,6 @@ echo Server Started
 touch  /engines/var/run/flags/startup_complete
 wait 
 
-kill -TERM $redis_pid
-wait $redis_pid
+#kill -TERM $redis_pid
+#wait $redis_pid
 rm /engines/var/run/flags/startup_complete

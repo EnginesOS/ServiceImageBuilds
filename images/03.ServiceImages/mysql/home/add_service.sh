@@ -76,5 +76,5 @@ if test $? -eq 0
 	fi
 	
 	echo "Error:$res"
-	exit -1
+	exit 127
 
