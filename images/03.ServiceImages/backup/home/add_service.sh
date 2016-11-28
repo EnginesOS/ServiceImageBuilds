@@ -34,7 +34,7 @@ export parent
 export backup_type
 
 
-if test $backup_up = 'engine_and_data'
+if test $backup_type = 'engine_and_data'
  then
      /home/add_backup.sh ${parent_engine}:system
 	n=0
@@ -48,7 +48,7 @@ if test $backup_up = 'engine_and_data'
 			echo "PASSED  ${parent_engine[n]}:${publisher_namespace[n]}/${type_path[n]}/${service_handle[n]}/"
   			n=`expr $n + 1`
  		done
-  elif test $backup_up = 'engine_only'
+  elif test $backup_type = 'engine_only'
   then
   /home/add_backup.sh ${parent_engine}:system
   else
