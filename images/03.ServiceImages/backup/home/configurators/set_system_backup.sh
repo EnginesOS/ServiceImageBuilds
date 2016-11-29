@@ -2,9 +2,10 @@
 
 function add_service {
 
-/tmp/
+
 src=/tmp/backup_$service/
-						mkdir -p $Backup_ConfigDir/$service
+
+						mkdir -p ${Backup_ConfigDir}/${service}
 						chmod og-r $Backup_ConfigDir/$service
 						echo -n $service >$Backup_ConfigDir/$service/service
 						cp   /home/tmpl/service_pre.sh $Backup_ConfigDir/$service/pre
@@ -14,7 +15,7 @@ src=/tmp/backup_$service/
                 		/home/prep_conf.sh $Backup_ConfigDir/$service/conf
 
                 		echo "SOURCE='$src'" >>$Backup_ConfigDir/$service/conf
-_dest=$dest/databases
+_dest=$dest/$service
 echo "TARGET='$_dest'" >>$Backup_ConfigDir/$service/conf
 echo "TARGET_USER='$user'"  >>$Backup_ConfigDir/$service/conf
 echo "TARGET_PASS='$pass'"  >>$Backup_ConfigDir/$service/conf
@@ -27,7 +28,7 @@ cat  /home/configurators/saved/system_backup | /home/engines/bin/json_to_env >/t
 cat home/configurators/saved/system_backup >>/var/log/backup/addbackup.log
 
 Backup_ConfigDir=/home/backup/.duply/
-export
+
 
 if test -f /home/configurators/saved/default_destination
 then
@@ -65,11 +66,12 @@ echo "TARGET_PASS='$pass'"  >>$Backup_ConfigDir/system/conf
 					services=`grep -lr backup_support /opt/engines/etc/services/providers/ |uniq`
 						for service_path in $services						
 						 do
-						 service=`grep service_container $service_path | awk -F : '{print $2}' `
+						 service=`grep service_container $service_path | awk -F : '{print $2}' | sed "/ /s///g" `
 						 if test $service = 'filesystem' -o $service = 'syslog'
 						  then
 						  continue
 						  fi 
+						  echo ADD SERVICE $service
 							add_service 
 						done	
 						
@@ -94,8 +96,8 @@ echo "TARGET_PASS='$pass'"  >>$Backup_ConfigDir/system/conf
 					/home/prep_conf.sh $Backup_ConfigDir/engines_fs/conf
 					_dest=$dest/engines_files
 					echo "TARGET='$_dest'" >>$Backup_ConfigDir/engines_fs/conf
-					echo "TARGET_USER='$user'"  >>$Backup_ConfigDir/engines_fs/conf
-					echo "TARGET_PASS='$pass'"  >>$Backup_ConfigDir/engines_fs/conf
+					echo "TARGET_USER='$user'" >>$Backup_ConfigDir/engines_fs/conf
+					echo "TARGET_PASS='$pass'" >>$Backup_ConfigDir/engines_fs/conf
 					echo "SOURCE=/backup_src/volumes/fs/" >>$Backup_ConfigDir/engines_fs/conf
 					service=volmanager
 					add_service 
