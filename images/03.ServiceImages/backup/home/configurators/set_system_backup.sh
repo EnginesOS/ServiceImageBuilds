@@ -5,7 +5,7 @@ function add_service {
 src=/tmp/backup_$service/
 						mkdir -p $Backup_ConfigDir/$service
 						echo -n $service >$Backup_ConfigDir/$service/service
-						 cp   /home/tmpl/service_pre.sh $Backup_ConfigDir/$service/pre
+						cp   /home/tmpl/service_pre.sh $Backup_ConfigDir/$service/pre
                 		cp /home/tmpl/service_post.sh  $Backup_ConfigDir/$service/post
                 		chmod u+x $Backup_ConfigDir/$service/pre
                 		chmod u+x $Backup_ConfigDir/$service/post
@@ -45,7 +45,7 @@ if test $dest_proto = "s3"
 					then					
 						mkdir -p $Backup_ConfigDir/system
 						/home/prep_conf.sh $Backup_ConfigDir/system/conf
-                		cp /home/tmpl/system_prep.sh $Backup_ConfigDir/system/pre
+                		cp /home/tmpl/system_pre.sh $Backup_ConfigDir/system/pre
                 		cp /home/tmpl/system_post.sh  $Backup_ConfigDir/system/post
                 		mkdir -p /tmp/system_backup
  						src=/tmp/system_backup
@@ -65,7 +65,7 @@ echo "TARGET_PASS='$pass'"  >>$Backup_ConfigDir/system/conf
 						 service=`basename $service_path `
 						 if test $service = 'filesystem' -o $service = 'syslog'
 						  then
-						  continure
+						  continue
 						  fi 
 							add_service 
 						done	
@@ -74,8 +74,9 @@ echo "TARGET_PASS='$pass'"  >>$Backup_ConfigDir/system/conf
 				
 				if test $include_logs = "true"
 					then
-					service=syslog
-					add_service 
+					mkdir -p $Backup_ConfigDir/logs
+					/home/prep_conf.sh $Backup_ConfigDir/logs/conf
+					echo "SOURCE=/backup_src/logs/" >>$Backup_ConfigDir/logs/conf
 				fi
 				
 				if test $include_files = "true"

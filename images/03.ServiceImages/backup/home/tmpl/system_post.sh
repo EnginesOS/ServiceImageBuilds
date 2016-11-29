@@ -1,1 +1,1 @@
-rm -r /tmp/system_backup*gz
+rm -r /tmp/system_backup
