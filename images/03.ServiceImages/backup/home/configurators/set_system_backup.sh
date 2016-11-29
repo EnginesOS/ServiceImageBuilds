@@ -1,9 +1,11 @@
 #!/bin/bash
 
 function add_service {
+
 /tmp/
 src=/tmp/backup_$service/
 						mkdir -p $Backup_ConfigDir/$service
+						chmod og-r $Backup_ConfigDir/$service
 						echo -n $service >$Backup_ConfigDir/$service/service
 						cp   /home/tmpl/service_pre.sh $Backup_ConfigDir/$service/pre
                 		cp /home/tmpl/service_post.sh  $Backup_ConfigDir/$service/post
@@ -44,6 +46,7 @@ if test $dest_proto = "s3"
 				if test  $include_system = "true"
 					then					
 						mkdir -p $Backup_ConfigDir/system
+						chmod og-r $Backup_ConfigDir/system
 						/home/prep_conf.sh $Backup_ConfigDir/system/conf
                 		cp /home/tmpl/system_pre.sh $Backup_ConfigDir/system/pre
                 		cp /home/tmpl/system_post.sh  $Backup_ConfigDir/system/post
@@ -75,6 +78,7 @@ echo "TARGET_PASS='$pass'"  >>$Backup_ConfigDir/system/conf
 				if test $include_logs = "true"
 					then
 					mkdir -p $Backup_ConfigDir/logs
+					chmod og-r $Backup_ConfigDir/logs
 					/home/prep_conf.sh $Backup_ConfigDir/logs/conf
 					_dest=$dest/logs
 					echo "TARGET='$_dest'" >>$Backup_ConfigDir/logs/conf
@@ -86,7 +90,7 @@ echo "TARGET_PASS='$pass'"  >>$Backup_ConfigDir/system/conf
 				if test $include_files = "true"
 					then
 					service=volmanager
-						add_service 
+					add_service 
 				fi
 				
 
