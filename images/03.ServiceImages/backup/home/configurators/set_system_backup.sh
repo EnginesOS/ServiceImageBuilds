@@ -89,6 +89,14 @@ echo "TARGET_PASS='$pass'"  >>$Backup_ConfigDir/system/conf
 				
 				if test $include_files = "true"
 					then
+					mkdir -p $Backup_ConfigDir/engines_fs
+					chmod og-r $Backup_ConfigDir/engines_fs
+					/home/prep_conf.sh $Backup_ConfigDir/engines_fs/conf
+					_dest=$dest/engines_files
+					echo "TARGET='$_dest'" >>$Backup_ConfigDir/engines_fs/conf
+					echo "TARGET_USER='$user'"  >>$Backup_ConfigDir/engines_fs/conf
+					echo "TARGET_PASS='$pass'"  >>$Backup_ConfigDir/engines_fs/conf
+					echo "SOURCE=/backup_src/volumes/fs/" >>$Backup_ConfigDir/engines_fs/conf
 					service=volmanager
 					add_service 
 				fi
