@@ -9,6 +9,7 @@ ADD etc  etc
 
 RUN echo "Y" | /usr/sbin/usermod -u 22015 -d /home/backup  backup;\
 	usermod -G containers -a backup;\ 
+	usermod -G root -a backup;\	 	
 	cd /tmp; \
   	wget ftp://ftp.seul.org/pub/fcron/fcron-3.3.0.src.tar.gz;\
   	tar -xzpf fcron-3.3.0.src.tar.gz;\
