@@ -1,12 +1,8 @@
 
     
 ts=`date +%d_%m_%y`
+mkdir -p /tmp/system_backup
 
-echo $service |\
- ssh  -o UserKnownHostsFile=/dev/null\
-      -o StrictHostKeyChecking=no\
-       -i /home/.ssh/run_system_backup\
-        engines@mgmt.engines.internal\
-          /opt/engines/scripts/services/backup/run_backup_on_service.sh > /tmp//tmp/system_backup/backup.${ts}.gz
-
-      
+  curl http://172.17.0.1:2380/v0/backup/system_files  >/tmp/system_backup/files_$ts.tgz
+  curl http://172.17.0.1:2380/v0/backup/system_db  >/tmp/system_backup/db_$ts.gz
+  curl http://172.17.0.1:2380/v0/backup/registry  >/tmp/system_backup/system_registry_$ts.gz

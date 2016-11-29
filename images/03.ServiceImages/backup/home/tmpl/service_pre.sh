@@ -1,6 +1,6 @@
 service=`cat service`
 
-     
+ service=$PROFILE 
 ts=`date +%d_%m_%y`
 
 echo $service |\
