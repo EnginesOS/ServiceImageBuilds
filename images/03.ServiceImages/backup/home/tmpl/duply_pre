@@ -1,4 +1,4 @@
-
+engine=`echo $CONFDIR | awk -F/ '{print $NF}'` 
 ts=`date +%d_%m_%y`
 mkdir -p tmp/backup/
 
