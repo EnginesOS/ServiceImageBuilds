@@ -1,15 +1,12 @@
 #!/bin/bash
 
-if test $# -eq 0 
- then
+
  	cat -  | /home/engines/bin/json_to_env>/tmp/.env
- else
-	echo $1 | /home/engines/bin/json_to_env >/tmp/.env
-fi
+ 
 
  . /tmp/.env
 
-echo $1 >/home/configurators/saved/backup
+echo $1 >/home/configurators/saved/backup_$parent_engine
 
  echo "$*" >>/var/log/backup/addbackup.log
 
@@ -34,7 +31,7 @@ export parent
 export backup_type
 
 
-if test $backup_type = 'engine_and_data'
+if test $src_type = 'engine'
  then
      /home/add_backup.sh ${parent_engine}:system
 	n=0
