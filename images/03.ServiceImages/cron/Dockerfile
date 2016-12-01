@@ -10,7 +10,6 @@ RUN 	echo "Y" | adduser -q --disabled-password --home /home/cron -uid 22016 cron
   	tar -xzpf fcron-3.3.0.src.tar.gz;\
   	cd fcron-3.3.0;\
   	./configure --with-run-non-privileged --with-rootname=cron\
-  	 --without-sendmail\
 	--with-rootgroup=cron --with-username=cron --with-groupname=cron\
 	--with-piddir=/home/cron\
 	--with-fifodir=/home/cron --with-spooldir=/home/cron/spool\
@@ -19,7 +18,6 @@ RUN 	echo "Y" | adduser -q --disabled-password --home /home/cron -uid 22016 cron
 	mkdir -p /home/cron/doc /home/cron/man /home/cron/spool /home/cron/log/;\
 	chown -R cron /home/cron/;\
 	cd /home/cron;\
-	apt-get -y remove  build-essential gcc make ;\
  	/home/post_build_clean.sh
 
 

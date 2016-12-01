@@ -7,8 +7,6 @@ if test -f /home/configurators/saved/backup_email_hash
 	else
 	echo '{"email notification":"Not Set"}'
 	fi
-
-
-       exit 0
+   exit 0
 
 

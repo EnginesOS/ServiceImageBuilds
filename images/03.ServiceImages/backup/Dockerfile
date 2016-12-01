@@ -9,12 +9,12 @@ ADD etc  etc
 
 RUN echo "Y" | /usr/sbin/usermod -u 22015 -d /home/backup  backup;\
 	usermod -G containers -a backup;\ 
+	usermod -G root -a backup;\	 	
 	cd /tmp; \
   	wget ftp://ftp.seul.org/pub/fcron/fcron-3.3.0.src.tar.gz;\
   	tar -xzpf fcron-3.3.0.src.tar.gz;\
   	cd fcron-3.3.0;\
   	./configure --with-run-non-privileged --with-rootname=backup\
-  	 --without-sendmail\
 	--with-rootgroup=backup --with-username=backup --with-groupname=backup\
 	--with-etcdir=/home/backup/fcron --with-piddir=/home/backup/fcron\
 	--with-fifodir=/home/backup/fcron --with-spooldir=/home/backup/fcron/spool\
@@ -26,8 +26,11 @@ RUN echo "Y" | /usr/sbin/usermod -u 22015 -d /home/backup  backup;\
 	rm /tmp/fcron-3.3.0.src.tar.gz;\	
 	mkdir -p /var/log/backup/  /home/sql_dumps;\
 	chown -R backup  /home/sql_dumps /var/log/backup/ ;\
-	apt-get -y remove  build-essential gcc make ;\
-	apt-get -y clean
+ 	/home/post_build_clean.sh
+	# apt-get -y remove  build-essential gcc make ;\
+	# apt-get -y clean
+	
+	#  	 --without-sendmail\
 ADD home home
 
 ADD crontab  /home/backup/fcron/spool/backup.orig
