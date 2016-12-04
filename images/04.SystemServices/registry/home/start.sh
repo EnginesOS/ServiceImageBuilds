@@ -16,8 +16,8 @@ cd /home/registry/EnginesSystemRegistry/src/
 git pull
 cd ..
  rm -f /tmp/registry.lock
-#ruby /home/registry/EnginesSystemRegistry/src/server.rb  > /var/log/regsitry.log&
-bundle exec thin  -C config.yaml -R config.ru start > /var/log/regsitry.log&
+ruby /home/registry/EnginesSystemRegistry/src/server.rb  > /var/log/regsitry.log&
+#bundle exec thin  -C config.yaml -R config.ru start > /var/log/regsitry.log&
 
 
 touch /engines/var/run/flags/startup_complete  
