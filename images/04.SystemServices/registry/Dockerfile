@@ -12,8 +12,11 @@ apt-get update -y;\
 	usermod -G containers -a registry ;\
  	/home/post_build_clean.sh
 	
-COPY home home	
+
 RUN	gem install bundle gctools rest-client sinatra thin yajl-ruby rubytree
+
+COPY home home	
+
 RUN	mkdir -p /home/registry;\
 	cd /home/registry;\
 	mkdir -p  /opt/engines/run/service_manager/;\	
