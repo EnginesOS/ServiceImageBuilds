@@ -2,7 +2,7 @@ FROM engines/ruby2.x
 #engines/servicebase:$release
 
 RUN 	 /usr/sbin/usermod -u 22050 www-data;\
-		apt-get -y install libcurl4-openssl-dev
+		apt-get -y install libcurl4-openssl-dev ruby-dev
 
 ENV ContUser www-data
 ENV ContGrp ruby
