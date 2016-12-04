@@ -55,6 +55,7 @@ export DATABASE_URL
 	cp /home/ruby_env /home/app/.env_vars
   fi
 echo " passenger_env_var RAILS_ENV $RAILS_ENV;" >> /home/app/.env_vars
+echo " passenger_env_var PATH $PATH;" >> /home/app/.env_vars
 echo " passenger_env_var SECRET_KEY_BASE $SECRET_KEY_BASE;" >> /home/app/.env_vars
 echo " passenger_env_var SYSTEM_API_URL $SYSTEM_API_URL;">> /home/app/.env_vars
 echo " passenger_env_var SYSTEM_RELEASE $SYSTEM_RELEASE;" >> /home/app/.env_vars

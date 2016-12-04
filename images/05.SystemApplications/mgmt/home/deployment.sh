@@ -13,5 +13,5 @@ cp /home/newrelic.yml /home/app/
 RAILS_ENV=production
 
 echo installing Gems
-bundle install --standalone 
+bundle install --standalone --deployment             
 
