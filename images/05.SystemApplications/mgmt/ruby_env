@@ -5,3 +5,4 @@ passenger_env_var RUBY_GC_HEAP_GROWTH_FACTOR 1.1;
 passenger_env_var RUBY_GC_HEAP_GROWTH_MAX_SLOTS 10000000 ;# 10M
 passenger_env_var RUBY_GC_MALLOC_LIMIT_MAX 25000  ;  # 25M
 passenger_env_var RUBY_GC_MALLOC_LIMIT_GROWTH_FACTOR 1.1;
+passenger_env_var       PATH /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin;
