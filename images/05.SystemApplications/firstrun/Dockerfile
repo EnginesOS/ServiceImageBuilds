@@ -1,4 +1,4 @@
-FROM engines/ruby2.x
+FROM engines/ruby2.x:$release
 #engines/servicebase:$release
 
 RUN 	 /usr/sbin/usermod -u 22050 www-data;\
