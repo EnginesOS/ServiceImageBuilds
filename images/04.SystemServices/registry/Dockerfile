@@ -13,7 +13,7 @@ apt-get update -y;\
  	/home/post_build_clean.sh
 	
 COPY home home	
-RUN	gem install gctools rest-client sinatra thin yajl-ruby rubytree
+RUN	gem install bundle gctools rest-client sinatra thin yajl-ruby rubytree
 RUN	mkdir -p /home/registry;\
 	cd /home/registry;\
 	mkdir -p  /opt/engines/run/service_manager/;\	
