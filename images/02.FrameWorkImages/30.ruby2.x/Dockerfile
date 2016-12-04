@@ -14,7 +14,8 @@ RUN	groupadd ruby;\
 		mkdir -p ~www-data ;\
 		apt-get update;\
 		chown www-data ~www-data ;\
-		apt-get install -y ruby-dev gem 
+		apt-get install -y ruby-dev gem ;\
+		gem install bundle
 		
 #	mkdir -p /usr/local/ ; cd /usr/local/ ; git clone git://github.com/sstephenson/rbenv.git /usr/local/rbenv;\ 
 #	cd /usr/local/rbenv ; git clone git://github.com/sstephenson/ruby-build.git /usr/local/rbenv/plugins/ruby-buil;\
