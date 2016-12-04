@@ -1,12 +1,9 @@
 #!/bin/bash
-PATH="/usr/local/rbenv/bin:$PATH"
+
 
 cd /home/app/
 
-if ! test -d /var/log/redis
- then
-	mkdir /var/log/redis /var/run/redis/
-fi
+
 
  if ! test -d /var/run/nginx
  then
@@ -36,14 +33,12 @@ if ! test -h /home/app/public/system
 	ln -s /home/fs/persistent/system /home/app/public/system
  fi
  
-#redis-server /etc/redis/redis.conf &
-#redis_pid=$!
 
 /home/deployment.sh
 mkdir -p /engines/var/run/flags/
 
 
-SECRET_KEY_BASE=`/usr/local/rbenv/shims/bundle exec rake secret`
+SECRET_KEY_BASE=`bundle exec rake secret`
 export SECRET_KEY_BASE
 
 export RAILS_ENV
@@ -72,15 +67,15 @@ if test -f /home/app/env_production.rb
 cp	 env_production.rb /home/app/config/environments/production.rb
 fi
 echo migrating database 
-/usr/local/rbenv/shims/bundle exec rake db:migrate 
+bundle exec rake db:migrate 
 
 # "SELECT EXISTS (SELECT * FROM users WHERE username='admin');"` -eq 1
 
-/usr/local/rbenv/shims/bundle exec rake db:seed >/dev/null
+bundle exec rake db:seed >/dev/null
 
 echo precompiling assests
 
-/usr/local/rbenv/shims/bundle exec rake assets:precompile  >/dev/null
+bundle exec rake assets:precompile  >/dev/null
 
 if ! test -d /var/log/app
 	then
@@ -102,6 +97,5 @@ echo Server Started
 touch  /engines/var/run/flags/startup_complete
 wait 
 
-#kill -TERM $redis_pid
-#wait $redis_pid
+
 rm /engines/var/run/flags/startup_complete

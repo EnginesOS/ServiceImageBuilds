@@ -23,7 +23,8 @@ export dirname
  then
  	echo $email >$dirname/email 	
  fi
-if $backup_type == incr
+if test $backup_type == incr
+then
 				dir=`echo $volume_src |sed "/\/var\/lib\/engines\//s///"`
                	src=/backup_src/volumes/$dir
  else
