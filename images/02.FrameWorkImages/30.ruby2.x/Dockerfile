@@ -12,6 +12,7 @@ RUN	groupadd ruby;\
 	echo "Y" | adduser -q --ingroup ruby --uid 22672 --home /home/ruby --disabled-password ruby;\
 		usermod -G containers -a ruby;\
 		mkdir -p ~www-data ;\
+		apt-get update;\
 		chown www-data ~www-data ;\
 		apt-get install ruby-dev gem 
 		
