@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
- 	cat -  | /home/engines/bin/json_to_env>/tmp/.env
+ 	cat -  | /home/engines/bin/json_to_env " | sed "/sources='\[/s//sources\[/" | sed "/\]'/s//\]/" > /tmp/.env
  
 
  . /tmp/.env

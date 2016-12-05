@@ -2,11 +2,7 @@ FROM  engines/ngpassenger:$release
 ENV ruby_version 2.3.0
 RUN 	 /usr/sbin/usermod -u 22050 www-data;\
 		apt-get -y install libcurl4-openssl-dev;\
-		apt-get -y install redis-server;\
-		chown www-data  /var/lib/redis ;\
-	 	/usr/local/rbenv/bin/rbenv  install $ruby_version;\
-	 	/usr/local/rbenv/bin/rbenv  global $ruby_version;\
- 	/home/post_build_clean.sh
+ 		/home/post_build_clean.sh
 
 
 
@@ -14,10 +10,10 @@ RUN 	 /usr/sbin/usermod -u 22050 www-data;\
 ENV ContUser www-data
 ENV ContGrp ruby
 
-RUN /usr/local/rbenv/shims/gem   install --no-rdoc --no-ri bundle oink rest-client net_http_unix yajl-ruby ;\	
+RUN gem   install   oink rest-client net_http_unix yajl-ruby ;\	
 	mkdir -p /usr/lib/src;\
- 	cp -dpR /usr/share/passenger/ruby_extension_source /usr/lib/src/ruby_native_extension;\ 	
- 	passenger-config  build-native-support
+ 	cp -dpR /usr/share/passenger/ruby_extension_source /usr/lib/src/ruby_native_extension 	
+ 	#passenger-config  build-native-support
  	
 ADD home home
 

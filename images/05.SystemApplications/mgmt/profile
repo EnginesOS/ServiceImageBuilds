@@ -20,4 +20,4 @@ fi
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
-export PATH="/.rbenv/bin:$PATH" 
+#export PATH="/.rbenv/bin:$PATH" 

@@ -16,8 +16,8 @@ cd /home/registry/EnginesSystemRegistry/src/
 git pull
 cd ..
  rm -f /tmp/registry.lock
-#/usr/local/rbenv/shims/ruby /home/registry/EnginesSystemRegistry/src/server.rb  > /var/log/regsitry.log&
-/usr/local/rbenv/shims/thin  -C config.yaml -R config.ru start > /var/log/regsitry.log&
+
+thin  -C config.yaml -R config.ru start > /var/log/regsitry.log&
 
 
 touch /engines/var/run/flags/startup_complete  

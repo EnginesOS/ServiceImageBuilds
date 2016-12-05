@@ -1,21 +1,21 @@
-FROM engines/ruby2.x
+FROM engines/ruby2.x:$release
 #engines/servicebase:$release
-ENV ruby_version 2.2.2
+
 RUN 	 /usr/sbin/usermod -u 22050 www-data;\
-		apt-get -y install libcurl4-openssl-dev;\
-	 	/usr/local/rbenv/bin/rbenv  install $ruby_version;\
-	 	/usr/local/rbenv/bin/rbenv  global $ruby_version
+		apt-get update;\
+		apt-get -y install libcurl4-openssl-dev ruby-dev
 
 ENV ContUser www-data
 ENV ContGrp ruby
 
-RUN /usr/local/rbenv/shims/gem install  --no-rdoc --no-ri  bundle 
+#RUN /usr/local/rbenv/shims/gem install  --no-rdoc --no-ri  bundle 
  	
 ADD home home
 
 RUN	mkdir -p /home/app;\
  	mkdir -p /home/app/public/system;\
  	chown -R www-data /home/app/;\ 	
+ 	gem install bundle;\ 	
  	usermod -G containers -a www-data 
 
 USER www-data
