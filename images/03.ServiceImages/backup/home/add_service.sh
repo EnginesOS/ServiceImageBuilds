@@ -38,9 +38,9 @@ if test $src_type = 'engine'
  curl http://172.17.0.1:2380/v0/backup/engine/services/${parent_engine} | /home/engines/bin/json_to_env >/tmp/.src
   . /tmp/.src
 	
-		while ! test -z service$n
+		while ! test -z =`eval echo service$n`
  		 do
-         /home/add_backup.sh  service$n
+         /home/add_backup.sh `eval echo service$n`
          n=`expr $n + 1`
  		done
  	/home/add_backup.sh config:${parent_engine}	
@@ -48,6 +48,6 @@ if test $src_type = 'engine'
   then
   /home/add_backup.sh config:${parent_engine}
   else
-    /home/add_backup.sh ${parent_engine}/service/${publisher_namespace}/${type_path}/${service_handle}/
+    /home/add_backup.sh ${parent_engine}/service/${publisher_namespace}/${type_path}/${service_handle}
 fi
  exit 0
