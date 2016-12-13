@@ -28,6 +28,7 @@ then
 				dir=`echo $volume_src |sed "/\/var\/lib\/engines\//s///"`
                	src=/backup_src/volumes/$dir
  else
+ echo $backup_type >>/tmp/bt
  	mkdir -p /tmp/backup
  	src=/tmp/backup
   	echo $1 >   $dirname/pre_cmd_path

@@ -16,8 +16,8 @@ if ! test -d  /engines/var/run/flags/
  fi
 
 cd /home
-thin    -C config.yaml -R ./config.ru start > /var/log/system.log &
-
+thin  --threaded -C config.yaml -R ./config.ru start > /var/log/system.log &
+#--threaded  
 
 touch /engines/var/run/flags/startup_complete  
 wait 
