@@ -20,7 +20,7 @@ RUN /usr/sbin/addgroup --gid 21999 edocker;\
 	
 RUN	gem install  --no-rdoc --no-ri  git bundle  rest-client net_http_unix excon;\
 				gem install  gctools yajl-ruby  sinatra thin rubytree  sinatra-contrib  ;\
-			    gem install  warden data_mapper dm-sqlite-adapter puma ;\				
+			    gem install  warden data_mapper dm-sqlite-adapter;\				
  				/home/post_build_clean.sh
 	
 ADD home home
