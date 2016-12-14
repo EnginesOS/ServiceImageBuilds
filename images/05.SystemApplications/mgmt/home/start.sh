@@ -63,10 +63,10 @@ echo " passenger_env_var DATABASE_URL $DATABASE_URL;" >> /home/app/.env_vars
 #echo " passenger_env_var ACTION_CABLE_ALLOWED_REQUEST_ORIGINS $ACTION_CABLE_ALLOWED_REQUEST_ORIGINS;" >> /home/app/.env_vars
 #echo " passenger_env_var ACTION_CABLE_URL $ACTION_CABLE_URL;" >> /home/app/.env_vars
 
-if test -f /home/app/env_production.rb
-	then
-cp	 env_production.rb /home/app/config/environments/production.rb
-fi
+#if test -f /home/app/env_production.rb
+	#then
+#cp	 env_production.rb /home/app/config/environments/production.rb
+#fi
 echo migrating database 
 bundle exec rake db:migrate 
 
