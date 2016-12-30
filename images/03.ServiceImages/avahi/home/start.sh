@@ -16,8 +16,9 @@ fi
 
 ip=`cat /home/net/ip`
 echo "$ip mgmt.local" >/etc/avahi/hosts
-interfaces=`cat /home/net/gateway_interface`
-interfaces=$interfaces , docker0
+ext_interface=`netstat -nr |grep ^0.0.0.0 | awk '{print $8}' |head -1`
+#`cat /home/net/gateway_interface`
+interfaces="${ext_interface} , docker0"
 
 cat /home/templates/avahi-daemon.conf.tmpl | sed "/INTERFACES/s//$interfaces/" > /tmp/avahi-daemon.conf
 cp /tmp/avahi-daemon.conf /etc/avahi/avahi-daemon.conf

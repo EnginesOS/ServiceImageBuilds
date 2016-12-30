@@ -27,7 +27,7 @@ if ! test -z $domain_name
                                 if  test  $ip_type = lan
                                  then
                                         ip=`cat /opt/engines/etc/net/ip`
-                                elif   test  $ip_type = gw
+                                elif  test  $ip_type = gw
                                 then
                                    ip=`cat /opt/engines/etc/net/public`
                                 fi
@@ -36,8 +36,7 @@ if ! test -z $domain_name
                  if ! test -z $ip_type
                            then
                         touch /home/bind/domain_list/${ip_type}/${domain_name}
-                        cat  /etc/bind/templates/config_file_zone_entry.tmpl | sed " /DOMAIN/s//${domain_name}/g" > /home/bind/engines/d
-omains/${domain_name}
+                        cat  /etc/bind/templates/config_file_zone_entry.tmpl | sed " /DOMAIN/s//${domain_name}/g" > /home/bind/engines/domains/${domain_name}
                         cat /etc/bind/templates/selfhosted.tmpl | sed "/DOMAIN/s//${domain_name}/g"\
                         		 | sed "/IP/s//${ip}/g" > /home/bind/engines/zones/named.conf.${domain_name}
                         cat /home/bind/engines/domains/* > /home/bind/engines/domains.hosted
