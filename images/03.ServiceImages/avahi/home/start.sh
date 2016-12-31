@@ -38,6 +38,7 @@ touch /home/avahi/hosts/avahi.local
 ls /home/avahi/hosts/ > /home/avahi/hosts_list
 /home/publish_aliases.sh &
 
+#echo $! > 
 
 touch /engines/var/run/flags/startup_complete
 
