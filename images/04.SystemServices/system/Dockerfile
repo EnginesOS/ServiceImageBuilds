@@ -19,8 +19,8 @@ RUN /usr/sbin/addgroup --gid 21999 edocker;\
 #	cd /usr/local/rbenv   ;echo 'export PATH="/usr/local/rbenv/bin:$PATH:/usr/local/rbenv/shims/"' >> /home/engines/.bashrc ; echo 'eval "$(rbenv init -)"' >> ~/.bashrc ; exec $SHELL  ;/usr/local/rbenv/bin/rbenv install $ruby_version ; /usr/local/rbenv/bin/rbenv global $ruby_version
 	
 RUN	gem install  --no-rdoc --no-ri  git bundle  rest-client net_http_unix excon;\
-				gem install  gctools yajl-ruby  sinatra thin rubytree  sinatra-contrib  ;\
-			    gem install  warden data_mapper dm-sqlite-adapter sqlite3;\				
+				gem install  gctools yajl-ruby  sinatra thin rubytree  sinatra-contrib \
+				  warden data_mapper dm-sqlite-adapter sqlite3;\				
  				/home/post_build_clean.sh
 	
 ADD home home

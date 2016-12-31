@@ -56,8 +56,9 @@ def advertise_cnames():
         while 1:
                 time.sleep(delay)
                 for each in content:
-                        print " host %s" % (each)
+                        #print " host %s" % (each)
                         name = unicode(each, locale.getpreferredencoding())
+                        print " Publish %s" % (name)
                         publish_cname(name)
                 # Just loop forever
                 delay = 60
