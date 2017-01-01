@@ -37,11 +37,12 @@ if test $src_type = 'engine'
 	n=1
  curl http://172.17.0.1:2380/v0/backup/engine/services/${parent_engine} | /home/engines/bin/json_to_env >/tmp/.src
   . /tmp/.src
-	
-		while ! test -z =`eval echo service$n`
+	service=`eval echo service$n`
+		while ! test -z $service
  		 do
          /home/add_backup.sh `eval echo service$n`
          n=`expr $n + 1`
+         service=`eval echo service$n`
  		done
  	/home/add_backup.sh config:${parent_engine}	
   elif test $backup_type = 'engine_only'
