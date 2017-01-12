@@ -1,6 +1,7 @@
 FROM engines/frameworkbase:$release
 
 RUN /usr/sbin/usermod -u 22671 www-data;\
+  echo "deb http://archive.ubuntu.com/ubuntu/ xenial-proposed restricted main multiverse universe" > /etc/apt/sources.list;\
 	apt-get update -y ;\
 	apt-get install -y  apache2 libapache2-mod-php php-gettext php-mbstring php-mysql php-mcrypt  php-gd php-apcu php-dev php-pear;\
 	rm etc/apache2/sites-enabled/*;\
