@@ -8,9 +8,9 @@ cat /home/configurators/saved/default_domain | /home/engines/bin/json_to_env >/t
 echo ${domain_name} >/home/configurators/saved/domain
 
 
-        echo "@*local  @${domain_name}" > /etc/postfix/generic
-         echo "@localhost  @${domain_name}" >> /etc/postfix/generic
-         echo "@  @${domain_name}" >> /etc/postfix/generic
+        echo "@*local  no-reply@${domain_name}" > /etc/postfix/generic
+         echo "@localhost  no-reply@${domain_name}" >> /etc/postfix/generic
+         echo "@  no-reply@${domain_name}" >> /etc/postfix/generic
         postmap  /etc/postfix/generic
         
         echo "/.+/ @${domain_name}" > /etc/postfix/sender_canonical
