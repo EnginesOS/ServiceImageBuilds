@@ -17,7 +17,7 @@ echo ${domain_name} >/home/configurators/saved/domain
         postmap  /etc/postfix/sender_canonical
   
 		
-		
+		postconf -e myhostname=smtp.${domain_name}
  		echo smtp.${domain_name} > /etc/postfix/mailname
  		
  		if test `wc -c /etc/postfix/transport.smart | cut -f 1 -d" " ` -gt 4
