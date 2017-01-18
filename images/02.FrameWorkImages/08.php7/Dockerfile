@@ -1,5 +1,5 @@
 FROM engines/frameworkbase:$release
-
+ADD sources.list /etc/apt/
 RUN /usr/sbin/usermod -u 22671 www-data;\
 	apt-get update -y ;\
 	apt-get install -y  apache2 libapache2-mod-php php-gettext php-mbstring php-mysql php-mcrypt  php-gd php-apcu php-dev php-pear;\
