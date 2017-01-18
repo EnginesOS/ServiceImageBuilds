@@ -5,6 +5,7 @@ PID_FILE=/var/run/nginx/nginx.pid
 export PID_FILE
 . /home/trap.sh
 
+/home/clear_broken.sh
 
 mkdir -p /engines/var/run/flags/
 
