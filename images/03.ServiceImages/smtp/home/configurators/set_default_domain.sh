@@ -10,14 +10,13 @@ echo ${domain_name} >/home/configurators/saved/domain
 
         echo "@*local  no-reply@${domain_name}" > /etc/postfix/generic
          echo "@localhost  no-reply@${domain_name}" >> /etc/postfix/generic
-         echo "@  no-reply@${domain_name}" >> /etc/postfix/generic
         postmap  /etc/postfix/generic
         
-        echo "/.+/ @${domain_name}" > /etc/postfix/sender_canonical
-        postmap  /etc/postfix/sender_canonical
+       # echo "/.+/ @${domain_name}" > /etc/postfix/sender_canonical
+       # postmap  /etc/postfix/sender_canonical
   
 		
-		
+		postconf -e myhostname=smtp.${domain_name}
  		echo smtp.${domain_name} > /etc/postfix/mailname
  		
  		if test `wc -c /etc/postfix/transport.smart | cut -f 1 -d" " ` -gt 4

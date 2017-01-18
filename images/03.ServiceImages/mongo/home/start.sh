@@ -16,6 +16,7 @@ pid=$!
 echo -n $pid >/var/run/engines/mongodb.pid
 if ! test -d /data/db/.priv
  then
+ sleep 30
   mkdir -p /data/db/.priv
  	/home/firstrun.sh
  fi
