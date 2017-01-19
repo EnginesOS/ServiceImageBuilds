@@ -13,7 +13,7 @@ apt-get update -y;\
  	/home/post_build_clean.sh
 	
 
-RUN	gem install bundle gctools rest-client sinatra thin yajl-ruby rubytree
+RUN	gem install bundle gctools rest-client sinatra thin yajl-ruby rubytree ffi-yajl
 
 COPY home home	
 
