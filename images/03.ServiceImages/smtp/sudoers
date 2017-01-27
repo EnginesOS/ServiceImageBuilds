@@ -4,6 +4,7 @@ postfix ALL=(root) NOPASSWD: /home/engines/scripts/_start_syslog.sh
 
 postfix ALL=(root) NOPASSWD: /usr/sbin/postmap
 postfix ALL=(root) NOPASSWD: /home/_signal.sh
+postfix ALL=(root) NOPASSWD: /home/fix_permissions.sh
 postfix ALL=(root) NOPASSWD: /home/engines/scripts/_kill_syslog.sh
 #for debugging only
 #ALL ALL = (root) NOPASSWD: ALL

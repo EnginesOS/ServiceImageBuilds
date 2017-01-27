@@ -1,5 +1,12 @@
 #!/bin/sh
 
+ 
+if ! test -f /engines/var/run/flags/first_run
+  then
+  	sudo /home/fix_permissions.sh
+  	touch /engines/var/run/flags/first_run
+  fi
+  
 PID_FILE=/var/spool/postfix/pid/master.pid
 
 export PID_FILE
