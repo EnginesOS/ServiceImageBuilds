@@ -24,7 +24,7 @@ if ! test -f /etc/postfix/mailname
 		echo "not.set" > /etc/postfix/mailname
 	fi
 		
-sudo -n postmap /etc/postfix/transport
+sudo -n /usr/sbin/postmap /etc/postfix/transport
 
 sudo -n /usr/lib/postfix/sbin/master &
 touch  /engines/var/run/flags/startup_complete
