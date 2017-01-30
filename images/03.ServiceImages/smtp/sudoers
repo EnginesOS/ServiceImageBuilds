@@ -1,4 +1,4 @@
-
+postfix ALL=(root) NOPASSWD: /usr/lib/postfix/sbin/master
 postfix ALL=(root) NOPASSWD: /usr/lib/postfix/sbin/master
 postfix ALL=(root) NOPASSWD: /home/engines/scripts/_start_syslog.sh
 
