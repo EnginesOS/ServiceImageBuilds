@@ -3,6 +3,7 @@
 if ! test -f /engines/var/run/flags/first_run
   then
   	sudo /home/fix_permissions.sh
+  	echo Fixed perms
   	touch /engines/var/run/flags/first_run
   fi
 
@@ -14,6 +15,8 @@ export PID_FILE
 mkdir -p /engines/var/run/flags/
 
 sudo -n /home/engines/scripts/_start_syslog.sh
+
+echo started syslog
 
 if ! test -f /etc/postfix/transport 
 	then
@@ -27,6 +30,7 @@ if ! test -f /etc/postfix/mailname
 sudo -n /usr/sbin/postmap /etc/postfix/transport
 
 sudo -n /usr/lib/postfix/sbin/master &
+echo started master
 touch  /engines/var/run/flags/startup_complete
 wait
 rm /engines/var/run/flags/startup_complete  
