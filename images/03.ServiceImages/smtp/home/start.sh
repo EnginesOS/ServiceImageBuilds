@@ -29,7 +29,7 @@ if ! test -f /etc/postfix/mailname
 		
 sudo -n /usr/sbin/postmap /etc/postfix/transport
 
-sudo -n /usr/lib/postfix/sbin/master &
+sudo -n /usr/lib/postfix/sbin/master -w &
 echo started master
 touch  /engines/var/run/flags/startup_complete
 wait
