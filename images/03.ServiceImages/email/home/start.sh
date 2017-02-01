@@ -1,5 +1,12 @@
 #!/bin/sh
 
+ 
+if ! test -f /engines/var/run/flags/first_run
+  then
+  	sudo /home/fix_permissions.sh
+  	touch /engines/var/run/flags/first_run
+  fi
+  
 PID_FILE=/var/spool/postfix/pid/master.pid
 
 export PID_FILE
@@ -9,9 +16,9 @@ mkdir -p /engines/var/run/flags/
 sudo -n /home/engines/scripts/_start_syslog.sh
 
 
-sudo -n postmap /etc/postfix/transport 
-sudo -n postmap /etc/postfix/smarthost_passwd
-sudo -n /usr/lib/postfix/sbin/master &
+sudo -n /usr/sbin/postmap /etc/postfix/transport 
+sudo -n /usr/sbin/postmap /etc/postfix/smarthost_passwd
+sudo -n /usr/lib/postfix/sbin/master  -w &
 
 /home/configurators/set_default_domain.sh '{"default_domain":"'$DEFAULT_DOMAIN'"}'
 

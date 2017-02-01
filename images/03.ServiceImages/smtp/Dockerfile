@@ -3,7 +3,7 @@ Maintainer image.maintainer@engines.onl
 RUN echo "Y" | adduser -q --disabled-password --home /var/spool/postfix -uid 22003 postfix
 RUN apt-get -y update;\
 	/home/no_init.sh ;\	
-	apt-get -y install postfix   ;\
+	apt-get -y install postfix    ;\
 	usermod -G containers -a postfix;\
 	 cp /etc/resolv.conf /var/spool/postfix/etc/;\
 	 cp /etc/services /var/spool/postfix/etc/;\
