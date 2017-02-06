@@ -32,7 +32,7 @@ echo $state >>/home/certs/saved/${cert_name}_setup
 echo $city >>/home/certs/saved/${cert_name}_setup
 echo $organisation >>/home/certs/saved/${cert_name}_setup
 echo $person >>/home/certs/saved/${cert_name}_setup
-if test  $wild == "true"
+if test  $wild = "true"
  then
 	echo \*.$domainname  >>/home/certs/saved/${cert_name}_setup
  else
