@@ -22,12 +22,22 @@ if test -z "${cert_name}"
     
 openssl genrsa -out  /home/certs/store/public/keys/${cert_name}.key.tmp 2048
 
+if test -z $wild
+ then
+  wild="no"
+ fi
+
 echo $country >/home/certs/saved/${cert_name}_setup
 echo $state >>/home/certs/saved/${cert_name}_setup
 echo $city >>/home/certs/saved/${cert_name}_setup
 echo $organisation >>/home/certs/saved/${cert_name}_setup
 echo $person >>/home/certs/saved/${cert_name}_setup
-echo \*.$domainname  >>/home/certs/saved/${cert_name}_setup
+if test  $wild == "true"
+ then
+	echo \*.$domainname  >>/home/certs/saved/${cert_name}_setup
+ else
+  echo $domainname  >>/home/certs/saved/${cert_name}_setup
+ fi
 echo "" >>/home/certs/saved/${cert_name}_setup
 echo "" >>/home/certs/saved/${cert_name}_setup
 echo "" >>/home/certs/saved/${cert_name}_setup
