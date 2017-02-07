@@ -58,8 +58,8 @@ if test $? -ne 0
  fi
   if test -f  /home/certs/store/public/keys/${store_pref}_${cert_name}.key.tmp -a -f /home/certs/store/public/certs/${store_pref}_${cert_name}.crt.tmp
    then
-    mv /home/certs/store/public/keys/${store_pref}_${cert_name}.key.tmp /home/certs/store/public/keys/${store_pref}_${cert_name}.key
-    mv /home/certs/store/public/certs/${store_pref}_${cert_name}.crt.tmp /home/certs/store/public/certs/${store_pref}_${cert_name}.crt
+    cp /home/certs/store/public/keys/${store_pref}_${cert_name}.key.tmp /home/certs/store/public/keys/${store_pref}_${cert_name}.key
+    cp /home/certs/store/public/certs/${store_pref}_${cert_name}.crt.tmp /home/certs/store/public/certs/${store_pref}_${cert_name}.crt
    else
     echo "Cert and Key files not present"
     exit 127
