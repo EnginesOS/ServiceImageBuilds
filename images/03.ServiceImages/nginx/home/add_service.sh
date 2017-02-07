@@ -92,16 +92,16 @@ rewrite=""
         rewrite \^\/\(\.\*\) $fqdn\/'$www_path'\/\$1  break; '
 fi
 cat /tmp/site.res | sed "/FOLDER/s//$rewrite/" >  /tmp/site.path
-
+store_pre=${container_type}_${parent_engine}
 
 if test "$proto" = default 
  then
     cp /tmp/site.name /etc/nginx/sites-enabled/default
  elif ! test "$proto" = http
 	 then
-	 	if test -f /etc/nginx/ssl/certs/$name.crt
+	 	if test -f /etc/nginx/ssl/certs/$store_pre_$fqdn.crt
 	 		then
-	 			cert_name=$name
+	 			cert_name=$store_pre_$fqdn
 	        else
 	        	 cert_name=engines
 	     fi
