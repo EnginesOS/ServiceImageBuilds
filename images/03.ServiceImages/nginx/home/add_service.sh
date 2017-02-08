@@ -106,7 +106,7 @@ if test "$proto" = default
 	 		 then
 	 		 	cert_name=$domain
 	        else
-	        	 cert_name=engines
+	        	 cert_name=system_system_engines
 	     fi
 		if test -f /etc/nginx/sites-enabled/http_https_${fqdn}.site
 	     		then
