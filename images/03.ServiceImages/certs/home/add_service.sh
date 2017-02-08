@@ -35,7 +35,7 @@ echo $state >>/home/certs/saved/${cert_name}_setup
 echo $city >>/home/certs/saved/${cert_name}_setup
 echo $organisation >>/home/certs/saved/${cert_name}_setup
 echo $person >>/home/certs/saved/${cert_name}_setup
-if test  $wild = "true"
+if test  $wild = "yes"
  then
 	echo \*.$domainname  >>/home/certs/saved/${cert_name}_setup
  else
@@ -60,6 +60,12 @@ if test $? -ne 0
    then
     cp /home/certs/store/public/keys/${StorePref}_${cert_name}.key.tmp /home/certs/store/public/keys/${StorePref}_${cert_name}.key
     cp /home/certs/store/public/certs/${StorePref}_${cert_name}.crt.tmp /home/certs/store/public/certs/${StorePref}_${cert_name}.crt
+    if test ${StorePref}_${cert_name} == system_system_engines
+     then
+     	rm /home/certs/store/public/certs/engines.crt /home/certs/store/public/keys/engines.key
+     	ln -s /home/certs/store/public/certs/${StorePref}_${cert_name}.crt /home/certs/store/public/certs/engines.crt
+     	ln -s /home/certs/store/public/keys/${StorePref}_${cert_name}.key /home/certs/store/public/keys/engines.key
+     fi
    else
     echo "Cert and Key files not present"
     exit 127
