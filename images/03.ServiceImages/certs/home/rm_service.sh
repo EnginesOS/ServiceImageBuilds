@@ -17,7 +17,10 @@ if test -z "${cert_name}"
  
  #FIXME make revocate   in crl
  
- rm /home/certs/store/public/keys/${cert_name}.key /home/certs/saved/${cert_name}.csr  /home/certs/public/store/certs/${cert_name}.crt
+     StorePref=${container_type}_${parent_engine}
+     rm /home/certs/store/public/certs/${StorePref}_${cert_name}.crt
+     rm /home/certs/store/public/keys/${StorePref}_${cert_name}.key
+
  
 echo "Success"
 exit 0
