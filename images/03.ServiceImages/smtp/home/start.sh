@@ -33,7 +33,7 @@ sudo -n /usr/lib/postfix/sbin/master -w &
 echo started master
 touch  /engines/var/run/flags/startup_complete
 wait
-
+sleep 600
 rm /engines/var/run/flags/startup_complete  
 sudo -n /home/engines/scripts/_kill_syslog.sh
 
