@@ -8,6 +8,7 @@ RUN echo "Y" |/usr/sbin/usermod -u  22012 syslog ;\
  
 ENV ContUser logrotate
 ENV ContGrp logrotate
+COPY sudoers /etc/sudoers.d/logrotate
 
 ADD home /home/
 

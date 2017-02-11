@@ -1,6 +1,6 @@
 #!/bin/sh
 
-PID_FILE=/var/run/logrotate.pid
+PID_FILE=/tmp/logrotate.pid
 export PID_FILE
 . /home/trap.sh
 mkdir -p /engines/var/run/flags/
