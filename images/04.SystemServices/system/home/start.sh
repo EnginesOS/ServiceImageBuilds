@@ -3,7 +3,8 @@
 export RUBY_GC_MALLOC_LIMIT_GROWTH_FACTOR=1.1
 
 /home/clear_flags.sh
-control_ip=`netstat -rn |grep ^0.0.0 | awk '{print $2}'`
+control_ip=` cat /etc/hosts |grep system |cut -f1`
+#control_ip=`netstat -rn |grep ^0.0.0 | awk '{print $2}' | tr -d '\r'`
 echo $control_ip > /engines/var/run/control_ip
 export control_ip 
 PID_FILE=/engines/var/run/system.pid

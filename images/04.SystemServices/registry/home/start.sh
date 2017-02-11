@@ -17,7 +17,7 @@ git pull
 cd ..
  rm -f /tmp/registry.lock
 
-thin -C config.yaml -R config.ru start > /var/log/regsitry.log&
+thin -C config.yaml -R config.ru start --threaded> /var/log/regsitry.log&
 
 
 touch /engines/var/run/flags/startup_complete  

@@ -30,10 +30,15 @@ if ! test -f /etc/postfix/mailname
 sudo -n /usr/sbin/postmap /etc/postfix/transport
 
 sudo -n /usr/lib/postfix/sbin/master -w &
+dummy=$!
 echo started master
 touch  /engines/var/run/flags/startup_complete
-wait
 
+sleep 6
+while test -f  /var/spool/postfix/pid/master.pid
+ do
+ 	sleep 10
+ done
 rm /engines/var/run/flags/startup_complete  
 sudo -n /home/engines/scripts/_kill_syslog.sh
 
