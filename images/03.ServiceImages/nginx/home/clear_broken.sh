@@ -1,5 +1,4 @@
 #/bin/bash
-
    
 sites=`ls /etc/nginx/sites-enabled/ |grep -v default`
  for site in $sites
