@@ -1,5 +1,5 @@
 
-/usr/sbin/logrotate ALL = (root) NOPASSWD: /usr/sbin/logrotate
+logrotate ALL = (root) NOPASSWD: /usr/sbin/logrotate
 
 
 
