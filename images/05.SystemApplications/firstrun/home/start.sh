@@ -1,9 +1,9 @@
 #!/bin/sh
 
 
-control_ip=`netstat -rn |grep ^0.0.0 | awk '{print $2}'`
-echo $control_ip > /engines/var/run/control_ip
-export control_ip 
+SYSTEM_IP=`netstat -rn |grep ^0.0.0 | awk '{print $2}' | tr -d '\n'`
+echo $SYSTEM_IP > /engines/var/run/control_ip
+export SYSTEM_IP 
 PID_FILE=/engines/var/run/firstrun.pid
 export PID_FILE
 . /home/trap.sh
