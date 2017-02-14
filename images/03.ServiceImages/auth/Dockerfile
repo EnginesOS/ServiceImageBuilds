@@ -10,7 +10,7 @@ COPY home home
 COPY kadm5.acl /etc/
 COPY krb5.conf /etc/
 
-COPY sudoers /etc/	
+COPY sudoers /etc/sudoers.d/auth	
 RUN	ssh-keygen -f /home/auth/ssh/ssh_host_rsa_key  -N '' -t rsa;\
 	ssh-keygen -f /home/auth/ssh/ssh_host_dsa_key  -N '' -t dsa;\
 	ssh-keygen -f /home/auth/ssh/ssh_host_ecdsa_key  -N '' -t ecdsa;\
