@@ -57,6 +57,10 @@ build_rest=0
 			 	fi 
 			for dir in `ls .`
 			  do
+			  if ! test -d $MasterImagesDir/$class/$dir
+			   then 
+			   	continue
+			   fi
 				cd $MasterImagesDir/$class/$dir
 					if test -f TAG
 						then 
@@ -83,7 +87,12 @@ build_rest=0
 										./setup.sh
 									fi
 							 cat Dockerfile |  sed "/\$release/s//$release/" > Dockerfile.$release
-							 docker build $extra --rm=true -t $tag -f Dockerfile.$release .
+							  if test -f nocache
+							   then
+							 	docker build $extra --no-cache --rm=true -t $tag -f Dockerfile.$release .
+							   else
+							   		docker build $extra --rm=true -t $tag -f Dockerfile.$release .
+							   fi
 								if test $? -eq 0
 									then
 										echo "Built $tag"

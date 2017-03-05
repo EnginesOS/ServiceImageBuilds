@@ -1,6 +1,7 @@
 #/bin/bash
    
 sites=`ls /etc/nginx/sites-enabled/ |grep -v default`
+ 
  for site in $sites
    do
   	 hostname=`grep engines\.internal /etc/nginx/sites-enabled/$site  |grep -v \# |cut -f3 -d" " |cut -f1 -d:`
