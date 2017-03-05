@@ -57,6 +57,10 @@ build_rest=0
 			 	fi 
 			for dir in `ls .`
 			  do
+			  if ! test -d $MasterImagesDir/$class/$dir
+			   then 
+			   	continue
+			   fi
 				cd $MasterImagesDir/$class/$dir
 					if test -f TAG
 						then 
