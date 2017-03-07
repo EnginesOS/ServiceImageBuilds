@@ -38,10 +38,13 @@ mkdir -p /home/cron/entries/${parent_engine}/
 
 if test $action_type == "web"
 	then
-
 		cmd="curl http://${parent_engine}.engines.internal:8000$cron_job  -o /tmp/out"
-	else
+	elsif  $action_type == "command"
+	 then
 		cmd="curl http://172.17.0.1:2380/v0/cron/engine/${parent_engine}/$title/run"
+     elsif $action_type == "schedule"
+      then
+       cmd="curl http://172.17.0.1:2380/v0/cron/${container_type}/${parent_engine}/$cron_job
 	fi
 
 echo "$when $cmd " > /home/cron/entries/${parent_engine}/$title
