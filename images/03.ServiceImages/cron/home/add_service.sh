@@ -44,7 +44,7 @@ if test $action_type == "web"
 		cmd="curl http://172.17.0.1:2380/v0/cron/engine/${parent_engine}/$title/run"
      elsif $action_type == "schedule"
       then
-       cmd="curl http://172.17.0.1:2380/v0/cron/${container_type}/${parent_engine}/$cron_job
+       cmd="curl http://172.17.0.1:2380/v0/cron/${container_type}/${parent_engine}/$cron_job"
 	fi
 
 echo "$when $cmd " > /home/cron/entries/${parent_engine}/$title
