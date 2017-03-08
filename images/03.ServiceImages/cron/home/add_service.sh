@@ -11,7 +11,7 @@ fi
  . /tmp/.env
 #FIXME make engines.internal settable
 
-	if test -z "${cron_job}"
+	if test -z "${cron_job}" 
 	then
 		echo Error:Missing cron_job
         exit -1
@@ -44,7 +44,7 @@ if test $action_type = "web"
 		cmd="curl http://172.17.0.1:2380/v0/cron/engine/${parent_engine}/$title/run"
      elif test $action_type = "schedule"
       then
-       cmd="curl http://172.17.0.1:2380/v0/cron/${container_type}/${parent_engine}/$cron_job"
+       cmd="curl http://172.17.0.1:2380/v0/schedule/${container_type}/${parent_engine}/$cron_job"
      elif test $action_type = "action"
       then
        cmd="curl http://172.17.0.1:2380/v0/cron/${container_type}/${parent_engine}/$title/run"
