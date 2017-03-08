@@ -1,5 +1,8 @@
 #!/bin/sh
 
+echo "Log Rotated Started"
+date
+
 PID_FILE=/tmp/logrotate.pid
 export PID_FILE
 . /home/trap.sh
@@ -13,6 +16,10 @@ echo $pid >$PID_FILE
 touch  /engines/var/run/flags/startup_complete
 #sleep 36000 &
 wait  
+
+echo "Log Rotated Completed"
+date
+
 rm /engines/var/run/flags/startup_complete
 
 
