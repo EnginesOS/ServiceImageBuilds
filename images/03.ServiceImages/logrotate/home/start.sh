@@ -9,14 +9,10 @@ export PID_FILE
 mkdir -p /engines/var/run/flags/
 
 sudo /usr/sbin/logrotate -f /home/logrotate.conf &
-pid=$%
+pid=$!
 echo $pid >$PID_FILE
-
-
 touch  /engines/var/run/flags/startup_complete
-#sleep 36000 &
 wait  
-
 echo "Log Rotated Completed"
 date
 
