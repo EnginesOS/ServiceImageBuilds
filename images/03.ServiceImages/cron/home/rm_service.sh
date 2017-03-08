@@ -9,9 +9,9 @@ fi
  . /tmp/.env
 #FIXME make engines.internal settable
 
-	if test -z "${cron_job}"
+	if test -z "${parent_engine}"
 	then
-		echo Error:Missing cron_job
+		echo Error:Missing parent_engine
         exit -1
     fi
   	if test -z ${title}
