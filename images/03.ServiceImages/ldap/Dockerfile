@@ -11,15 +11,12 @@ RUN apt-get -y update;\
  	mkdir -p /var/log/apache2;\
  	chown www-data /var/log/apache2 
  	
- 	
- 	
 ADD home home
+
 RUN cat /home/Alias >> /etc/apache2/apache2.conf
 
 ADD 000-default.conf /etc/apache2/sites-enabled/
-
 ADD sudoers /etc/sudoers.d/ldap
-
 
 RUN	chmod -R go-rw /etc/sudoers /etc/sudoers.d/
 
