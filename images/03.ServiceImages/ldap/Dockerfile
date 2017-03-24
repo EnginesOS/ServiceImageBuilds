@@ -1,7 +1,6 @@
 FROM engines/servicebase:$release
 Maintainer image.maintainer@engines.onl
 
-ADD Alias /tmp/
 
 RUN apt-get -y update;\
 	adduser -q --disabled-password  -uid 22013 openldap;\
@@ -10,11 +9,12 @@ RUN apt-get -y update;\
 	apt-get -y install slapd ldap-utils apache2  php-dev apache2-utils phpldapadmin;\
  	/home/post_build_clean.sh;\
  	mkdir -p /var/log/apache2;\
- 	chown www-data /var/log/apache2 ;\
- 	cat /tmp/Alias >> /etc/apache2/apache2.conf
+ 	chown www-data /var/log/apache2 
+ 	
  	
  	
 ADD home home
+cat /home/Alias >> /etc/apache2/apache2.conf
 
 ADD 000-default.conf /etc/apache2/sites-enabled/
 
