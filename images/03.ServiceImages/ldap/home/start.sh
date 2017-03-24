@@ -14,7 +14,7 @@ mkdir -p /engines/var/run/flags/
 sudo -n /home/engines/scripts/_start_syslog.sh
 
 echo started syslog
-sudo -n /usr/sbin/slapd
+sudo -n /usr/sbin/slapd -d 4
 echo -n $% > /tmp/pids
 sudo -n /usr/sbin/apache2ctl  -DFOREGROUND & 
 echo -n " " >> /tmp/pids
