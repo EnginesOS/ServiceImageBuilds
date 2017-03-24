@@ -1,5 +1,5 @@
 #!/bin/sh -x
-
+echo Setup Engine user $fw_user
 #VOLUME /client/var/log
 #VOLUME /client/log
 #VOLUME /client/state
@@ -28,6 +28,8 @@ chmod g+w  -R /client/state
 #else
 
 	cd /home/fs_src/
+	echo "moving fs src "
+	ls /dest/fs/
 	
 	for dest_dir in `ls /dest/fs/`
 	 do	 
@@ -64,5 +66,5 @@ chmod g+w  -R /client/state
    #chown 21000 /home/fs/
  #  chown 21000 /dest/fs/
 touch /client/state/flags/volume_setup_complete
-
+echo setup complete
  exit 0
