@@ -16,7 +16,8 @@ ADD sudoers /etc/sudoers
 RUN mkdir /ftp/;\
 	chgrp proftpd /etc/proftpd/sql.conf ;\
 	chmod g+w /etc/proftpd/sql.conf ;\
-	ln -s /home/.ssh /home/ftpd/;\
+	mkdir -p /home/home_dir/.ssh ;\
+	ln -s /home/home_dir/.ssh /home/ftpd/;\
 	chmod -R go-rw /etc/sudoers /etc/sudoers.d/
 	
 ADD home home
