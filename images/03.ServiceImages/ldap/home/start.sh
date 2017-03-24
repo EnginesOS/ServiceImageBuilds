@@ -16,7 +16,7 @@ sudo -n /home/engines/scripts/_start_syslog.sh
 echo started syslog
 sudo -n /usr/sbin/slapd -d 4
 echo -n $% > /tmp/pids
-sudo -n /usr/sbin/apache2ctl  -DFOREGROUND & 
+sudo -n /usr/sbin/apache2ctl start 
 echo -n " " >> /tmp/pids
 cat  /run//apache2/apache2.pid >> /tmp/pids
 touch  /engines/var/run/flags/startup_complete
