@@ -1,6 +1,6 @@
 
 
-openldap ALL=(root) NOPASSWD: /home/configurators/_set_password 
+openldap ALL=(root) NOPASSWD: /home/configurators/_set_password.sh
 openldap ALL=(root) NOPASSWD: /usr/sbin/slapd
 openldap ALL=(root) NOPASSWD: /usr/sbin/apache2ctl
 
