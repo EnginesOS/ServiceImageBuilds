@@ -1,14 +1,15 @@
 FROM engines/servicebase:$release
 Maintainer image.maintainer@engines.onl
 
-ADD Alias /tmp
+ADD Alias /tmp/
 
 RUN apt-get -y update;\
 	adduser -q --disabled-password  -uid 22013 openldap;\
+	usermod -G containers -a  openldap;\
 	/home/no_init.sh ;\	
 	apt-get -y install slapd ldap-utils apache2  php-dev apache2-utils phpldapadmin;\
  	/home/post_build_clean.sh;\
- 	mkdir /var/log/apache2;\
+ 	mkdir -p /var/log/apache2;\
  	chown www-data /var/log/apache2 ;\
  	cat /tmp/Alias >> /etc/apache2/apache2.conf
  	
