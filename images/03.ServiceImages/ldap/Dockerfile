@@ -14,7 +14,7 @@ RUN apt-get -y update;\
  	
  	
 ADD home home
-cat /home/Alias >> /etc/apache2/apache2.conf
+RUN cat /home/Alias >> /etc/apache2/apache2.conf
 
 ADD 000-default.conf /etc/apache2/sites-enabled/
 
