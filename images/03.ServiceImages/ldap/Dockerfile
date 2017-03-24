@@ -1,6 +1,7 @@
 FROM engines/servicebase:$release
 Maintainer image.maintainer@engines.onl
 
+ADD home home
 
 RUN apt-get -y update;\
 	adduser -q --disabled-password  -uid 22013 openldap;\
@@ -11,7 +12,7 @@ RUN apt-get -y update;\
  	mkdir -p /var/log/apache2;\
  	chown www-data /var/log/apache2 
  	
-ADD home home
+
 
 RUN cat /home/Alias >> /etc/apache2/apache2.conf
 
