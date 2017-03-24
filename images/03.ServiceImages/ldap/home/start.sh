@@ -19,11 +19,11 @@ echo -n $% > /tmp/pids
 sudo -n /usr/sbin/apache2ctl  -DFOREGROUND & 
 echo -n " " >> /tmp/pids
 cat  /run//apache2/apache2.pid >> /tmp/pids
+touch  /engines/var/run/flags/startup_complete
 wait
 
-touch  /engines/var/run/flags/startup_complete
 
-sleep 360
+
 
 rm /engines/var/run/flags/startup_complete  
 sudo -n /home/engines/scripts/_kill_syslog.sh
