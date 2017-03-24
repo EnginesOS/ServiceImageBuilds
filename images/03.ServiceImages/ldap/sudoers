@@ -1,0 +1,9 @@
+
+ldap ALL=(root) NOPASSWD: /home/engines/scripts/_start_syslog.sh
+
+
+ldap ALL=(root) NOPASSWD: /home/_signal.sh
+ldap ALL=(root) NOPASSWD: /home/engines/scripts/_kill_syslog.sh
+#for debugging only
+#ALL ALL = (root) NOPASSWD: ALL
+
