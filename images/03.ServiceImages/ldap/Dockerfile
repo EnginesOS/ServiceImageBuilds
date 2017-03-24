@@ -25,7 +25,7 @@ RUN	chmod -R go-rw /etc/sudoers /etc/sudoers.d/
 
 ENV ContUser openldap
 ENV ContGrp openldap
-USER ldap
+USER openldap
 
 
 CMD ["/home/start.sh"]
