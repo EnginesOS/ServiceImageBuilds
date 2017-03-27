@@ -32,31 +32,19 @@ if test -z $db_password
 		exit -1
 	fi
 	
-if test -z $collation
-	then
-		echo Error:No collation value
-		exit -1
-	fi
-	
-	char_set=`echo $collation | cut -f1 -d_`
-	if test -t "$char_set"
-	 then
-	 	char_set=utf8
-	 fi
 
-Q1="CREATE DATABASE IF NOT EXISTS ${BTICK}$database_name${BTICK}   DEFAULT CHARACTER SET $char_set
-  DEFAULT COLLATE $collation ;"
-Q2="GRANT ALL  PRIVILEGES ON ${BTICK}$database_name${BTICK}.* TO '$db_username'@'%' IDENTIFIED BY '$db_password';"
-Q3="Grant Create User on *.* to '$db_username'@'%';"
-Q4="FLUSH PRIVILEGES;"
 if ! test -z $full_access
  then
  		if test $full_access = true
  			then
- 				Q5="UPDATE mysql.user SET Super_Priv='Y' WHERE user='$dbusername' AND host='%';"
+ 				Q5="UPDATE mysql.user SET Super_Priv='Y' WHERE user='$db_username' AND host='%';"
  	     elif test $full_access = grant 
  	      then
- 	     		Q5="GRANT ALL  PRIVILEGES ON ${BTICK}$database_name${BTICK}.* TO '$db_username'@'%' IDENTIFIED BY '$db_password' WITH GRANT OPTION;"
+ 	            Q5="UPDATE mysql.user SET Super_Priv='N' WHERE user='$dbusername' AND host='%';"
+ 	     		Q5=$Q5 "GRANT ALL PRIVILEGES ON ${BTICK}$database_name${BTICK}.* TO '$db_username'@'%' IDENTIFIED BY '$db_password' WITH GRANT OPTION;"
+ 	     else
+ 	     
+ 	      Q5=$Q5 "REVOKE GRANT ON ${BTICK}$database_name${BTICK}.* TO '$db_username'@'%' IDENTIFIED BY '$db_password' ;"
  		fi
  fi
 
