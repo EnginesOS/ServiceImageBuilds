@@ -34,17 +34,12 @@ if test -z $fqdn
  	exit -1
  fi
  
- res=`nslookup ${parent_engine}.engines.internal`
- if test $? -lt 0
-  then
-  	echo Error:failed to find internal dns entry for ${parent_engine}.engines.internal
-  	exit -1
- fi  
 
-	  res=`nslookup ${parent_engine}.engines.internal`
 
- teststr=`echo $res |grep NXDOMAIN`
- if test ${#teststr} -gt 0
+res=`nslookup ${parent_engine}.engines.internal|grep -e "Address: *[0-9]" |awk '{print $2}'`
+
+ `echo $res |grep *\.*\.*\.*` >/dev/null
+ if test $? -ne 0
   then
         echo Error:failed to find internal dns entry for ${parent_engine}.engines.internal
         exit -1
