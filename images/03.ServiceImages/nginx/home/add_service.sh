@@ -38,7 +38,7 @@ if test -z $fqdn
 
 res=`nslookup ${parent_engine}.engines.internal|grep -e "Address: *[0-9]" |awk '{print $2}'`
 
- `echo $res |grep *\.*\.*\.*` >/dev/null
+ `echo $res | grep -e "[0-9].*\.[0-9].*\.[0-9].*" >/dev/null`
  if test $? -ne 0
   then
         echo Error:failed to find internal dns entry for ${parent_engine}.engines.internal
