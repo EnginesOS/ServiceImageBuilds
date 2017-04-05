@@ -2,8 +2,7 @@ FROM engines/node4:$release
 ENV ruby_version 2.3.0
 ENV ContUser ruby
 ENV ContGrp ruby
-#ENV  RBENV_ROOT /usr/local/rbenv
-#ENV PATH $PATH:/usr/local/rbenv/shims/
+
 
 ADD gemrc  /home/.gemrc
 
