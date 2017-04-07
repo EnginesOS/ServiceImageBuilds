@@ -8,5 +8,5 @@ RUN mkdir ~/node_js_src && cd $_;wget https://nodejs.org/dist/latest-v4.x/node-v
  	echo "Y" | adduser --uid 22673 -q --ingroup node --home /home/node --disabled-password node;\
  	usermod -G containers -a node;\
  	npm -g install npm@latest;\
- 	ln -s /usr/local/bin/node /usr/local/bin/js
+ 	ln -s /usr/local/bin/node /usr/local/bin/js;\
  	cd ~ ; rm -r ~/node_js_src
