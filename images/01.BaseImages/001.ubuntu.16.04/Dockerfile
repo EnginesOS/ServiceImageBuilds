@@ -18,5 +18,5 @@ RUN echo '#!/bin/sh' > /usr/sbin/policy-rc.d \
 && echo 'Acquire::GzipIndexes "true"; Acquire::CompressionTypes::Order:: "gz";' > /etc/apt/apt.conf.d/docker-gzip-indexes;\
  sed -i 's/^#\s*\(deb.*universe\)$/\1/g' /etc/apt/sources.list;\
 	rm -rf   /var/cache/apt/archives ;\
-	apt-get update;\
-	apt-get upgrade
+	apt-get -y update;\
+	apt-get -y upgrade
