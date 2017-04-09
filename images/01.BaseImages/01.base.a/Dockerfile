@@ -37,9 +37,7 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ED8E640A;\
 	apt-get remove  build-essential;\
 	/home/install_utf8_langauges.sh;\
 	rm -r /tmp/* /home/install_utf8_langauges.sh;\
-		apt-get clean ;\
-		apt-get autoremove ;\
-		apt-get autoclean ;\		
+		apt-get clean ;\	
 		rm -rf /tmp/*;\
  		mkdir /var/run/engines ; chgrp containers /var/run/engines; chmod g+w /var/run/engines	
 		
