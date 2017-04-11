@@ -1,0 +1,20 @@
+  apt-get install strongswan-plugin-eap-gtc
+   16  ipsec stop
+   17  ipsec start
+   18  vi /etc/ipsec.conf 
+   19  os 
+   20  ps -ax |grep cho
+   21  ps -ax |grep cha
+   22  ps -axl |grep cha
+   23  apt-cache search eap-gtc
+   24* apt-get install libcharon-extra-plugins[A
+   25  ipsec start
+   26  vi /etc/ipsec.conf 
+   27  vi /etc/strongswan.conf 
+   28  ipsec start
+   29  netstat -na
+   30  apt-get install pam_krb5
+   31  apt-cache search krb |grep pam
+   32  apt-get install libpam-krb5 -
+   33  apt-get install krb5-config krb5-user
+   34  history

@@ -21,9 +21,7 @@ RUN	echo y y |sendmailconfig --no-reload;\
 	chmod g+w /home/actionators/saved/ ;\	
 	mkdir $HOME ; chgrp containers $HOME; chmod g+w  $HOME ;\
 	chmod -R go-rw /etc/sudoers /etc/sudoers.d/;\
-	apt-get clean ;\
-	apt-get autoremove ;\
-	apt-get autoclean ;\		
+	apt-get clean ;\	
 	rm -rf /tmp/*
 
 

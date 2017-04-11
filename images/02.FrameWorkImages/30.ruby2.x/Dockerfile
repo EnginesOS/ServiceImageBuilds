@@ -2,8 +2,7 @@ FROM engines/node4:$release
 ENV ruby_version 2.3.0
 ENV ContUser ruby
 ENV ContGrp ruby
-#ENV  RBENV_ROOT /usr/local/rbenv
-#ENV PATH $PATH:/usr/local/rbenv/shims/
+
 
 ADD gemrc  /home/.gemrc
 
@@ -14,6 +13,6 @@ RUN	groupadd ruby;\
 		mkdir -p ~www-data ;\
 		apt-get update;\
 		chown www-data ~www-data ;\
-		apt-get install -y ruby-dev gem ;\
+		apt-get install -y ruby-dev zlib1g zlib1g-dev gem ;\
 		gem install bundle
 		
