@@ -7,13 +7,16 @@ export PID_FILE
 
 
 mkdir -p /engines/var/run/flags/
-
+if ! test -f /etc/ipsec.d/private/ipvpn.key
+ then
+	sudo -n /home/setup.sh
+fi
 
 sudo -n /home/engines/scripts/_start_syslog.sh
 
 
 touch /engines/var/run/flags/startup_complete  
-/usr/sbin/ipsec start --nofork &
+sudo /usr/sbin/ipsec start --nofork &
 wait 
 sleep 500
 sudo -n  /home/engines/scripts/_kill_syslog.sh
