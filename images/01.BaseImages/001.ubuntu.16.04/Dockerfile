@@ -5,7 +5,6 @@ COPY dpkg.conf.d /etc/dpkg/dpkg.cfg.d
 RUN echo '#!/bin/sh' > /usr/sbin/policy-rc.d \
 && echo 'exit 101' >> /usr/sbin/policy-rc.d \
 && chmod +x /usr/sbin/policy-rc.d \
-\
 && dpkg-divert --local --rename --add /sbin/initctl \
 && cp -a /usr/sbin/policy-rc.d /sbin/initctl \
 && sed -i 's/^exit.*/exit 0/' /sbin/initctl \
@@ -19,5 +18,5 @@ RUN echo '#!/bin/sh' > /usr/sbin/policy-rc.d \
 && echo 'Acquire::GzipIndexes "true"; Acquire::CompressionTypes::Order:: "gz";' > /etc/apt/apt.conf.d/docker-gzip-indexes;\
  sed -i 's/^#\s*\(deb.*universe\)$/\1/g' /etc/apt/sources.list;\
 	rm -rf   /var/cache/apt/archives ;\
-	apt-get update;\
-	apt-get upgrade
+	apt-get -y update;\
+	apt-get -y upgrade

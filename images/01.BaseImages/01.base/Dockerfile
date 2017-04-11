@@ -47,9 +47,7 @@ RUN	echo '#!/bin/sh' >/usr/sbin/policy-rc.d ;\
 	/home/install_utf8_langauges.sh ;\
 	rm -r /tmp/* /home/install_utf8_langauges.sh;\
 	rm /etc/rsyslog.d/50-default.conf;\ 
-	apt-get clean ;\
-	apt-get autoremove ;\
-	apt-get autoclean ;\		
+	apt-get clean ;\	
 	rm -rf /tmp/*;\
  	mkdir /var/run/engines ;\
  	chgrp containers /var/run/engines; chmod g+w /var/run/engines	
