@@ -7,7 +7,10 @@ export PID_FILE
 
 
 mkdir -p /engines/var/run/flags/
-
+if ! test -f /etc/ipsec.d/private/ipvpn.key
+ then
+	sudo -n /home/setup.sh
+fi
 
 sudo -n /home/engines/scripts/_start_syslog.sh
 
