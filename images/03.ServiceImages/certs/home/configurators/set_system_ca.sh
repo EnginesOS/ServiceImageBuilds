@@ -35,12 +35,12 @@ mkdir -p /home/certs/store/private/ca/keys/
 chmod og-rwx  /home/certs/store/private/ca/keys/
  if ! test $altName
   then
-  	altName=DNS:$domainname
+  	ALTNAME=DNS:$domainname
   else
-  	altName=DNS:$altName
+  	ALTNAME=DNS:$altName
   fi
   
-
+export ALTNAME
 openssl genrsa -out /home/certs/store/private/ca/keys/system_CA.key 2048
 openssl req -x509  -extensions v3_req -new -nodes -key /home/certs/store/private/ca/keys/system_CA.key -days 1024 -out /home/certs/store/public/ca/certs/system_CA.pem < /home/configurators/saved/ca_setup
         

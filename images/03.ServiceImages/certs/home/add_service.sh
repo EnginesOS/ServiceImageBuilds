@@ -43,11 +43,11 @@ if test  $wild = "yes"
  fi
  if ! test $altName
   then
-  	altName=DNS:$domainname
+  	ALTNAME=DNS:$domainname
   else
-  	altName=DNS:$altName
+  	ALTNAME=DNS:$altName
   fi
-  
+  export ALTNAME
 echo "" >>/home/certs/saved/${cert_name}_setup
 echo "" >>/home/certs/saved/${cert_name}_setup
 echo "" >>/home/certs/saved/${cert_name}_setup
