@@ -40,8 +40,8 @@ chmod og-rwx  /home/certs/store/private/ca/keys/
   	ALTNAME=DNS:$altName
   fi
   
-
+export ALTNAME=$ALTNAME
 openssl genrsa -out /home/certs/store/private/ca/keys/system_CA.key 2048
-ALTNAME=$ALTNAME openssl req -x509  -extensions v3_req -new -nodes -key /home/certs/store/private/ca/keys/system_CA.key -days 1024 -out /home/certs/store/public/ca/certs/system_CA.pem < /home/configurators/saved/ca_setup
+openssl req -x509  -extensions v3_req -new -nodes -key /home/certs/store/private/ca/keys/system_CA.key -days 1024 -out /home/certs/store/public/ca/certs/system_CA.pem < /home/configurators/saved/ca_setup
         
         
