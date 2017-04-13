@@ -3,8 +3,8 @@ ADD home /home
 ADD engines_sudoers /etc/sudoers.d/engines
 ADD sources.list /etc/apt/
 RUN apt-get install -y  sendmail-bin ca-certificates mysql-client postgresql-client git-core imagemagick gawk sqlite3 bison  sudo;\
-	mkdir -p /home/fs;\
-	apt-get clean
+	mkdir -p /home/fs
+
 	
 COPY submit.mc /etc/mail
 COPY sendmail.mc /etc/mail
@@ -21,7 +21,6 @@ RUN	echo y y |sendmailconfig --no-reload;\
 	chmod g+w /home/actionators/saved/ ;\	
 	mkdir $HOME ; chgrp containers $HOME; chmod g+w  $HOME ;\
 	chmod -R go-rw /etc/sudoers /etc/sudoers.d/;\
-	apt-get clean ;\	
 	rm -rf /tmp/*
 
 

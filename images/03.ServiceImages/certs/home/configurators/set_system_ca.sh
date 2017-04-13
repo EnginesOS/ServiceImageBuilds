@@ -26,6 +26,7 @@ echo $state >>/home/configurators/saved/ca_setup
 echo $city >>/home/configurators/saved/ca_setup
 echo $person >>/home/configurators/saved/ca_setup
 echo $organisation >>/home/configurators/saved/ca_setup
+cp /home/configurators/saved/ca_setup /home/configurators/saved/cn_defaults
 echo $domainname CA  >>/home/configurators/saved/ca_setup
 echo "" >>/home/configurators/saved/ca_setup
 echo "" >>/home/configurators/saved/ca_setup
@@ -33,14 +34,7 @@ mkdir -p /home/certs/store/public/ca/keys/
 mkdir -p /home/certs/store/public/ca/certs
 mkdir -p /home/certs/store/private/ca/keys/
 chmod og-rwx  /home/certs/store/private/ca/keys/
- if ! test $altName
-  then
-  	altName=DNS:$domainname
-  else
-  	altName=DNS:$altName
-  fi
-  
-
+ 
 openssl genrsa -out /home/certs/store/private/ca/keys/system_CA.key 2048
 openssl req -x509  -extensions v3_req -new -nodes -key /home/certs/store/private/ca/keys/system_CA.key -days 1024 -out /home/certs/store/public/ca/certs/system_CA.pem < /home/configurators/saved/ca_setup
         
