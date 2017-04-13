@@ -13,8 +13,7 @@ RUN /usr/sbin/usermod -u 22671 www-data ;\
 	gem install	  passenger;\   
 	apt-get install -y nginx-common nginx-extras nginx;\
  	mkdir   -p /var/www/.passenger ;\
- 	chown www-data /var/www/.passenger ;\
- 	/home/post_build_clean.sh
+ 	chown www-data /var/www/.passenger 
  	
  RUN usermod -G containers -a www-data ;\
  	chown www-data /var/lib/nginx/ ;\
