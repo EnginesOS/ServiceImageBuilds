@@ -9,7 +9,7 @@ RUN 	/home/no_init.sh ;\
 
 COPY home home
 COPY sudoers /etc/sudoers.d/engine
-COPY openss.cnf /etc/ssl/
+COPY openssl.cnf /etc/ssl/
 RUN 	mkdir -p /home/certs/saved /home/certs/store/ca /home/certs/store/keys /home/certs/store/certs /home/certs/home;\
 		chown certs -R /home/certs/saved /home/certs/store/ /home/configurators/saved/ /home/certs/home ;\
 		chgrp -R containers /home/actionators/;\
