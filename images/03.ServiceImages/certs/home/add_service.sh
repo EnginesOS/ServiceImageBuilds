@@ -21,7 +21,7 @@ if test -z "${cert_name}"
     mkdir -p /home/certs/store/public/keys/
     mkdir -p /home/certs/store/public/certs/
     
-openssl genrsa -out  /home/certs/store/public/keys/${StorePref}_${cert_name}.key.tmp 2048
+
 
 if test -z $wild
  then
@@ -41,15 +41,26 @@ if test  $wild = "yes"
  else
   echo $domainname  >>/home/certs/saved/${cert_name}_setup
  fi
+ if ! test $altName
+  then
+  	ALTNAME=DNS:$domainname
+  else
+  	ALTNAME=DNS:$altName
+  fi
+export ALTNAME=$ALTNAME
+
 echo "" >>/home/certs/saved/${cert_name}_setup
 echo "" >>/home/certs/saved/${cert_name}_setup
 echo "" >>/home/certs/saved/${cert_name}_setup
-openssl req -new -key /home/certs/store/public/keys/${StorePref}_${cert_name}.key.tmp -out /home/certs/saved/${cert_name}.csr < /home/certs/saved/${cert_name}_setup
+
+openssl genrsa -out  /home/certs/store/public/keys/${StorePref}_${cert_name}.key.tmp 2048
+openssl req -new  -extensions v3_req  -key /home/certs/store/public/keys/${StorePref}_${cert_name}.key.tmp -out /home/certs/saved/${cert_name}.csr < /home/certs/saved/${cert_name}_setup
 if test $? -ne 0
  then
  	echo "Failed to Create CSR"
  	exit 127
  fi
+
 openssl x509 -req -in /home/certs/saved/${cert_name}.csr -CA  /home/certs/store/public/ca/certs/system_CA.pem -CAkey /home/certs/store/private/ca/keys/system_CA.key -CAcreateserial -out /home/certs/store/public/certs/${StorePref}_${cert_name}.crt.tmp -days 500
 if test $? -ne 0
  then

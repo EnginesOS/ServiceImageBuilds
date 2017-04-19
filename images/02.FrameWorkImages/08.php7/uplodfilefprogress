@@ -1,0 +1,13 @@
+ apt-get install re2c
+   
+   cd /tmp
+    git clone https://github.com/Jan-E/uploadprogress.git
+    cd uploadprogress
+     phpize
+     ./configure --with-php-config=/usr/bin/php-config --enable-uploadprogress
+   make
+    make install
+
+   echo   extension=uploadprogress.so > /php/7.0/mods-available/uploadprogress.ini
+     phpenmod uploadprogress
+   
