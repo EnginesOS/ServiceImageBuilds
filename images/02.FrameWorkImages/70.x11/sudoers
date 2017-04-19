@@ -1,0 +1,13 @@
+
+xuser ALL = (root) NOPASSWD:/usr/sbin/sshd
+
+xuser ALL = (root) NOPASSWD: /home/engines/scripts/_start_syslog.sh
+xuser ALL = (root) NOPASSWD: /home/_signal.sh
+xuser ALL = (root) NOPASSWD: /home/engines/scripts/_kill_syslog.sh
+
+
+#must have blank after last sudoers line
+
+#for debugging only
+ALL ALL = (root) NOPASSWD: ALL
+
