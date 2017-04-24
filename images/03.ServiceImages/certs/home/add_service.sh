@@ -38,6 +38,7 @@ echo $person >>/home/certs/saved/${cert_name}_setup
 if test  $wild = "yes"
  then
 	echo \*.$domainname  >>/home/certs/saved/${cert_name}_setup
+	domainname=\*.$domainname
  else
   echo $domainname  >>/home/certs/saved/${cert_name}_setup
  fi
@@ -53,8 +54,11 @@ echo "" >>/home/certs/saved/${cert_name}_setup
 echo "" >>/home/certs/saved/${cert_name}_setup
 echo "" >>/home/certs/saved/${cert_name}_setup
 
+template`cat /home/request.template`
+echo $template >  /home/certs/saved/${cert_name}_config
 openssl genrsa -out  /home/certs/store/public/keys/${StorePref}_${cert_name}.key.tmp 2048
-openssl req -new  -extensions v3_req  -key /home/certs/store/public/keys/${StorePref}_${cert_name}.key.tmp -out /home/certs/saved/${cert_name}.csr < /home/certs/saved/${cert_name}_setup
+#openssl req -new  -extensions v3_req  -key /home/certs/store/public/keys/${StorePref}_${cert_name}.key.tmp -out /home/certs/saved/${cert_name}.csr < /home/certs/saved/${cert_name}_setup
+openssl req -new  -extensions v3_req  -key /home/certs/store/public/keys/${StorePref}_${cert_name}.key.tmp -out /home/certs/saved/${cert_name}.csr -config /home/certs/saved/${cert_name}_config
 if test $? -ne 0
  then
  	echo "Failed to Create CSR"
