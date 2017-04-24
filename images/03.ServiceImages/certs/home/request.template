@@ -21,4 +21,4 @@ subjectAltName = @alt_names
 
 [alt_names]
 DNS.1 = $domainname
-DNS.2 = $container.$domainname
+DNS.2 = $hostname.$domainname
