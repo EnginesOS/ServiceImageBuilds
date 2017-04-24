@@ -7,12 +7,12 @@ req_extensions = req_ext
 distinguished_name = dn
 
 [dn]
-C           = $country
-ST          = $state
-L           = $city
-O           = $organisation
-OU          = $person
-CN          = $domainname
+C           = COUNTRY
+ST          = STATE
+L           = CITY 
+O           = ORGANISATION
+OU          = PERSON
+CN          = DOMAINNAME
 
 [ req_ext ]
 basicConstraints = CA:FALSE
@@ -20,5 +20,5 @@ keyUsage = nonRepudiation, digitalSignature, keyEncipherment
 subjectAltName = @alt_names
 
 [alt_names]
-DNS.1 = $domainname
-DNS.2 = $hostname.$domainname
+DNS.1 = DOMAINNAME
+DNS.2 = HOSTNAME
