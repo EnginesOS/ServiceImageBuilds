@@ -28,7 +28,7 @@ if test -z $wild
   wild="no"
  fi
  
-
+domain=$domainname
 
 echo $country >/home/certs/saved/${cert_name}_setup
 echo $state >>/home/certs/saved/${cert_name}_setup
@@ -38,6 +38,7 @@ echo $person >>/home/certs/saved/${cert_name}_setup
 if test  $wild = "yes"
  then
 	echo \*.$domainname  >>/home/certs/saved/${cert_name}_setup
+	
 	domainname=\*.$domainname
  else
   echo $domainname  >>/home/certs/saved/${cert_name}_setup
@@ -57,7 +58,7 @@ if test -z $hostname
  then
 	hostname=$parent_engine.$domainname
  fi
- cat /home/request.template | sed -e "s/COUNTRY/$country/"  -e "s/STATE/$state/" -e "s/ORGANISATION/$organisation/" -e "s/PERSON/$person/" -e "s/DOMAINNAME/$domainname/" -e "s/HOSTNAME/$hostname/" >  /home/certs/saved/${cert_name}_config
+ cat /home/request.template | sed -e "s/COUNTRY/$country/"  -e "s/STATE/$state/" -e "s/ORGANISATION/$organisation/" -e "s/PERSON/$person/" -e "s/DOMAINNAME/$domain/" -e "s/HOSTNAME/$hostname/" >  /home/certs/saved/${cert_name}_config
 
 
 openssl genrsa -out  /home/certs/store/public/keys/${StorePref}_${cert_name}.key.tmp 2048
