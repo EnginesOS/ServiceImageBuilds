@@ -28,7 +28,8 @@ if test -z $wild
   wild="no"
  fi
  
-domain=$domainname
+ # before any addition of *\.
+domain=$domainname 
 
 echo $country >/home/certs/saved/${cert_name}_setup
 echo $state >>/home/certs/saved/${cert_name}_setup
@@ -43,9 +44,10 @@ if test  $wild = "yes"
  else
   echo $domainname  >>/home/certs/saved/${cert_name}_setup
  fi
+ 
  if ! test $altName
   then
-  	ALTNAME=DNS:$domainname
+  	ALTNAME=DNS:$domain
   else
   	ALTNAME=DNS:$altName
   fi
@@ -56,7 +58,7 @@ echo "" >>/home/certs/saved/${cert_name}_setup
 echo "" >>/home/certs/saved/${cert_name}_setup
 if test -z $hostname
  then
-	hostname=$parent_engine.$domainname
+	hostname=$parent_engine.$domain
  fi
  cat /home/request.template | sed -e "s/COUNTRY/$country/"  -e "s/STATE/$state/" -e "s/ORGANISATION/$organisation/" -e "s/PERSON/$person/" -e "s/DOMAINNAME/$domain/" -e "s/HOSTNAME/$hostname/" >  /home/certs/saved/${cert_name}_config
 
