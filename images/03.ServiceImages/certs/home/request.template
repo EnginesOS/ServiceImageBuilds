@@ -12,7 +12,7 @@ ST          = STATE
 L           = CITY 
 O           = ORGANISATION
 OU          = PERSON
-CN          = DOMAINNAME
+CN          = HOSTNAME
 
 [ req_ext ]
 basicConstraints = CA:FALSE
@@ -20,5 +20,4 @@ keyUsage = nonRepudiation, digitalSignature, keyEncipherment
 subjectAltName = @alt_names
 
 [alt_names]
-DNS.1 = DOMAINNAME
-DNS.2 = HOSTNAME
+DNS.1 = HOSTNAME

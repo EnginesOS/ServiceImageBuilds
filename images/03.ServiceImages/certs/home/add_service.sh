@@ -62,6 +62,15 @@ if test -z $hostname
  fi
  cat /home/request.template | sed -e "s/COUNTRY/$country/"  -e "s/STATE/$state/" -e "s/ORGANISATION/$organisation/" -e "s/PERSON/$person/" -e "s/DOMAINNAME/$domain/" -e "s/HOSTNAME/$hostname/" >  /home/certs/saved/${cert_name}_config
 
+n=2
+if ! test -z $alt_names
+ then
+ 	for alt_name in $alt_names
+ 	 do
+ 	  echo DNS.$n $alt_name >> /home/certs/saved/${cert_name}_config
+ 	  n=`expr $n + 1`
+ 	 done
+ fi
 
 openssl genrsa -out  /home/certs/store/public/keys/${StorePref}_${cert_name}.key.tmp 2048
 #openssl req -new  -extensions v3_req  -key /home/certs/store/public/keys/${StorePref}_${cert_name}.key.tmp -out /home/certs/saved/${cert_name}.csr < /home/certs/saved/${cert_name}_setup
