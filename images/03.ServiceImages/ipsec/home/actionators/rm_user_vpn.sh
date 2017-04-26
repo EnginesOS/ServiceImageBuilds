@@ -7,6 +7,7 @@ if ! test -f /home/ivpn/entries/user/${vpn_name}
  fi
  
 rm /home/ivpn/entries/user/${vpn_name}
+cat /home/ivpn/entries/user/* >> /etc/ipsec.secrets
 }
 
 
