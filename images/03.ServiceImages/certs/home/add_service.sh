@@ -28,7 +28,8 @@ if test -z $wild
   wild="no"
  fi
  
-
+ # before any addition of *\.
+domain=$domainname 
 
 echo $country >/home/certs/saved/${cert_name}_setup
 echo $state >>/home/certs/saved/${cert_name}_setup
@@ -38,12 +39,15 @@ echo $person >>/home/certs/saved/${cert_name}_setup
 if test  $wild = "yes"
  then
 	echo \*.$domainname  >>/home/certs/saved/${cert_name}_setup
+	
+	domainname=\*.$domainname
  else
   echo $domainname  >>/home/certs/saved/${cert_name}_setup
  fi
+ 
  if ! test $altName
   then
-  	ALTNAME=DNS:$domainname
+  	ALTNAME=DNS:$domain
   else
   	ALTNAME=DNS:$altName
   fi
@@ -52,16 +56,32 @@ export ALTNAME=$ALTNAME
 echo "" >>/home/certs/saved/${cert_name}_setup
 echo "" >>/home/certs/saved/${cert_name}_setup
 echo "" >>/home/certs/saved/${cert_name}_setup
+if test -z $hostname
+ then
+	hostname=$parent_engine.$domain
+ fi
+ cat /home/request.template | sed -e "s/COUNTRY/$country/"  -e "s/STATE/$state/" -e "s/ORGANISATION/$organisation/" -e "s/PERSON/$person/" -e "s/DOMAINNAME/$domain/" -e "s/HOSTNAME/$hostname/" >  /home/certs/saved/${cert_name}_config
+
+n=2
+if ! test -z $alt_names
+ then
+ 	for alt_name in $alt_names
+ 	 do
+ 	  echo DNS.$n $alt_name >> /home/certs/saved/${cert_name}_config
+ 	  n=`expr $n + 1`
+ 	 done
+ fi
 
 openssl genrsa -out  /home/certs/store/public/keys/${StorePref}_${cert_name}.key.tmp 2048
-openssl req -new  -extensions v3_req  -key /home/certs/store/public/keys/${StorePref}_${cert_name}.key.tmp -out /home/certs/saved/${cert_name}.csr < /home/certs/saved/${cert_name}_setup
+#openssl req -new  -extensions v3_req  -key /home/certs/store/public/keys/${StorePref}_${cert_name}.key.tmp -out /home/certs/saved/${cert_name}.csr < /home/certs/saved/${cert_name}_setup
+openssl req -new  -key /home/certs/store/public/keys/${StorePref}_${cert_name}.key.tmp -out /home/certs/saved/${cert_name}.csr -config /home/certs/saved/${cert_name}_config
 if test $? -ne 0
  then
  	echo "Failed to Create CSR"
  	exit 127
  fi
 
-openssl x509 -req -in /home/certs/saved/${cert_name}.csr -CA  /home/certs/store/public/ca/certs/system_CA.pem -CAkey /home/certs/store/private/ca/keys/system_CA.key -CAcreateserial -out /home/certs/store/public/certs/${StorePref}_${cert_name}.crt.tmp -days 500
+openssl x509 -req -in /home/certs/saved/${cert_name}.csr -CA  /home/certs/store/public/ca/certs/system_CA.pem -CAkey /home/certs/store/private/ca/keys/system_CA.key -CAcreateserial -out /home/certs/store/public/certs/${StorePref}_${cert_name}.crt.tmp -days 500  -extensions req_ext -extfile  /home/certs/saved/${cert_name}_config
 if test $? -ne 0
  then
  	echo "Failed to sign CSR"
