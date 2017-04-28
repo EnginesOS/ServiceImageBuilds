@@ -67,7 +67,7 @@ if ! test -z $alt_names
  then
  	for alt_name in $alt_names
  	 do
- 	  echo DNS.$n $alt_name >> /home/certs/saved/${cert_name}_config
+ 	  echo DNS.$n = $alt_name >> /home/certs/saved/${cert_name}_config
  	  n=`expr $n + 1`
  	 done
  fi
