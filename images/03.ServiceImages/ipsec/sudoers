@@ -6,6 +6,7 @@ ivpn ALL = (root) NOPASSWD: /home/engines/scripts/_start_syslog.sh
 ivpn ALL = (root) NOPASSWD: /home/engines/scripts/_kill_syslog.sh
 ivpn ALL = (root) NOPASSWD: /usr/sbin/ipsec
 ivpn ALL = (root) NOPASSWD: /home/setup.sh
+ivpn ALL = (root) NOPASSWD: /home/_start.sh
 ivpn ALL = (root) NOPASSWD: /home/actionators/_add_user_vpn.sh
 ivpn ALL = (root) NOPASSWD: /home/actionators/_add_site_vpn.sh
 ivpn ALL = (root) NOPASSWD: /home/actionators/_rm_user_vpn.sh
