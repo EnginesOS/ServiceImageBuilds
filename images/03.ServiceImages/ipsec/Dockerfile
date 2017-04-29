@@ -12,6 +12,7 @@ RUN 	echo "Y" | adduser -q --disabled-password --home /home/ivpn -uid 22016 ivpn
 COPY sudoers /etc/sudoers.d/engines
 COPY ipsec.conf /etc/
 COPY ipsec.secrets /etc/
+COPY strongswan.conf /etc/
 RUN	chmod -R go-rw /etc/sudoers /etc/sudoers.d/
 USER ivpn
 	
