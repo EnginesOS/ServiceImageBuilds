@@ -35,6 +35,7 @@ fi
 
 		rm_site_vpn
 
+	ipsec stroke rereadsecrets
 	
 
 
