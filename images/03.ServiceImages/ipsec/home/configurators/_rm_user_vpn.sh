@@ -7,7 +7,9 @@ if ! test -f /home/ivpn/entries/user/${vpn_name}
  fi
  
 rm /home/ivpn/entries/user/${vpn_name}
+cp /home/ipsec.secrets.head /etc/ipsec.secrets
 cat /home/ivpn/entries/user/* >> /etc/ipsec.secrets
+ipsec stroke rereadsecrets
 }
 
 

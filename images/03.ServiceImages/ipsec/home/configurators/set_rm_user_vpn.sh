@@ -1,3 +1,3 @@
 #!/bin/bash
 
-sudo -n /home/configurators/_add_user_vpn.sh
+sudo -n /home/configurators/_rm_user_vpn.sh
