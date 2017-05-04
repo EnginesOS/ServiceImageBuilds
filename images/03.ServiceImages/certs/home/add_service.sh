@@ -39,7 +39,7 @@ echo $person >>/home/certs/saved/${cert_name}_setup
 if test  $wild = "yes"
  then
 	echo \*.$domainname  >>/home/certs/saved/${cert_name}_setup
-	hostname=\*
+	hostname=\*.$domainname
 	domainname=\*.$domainname
  else
   echo $domainname  >>/home/certs/saved/${cert_name}_setup
