@@ -45,7 +45,7 @@ channel xfers_channel {
    print-time yes;
    };
 
-category queries { queries_channel; };
+#category queries { queries_channel; };
 category security { security_channel; };
 category update-security { update_security_channel; };
 category dnssec { dnssec_channel; };
