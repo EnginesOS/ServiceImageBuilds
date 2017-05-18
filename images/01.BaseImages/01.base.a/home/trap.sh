@@ -34,9 +34,10 @@ trap_term()
 	SIGNAL=15
 	export SIGNAL
 	touch /engines/var/run/flags/sig_term
-	if ! test -z KILL_SCRIPT
-		$KILL_SCRIPT $SIGNAL
-	fi
+		if ! test -z KILL_SCRIPT
+		then
+		   $KILL_SCRIPT $SIGNAL
+		fi
 	if test -f $PID_FILE  #if exists 
 		then
 		if test -f /home/_signal.sh
@@ -64,9 +65,10 @@ trap_hup()
 	SIGNAL=1
 	export SIGNAL
 	touch /engines/var/run/flags/sig_hup
-		if ! test -z KILL_SCRIPT
-		$KILL_SCRIPT $SIGNAL
-	fi
+				if ! test -z KILL_SCRIPT
+		then
+		   $KILL_SCRIPT $SIGNAL
+		fi
 		if test -f $PID_FILE
 			then
 				if test -f /home/_signal.sh
@@ -86,8 +88,9 @@ trap_quit()
 	export SIGNAL
 	touch /engines/var/run/flags/sig_quit
 		if ! test -z KILL_SCRIPT
-		$KILL_SCRIPT $SIGNAL
-	fi
+		then
+		   $KILL_SCRIPT $SIGNAL
+		fi
 		if test -f $PID_FILE
 			then
 				if test -f /home/_signal.sh
