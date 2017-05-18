@@ -1,5 +1,6 @@
 #!/bin/sh
 
+ mkdir -p /engines/var/run/flags/
  
 if ! test -f /engines/var/run/flags/first_run
   then
