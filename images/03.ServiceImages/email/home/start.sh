@@ -8,6 +8,9 @@ if ! test -f /engines/var/run/flags/first_run
   	touch /engines/var/run/flags/first_run
   fi
   
+KILL_SCRIPT=/home/kill_postfix.sh
+export KILL_SCRIPT
+
 PID_FILE=/var/spool/postfix/pid/master.pid
 
 export PID_FILE
