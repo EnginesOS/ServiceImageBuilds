@@ -19,9 +19,9 @@ if ! test -d  /engines/var/run/flags/
 cd /home
  if test -f /opt/engines/etc/ssl/keys/system/server.key 
   then
-	thin  --ssl --ssl-key-file /opt/engines/etc/ssl/keys/system/server.key --ssl-cert-file /opt/engines/etc/ssl/certs/system/server.crt -C config.yaml -R ./config.ru start > /var/log/system.log &
+	thin --threaded --ssl --ssl-key-file /opt/engines/etc/ssl/keys/system/server.key --ssl-cert-file /opt/engines/etc/ssl/certs/system/server.crt -C config.yaml -R ./config.ru start > /var/log/system.log &
   else
-	thin   -C config.yaml -R ./config.ru start > /var/log/system.log &
+	thin  --threaded -C config.yaml -R ./config.ru start > /var/log/system.log &
  fi
 #--threaded  
 
