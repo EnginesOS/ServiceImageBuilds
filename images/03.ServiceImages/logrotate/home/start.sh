@@ -1,5 +1,6 @@
 #!/bin/sh
-
+touch  /engines/var/run/flags/startup_complete
+sleep 120
 echo "Log Rotated Started"
 date
 
@@ -11,7 +12,7 @@ mkdir -p /engines/var/run/flags/
 sudo /usr/sbin/logrotate -f /home/logrotate.conf &
 pid=$!
 echo $pid >$PID_FILE
-touch  /engines/var/run/flags/startup_complete
+
 wait  
 echo "Log Rotated Completed"
 date

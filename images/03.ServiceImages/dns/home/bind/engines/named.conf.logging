@@ -1,9 +1,9 @@
 logging {
-   channel default_debug {
-   file "/var/log/named/named.run" versions 3 size 5m;
-   severity dynamic;
-   print-time yes;
-   };
+ #  channel default_debug {
+#   file "/var/log/named/named.run" versions 3 size 5m;
+#   severity dynamic;
+#   print-time yes;
+#   };
 
 channel queries_channel {
    file "/var/log/named/queries.log" versions 3 size 5m;
@@ -45,7 +45,7 @@ channel xfers_channel {
    print-time yes;
    };
 
-category queries { queries_channel; };
+#category queries { queries_channel; };
 category security { security_channel; };
 category update-security { update_security_channel; };
 category dnssec { dnssec_channel; };
