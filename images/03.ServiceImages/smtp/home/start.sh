@@ -9,6 +9,9 @@ if ! test -f /engines/var/run/flags/first_run
 
 PID_FILE=/var/spool/postfix/pid/master.pid
 
+KILL_SCRIPT=/home/kill_postfix.sh
+export KILL_SCRIPT
+
 export PID_FILE
 . /home/trap.sh
 
