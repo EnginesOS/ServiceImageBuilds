@@ -8,6 +8,8 @@ if test $# -eq 0
 fi
 
  . /tmp/.env
+ 
+default_mdns_domain=`cat /home/configurators/saved/domain_name  | cut -f2 -d: | sed "s/\"//" | cut -f1 -d\"`
 
 if test -z ${hostname}
 	then
@@ -15,9 +17,9 @@ if test -z ${hostname}
         exit 128
     fi
 
- if test -f /home/avahi/hosts/${hostname}
+ if test -f /home/avahi/hosts/${hostname}.${default_mdns_domain}
   then
-	rm /home/avahi/hosts/${hostname}
+	rm /home/avahi/hosts/${hostname}.${domain_name}
  fi	
  	ls /home/avahi/hosts/ > /home/avahi/hosts_list
 	kill -HUP `cat /tmp/avahi-publisher.pid`

@@ -6,6 +6,7 @@ if test $# -eq 0
  else
 	echo $1 | /home/engines/bin/json_to_env >/tmp/.env
 fi
+default_mdns_domain=`cat /home/configurators/saved/domain_name  | cut -f2 -d: | sed "s/\"//" | cut -f1 -d\"`
 
  . /tmp/.env
 
@@ -16,7 +17,7 @@ if test -z ${hostname}
     fi
 
 
-	touch /home/avahi/hosts/${hostname}.local
+	touch /home/avahi/hosts/${hostname}.${default_mdns_domain}
 	ls /home/avahi/hosts/ > /home/avahi/hosts_list
 	if test -f /tmp/avahi-publisher.pid
 		then
