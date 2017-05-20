@@ -1,0 +1,5 @@
+/default-puma
+/deployment.sh.jruby
+/nginx.conf-puma
+/passenger.conf.ap
+/start.sh.jruby
