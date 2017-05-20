@@ -6,7 +6,7 @@ if test $# -eq 0
  else
 	echo $1 | /home/engines/bin/json_to_env >/tmp/.env
 fi
-default_mdns_domain=`cat /home/configurators/saved/domain_name  | cut -f2 -d: | sed "s/\"//" | cut -f1 -d\"`
+default_mdns_domain=`cat /home/configurators/saved/default_mdns_domain  | cut -f2 -d: | sed "s/\"//" | cut -f1 -d\"`
 
  . /tmp/.env
 
