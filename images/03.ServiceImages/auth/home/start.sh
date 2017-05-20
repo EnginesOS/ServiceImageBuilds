@@ -38,9 +38,10 @@ SIGNAL=0
 sudo -n /home/engines/scripts/_start_syslog.sh
 sudo -n /home/_start_sshd.sh
 sudo -n /home/_start_kerobos.sh &
-
+pid=$!
 touch /engines/var/run/flags/startup_complete
 echo "startup complete"
+wait $pid
 
  while test $SIGNAL -ne 3 -a $SIGNAL -ne 15
  do
