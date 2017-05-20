@@ -40,7 +40,7 @@ WORKDIR /home/app/
 RUN	git init
 ENV RELEASE $release
 ADD gitconfig.tmpl /home/app/.git/config.tmpl
-RUN cat /home/app/.git/config.tmpl  | sed "/\$release/s//$release/" > /home/app/.git/config
+RUN cat /home/app/.git/config.tmpl  | sed "/\$release/s//$RELEASE/" > /home/app/.git/config
 
 
 RUN /home/deployment.sh
