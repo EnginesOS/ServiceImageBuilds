@@ -4,7 +4,7 @@ if test -f /home/configurators/saved/default_domain
 	then
 		cat /home/configurators/saved/default_domain
 	else
-	echo '{"default_domain":"Not Set"}'
+	echo '{"default_mdns_domain":"Not Set"}'
 
 fi
 exit 0

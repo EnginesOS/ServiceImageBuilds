@@ -9,7 +9,7 @@ fi
 
  . /tmp/.env
  
-domain_name=`cat /home/configurators/saved/domain_name  | cut -f2 -d: | sed "s/\"//" | cut -f1 -d\"`
+default_mdns_domain=`cat /home/configurators/saved/domain_name  | cut -f2 -d: | sed "s/\"//" | cut -f1 -d\"`
 
 if test -z ${hostname}
 	then
@@ -17,7 +17,7 @@ if test -z ${hostname}
         exit 128
     fi
 
- if test -f /home/avahi/hosts/${hostname}.${domain_name}
+ if test -f /home/avahi/hosts/${hostname}.${default_mdns_domain}
   then
 	rm /home/avahi/hosts/${hostname}.${domain_name}
  fi	
