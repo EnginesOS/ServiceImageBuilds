@@ -56,7 +56,7 @@ COPY passenger.conf /etc/nginx/
 RUN chmod ugo+w -R /etc/nginx/sites-enabled/default /etc/nginx/;\
 	mkdir -p /var/run/nginx/ /var/lib/nginx /var/log/nginx;\
 	chown www-data /var/run/ /var/lib/nginx /var/run/nginx/ /var/log/nginx/
-ENV PATH /usr/local/bin:/usr/bin:/bin;
+ENV PATH /usr/local/bin:/usr/bin:/bin
 USER www-data
 CMD ["/home/start.sh"]
 
