@@ -1,5 +1,6 @@
 #!/bin/sh
 
+ mkdir -p /engines/var/run/flags/
  
 if ! test -f /engines/var/run/flags/first_run
   then
@@ -7,6 +8,9 @@ if ! test -f /engines/var/run/flags/first_run
   	touch /engines/var/run/flags/first_run
   fi
   
+KILL_SCRIPT=/home/kill_postfix.sh
+export KILL_SCRIPT
+
 PID_FILE=/var/spool/postfix/pid/master.pid
 
 export PID_FILE
@@ -21,6 +25,7 @@ sudo -n /usr/sbin/postmap /etc/postfix/smarthost_passwd
 sudo -n /usr/lib/postfix/sbin/master  -w &
 
 /home/configurators/set_default_domain.sh '{"default_domain":"'$DEFAULT_DOMAIN'"}'
+
 
  echo dbflavor=$dbflavor >/home/email/.dbenv
  echo dbhost=$dbhost >>/home/email/.dbenv
@@ -50,12 +55,15 @@ if test -f /home/configurators/saved/grey_listing_enabled
 fi
 
 sudo -n  /usr/sbin/apache2ctl  -DFOREGROUND & 
-touch /engines/var/run/flags/startup_complete  
+
+touch /engines/var/run/flags/startup_complete
+  
 
 sleep 6
 while test -f  /var/spool/postfix/pid/master.pid
  do
- 	sleep 10
+ 	sleep 10&
+ 	wait
  done
 
 rm -f /engines/var/run/flags/startup_complete
