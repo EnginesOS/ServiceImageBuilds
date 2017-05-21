@@ -1,4 +1,5 @@
 FROM  engines/servicebase:$release
+ADD sources.list /etc/apt/ 
 RUN /home/no_init.sh ;\
 	apt-get -y update;\
 	apt-get -y install  openssh-server mysql-client krb5-kdc krb5-admin-server expect;\
