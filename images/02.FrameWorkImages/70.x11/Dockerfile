@@ -9,7 +9,7 @@ RUN	groupadd xuser;\
 	echo "Y" | adduser -q --ingroup xuser --uid 22672 --home /home/app --disabled-password xuser;\
 		usermod -G containers -a xuser;\
 		mkdir -p ~www-data ;\
-		apt-get update;\
+		apt-get -y update;\
 		chown www-data ~www-data ;\
 	 	usermod -G data-user -a xuser;\
 	  	usermod -G containers -a xuser;\

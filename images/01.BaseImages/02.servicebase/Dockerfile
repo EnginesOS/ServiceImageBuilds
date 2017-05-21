@@ -1,4 +1,5 @@
 FROM  engines/base:$release
+ADD sources.list /etc/apt/
 COPY home /home
 RUN apt-get install -y  sendmail-bin;\ 
 	cp no_tls  /tmp/submit.head;\

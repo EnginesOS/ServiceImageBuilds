@@ -1,5 +1,5 @@
 FROM  engines/ngpassenger:$release
-ENV ruby_version 2.3.0
+#ENV ruby_version 2.3.0
 RUN 	 /usr/sbin/usermod -u 22050 www-data;\
 		apt-get -y install libsqlite3-dev  libcurl4-openssl-dev;\
  		/home/post_build_clean.sh
@@ -56,7 +56,7 @@ COPY passenger.conf /etc/nginx/
 RUN chmod ugo+w -R /etc/nginx/sites-enabled/default /etc/nginx/;\
 	mkdir -p /var/run/nginx/ /var/lib/nginx /var/log/nginx;\
 	chown www-data /var/run/ /var/lib/nginx /var/run/nginx/ /var/log/nginx/
-	
+ENV PATH /usr/local/bin:/usr/bin:/bin:/usr/sbin
 USER www-data
 CMD ["/home/start.sh"]
 
