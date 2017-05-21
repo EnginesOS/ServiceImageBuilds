@@ -9,7 +9,7 @@ fi
 
  . /tmp/.env
  
-default_mdns_domain=`cat /home/configurators/saved/domain_name  | cut -f2 -d: | sed "s/\"//" | cut -f1 -d\"`
+default_mdns_domain=`cat /home/configurators/saved/default_mdns_domain  | cut -f2 -d: | sed "s/\"//" | cut -f1 -d\"`
 
 if test -z ${hostname}
 	then
