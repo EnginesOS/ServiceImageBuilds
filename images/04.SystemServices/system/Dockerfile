@@ -45,7 +45,7 @@ RUN mkdir -p /home/engines/.ssh/mgmt /home/app/tmp/ ;\
 	chmod -R go-rw /etc/sudoers /etc/sudoers.d/
  	
 
-ENV PATH /usr/local/bin:/usr/bin:/bin
+ENV PATH /usr/local/bin:/usr/bin:/bin:/usr/sbin
 ENV HOME /home/engines/
 		
 USER 21000
