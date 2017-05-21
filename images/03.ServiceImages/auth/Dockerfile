@@ -1,6 +1,7 @@
 FROM  engines/servicebase:$release
+ADD sources.list /etc/apt/ 
 RUN /home/no_init.sh ;\
-	apt-get  update;\
+	apt-get -y update;\
 	apt-get -y install  openssh-server mysql-client krb5-kdc krb5-admin-server expect;\
 	echo "Y" | adduser -q --disabled-password --home /home/auth -uid 22017 auth;\
 	usermod -G containers -a auth ;\

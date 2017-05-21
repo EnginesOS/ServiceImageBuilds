@@ -1,6 +1,6 @@
 FROM  engines/base:$release
 
-RUN apt-get update;\
+RUN apt-get -y update;\
    apt-get -y install nagios3;\
     echo "Y" | adduser -q --home /home/rma --disabled-password rma;\
 	apt-get clean
