@@ -6,8 +6,7 @@ RUN adduser -q --disabled-password  redis -uid 22029;\
 apt-get update -y;\
 	apt-get -y install redis-server;\
 	mkdir -p /var/lib/redis /var/run/redis/ ;\ 
-	usermod -G containers -a redis ;\
- 	/home/post_build_clean.sh
+	usermod -G containers -a redis 
 	
 COPY redis.conf /etc/redis/
 COPY home home
