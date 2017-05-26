@@ -17,7 +17,7 @@ fi
 
 touch /engines/var/run/flags/startup_complete
 
-configs=`ls redis_server /home/config/*.redis.config`
+configs=`ls /home/config/*.redis.config`
 for config in $configs
  do
 	redis_server $config &
