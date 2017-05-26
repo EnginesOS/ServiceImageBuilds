@@ -16,10 +16,18 @@ fi
 
 
 touch /engines/var/run/flags/startup_complete
-redis &
+
+configs=`ls redis_server /home/config/*.redis.config`
+for config in $configs
+ do
+	redis_server $config &
+	echo -n $! >> /var/run/redis-server.pid
+	echo -n " " >> /var/run/redis-server.pid
+done
+touch /engines/var/run/flags/startup_complete
+sleep 500&
 
 wait 
-
 
 
 rm /engines/var/run/flags/startup_complete

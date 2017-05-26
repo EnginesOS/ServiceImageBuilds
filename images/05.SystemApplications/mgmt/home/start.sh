@@ -4,7 +4,6 @@
 cd /home/app/
 
 
-
  if ! test -d /var/run/nginx
  then
 mkdir   /var/run/nginx /var/log/nginx 
