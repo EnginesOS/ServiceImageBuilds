@@ -23,8 +23,17 @@ if test -z $password
 		exit -1
 	fi
 	
-	cat /home/tmpl/redis.tmpl | sed "s/PORT/$port/" | sed "s/PASSWORD/$password/" | sed "s/ENGINE/$parent_engine/"> /home/config/$parent_engine.redis
-	redis_server /home/config/$parent_engine.redis.config
+	
+
+next_port=`cat /home/resources/config/next_port`
+ if test $port -gt $next_port
+  then
+	next_port=`expr $port + 1`
+	echo $next_port > /home/resources/config/next_port
+fi
+
+cat /home/tmpl/redis.tmpl | sed "s/PORT/$port/" | sed "s/PASSWORD/$password/" | sed "s/ENGINE/$parent_engine/"> /home/config/$parent_engine.redis
+redis_server /home/config/$parent_engine.redis.config &
 
 if test $? -ge 0
 	then 

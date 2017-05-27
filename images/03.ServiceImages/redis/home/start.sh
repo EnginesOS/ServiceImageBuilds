@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 
 
@@ -25,7 +25,14 @@ for config in $configs
 	echo -n " " >> /var/run/redis-server.pid
 done
 touch /engines/var/run/flags/startup_complete
-sleep 500&
+ 
+ if test `ls /home/config/*.redis.config |wc -l` -eq 0
+  then
+  while test 0 -ne 1
+   do
+	sleep 500&
+   done	
+  fi
 
 wait 
 
