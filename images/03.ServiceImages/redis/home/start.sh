@@ -33,9 +33,11 @@ touch /engines/var/run/flags/startup_complete
 	sleep 500&
 	wait 	
    done	
+   else
+   wait 
   fi
 
-wait 
+
 
 
 rm /engines/var/run/flags/startup_complete
