@@ -46,8 +46,8 @@ mkdir -p /home/fs/persistent/db/
   then
 		touch /home/fs/persistent/db/database.sqllite
   fi
-#DATABASE_URL=$rails_flavor://$dbuser:$dbpasswd@$dbhost/$dbname
-DATABASE_URL=sqlite3:/home/fs/persistent/db/database.sqllite
+DATABASE_URL=$rails_flavor://$dbuser:$dbpasswd@$dbhost/$dbname
+#DATABASE_URL=sqlite3:/home/fs/persistent/db/database.sqllite
 export DATABASE_URL
  if test -f /home/ruby_env
   then
