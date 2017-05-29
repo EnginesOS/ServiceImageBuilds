@@ -61,7 +61,8 @@ echo " passenger_env_var SYSTEM_RELEASE $SYSTEM_RELEASE;" >> /home/app/.env_vars
 echo " passenger_env_var DATABASE_URL $DATABASE_URL;" >> /home/app/.env_vars
 echo " passenger_env_var ACTION_CABLE_ALLOWED_REQUEST_ORIGINS $ACTION_CABLE_ALLOWED_REQUEST_ORIGINS;" >> /home/app/.env_vars
 echo " passenger_env_var ACTION_CABLE_URL $ACTION_CABLE_URL;" >> /home/app/.env_vars
-echo " passenger_env_var REDIS_URL $redis_hostname:$redis_password:$redis_port;" >> /home/app/.env_vars
+echo " passenger_env_var REDIS_URL redis://$redis_password@$redis_hostname:$redis_port/;" >> /home/app/.env_vars
+
 #if test -f /home/app/env_production.rb
 	#then
 #cp	 env_production.rb /home/app/config/environments/production.rb
