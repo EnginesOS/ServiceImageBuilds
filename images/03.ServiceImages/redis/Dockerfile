@@ -11,7 +11,7 @@ apt-get update -y;\
 COPY redis.conf /etc/redis/
 COPY home home
 
-RUN mkdir -p /home/consumers/saved/ /home/configurators/saved ;\
+RUN mkdir -p /home/consumers/saved/ /home/configurators/saved /home/config;\
 	chown redis -R  /home/config /home/configurators/saved  /home/consumers/saved/ /home/resources/config/next_port
 	
 ENV ContUser redis
