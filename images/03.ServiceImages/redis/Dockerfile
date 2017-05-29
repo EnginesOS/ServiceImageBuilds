@@ -12,7 +12,7 @@ COPY redis.conf /etc/redis/
 COPY home home
 
 RUN mkdir -p /home/consumers/saved/ /home/configurators/saved ;\
-	chown redis -R  /home/configurators/saved  /home/consumers/saved/ /home/resources/config/next_port
+	chown redis -R  /home/config /home/configurators/saved  /home/consumers/saved/ /home/resources/config/next_port
 	
 ENV ContUser redis
 ENV ContGrp www-data

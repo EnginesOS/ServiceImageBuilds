@@ -32,7 +32,7 @@ next_port=`cat /home/resources/config/next_port`
 	echo $next_port > /home/resources/config/next_port
 fi
 
-cat /home/tmpl/redis.conf.tmpl | sed "s/PORT/$port/" | sed "s/PASSWORD/$password/" | sed "s/ENGINE/$parent_engine/"> /home/config/$parent_engine.redis
+cat /home/tmpl/redis.conf.tmpl | sed "s/PORT/$port/" | sed "s/PASSWORD/$password/" | sed "s/ENGINE/$parent_engine/"> /home/config/$parent_engine.redis.config
 redis_server /home/config/$parent_engine.redis.config &
 
 if test $? -ge 0
