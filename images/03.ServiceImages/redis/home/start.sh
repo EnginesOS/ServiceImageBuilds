@@ -20,7 +20,7 @@ touch /engines/var/run/flags/startup_complete
 configs=`ls /home/config/*.redis.config`
 for config in $configs
  do
-	redis_server $config &
+	redis-server $config &
 	echo -n $! >> /var/run/redis-server.pid
 	echo -n " " >> /var/run/redis-server.pid
 done
