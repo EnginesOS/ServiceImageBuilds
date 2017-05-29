@@ -22,7 +22,7 @@ if test -z $parent_engine
 		exit -1
 	fi
 
-kill -TERM `cat /home/pids/$parent_engine`
+kill -TERM `cat /var/run/redis-server.$parent_engine.pid`
 rm /home/config/$parent_engine.redis.config`
 
 if test $? -ge 0
