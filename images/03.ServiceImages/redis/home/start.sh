@@ -26,16 +26,22 @@ for config in $configs
 done
 touch /engines/var/run/flags/startup_complete
  
- if test `ls /home/config/*.redis.config |wc -l` -eq 0
-  then
+# if test `ls /home/config/*.redis.config |wc -l` -eq 0
+ # then
   while test 0 -ne 1
    do
-	sleep 500&
-	wait 	
+	sleep 5
+	if test ` ls /tmp/  new_service.* | wc -l` -ne 0
+	then
+		for service in ` ls /tmp/new_service.* |cut -f2 -d.`
+		  do
+		  	redis-server /home/config/$service.redis.config &
+		  done
+	fi
    done	
    else
-   wait 
-  fi
+    
+ # fi
 
 
 
