@@ -4,7 +4,6 @@
 cd /home/app/
 
 
-
  if ! test -d /var/run/nginx
  then
 mkdir   /var/run/nginx /var/log/nginx 
@@ -60,8 +59,9 @@ echo " passenger_env_var SECRET_KEY_BASE $SECRET_KEY_BASE;" >> /home/app/.env_va
 echo " passenger_env_var SYSTEM_API_URL $SYSTEM_API_URL;">> /home/app/.env_vars
 echo " passenger_env_var SYSTEM_RELEASE $SYSTEM_RELEASE;" >> /home/app/.env_vars
 echo " passenger_env_var DATABASE_URL $DATABASE_URL;" >> /home/app/.env_vars
-#echo " passenger_env_var ACTION_CABLE_ALLOWED_REQUEST_ORIGINS $ACTION_CABLE_ALLOWED_REQUEST_ORIGINS;" >> /home/app/.env_vars
-#echo " passenger_env_var ACTION_CABLE_URL $ACTION_CABLE_URL;" >> /home/app/.env_vars
+echo " passenger_env_var ACTION_CABLE_ALLOWED_REQUEST_ORIGINS $ACTION_CABLE_ALLOWED_REQUEST_ORIGINS;" >> /home/app/.env_vars
+echo " passenger_env_var ACTION_CABLE_URL $ACTION_CABLE_URL;" >> /home/app/.env_vars
+echo " passenger_env_var REDIS_URL redis://$redis_password@$redis_hostname:$redis_port/;" >> /home/app/.env_vars
 
 #if test -f /home/app/env_production.rb
 	#then

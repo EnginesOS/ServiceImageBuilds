@@ -34,7 +34,7 @@ trap_term()
 	SIGNAL=15
 	export SIGNAL
 	touch /engines/var/run/flags/sig_term
-				if ! test -z KILL_SCRIPT
+				if ! test -z $KILL_SCRIPT
 		then
 		   $KILL_SCRIPT $SIGNAL
 		fi
@@ -65,7 +65,7 @@ trap_hup()
 	SIGNAL=1
 	export SIGNAL
 	touch /engines/var/run/flags/sig_hup
-			if ! test -z KILL_SCRIPT
+			if ! test -z $KILL_SCRIPT
 		then
 		   $KILL_SCRIPT $SIGNAL
 		fi
@@ -87,7 +87,7 @@ trap_quit()
 	SIGNAL=15
 	export SIGNAL
 	touch /engines/var/run/flags/sig_quit
-			if ! test -z KILL_SCRIPT
+			if ! test -z $KILL_SCRIPT
 		then
 		   $KILL_SCRIPT $SIGNAL
 		fi
