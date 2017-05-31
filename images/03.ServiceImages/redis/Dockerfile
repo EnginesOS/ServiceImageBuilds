@@ -6,15 +6,14 @@ RUN adduser -q --disabled-password  redis -uid 22029;\
 apt-get update -y;\
 	apt-get -y install redis-server;\
 	mkdir -p /var/lib/redis /var/run/redis/ ;\ 
-	usermod -G containers -a redis ;\
- 	/home/post_build_clean.sh
+	usermod -G containers -a redis 
 	
 COPY redis.conf /etc/redis/
 COPY home home
 
-RUN mkdir -p /home/consumers/saved/ /home/configurators/saved ;\
-	chown www-data -R  /home/configurators/saved  /home/consumers/saved/
-
+RUN mkdir -p /home/consumers/saved/ /home/configurators/saved /home/config;\
+	chown redis -R  /home/config /home/configurators/saved  /home/consumers/saved/ /home/resources/config/next_port
+	
 ENV ContUser redis
 ENV ContGrp www-data
 

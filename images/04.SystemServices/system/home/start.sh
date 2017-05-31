@@ -25,7 +25,7 @@ cd /home
  fi
 #--threaded  
 
-touch /engines/var/run/flags/startup_complete  
+#touch /engines/var/run/flags/startup_complete  
 wait 
 rm -f /engines/var/run/flags/startup_complete
 
