@@ -9,7 +9,7 @@ fi
 default_mdns_domain=`cat /home/configurators/saved/default_mdns_domain  | cut -f2 -d: | sed "s/\"//" | cut -f1 -d\"`
 
  . /tmp/.env
-
+echo "delete from action_tests where name = '$name';"
 if test -z ${hostname}
 	then
 		echo Error:Missing hostname
