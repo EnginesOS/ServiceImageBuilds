@@ -5,8 +5,6 @@ RUN 	 /usr/sbin/usermod -u 22050 www-data;\
  		/home/post_build_clean.sh
 
 
-
-
 ENV ContUser www-data
 ENV ContGrp ruby
 
@@ -22,18 +20,6 @@ RUN	mkdir -p /home/app;\
  	chown -R www-data /home/app/;\ 	
  	usermod -G containers -a www-data 
  	
- 
-#
-#
-#
-#
-#wget https://s3.amazonaws.com/jruby.org/downloads/9.1.6.0/jruby-bin-9.1.6.0.tar.gz
-#tar -xzpf jruby-bin-9.1.6.0.tar.gz
-# mv /tmp/jruby-9.1.6.0 /opt
-# update-alternatives --install /usr/bin/jruby ruby /opt/jruby-9.1.6.0/bin/jruby 100
-# jgem install bundle
-#ln -s  /usr/include/ruby-2.3.0/ruby/ruby.h /opt/jruby-9.1.6.0/lib/ruby/include/ruby/ 
-
 
 USER www-data
 WORKDIR /home/app/
