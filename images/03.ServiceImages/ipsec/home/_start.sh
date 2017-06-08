@@ -17,4 +17,5 @@ sysctl -w net.ipv4.conf.default.accept_source_route=0
 sysctl -w net.ipv4.conf.default.send_redirects=0
 sysctl -w net.ipv4.icmp_ignore_bogus_error_responses=1
 sudo /usr/sbin/ipsec start --nofork &
+dmesg
 wait

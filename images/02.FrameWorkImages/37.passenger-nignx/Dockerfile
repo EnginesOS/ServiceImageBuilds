@@ -17,9 +17,9 @@ RUN /usr/sbin/usermod -u 22671 www-data ;\
  	
  RUN usermod -G containers -a www-data ;\
  	chown www-data /var/lib/nginx/ ;\
- 	passenger-config  build-native-support ;\
- 	 touch /home/.env_vars ;\
- 	 chown www-data /home/.env_vars /var/run/
+ 	passenger-config  build-native-support;\
+ 	touch /home/.env_vars ;\
+ 	chown www-data /home/.env_vars /var/run/
  	 
 COPY etc/nginx/ /etc/nginx
 COPY ruby_env /home/
