@@ -34,7 +34,10 @@ fi
     
 mkdir -p /home/cron/entries/${parent_engine}/
 
-
+  if test  ${container_type} = container
+      then
+      	container_type=engine
+      fi
 
 if test $action_type = "web"
 	then
