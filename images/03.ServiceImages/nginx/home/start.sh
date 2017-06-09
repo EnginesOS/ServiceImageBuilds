@@ -11,9 +11,8 @@ mkdir -p /engines/var/run/flags/
 
 /usr/sbin/nginx &
 
-
 touch  /engines/var/run/flags/startup_complete
 
-		wait
+wait
 	
 rm /engines/var/run/flags/startup_complete

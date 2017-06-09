@@ -36,6 +36,7 @@ touch /engines/var/run/flags/startup_complete
 		for service in ` ls /tmp/new_service.* |cut -f2 -d.`
 		  do
 		  	redis-server /home/config/$service.redis.config &
+		  	echo -n $!  > /var/run/redis-server.$parent_engine.pid
 		  done
 	fi
    done	

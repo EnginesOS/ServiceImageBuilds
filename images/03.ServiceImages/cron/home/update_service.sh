@@ -32,12 +32,14 @@ fi
         exit -1
     fi  
     
-mkdir -p /home/cron/entries/${parent_engine}/
-
-  if test  ${container_type} = container
+   if test  ${container_type} = container
       then
       	container_type=engine
       fi
+      
+rm  /home/cron/entries/${parent_engine}/$title
+
+
 
 if test $action_type = "web"
 	then
@@ -47,13 +49,13 @@ if test $action_type = "web"
 		cmd="curl http://172.17.0.1:2380/v0/cron/engine/${parent_engine}/$title/run"
      elif test $action_type = "schedule"
       then
-       cmd="curl http://172.17.0.1:2380/v0/schedule/${container_type}/${parent_engine}/$cron_job"
+       cmd="curl http://172.17.0.1:2380/v0/schedule/${container_type}/${parent_engine}/${cron_job}"
      elif test $action_type = "action"
       then
        cmd="curl http://172.17.0.1:2380/v0/schedule/${container_type}/${parent_engine}/$title/run"
 	fi
 
-echo "$when $cmd " > /home/cron/entries/${parent_engine}/$title
+echo "$when $cmd " > /home/cron/entries/${parent_engine}/${title}
 
 /home/rebuild_crontab.sh
 

@@ -28,13 +28,22 @@ then
 	rm -f /engines/var/run/flags/quited
 fi 
 
+custom_stop()
+	{
+	if test -f /home/engines/scripts/custom_stop.sh
+		 then
+		 	/home/engines/scripts/custom_stop.sh
+		 fi
+	}
 
 trap_term()
 	{
 	SIGNAL=15
 	export SIGNAL
 	touch /engines/var/run/flags/sig_term
-				if ! test -z $KILL_SCRIPT
+	custom_stop
+	
+	if ! test -z $KILL_SCRIPT
 		then
 		   $KILL_SCRIPT $SIGNAL
 		fi
@@ -65,9 +74,10 @@ trap_hup()
 	SIGNAL=1
 	export SIGNAL
 	touch /engines/var/run/flags/sig_hup
-			if ! test -z $KILL_SCRIPT
+	
+	if ! test -z $HUP_SCRIPT
 		then
-		   $KILL_SCRIPT $SIGNAL
+		   $HUP_SCRIPT $SIGNAL
 		fi
 		if test -f $PID_FILE
 			then
@@ -78,8 +88,7 @@ trap_hup()
 						kill -$SIGNAL `cat  $PID_FILE  `	
 				fi
 			 touch /engines/var/run/flags/huped			
-		fi
-		
+		fi		
 	}
 
 trap_quit()
@@ -87,7 +96,9 @@ trap_quit()
 	SIGNAL=15
 	export SIGNAL
 	touch /engines/var/run/flags/sig_quit
-			if ! test -z $KILL_SCRIPT
+	custom_stop
+	
+	if ! test -z $KILL_SCRIPT
 		then
 		   $KILL_SCRIPT $SIGNAL
 		fi
