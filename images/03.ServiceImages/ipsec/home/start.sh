@@ -3,6 +3,9 @@
 
 PID_FILE=/var/run/ipsec.pid
 export PID_FILE
+KILL_SCRIPT=/home/shutdown.sh
+
+export KILL_SCRIPT
 . /home/trap.sh
 
 
