@@ -32,8 +32,7 @@ if test -z $command
 	echo "Error command not set"
 		exit -1
 	fi
-	
-	
+
 
 if  test $command = "access"
 	then
@@ -54,9 +53,9 @@ if  test $command = "access"
 		#echo ":db_username=auth_$service:db_password=$password:database_name=$dbname:db_host=$dbhost:" > /home/auth/static/access/$service/access
 		echo '{"db_username":"auth_'$service'","db_password":"'$password'","database_name":"'$dbname'","db_host":"'$dbhost'"}' > /home/auth/static/access/$service/access
 	fi	
-  else
+else
 	echo "command=\"/home/auth/static/scripts/${service}/${command}_service.sh\",no-port-forwarding,no-X11-forwarding,no-agent-forwarding,no-pty ssh-rsa $pubkey auth" >  /home/auth/keys/${service}_${command}_authorized_keys	
-	fi
+fi
 
 #
 cat /home/auth/keys/*_authorized_keys > /home/auth/keys/authorized_keys
