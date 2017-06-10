@@ -17,12 +17,9 @@ fi
 
 sudo -n /home/engines/scripts/_start_syslog.sh
 
-
 touch /engines/var/run/flags/startup_complete  
 
 sudo -n /home/_start.sh 
-
-
 
 sudo -n  /home/engines/scripts/_kill_syslog.sh
 rm -f /engines/var/run/flags/startup_complete
