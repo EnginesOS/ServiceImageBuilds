@@ -1,8 +1,11 @@
 #!/bin/sh
 
 
-PID_FILE=/home/cron/fcron.pid
+PID_FILE=/var/run/ipsec.pid
 export PID_FILE
+KILL_SCRIPT=/home/shutdown.sh
+
+export KILL_SCRIPT
 . /home/trap.sh
 
 
@@ -14,12 +17,9 @@ fi
 
 sudo -n /home/engines/scripts/_start_syslog.sh
 
-
 touch /engines/var/run/flags/startup_complete  
 
 sudo -n /home/_start.sh 
-
-
 
 sudo -n  /home/engines/scripts/_kill_syslog.sh
 rm -f /engines/var/run/flags/startup_complete
