@@ -36,7 +36,7 @@ chmod og-rwx /home/auth/keys/authorized_keys
 if test `echo  ${command} |grep access |wc -c ` -gt 2 
 	then 		
 		echo "
-		drop user 'auth_$service$'@'%' ;" | mysql -h $dbhost -u $dbuser --password=$dbpasswd $dbname
+		drop user 'auth_${service}'@'%' ;" | mysql -h $dbhost -u $dbuser --password=$dbpasswd $dbname
 		rm -r /home/auth/static/access/$service/access
 	fi
 #

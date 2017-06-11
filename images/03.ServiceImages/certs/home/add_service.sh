@@ -19,9 +19,7 @@ if test -z "${cert_name}"
     StorePref=${container_type}_${parent_engine}
     
     mkdir -p /home/certs/store/public/keys/
-    mkdir -p /home/certs/store/public/certs/
-    
-
+    mkdir -p /home/certs/store/public/certs/    
 
 if test -z $wild
  then
@@ -41,6 +39,8 @@ if test  $wild = "yes"
 	echo \*.$domainname  >>/home/certs/saved/${cert_name}_setup
 	hostname=\*.$domainname
 	domainname=\*.$domainname
+	alt_names="$alt_names ${parent_engine}.${domainname}" 
+	
  else
   echo $domainname  >>/home/certs/saved/${cert_name}_setup
  fi
@@ -58,7 +58,7 @@ echo "" >>/home/certs/saved/${cert_name}_setup
 echo "" >>/home/certs/saved/${cert_name}_setup
 if test -z $hostname
  then
-	hostname=$parent_engine.$domain
+	hostname=$domain
  fi
  cat /home/request.template | sed -e "s/COUNTRY/$country/"  -e "s/STATE/$state/" -e "s/ORGANISATION/$organisation/" -e "s/PERSON/$person/" -e "s/DOMAINNAME/$domain/" -e "s/HOSTNAME/$hostname/" >  /home/certs/saved/${cert_name}_config
 
