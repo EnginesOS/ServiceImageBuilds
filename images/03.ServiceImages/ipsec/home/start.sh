@@ -1,7 +1,7 @@
 #!/bin/sh
 
 
-PID_FILE=/var/run/ipsec.pid
+PID_FILE=/tmp/ipsec.pid
 export PID_FILE
 KILL_SCRIPT=/home/shutdown.sh
 
