@@ -3,6 +3,8 @@
 pass=`dd if=/dev/urandom count=6 bs=1  | od -h | awk '{ print $2$3$4}'`
  	#Run First Time on persistent DB
  	
+ 	mkdir /var/run/postgresql/
+ 	
  if ! test -f /var/lib/postgresql/conf
  then
  
