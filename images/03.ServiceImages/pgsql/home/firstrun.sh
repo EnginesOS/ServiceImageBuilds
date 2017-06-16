@@ -7,11 +7,8 @@ pass=`dd if=/dev/urandom count=6 bs=1  | od -h | awk '{ print $2$3$4}'`
  	
  if ! test -f /var/lib/postgresql/conf
  then
- 
- 	
-	 
-	cp -rp /var/lib/postgresql_firstrun/* /var/lib/postgresql/ 
 
+	cp -rp /var/lib/postgresql_firstrun/* /var/lib/postgresql/ 
 
    /usr/lib/postgresql/9.5/bin/postgres -D /var/lib/postgresql/9.5/main -c config_file=/etc/postgresql/9.5/main/postgresql.conf &
    pid=$!
