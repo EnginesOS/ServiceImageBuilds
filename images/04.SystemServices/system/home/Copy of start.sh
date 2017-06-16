@@ -8,7 +8,7 @@ echo $control_ip > /engines/var/run/control_ip
 export control_ip 
 PID_FILE=/engines/var/run/system.pid
 export PID_FILE
-. /home/trap.sh
+. /home/engines/functions/trap.sh
 
 if ! test -d  /engines/var/run/flags/
  then

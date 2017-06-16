@@ -6,7 +6,7 @@ export PID_FILE
 KILL_SCRIPT=/home/shutdown.sh
 
 export KILL_SCRIPT
-. /home/trap.sh
+. /home/engines/functions/trap.sh
 
 
 mkdir -p /engines/var/run/flags/
@@ -20,6 +20,8 @@ sudo -n /home/engines/scripts/_start_syslog.sh
 touch /engines/var/run/flags/startup_complete  
 
 sudo -n /home/_start.sh 
+exit_code=$?
 
 sudo -n  /home/engines/scripts/_kill_syslog.sh
 rm -f /engines/var/run/flags/startup_complete
+exit $exit_code

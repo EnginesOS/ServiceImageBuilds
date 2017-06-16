@@ -3,7 +3,7 @@
 
 PID_FILE=/var/run/engines/mongodb.pid
 export PID_FILE
-. /home/trap.sh
+. /home/engines/functions/trap.sh
 
  mkdir -p /var/log/mongodb/
  
@@ -23,5 +23,7 @@ if ! test -d /data/db/.priv
 
 touch  /engines/var/run/flags/startup_complete
 wait  
+exit_code=$?
 
 rm /engines/var/run/flags/startup_complete
+exit $exit_code

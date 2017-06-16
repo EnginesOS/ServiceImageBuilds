@@ -3,7 +3,7 @@
 mkdir -p /engines/var/run/flags
 
 PID_FILE=/var/run/mysqld/mysqld.pid
-#source /home/trap.sh
+#source /home/engines/functions/trap.sh
 
 if test -f $PID_FILE
  	then

@@ -18,7 +18,7 @@ mkdir -p /var/run/mysqld/
 PID_FILE=/var/run/mysqld/mysqld.pid
 
 export PID_FILE
-. /home/trap.sh
+. /home/engines/functions/trap.sh
 
 SIGNAL=0
  	
@@ -27,6 +27,7 @@ SIGNAL=0
 touch  /engines/var/run/flags/startup_complete
 sleep 1
 wait 
+exit_code=$?
  cat /var/log/mysql/error.log
  
 #`cat /var/run/mysqld/mysqld.pid`
@@ -40,3 +41,4 @@ wait
 # fi
 #done
  rm /engines/var/run/flags/startup_complete
+exit $exit_code

@@ -3,7 +3,7 @@
 
 PID_FILE=/tmp/.pid
 export PID_FILE
-. /home/trap.sh
+. /home/engines/functions/trap.sh
 
 
 mkdir -p /engines/var/run/flags/
@@ -16,6 +16,8 @@ touch /engines/var/run/flags/startup_complete
 	    sleep 500 &
 	    echo $! >/tmp/.pid
 		wait 
+		exit_code=$?
 	done	
 
 rm -f /engines/var/run/flags/startup_complete
+exit $exit_code

@@ -6,7 +6,7 @@ pid=$$
 echo $pid >/tmp/pid
 PID_FILE=/engines/var/run/registry.pid
 export PID_FILE
-. /home/trap.sh
+. /home/engines/functions/trap.sh
 
 
 mkdir -p /engines/var/run/flags/
@@ -23,6 +23,10 @@ thin -C config.yaml -R config.ru start > /var/log/regsitry.log&
 
 touch /engines/var/run/flags/startup_complete  
 wait 
-kill -TERM  $pid
+exit_code=$?
+
 rm -f /engines/var/run/flags/startup_complete
+exit $exit_code
+
+
 

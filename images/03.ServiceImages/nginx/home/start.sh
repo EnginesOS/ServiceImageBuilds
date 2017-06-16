@@ -3,7 +3,7 @@
 
 PID_FILE=/var/run/nginx/nginx.pid
 export PID_FILE
-. /home/trap.sh
+. /home/engines/functions/trap.sh
 
 /home/clear_broken.sh
 
@@ -14,5 +14,7 @@ mkdir -p /engines/var/run/flags/
 touch  /engines/var/run/flags/startup_complete
 
 wait
+exit_code=$?
 	
 rm /engines/var/run/flags/startup_complete
+exit $exit_code

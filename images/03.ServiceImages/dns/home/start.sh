@@ -18,7 +18,7 @@ cat  /etc/bind/templates/engines.internal.in-addr.arpa.tmpl |sed "/NET/s//$net/g
 
 PID_FILE=/var/run/named/named.pid
 export PID_FILE
-. /home/trap.sh
+. /home/engines/functions/trap.sh
 
 #478757da
 mkdir -p /engines/var/run/flags/
@@ -40,5 +40,7 @@ hostname=publichost
 add_to_internal_domain
 
 wait  
+exit_code=$?
 
 rm /engines/var/run/flags/startup_complete
+exit $exit_code

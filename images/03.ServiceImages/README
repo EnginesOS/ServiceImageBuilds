@@ -11,7 +11,7 @@ Create a dir
  ###
  PID_FILE=/var/run/service.pid
 export PID_FILE
-. /home/trap.sh
+. /home/engines/functions/trap.sh
 
  service &
  touch /engines/var/run/flags/startup_complete

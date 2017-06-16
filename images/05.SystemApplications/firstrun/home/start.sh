@@ -6,7 +6,7 @@ echo $SYSTEM_IP > /engines/var/run/control_ip
 export SYSTEM_IP 
 PID_FILE=/engines/var/run/firstrun.pid
 export PID_FILE
-. /home/trap.sh
+. /home/engines/functions/trap.sh
 
 
 mkdir -p /engines/var/run/flags/
@@ -20,7 +20,9 @@ bundle exec thin  -R ./config.ru start > /var/log/firstrun.log &
 
 touch /engines/var/run/flags/startup_complete  
 wait 
+exit_code=$?
 kill -TERM  `cat /engines/var/run/firstrun.pid`
 rm -f /engines/var/run/flags/startup_complete
+exit $exit_code
 
 
