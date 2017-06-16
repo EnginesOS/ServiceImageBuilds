@@ -1,6 +1,6 @@
 FROM engines/node6:$release
 #ENV ruby_version 2.3.0
-ENV ruby_version 2.4.1
+ENV ruby_version 2.3.1
 ENV ContUser ruby
 ENV ContGrp ruby
 
