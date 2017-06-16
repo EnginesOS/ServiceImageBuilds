@@ -6,7 +6,7 @@ pid=$$
 echo $pid >/tmp/pid
 PID_FILE=/engines/var/run/registry.pid
 export PID_FILE
-. /home/trap.sh
+. /home/engines/functions/trap.sh
 
 
 mkdir -p /engines/var/run/flags/

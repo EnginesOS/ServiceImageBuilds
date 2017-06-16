@@ -5,7 +5,7 @@ mkdir -p /engines/var/run/flags/
 PID_FILE=/var/run/dhcpd.pid
 export PID_FILE
 
-. /home/trap.sh
+. /home/engines/functions/trap.sh
 touch /tmp/start_dhcpd
 
   

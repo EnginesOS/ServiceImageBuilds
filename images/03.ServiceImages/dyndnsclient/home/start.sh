@@ -2,7 +2,7 @@
 
 PID_FILE=/home/dyndns/dyndns.pid
 export PID_FILE
-. /home/trap.sh
+. /home/engines/functions/trap.sh
 
 touch /tmp/start_dyndns
 

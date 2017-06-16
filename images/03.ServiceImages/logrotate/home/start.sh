@@ -6,7 +6,7 @@ date
 
 PID_FILE=/tmp/logrotate.pid
 export PID_FILE
-. /home/trap.sh
+. /home/engines/functions/trap.sh
 mkdir -p /engines/var/run/flags/
 
 sudo /usr/sbin/logrotate -f /home/logrotate.conf &

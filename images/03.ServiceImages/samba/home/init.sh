@@ -7,7 +7,7 @@ sudo -n /home/engines/scripts/_start_syslog.sh
 #No need as uses exec
 PID_FILE=/var/run/ftpd.pid
 export PID_FILE
-#source /home/trap.sh
+#source /home/engines/functions/trap.sh
 mkdir -p /engines/var/run/flags/
 
 	

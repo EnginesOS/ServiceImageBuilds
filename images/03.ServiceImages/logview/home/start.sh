@@ -3,7 +3,7 @@
 PID_FILE=/var/run/apache.pid
 /home/build_config.sh
 export PID_FILE
-. /home/trap.sh
+. /home/engines/functions/trap.sh
 mkdir -p /var/log/log_viewer
 
 mkdir -p /engines/var/run/flags/

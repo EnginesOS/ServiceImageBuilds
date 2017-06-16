@@ -3,7 +3,7 @@
 
 PID_FILE=/home/cron/fcron.pid
 export PID_FILE
-. /home/trap.sh
+. /home/engines/functions/trap.sh
 
 
 mkdir -p /engines/var/run/flags/

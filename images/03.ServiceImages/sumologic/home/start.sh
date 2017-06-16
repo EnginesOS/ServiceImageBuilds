@@ -18,7 +18,7 @@ if test -f /home/configurators/saved/credentials
 PID_FILE=opt/SumoCollector/collector.pid
 
 export PID_FILE
-. /home/trap.sh
+. /home/engines/functions/trap.sh
 
 
 

@@ -4,7 +4,7 @@
 
 PID_FILE=/var/run/redis-server.pid
 export PID_FILE
-. /home/trap.sh
+. /home/engines/functions/trap.sh
 
 
 mkdir -p /engines/var/run/flags/
@@ -30,7 +30,7 @@ touch /engines/var/run/flags/startup_complete
  # then
   while test 0 -ne 1
    do
-	sleep 5
+	sleep 5 
 	if test ` ls /tmp/  new_service.* | wc -l` -ne 0
 	then
 		for service in ` ls /tmp/new_service.* |cut -f2 -d.`
@@ -40,7 +40,7 @@ touch /engines/var/run/flags/startup_complete
 		  done
 	fi
    done	
-   else
+ #  else
     
  # fi
 

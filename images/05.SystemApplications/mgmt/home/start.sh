@@ -91,7 +91,7 @@ ln -s /var/log/app /home/app/log
 PID_FILE=/var/run/nginx/nginx.pid
 
 export PID_FILE
-. /home/trap.sh
+. /home/engines/functions/trap.sh
 echo Starting Server
 nginx &
 echo Server Started

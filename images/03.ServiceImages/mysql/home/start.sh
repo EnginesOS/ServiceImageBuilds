@@ -18,7 +18,7 @@ mkdir -p /var/run/mysqld/
 PID_FILE=/var/run/mysqld/mysqld.pid
 
 export PID_FILE
-. /home/trap.sh
+. /home/engines/functions/trap.sh
 
 SIGNAL=0
  	

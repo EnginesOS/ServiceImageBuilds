@@ -6,7 +6,7 @@ export PID_FILE
 KILL_SCRIPT=/home/shutdown.sh
 
 export KILL_SCRIPT
-. /home/trap.sh
+. /home/engines/functions/trap.sh
 
 
 mkdir -p /engines/var/run/flags/

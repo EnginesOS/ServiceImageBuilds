@@ -6,7 +6,7 @@ sudo -n /home/engines/scripts/_start_syslog.sh
 
 PID_FILE=/var/run/ganesha.pid
 export PID_FILE
-. /home/trap.sh
+. /home/engines/functions/trap.sh
 
 mkdir -p /engines/var/run/flags
 

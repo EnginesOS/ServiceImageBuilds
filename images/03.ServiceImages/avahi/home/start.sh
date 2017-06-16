@@ -4,8 +4,7 @@
 
 PID_FILE=/tmp/avahi-publisher.pid
 export PID_FILE
-. /home/trap.sh
-
+. /home/engines/functions/trap.sh
 
 mkdir -p /engines/var/run/flags/
 

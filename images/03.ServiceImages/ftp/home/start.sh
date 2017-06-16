@@ -5,7 +5,7 @@ sudo /home/engines/scripts/_start_syslog.sh
 
 PID_FILE=/var/run/ftpd.pid
 export PID_FILE
-. /home/trap.sh
+. /home/engines/functions/trap.sh
 
 /home/get_pubkey.sh access
 /home/get_pubkey.sh rm

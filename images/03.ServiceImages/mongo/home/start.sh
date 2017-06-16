@@ -3,7 +3,7 @@
 
 PID_FILE=/var/run/engines/mongodb.pid
 export PID_FILE
-. /home/trap.sh
+. /home/engines/functions/trap.sh
 
  mkdir -p /var/log/mongodb/
  

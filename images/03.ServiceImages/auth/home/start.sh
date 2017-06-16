@@ -4,7 +4,7 @@ mkdir -p /engines/var/run/flags/
 
 PID_FILE=/var/run/sshd.pid
 export PID_FILE
-. /home/trap.sh
+. /home/engines/functions/trap.sh
 
 mkdir -p /home/auth/logs/ 
 

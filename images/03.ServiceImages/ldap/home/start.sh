@@ -7,7 +7,7 @@ if ! test -f /engines/var/run/flags/first_run
 
 PID_FILE=/tmp/pids
 export PID_FILE
-. /home/trap.sh
+. /home/engines/functions/trap.sh
 
 mkdir -p /engines/var/run/flags/
 
