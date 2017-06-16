@@ -66,11 +66,12 @@ while test -f  /var/spool/postfix/pid/master.pid
  do
  	sleep 10&
  	wait
+exit_code=$?
  done
 
 rm -f /engines/var/run/flags/startup_complete
 sudo -n /home/engines/scripts/_kill_syslog.sh
 
- 
+exit $exit_code
  
 

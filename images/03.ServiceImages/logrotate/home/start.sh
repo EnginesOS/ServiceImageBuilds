@@ -14,11 +14,13 @@ pid=$!
 echo $pid >$PID_FILE
 
 wait  
+exit_code=$?
 echo "Log Rotated Completed"
 date
 
 rm /engines/var/run/flags/startup_complete
 
+exit $exit_code
 
 
 

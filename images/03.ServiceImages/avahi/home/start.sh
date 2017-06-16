@@ -41,7 +41,8 @@ ls /home/avahi/hosts/ > /home/avahi/hosts_list
 
 touch /engines/var/run/flags/startup_complete
 
-wait 
+wait
+exit_code=$?
 
 kill -TERM   'cat PID_FILE'
 
@@ -50,3 +51,4 @@ sudo -n /home/kill_dbus.sh $dbus_pid
 sudo -n /home/engines/scripts/_kill_syslog.sh
 
 rm /engines/var/run/flags/startup_complete
+exit $exit_code

@@ -31,7 +31,10 @@ mkdir -p /engines/var/run/flags/
 	fi
 	touch /engines/var/run/flags/startup_complete
 	wait 
+exit_code=$?
 	
 	rm /engines/var/run/flags/startup_complete
 	sudo -n /home/engines/scripts/_kill_syslog.sh
 
+
+exit $exit_code

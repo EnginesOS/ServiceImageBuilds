@@ -20,7 +20,9 @@ bundle exec thin  -R ./config.ru start > /var/log/firstrun.log &
 
 touch /engines/var/run/flags/startup_complete  
 wait 
+exit_code=$?
 kill -TERM  `cat /engines/var/run/firstrun.pid`
 rm -f /engines/var/run/flags/startup_complete
+exit $exit_code
 
 

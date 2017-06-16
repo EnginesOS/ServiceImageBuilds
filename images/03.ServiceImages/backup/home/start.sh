@@ -17,6 +17,9 @@ mkdir -p /home/backup/sql_dumps/
 /home/backup/fcron/bin/fcrontab -u backup  -z 
 touch /engines/var/run/flags/startup_complete
 wait 
+exit_code=$?
+
 rm -f /engines/var/run/flags/startup_complete
 sudo -n /home/engines/scripts/_kill_syslog.sh
+exit $exit_code
 

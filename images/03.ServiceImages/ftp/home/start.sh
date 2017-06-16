@@ -39,6 +39,8 @@ if test -z $database_name
 sudo -n  /usr/sbin/proftpd -n &
 
 wait 
+exit_code=$?
 sudo -n /home/engines/scripts/_kill_syslog.sh
 
 rm /engines/var/run/flags/startup_complete
+exit $exit_code

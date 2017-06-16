@@ -43,4 +43,6 @@ fi
 sudo -n /opt/SumoCollector/collector console -- -t -i $access_id -k $access_key -n $collector_name -s $sources_json &
 touch  /engines/var/run/flags/startup_complete
 wait
+exit_code=$?
 rm  /engines/var/run/flags/startup_complete
+exit $exit_code

@@ -16,6 +16,8 @@ touch /engines/var/run/flags/startup_complete
 	    sleep 500 &
 	    echo $! >/tmp/.pid
 		wait 
+		exit_code=$?
 	done	
 
 rm -f /engines/var/run/flags/startup_complete
+exit $exit_code

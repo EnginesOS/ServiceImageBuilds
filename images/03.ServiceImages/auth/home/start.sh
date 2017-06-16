@@ -42,6 +42,7 @@ pid=$!
 touch /engines/var/run/flags/startup_complete
 echo "startup complete"
 wait $pid
+exit_code=$?
 
  while test $SIGNAL -ne 3 -a $SIGNAL -ne 15
  do
@@ -55,6 +56,5 @@ wait $pid
  done
 
 sudo /home/engines/scripts/_kill_syslog.sh
-
-
 rm -f /engines/var/run/flags/startup_complete
+exit $exit_code

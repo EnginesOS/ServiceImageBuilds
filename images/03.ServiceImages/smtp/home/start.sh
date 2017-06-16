@@ -40,8 +40,11 @@ touch  /engines/var/run/flags/startup_complete
 sleep 6
 while test -f  /var/spool/postfix/pid/master.pid
  do
- 	sleep 10
+ 	sleep 10 &
+ 	wait
+exit_code=$?
  done
 rm /engines/var/run/flags/startup_complete  
 sudo -n /home/engines/scripts/_kill_syslog.sh
+exit $exit_code
 

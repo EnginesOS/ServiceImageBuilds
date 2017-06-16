@@ -23,6 +23,10 @@ thin -C config.yaml -R config.ru start > /var/log/regsitry.log&
 
 touch /engines/var/run/flags/startup_complete  
 wait 
-kill -TERM  $pid
+exit_code=$?
+
 rm -f /engines/var/run/flags/startup_complete
+exit $exit_code
+
+
 

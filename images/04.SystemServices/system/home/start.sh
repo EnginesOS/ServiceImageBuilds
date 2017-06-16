@@ -27,5 +27,7 @@ cd /home
 
 #touch /engines/var/run/flags/startup_complete  
 wait 
+exit_code=$?
 rm -f /engines/var/run/flags/startup_complete
+exit $exit_code
 

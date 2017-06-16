@@ -23,5 +23,7 @@ if ! test -d /data/db/.priv
 
 touch  /engines/var/run/flags/startup_complete
 wait  
+exit_code=$?
 
 rm /engines/var/run/flags/startup_complete
+exit $exit_code
