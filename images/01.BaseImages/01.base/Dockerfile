@@ -50,7 +50,8 @@ RUN	echo '#!/bin/sh' >/usr/sbin/policy-rc.d ;\
 	apt-get clean ;\	
 	rm -rf /tmp/*;\
  	mkdir /var/run/engines ;\
- 	chgrp containers /var/run/engines; chmod g+w /var/run/engines	
+ 	chgrp containers /var/run/engines; chmod g+w /var/run/engines ;\
+ 	ln -s /home/engines/functions/trap.sh /home/trap.sh
 
 ADD rsyslog.conf /etc/		
 
