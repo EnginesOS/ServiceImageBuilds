@@ -12,13 +12,14 @@ export PID_FILE
 /home/get_pubkey.sh add
 
 mkdir -p /engines/var/run/flags
-	
-	while ! test -f  /home/ftpd/.ssh/access_rsa
-		do
-			sleep 10
-		done
+touch  /engines/var/run/flags/startup_complete
+
+#	while ! test -f  /home/ftpd/.ssh/access_rsa
+#		do
+#			sleep 10
+#		done
 		
-	sleep 5
+	sleep 10
 	
 ssh -p 2222  -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i /home/ftpd/.ssh/access_rsa auth@auth.engines.internal /home/auth/static/scripts/ftp/get_access.sh | /home/engines/bin/json_to_env >/tmp/.env
 
@@ -36,7 +37,7 @@ if test -z $database_name
 	cp /tmp/sql.conf.tmpl /etc/proftpd/sql.conf
 
 sudo -n  /usr/sbin/proftpd -n &
- touch  /engines/var/run/flags/startup_complete
+
 wait 
 sudo -n /home/engines/scripts/_kill_syslog.sh
 
