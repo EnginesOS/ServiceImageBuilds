@@ -62,14 +62,15 @@ touch /engines/var/run/flags/sig_hup
 	then
 	 $HUP_SCRIPT $SIGNAL
  fi
-if test -f $PID_FILE
-	then
-	  if test -f /home/_signal.sh
-		then
-		  sudo -n /home/_signal.sh $SIGNAL	$PID_FILE
-		else
-		   kill -$SIGNAL `cat  $PID_FILE  `	
-	   fi
+ 
+ if test -f $PID_FILE
+  then
+	if test -f /home/_signal.sh
+	  then
+		sudo -n /home/_signal.sh $SIGNAL	$PID_FILE
+	else
+		kill -$SIGNAL `cat  $PID_FILE  `	
+	 fi
   touch /engines/var/run/flags/huped			
  fi		
 }
