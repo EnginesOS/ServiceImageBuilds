@@ -60,7 +60,7 @@ touch /engines/var/run/flags/sig_hup
 	
  if ! test -z $HUP_SCRIPT
 	then
-		  $HUP_SCRIPT $SIGNAL
+	 $HUP_SCRIPT $SIGNAL
  fi
 if test -f $PID_FILE
 	then
