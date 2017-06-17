@@ -29,7 +29,7 @@ if test "$1" = -h
  	
 if test "$1" = "-nocache"
  	then
- 		extra+=" --no-cache "
+ 		extra=" --no-cache "
  		#--use-cache=false "
  		shift
  	fi

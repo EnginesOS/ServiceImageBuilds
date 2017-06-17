@@ -87,25 +87,25 @@ custom_stop
 	  $KILL_SCRIPT $SIGNAL
  fi
  
- if test -f $PID_FILE
-	then
-		if test -f /home/_signal.sh
-		  then
-		    sudo	/home/_signal.sh $SIGNAL	$PID_FILE	
-		 else
-		    kill -$SIGNAL `cat  $PID_FILE  `
-			pid=`cat    $PID_FILE `				
-			echo $pid |grep ^[0-9]
- 	  		  if test $? -ne 0
-        		then
-                  echo no wait for \"$pid\"
-        		else
-                  echo wait \"$pid\"
-                  wait $pid   
-			  fi
-		  fi				
-	touch /engines/var/run/flags/quited
- fi	
+if test -f $PID_FILE
+ then
+	if test -f /home/_signal.sh
+	  then
+	    sudo	/home/_signal.sh $SIGNAL	$PID_FILE	
+	else
+	    kill -$SIGNAL `cat  $PID_FILE  `
+		pid=`cat    $PID_FILE `				
+		echo $pid |grep ^[0-9]
+ 	 	  if test $? -ne 0
+        	then
+             echo no wait for \"$pid\"
+          else
+             echo wait \"$pid\"
+             wait $pid   
+		  fi
+	 fi				
+  touch /engines/var/run/flags/quited
+fi	
 }
 
 clear_stale_flags	
