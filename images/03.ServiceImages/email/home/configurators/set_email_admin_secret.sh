@@ -1,9 +1,8 @@
 #!/bin/bash
 
-cat - >/home/configurators/saved/email_admin_secret
-
-cat  /home/configurators/saved/email_admin_secret| /home/engines/bin/json_to_env >/tmp/.env
- . /tmp/.env
+. /home/engines/functions/params_to_env.sh
+PARAMS_FILE=/home/configurators/saved/email_admin_secret
+parms_to_file_and_env
       
  if test  ${#email_admin_secret} -gt 5
  then  

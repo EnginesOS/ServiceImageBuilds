@@ -1,12 +1,8 @@
 #!/bin/bash
 
-
-
-cat - >/home/configurators/saved/dyndns_settings
-
-cat  /home/configurators/saved/dyndns_settings | /home/engines/bin/json_to_env >/tmp/.env
- . /tmp/.env
-
+. /home/engines/functions/params_to_env.sh
+PARAMS_FILE=/home/configurators/saved/dyndns_settings
+parms_to_file_and_env
 
 if test -z $provider
  then

@@ -1,10 +1,10 @@
 #!/bin/bash
 
+. /home/engines/functions/params_to_env.sh
+PARAMS_FILE=/home/configurators/saved/rbl
+parms_to_file_and_env
 
-cat - >/home/configurators/saved/rbl
-cat  echo $service_hash  | /home/engines/bin/json_to_env >/tmp/.env
- . /tmp/.env
-   
+
 /home/configurators/check_anti_spam_setting.sh zen.spamhaus.org ${zen_spamhaus_org}
 /home/configurators/check_anti_spam_setting.sh bl.spamcop.net ${bl_spamcop_net}
 /home/configurators/check_anti_spam_setting.sh cbl.abuseat.org ${cbl_abuseat_org}

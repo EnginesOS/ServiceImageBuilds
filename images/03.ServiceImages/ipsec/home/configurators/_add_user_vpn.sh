@@ -9,15 +9,8 @@ function add_user_vpn {
  chmod go-rwx /etc/ipsec.secrets
 }
 
-if test $# -eq 0 
- then
- 	cat -  | /home/engines/bin/json_to_env>/tmp/.env
- else
-	echo $1 | /home/engines/bin/json_to_env >/tmp/.env
-fi
-
- . /tmp/.env
-#FIXME make engines.internal settable
+. /home/engines/functions/params_to_env.sh
+parms_to_env
 
 if test -z "${vpn_name}" 
  then

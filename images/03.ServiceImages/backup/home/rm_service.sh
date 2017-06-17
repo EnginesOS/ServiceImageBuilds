@@ -1,14 +1,8 @@
 #!/bin/bash
 
+. /home/engines/functions/params_to_env.sh
+parms_to_env
 
-if test $# -eq 0 
- then
- 	cat -  | /home/engines/bin/json_to_env>/tmp/.env
- else
-	echo $1 | /home/engines/bin/json_to_env >/tmp/.env
-fi
-
- . /tmp/.env
 echo "$*" >>/var/log/backup/rmbackup.log
 
 Backup_ConfigDir=/home/backup/.duply/

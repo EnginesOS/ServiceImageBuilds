@@ -19,9 +19,9 @@ echo "TARGET_USER='$user'"  >>$Backup_ConfigDir/$service/conf
 echo "TARGET_PASS='$pass'"  >>$Backup_ConfigDir/$service/conf
 }
 
-cat - > /home/configurators/saved/system_backup
-cat  /home/configurators/saved/system_backup | /home/engines/bin/json_to_env >/tmp/.env
- . /tmp/.env
+. /home/engines/functions/params_to_env.sh
+PARAMS_FILE=/home/configurators/saved/system_backup
+parms_to_file_and_env
 
 cat home/configurators/saved/system_backup >>/var/log/backup/addbackup.log
 

@@ -1,14 +1,8 @@
 #!/bin/bash
 
 
-if test $# -eq 0 
- then
- 	cat -  | /home/engines/bin/json_to_env >/tmp/.env
- else
-	echo $1 | /home/engines/bin/json_to_env >/tmp/.env
-fi
-
- . /tmp/.env
+. /home/engines/functions/params_to_env.sh
+parms_to_env
 
 
 #FIXME make engines.internal settable

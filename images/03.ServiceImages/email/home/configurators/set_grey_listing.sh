@@ -1,10 +1,8 @@
 #!/bin/bash
 
-service_hash=`cat -`
-
-cat - >/home/configurators/saved/grey_listing
-cat /home/configurators/saved/grey_listing | /home/engines/bin/json_to_env >/tmp/.env
- . /tmp/.env
+. /home/engines/functions/params_to_env.sh
+PARAMS_FILE=/home/configurators/saved/grey_listing
+parms_to_file_and_env
 
 if ! test -z $grey_list_delay
 then

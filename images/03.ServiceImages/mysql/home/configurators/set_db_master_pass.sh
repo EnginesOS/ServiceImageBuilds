@@ -1,7 +1,7 @@
 #!/bin/bash
 
-cat - | /home/engines/bin/json_to_env >/tmp/.env
- . /tmp/.env
+. /home/engines/functions/params_to_env.sh
+parms_to_env
 
  
 if test -n $db_master_pass

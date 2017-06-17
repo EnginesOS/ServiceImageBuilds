@@ -1,8 +1,9 @@
 #!/bin/bash
 
-cat - >/home/configurators/saved/default_domain
-cat /home/configurators/saved/default_domain | /home/engines/bin/json_to_env >/tmp/.env
- . /tmp/.env
+. /home/engines/functions/params_to_env.sh
+PARAMS_FILE=//home/configurators/saved/default_domain
+parms_to_file_and_env
+
    
  if test  ${#default_domain} -gt 5
   then

@@ -1,10 +1,9 @@
 Ghost is a lbog platfor#!/bin/bash
 
-cat - >/home/configurators/saved/smarthost
 
-cat /home/configurators/saved/smarthost | /home/engines/bin/json_to_env >/tmp/.env
- . /tmp/.env
-        
+. /home/engines/functions/params_to_env.sh
+PARAMS_FILE=/home/configurators/saved/smarthost
+parms_to_file_and_env
         
 if ! test -z $smart_hostname
  then 
