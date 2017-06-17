@@ -29,7 +29,7 @@ custom_stop
  if ! test -z $KILL_SCRIPT
    then
 	  $KILL_SCRIPT $SIGNAL
-	fi
+ fi
 		
  if test -f $PID_FILE  #if exists 
   then
@@ -85,6 +85,7 @@ custom_stop
 	then
 	  $KILL_SCRIPT $SIGNAL
  fi
+ 
  if test -f $PID_FILE
 	then
 		if test -f /home/_signal.sh
