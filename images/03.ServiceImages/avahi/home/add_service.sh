@@ -15,10 +15,10 @@ fi
 
 touch /home/avahi/hosts/${hostname}.${default_mdns_domain}
 ls /home/avahi/hosts/ > /home/avahi/hosts_list
-  if test -f /tmp/avahi-publisher.pid
-	then
-	  kill -HUP `cat /tmp/avahi-publisher.pid`
-  fi
+if test -f /tmp/avahi-publisher.pid
+ then
+  kill -HUP `cat /tmp/avahi-publisher.pid`
+fi
 
 	
 #	ps -ax |grep -v grep |grep avahi-alias.py
