@@ -9,16 +9,17 @@ fi
  . /tmp/.env
 #FIXME make engines.internal settable
 
-	if test -z "${parent_engine}"
-	then
-		echo Error:Missing parent_engine
-        exit -1
-    fi
-  	if test -z ${title}
-	then
-		echo Error:missing title
-        exit -1
-    fi  
+if test -z "${parent_engine}"
+ then
+echo Error:Missing parent_engine
+      exit -1
+fi
+
+if test -z ${title}
+ then
+	echo Error:missing title
+    exit -1
+fi  
 
 if test -f /home/cron/entries/${parent_engine}/$title
  then

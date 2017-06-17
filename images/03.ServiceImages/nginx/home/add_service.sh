@@ -1,6 +1,6 @@
 #!/bin/bash
 
-/home/engines/functions/params_to_env.sh
+. /home/engines/functions/params_to_env.sh
 
 if test -z $fqdn
  then

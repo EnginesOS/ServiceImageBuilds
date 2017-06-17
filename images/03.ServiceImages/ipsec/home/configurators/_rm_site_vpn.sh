@@ -1,12 +1,11 @@
 #!/bin/bash
 
-
 function rm_site_vpn {
 if ! test -f /home/ivpn/entries/site/${vpn_name}
  then
- echo "No Such VPN ${vpn_name}"
- fi
- 
+   echo "No Such VPN ${vpn_name}"
+   exit 127
+fi
 rm /home/ivpn/entries/site/${vpn_name}
 
 }
@@ -19,25 +18,17 @@ if test $# -eq 0
 fi
 
  . /tmp/.env
-#FIXME make engines.internal settable
 
 
+if test -z "${vpn_name}" 
+ then
+   echo Error:Missing VPN Name
+   exit -1
+fi
 
-	if test -z "${vpn_name}" 
-	then
-	  echo Error:Missing VPN Name
-       exit -1
-  fi
+rm_site_vpn
 
-    
-
-
-
-		rm_site_vpn
-
-	ipsec stroke rereadsecrets
+ipsec stroke rereadsecrets
 	
-
-
 echo "Success"
 exit 0

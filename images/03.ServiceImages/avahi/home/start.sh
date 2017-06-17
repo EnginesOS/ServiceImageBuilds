@@ -1,12 +1,10 @@
 #!/bin/sh
 
-
-
 PID_FILE=/tmp/avahi-publisher.pid
 export PID_FILE
 . /home/engines/functions/trap.sh
 
-mkdir -p /engines/var/run/flags/
+
 
 if test -f /engines/var/run/flags/restart_required
  then

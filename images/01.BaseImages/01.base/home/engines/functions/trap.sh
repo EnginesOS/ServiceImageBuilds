@@ -114,6 +114,11 @@ trap trap_term 15
 trap trap_hup  1
 trap trap_quit 3
 
+if ! test -d /engines/var/run/flags/
+ then 
+  mkdir -p /engines/var/run/flags/
+fi
+
 if ! test -z $PID_FILE
 then
 	if ! test -d `dirname $PID_FILE`

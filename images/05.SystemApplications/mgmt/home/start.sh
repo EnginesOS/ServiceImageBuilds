@@ -34,7 +34,6 @@ if ! test -h /home/app/public/system
  
 
 /home/deployment.sh
-mkdir -p /engines/var/run/flags/
 
 
 SECRET_KEY_BASE=`bundle exec rake secret`

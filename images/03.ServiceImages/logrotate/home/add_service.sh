@@ -24,16 +24,17 @@ if test -z $parent_engine
 
 if ! test -d  /home/saved/$parent_engine/
  then
-        mkdir -p /home/saved/$parent_engine/
+    mkdir -p /home/saved/$parent_engine/
 fi
+
 if test -z $service_handle
  then
- service_handle=`basename $log_file_path`
- fi
+   service_handle=`basename $log_file_path`
+fi
 
 echo "/var/log/engines/$log_file_path{" > /home/saved/$parent_engine/$service_handle.entry
 cat /home/tmpls/log_rotation_entry | sed "/ROTATE/s//$rotate/" |\
-                                sed    "/CYCLE/s//$cycle/"  >> /home/saved/$parent_engine/$service_handle.entry
+                sed    "/CYCLE/s//$cycle/"  >> /home/saved/$parent_engine/$service_handle.entry
 
 
 cat /home/saved/$parent_engine/*entry > /home/logrotate.d/$parent_engine

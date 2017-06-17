@@ -1,9 +1,7 @@
 #!/bin/bash
 
 cat - > /home/configurators/saved/default_destination
-            
-
-
+ 
 cat /home/configurators/saved/default_destination | /home/engines/bin/json_to_env >/tmp/.env
  . /tmp/.env
 

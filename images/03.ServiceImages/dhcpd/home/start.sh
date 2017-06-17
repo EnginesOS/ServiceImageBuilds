@@ -1,6 +1,4 @@
 #!/bin/sh
-mkdir -p /engines/var/run/flags/
-
 
 PID_FILE=/var/run/dhcpd.pid
 export PID_FILE
@@ -11,9 +9,9 @@ touch /tmp/start_dhcpd
   
 if ! test -f /etc/dhcp/dhcpd.conf
    then		
-echo "Not configured"
-exit
-   fi
+     echo "Not configured"
+     exit
+fi
 rm /var/run/dhcpd.pid
 
 sudo -n /home/engines/scripts/_start_syslog.sh

@@ -6,16 +6,16 @@ if test -f /home/certs/store/public/certs/$1.crt
  else
  	echo "Not Such Cert $1.crt"
  	exit -1
- 	fi
-
+fi
  	
- 	if test -f /home/certs/store/public/keys/$1.key
+if test -f /home/certs/store/public/keys/$1.key
  then
  	rm /home/certs/store/public/keys/$1.key
  else
  	echo "No Such key $1.key"
  	exit -1
- 	fi
- 	echo true
- 	exit
+fi
+
+echo true
+exit
  	

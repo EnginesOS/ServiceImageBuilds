@@ -11,10 +11,6 @@ PID_FILE=/engines/var/run/system.pid
 export PID_FILE
 . /home/engines/functions/trap.sh
 
-if ! test -d  /engines/var/run/flags/
- then
-	mkdir -p /engines/var/run/flags/
- fi
 
 cd /home
  if test -f /opt/engines/etc/ssl/keys/system/server.key 

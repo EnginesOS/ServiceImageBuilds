@@ -6,7 +6,6 @@ export PID_FILE
 . /home/engines/functions/trap.sh
 mkdir -p /var/log/log_viewer
 
-mkdir -p /engines/var/run/flags/
 
 /usr/sbin/apache2ctl  -DFOREGROUND &
 

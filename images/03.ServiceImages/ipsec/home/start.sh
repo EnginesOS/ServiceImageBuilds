@@ -1,6 +1,5 @@
 #!/bin/sh
 
-
 PID_FILE=/tmp/ipsec.pid
 export PID_FILE
 KILL_SCRIPT=/home/shutdown.sh
@@ -8,8 +7,7 @@ KILL_SCRIPT=/home/shutdown.sh
 export KILL_SCRIPT
 . /home/engines/functions/trap.sh
 
-
-mkdir -p /engines/var/run/flags/
+mkd
 if ! test -f /etc/ipsec.d/private/ipvpn.key
  then
 	sudo -n /home/setup.sh

@@ -17,18 +17,16 @@ MYSQL=`which mysql`
 
 
 if test -z $database_name
-	then
-		echo Error:No database_name value
-		exit -1
-	fi
+ then
+	echo Error:No database_name value
+	exit -1
+fi
 	
 if test -z $dbusername
-	then
-		echo Error:No dbusername value
-		exit -1
-	fi
-
-
+ then
+	echo Error:No dbusername value
+	exit -1
+fi
 
 
 #echo "$SQL"
@@ -39,11 +37,11 @@ echo "drop  ROLE $dbusername  ;" >> /tmp/.c.sql
 psql < /tmp/.c.sql
 
 if test $? -ge 0
-	then 
-		echo "Success"
-		rm /tmp/.c.sql
-		exit 0
-	fi
+ then 
+	echo "Success"
+	rm /tmp/.c.sql
+	exit 0
+fi
 	
-	echo "Error:"
-	exit -1
+echo "Error:"
+exit -1

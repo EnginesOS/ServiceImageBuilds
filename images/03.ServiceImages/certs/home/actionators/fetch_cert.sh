@@ -1,11 +1,12 @@
 #!/bin/bash
 
-if test -f /home/certs/store/public/certs/$1.crt
- then
+ if test -f /home/certs/store/public/certs/$1.crt
+  then
  	cat /home/certs/store/public/certs/$1.crt
- else
+  else
  	echo "Not Such Cert"
  	exit -1
- 	fi
- 	exit
+ fi
+
+exit
  	

@@ -13,16 +13,19 @@ if test -z $provider
  	echo "provider not set"
  	exit 127
  fi
+ 
 if test -z $login
  then
  	echo "login not set"
  	exit 127
  fi
+ 
  if test -z $login
  then
  	echo "login not set"
  	exit 127
  fi
+ 
  if test -z $domain_name
  then
  	echo "domain_name not set"

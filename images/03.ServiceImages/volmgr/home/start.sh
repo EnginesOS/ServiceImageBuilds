@@ -4,9 +4,6 @@ PID_FILE=/var/run/pid
 export PID_FILE
 . /home/engines/functions/trap.sh
 
-mkdir -p /engines/var/run/flags/
- 
-
 touch  /engines/var/run/flags/startup_complete
 c=1
 while test $c -ne 0

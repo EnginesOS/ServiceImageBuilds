@@ -1,8 +1,6 @@
 #!/bin/bash
 
-/home/engines/functions/params_to_env.sh
-
- . /tmp/.env
+. /home/engines/functions/params_to_env.sh
 
 if test -z $engine
 	then

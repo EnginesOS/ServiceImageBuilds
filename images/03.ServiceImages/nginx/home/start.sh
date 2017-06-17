@@ -7,8 +7,6 @@ export PID_FILE
 
 /home/clear_broken.sh
 
-mkdir -p /engines/var/run/flags/
-
 /usr/sbin/nginx &
 
 touch  /engines/var/run/flags/startup_complete
