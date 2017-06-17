@@ -2,7 +2,7 @@
 
 clear_stale()
  {
- for flag = "sig_term termed sig_hup huped sig_quit quited"
+ for flag in "sig_term termed sig_hup huped sig_quit quited"
  do
    if test -f /engines/var/run/flags/$flag
     then
