@@ -26,7 +26,7 @@ RUN	echo '#!/bin/sh' >/usr/sbin/policy-rc.d &&\
 	apt-get -y   update &&\
 	/home/no_init.sh &&\
 	apt-get -y  --fix-missing install rsyslog git language-pack-en-base  apt-file software-properties-common build-essential unzip curl  dnsutils git  wget bzip2 zlibc &&\ 
-	apt-get clean &&\
+	apt-get -y clean &&\
 	mkdir -p /var/run &&\
 	mkdir -p /etc/apt/apt.conf.d/ &&\
 	dpkg-divert --local --rename --add /sbin/initctl &&\
@@ -43,11 +43,11 @@ RUN	echo '#!/bin/sh' >/usr/sbin/policy-rc.d &&\
 	mkdir -p /home/engines/bin&&\
 	cp json_to_env /home/engines/bin &&\
 	rm -r /home/src &&\
-	apt-get remove  build-essential &&\
+	apt-get -y remove  build-essential &&\
 	/home/install_utf8_langauges.sh &&\
 	rm -r /tmp/* /home/install_utf8_langauges.sh &&\
 	rm /etc/rsyslog.d/50-default.conf &&\ 
-	apt-get clean &&\	
+	apt-get -y clean &&\	
 	rm -rf /tmp/* &&\
  	mkdir /var/run/engines &&\
  	chgrp containers /var/run/engines && chmod g+w /var/run/engines 
