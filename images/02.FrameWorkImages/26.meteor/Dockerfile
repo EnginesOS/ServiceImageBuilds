@@ -1,4 +1,4 @@
-FROM engines/node12:$release
+FROM engines/node6:$release
 
 
 USER node

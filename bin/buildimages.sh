@@ -25,14 +25,14 @@ if test "$1" = -h
  	then
  		shift
  		rm `find . -name last_built`
- 	fi
+ fi
  	
 if test "$1" = "-nocache"
  	then
  		extra=" --no-cache "
  		#--use-cache=false "
  		shift
- 	fi
+ fi
  	
  	
  	
@@ -86,7 +86,7 @@ build_rest=0
 									then 
 										./setup.sh
 									fi
-							 cat Dockerfile |  sed "/\$release/s//$release/" > Dockerfile.$release
+							 cat Dockerfile | sed "/\$release/s//$release/" > Dockerfile.$release
 							  if test -f nocache
 							   then
 							 	docker build $extra --no-cache --rm=true -t $tag -f Dockerfile.$release .
