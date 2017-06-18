@@ -5,6 +5,8 @@ ENV ContGrp rstudio
 
 RUN apt-get -y update &&\
 	echo "deb http://cran.rstudio.com/bin/linux/ubuntu xenial main" | tee -a /etc/apt/sources.list &&\
+	gpg --keyserver keyserver.ubuntu.com --recv-key E084DAB9 &&\
+	gpg -a --export E084DAB9 | apt-key add - &&\
 	apt-get -y update &&\
 	apt-get -y install r-base r-base-dev &&\
 	R -e "install.packages('shiny', repos='http://cran.rstudio.com/')" &&\
