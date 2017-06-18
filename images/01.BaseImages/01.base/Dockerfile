@@ -14,10 +14,10 @@ RUN	echo '#!/bin/sh' >/usr/sbin/policy-rc.d &&\
 	dpkg-divert --local --rename --add /sbin/initctl &&\
 	cp -a /usr/sbin/policy-rc.d /sbin/initctl &&\
 	echo 'force-unsafe-io' > /etc/dpkg/dpkg.cfg.d/docker-apt-speedup &&\
-	echo 'DPkg::Post-Invoke { "rm -f /var/cache/apt/archives/*.deb /var/cache/apt/archives/partial/*.deb /var/cache/apt/*.bin || true"&& }&&' > /etc/apt/apt.conf.d/docker-clean &&\
+	echo 'DPkg::Post-Invoke { "rm -f /var/cache/apt/archives/*.deb /var/cache/apt/archives/partial/*.deb /var/cache/apt/*.bin || true"; };' > /etc/apt/apt.conf.d/docker-clean &&\
 	echo 'APT::Update::Post-Invoke { "rm -f /var/cache/apt/archives/*.deb /var/cache/apt/archives/partial/*.deb /var/cache/apt/*.bin || true"; };' >> /etc/apt/apt.conf.d/docker-clean &&\
-	echo 'Dir::Cache::pkgcache ""&& Dir::Cache::srcpkgcache ""&&' >> /etc/apt/apt.conf.d/docker-clean &&\
-	echo 'Acquire::GzipIndexes "true"&& Acquire::CompressionTypes::Order:: "gz"&&' > /etc/apt/apt.conf.d/docker-gzip-indexes &&\
+	echo 'Dir::Cache::pkgcache ""; Dir::Cache::srcpkgcache "";' >> /etc/apt/apt.conf.d/docker-clean &&\
+	echo 'Acquire::GzipIndexes "true";Acquire::CompressionTypes::Order:: "gz";' > /etc/apt/apt.conf.d/docker-gzip-indexes &&\
 	sed -i 's/^#\s*\(deb.*universe\)$/\1/g' /etc/apt/sources.list &&\
  	apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ED8E640A&&\
 	apt-get -y  update &&\
