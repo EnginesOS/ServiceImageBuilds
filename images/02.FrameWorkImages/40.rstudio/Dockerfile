@@ -4,8 +4,8 @@ ENV ContUser rstudio
 ENV ContGrp rstudio
 
 RUN apt-get -y update &&\
-	echo "deb http://cran.rstudio.com/bin/linux/ubuntu xenial" | tee -a /etc/apt/sources.list &&\
-	apt-get -y update -y &&\
+	echo "deb http://cran.rstudio.com/bin/linux/ubuntu xenial main" | tee -a /etc/apt/sources.list &&\
+	apt-get -y update &&\
 	apt-get -y install r-base r-base-dev &&\
 	R -e "install.packages('shiny', repos='http://cran.rstudio.com/')" &&\
 	apt-get install gdebi-core &&\
