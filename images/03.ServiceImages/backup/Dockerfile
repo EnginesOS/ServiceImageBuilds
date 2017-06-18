@@ -1,46 +1,43 @@
 FROM	engines/servicebase:$release
 
 
-RUN apt-get -y update;\
-	/home/no_init.sh ;\
-	apt-get -y install mysql-client vim lftp python duply python-boto ncftp  python-paramiko python-gobject-2 build-essential gcc make   ;\
+RUN apt-get -y update &&\
+	/home/no_init.sh &&\
+	apt-get -y install mysql-client vim lftp python duply python-boto ncftp  python-paramiko python-gobject-2 build-essential gcc make &&\
 	apt-get clean 
 ADD etc  etc
 
-RUN echo "Y" | /usr/sbin/usermod -u 22015 -d /home/backup  backup;\
-	usermod -G containers -a backup;\ 
-	usermod -G root -a backup;\	 	
-	cd /tmp; \
-  	wget ftp://ftp.seul.org/pub/fcron/fcron-3.3.0.src.tar.gz;\
-  	tar -xzpf fcron-3.3.0.src.tar.gz;\
-  	cd fcron-3.3.0;\
+RUN echo "Y" | /usr/sbin/usermod -u 22015 -d /home/backup  backup &&\
+	usermod -G containers -a backup &&\ 
+	usermod -G root -a backup &&\	 	
+	cd /tmp &&\
+  	wget ftp://ftp.seul.org/pub/fcron/fcron-3.3.0.src.tar.gz &&\
+  	tar -xzpf fcron-3.3.0.src.tar.gz &&\
+  	cd fcron-3.3.0 &&\
   	./configure --with-run-non-privileged --with-rootname=backup\
 	--with-rootgroup=backup --with-username=backup --with-groupname=backup\
 	--with-etcdir=/home/backup/fcron --with-piddir=/home/backup/fcron\
 	--with-fifodir=/home/backup/fcron --with-spooldir=/home/backup/fcron/spool\
-	--with-docdir=/home/backup/fcron/doc --prefix=/home/backup/fcron;\
-	make install;\
-	mkdir -p /home/backup/fcron/doc /home/backup/fcron/man /home/backup/fcron/spool;\
-	cd /home/backup;\
-	rm -r /tmp/fcron-3.3.0 ;\
-	rm /tmp/fcron-3.3.0.src.tar.gz;\	
-	mkdir -p /var/log/backup/  /home/sql_dumps;\
-	chown -R backup  /home/sql_dumps /var/log/backup/ ;\
+	--with-docdir=/home/backup/fcron/doc --prefix=/home/backup/fcron &&\
+	make install &&\
+	mkdir -p /home/backup/fcron/doc /home/backup/fcron/man /home/backup/fcron/spool &&\
+	cd /home/backup &&\
+	rm -r /tmp/fcron-3.3.0 &&\
+	rm /tmp/fcron-3.3.0.src.tar.gz &&\	
+	mkdir -p /var/log/backup/  /home/sql_dumps &&\
+	chown -R backup  /home/sql_dumps /var/log/backup/ &&\
  	/home/post_build_clean.sh
-	# apt-get -y remove  build-essential gcc make ;\
-	# apt-get -y clean
-	
-	#  	 --without-sendmail\
+ 
 ADD home home
 
 ADD crontab  /home/backup/fcron/spool/backup.orig
-RUN chown -R backup ~backup ;\
-	chown backup /home/configurators/saved;\
-	chgrp backup /home/configurators/*.sh ;\
-	addgroup --gid 11111 datauser ;\
-	usermod -G datauser -a backup ;\
-	usermod -G adm -a backup;\
- 	/home/post_build_clean.sh;\
+RUN chown -R backup ~backup &&\
+	chown backup /home/configurators/saved &&\
+	chgrp backup /home/configurators/*.sh &&\
+	addgroup --gid 11111 datauser &&\
+	usermod -G datauser -a backup &&\
+	usermod -G adm -a backup &&\
+ 	/home/post_build_clean.sh &&\
 	chmod -R go-rw /etc/sudoers /etc/sudoers.d/
 	
 	

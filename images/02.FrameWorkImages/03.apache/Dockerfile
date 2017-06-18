@@ -1,13 +1,13 @@
 FROM engines/frameworkbase:$release
 
-RUN /usr/sbin/usermod -u 22671 www-data;\
-	apt-get install -y  apache2 ;\
-	rm etc/apache2/sites-enabled/*;\
-	mkdir -p /etc/apache2/ /var/run/apache2;\
-	mkdir /home/rlog; \
-	chown syslog /home/rlog;\
-	chown www-data /var/run/apache2	;\
-	usermod -G containers -a www-data ;\
+RUN /usr/sbin/usermod -u 22671 www-data &&\
+	apt-get install -y  apache2 &&\
+	rm etc/apache2/sites-enabled/* &&\
+	mkdir -p /etc/apache2/ /var/run/apache2 &&\
+	mkdir /home/rlog &&\
+	chown syslog /home/rlog &&\
+	chown www-data /var/run/apache2 &&\
+	usermod -G containers -a www-data &&\
  	/home/post_build_clean.sh
 
 

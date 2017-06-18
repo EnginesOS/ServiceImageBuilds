@@ -2,24 +2,24 @@ FROM engines/rails4:$release
 
 ENV RAILS_ENV production
 
-RUN /usr/sbin/usermod -u 22671 www-data ;\
- 	apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 561F9B9CAC40B2F7 ;\
- 	apt-get update -y ;\
-	apt-get install -y apt-transport-https ca-certificates  ;\
-	echo deb https://oss-binaries.phusionpassenger.com/apt/passenger xenial main  >/etc/apt/sources.list.d/passenger.list;\ 
-	chmod 600 /etc/apt/sources.list.d/passenger.list;\
-	apt-get update -y ;\
-	apt-get install -y   passenger-dev ;\
-	gem install	  passenger;\   
-	apt-get install -y nginx-common nginx-extras nginx;\
- 	mkdir   -p /var/www/.passenger ;\
- 	chown www-data /var/www/.passenger ;\
- 	/home/post_build_clean.sh;\
- 	usermod -G containers -a www-data ;\
- 	chown www-data /var/lib/nginx/ ;\
- 	passenger-config  build-native-support ;\
- 	 touch /home/.env_vars ;\
- 	 chown www-data /home/.env_vars /var/run/
+RUN /usr/sbin/usermod -u 22671 www-data &&\
+ 	apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 561F9B9CAC40B2F7 &&\
+ 	apt-get update -y &&\
+	apt-get install -y apt-transport-https ca-certificates &&\
+	echo deb https://oss-binaries.phusionpassenger.com/apt/passenger xenial main  >/etc/apt/sources.list.d/passenger.list &&\ 
+	chmod 600 /etc/apt/sources.list.d/passenger.list &&\
+	apt-get update -y &&\
+	apt-get install -y   passenger-dev &&\
+	gem install	  passenger &&\   
+	apt-get install -y nginx-common nginx-extras nginx &&\
+ 	mkdir   -p /var/www/.passenger &&\
+ 	chown www-data /var/www/.passenger &&\
+ 	/home/post_build_clean.sh &&\
+ 	usermod -G containers -a www-data &&\
+ 	chown www-data /var/lib/nginx/ &&\
+ 	passenger-config  build-native-support &&\
+ 	touch /home/.env_vars &&\
+ 	chown www-data /home/.env_vars /var/run/
  	 
 COPY etc/nginx/ /etc/nginx
 COPY ruby_env /home/
