@@ -3,6 +3,7 @@ FROM engines/frameworkbuild:$release
 ENV ContUser node
 ENV ContGrp node
 ENV NODE_VERSION 7.10.0
+
 RUN mkdir ~/node_js_src &&\
 	cd $_ &&\
 	wget -N http://nodejs.org/dist/node-latest.tar.gz  &&\

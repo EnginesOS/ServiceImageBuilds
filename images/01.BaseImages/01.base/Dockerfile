@@ -20,12 +20,12 @@ RUN	echo '#!/bin/sh' >/usr/sbin/policy-rc.d &&\
 	echo 'Acquire::GzipIndexes "true";Acquire::CompressionTypes::Order:: "gz";' > /etc/apt/apt.conf.d/docker-gzip-indexes &&\
 	sed -i 's/^#\s*\(deb.*universe\)$/\1/g' /etc/apt/sources.list &&\
  	apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ED8E640A&&\
-	apt-get -y  update &&\
+	apt-get -y update &&\
 	apt-get -y upgrade &&\
 	apt-get -y dist-upgrade &&\
-	apt-get -y   update &&\
+	apt-get -y update &&\
 	/home/no_init.sh &&\
-	apt-get -y  --fix-missing install rsyslog git language-pack-en-base  apt-file software-properties-common build-essential unzip curl  dnsutils git  wget bzip2 zlibc &&\ 
+	apt-get -y --fix-missing install rsyslog git language-pack-en-base apt-file software-properties-common build-essential unzip curl  dnsutils git  wget bzip2 zlibc &&\ 
 	apt-get -y clean &&\
 	mkdir -p /var/run &&\
 	mkdir -p /etc/apt/apt.conf.d/ &&\

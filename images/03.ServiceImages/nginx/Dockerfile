@@ -1,6 +1,5 @@
 FROM  engines/servicebase:$release
 
-
 RUN usermod www-data -u 22005 &&\
 	/home/no_init.sh &&\			
 	apt-get update -y &&\
@@ -9,11 +8,11 @@ RUN usermod www-data -u 22005 &&\
 	chown www-data /var/lib/nginx /var/run/nginx/ /etc/nginx/sites-enabled &&\
 	usermod -G containers -a www-data &&\
  	/home/post_build_clean.sh
-	
 
 COPY home home
 COPY 502.html /usr/share/nginx/html/
 COPY etc/nginx/ /etc/nginx
+
 RUN mkdir -p /home/consumers/saved/ &&\
 	chown www-data -R /etc/nginx/sites-enabled /home/configurators/saved  /home/consumers/saved/
 

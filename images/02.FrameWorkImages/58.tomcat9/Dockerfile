@@ -5,13 +5,12 @@ RUN  apt-mark unhold tzdata &&\
 	apt-get update -y &&\
 	apt-get install -y tomcat9 &&\
 	ln -s /var/log/tomcat9 /usr/share/tomcat9/logs &&\
- 	ln -s  /etc/tomcat9  /usr/share/tomcat9/conf &&\
+ 	ln -s /etc/tomcat9 /usr/share/tomcat9/conf &&\
  	ln -s /tmp /usr/share/tomcat9/temp &&\
  	usermod -G containers -a www-data &&\
  	/home/post_build_clean.sh
 
 ADD home home
-
 ADD home/webapps/ /usr/share/tomcat9/webapps
 
 ENV ContUser www-data

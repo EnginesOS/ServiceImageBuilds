@@ -1,10 +1,10 @@
 FROM	engines/servicebase:$release
 
-
 RUN apt-get -y update &&\
 	/home/no_init.sh &&\
-	apt-get -y install mysql-client vim lftp python duply python-boto ncftp  python-paramiko python-gobject-2 build-essential gcc make &&\
+	apt-get -y install mysql-client vim lftp python duply python-boto ncftp python-paramiko python-gobject-2 build-essential gcc make &&\
 	apt-get clean 
+
 ADD etc  etc
 
 RUN echo "Y" | /usr/sbin/usermod -u 22015 -d /home/backup  backup &&\
@@ -24,13 +24,13 @@ RUN echo "Y" | /usr/sbin/usermod -u 22015 -d /home/backup  backup &&\
 	cd /home/backup &&\
 	rm -r /tmp/fcron-3.3.0 &&\
 	rm /tmp/fcron-3.3.0.src.tar.gz &&\	
-	mkdir -p /var/log/backup/  /home/sql_dumps &&\
-	chown -R backup  /home/sql_dumps /var/log/backup/ &&\
+	mkdir -p /var/log/backup/ /home/sql_dumps &&\
+	chown -R backup /home/sql_dumps /var/log/backup/ &&\
  	/home/post_build_clean.sh
  
 ADD home home
-
 ADD crontab  /home/backup/fcron/spool/backup.orig
+
 RUN chown -R backup ~backup &&\
 	chown backup /home/configurators/saved &&\
 	chgrp backup /home/configurators/*.sh &&\

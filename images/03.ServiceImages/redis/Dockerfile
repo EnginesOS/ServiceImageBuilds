@@ -1,6 +1,5 @@
 FROM  engines/servicebase:$release
 
-
 RUN adduser -q --disabled-password  redis -uid 22029 &&\
 	/home/no_init.sh &&\			
 	apt-get update -y &&\

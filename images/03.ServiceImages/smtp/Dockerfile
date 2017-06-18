@@ -1,12 +1,12 @@
 FROM engines/servicebase:$release
 Maintainer image.maintainer@engines.onl
-RUN echo "Y" | adduser -q --disabled-password --home /var/spool/postfix -uid 22003 postfix
-RUN apt-get -y update &&\
+RUN echo "Y" | adduser -q --disabled-password --home /var/spool/postfix -uid 22003 postfix &&\
+	apt-get -y update &&\
 	/home/no_init.sh &&\	
 	apt-get -y install postfix &&\
 	usermod -G containers -a postfix &&\
-	 cp /etc/resolv.conf /var/spool/postfix/etc/ &&\
-	 cp /etc/services /var/spool/postfix/etc/ &&\
+	cp /etc/resolv.conf /var/spool/postfix/etc/ &&\
+	cp /etc/services /var/spool/postfix/etc/ &&\
  	/home/post_build_clean.sh
 
 ADD home home
@@ -32,6 +32,7 @@ RUN	chmod -R go-rw /etc/sudoers /etc/sudoers.d/
 
 ENV ContUser postfix
 ENV ContGrp postfix
+
 USER postfix
 
 

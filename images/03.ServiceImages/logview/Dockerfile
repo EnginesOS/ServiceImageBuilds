@@ -9,6 +9,7 @@ RUN usermod -u 22027 www-data &&\
  	/home/post_build_clean.sh
 	
 ADD home home
+
 RUN	git clone https://github.com/potsky/PimpMyLog.git &&\
 	mv /PimpMyLog /home/app 
 	
@@ -21,11 +22,13 @@ RUN mkdir /home/saved &&\
 	usermod -G adm -a www-data
 	
 ENV APACHE_LOCK_DIR /var/run/apache2/lock/
+ENV ContUser www-data
+ENV ContGrp www-data
+
 ADD 000-default.conf /etc/apache2/sites-enabled/
 ADD ports.conf /etc/apache2/	
 ADD apache_envvars /etc/apache2/envvars	
-ENV ContUser www-data
-ENV ContGrp www-data
+
 USER www-data
-ENV ContUser www-data
+
 CMD ["/home/start.sh"]	

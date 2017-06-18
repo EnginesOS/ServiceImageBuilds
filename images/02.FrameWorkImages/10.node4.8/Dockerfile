@@ -3,6 +3,7 @@ FROM engines/frameworkbuild:$release
 ENV ContUser node
 ENV ContGrp node
 ENV NODE_VERSION 4.8.3
+
 RUN apt-get -y install python &&\
     mkdir ~/node_js_src &&\
     cd $_ &&\
