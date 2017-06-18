@@ -2,9 +2,9 @@ FROM engines/servicebase:$release
 
 
 RUN adduser -q --disabled-password  dyndns -uid 22021;\
-	/home/no_init.sh ;\	
-	apt-get  update;\
-	apt-get -y install ddclient   ;\
+	/home/no_init.sh &&\	
+	apt-get  update &&\
+	apt-get -y install ddclient &&\
  	/home/post_build_clean.sh
 
 	
@@ -12,10 +12,10 @@ RUN adduser -q --disabled-password  dyndns -uid 22021;\
 COPY home home
 COPY sudoers /etc/sudoers.d/dyndns	
 
-RUN chown dyndns -R /home/dyndns /var/cache/ddclient/ ;\
-	groupadd -g 22020 containers;\
-	usermod -G containers -a dyndns;\
-	chown dyndns /home/configurators/saved/;\
+RUN chown dyndns -R /home/dyndns /var/cache/ddclient/ &&\
+	groupadd -g 22020 containers &&\
+	usermod -G containers -a dyndns &&\
+	chown dyndns /home/configurators/saved/ &&\
 	chmod -R go-rw /etc/sudoers /etc/sudoers.d/
 
 ENV ContUser dyndns

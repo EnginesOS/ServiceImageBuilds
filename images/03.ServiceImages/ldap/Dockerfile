@@ -3,13 +3,13 @@ Maintainer image.maintainer@engines.onl
 
 
 
-RUN apt-get -y update;\
-	adduser -q --disabled-password  -uid 22013 openldap;\
-	usermod -G containers -a  openldap;\
-	/home/no_init.sh ;\	
-	apt-get -y install slapd ldap-utils apache2 libapache2-mod-php  php7.0 apache2-utils phpldapadmin;\
- 	/home/post_build_clean.sh;\
- 	mkdir -p /var/log/apache2;\
+RUN apt-get -y update &&\
+	adduser -q --disabled-password  -uid 22013 openldap &&\
+	usermod -G containers -a  openldap &&\
+	/home/no_init.sh &&\	
+	apt-get -y install slapd ldap-utils apache2 libapache2-mod-php  php7.0 apache2-utils phpldapadmin &&\
+ 	/home/post_build_clean.sh &&\
+ 	mkdir -p /var/log/apache2 &&\
  	chown www-data /var/log/apache2 
  	
 ADD home home
