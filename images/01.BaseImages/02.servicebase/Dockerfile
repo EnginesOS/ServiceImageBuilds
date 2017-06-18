@@ -3,7 +3,7 @@ ADD sources.list /etc/apt/
 COPY home /home
 RUN apt-get  update -y &&\
 	apt-get install -y  sendmail-bin &&\ 
-	cp no_tls  /tmp/submit.head &&\
+	cp /home/no_tls  /tmp/submit.head &&\
 	cat /etc/mail/submit.mc >> /tmp/submit.head &&\
 	cp /tmp/submit.head etc/mail/submit.mc &&\
 	cat  /tmp/submit.head /home/smarthost >> /etc/mail/submit.mc &&\
