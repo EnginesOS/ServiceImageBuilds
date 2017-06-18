@@ -11,7 +11,7 @@ RUN /usr/sbin/usermod -u 22671 www-data &&\
     rm etc/apache2/sites-enabled/* &&\
 	gem install --no-rdoc --no-ri passenger &&\
     passenger-install-apache2-module -a --languages ruby,nodejs,python &&\
-	a2enmod passenger &&\
+	a2enmod passenger ;\
 	mkdir -p /var/log/apache2 &&\
 	chown -R www-data /var/log/apache2 &&\
 	a2enmod rewrite &&\
