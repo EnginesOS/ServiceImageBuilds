@@ -9,8 +9,8 @@ RUN /usr/sbin/usermod -u 22671 www-data &&\
 	echo deb https://oss-binaries.phusionpassenger.com/apt/passenger xenial main >/etc/apt/sources.list.d/passenger.list &&\ 
 	chmod 600 /etc/apt/sources.list.d/passenger.list &&\
     rm etc/apache2/sites-enabled/* &&\
-	/usr/local/rbenv/shims/gem install --no-rdoc --no-ri passenger &&\
-    /usr/local/rbenv/shims/passenger-install-apache2-module -a --languages ruby,nodejs,python &&\
+	gem install --no-rdoc --no-ri passenger &&\
+    passenger-install-apache2-module -a --languages ruby,nodejs,python &&\
 	a2enmod passenger &&\
 	mkdir -p /var/log/apache2 &&\
 	chown -R www-data /var/log/apache2 &&\
