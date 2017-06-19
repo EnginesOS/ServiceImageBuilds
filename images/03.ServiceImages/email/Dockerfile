@@ -19,7 +19,9 @@ RUN cd /tmp/ &&\
 	 chmod g+w /home/app/templates_c &&\
 	 usermod -G containers -a postfix &&\
 	 touch /etc/postfix/smarthost_passwd &&\
-	 mkdir /usr/share/doc/postfix/html /usr/lib/postfix/libutil&&\
+	 mkdir /usr/share/doc/postfix/html \
+	 	/usr/lib/postfix/libutil \
+	 	/usr/lib/postfix/libglobal &&\
 	 echo setpers &&\
 	 /usr/sbin/postfix -c /etc/postfix/ set-permissions &&\
 	 cp /etc/resolv.conf /var/spool/postfix/etc/ &&\
