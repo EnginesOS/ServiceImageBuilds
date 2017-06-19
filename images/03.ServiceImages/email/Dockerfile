@@ -25,8 +25,19 @@ RUN cd /tmp/ &&\
 	 	  /usr/lib/postfix/libtls \
 	 	  /usr/lib/postfix/cdb \
 	 	  /usr/lib/postfix/ldap \
+	 	  /usr/lib/postfix/lmdb \
+	 	  /usr/lib/postfix/mysql \
+	 	  /usr/lib/postfix/pcre \
+	 	  /usr/lib/postfix/pgsql \
+	 	  /usr/lib/postfix/sdbm \
+	 	  /usr/lib/postfix/sqlite \
+	 	  /etc/postfix/dynamicmaps.cf.d \
+	 	  /etc/postfix/main.cf.proto \
+	 	  /etc/postfix/makedefs.out \
+	 	  /etc/postfix/master.cf.proto \
+	 	  /etc/postfix/postfix-files.d \
 	 	  /usr/lib/postfix/libglobal &&\
-	 /usr/sbin/postfix -c /etc/postfix/ set-permissions &&\
+	 /usr/sbin/postfix -c /etc/postfix/ set-permissions create-missing  ;\
 	 cp /etc/resolv.conf /var/spool/postfix/etc/ &&\
 	 cp /etc/services /var/spool/postfix/etc/ &&\
  	/home/post_build_clean.sh
