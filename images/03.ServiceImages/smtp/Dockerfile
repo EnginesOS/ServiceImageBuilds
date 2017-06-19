@@ -34,13 +34,14 @@ RUN mkdir /usr/share/doc/postfix/html \
 	 	  /etc/postfix/master.cf.proto \
 	 	  /etc/postfix/postfix-files.d \
 	 	  /usr/lib/postfix/libglobal &&\
-	 	  echo SET;\
+	 touch /etc/postfix/generic.db \
+	 		/etc/postfix/transport.smart \
+	 		/etc/postfix/smarthost_passwd \
+	 		/etc/postfix/sender_canonical \
+	 	    /etc/postfix/generic &&\
 	/usr/sbin/postfix -c /etc/postfix/ set-permissions create-missing ;\
+	echo SET &&\	
 	postmap /etc/postfix/transport &&\
-	touch /etc/postfix/transport.smart &&\
-	touch /etc/postfix/smarthost_passwd &&\
-	touch /etc/postfix/sender_canonical &&\ 
-	touch /etc/postfix/generic &&\
 	chown postfix /etc/postfix/ /etc/postfix/sender_canonical* /etc/postfix/generic /etc/postfix/generic.db /etc/postfix/smarthost_passwd /etc/postfix/sender_canonical /etc/postfix/smarthost_passwd /etc/postfix/transport /etc/postfix/transport.smart /etc/postfix/transport.db /etc/postfix/mailname &&\
 	chown postfix /home/configurators/saved &&\
 	chgrp postfix /home/configurators/*.sh
