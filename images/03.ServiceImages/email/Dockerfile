@@ -1,4 +1,4 @@
-FROM  enginees/servicebase:$release
+FROM  engines/servicebase:$release
 
 RUN echo "Y" | adduser -q --disabled-password --home /var/spool/postfix -uid 22003 postfix&&\
 	/home/no_init.sh &&\	
