@@ -17,11 +17,11 @@ RUN cd /tmp/ &&\
 	 chgrp www-data /home/app/templates_c/ &&\
 	 chmod g+w /home/app/templates_c &&\
 	 usermod -G containers -a postfix &&\
-	 touch /etc/postfix/smarthost_passwd #&&\
-run	 mkdir /usr/share/doc/postfix/html \
-	 	/usr/lib/postfix/libutil \
-	 	/usr/lib/postfix/libdns \
-	 	/usr/lib/postfix/libglobal &&\
+	 touch /etc/postfix/smarthost_passwd &&\
+	mkdir /usr/share/doc/postfix/html \
+	 	  /usr/lib/postfix/libutil \
+	 	  /usr/lib/postfix/libdns \
+	 	  /usr/lib/postfix/libglobal &&\
 	 /usr/sbin/postfix -c /etc/postfix/ set-permissions &&\
 	 cp /etc/resolv.conf /var/spool/postfix/etc/ &&\
 	 cp /etc/services /var/spool/postfix/etc/ &&\
