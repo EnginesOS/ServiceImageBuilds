@@ -1,10 +1,8 @@
 #!/bin/bash
 
-cat - > /home/configurators/saved/dns_forwarders
-
- echo /home/configurators/saved/dns_forwarders | /home/engines/bin/json_to_env >/tmp/.env
- . /tmp/.env
-
+. /home/engines/functions/params_to_env.sh
+PARAMS_FILE=/home/configurators/saved/dns_forwarders
+parms_to_file_and_env
  
  if test -z $dns_server
  then

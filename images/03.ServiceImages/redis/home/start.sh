@@ -7,8 +7,6 @@ export PID_FILE
 . /home/engines/functions/trap.sh
 
 
-mkdir -p /engines/var/run/flags/
-
 if test -f /engines/var/run/flags/restart_required
  then
   rm -f /engines/var/run/flags/restart_required
@@ -20,7 +18,7 @@ touch /engines/var/run/flags/startup_complete
 configs=`ls /home/config/*.redis.config`
 for config in $configs
  do
-	redis-server $config &
+    redis-server $config &
 	echo -n $! >> /var/run/redis-server.pid
 	echo -n " " >> /var/run/redis-server.pid
 done

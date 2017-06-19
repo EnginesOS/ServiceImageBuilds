@@ -19,22 +19,20 @@ fi
 
 sudo /home/engines/scripts/_start_syslog.sh
 
+ddclient  -daemon 300 -syslog -foreground -file /home/dyndns/dyndns.conf -cache /home/dyndns/cache   -pid /home/dyndns/dyndns.pid &
 
-mkdir -p /engines/var/run/flags/
+if ! test -f /home/dyndns/dyndns.pid
+ then
+  touch /engines/var/run/flags/startup_failed
+else
+  rm -r /engines/var/run/flags/startup_failed
+fi
 
-	ddclient  -daemon 300 -syslog -foreground -file /home/dyndns/dyndns.conf -cache /home/dyndns/cache   -pid /home/dyndns/dyndns.pid &
-	if ! test -f /home/dyndns/dyndns.pid
-	then
-	  touch /engines/var/run/flags/startup_failed
-	 else
-	   rm -r /engines/var/run/flags/startup_failed
-	fi
-	touch /engines/var/run/flags/startup_complete
-	wait 
+touch /engines/var/run/flags/startup_complete
+wait 
 exit_code=$?
 	
-	rm /engines/var/run/flags/startup_complete
-	sudo -n /home/engines/scripts/_kill_syslog.sh
-
+rm /engines/var/run/flags/startup_complete
+sudo -n /home/engines/scripts/_kill_syslog.sh
 
 exit $exit_code

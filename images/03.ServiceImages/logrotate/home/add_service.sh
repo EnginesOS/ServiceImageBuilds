@@ -1,14 +1,7 @@
 #!/bin/bash
 
-if test $# -eq 0 
- then
- 	cat -  | /home/engines/bin/json_to_env >/tmp/.env
- else
-	echo $1 | /home/engines/bin/json_to_env >/tmp/.env
-fi
-
- . /tmp/.env
-
+. /home/engines/functions/params_to_env.sh
+parms_to_env
  
 if test -z $log_file_path
  then 
@@ -24,16 +17,17 @@ if test -z $parent_engine
 
 if ! test -d  /home/saved/$parent_engine/
  then
-        mkdir -p /home/saved/$parent_engine/
+    mkdir -p /home/saved/$parent_engine/
 fi
+
 if test -z $service_handle
  then
- service_handle=`basename $log_file_path`
- fi
+   service_handle=`basename $log_file_path`
+fi
 
 echo "/var/log/engines/$log_file_path{" > /home/saved/$parent_engine/$service_handle.entry
 cat /home/tmpls/log_rotation_entry | sed "/ROTATE/s//$rotate/" |\
-                                sed    "/CYCLE/s//$cycle/"  >> /home/saved/$parent_engine/$service_handle.entry
+                sed    "/CYCLE/s//$cycle/"  >> /home/saved/$parent_engine/$service_handle.entry
 
 
 cat /home/saved/$parent_engine/*entry > /home/logrotate.d/$parent_engine

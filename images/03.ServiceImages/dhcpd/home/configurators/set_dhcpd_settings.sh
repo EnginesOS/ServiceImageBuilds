@@ -1,63 +1,60 @@
 #!/bin/bash
 
-cat - > /home/configurators/saved/dhcpd_settings
-
-
-
-
- echo /home/configurators/saved/dhcpd_settings | /home/engines/bin/json_to_env >/tmp/.env
- . /tmp/.env
+. /home/engines/functions/params_to_env.sh
+PARAMS_FILE=/home/configurators/saved/dhcpd_settings
+parms_to_file_and_env
 
 if test -z $domain_name
  then
- 	echo "domain_name not set"
- 	exit 127
- fi
- if test -z  $netmask
- then
-   echo "netmask not set"
- 	exit 127
- fi
- 
- if test -z $subnet 
- then
-   echo "subnet not set"
- 	exit 127
- fi
- 
- if test -z $start
- then
-   echo "start not set"
- 	exit 127
- fi
- 
- if test -z $end$
- then
-   echo "end not set"
- 	exit 127
- fi
+  echo "domain_name not set"
+  exit 127
+fi
 
- if test -z $default_gateway
+if test -z  $netmask
+ then
+  echo "netmask not set"
+  exit 127
+fi
+ 
+if test -z $subnet 
+ then
+  echo "subnet not set"
+  exit 127
+fi
+ 
+if test -z $start
+ then
+  echo "start not set"
+  exit 127
+fi
+ 
+if test -z $end$
+ then
+  echo "end not set"
+  exit 127
+fi
+
+if test -z $default_gateway
  then
    echo "default_gateway not set"
  	exit 127
- fi
+fi
  
- if test -z $dns_server1
+if test -z $dns_server1
  then
    echo "dns_server1 not set"
  	exit 127
- fi
+fi
 
- if test -z $dns_server2
+if test -z $dns_server2
   then
     dns_server=8.8.8.8
- fi
+fi
  
- if test -z $default_lease
+if test -z $default_lease
   then
   	default_lease=3600
- fi
+fi
  
 if test -z $max_lease
   then

@@ -1,24 +1,19 @@
 #!/bin/bash
-if test $# -eq 0 
+
+. /home/engines/functions/params_to_env.sh
+parms_to_env
+
+if test -z "${parent_engine}"
  then
- 	cat -  | /home/engines/bin/json_to_env>/tmp/.env
- else
-	echo $1 | /home/engines/bin/json_to_env >/tmp/.env
+echo Error:Missing parent_engine
+      exit -1
 fi
 
- . /tmp/.env
-#FIXME make engines.internal settable
-
-	if test -z "${parent_engine}"
-	then
-		echo Error:Missing parent_engine
-        exit -1
-    fi
-  	if test -z ${title}
-	then
-		echo Error:missing title
-        exit -1
-    fi  
+if test -z ${title}
+ then
+	echo Error:missing title
+    exit -1
+fi  
 
 if test -f /home/cron/entries/${parent_engine}/$title
  then

@@ -1,8 +1,7 @@
 #!/bin/bash
 
 cat - >/home/configurators/saved/credentials
-
-cat /home/configurators/saved/credentials | /home/engines/bin/json_to_env >/tmp/.env
-
- . /tmp/.env
+. /home/engines/functions/params_to_env.sh
+PARAMS_FILE=/home/configurators/saved/credentials
+parms_to_file_and_env
 exit 0

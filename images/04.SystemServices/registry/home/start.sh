@@ -8,9 +8,6 @@ PID_FILE=/engines/var/run/registry.pid
 export PID_FILE
 . /home/engines/functions/trap.sh
 
-
-mkdir -p /engines/var/run/flags/
-
 cd /home/registry
 cd /home/registry/EnginesSystemRegistry/src/
 git pull

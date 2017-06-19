@@ -1,20 +1,19 @@
 FROM  engines/servicebase:$release
 
-
-RUN usermod www-data -u 22005;\
-	/home/no_init.sh ;\			
-apt-get update -y;\
-	apt-get -y install nginx;\
-	mkdir -p /var/lib/nginx /var/run/nginx/ ;\ 
-	chown www-data /var/lib/nginx /var/run/nginx/ /etc/nginx/sites-enabled;\
-	usermod -G containers -a www-data ;\
+RUN usermod www-data -u 22005 &&\
+	/home/no_init.sh &&\			
+	apt-get update -y &&\
+	apt-get -y install nginx &&\
+	mkdir -p /var/lib/nginx /var/run/nginx/ &&\ 
+	chown www-data /var/lib/nginx /var/run/nginx/ /etc/nginx/sites-enabled &&\
+	usermod -G containers -a www-data &&\
  	/home/post_build_clean.sh
-	
 
 COPY home home
 COPY 502.html /usr/share/nginx/html/
 COPY etc/nginx/ /etc/nginx
-RUN mkdir -p /home/consumers/saved/;\
+
+RUN mkdir -p /home/consumers/saved/ &&\
 	chown www-data -R /etc/nginx/sites-enabled /home/configurators/saved  /home/consumers/saved/
 
 ENV ContUser www-data

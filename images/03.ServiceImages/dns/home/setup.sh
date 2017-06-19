@@ -5,7 +5,7 @@ chown -R bind /var/run/named
 mkdir -p /var/log/named
 chown -R bind /var/log/named
 
- ip_r=`grep dns /etc/hosts|awk '{print $1}' |cut -d. -f-3`
+ip_r=`grep dns /etc/hosts|awk '{print $1}' |cut -d. -f-3`
 ip=${ip_r}.1
 net=`echo $ip_r |awk  ' BEGIN {  FS="."} {print $2 "." $1}'`
 

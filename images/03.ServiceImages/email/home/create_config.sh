@@ -9,13 +9,13 @@ if test -f /home/configurators/saved/default_domain
  		. /tmp/.env	
      else
       	default_domain=$DEFAULT_DOMAIN
- fi
+fi
 
 cat /home/app/_config.inc.php \
  | sed "/DBHOST/s//$dbhost/"\
-	| sed  "/DBNAME/s//$dbname/"\
-	| sed  "/DBUSER/s//$dbuser/"\
-	| sed   "/DBPASSWD/s//$dbpasswd/"\
-	| sed   "/DEFAULT_DOMAIN/s//$default_domain/" > /home/app/config.inc.php
+ | sed  "/DBNAME/s//$dbname/"\
+ | sed  "/DBUSER/s//$dbuser/"\
+ | sed   "/DBPASSWD/s//$dbpasswd/"\
+ | sed   "/DEFAULT_DOMAIN/s//$default_domain/" > /home/app/config.inc.php
 	
 	

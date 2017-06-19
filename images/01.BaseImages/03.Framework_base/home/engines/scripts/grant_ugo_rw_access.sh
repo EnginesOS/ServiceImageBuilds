@@ -1,9 +1,9 @@
 #!/bin/sh
-  if test $# -eq 2
-  then
+if test $# -eq 2
+ then
    entered_path=$2
    recursive=-R
- else
+else
 	entered_path=$1
 	recursive=""
 fi

@@ -9,7 +9,6 @@ PID_FILE=/tmp/pids
 export PID_FILE
 . /home/engines/functions/trap.sh
 
-mkdir -p /engines/var/run/flags/
 
 sudo -n /home/engines/scripts/_start_syslog.sh
 

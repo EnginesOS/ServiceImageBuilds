@@ -1,9 +1,7 @@
 #!/bin/bash
 
 
- 	cat -  | /home/engines/bin/json_to_env  | sed "/sources='\[/s//sources\[/" | sed "/\]'/s//\]/" > /tmp/.env
- 
-
+ cat -  | /home/engines/bin/json_to_env  | sed "/sources='\[/s//sources\[/" | sed "/\]'/s//\]/" > /tmp/.env
  . /tmp/.env
 
 echo $1 >/home/configurators/saved/backup_$parent_engine

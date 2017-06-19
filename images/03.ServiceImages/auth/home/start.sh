@@ -1,6 +1,6 @@
 #!/bin/sh
 
-mkdir -p /engines/var/run/flags/
+
 
 PID_FILE=/var/run/sshd.pid
 export PID_FILE
@@ -9,17 +9,17 @@ export PID_FILE
 mkdir -p /home/auth/logs/ 
 
 if ! test -f /engines/var/run/flags/first_run.done
-	then
-		/home/auth/first_run.sh
-		
-		touch /engines/var/run/flags/first_run.done
-	fi
+  then
+	/home/auth/first_run.sh		
+	touch /engines/var/run/flags/first_run.done
+ fi
 	
- echo dbflavor=$dbflavor >/home/auth/.dbenv
- echo dbhost=$dbhost >>/home/auth/.dbenv
- echo dbname=$dbname >>/home/auth/.dbenv
- echo dbpasswd=$dbpasswd >>/home/auth/.dbenv
- echo dbuser=$dbuser >>/home/auth/.dbenv
+echo dbflavor=$dbflavor >/home/auth/.dbenv
+echo dbhost=$dbhost >>/home/auth/.dbenv
+echo dbname=$dbname >>/home/auth/.dbenv
+echo dbpasswd=$dbpasswd >>/home/auth/.dbenv
+echo dbuser=$dbuser >>/home/auth/.dbenv
+
 chmod og-rwx  /home/auth/.dbenv
 
 

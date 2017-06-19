@@ -8,9 +8,6 @@ PID_FILE=/engines/var/run/firstrun.pid
 export PID_FILE
 . /home/engines/functions/trap.sh
 
-
-mkdir -p /engines/var/run/flags/
-
 cd /home/app
 
 /home/deployment.sh

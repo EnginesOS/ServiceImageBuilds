@@ -6,10 +6,8 @@ export PID_FILE
 . /home/engines/functions/trap.sh
 
 
-mkdir -p /engines/var/run/flags/
 
 sudo -n /home/engines/scripts/_start_syslog.sh
-
 
 mkdir -p /home/backup/sql_dumps/
 
