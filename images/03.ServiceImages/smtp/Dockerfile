@@ -34,7 +34,7 @@ RUN mkdir /usr/share/doc/postfix/html \
 	 	  /etc/postfix/master.cf.proto \
 	 	  /etc/postfix/postfix-files.d \
 	 	  /usr/lib/postfix/libglobal &&\
-	/usr/sbin/postfix -c /etc/postfix/ set-permissions create-missing ;\ &&\
+	/usr/sbin/postfix -c /etc/postfix/ set-permissions create-missing ;\
 	postmap /etc/postfix/transport &&\
 	touch /etc/postfix/transport.smart &&\
 	touch /etc/postfix/smarthost_passwd &&\
