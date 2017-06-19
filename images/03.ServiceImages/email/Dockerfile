@@ -17,9 +17,10 @@ RUN cd /tmp/ &&\
 	 chgrp www-data /home/app/templates_c/ &&\
 	 chmod g+w /home/app/templates_c &&\
 	 usermod -G containers -a postfix &&\
-	 touch /etc/postfix/smarthost_passwd &&\
-	 mkdir /usr/share/doc/postfix/html \
+	 touch /etc/postfix/smarthost_passwd #&&\
+run	 mkdir /usr/share/doc/postfix/html \
 	 	  /usr/lib/postfix/libutil \
+	 	  /usr/lib/postfix/libmaster \
 	 	  /usr/lib/postfix/libdns \
 	 	  /usr/lib/postfix/libtls \
 	 	  /usr/lib/postfix/libglobal &&\
