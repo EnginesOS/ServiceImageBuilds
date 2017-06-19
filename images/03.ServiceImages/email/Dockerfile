@@ -18,9 +18,11 @@ RUN cd /tmp/ &&\
 	 chmod g+w /home/app/templates_c &&\
 	 usermod -G containers -a postfix &&\
 	 touch /etc/postfix/smarthost_passwd &&\
-	mkdir /usr/share/doc/postfix/html \
+	 mkdir /usr/share/doc/postfix/html \
 	 	  /usr/lib/postfix/libutil \
 	 	  /usr/lib/postfix/libdns \
+	 	  /var/lib/postgrey \
+	 	  /usr/lib/postfix/libtls \
 	 	  /usr/lib/postfix/libglobal &&\
 	 /usr/sbin/postfix -c /etc/postfix/ set-permissions &&\
 	 cp /etc/resolv.conf /var/spool/postfix/etc/ &&\
