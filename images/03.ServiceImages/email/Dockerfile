@@ -24,6 +24,7 @@ RUN cd /tmp/ &&\
 	 	  /usr/lib/postfix/libdns \
 	 	  /usr/lib/postfix/libtls \
 	 	  /usr/lib/postfix/cdb \
+	 	  /usr/lib/postfix/ldap \
 	 	  /usr/lib/postfix/libglobal &&\
 	 /usr/sbin/postfix -c /etc/postfix/ set-permissions &&\
 	 cp /etc/resolv.conf /var/spool/postfix/etc/ &&\
