@@ -11,7 +11,6 @@ RUN /usr/sbin/usermod -u 22671 www-data &&\
     rm etc/apache2/sites-enabled/* &&\
 	gem install --no-rdoc --no-ri passenger &&\
     passenger-install-apache2-module -a --languages ruby,nodejs,python &&\
-	a2enmod passenger ;\
 	mkdir -p /var/log/apache2 &&\
 	chown -R www-data /var/log/apache2 &&\
 	a2enmod rewrite &&\
@@ -24,7 +23,7 @@ RUN /usr/sbin/usermod -u 22671 www-data &&\
  	/home/post_build_clean.sh
 
 ADD 000-default.conf /etc/apache2/sites-enabled/
-ADD	passenger.conf  /etc/apache2/mods-enabled/
+ADD	passenger.conf /etc/apache2/mods-enabled/
 ADD ports.conf /etc/apache2/
 
 ENV ContUser www-data
