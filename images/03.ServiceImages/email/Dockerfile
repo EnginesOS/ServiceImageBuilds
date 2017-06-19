@@ -21,7 +21,6 @@ RUN cd /tmp/ &&\
 	 mkdir /usr/share/doc/postfix/html \
 	 	  /usr/lib/postfix/libutil \
 	 	  /usr/lib/postfix/libdns \
-	 	  /var/lib/postgrey \
 	 	  /usr/lib/postfix/libtls \
 	 	  /usr/lib/postfix/libglobal &&\
 	 /usr/sbin/postfix -c /etc/postfix/ set-permissions &&\
