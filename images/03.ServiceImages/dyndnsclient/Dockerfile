@@ -10,7 +10,6 @@ COPY home home
 COPY sudoers /etc/sudoers.d/dyndns	
 
 RUN chown dyndns -R /home/dyndns /var/cache/ddclient/ &&\
-	groupadd -g 22020 containers &&\
 	usermod -G containers -a dyndns &&\
 	chown dyndns /home/configurators/saved/ &&\
 	chmod -R go-rw /etc/sudoers /etc/sudoers.d/
