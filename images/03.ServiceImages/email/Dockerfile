@@ -1,6 +1,6 @@
 FROM  engines/servicebase:$release
 
-RUN echo "Y" | adduser -q --disabled-password --home /var/spool/postfix -uid 22003 postfix&&\
+RUN echo "Y" | adduser -q --disabled-password --home /var/spool/postfix -uid 22003 postfix &&\
 	/home/no_init.sh &&\
 	apt-get -y update &&\	
 	apt-get -y install apache2 php-gettext php-mbstring libapache2-mod-php7.0 php-mysql php-mcrypt php-gd php-apcu php-dev postfix php-imap postfix-mysql postgrey 
@@ -37,7 +37,7 @@ RUN cd /tmp/ &&\
 	 	  /etc/postfix/master.cf.proto \
 	 	  /etc/postfix/postfix-files.d \
 	 	  /usr/lib/postfix/libglobal &&\
-	 /usr/sbin/postfix -c /etc/postfix/ set-permissions create-missing  ;\
+	 /usr/sbin/postfix -c /etc/postfix/ set-permissions create-missing ;\
 	 cp /etc/resolv.conf /var/spool/postfix/etc/ &&\
 	 cp /etc/services /var/spool/postfix/etc/ &&\
  	/home/post_build_clean.sh
@@ -48,8 +48,8 @@ ADD postfix/main.cf /etc/postfix/
 ADD postfix/master.cf /etc/postfix/
 ADD postfix/mailname /etc/postfix/mailname
 ADD postfix/transport /etc/postfix/transport
-ADD _config.inc.php  /home/app/
-ADD config.inc.php  /home/app/
+ADD _config.inc.php /home/app/
+ADD config.inc.php /home/app/
 ADD htaccess /home/app/.htaccess
 ADD 000-default.conf /etc/apache2/sites-enabled/ 
 
