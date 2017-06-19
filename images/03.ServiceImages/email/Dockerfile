@@ -1,4 +1,4 @@
-FROM  engines/servicebase:$release
+FROM  enginees/servicebase:$release
 
 RUN echo "Y" | adduser -q --disabled-password --home /var/spool/postfix -uid 22003 postfix&&\
 	/home/no_init.sh &&\	
@@ -19,6 +19,8 @@ RUN cd /tmp/ &&\
 	 chmod g+w /home/app/templates_c &&\
 	 usermod -G containers -a postfix &&\
 	 touch  /etc/postfix/smarthost_passwd &&\
+	 mkdir /usr/share/doc/postfix/html &&\
+	 echo set per,s &&\
 	 /usr/sbin/postfix -c /etc/postfix/ set-permissions &&\
 	 cp /etc/resolv.conf /var/spool/postfix/etc/ &&\
 	 cp /etc/services /var/spool/postfix/etc/ &&\
