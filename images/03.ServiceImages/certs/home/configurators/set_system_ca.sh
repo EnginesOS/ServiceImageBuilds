@@ -6,19 +6,18 @@ if test -f /home/certs/store/private/ca/keys/system_CA.key
 	then	
 	#	echo "CA Exists"
 	#	exit 127
-	cp /home/certs/store/public/ca/certs/system_CA.pem  /home/certs/store/public/ca/certs/system_CA.pem.bak
-#	rm /home/certs/store/public/ca/certs/system_CA.pem
-	cp /home/certs/store/private/ca/keys/system_CA.key  /home/certs/store/private/ca/keys/system_CA.key.bak
-	#rm /home/certs/store/private/ca/keys/system_CA.key 
-	fi
+ cp /home/certs/store/public/ca/certs/system_CA.pem  /home/certs/store/public/ca/certs/system_CA.pem.bak
+ #	rm /home/certs/store/public/ca/certs/system_CA.pem
+ cp /home/certs/store/private/ca/keys/system_CA.key  /home/certs/store/private/ca/keys/system_CA.key.bak
+ #rm /home/certs/store/private/ca/keys/system_CA.key 
+fi
 
-cat - >/home/configurators/saved/ca_setup
+
+. /home/engines/functions/params_to_env.sh
+PARAMS_FILE=/home/configurators/saved/ca_setup
+parms_to_file_and_env
+
 cp /home/configurators/saved/ca_setup /home/configurators/saved/ca_params
-
-
-
-cat /home/configurators/saved/ca_setup | /home/engines/bin/json_to_env >/tmp/.env
- . /tmp/.env
 
 
 echo $country >/home/configurators/saved/ca_setup

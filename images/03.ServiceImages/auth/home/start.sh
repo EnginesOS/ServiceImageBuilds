@@ -1,25 +1,25 @@
 #!/bin/sh
 
-mkdir -p /engines/var/run/flags/
+
 
 PID_FILE=/var/run/sshd.pid
 export PID_FILE
-. /home/trap.sh
+. /home/engines/functions/trap.sh
 
 mkdir -p /home/auth/logs/ 
 
 if ! test -f /engines/var/run/flags/first_run.done
-	then
-		/home/auth/first_run.sh
-		
-		touch /engines/var/run/flags/first_run.done
-	fi
+  then
+	/home/auth/first_run.sh		
+	touch /engines/var/run/flags/first_run.done
+ fi
 	
- echo dbflavor=$dbflavor >/home/auth/.dbenv
- echo dbhost=$dbhost >>/home/auth/.dbenv
- echo dbname=$dbname >>/home/auth/.dbenv
- echo dbpasswd=$dbpasswd >>/home/auth/.dbenv
- echo dbuser=$dbuser >>/home/auth/.dbenv
+echo dbflavor=$dbflavor >/home/auth/.dbenv
+echo dbhost=$dbhost >>/home/auth/.dbenv
+echo dbname=$dbname >>/home/auth/.dbenv
+echo dbpasswd=$dbpasswd >>/home/auth/.dbenv
+echo dbuser=$dbuser >>/home/auth/.dbenv
+
 chmod og-rwx  /home/auth/.dbenv
 
 
@@ -42,6 +42,7 @@ pid=$!
 touch /engines/var/run/flags/startup_complete
 echo "startup complete"
 wait $pid
+exit_code=$?
 
  while test $SIGNAL -ne 3 -a $SIGNAL -ne 15
  do
@@ -55,6 +56,5 @@ wait $pid
  done
 
 sudo /home/engines/scripts/_kill_syslog.sh
-
-
 rm -f /engines/var/run/flags/startup_complete
+exit $exit_code

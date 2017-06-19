@@ -1,13 +1,10 @@
 #!/bin/sh
 
-
-
 PID_FILE=/tmp/avahi-publisher.pid
 export PID_FILE
-. /home/trap.sh
+. /home/engines/functions/trap.sh
 
 
-mkdir -p /engines/var/run/flags/
 
 if test -f /engines/var/run/flags/restart_required
  then
@@ -42,7 +39,8 @@ ls /home/avahi/hosts/ > /home/avahi/hosts_list
 
 touch /engines/var/run/flags/startup_complete
 
-wait 
+wait
+exit_code=$?
 
 kill -TERM   'cat PID_FILE'
 
@@ -51,3 +49,4 @@ sudo -n /home/kill_dbus.sh $dbus_pid
 sudo -n /home/engines/scripts/_kill_syslog.sh
 
 rm /engines/var/run/flags/startup_complete
+exit $exit_code

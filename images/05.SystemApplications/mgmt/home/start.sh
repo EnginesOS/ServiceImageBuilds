@@ -6,12 +6,12 @@ cd /home/app/
 
  if ! test -d /var/run/nginx
  then
-mkdir   /var/run/nginx /var/log/nginx 
+  mkdir /var/run/nginx /var/log/nginx 
 fi
 
  if ! test -d /var/log/nginx
  then
-	mkdir   /var/log/nginx 
+	mkdir /var/log/nginx 
 fi
 
 if test -f /home/app/app/config/newrelic.yml
@@ -34,25 +34,29 @@ if ! test -h /home/app/public/system
  
 
 /home/deployment.sh
-mkdir -p /engines/var/run/flags/
 
 
 SECRET_KEY_BASE=`bundle exec rake secret`
 export SECRET_KEY_BASE
 
 export RAILS_ENV
+
 mkdir -p /home/fs/persistent/db/
- if ! test -f /home/fs/persistent/db/database.sqllite
+
+if ! test -f /home/fs/persistent/db/database.sqllite
   then
-		touch /home/fs/persistent/db/database.sqllite
-  fi
+	touch /home/fs/persistent/db/database.sqllite
+fi
+
 #DATABASE_URL=$rails_flavor://$dbuser:$dbpasswd@$dbhost/$dbname
 DATABASE_URL=sqlite3:/home/fs/persistent/db/database.sqllite
 export DATABASE_URL
- if test -f /home/ruby_env
+
+if test -f /home/ruby_env
   then
 	cp /home/ruby_env /home/app/.env_vars
-  fi
+fi
+
 echo " passenger_env_var RAILS_ENV $RAILS_ENV;" >> /home/app/.env_vars
 echo " passenger_env_var PATH $PATH;" >> /home/app/.env_vars
 echo " passenger_env_var SECRET_KEY_BASE $SECRET_KEY_BASE;" >> /home/app/.env_vars
@@ -79,9 +83,9 @@ echo precompiling assests
 bundle exec rake assets:precompile  >/dev/null
 
 if ! test -d /var/log/app
-	then
-		mkdir /var/log/app
-	fi
+  then
+	mkdir /var/log/app
+fi
 
  rm -rf /home/app/log 
 
@@ -91,12 +95,14 @@ ln -s /var/log/app /home/app/log
 PID_FILE=/var/run/nginx/nginx.pid
 
 export PID_FILE
-. /home/trap.sh
+. /home/engines/functions/trap.sh
 echo Starting Server
 nginx &
 echo Server Started
 touch  /engines/var/run/flags/startup_complete
 wait 
+exit_code=$?
 
 
 rm /engines/var/run/flags/startup_complete
+exit $exit_code

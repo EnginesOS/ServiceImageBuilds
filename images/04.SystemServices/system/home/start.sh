@@ -9,12 +9,8 @@ echo $SYSTEM_IP > /engines/var/run/control_ip
 export SYSTEM_IP 
 PID_FILE=/engines/var/run/system.pid
 export PID_FILE
-. /home/trap.sh
+. /home/engines/functions/trap.sh
 
-if ! test -d  /engines/var/run/flags/
- then
-	mkdir -p /engines/var/run/flags/
- fi
 
 cd /home
  if test -f /opt/engines/etc/ssl/keys/system/server.key 
@@ -27,5 +23,7 @@ cd /home
 
 #touch /engines/var/run/flags/startup_complete  
 wait 
+exit_code=$?
 rm -f /engines/var/run/flags/startup_complete
+exit $exit_code
 

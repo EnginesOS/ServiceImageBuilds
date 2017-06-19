@@ -39,7 +39,7 @@ ln -s /var/log/app /home/app/log
 PID_FILE=/var/run/apache2/apache2.pid
 
 export PID_FILE
-. /home/trap.sh
+. /home/engines/functions/trap.sh
 
 
 /usr/sbin/apache2ctl -DFOREGROUND &

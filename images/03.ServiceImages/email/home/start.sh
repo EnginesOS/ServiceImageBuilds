@@ -1,6 +1,8 @@
 #!/bin/sh
+PID_FILE=/var/spool/postfix/pid/master.pid
 
- mkdir -p /engines/var/run/flags/
+export PID_FILE
+. /home/engines/functions/trap.sh
  
 if ! test -f /engines/var/run/flags/first_run
   then
@@ -11,12 +13,9 @@ if ! test -f /engines/var/run/flags/first_run
 KILL_SCRIPT=/home/kill_postfix.sh
 export KILL_SCRIPT
 
-PID_FILE=/var/spool/postfix/pid/master.pid
 
-export PID_FILE
-. /home/trap.sh
 
-mkdir -p /engines/var/run/flags/
+
 sudo -n /home/engines/scripts/_start_syslog.sh
 
 
@@ -58,17 +57,19 @@ sudo -n  /usr/sbin/apache2ctl  -DFOREGROUND &
 
 touch /engines/var/run/flags/startup_complete
   
-
 sleep 6
+ap_pid=`cat /var/run/apache2/apache2.pid`
+echo -n " $ap_pid" >> $PID_FILE
 while test -f  /var/spool/postfix/pid/master.pid
  do
  	sleep 10&
  	wait
- done
+    exit_code=$?
+done
 
 rm -f /engines/var/run/flags/startup_complete
 sudo -n /home/engines/scripts/_kill_syslog.sh
 
- 
+exit $exit_code
  
 

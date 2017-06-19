@@ -5,6 +5,5 @@ then
 	cat /home/configurators/saved/smarthost
 else
 	echo '{"smarthost_hostname":"Not Set"}'
-
 fi
 exit 0

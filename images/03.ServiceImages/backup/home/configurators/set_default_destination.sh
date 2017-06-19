@@ -1,11 +1,9 @@
 #!/bin/bash
 
-cat - > /home/configurators/saved/default_destination
-            
+. /home/engines/functions/params_to_env.sh
+PARAMS_FILE=/home/configurators/saved/default_destination
+parms_to_file_and_env
 
-
-cat /home/configurators/saved/default_destination | /home/engines/bin/json_to_env >/tmp/.env
- . /tmp/.env
 
 if test -f /home/configurators/saved/system_backup
  then
