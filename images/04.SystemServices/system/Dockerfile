@@ -10,9 +10,9 @@ RUN /usr/sbin/addgroup --gid 21999 edocker &&\
 	mkdir -p /opt/engines/run/system/ &&\	
 	chown -R engines /opt/engines/run/system/ /home/engines /var/log/ &&\
 	usermod -G docker -a engines &&\
-	gem install --no-rdoc --no-ri  git bundle  rest-client net_http_unix excon &&\
-	gem install gctools yajl-ruby  sinatra thin rubytree  sinatra-contrib \
-			 warden data_mapper dm-sqlite-adapter ffi-yajl sqlite3 &&\				
+	gem install --no-rdoc --no-ri git bundle rest-client net_http_unix excon \
+	 			gctools yajl-ruby sinatra thin rubytree  sinatra-contrib \
+			 	warden data_mapper dm-sqlite-adapter ffi-yajl sqlite3 &&\				
  	/home/post_build_clean.sh
 	
 ADD home home
