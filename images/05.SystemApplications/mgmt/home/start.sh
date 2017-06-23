@@ -3,6 +3,11 @@
 
 cd /home/app/
 
+if ! test -f /home/app/app/config/mail.yml
+ then
+	cat /home/tmpls/mail.yml.tmpl | sed "s/FQDN_PORT/$FQDN_PORT/" | sed "s/DOMAIN/$DOMAIN/" > /home/app/app/config/mail.yml
+fi
+	 
 
  if ! test -d /var/run/nginx
  then
