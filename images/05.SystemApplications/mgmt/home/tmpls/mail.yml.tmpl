@@ -1,0 +1,11 @@
+production:
+ default_url_options:
+  host: FQDN_PORT
+ email_delivery:
+  delivery_method: :smtp
+  smtp_settings:
+   address: smtp.engines.internal
+   port: 25
+   domain: DOMAIN
+   enable_starttls_auto : false
+   attachments_storage_path: /tmp
