@@ -4,9 +4,10 @@ install_target=$1
 cert_name=$2
 
 function install_cert {
-
+mkdir -p /home/certs/store/services/${service}/certs/
+mkdir -p /home/certs/store/services/${service}/keys/
 cp /home/certs/store/public/certs/${cert_name}.crt /home/certs/store/services/${service}/certs/engines.crt 
-cp /home/certs/store/public/keys/${cert_name}.key //home/certs/store/services/${service}/keys/engines.key
+cp /home/certs/store/public/keys/${cert_name}.key /home/certs/store/services/${service}/keys/engines.key
 chown $id /home/certs/store/services/${service}/keys/engines.key /home/certs/store/services/${service}/certs/engines.crt 
 chmod og-rw /home/certs/store/services/${service}/keys/engines.key /home/certs/store/services/${service}/certs/engines.crt 
 }
@@ -15,8 +16,8 @@ function install_smtp {
 service=smtp
 id=22003
 install_cert
-
 }
+
 function install_ftp {
 service=ftp
 id=22010

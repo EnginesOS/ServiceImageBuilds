@@ -11,7 +11,7 @@ fi
 
 if test -z ${certificate}
  then
-  echo Missig certificate
+  echo Missing certificate
   exit 255
 fi
 if test -z ${key}
@@ -29,7 +29,7 @@ echo ${certificate} > /home/certs/store/public/certs/${domain_name}.crt
  
 if ! test -z ${install_target}
  then
-  sudo /home/install_target.sh  ${install_target} $domain_name
- fi
+  sudo -n /home/install_target.sh ${install_target} $domain_name
+fi
  
  exit 0
