@@ -9,11 +9,12 @@ if test -z "${cert_name}"
         exit -1
     fi
 
-    StorePref=${container_type}_${parent_engine}
+    StorePref=${container_type}s/${parent_engine}/
     
-    mkdir -p /home/certs/store/public/keys/
-    mkdir -p /home/certs/store/public/certs/    
-
+    mkdir -p /home/certs/store/public/keys/$StorePref
+    mkdir -p /home/certs/store/public/certs/$StorePref
+ 
+ mkdir -p
 if test -z $wild
  then
   wild="no"
@@ -65,29 +66,36 @@ if ! test -z $alt_names
  	 done
  fi
 cat /etc/ssl/openssl.cnf /home/certs/saved/${cert_name}_config >/home/certs/saved/${cert_name}_config_full
-openssl genrsa -out  /home/certs/store/public/keys/${StorePref}_${cert_name}.key.tmp 2048
-#openssl req -new  -extensions v3_req  -key /home/certs/store/public/keys/${StorePref}_${cert_name}.key.tmp -out /home/certs/saved/${cert_name}.csr < /home/certs/saved/${cert_name}_setup
-openssl req -new  -key /home/certs/store/public/keys/${StorePref}_${cert_name}.key.tmp -out /home/certs/saved/${cert_name}.csr -config /home/certs/saved/${cert_name}_config
+openssl genrsa -out  /home/certs/store/public/keys/${StorePref}${cert_name}.key.tmp 2048
+openssl req -new  -key /home/certs/store/public/keys/${StorePref}${cert_name}.key.tmp -out /home/certs/saved/${cert_name}.csr -config /home/certs/saved/${cert_name}_config
 if test $? -ne 0
  then
  	echo "Failed to Create CSR"
  	exit 127
  fi
 
-openssl x509 -req -in /home/certs/saved/${cert_name}.csr -sha256 -CA  /home/certs/store/public/ca/certs/system_CA.pem -CAkey /home/certs/store/private/ca/keys/system_CA.key -CAcreateserial -out /home/certs/store/public/certs/${StorePref}_${cert_name}.crt.tmp -days 500  -extensions req_ext -extfile  /home/certs/saved/${cert_name}_config
+openssl x509 -req -in /home/certs/saved/${cert_name}.csr -sha256 -CA  /home/certs/store/public/ca/certs/system_CA.pem -CAkey /home/certs/store/private/ca/keys/system_CA.key -CAcreateserial -out /home/certs/store/public/certs/${StorePref}${cert_name}.crt.tmp -days 500  -extensions req_ext -extfile  /home/certs/saved/${cert_name}_config
 if test $? -ne 0
  then
  	echo "Failed to sign CSR"
  	exit 127
  fi
-  if test -f  /home/certs/store/public/keys/${StorePref}_${cert_name}.key.tmp -a -f /home/certs/store/public/certs/${StorePref}_${cert_name}.crt.tmp
+  if test -f  /home/certs/store/public/keys/${StorePref}${cert_name}.key.tmp -a -f /home/certs/store/public/certs/${StorePref}${cert_name}.crt.tmp
    then
-    cp /home/certs/store/public/keys/${StorePref}_${cert_name}.key.tmp /home/certs/store/public/keys/${StorePref}_${cert_name}.key
-    cp /home/certs/store/public/certs/${StorePref}_${cert_name}.crt.tmp /home/certs/store/public/certs/${StorePref}_${cert_name}.crt
+    cp /home/certs/store/public/keys/${StorePref}${cert_name}.key.tmp /home/certs/store/public/keys/${StorePref}${cert_name}.key
+    cp /home/certs/store/public/certs/${StorePref}${cert_name}.crt.tmp /home/certs/store/public/certs/${StorePref}${cert_name}.crt
    
    else
     echo "Cert and Key files not present"
     exit 127
    fi
+   
+if test -z ${install_target}
+ then
+  install_target=nginx
+fi
+ 
+ sudo -n /home/install_target.sh ${install_target} ${StorePref}/${cert_name} ${domain}
+ 
 echo "Success"
 exit 0

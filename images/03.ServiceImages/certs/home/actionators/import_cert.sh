@@ -29,7 +29,7 @@ echo ${certificate} > /home/certs/store/public/certs/${domain_name}.crt
  
 if ! test -z ${install_target}
  then
-  sudo -n /home/install_target.sh ${install_target} $domain_name
+  sudo -n /home/install_target.sh ${install_target} ${domain_name} ${domain_name}
 fi
  
  exit 0

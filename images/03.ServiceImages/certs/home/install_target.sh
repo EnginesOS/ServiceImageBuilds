@@ -2,6 +2,7 @@
 
 install_target=$1
 cert_name=$2
+domain_name=$3
 
 function install_cert {
 
@@ -43,17 +44,26 @@ service=email
 id=22005
 install_cert
 }
-
+function install_pqsql {
+service=pqsql
+id=22005
+install_cert
+}
+function install_mysql {
+service=mysql
+id=22005
+install_cert
+}
 function install_nginx {
 service=nginx
 id=22005
 mkdir -p /home/certs/store/services/${service}/certs/
 mkdir -p /home/certs/store/services/${service}/keys/
-
-cp /home/certs/store/public/certs/${cert_name}.crt /home/certs/store/services/${service}/certs/${cert_name}.crt 
-cp /home/certs/store/public/keys/${cert_name}.key /home/certs/store/services/${service}/keys/${cert_name}.key
-chown $id /home/certs/store/services/${service}/keys/${cert_name}.key /home/certs/store/services/${service}/certs/${cert_name}.crt 
-chmod og-rw /home/certs/store/services/${service}/keys/${cert_name}.key /home/certs/store/services/${service}/certs/${cert_name}.crt 
+#need domain name to save to
+cp /home/certs/store/public/certs/${cert_name}.crt /home/certs/store/services/${service}/certs/${domain_name}.crt 
+cp /home/certs/store/public/keys/${cert_name}.key /home/certs/store/services/${service}/keys/${domain_name}.key
+chown $id /home/certs/store/services/${service}/keys/${cert_name}.key /home/certs/store/services/${service}/certs/${domain_name}.crt 
+chmod og-rw /home/certs/store/services/${service}/keys/${cert_name}.key /home/certs/store/services/${service}/certs/${domain_name}.crt 
 
 }
 
@@ -86,13 +96,23 @@ ivpn)
 email)
   install_email
   ;;
+mysql)
+install_mysql
+;;
+pqsql)
+install_pqsql
+;;
+
 default)
   install_smtp
   install_imap
   install_ftp
   install_email
-  set_nginx
-  set_default
+  install_ivpn
+  install_mysql
+  install_pqsql
+  domain_name=default
+  set_nginx  
   ;;
  *)
    set_nginx
