@@ -20,10 +20,16 @@ if test -z ${key}
   exit 255
 fi
 
-rm /home/certs/store/public/certs/$domain_name.crt &>/dev/null
+rm /home/certs/store/public/certs/${domain_name}.crt &>/dev/null
  
-rm /home/certs/store/public/keys/$domain_name.key &>/dev/null
+rm /home/certs/store/public/keys/${domain_name}.key &>/dev/null
  
-echo ${key} > /home/certs/store/public/keys/$domain_name.key
-echo ${certificate} > /home/certs/store/public/certs/$domain_name.crt
+echo ${key} > /home/certs/store/public/keys/${domain_name}.key
+echo ${certificate} > /home/certs/store/public/certs/${domain_name}.crt
  
+if ! test -z ${install_target}
+ then
+  sudo /home/install_target.sh  ${install_target} $domain_name
+ fi
+ 
+ exit 0
