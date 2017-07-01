@@ -2,10 +2,13 @@
 
 if test -d /home/certs/store/public/certs/
  then
-  cd /home/certs/store/public/certs/
-  certs=`ls *.crt |sed "/\.crt/s///g"`
+ 
   echo -n '{"certs":['
   i=0
+  
+   cd /home/certs/store/public/certs/
+  certs=`find . -name "*.crt" |grep -v default | sed "/\.crt/s///g"`
+  
   for cert in $certs
    do
  	if test $i -eq 0
@@ -16,6 +19,7 @@ if test -d /home/certs/store/public/certs/
  	fi
   echo -n '"'$cert'"'
   done
+
  echo -n ']}'
 fi
   

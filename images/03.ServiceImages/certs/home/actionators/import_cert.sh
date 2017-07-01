@@ -20,16 +20,18 @@ if test -z ${key}
   exit 255
 fi
 
+mkdir -p /home/certs/store/public/certs/imported /home/certs/store/public/keys/imported
+
 rm /home/certs/store/public/certs/${domain_name}.crt &>/dev/null
  
 rm /home/certs/store/public/keys/${domain_name}.key &>/dev/null
  
-echo ${key} > /home/certs/store/public/keys/${domain_name}.key
-echo ${certificate} > /home/certs/store/public/certs/${domain_name}.crt
+echo ${key} > /home/certs/store/public/keys/imported/${domain_name}.key
+echo ${certificate} > /home/certs/store/public/certs/imported/${domain_name}.crt
  
 if ! test -z ${install_target}
  then
-  sudo -n /home/install_target.sh ${install_target} ${domain_name} ${domain_name}
+  sudo -n /home/install_target.sh ${install_target} imported/${domain_name} ${domain_name}
 fi
  
  exit 0
