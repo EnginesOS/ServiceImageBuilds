@@ -15,6 +15,12 @@ chown $id /home/certs/store/services/${service}/keys/engines.key /home/certs/sto
 chmod og-rw /home/certs/store/services/${service}/keys/engines.key /home/certs/store/services/${service}/certs/engines.crt 
 }
 
+function install_system {
+service=system
+id=21000
+install_cert
+}
+
 function install_smtp {
 service=smtp
 id=22003
@@ -46,12 +52,17 @@ install_cert
 }
 function install_pqsql {
 service=pqsql
-id=22005
+id=22002
 install_cert
 }
 function install_mysql {
 service=mysql
-id=22005
+id=22006
+install_cert
+}
+function install_mgmt  {
+service=mgmt
+id=22050
 install_cert
 }
 function install_nginx {
@@ -59,7 +70,7 @@ service=nginx
 id=22005
 mkdir -p /home/certs/store/services/${service}/certs/
 mkdir -p /home/certs/store/services/${service}/keys/
-#need domain name to save to
+
 cp /home/certs/store/public/certs/${cert_name}.crt /home/certs/store/services/${service}/certs/${domain_name}.crt 
 cp /home/certs/store/public/keys/${cert_name}.key /home/certs/store/services/${service}/keys/${domain_name}.key
 chown $id /home/certs/store/services/${service}/keys/${cert_name}.key /home/certs/store/services/${service}/certs/${domain_name}.crt 
@@ -68,6 +79,8 @@ chmod og-rw /home/certs/store/services/${service}/keys/${cert_name}.key /home/ce
 }
 
 function set_default {
+domain_name=default
+
 service=nginx
 id=22005
 
@@ -97,24 +110,31 @@ email)
   install_email
   ;;
 mysql)
-install_mysql
-;;
+  install_mysql
+  ;;
+mgmt)
+  install_mgmt
+  ;;
 pqsql)
-install_pqsql
-;;
-
+  install_pqsql
+  ;;
+system)
+ install_system
+ ;;
 default)
+  install_system
   install_smtp
   install_imap
   install_ftp
   install_email
   install_ivpn
   install_mysql
-  install_pqsql
+  install_pqsql 
+  install_mgmt 
   domain_name=default
-  set_nginx  
+  install_nginx  
   ;;
- *)
-   set_nginx
+*)
+  install_nginx
   ;;
 esac
