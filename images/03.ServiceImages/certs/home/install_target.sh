@@ -5,14 +5,17 @@ cert_name=$2
 domain_name=$3
 
 function install_cert {
-
+if test -z ${dest_name}
+ then 
+ 	dest_name=engines
+fi
 mkdir -p /home/certs/store/services/${service}/certs/
 mkdir -p /home/certs/store/services/${service}/keys/
 
-cp /home/certs/store/public/certs/${cert_name}.crt /home/certs/store/services/${service}/certs/engines.crt 
-cp /home/certs/store/public/keys/${cert_name}.key /home/certs/store/services/${service}/keys/engines.key
-chown $id /home/certs/store/services/${service}/keys/engines.key /home/certs/store/services/${service}/certs/engines.crt 
-chmod og-rw /home/certs/store/services/${service}/keys/engines.key /home/certs/store/services/${service}/certs/engines.crt 
+cp /home/certs/store/public/certs/${cert_name}.crt /home/certs/store/services/${service}/certs/${dest_name}.crt 
+cp /home/certs/store/public/keys/${cert_name}.key /home/certs/store/services/${service}/keys/${dest_name}.key
+chown $id /home/certs/store/services/${service}/keys/engines.key /home/certs/store/services/${service}/certs/${dest_name}.crt 
+chmod og-rw /home/certs/store/services/${service}/keys/engines.key /home/certs/store/services/${service}/certs/${dest_name}.crt 
 }
 
 function install_system {
@@ -42,6 +45,7 @@ install_cert
 function install_ivpn {
 service=ivpn
 id=22031
+dest_name=${cert_name}
 install_cert
 }
 
@@ -68,14 +72,8 @@ install_cert
 function install_nginx {
 service=nginx
 id=22005
-mkdir -p /home/certs/store/services/${service}/certs/
-mkdir -p /home/certs/store/services/${service}/keys/
-
-cp /home/certs/store/public/certs/${cert_name}.crt /home/certs/store/services/${service}/certs/${domain_name}.crt 
-cp /home/certs/store/public/keys/${cert_name}.key /home/certs/store/services/${service}/keys/${domain_name}.key
-chown $id /home/certs/store/services/${service}/keys/${cert_name}.key /home/certs/store/services/${service}/certs/${domain_name}.crt 
-chmod og-rw /home/certs/store/services/${service}/keys/${cert_name}.key /home/certs/store/services/${service}/certs/${domain_name}.crt 
-
+dest_name=${domain_name}
+install_cert
 }
 
 function set_default {
