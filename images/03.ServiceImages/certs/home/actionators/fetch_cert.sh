@@ -8,11 +8,17 @@ if test -z ${cert_name}
   exit 255
 fi
  
-if test -f /home/certs/store/public/certs/${cert_name}.crt
+ if test -z ${store}
+ then
+  echo Missing store
+  exit 255
+fi
+
+if test -f /home/certs/store/public/certs/${store}/${cert_name}.crt
   then
- 	cat /home/certs/store/public/certs/${cert_name}.crt
+ 	cat /home/certs/store/public/certs/${store}/${cert_name}.crt
   else
- 	echo "Not Such Cert ${cert_name}.crt"
+ 	echo "Not Such Cert ${store}/${cert_name}.crt"
  	exit 255
 fi
 
