@@ -89,7 +89,8 @@ domain_name=default
 
 service=nginx
 id=22005
-
+mkdir -p /home/certs/store/services/${service}/certs/
+mkdir -p /home/certs/store/services/${service}/keys/
 cp /home/certs/store/public/certs/${cert_name}.crt /home/certs/store/services/${service}/certs/default.crt 
 cp /home/certs/store/public/keys/${cert_name}.key /home/certs/store/services/${service}/keys/default.key
 chown $id /home/certs/store/services/${service}/keys/default.key /home/certs/store/services/${service}/certs/default.crt 
@@ -133,7 +134,6 @@ default)
   install_imap
   install_ftp
   install_email
-  install_ivpn
   install_mysql
   install_pqsql 
   install_mgmt 
