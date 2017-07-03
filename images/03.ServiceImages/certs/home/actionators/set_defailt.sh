@@ -20,5 +20,4 @@ fi
   exit 255
 fi
 
-
- sudo -n /home/install_target.sh ${target} ${store}/${cert_name} default
+sudo -n /home/install_target.sh ${target} ${store}/${cert_name} default
