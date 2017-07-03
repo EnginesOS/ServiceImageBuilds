@@ -14,29 +14,33 @@ mkdir -p /home/certs/store/services/${service}/keys/
 
 cp /home/certs/store/public/certs/${cert_name}.crt /home/certs/store/services/${service}/certs/${dest_name}.crt 
 cp /home/certs/store/public/keys/${cert_name}.key /home/certs/store/services/${service}/keys/${dest_name}.key
-chown $id /home/certs/store/services/${service}/keys/engines.key /home/certs/store/services/${service}/certs/${dest_name}.crt 
-chmod og-rw /home/certs/store/services/${service}/keys/engines.key /home/certs/store/services/${service}/certs/${dest_name}.crt 
+chown $id /home/certs/store/services/${service}/keys/${dest_name}.key /home/certs/store/services/${service}/certs/${dest_name}.crt 
+chmod og-rw /home/certs/store/services/${service}/keys/${dest_name}.key /home/certs/store/services/${service}/certs/${dest_name}.crt 
 }
 
 function install_system {
+dest_name=engines
 service=system
 id=21000
 install_cert
 }
 
 function install_smtp {
+dest_name=engines
 service=smtp
 id=22003
 install_cert
 }
 
 function install_ftp {
+dest_name=engines
 service=ftp
 id=22010
 install_cert
 }
 
 function install_imap {
+dest_name=engines
 service=imap
 id=22013
 install_cert
@@ -50,21 +54,25 @@ install_cert
 }
 
 function install_email {
+dest_name=engines
 service=email
 id=22005
 install_cert
 }
 function install_pqsql {
+dest_name=engines
 service=pqsql
 id=22002
 install_cert
 }
 function install_mysql {
+dest_name=engines
 service=mysql
 id=22006
 install_cert
 }
 function install_mgmt  {
+dest_name=engines
 service=mgmt
 id=22050
 install_cert
@@ -130,7 +138,7 @@ default)
   install_pqsql 
   install_mgmt 
   domain_name=default
-  install_nginx  
+  set_default  
   ;;
 *)
   install_nginx

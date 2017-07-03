@@ -94,8 +94,8 @@ if test -z ${install_target}
  then
   install_target=nginx
 fi
- 
- sudo -n /home/install_target.sh ${install_target} ${StorePref}/${cert_name} ${domain}
+ name=`echo $hostname | sed /^\*\./s///"`
+ sudo -n /home/install_target.sh ${install_target} ${StorePref}/${cert_name} ${name}
  
 echo "Success"
 exit 0
