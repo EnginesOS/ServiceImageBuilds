@@ -49,7 +49,7 @@ install_cert
 function install_ivpn {
 service=ivpn
 id=22031
-dest_name=${cert_name}
+dest_name=ipvpn
 install_cert
 }
 
