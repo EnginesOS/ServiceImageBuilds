@@ -1,39 +1,37 @@
 #!/bin/bash
 
+. /home/engines/functions/params_to_env.sh
+parms_to_env
 
-if test $1 = "default"
+if test -z ${domain_name}
  then
-    domain_name=$2
-    default=1
- else
-    domain_name=$1
-    default=0
+  echo Missig cert_name
+  exit 255
 fi
 
-rm /home/certs/store/public/certs/$domain_name.cr t&>/dev/null
- 
-rm /home/certs/store/public/keys/$domain_name.key &>/dev/null
- 
- while read line; do
- # echo "reading: ${line}"
-  echo ${line} |grep  "BEGIN CERTIFICATE" >/dev/null
-  	if test $? -eq 0
-  	 then
-  		file=/home/certs/store/public/certs/$domain_name.crt
-  	fi
-  echo ${line} |grep "BEGIN RSA PRIVATE KEY">/dev/null
-  	if test $? -eq 0
-  	 then
-  		file=/home/certs/store/public/keys/$domain_name.key
-  	fi 
-  		
-  echo ${line} >> $file	
-  echo ${line} |grep "END RSA PRIVATE KEY"  		>/dev/null
-  	if test $? -eq 0
-  	 then
-  	   echo true
-  	   exit
-  	fi 
- done < /dev/stdin
+if test -z ${certificate}
+ then
+  echo Missing certificate
+  exit 255
+fi
+if test -z ${key}
+ then
+  echo Missig key
+  exit 255
+fi
 
+mkdir -p /home/certs/store/public/certs/imported /home/certs/store/public/keys/imported
+
+rm /home/certs/store/public/certs/${domain_name}.crt &>/dev/null
  
+rm /home/certs/store/public/keys/${domain_name}.key &>/dev/null
+ 
+echo ${key} > /home/certs/store/public/keys/imported/${domain_name}.key
+echo ${certificate} > /home/certs/store/public/certs/imported/${domain_name}.crt
+ 
+if ! test -z ${install_target}
+ then
+  sudo -n /home/install_target.sh ${install_target} imported/${domain_name} ${domain_name}
+fi
+ 
+ exit 0

@@ -13,7 +13,7 @@ cd /home/registry/EnginesSystemRegistry/src/
 git pull
 cd ..
  rm -f /tmp/registry.lock
-
+chmod og-rwx /opt/engines/run/service_manager/services.yaml*
 thin -C config.yaml -R config.ru start > /var/log/regsitry.log&
 
 #--threaded

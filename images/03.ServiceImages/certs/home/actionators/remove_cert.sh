@@ -1,21 +1,41 @@
 #!/bin/bash
 
-if test -f /home/certs/store/public/certs/$1.crt
+. /home/engines/functions/params_to_env.sh
+parms_to_env
+
+if test -z ${cert_name}
  then
- 	rm /home/certs/store/public/certs/$1.crt
- else
- 	echo "Not Such Cert $1.crt"
- 	exit -1
-fi
- 	
-if test -f /home/certs/store/public/keys/$1.key
- then
- 	rm /home/certs/store/public/keys/$1.key
- else
- 	echo "No Such key $1.key"
- 	exit -1
+  echo Missing cert_name
+  exit 255
 fi
 
-echo true
-exit
+if test -z ${store}
+ then
+  echo Missing store
+  exit 255
+fi
+
+if ! test -f /home/certs/store/public/certs/$store/$cert_name
+ then
+ 	 echo "Missine  $store/$cert_name"
+       exit 255
+    fi
+
+
+   sudo -n /home/remove.sh certs/$store/$cert_name 
+   
+     if test $? -ne 0
+     then
+       echo "Failed to Delete Cert $cert_name"
+       exit 255
+    fi
+   sudo -n /home/remove.sh keys/$store/$cert_name
+     if test $? -ne 0
+     then
+       echo "Failed to Delete Key $cert_name"
+       exit 255
+    fi
+
+
+exit 0
  	

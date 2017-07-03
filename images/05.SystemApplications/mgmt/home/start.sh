@@ -92,7 +92,7 @@ if ! test -d /var/log/app
 	mkdir /var/log/app
 fi
 
- rm -rf /home/app/log 
+rm -rf /home/app/log 
 
 ln -s /var/log/app /home/app/log 
 

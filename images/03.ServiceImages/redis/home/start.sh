@@ -2,7 +2,7 @@
 
 
 
-PID_FILE=/var/run/redis-server.pid
+PID_FILE=/var/run/engines/redis-server.pid
 export PID_FILE
 . /home/engines/functions/trap.sh
 
@@ -19,8 +19,8 @@ configs=`ls /home/config/*.redis.config`
 for config in $configs
  do
     redis-server $config &
-	echo -n $! >> /var/run/redis-server.pid
-	echo -n " " >> /var/run/redis-server.pid
+	echo -n $! >> $PID_FILE
+	echo -n " " >> $PID_FILE
 done
 touch /engines/var/run/flags/startup_complete
  
@@ -37,7 +37,7 @@ touch /engines/var/run/flags/startup_complete
 		for service in ` ls /tmp/new_service.* |cut -f2 -d.`
 		  do
 		  	redis-server /home/config/$service.redis.config &
-		  	echo -n $!  > /var/run/redis-server.$parent_engine.pid
+		  	echo -n $!  > /var/run/engines/redis-server.$parent_engine.pid
 		  done
 	fi
    done	
