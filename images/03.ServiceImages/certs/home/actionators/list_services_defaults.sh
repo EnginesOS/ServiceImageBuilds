@@ -13,10 +13,10 @@ for service in `ls /home/certs/store/services/`
    | openssl x509 -noout -subject |sed "/^.*CN=/s///"`
  fi
 
-  if test $n = 1
+ if test $n = 1
    then
     echo -n ,
-  fi
+ fi
   
  echo -n '{"service_name":"'$service'","cert_name":"'$domain'"}'
  n=1
