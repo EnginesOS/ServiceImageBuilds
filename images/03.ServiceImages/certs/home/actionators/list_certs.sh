@@ -19,7 +19,7 @@ if test -d /home/certs/store/public/certs/
  	fi
  	store=`dirname $cert |sed "/^\./s///"`
  	cert=`basename $cert`
-    echo -n '{"certificate":"'$cert'","store":"'$store'"}'
+    echo -n '{"cert_name":"'$cert'","store":"'$store'"}'
   done
 
  echo -n ']}'

@@ -33,7 +33,7 @@ if test $src_type = 'engine'
  then
      /home/add_backup.sh ${parent_engine}:system
 	n=1
- curl http://172.17.0.1:2380/v0/backup/engine/services/${parent_engine} | /home/engines/bin/json_to_env >/tmp/.src
+ curl -k https://172.17.0.1:2380/v0/backup/engine/services/${parent_engine} | /home/engines/bin/json_to_env >/tmp/.src
   . /tmp/.src
 	service=`eval echo service$n`
 		while ! test -z $service
