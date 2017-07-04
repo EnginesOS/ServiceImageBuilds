@@ -1,39 +1,40 @@
 #!/bin/bash
 
+. /home/engines/functions/params_to_env.sh
+parms_to_env
 
-if test $1 = "default"
+
+
+if test -z ${certificate}
  then
-    domain_name=$2
-    default=1
- else
-    domain_name=$1
-    default=0
+  echo Missing certificate
+  exit 255
+fi
+if test -z ${key}
+ then
+  echo Missing key
+  exit 255
 fi
 
-rm /home/certs/store/public/certs/$domain_name.cr t&>/dev/null
- 
-rm /home/certs/store/public/keys/$domain_name.key &>/dev/null
- 
- while read line; do
- # echo "reading: ${line}"
-  echo ${line} |grep  "BEGIN CERTIFICATE" >/dev/null
-  	if test $? -eq 0
-  	 then
-  		file=/home/certs/store/public/certs/$domain_name.crt
-  	fi
-  echo ${line} |grep "BEGIN RSA PRIVATE KEY">/dev/null
-  	if test $? -eq 0
-  	 then
-  		file=/home/certs/store/public/keys/$domain_name.key
-  	fi 
-  		
-  echo ${line} >> $file	
-  echo ${line} |grep "END RSA PRIVATE KEY"  		>/dev/null
-  	if test $? -eq 0
-  	 then
-  	   echo true
-  	   exit
-  	fi 
- done < /dev/stdin
+mkdir -p /home/certs/store/public/certs/imported /home/certs/store/public/keys/imported
 
+rm /home/certs/store/public/certs/${domain_name}.crt &>/dev/null
  
+rm /home/certs/store/public/keys/${domain_name}.key &>/dev/null
+domain_name=`echo ${certificate} | openssl x509 -noout -subject  |sed "/^.*CN=/s///"`
+
+if test -z ${domain_name}
+ then
+  echo Missing domain_name
+  exit 255
+fi
+
+echo ${key} > /home/certs/store/public/keys/imported/${domain_name}.key
+echo ${certificate} > /home/certs/store/public/certs/imported/${domain_name}.crt
+ 
+if ! test -z ${install_target}
+ then
+  sudo -n /home/install_target.sh ${install_target} imported/${domain_name} ${domain_name}
+fi
+ 
+ exit 0

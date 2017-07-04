@@ -2,7 +2,7 @@ FROM  engines/servicebase:$release
 
 COPY home home
 
-RUN  echo "Y" | adduser -q --disabled-password --home /home/ivpn -uid 22016 ivpn &&\
+RUN  echo "Y" | adduser -q --disabled-password --home /home/ivpn -uid 22031 ivpn &&\
 	usermod -G containers -a ivpn &&\
 	apt-get -y update &&\
 	apt-get install -y strongswan libcharon-extra-plugins telnet strongswan-plugin-eap-mschapv2 moreutils &&\
@@ -12,7 +12,7 @@ RUN  echo "Y" | adduser -q --disabled-password --home /home/ivpn -uid 22016 ivpn
 #libpam-krb5 krb5-user 
 
 COPY sudoers /etc/sudoers.d/engines
-COPY /home/ipsec.conf /etc/
+
 COPY ipsec.secrets /etc/
 COPY strongswan.conf /etc/
 

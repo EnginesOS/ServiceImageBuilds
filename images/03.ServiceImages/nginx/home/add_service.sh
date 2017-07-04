@@ -86,14 +86,15 @@ if test "$proto" = default
     cp /tmp/site.name /etc/nginx/sites-enabled/default
  elif ! test "$proto" = http
 	 then
-	 	if test -f /etc/nginx/ssl/certs/${store_pre}_${fqdn}.crt
+	 	if test -f /etc/nginx/ssl/certs/${fqdn}.crt
 	 		then
 	 			cert_name=${store_pre}_${fqdn}
 	 		elif 	 test -f /etc/nginx/ssl/certs/${domain}.crt
 	 		 then
 	 		 	cert_name=$domain
 	        else
-	        	 cert_name=system_system_engines
+	        #	 cert_name=system_system_engines
+	        cert_name=default
 	     fi
 		if test -f /etc/nginx/sites-enabled/http_https_${fqdn}.site
 	     		then
