@@ -7,7 +7,7 @@ KILL_SCRIPT=/home/shutdown.sh
 export KILL_SCRIPT
 . /home/engines/functions/trap.sh
 
-mkd
+
 if ! test -f /etc/ipsec.d/private/ipvpn.key
  then
 	sudo -n /home/setup.sh
