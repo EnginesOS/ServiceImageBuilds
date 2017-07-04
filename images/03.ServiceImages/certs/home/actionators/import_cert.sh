@@ -3,11 +3,7 @@
 . /home/engines/functions/params_to_env.sh
 parms_to_env
 
-#if test -z ${domain_name}
-# then
-#  echo Missing domain_name
-#  exit 255
-#fi
+
 
 if test -z ${certificate}
  then
