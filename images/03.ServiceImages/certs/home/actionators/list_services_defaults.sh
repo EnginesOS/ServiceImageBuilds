@@ -1,5 +1,5 @@
 #!/bin/bash
-echo -n '['
+echo -n '{"certs":['
 n=0
 
 for service in `ls /home/certs/store/services/`
@@ -26,4 +26,4 @@ for service in `ls /home/certs/store/services/`
  n=1
 done
 
-echo -n ']'
+echo -n ']}'
