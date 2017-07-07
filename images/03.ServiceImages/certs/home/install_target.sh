@@ -15,7 +15,8 @@ mkdir -p /home/certs/store/services/${service}/keys/
 cp /home/certs/store/public/certs/${cert_name}.crt /home/certs/store/services/${service}/certs/${dest_name}.crt 
 cp /home/certs/store/public/keys/${cert_name}.key /home/certs/store/services/${service}/keys/${dest_name}.key
 chown $id /home/certs/store/services/${service}/keys/${dest_name}.key /home/certs/store/services/${service}/certs/${dest_name}.crt 
-chmod og-rw /home/certs/store/services/${service}/keys/${dest_name}.key /home/certs/store/services/${service}/certs/${dest_name}.crt 
+chmod og-rw /home/certs/store/services/${service}/keys/${dest_name}.key 
+chmod og-w /home/certs/store/services/${service}/certs/${dest_name}.crt 
 }
 
 function install_system {
@@ -94,7 +95,8 @@ mkdir -p /home/certs/store/services/${service}/keys/
 cp /home/certs/store/public/certs/${cert_name}.crt /home/certs/store/services/${service}/certs/default.crt 
 cp /home/certs/store/public/keys/${cert_name}.key /home/certs/store/services/${service}/keys/default.key
 chown $id /home/certs/store/services/${service}/keys/default.key /home/certs/store/services/${service}/certs/default.crt 
-chmod og-rw /home/certs/store/services/${service}/keys/default.key /home/certs/store/services/${service}/certs/default.crt 
+chmod og-rw /home/certs/store/services/${service}/keys/default.key 
+chmod og-w /home/certs/store/services/${service}/certs/default.crt 
 
 }
 
