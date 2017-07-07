@@ -3,7 +3,7 @@
 if test -d /home/certs/store/public/certs/
  then
  
-  echo -n '['
+  echo -n '{"certs":['
   i=0
   
    cd /home/certs/store/public/certs/
@@ -22,6 +22,6 @@ if test -d /home/certs/store/public/certs/
     echo -n '{"cert_name":"'$cert'","store":"'$store'"}'
   done
 
- echo -n ']'
+ echo -n ']}'
 fi
   
