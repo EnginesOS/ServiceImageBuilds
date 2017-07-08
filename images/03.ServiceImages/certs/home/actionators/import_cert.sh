@@ -29,8 +29,8 @@ if test -z ${domain_name}
   exit 255
 fi
 
-echo ${private_key} > /home/certs/store/public/keys/imported/${domain_name}.key
-echo ${certificate} > /home/certs/store/public/certs/imported/${domain_name}.crt
+echo ${private_key} | sed "/\\n/s//\n/g" | sed "/\\r/s///g"> /home/certs/store/public/keys/imported/${domain_name}.key
+echo ${certificate}| sed "/\\n/s//\n/g" | sed "/\\r/s///g" > /home/certs/store/public/certs/imported/${domain_name}.crt
  
 if ! test -z ${install_target}
  then
