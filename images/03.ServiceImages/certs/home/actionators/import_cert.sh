@@ -18,19 +18,20 @@ fi
 
 mkdir -p /home/certs/store/public/certs/imported /home/certs/store/public/keys/imported
 
-rm /home/certs/store/public/certs/${domain_name}.crt &>/dev/null
- 
-rm /home/certs/store/public/keys/${domain_name}.key &>/dev/null
-domain_name=`echo ${certificate} | openssl x509 -noout -subject  |sed "/^.*CN=/s///"`
+echo ${private_key} | sed "/\\\n/s//\n/g"  | sed "/\\\r/s///g" > /home/certs/store/public/keys/imported/tmp.key
+echo ${certificate}| sed "/\\\n/s//\n/g"  | sed  "/\\\r/s///g" > /home/certs/store/public/certs/imported/tmp.crt
+
+domain_name=`cat /home/certs/store/public/certs/imported/tmp.crt | openssl x509 -noout -subject  |sed "/^.*CN=/s///"`
 
 if test -z ${domain_name}
  then
   echo Missing domain_name
+  rm /home/certs/store/public/keys/imported/tmp.key /home/certs/store/public/certs/imported/tmp.crt
   exit 255
 fi
 
-echo ${private_key} > /home/certs/store/public/keys/imported/${domain_name}.key
-echo ${certificate} > /home/certs/store/public/certs/imported/${domain_name}.crt
+mv /home/certs/store/public/keys/imported/tmp.key /home/certs/store/public/keys/imported/${domain_name}.key
+mv /home/certs/store/public/certs/imported/tmp.crt /home/certs/store/public/certs/imported/${domain_name}.crt
  
 if ! test -z ${install_target}
  then
