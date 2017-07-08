@@ -17,7 +17,7 @@ if test -d /home/certs/store/public/certs/
  	else
  		echo -n ,
  	fi
- 	store=`dirname $cert |sed "/^\./s///"`
+ 	store=`dirname $cert |sed "/^\.\//s///"`
  	cert=`basename $cert`
     echo -n '{"cert_name":"'$cert'","store":"'$store'"}'
   done
