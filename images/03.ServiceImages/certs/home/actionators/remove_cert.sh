@@ -15,9 +15,9 @@ if test -z ${store}
   exit 255
 fi
 
-if ! test -f /home/certs/store/public/certs/$store/$cert_name
+if ! test -f /home/certs/store/public/certs/$store/${cert_name}.crt 
  then
- 	 echo "Missine  $store/$cert_name"
+ 	 echo "Missing  $store/$cert_name"
        exit 255
     fi
 
