@@ -7,12 +7,19 @@ if test -z ${cert_name}
   echo Missing cert_name
   exit 255
 fi
-
-if test -z ${store}
+if test -z ${parent_engine}
  then
-  echo Missing store
+  echo Missing parent_engine
   exit 255
 fi
+if test -z ${container_type}
+ then
+  echo Missing container_type
+  exit 255
+fi
+
+store=${container_type}s/${parent_engine}/
+
 
 if ! test -f /home/certs/store/public/certs/$store/${cert_name}.crt 
  then
