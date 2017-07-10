@@ -21,6 +21,7 @@ if ! test -f /home/certs/store/public/certs/$store/${cert_name}.crt
        exit 255
     fi
 
+domain_name=`cat /home/remove.sh certs/$store/${cert_name}.crt | openssl x509 -noout -subject  |sed "/^.*CN=/s///"| sed "/\*/s///"`
 
    sudo -n /home/remove.sh certs/$store/${cert_name}.crt 
    
@@ -37,7 +38,12 @@ if ! test -f /home/certs/store/public/certs/$store/${cert_name}.crt
        echo "Failed to Delete Key $cert_name"
        exit 255
     fi
-
+    
+if test -f /home/certs/store/services/nginx/certs/${domain_name}.crt
+ then
+  sudo -n /home/remove.sh service nginx/certs/${domain_name}.crt
+  sudo -n /home/remove.sh service nginx/keys/${domain_name}.key
+fi
 
 exit 0
  	
