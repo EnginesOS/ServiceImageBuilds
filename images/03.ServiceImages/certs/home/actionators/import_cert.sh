@@ -21,7 +21,7 @@ mkdir -p /home/certs/store/public/certs/imported /home/certs/store/public/keys/i
 echo ${private_key} | sed "/\\\n/s//\n/g"  | sed "/\\\r/s///g" > /home/certs/store/public/keys/imported/tmp.key
 echo ${certificate}| sed "/\\\n/s//\n/g"  | sed  "/\\\r/s///g" > /home/certs/store/public/certs/imported/tmp.crt
 
-domain_name=`cat /home/certs/store/public/certs/imported/tmp.crt | openssl x509 -noout -subject  |sed "/^.*CN=/s///"`
+domain_name=`cat /home/certs/store/public/certs/imported/tmp.crt | openssl x509 -noout -subject  |sed "/^.*CN=/s///"| sed "/\*/s///"`
 
 if test -z ${domain_name}
  then
