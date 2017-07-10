@@ -21,6 +21,13 @@ mkdir -p /home/certs/store/public/certs/imported /home/certs/store/public/keys/i
 echo ${private_key} | sed "/\\\n/s//\n/g"  | sed "/\\\r/s///g" > /home/certs/store/public/keys/imported/tmp.key
 echo ${certificate}| sed "/\\\n/s//\n/g"  | sed  "/\\\r/s///g" > /home/certs/store/public/certs/imported/tmp.crt
 
+if ! test -z $password
+ then
+  openssl rsa -in /home/certs/store/public/keys/imported/tmp.key -out /home/certs/store/public/keys/imported/btmp.key -passin pass:${password}
+  mv /home/certs/store/public/keys/imported/btmp.key /home/certs/store/public/keys/imported/tmp.key
+fi
+ 
+
 domain_name=`cat /home/certs/store/public/certs/imported/tmp.crt | openssl x509 -noout -subject  |sed "/^.*CN=/s///"| sed "/\*/s///"`
 
 if test -z ${domain_name}
@@ -33,9 +40,9 @@ fi
 mv /home/certs/store/public/keys/imported/tmp.key /home/certs/store/public/keys/imported/${domain_name}.key
 mv /home/certs/store/public/certs/imported/tmp.crt /home/certs/store/public/certs/imported/${domain_name}.crt
  
-if ! test -z ${install_target}
+if ! test -z ${target}
  then
-  sudo -n /home/install_target.sh ${install_target} imported/${domain_name} ${domain_name}
+  sudo -n /home/install_target.sh ${target} imported/${domain_name} ${domain_name}
 fi
  
  exit 0

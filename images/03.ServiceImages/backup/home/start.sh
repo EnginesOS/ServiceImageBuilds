@@ -14,6 +14,7 @@ mkdir -p /home/backup/sql_dumps/
 /home/backup/fcron/sbin/fcron -f &
 /home/backup/fcron/bin/fcrontab -u backup  -z 
 touch /engines/var/run/flags/startup_complete
+rm `find  /home/backup/.cache/duplicity/ -name lockfile.lock`
 wait 
 exit_code=$?
 
