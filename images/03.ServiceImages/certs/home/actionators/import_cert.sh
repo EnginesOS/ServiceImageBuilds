@@ -40,9 +40,9 @@ fi
 mv /home/certs/store/public/keys/imported/tmp.key /home/certs/store/public/keys/imported/${domain_name}.key
 mv /home/certs/store/public/certs/imported/tmp.crt /home/certs/store/public/certs/imported/${domain_name}.crt
  
-if ! test -z ${install_target}
+if ! test -z ${target}
  then
-  sudo -n /home/install_target.sh ${install_target} imported/${domain_name} ${domain_name}
+  sudo -n /home/install_target.sh ${target} imported/${domain_name} ${domain_name}
 fi
  
  exit 0
