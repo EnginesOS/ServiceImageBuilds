@@ -89,9 +89,12 @@ if test "$proto" = default
 	 	if test -f /etc/nginx/ssl/certs/${fqdn}.crt
 	 		then
 	 			cert_name=${fqdn}
-	 		elif 	 test -f /etc/nginx/ssl/certs/${domain}.crt
+	 		elif test -f /etc/nginx/ssl/certs/${domain}.crt 
 	 		 then
 	 		 	cert_name=$domain
+	 		 elif test -f /etc/nginx/ssl/certs/.${domain}.crt 
+	 		 then
+	 		 	cert_name=.$domain	
 	        else
 	        #	 cert_name=system_system_engines
 	        cert_name=default
