@@ -5,12 +5,12 @@ if ! test -f /home/backup/.gnupg/pass
 	pass=`cat /home/backup/.gnupg/pass`
 	email=`cat /home/configurators/saved/backup_email`
 
- 	if test -z $email
+ 	if test -z $backup_email
  	then
  		exit 
  	fi
  	
-	cat /home/tmpl/key.tmpl | sed "/EMAIL/s//$email/" | sed "/PASS/s//$pass/" > /tmp/key.tmpl
+	cat /home/tmpl/key.tmpl | sed "/EMAIL/s//$backup_email/" | sed "/PASS/s//$pass/" > /tmp/key.tmpl
  	gpg --gen-key --batch /tmp/key.tmpl
  	rm /tmp/key.tmpl
  
