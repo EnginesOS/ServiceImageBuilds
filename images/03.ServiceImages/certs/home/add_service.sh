@@ -56,7 +56,7 @@ fi
 cat /home/request.template | sed -e "s/COUNTRY/$country/"  -e "s/STATE/$state/" -e "s/ORGANISATION/$organisation/" -e "s/PERSON/$person/" -e "s/DOMAINNAME/$domain/" -e "s/HOSTNAME/$hostname/" >  /home/certs/saved/${cert_name}_config
 
 n=2
-if ! test -z $alt_names
+if ! test -z "$alt_names"
  then
  	for alt_name in $alt_names
  	 do
@@ -100,9 +100,9 @@ if test -z ${install_target}
  then
   install_target=nginx
 fi
+domain_name=`cat  /home/certs/store/public/certs/${StorePref}${cert_name}.crt | openssl x509 -noout -subject  |sed "/^.*CN=/s///"| sed "/\*/s///"`
 
-name=`echo $hostname | sed /^\*\./s///"`
-sudo -n /home/install_target.sh ${install_target} ${StorePref}/${cert_name} ${name}
+sudo -n /home/install_target.sh ${install_target} ${StorePref}/${cert_name} ${domain_name}
  
 echo "Success"
 exit 0
