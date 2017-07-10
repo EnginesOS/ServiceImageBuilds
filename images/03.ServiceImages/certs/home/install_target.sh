@@ -130,7 +130,7 @@ pqsql)
 system)
  install_system
  ;;
-default)
+ )
   install_system
   install_smtp
   install_imap
