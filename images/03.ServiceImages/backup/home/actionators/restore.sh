@@ -80,6 +80,7 @@ elif test $type = volume
  then
    volume_restore
 elif test $type = service
+then
 	if test -z $source
 	 then
 	  restore_services
