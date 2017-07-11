@@ -1,5 +1,8 @@
 #!/bin/bash
 
+. /home/engines/functions/params_to_env.sh
+parms_to_env
+
 function restore_system {
 
 duply system restore /tmp/system $from_date
