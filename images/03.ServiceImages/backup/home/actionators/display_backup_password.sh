@@ -1,5 +1,6 @@
 #!/bin/bash
-cat /home/backup/.gnupg/pass
+pass=`cat /home/backup/.gnupg/pass`
+echo '{"backup_password":"'$pass'"}'
 
 	
 	  
