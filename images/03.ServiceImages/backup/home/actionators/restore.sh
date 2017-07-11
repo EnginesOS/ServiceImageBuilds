@@ -10,7 +10,7 @@ if test -z $section
  then
   section=all
 fi  
-tar -czpf - /tmp/system |curl -k https://172.17.0.1:2380/v0/restore/system/$section
+tar -czpf - /tmp/system |curl --request POST --data-binary -k https://172.17.0.1:2380/v0/restore/system/$section
 rm -r /tmp/system
 
 }
@@ -22,8 +22,8 @@ if test -z $section
  then
   section=all
 fi  
-tar -czpf - /tmp/system/*registry* |curl -k https://172.17.0.1:2380/v0/restore/registry
-rm -r /tmp/system
+tar -czpf - /tmp/system/*registry* |curl --request POST --data-binary -k https://172.17.0.1:2380/v0/restore/registry
+rm -r /tmp/system/*registry*
 
 }
 
@@ -54,7 +54,7 @@ if test -z $section
  then
   section=all
 fi  
-tar -czpf - /tmp/$service |curl -k https://172.17.0.1:2380/v0/restore/service/$service/$section 
+tar -czpf - /tmp/$service |curl --request POST --data-binary -k https://172.17.0.1:2380/v0/restore/service/$service/$section 
 rm -r /tmp/$service
 
 
@@ -68,8 +68,8 @@ for service in mongo_server mysql_server pgsql_server auth cert_auth email imap
 
 if test $type = all
  then
-	restore_system 
 	restore_registry 
+	restore_system  
 	volume_restore
 	logs_restore
 	restore_services
