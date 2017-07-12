@@ -45,9 +45,14 @@ if $section == all
   $section=''
  fi
   
-  duply engines_files restore /tmp/engines_files
-  cp -rp /tmp/engines_files/$source/$section /backup_src/volumes/fs/$source/$section
-  echo "COPYING cp -rp /tmp/engines_files/$source/$section /backup_src/volumes/fs/$source/$section " >/tmp/res_log
+  duply engines_fs restore /tmp/engines_files
+  path=$source
+  if ! test -z $section
+   then
+   path=$path/$source
+  fi
+  cp -rp /tmp/engines_files/$path /backup_src/volumes/fs/$path
+  echo "COPYING cp -rp /tmp/engines_files/$path /backup_src/volumes/fs/$path " >/tmp/res_log
 #  rm -r /tmp/engines_files
 }
 
