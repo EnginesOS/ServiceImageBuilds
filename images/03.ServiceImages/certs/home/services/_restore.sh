@@ -1,10 +1,16 @@
 #!/bin/bash
 cd /
-tar -xzpf - /home/certs/store/ 2>/tmp/tar.errs
+tar -xzpf -  2>/tmp/tar.errs
 if test $? -ne 0
  then 
    cat  /tmp/tar.errs  >&2
    exit -1
 fi
+
+tar -xzpf /tmp/cert_auth/backup.*
  
- exit 0
+r=$?
+
+rm -r /tmp/cert_auth/backup.*
+
+exit $r

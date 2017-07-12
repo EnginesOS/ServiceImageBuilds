@@ -1,2 +1,2 @@
 #!/bin/bash
-/home/services/_backup.sh
+sudo -n /home/services/_backup.sh

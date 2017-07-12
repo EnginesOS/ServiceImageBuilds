@@ -1,2 +1,2 @@
 #!/bin/bash
-/home/services/_restore.sh
+sudo -n /home/services/_restore.sh
