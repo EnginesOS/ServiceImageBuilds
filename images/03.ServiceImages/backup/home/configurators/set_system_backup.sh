@@ -62,7 +62,7 @@ then
         for service_path in $services						
           do
   		  service=`grep service_container $service_path | awk -F : '{print $2}' | sed "/ /s///g" `
-  			if test $service = 'filesystem' -o $service = 'syslog'
+  			if test $service = 'filesystem' 
   			  then
   				 continue
   			 fi 
