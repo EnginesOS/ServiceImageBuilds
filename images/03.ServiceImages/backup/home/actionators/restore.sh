@@ -49,13 +49,13 @@ if $section == all
   path=$source
   if ! test -z $section
    then
-   path=$path/$source
+   path=$path/$section
   fi
   if test -z $path
    then
     sudo -n duply engines_fs restore /backup_src/volumes/fs/
    else
-    sudo -n duply engines_fs fetch $path /backup_src/volumes/fs/
+    sudo -n duply engines_fs fetch $path /backup_src/volumes/fs/$path
   fi
   
  # cp -rp /tmp/engines_files/$path /backup_src/volumes/fs/
