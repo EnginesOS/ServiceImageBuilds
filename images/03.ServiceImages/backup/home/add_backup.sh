@@ -8,15 +8,16 @@ dirname=${Backup_ConfigDir}/$dirname
 
 echo -n $backup_type > $dirname/backup_type
 echo dirname $dirname
+
 if test -d $dirname
 then 
  rm -rf $dirname
 fi
-mkdir -p $dirname
 
+mkdir -p $dirname
 export dirname
 
-of ! test -z "$email"
+if ! test -z "$email"
 then
  echo $email >$dirname/email 	
 fi
@@ -30,8 +31,8 @@ else
  mkdir -p /tmp/backup
  src=/tmp/backup
  echo $1 >   $dirname/pre_cmd_path
- cat /home/tmpl/duply_pre  >   $dirname/pre
- cat /home/tmpl/duply_post  >    $dirname/post   
+ cat /home/tmpl/duply_pre > $dirname/pre
+ cat /home/tmpl/duply_post > $dirname/post   
 fi
 
 if test $dest_proto = "file"
@@ -45,16 +46,13 @@ else
   dest="$dest_proto://$dest_address/$dest_folder"
 fi
 
-
 /home/prep_conf.sh  $dirname/conf
 
 echo "SOURCE='$src'" >> $dirname/conf
 echo "TARGET='$dest'" >> $dirname/conf
-echo "TARGET_USER='$dest_user'"  >> $dirname/conf
-echo "TARGET_PASS='$dest_pass'"  >> $dirname/conf
+echo "TARGET_USER='$dest_user'" >> $dirname/conf
+echo "TARGET_PASS='$dest_pass'" >> $dirname/conf
 
- 
-  chmod u+x  $dirname/pre
-  chmod u+x  $dirname/post
-  
+chmod u+x  $dirname/pre
+chmod u+x  $dirname/post
 chmod og-rwx $dirname

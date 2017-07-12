@@ -6,7 +6,7 @@ src=/tmp/backup_$service/
 mkdir -p ${Backup_ConfigDir}/${service}
 chmod og-r $Backup_ConfigDir/$service
 echo -n $service >$Backup_ConfigDir/$service/service
-cp   /home/tmpl/service_pre.sh $Backup_ConfigDir/$service/pre
+cp /home/tmpl/service_pre.sh $Backup_ConfigDir/$service/pre
 cp /home/tmpl/service_post.sh  $Backup_ConfigDir/$service/post
 chmod u+x $Backup_ConfigDir/$service/pre
 chmod u+x $Backup_ConfigDir/$service/post
@@ -27,10 +27,8 @@ cat home/configurators/saved/system_backup >>/var/log/backup/addbackup.log
 
 Backup_ConfigDir=/home/backup/.duply/
 
-
 if test -f /home/configurators/saved/default_destination
 then
-
   cat /home/configurators/saved/default_destination | /home/engines/bin/json_to_env >/tmp/.env
   . /tmp/.env
   

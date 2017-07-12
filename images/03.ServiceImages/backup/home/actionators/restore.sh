@@ -3,6 +3,8 @@
 . /home/engines/functions/params_to_env.sh
 parms_to_env
 
+CURL_OPTS="-k -X PUT --header "Content-Type:application/octet-stream" --data-binary  @-"
+
 function restore_system {
 
 duply system restore /tmp/system $from_date
@@ -10,7 +12,7 @@ if test -z $section
  then
   section=all
 fi  
-tar -czpf - /tmp/system |curl  -k -X PUT --header "Content-Type:application/octet-stream" --data-binary  @- https://172.17.0.1:2380/v0/restore/system/$section
+tar -czpf - /tmp/system |curl $CURL_OPTS https://172.17.0.1:2380/v0/restore/system/$section
 rm -r /tmp/system
 
 }
@@ -22,7 +24,7 @@ if test -z $section
  then
   section=all
 fi  
-tar -czpf - /tmp/system/*registry* |curl  -k -X PUT --header "Content-Type:application/octet-stream" --data-binary  @- https://172.17.0.1:2380/v0/restore/registry
+tar -czpf - /tmp/system/*registry* |curl $CURL_OPTS https://172.17.0.1:2380/v0/restore/registry
 rm -r /tmp/system/*registry*
 
 }
@@ -54,7 +56,7 @@ if test -z $section
  then
   section=all
 fi  
-tar -czpf - /tmp/$service |curl  -k -X PUT --header "Content-Type:application/octet-stream" --data-binary  @- https://172.17.0.1:2380/v0/restore/service/$service/$section 
+tar -czpf - /tmp/$service |curl $CURL_OPTS https://172.17.0.1:2380/v0/restore/service/$service/$section 
 rm -r /tmp/$service
 
 
