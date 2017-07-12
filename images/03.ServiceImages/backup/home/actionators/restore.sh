@@ -7,7 +7,7 @@ CURL_OPTS="-k -X PUT --header "Content-Type:application/octet-stream" --data-bin
 
 function restore_system {
 
-duply system restore /tmp/system $from_date
+ sudo -n duply system restore /tmp/system $from_date
 if test -z $section
  then
   section=all
@@ -19,7 +19,7 @@ rm -r /tmp/system
 
 function restore_registry {
 
-duply system restore /tmp/system $from_date
+ sudo -n duply system restore /tmp/system $from_date
 if test -z $section
  then
   section=all
@@ -35,7 +35,7 @@ if $section == all
   $section=''
  fi
   
-  duply logs restore /tmp/logs
+   sudo -n duply logs restore /tmp/logs
   cp -rp /tmp/logs/$source/$section /backup_src/logs/$source/$section
   rm -r /tmp/logs
 }
@@ -45,19 +45,26 @@ if $section == all
   $section=''
  fi
   
-  duply engines_fs restore /tmp/engines_files
+  
   path=$source
   if ! test -z $section
    then
    path=$path/$source
   fi
-  cp -rp /tmp/engines_files/$path /backup_src/volumes/fs/$path
+  if test -z $path
+   then
+    sudo -n duply engines_fs restore /backup_src/volumes/fs/
+   else
+    sudo -n duply engines_fs fetch $path /backup_src/volumes/fs/
+  fi
+  
+  cp -rp /tmp/engines_files/$path /backup_src/volumes/fs/
   echo "COPYING cp -rp /tmp/engines_files/$path /backup_src/volumes/fs/$path " >/tmp/res_log
-#  rm -r /tmp/engines_files
+  rm -r /tmp/engines_files
 }
 
 function service_restore {
-duply $service restore /tmp/$service $from_date
+ sudo -n duply $service restore /tmp/$service $from_date
 if test -z $section
  then
   section=all
