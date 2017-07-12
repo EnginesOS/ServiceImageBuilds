@@ -10,7 +10,7 @@ if test -z $section
  then
   section=all
 fi  
-tar -czpf - /tmp/system |curl --request POST --data-binary -k https://172.17.0.1:2380/v0/restore/system/$section
+tar -czpf - /tmp/system |curl  -k -X PUT --header "Content-Type:application/octet-stream" --data-binary  @- https://172.17.0.1:2380/v0/restore/system/$section
 rm -r /tmp/system
 
 }
@@ -22,7 +22,7 @@ if test -z $section
  then
   section=all
 fi  
-tar -czpf - /tmp/system/*registry* |curl --request POST --data-binary -k https://172.17.0.1:2380/v0/restore/registry
+tar -czpf - /tmp/system/*registry* |curl  -k -X PUT --header "Content-Type:application/octet-stream" --data-binary  @- https://172.17.0.1:2380/v0/restore/registry
 rm -r /tmp/system/*registry*
 
 }
@@ -54,7 +54,7 @@ if test -z $section
  then
   section=all
 fi  
-tar -czpf - /tmp/$service |curl --request POST --data-binary -k https://172.17.0.1:2380/v0/restore/service/$service/$section 
+tar -czpf - /tmp/$service |curl  -k -X PUT --header "Content-Type:application/octet-stream" --data-binary  @- https://172.17.0.1:2380/v0/restore/service/$service/$section 
 rm -r /tmp/$service
 
 
