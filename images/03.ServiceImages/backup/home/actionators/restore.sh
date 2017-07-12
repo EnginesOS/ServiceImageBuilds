@@ -58,9 +58,9 @@ if $section == all
     sudo -n duply engines_fs fetch $path /backup_src/volumes/fs/
   fi
   
-  cp -rp /tmp/engines_files/$path /backup_src/volumes/fs/
-  echo "COPYING cp -rp /tmp/engines_files/$path /backup_src/volumes/fs/$path " >/tmp/res_log
-  rm -r /tmp/engines_files
+ # cp -rp /tmp/engines_files/$path /backup_src/volumes/fs/
+ # echo "COPYING cp -rp /tmp/engines_files/$path /backup_src/volumes/fs/$path " >/tmp/res_log
+ # rm -r /tmp/engines_files
 }
 
 function service_restore {
