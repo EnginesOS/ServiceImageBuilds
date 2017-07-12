@@ -47,7 +47,8 @@ if $section == all
   
   duply engines_files restore /tmp/engines_files
   cp -rp /tmp/engines_files/$source/$section /backup_src/volumes/fs/$source/$section
-  rm -r /tmp/engines_files
+  echo "COPYING cp -rp /tmp/engines_files/$source/$section /backup_src/volumes/fs/$source/$section " >/tmp/res_log
+#  rm -r /tmp/engines_files
 }
 
 function service_restore {
@@ -62,7 +63,7 @@ rm -r /tmp/$service
 
 }
 function restore_services {
-for service in mongo_server mysql_server pgsql_server auth cert_auth email imap
+for service in syslog mongo_server mysql_server pgsql_server auth cert_auth email imap 
       do
        service_restore
      done
@@ -70,10 +71,10 @@ for service in mongo_server mysql_server pgsql_server auth cert_auth email imap
 
 if test $type = all
  then
+	logs_restore
 	restore_registry 
 	restore_system  
 	volume_restore
-	logs_restore
 	restore_services
 elif test $type = system
   then
@@ -94,7 +95,6 @@ then
      service_restore
     fi
 fi
-
 
 
 exit 0
