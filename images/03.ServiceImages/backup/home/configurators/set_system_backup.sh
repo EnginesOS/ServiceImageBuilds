@@ -46,14 +46,14 @@ then
      chmod og-r $Backup_ConfigDir/system
      /home/prep_conf.sh $Backup_ConfigDir/system/conf
      cp /home/tmpl/system_pre.sh $Backup_ConfigDir/system/pre
-     cp /home/tmpl/system_post.sh  $Backup_ConfigDir/system/post
+     cp /home/tmpl/system_post.sh $Backup_ConfigDir/system/post
      mkdir -p /tmp/system_backup
      src=/tmp/system_backup
-     echo "SOURCE='$src'" >>$Backup_ConfigDir/system/conf           	
+     echo "SOURCE='$src'" >> $Backup_ConfigDir/system/conf           	
      _dest=$dest/system
-     echo "TARGET='$_dest'" >>$Backup_ConfigDir/system/conf
-     echo "TARGET_USER='$user'"  >>$Backup_ConfigDir/system/conf
-     echo "TARGET_PASS='$pass'"  >>$Backup_ConfigDir/system/conf
+     echo "TARGET='$_dest'" >> $Backup_ConfigDir/system/conf
+     echo "TARGET_USER='$user'" >> $Backup_ConfigDir/system/conf
+     echo "TARGET_PASS='$pass'" >> $Backup_ConfigDir/system/conf
   fi
   
   if test  $include_services = "true"
@@ -68,8 +68,7 @@ then
   			 fi 
   			echo ADD SERVICE $service
   			add_service 
-  		done	
-  						
+  		done	  						
   fi
   				
   if test $include_logs = "true"
