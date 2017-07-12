@@ -58,3 +58,5 @@ echo "TARGET_PASS='$dest_pass'"  >> $dirname/conf
  
   chmod u+x  $dirname/pre
   chmod u+x  $dirname/post
+  
+chmod og-rwx $dirname
