@@ -59,7 +59,7 @@ then
   if test  $include_services = "true"
     then
       services=`grep -lr backup_support /opt/engines/etc/services/providers/ |uniq`
-        for service_path in $services						
+        for service_path in $services registry						
           do
   		  service=`grep service_container $service_path | awk -F : '{print $2}' | sed "/ /s///g" `
   			if test $service = 'filesystem' 
