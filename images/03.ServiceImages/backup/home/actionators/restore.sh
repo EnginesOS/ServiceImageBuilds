@@ -18,7 +18,7 @@ rm -r /tmp/system
 }
 
 function restore_registry {
-export CURL_OPTS
+
 sudo -n /home/actionators/_restore_registry.sh
 }
 
