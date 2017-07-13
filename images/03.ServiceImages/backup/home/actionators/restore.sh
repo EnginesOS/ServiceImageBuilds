@@ -47,7 +47,7 @@ if test -z $path
    rm -r /tmp/logs
 else
   sudo -n duply fetch $path /backup_src/logs/$path
-end
+fi
 }
 
 function volume_restore {
