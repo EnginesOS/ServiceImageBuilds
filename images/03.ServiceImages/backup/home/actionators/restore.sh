@@ -33,19 +33,27 @@ function logs_restore {
 if $section == all
  then
   $section=''
- fi
-  
-   sudo -n duply logs restore /tmp/logs
-  cp -rp /tmp/logs/$source/$section /backup_src/logs/$source/$section
-  rm -r /tmp/logs
+ fi  
+if ! test -z $section
+   then
+   path=$path/$section
+  fi
+  if test -z $path
+   then
+    sudo -n duply logs restore /tmp/logs
+    cp -rp /tmp/logs$path /backup_src/logs$path 
+    rm -r /tmp/logs
+  else
+   sudo -n duply fetch $path /backup_src/logs/$path
+  end
 }
+
 function volume_restore {
 if $section == all
  then
   $section=''
  fi
-  
-  
+    
   path=$source
   if ! test -z $section
    then
@@ -58,9 +66,6 @@ if $section == all
     sudo -n duply engines_fs fetch $path /backup_src/volumes/fs/$path
   fi
   
- # cp -rp /tmp/engines_files/$path /backup_src/volumes/fs/
- # echo "COPYING cp -rp /tmp/engines_files/$path /backup_src/volumes/fs/$path " >/tmp/res_log
- # rm -r /tmp/engines_files
 }
 
 function service_restore {
@@ -94,6 +99,9 @@ elif test $type = system
 elif test $type = registry
    then
 	restore_registry 
+elif test $type = logd
+   then
+	restore_logs
 elif test $type = volume 
  then
    volume_restore
@@ -106,6 +114,9 @@ then
      service=$source
      service_restore
     fi
+else
+ echo "Unknown Restore Type"
+ exit 255   
 fi
 
 
