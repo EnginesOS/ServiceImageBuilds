@@ -41,7 +41,7 @@ if ! test -z $section
   if test -z $path
    then
     sudo -n duply logs restore /tmp/logs
-    cp -rp /tmp/logs$path /backup_src/logs$path 
+    cp -rp /tmp/logs /backup_src/
     rm -r /tmp/logs
   else
    sudo -n duply fetch $path /backup_src/logs/$path
@@ -76,9 +76,8 @@ if test -z $section
 fi  
 tar -czpf - /tmp/$service |curl $CURL_OPTS https://172.17.0.1:2380/v0/restore/service/$service/$section 
 rm -r /tmp/$service
-
-
 }
+
 function restore_services {
 for service in syslog mongo_server mysql_server pgsql_server auth cert_auth email imap 
       do
@@ -99,7 +98,7 @@ elif test $type = system
 elif test $type = registry
    then
 	restore_registry 
-elif test $type = logd
+elif test $type = logs
    then
 	restore_logs
 elif test $type = volume 
