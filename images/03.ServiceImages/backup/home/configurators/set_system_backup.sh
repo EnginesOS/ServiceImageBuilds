@@ -54,14 +54,22 @@ then
      echo "TARGET='$_dest'" >> $Backup_ConfigDir/system/conf
      echo "TARGET_USER='$user'" >> $Backup_ConfigDir/system/conf
      echo "TARGET_PASS='$pass'" >> $Backup_ConfigDir/system/conf
+     
+    service=registry
+  	add_service
   fi
   
   if test  $include_services = "true"
     then
       services=`grep -lr backup_support /opt/engines/etc/services/providers/ |uniq`
-        for service_path in $services registry						
+        for service_path in $services						
           do
   		  service=`grep service_container $service_path | awk -F : '{print $2}' | sed "/ /s///g" `
+  		  if test -z $service
+  		   then
+  		     echo "FAILED to get service for $service_path"
+  		     continue
+  		   fi
   			if test $service = 'filesystem' 
   			  then
   				 continue
@@ -69,6 +77,7 @@ then
   			echo ADD SERVICE $service
   			add_service 
   		done	  						
+
   fi
   				
   if test $include_logs = "true"
