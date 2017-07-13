@@ -4,7 +4,9 @@ default_email=`cat /home/configurators/saved/backup_email`
 Backup_ConfigDir=/home/backup/.duply/
 
 for backup in `ls $Backup_ConfigDir |grep -v duply_conf`
- do                       
+ do         
+ echo "Runnging Backup $backup"              
+ 
       ts=`date +%d_%m_%y`
      bfn=${backup}_${ts}.log        	
         		
