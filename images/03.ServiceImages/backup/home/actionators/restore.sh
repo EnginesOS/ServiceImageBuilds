@@ -115,5 +115,5 @@ else
  echo "Unknown Restore Type"
  exit 255   
 fi
-
+chown -R backup /home/backup/.gnupg/
 exit 0
