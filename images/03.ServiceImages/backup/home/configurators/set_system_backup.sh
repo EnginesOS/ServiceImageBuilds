@@ -102,8 +102,6 @@ then
   	echo "TARGET_USER='$user'" >>$Backup_ConfigDir/engines_fs/conf
   	echo "TARGET_PASS='$pass'" >>$Backup_ConfigDir/engines_fs/conf
   	echo "SOURCE=/backup_src/volumes/fs/" >>$Backup_ConfigDir/engines_fs/conf
-  	service=volmanager
-  	add_service 
   fi
  exit 0
 fi
