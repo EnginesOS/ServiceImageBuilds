@@ -1,15 +1,16 @@
 #!/bin/bash
 
+. /home/engines/functions/params_to_env.sh
+parms_to_env
+
 if ! test -z $disabled 
  then
- echo $disabled 
    if $disabled = yes
     then
     	rm /home/backup/.gnupg/key_id
     	exit 0
     fi
     else
-    echo not disabled
 fi
 
 if test -z $key_id
