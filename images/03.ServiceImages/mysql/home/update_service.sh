@@ -20,18 +20,20 @@ if test -z $database_name
 	exit -1
 fi
 	
-if test -z $db_username
+if test -z $db_username 
  then
-	echo Error:No db_username value
-	exit -1
-fi
-		
+ echo Error:No username"
+  exit 127
+fi  
+
 if test -z $db_password
  then
 	echo Error:No db_password value
-	exit -1
-fi
-	
+	exit 127
+fi   
+
+Q1="set password for '"$db_username"'@'%' = PASSWORD('"$db_password"');"	
+
 
 if ! test -z $full_access
  then
