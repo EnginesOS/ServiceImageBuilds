@@ -8,6 +8,7 @@ if ! test -z $disabled
    if $disabled = yes
     then
     	rm /home/backup/.gnupg/key_id
+    	echo 'OK'
     	exit 0
     fi
 fi
