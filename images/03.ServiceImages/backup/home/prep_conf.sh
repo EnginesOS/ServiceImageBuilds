@@ -7,7 +7,7 @@ key=`cat /home/backup/.gnupg/key_id`
  then
   echo "GPG_KEY='disabled'" >> $1
 else
-  pass=`cat /home/backup/.gnupg/pass`
+  pass=`cat /home/backup/.gnupg/pass_${key}`
   echo GPG_KEY=$key >> $1
   echo GPG_PW=$pass >> $1
 fi
