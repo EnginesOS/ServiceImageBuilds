@@ -49,7 +49,7 @@ if ! test -z $debug
 	echo "$SQL"
 fi
 
-psql < /tmp/.c.sql
+psql < /tmp/.c.sql &> /tmp/res
 
 if test $? -ge 0
  then 
@@ -57,8 +57,11 @@ if test $? -ge 0
 	rm /tmp/.c.sql
 	exit 0
 fi
-	
-echo "Error:"
+
+res=`cat /tmp/res`
+echo "Error:$res"
+echo $SQL
+
 exit -1
 	
 
