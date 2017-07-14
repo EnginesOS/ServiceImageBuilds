@@ -10,7 +10,6 @@ if ! test -z $disabled
     	rm /home/backup/.gnupg/key_id
     	exit 0
     fi
-    else
 fi
 
 if test -z $key_id
