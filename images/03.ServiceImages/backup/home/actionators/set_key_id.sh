@@ -5,7 +5,7 @@ parms_to_env
 
 if ! test -z $disabled 
  then
-   if $disabled = yes
+   if  test $disabled = yes
     then
     	rm /home/backup/.gnupg/key_id
     	echo 'OK'
