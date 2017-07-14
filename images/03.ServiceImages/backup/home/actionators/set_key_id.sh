@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 if ! test -z $disabled 
  then
    if $disabled = yes
@@ -23,4 +22,4 @@ if test -z $key_id
  fi
  
  echo ${key_id} > /home/backup/.gnupg/key_id
-   
+exit 0   
