@@ -65,5 +65,6 @@ if test $? -eq 0
 fi
 	
 echo "Error:$res"
+echo  With $SQL
 exit 127
 
