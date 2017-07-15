@@ -79,7 +79,7 @@ for service in syslog mongo_server mysql_server pgsql_server auth cert_auth emai
 done
 }
 
-if test $type = all
+if test $type = full
  then
   logs_restore
   restore_registry 
