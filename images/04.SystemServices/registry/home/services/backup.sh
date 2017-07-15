@@ -1,6 +1,5 @@
 #!/bin/bash
 
-cat - | tar -xzpf -
 
 while test -f /tmp/registry.lock
  do
