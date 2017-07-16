@@ -5,6 +5,7 @@ mkdir -p /tmp/system_backup
 
   curl -k https://172.17.0.1:2380/v0/backup/system_files  >/tmp/system_backup/files_$ts.tgz
   curl -k https://172.17.0.1:2380/v0/backup/system_db  >/tmp/system_backup/db_$ts.gz
-  curl -k https://172.17.0.1:2380/v0/backup/registry  >/tmp/system_backup/system_registry_$ts.gz
+ # curl -k https://172.17.0.1:2380/v0/backup/registry  >/tmp/system_backup/system_registry_$ts.gz
+exit 0
 
   

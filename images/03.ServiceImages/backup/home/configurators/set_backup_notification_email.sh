@@ -4,7 +4,7 @@
 PARAMS_FILE=/home/configurators/saved/backup_email_hash
 parms_to_file_and_env
 
-echo $backup_email >/home/configurators/saved/backup_email
+echo -n $backup_email >/home/configurators/saved/backup_email
 
 if ! test -f /home/backup/.gnupg/key_created
  then

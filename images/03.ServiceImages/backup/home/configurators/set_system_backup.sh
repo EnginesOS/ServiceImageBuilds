@@ -6,7 +6,7 @@ src=/tmp/backup_$service/
 mkdir -p ${Backup_ConfigDir}/${service}
 chmod og-r $Backup_ConfigDir/$service
 echo -n $service >$Backup_ConfigDir/$service/service
-cp   /home/tmpl/service_pre.sh $Backup_ConfigDir/$service/pre
+cp /home/tmpl/service_pre.sh $Backup_ConfigDir/$service/pre
 cp /home/tmpl/service_post.sh  $Backup_ConfigDir/$service/post
 chmod u+x $Backup_ConfigDir/$service/pre
 chmod u+x $Backup_ConfigDir/$service/post
@@ -27,10 +27,8 @@ cat home/configurators/saved/system_backup >>/var/log/backup/addbackup.log
 
 Backup_ConfigDir=/home/backup/.duply/
 
-
 if test -f /home/configurators/saved/default_destination
 then
-
   cat /home/configurators/saved/default_destination | /home/engines/bin/json_to_env >/tmp/.env
   . /tmp/.env
   
@@ -48,14 +46,17 @@ then
      chmod og-r $Backup_ConfigDir/system
      /home/prep_conf.sh $Backup_ConfigDir/system/conf
      cp /home/tmpl/system_pre.sh $Backup_ConfigDir/system/pre
-     cp /home/tmpl/system_post.sh  $Backup_ConfigDir/system/post
+     cp /home/tmpl/system_post.sh $Backup_ConfigDir/system/post
      mkdir -p /tmp/system_backup
      src=/tmp/system_backup
-     echo "SOURCE='$src'" >>$Backup_ConfigDir/system/conf           	
+     echo "SOURCE='$src'" >> $Backup_ConfigDir/system/conf           	
      _dest=$dest/system
-     echo "TARGET='$_dest'" >>$Backup_ConfigDir/system/conf
-     echo "TARGET_USER='$user'"  >>$Backup_ConfigDir/system/conf
-     echo "TARGET_PASS='$pass'"  >>$Backup_ConfigDir/system/conf
+     echo "TARGET='$_dest'" >> $Backup_ConfigDir/system/conf
+     echo "TARGET_USER='$user'" >> $Backup_ConfigDir/system/conf
+     echo "TARGET_PASS='$pass'" >> $Backup_ConfigDir/system/conf
+     
+    service=registry
+  	add_service
   fi
   
   if test  $include_services = "true"
@@ -64,14 +65,19 @@ then
         for service_path in $services						
           do
   		  service=`grep service_container $service_path | awk -F : '{print $2}' | sed "/ /s///g" `
-  			if test $service = 'filesystem' -o $service = 'syslog'
+  		  if test -z $service
+  		   then
+  		     echo "FAILED to get service for $service_path"
+  		     continue
+  		   fi
+  			if test $service = 'filesystem' 
   			  then
   				 continue
   			 fi 
   			echo ADD SERVICE $service
   			add_service 
-  		done	
-  						
+  		done	  						
+
   fi
   				
   if test $include_logs = "true"
@@ -96,8 +102,6 @@ then
   	echo "TARGET_USER='$user'" >>$Backup_ConfigDir/engines_fs/conf
   	echo "TARGET_PASS='$pass'" >>$Backup_ConfigDir/engines_fs/conf
   	echo "SOURCE=/backup_src/volumes/fs/" >>$Backup_ConfigDir/engines_fs/conf
-  	service=volmanager
-  	add_service 
   fi
  exit 0
 fi
