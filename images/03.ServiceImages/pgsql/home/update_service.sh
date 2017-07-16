@@ -31,25 +31,16 @@ if test -z $encoding
 	exit -1
 fi
 	
-echo  "CREATE ROLE $dbusername WITH ENCRYPTED PASSWORD '$dbpassword'  LOGIN;" >/tmp/.c.sql
-if test $encoding = "ascii"
- then 
-	echo "CREATE DATABASE $database_name OWNER = $dbusername ;" >> /tmp/.c.sql
-else
-	echo "CREATE DATABASE $database_name \
-		with OWNER  $dbusername\
-		Encoding 'UTF8'\
-		TEMPLATE = template0;" >> /tmp/.c.sql			
-			#LC_COLLATE = '$collation'\
-  			#LC_CTYPE = '$collation'; >> /tmp/.c.sql			
-fi
-echo "alter  ROLE $dbusername login; " >> /tmp/.c.sql
+echo  "Alter ROLE $dbusername WITH ENCRYPTED PASSWORD '$dbpassword'  LOGIN;" >/tmp/.c.sql
+
 
 if ! test -z $full_access
  then
 	if test $full_access == true
  	 then
- 	    echo "alter  ROLE $dbusername with superuser; " >> /tmp/.c.sql
+ 	    echo "Alter  ROLE $dbusername with superuser; " >> /tmp/.c.sql
+ 	 else
+ 	    echo "Alter  ROLE $dbusername with nosuperuser; " >> /tmp/.c.sql     
  	fi
  fi
 
@@ -58,7 +49,7 @@ if ! test -z $debug
 	echo "$SQL"
 fi
 
-psql < /tmp/.c.sql  &> /tmp/res
+psql < /tmp/.c.sql &> /tmp/res
 
 if test $? -ge 0
  then 
@@ -66,10 +57,11 @@ if test $? -ge 0
 	rm /tmp/.c.sql
 	exit 0
 fi
-	
+
 res=`cat /tmp/res`
 echo "Error:$res"
 echo $SQL
+
 exit -1
 	
 
