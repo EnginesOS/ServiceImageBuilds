@@ -24,6 +24,7 @@ if test -z $backup_password
 fi
 
 key_id=`echo $priv_key |\
+ sed "/\\\r/s///g"  |\
  gpg --allow-secret-key-import --import - 2>&1 |\
  grep "secret key imported" |\
   awk '{print $3}' | sed "/:/s///"`
