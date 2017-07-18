@@ -1,6 +1,6 @@
 #!/bin/sh
 cd /
-tar -xzpf - 2>/tmp/tar.errs
+tar -xpf - 2>/tmp/tar.errs
 tar -xzpf /tmp/syslog/backup.*gz 
 
 r=$?

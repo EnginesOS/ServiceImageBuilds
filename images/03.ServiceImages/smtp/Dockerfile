@@ -34,7 +34,7 @@ RUN mkdir /usr/share/doc/postfix/html \
 	 	  	/etc/postfix/master.cf.proto \
 	 	  	/etc/postfix/postfix-files.d \
 	 	  	/usr/lib/postfix/libglobal &&\
-	 touch /etc/postfix/generic.db \
+	 		touch /etc/postfix/generic.db \
 	 		/etc/postfix/transport.smart \
 	 		/etc/postfix/smarthost_passwd \
 	 		/etc/postfix/sender_canonical \

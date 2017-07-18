@@ -1,6 +1,6 @@
 #!/bin/bash
 
-tar -xzpf -  2>/tmp/tar.errs
+tar -xpf -  2>/tmp/tar.errs
 
 cat /tmp/pgsql_server/backup.*gz | gzip -d | psql 2>tmp/pg_sqlimport.errs
 

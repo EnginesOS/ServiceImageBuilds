@@ -1,6 +1,6 @@
 #!/bin/bash
 
-tar -xzpf - 2>/tmp/tar.errs
+tar -xpf - 2>/tmp/tar.errs
 
 cat /tmp/mysql_server/backup.*gz |gzip -d | mysql -h 127.0.0.1 -u rma 2> /tmp/mysqlimport.errs
 if test $? -ne 0

@@ -1,6 +1,6 @@
 #!/bin/bash
 cd /
-tar -xzpf -  2>/tmp/tar.errs
+tar -xpf - 2> /tmp/tar.errs
 if test $? -ne 0
  then 
    cat  /tmp/tar.errs  >&2

@@ -1,6 +1,6 @@
 #!/bin/bash
 cd /
-tar -xzpf -  2>/tmp/tar.errs
+tar -xpf -  2>/tmp/tar.errs
 
 . /home/auth/.dbenv
 
