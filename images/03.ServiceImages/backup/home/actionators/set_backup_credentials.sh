@@ -5,13 +5,13 @@ parms_to_env
 
 
 
-if test -z $pub_key
+if test -z "$pub_key"
  then
   echo "Missing Public key"
   exit 127
 fi
 
-if test -z $priv_key
+if test -z "$priv_key"
  then
   echo "Missing Private key"
   exit 127
