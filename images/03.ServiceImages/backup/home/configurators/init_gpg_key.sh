@@ -1,6 +1,7 @@
 #!/bin/sh
 if ! test -f /home/backup/.gnupg/pass
  then 
+ 	mkdir /home/backup/.gnupg/
  	cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 7 | head -n 1 >/home/backup/.gnupg/pass
 	pass=`cat /home/backup/.gnupg/pass`
 	email=`cat /home/configurators/saved/backup_email`
