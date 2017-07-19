@@ -7,6 +7,6 @@ if test $? -ne 0
  	cat  /tmp/mongodump.errs  >&2
  	exit -1
  fi
-tar -cpf - dump |gzip -c
+tar -cpf - dump 
 rm -r dump
 exit 0

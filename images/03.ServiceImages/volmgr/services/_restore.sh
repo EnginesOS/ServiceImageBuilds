@@ -1,13 +1,13 @@
 #!/bin/sh
 cd /
 tar -xpf - 2>/tmp/tar.errs
-tar -xzpf /tmp/syslog/backup.*gz 
+tar -xpf /tmp/syslog/backup.*
 
 r=$?
 
-rm /tmp/syslog/backup.*gz
+rm /tmp/syslog/backup.*
 
 exit $? 
 
 
-# cat - |tar -xzpf - /var/fs/local/ 
+# cat - |tar -xpf - /var/fs/local/ 
