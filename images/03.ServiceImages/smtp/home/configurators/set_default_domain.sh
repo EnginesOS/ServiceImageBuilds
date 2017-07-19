@@ -9,7 +9,7 @@ echo ${domain_name} >/home/configurators/saved/domain
 
 echo "@*local  no-reply@${domain_name}" > /etc/postfix/generic
 echo "@localhost  no-reply@${domain_name}" >> /etc/postfix/generic
-postmap  /etc/postfix/generic
+sudo -n postmap  /etc/postfix/generic
         
        # echo "/.+/ @${domain_name}" > /etc/postfix/sender_canonical
        # postmap  /etc/postfix/sender_canonical
@@ -30,6 +30,6 @@ if ! test -z $deliver_local
 	 echo ${domain_name} :[email.engines.internal]	>> /etc/postfix/transport 			
    fi
 fi	
-postmap /etc/postfix/transport
+sudo -n postmap /etc/postfix/transport
  
 exit $?
