@@ -3,7 +3,7 @@
 
 #export  PGPASSWORD=$dbpasswd
 
-pg_dumpall  |gzip -c 2>/tmp/pg_sqldump.errs
+pg_dumpall  2>/tmp/pg_sqldump.errs
 
 if test $? -ne 0
  then 

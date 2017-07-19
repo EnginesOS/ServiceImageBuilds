@@ -8,7 +8,7 @@ CURL_OPTS="-k -X PUT --header "Content-Type:application/octet-stream" --data-bin
 function restore_system {
 sudo -n duply system restore /tmp/system $from_date
 
-cat /tmp/system/files*tgz |curl $CURL_OPTS https://172.17.0.1:2380/v0/restore/system/files/$section
+cat /tmp/system/files* |curl $CURL_OPTS https://172.17.0.1:2380/v0/restore/system/files/$section
 #cat /tmp/system/db*gz |curl $CURL_OPTS https://172.17.0.1:2380/v0/restore/system/db
 rm -r /tmp/system
 }
@@ -68,7 +68,7 @@ if test -z $section
   section=all
 fi  
 
-tar -czpf - /tmp/$service |curl $CURL_OPTS https://172.17.0.1:2380/v0/restore/service/$service/$section 
+tar -cpf - /tmp/$service |curl $CURL_OPTS https://172.17.0.1:2380/v0/restore/service/$service/$section 
 rm -r /tmp/$service
 }
 

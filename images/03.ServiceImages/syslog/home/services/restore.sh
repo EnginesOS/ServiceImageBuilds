@@ -2,11 +2,11 @@
 
 
 cd /
-tar -xzpf - 2>/tmp/tar.errs
-tar -xzpf /tmp/syslog/backup.*gz 
+tar -xpf - 2>/tmp/tar.errs
+tar -xpf /tmp/syslog/backup.*
 
 r=$?
 
-rm /tmp/syslog/backup.*gz
+rm /tmp/syslog/backup.*
 
 exit $? 
