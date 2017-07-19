@@ -68,7 +68,7 @@ if test -z $section
   section=all
 fi  
 
-tar -czpf - /tmp/$service |curl $CURL_OPTS https://172.17.0.1:2380/v0/restore/service/$service/$section 
+tar -cpf - /tmp/$service |curl $CURL_OPTS https://172.17.0.1:2380/v0/restore/service/$service/$section 
 rm -r /tmp/$service
 }
 
