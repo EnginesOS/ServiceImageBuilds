@@ -24,13 +24,13 @@ if test -z $backup_password
 fi
 
 res=`echo $priv_key \
-     | sed "/\\\r/s///g" | sed "/\\\n/s//\n/g \
+     | sed "/\\\r/s///g" | sed "/\\\n/s//\n/g" \
      | gpg --allow-secret-key-import --import - 2>&1`
 
 
 if test $? -ne 0
  then
-  echo Error with import $key_id
+  echo Error with import $res
   exit 127
   fi 
   
