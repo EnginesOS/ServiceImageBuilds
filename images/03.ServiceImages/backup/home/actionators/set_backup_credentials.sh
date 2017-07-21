@@ -23,18 +23,24 @@ if test -z $backup_password
   exit 127
 fi
 
-res=`echo $priv_key \
-     | sed "/\\\r/s///g" | sed "/\\\n/s//\n/g" \
-     | gpg --allow-secret-key-import --import - 2>&1`
+#res=`echo $priv_key \
+#     | sed "/\\\r/s///g" | sed "/\\\n/s//\n/g" \
+#     | gpg --allow-secret-key-import --import - 2>&1`
+
+echo $priv_key |  sed "/\\\r/s///g" | sed "/\\\n/s//\n/g" >/tmp/.tt
+res=` cat /tmp/.tt | gpg --allow-secret-key-import --import - 2>&1`
 
 
 if test $? -ne 0
  then
   echo Error with import $res
+  rm /tmp/.tt
   exit 127
   fi 
   
-key_id=echo $res \
+rm /tmp/.tt
+  
+key_id=`echo $res \
        | grep "secret key imported"\
        | awk '{print $3}' | sed "/:/s///"`
   

@@ -25,7 +25,7 @@ RUN	echo '#!/bin/sh' >/usr/sbin/policy-rc.d &&\
 	apt-get -y dist-upgrade &&\
 	apt-get -y update &&\
 	/home/no_init.sh &&\
-	apt-get -y --fix-missing install rsyslog git language-pack-en-base apt-file software-properties-common build-essential unzip curl  dnsutils git  wget bzip2 zlibc &&\ 
+	apt-get -y --fix-missing install expect-lite rsyslog git language-pack-en-base apt-file software-properties-common build-essential unzip curl  dnsutils git  wget bzip2 zlibc &&\ 
 	apt-get -y clean &&\
 	mkdir -p /var/run &&\
 	mkdir -p /etc/apt/apt.conf.d/ &&\
