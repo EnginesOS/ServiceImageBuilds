@@ -8,5 +8,5 @@ if test -z $backup_name
  then
    /home/backup_run.sh
 else
-   sudo duply $backup_name backup
+   run_duply $backup_name backup
 fi

@@ -6,7 +6,7 @@ parms_to_env
 CURL_OPTS="-k -X PUT --header "Content-Type:application/octet-stream" --data-binary  @-"
 
 function restore_system {
-sudo -n duply system restore /tmp/system $from_date
+run_duply system restore /tmp/system $from_date
 
 cat /tmp/system/files* |curl $CURL_OPTS https://172.17.0.1:2380/v0/restore/system/files/$section
 #cat /tmp/system/db*gz |curl $CURL_OPTS https://172.17.0.1:2380/v0/restore/system/db
@@ -31,11 +31,11 @@ fi
 
 if test -z $path
  then
-   sudo -n duply logs restore /tmp/logs
+   run_duply logs restore /tmp/logs
    cp -rp /tmp/logs /backup_src/
    rm -r /tmp/logs
 else
-  sudo -n duply fetch $path /backup_src/logs/$path
+  run_duply logs fetch $path /backup_src/logs/$path
 fi
 }
 
@@ -53,15 +53,15 @@ fi
 
 if test -z $path
  then
-  sudo -n duply engines_fs restore /backup_src/volumes/fs/
+  run_duply engines_fs restore /backup_src/volumes/fs/
 else
-  sudo -n duply engines_fs fetch $path /backup_src/volumes/fs/$path
+  run_duply engines_fs fetch $path /backup_src/volumes/fs/$path
 fi
   
 }
 
 function service_restore {
-sudo -n duply $service restore /tmp/$service $from_date
+run_duply $service restore /tmp/$service $from_date
 
 if test -z $section
  then
@@ -78,6 +78,7 @@ for service in syslog mongo_server mysql_server pgsql_server auth cert_auth emai
    service_restore
 done
 }
+echo  $type > /engines/var/run/flags/restore
 
 if test $type = full
  then
@@ -112,4 +113,5 @@ else
  exit 255   
 fi
 chown -R backup /home/backup/.gnupg/
+rm /engines/var/run/flags/restore
 exit 0
