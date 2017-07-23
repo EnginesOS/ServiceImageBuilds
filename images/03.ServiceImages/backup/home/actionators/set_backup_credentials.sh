@@ -47,7 +47,7 @@ key_id=`echo $res \
 if test -z $key_id
  then
   echo $priv_key |\
- sed "/\\\r/s///g" | sed "/\\\n/s//\n/g"  >/tmp/p
+  sed "/\\\r/s///g" | sed "/\\\n/s//\n/g"  >/tmp/p
   echo import failed $res
   exit 127
 fi
@@ -55,6 +55,8 @@ fi
 echo $key_id > /home/backup/.gnupg/key_id
 echo $backup_password > /home/backup/.gnupg/pass_${key_id}
 echo $backup_password > /home/backup/.gnupg/pass
+
+/home/acctionators/trust_key.expect
 
 echo "OK"
 exit 0
