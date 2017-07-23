@@ -1,5 +1,6 @@
 #!/bin/sh
 
+rm -f /engines/var/run/flags/*
 
 PID_FILE=/home/cron/fcron.pid
 export PID_FILE
