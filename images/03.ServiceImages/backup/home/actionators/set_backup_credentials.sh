@@ -56,7 +56,7 @@ echo $key_id > /home/backup/.gnupg/key_id
 echo $backup_password > /home/backup/.gnupg/pass_${key_id}
 echo $backup_password > /home/backup/.gnupg/pass
 
-/home/acctionators/trust_key.expect
+/home/actionators/trust_key.expect $key_id 
 
 echo "OK"
 exit 0

@@ -19,7 +19,7 @@ sudo -n /home/actionators/_restore_registry.sh
 }
 
 function logs_restore {
-if $section == all
+if $section = all
  then
   $section=''
  fi  
@@ -40,7 +40,7 @@ fi
 }
 
 function volume_restore {
-if $section == all
+if $section = all
  then
   $section=''
 fi
