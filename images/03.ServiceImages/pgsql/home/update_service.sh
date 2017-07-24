@@ -36,7 +36,7 @@ echo  "Alter ROLE $dbusername WITH ENCRYPTED PASSWORD '$dbpassword'  LOGIN;" >/t
 
 if ! test -z $full_access
  then
-	if test $full_access == true
+	if test $full_access = true
  	 then
  	    echo "Alter  ROLE $dbusername with superuser; " >> /tmp/.c.sql
  	 else

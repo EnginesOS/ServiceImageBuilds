@@ -3,14 +3,26 @@
 . /home/engines/functions/params_to_env.sh
 parms_to_env
 
+if test -z replace
+ then
+  replace=replace #replace|rename|missing
+fi
+
 CURL_OPTS="-k -X PUT --header "Content-Type:application/octet-stream" --data-binary  @-"
 
 function restore_system {
-sudo -n duply system restore /tmp/system $from_date
 
-cat /tmp/system/files* |curl $CURL_OPTS https://172.17.0.1:2380/v0/restore/system/files/$section
+run_duply system restore /tmp/system/ $from_date
+
+if test -z $source
+ then
+	cat /tmp/system/files* |curl $CURL_OPTS https://172.17.0.1:2380/v0/restore/system/files/$section
+else
+  tar -tpf /tmp/t/files_* opt/engines/run/containers/$source \
+  | tar -cpf - |curl $CURL_OPTS https://172.17.0.1:2380/v0/restore/system/files/$source
+fi
 #cat /tmp/system/db*gz |curl $CURL_OPTS https://172.17.0.1:2380/v0/restore/system/db
-rm -r /tmp/system
+/home/actionators/_clr_restore.sh system
 }
 
 function restore_registry {
@@ -19,7 +31,7 @@ sudo -n /home/actionators/_restore_registry.sh
 }
 
 function logs_restore {
-if $section == all
+if $section = all
  then
   $section=''
  fi  
@@ -31,16 +43,18 @@ fi
 
 if test -z $path
  then
-   sudo -n duply logs restore /tmp/logs
-   cp -rp /tmp/logs /backup_src/
-   rm -r /tmp/logs
+   run_duply logs restore /tmp/logs $from_date
+   /home/actionators/_restore.sh $replace logs
+   /home/actionators/_clr_restore.sh logs
 else
-  sudo -n duply fetch $path /backup_src/logs/$path
+  run_duply logs fetch $path /tmp/logs 
+   /home/actionators/_restore.sh $replace logs
+   /home/actionators/_clr_restore.sh logs
 fi
 }
 
 function volume_restore {
-if $section == all
+if $section = all
  then
   $section=''
 fi
@@ -53,15 +67,18 @@ fi
 
 if test -z $path
  then
-  sudo -n duply engines_fs restore /backup_src/volumes/fs/
+  run_duply engines_fs restore /tmp/volumes/fs/ $from_date
 else
-  sudo -n duply engines_fs fetch $path /backup_src/volumes/fs/$path
+  run_duply engines_fs fetch $path /backup_src/volumes/fs/$path $from_date
 fi
+  
+  /home/actionators/_restore.sh $replace volumes
+  /home/actionators/_clr_restore.sh volumes
   
 }
 
 function service_restore {
-sudo -n duply $service restore /tmp/$service $from_date
+run_duply $service restore /tmp/$service $from_date
 
 if test -z $section
  then
@@ -69,7 +86,7 @@ if test -z $section
 fi  
 
 tar -cpf - /tmp/$service |curl $CURL_OPTS https://172.17.0.1:2380/v0/restore/service/$service/$section 
-rm -r /tmp/$service
+/home/actionators/_clr_restore.sh $service
 }
 
 function restore_services {
@@ -78,6 +95,7 @@ for service in syslog mongo_server mysql_server pgsql_server auth cert_auth emai
    service_restore
 done
 }
+echo  $type > /engines/var/run/flags/restore
 
 if test $type = full
  then
@@ -107,9 +125,15 @@ elif test $type = service
      service=$source
      service_restore
     fi
+elif test $type = engine
+ then
+  restore_system  
+  volume_restore
+  restore_services
 else
  echo "Unknown Restore Type"
  exit 255   
 fi
 chown -R backup /home/backup/.gnupg/
+rm /engines/var/run/flags/restore
 exit 0

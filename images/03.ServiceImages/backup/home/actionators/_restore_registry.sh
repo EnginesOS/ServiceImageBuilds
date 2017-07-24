@@ -1,5 +1,5 @@
 #!/bin/bash
-duply registry restore /tmp/registry $from_date
+run_duply registry restore /tmp/registry $from_date
 
 CURL_OPTS="-k -X PUT --header "Content-Type:application/octet-stream" --data-binary  @-"
 
