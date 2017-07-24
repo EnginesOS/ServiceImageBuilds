@@ -8,11 +8,11 @@ n=0
 for backup in $backups
 do
  if test $n == 0
- then 
-  n=2
+  then 
+   n=2
  else
-  echo -n ','
-fi
+   echo -n ','
+ fi
  echo -n '"'$backup'"'
 done
 
