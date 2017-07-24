@@ -3,6 +3,11 @@
 . /home/engines/functions/params_to_env.sh
 parms_to_env
 
+if test -z replace
+ then
+  replace=replace #replace|rename|missing
+fi
+
 CURL_OPTS="-k -X PUT --header "Content-Type:application/octet-stream" --data-binary  @-"
 
 function restore_system {
@@ -10,7 +15,7 @@ run_duply system restore /tmp/system $from_date
 
 cat /tmp/system/files* |curl $CURL_OPTS https://172.17.0.1:2380/v0/restore/system/files/$section
 #cat /tmp/system/db*gz |curl $CURL_OPTS https://172.17.0.1:2380/v0/restore/system/db
-rm -r /tmp/system
+/home/actionators/_clr_restore.sh system
 }
 
 function restore_registry {
@@ -31,9 +36,9 @@ fi
 
 if test -z $path
  then
-   run_duply logs restore /tmp/logs
-   cp -rp /tmp/logs /backup_src/
-   rm -r /tmp/logs
+   run_duply logs restore /tmp/logs $from_date
+   /home/actionators/_restore.sh $replace logs
+   /home/actionators/_clr_restore.sh logs
 else
   run_duply logs fetch $path /backup_src/logs/$path
 fi
@@ -53,10 +58,13 @@ fi
 
 if test -z $path
  then
-  run_duply engines_fs restore /backup_src/volumes/fs/
+  run_duply engines_fs restore /tmp/volumes/fs/ $from_date
 else
-  run_duply engines_fs fetch $path /backup_src/volumes/fs/$path
+  run_duply engines_fs fetch $path /backup_src/volumes/fs/$path $from_date
 fi
+  
+  /home/actionators/_restore.sh $replace volumes
+  /home/actionators/_clr_restore.sh volumes
   
 }
 
@@ -69,7 +77,7 @@ if test -z $section
 fi  
 
 tar -cpf - /tmp/$service |curl $CURL_OPTS https://172.17.0.1:2380/v0/restore/service/$service/$section 
-rm -r /tmp/$service
+/home/actionators/_clr_restore.sh $service
 }
 
 function restore_services {
