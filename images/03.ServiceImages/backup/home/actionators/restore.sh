@@ -11,9 +11,16 @@ fi
 CURL_OPTS="-k -X PUT --header "Content-Type:application/octet-stream" --data-binary  @-"
 
 function restore_system {
-run_duply system restore /tmp/system $from_date
 
-cat /tmp/system/files* |curl $CURL_OPTS https://172.17.0.1:2380/v0/restore/system/files/$section
+run_duply system restore /tmp/system/ $from_date
+
+if test -z $source
+ then
+	cat /tmp/system/files* |curl $CURL_OPTS https://172.17.0.1:2380/v0/restore/system/files/$section
+else
+  tar -tpf /tmp/t/files_* opt/engines/run/containers/$source \
+  | tar -cpf - |curl $CURL_OPTS https://172.17.0.1:2380/v0/restore/system/files/$source
+fi
 #cat /tmp/system/db*gz |curl $CURL_OPTS https://172.17.0.1:2380/v0/restore/system/db
 /home/actionators/_clr_restore.sh system
 }
@@ -40,7 +47,9 @@ if test -z $path
    /home/actionators/_restore.sh $replace logs
    /home/actionators/_clr_restore.sh logs
 else
-  run_duply logs fetch $path /backup_src/logs/$path
+  run_duply logs fetch $path /tmp/logs 
+   /home/actionators/_restore.sh $replace logs
+   /home/actionators/_clr_restore.sh logs
 fi
 }
 
@@ -116,6 +125,11 @@ elif test $type = service
      service=$source
      service_restore
     fi
+elif test $type = engine
+ then
+  restore_system  
+  volume_restore
+  restore_services
 else
  echo "Unknown Restore Type"
  exit 255   
