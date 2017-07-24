@@ -43,11 +43,11 @@ fi
 
 if test -z $path
  then
-   run_duply logs restore /tmp/logs $from_date
+  /home/run_duply logs restore /tmp/logs $from_date
    /home/actionators/_restore.sh $replace logs
    /home/actionators/_clr_restore.sh logs
 else
-  run_duply logs fetch $path /tmp/logs 
+ /home/run_duply logs fetch $path /tmp/logs 
    /home/actionators/_restore.sh $replace logs
    /home/actionators/_clr_restore.sh logs
 fi
@@ -67,9 +67,9 @@ fi
 
 if test -z $path
  then
-  run_duply engines_fs restore /tmp/volumes/fs/ $from_date
+ /home/run_duply engines_fs restore /tmp/volumes/fs/ $from_date
 else
-  run_duply engines_fs fetch $path /backup_src/volumes/fs/$path $from_date
+ /home/run_duply engines_fs fetch $path /backup_src/volumes/fs/$path $from_date
 fi
   
   /home/actionators/_restore.sh $replace volumes
