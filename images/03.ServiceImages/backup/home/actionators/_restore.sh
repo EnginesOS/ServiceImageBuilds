@@ -1,6 +1,6 @@
 #!/bin/bash
 
-restore_name=`echo $2` |sed "/[ ;\\\'\"]/s///g"`
+restore_name=`echo $2 |sed "/[ ;\\\'\"]/s///g"`
 if ! test -z $section
  then
    restore_name=restore_name/$section

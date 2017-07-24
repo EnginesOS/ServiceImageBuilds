@@ -54,7 +54,7 @@ fi
 }
 
 function volume_restore {
-if $section = all
+if test $section = all
  then
   $section=''
 fi
@@ -78,7 +78,7 @@ fi
 }
 
 function service_restore {
-run_duply $service restore /tmp/$service $from_date
+/home/run_duply $service restore /tmp/$service $from_date
 
 if test -z $section
  then
