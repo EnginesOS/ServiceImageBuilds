@@ -22,11 +22,12 @@ if test -z current_backup
  then 
   current_backup=none
 fi
+current_operation=`cat /engines/var/run/flags/current_operation`
 if test -z current_operation
  then 
   current_operation=none
 fi
-echo -n ',"current_backup":"'$current_backup`
-echo -n '","current_operation":"'$current_operation`
+echo -n ',"current_backup":"'$current_backup
+echo -n '","current_operation":"'$current_operation
 echo -n '"}'
 
