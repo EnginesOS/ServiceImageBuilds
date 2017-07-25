@@ -22,7 +22,7 @@ else
   | tar -cpf - |curl $CURL_OPTS https://172.17.0.1:2380/v0/restore/system/files/$source
 fi
 #cat /tmp/system/db*gz |curl $CURL_OPTS https://172.17.0.1:2380/v0/restore/system/db
-/home/restore/_clr_restore.sh system
+sudo -n /home/restore/_clr_restore.sh system
 }
 
 function restore_registry {
@@ -44,12 +44,12 @@ fi
 if test -z $path
  then
   /home/run_duply logs restore /tmp/logs $from_date
-   /home/restore/_restore.sh $replace logs
-   /home/restore/_clr_restore.sh logs
+  sudo -n /home/restore/_restore.sh $replace logs
+  sudo -n /home/restore/_clr_restore.sh logs
 else
  /home/run_duply logs fetch $path /tmp/logs 
-   /home/restore/_restore.sh $replace logs
-   /home/restore/_clr_restore.sh logs
+  sudo -n /home/restore/_restore.sh $replace logs
+  sudo -n /home/restore/_clr_restore.sh logs
 fi
 }
 
@@ -72,8 +72,8 @@ else
  /home/run_duply engines_fs fetch $path /backup_src/volumes/fs/$path $from_date
 fi
   
-  /home/restore/_restore.sh $replace volumes
-  /home/restore/_clr_restore.sh volumes
+ sudo -n /home/restore/_restore.sh $replace volumes
+ sudo -n /home/restore/_clr_restore.sh volumes
   
 }
 
@@ -85,8 +85,8 @@ if test -z $section
   section=all
 fi  
 
-/home/restore/_bundle_restore.sh $service |curl $CURL_OPTS https://172.17.0.1:2380/v0/restore/service/$service/$section 
-/home/restore/_clr_restore.sh $service
+sudo -n /home/restore/_bundle_restore.sh $service |curl $CURL_OPTS https://172.17.0.1:2380/v0/restore/service/$service/$section 
+sudo -n /home/restore/_clr_restore.sh $service
 }
 
 function restore_services {
