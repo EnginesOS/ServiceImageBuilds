@@ -13,24 +13,18 @@ CURL_OPTS="-k -X PUT --header "Content-Type:application/octet-stream" --data-bin
 function restore_system {
 
 /home/run_duply system restore /tmp/system/ $from_date
+sudo -n /home/restore/_restore_system.sh
 
-if test -z $source
- then
-	cat /tmp/system/files* |curl $CURL_OPTS https://172.17.0.1:2380/v0/restore/system/files/$section
-else
-  tar -xpf /tmp/system/files_* opt/engines/run/containers/$source \
-  | tar -cpf - |curl $CURL_OPTS https://172.17.0.1:2380/v0/restore/system/files/$source
-fi
 #cat /tmp/system/db*gz |curl $CURL_OPTS https://172.17.0.1:2380/v0/restore/system/db
-sudo -n /home/restore/_clr_restore.sh system
+#sudo -n /home/restore/_clr_restore.sh system
 }
 
 function restore_registry {
-
+/home/run_duply registry restore /tmp/registry $from_date
 sudo -n /home/restore/_restore_registry.sh
 }
 
-function logs_restore {
+function restore_logs {
 if test $section = all
  then
   $section=''
@@ -58,8 +52,8 @@ if test $section = all
  then
   $section=''
 fi
-    
-  path=$source
+
+path=$source
 if ! test -z $section
  then
   path=$path/$section
@@ -99,7 +93,7 @@ echo  $type > /engines/var/run/flags/restore
 
 if test $type = full
  then
-  logs_restore
+  restore_logs
   restore_registry 
   restore_system  
   volume_restore

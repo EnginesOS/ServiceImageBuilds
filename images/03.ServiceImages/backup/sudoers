@@ -8,6 +8,7 @@ backup ALL = (root) NOPASSWD: /home/restore/_restore_registry.sh
 backup ALL = (root) NOPASSWD: /home/restore/_clr_restore.sh
 backup ALL = (root) NOPASSWD: /home/restore/_restore.sh
 backup ALL = (root) NOPASSWD: /home/restore/_bundle_restore.sh
+backup ALL = (root) NOPASSWD: /home/restore/_restore_system.sh
 #must have blank after last sudoers line
 
 
