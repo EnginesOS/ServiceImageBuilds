@@ -12,7 +12,7 @@ CURL_OPTS="-k -X PUT --header "Content-Type:application/octet-stream" --data-bin
 
 function restore_system {
 
-run_duply system restore /tmp/system/ $from_date
+/home/run_duply system restore /tmp/system/ $from_date
 
 if test -z $source
  then
