@@ -31,7 +31,7 @@ sudo -n /home/restore/_restore_registry.sh
 }
 
 function logs_restore {
-if $section = all
+if test $section = all
  then
   $section=''
  fi  
