@@ -3,10 +3,20 @@
 . /home/engines/functions/params_to_env.sh
 parms_to_env
 
+if test -z $section 
+ then
+  $section=''
+elif test $section = all
+ then
+  $section=''
+ fi  
+ 
 if test -z $replace
  then
   replace=replace #replace|rename|missing
 fi
+export replace section source
+
 
 CURL_OPTS="-k -X PUT --header "Content-Type:application/octet-stream" --data-binary  @-"
 
@@ -25,10 +35,6 @@ sudo -n /home/restore/_restore_registry.sh
 }
 
 function restore_logs {
-if test $section = all
- then
-  $section=''
- fi  
 
 if ! test -z $section
  then
@@ -48,10 +54,7 @@ fi
 }
 
 function volume_restore {
-if test $section = all
- then
-  $section=''
-fi
+
 
 path=$source
 if ! test -z $section
@@ -73,13 +76,9 @@ fi
 
 function service_restore {
 /home/run_duply $service restore /tmp/$service $from_date
+ 
 
-if test -z $section
- then
-  section=all
-fi  
-
-sudo -n /home/restore/_bundle_restore.sh $service |curl $CURL_OPTS https://172.17.0.1:2380/v0/restore/service/$service/$section 
+sudo -n /home/restore/_bundle_restore.sh $service |curl $CURL_OPTS https://172.17.0.1:2380/v0/restore/service/$service/$replace/$section 
 sudo -n /home/restore/_clr_restore.sh $service
 }
 
@@ -94,10 +93,10 @@ echo  $type > /engines/var/run/flags/restore
 if test $type = full
  then
   restore_logs
-  restore_registry 
-  restore_system  
   volume_restore
   restore_services
+  restore_registry 
+  restore_system  
 elif test $type = system
  then
   restore_system 
