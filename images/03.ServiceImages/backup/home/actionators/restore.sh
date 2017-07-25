@@ -18,16 +18,16 @@ if test -z $source
  then
 	cat /tmp/system/files* |curl $CURL_OPTS https://172.17.0.1:2380/v0/restore/system/files/$section
 else
-  tar -tpf /tmp/t/files_* opt/engines/run/containers/$source \
+  tar -xpf /tmp/system/files_* opt/engines/run/containers/$source \
   | tar -cpf - |curl $CURL_OPTS https://172.17.0.1:2380/v0/restore/system/files/$source
 fi
 #cat /tmp/system/db*gz |curl $CURL_OPTS https://172.17.0.1:2380/v0/restore/system/db
-/home/actionators/_clr_restore.sh system
+/home/restore/_clr_restore.sh system
 }
 
 function restore_registry {
 
-sudo -n /home/actionators/_restore_registry.sh
+sudo -n /home/restore/_restore_registry.sh
 }
 
 function logs_restore {
@@ -44,12 +44,12 @@ fi
 if test -z $path
  then
   /home/run_duply logs restore /tmp/logs $from_date
-   /home/actionators/_restore.sh $replace logs
-   /home/actionators/_clr_restore.sh logs
+   /home/restore/_restore.sh $replace logs
+   /home/restore/_clr_restore.sh logs
 else
  /home/run_duply logs fetch $path /tmp/logs 
-   /home/actionators/_restore.sh $replace logs
-   /home/actionators/_clr_restore.sh logs
+   /home/restore/_restore.sh $replace logs
+   /home/restore/_clr_restore.sh logs
 fi
 }
 
@@ -72,8 +72,8 @@ else
  /home/run_duply engines_fs fetch $path /backup_src/volumes/fs/$path $from_date
 fi
   
-  /home/actionators/_restore.sh $replace volumes
-  /home/actionators/_clr_restore.sh volumes
+  /home/restore/_restore.sh $replace volumes
+  /home/restore/_clr_restore.sh volumes
   
 }
 
@@ -85,8 +85,8 @@ if test -z $section
   section=all
 fi  
 
-tar -cpf - /tmp/$service |curl $CURL_OPTS https://172.17.0.1:2380/v0/restore/service/$service/$section 
-/home/actionators/_clr_restore.sh $service
+/home/restore/_bundle_restore.sh $service |curl $CURL_OPTS https://172.17.0.1:2380/v0/restore/service/$service/$section 
+/home/restore/_clr_restore.sh $service
 }
 
 function restore_services {
