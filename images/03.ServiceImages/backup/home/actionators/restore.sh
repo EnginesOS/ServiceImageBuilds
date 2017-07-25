@@ -66,7 +66,8 @@ if test -z $path
  then
  /home/run_duply engines_fs restore /tmp/volumes/fs/ $from_date
 else
- /home/run_duply engines_fs fetch $path /tmp/volumes/fs/ $from_date
+ 
+ /home/run_duply engines_fs fetch $path /tmp/volumes/fs/$path $from_date
 fi
   
  sudo -n /home/restore/_restore.sh $replace volumes
