@@ -3,7 +3,7 @@
 . /home/engines/functions/params_to_env.sh
 parms_to_env
 
-if test -z replace
+if test -z $replace
  then
   replace=replace #replace|rename|missing
 fi
@@ -63,7 +63,7 @@ if test -z $path
  then
  /home/run_duply engines_fs restore /tmp/volumes/fs/ $from_date
 else
- /home/run_duply engines_fs fetch $path /backup_src/volumes/fs/$path $from_date
+ /home/run_duply engines_fs fetch $path /tmp/volumes/fs/ $from_date
 fi
   
  sudo -n /home/restore/_restore.sh $replace volumes

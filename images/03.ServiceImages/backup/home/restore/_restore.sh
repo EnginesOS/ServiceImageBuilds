@@ -8,13 +8,13 @@ fi
 
 case $1 in
  replace)
-	cp -rp /tmp/$restore_name /backup_src/$restore_name
+	cp -rp /tmp/$restore_name /backup_src/
  ;;
  rename)
-	cp -rp /tmp/$restore_name /backup_src/$restore_name/restored
+	cp -rp /tmp/$restore_name /backup_src/$restore_name_restored
  ;;
  missing)
-	cp -rnp /tmp/$restore_name /backup_src/$restore_name
+	cp -rnp /tmp/$restore_name /backup_src/
  ;;
 esac
 
