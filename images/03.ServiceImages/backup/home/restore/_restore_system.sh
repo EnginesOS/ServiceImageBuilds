@@ -10,5 +10,6 @@ else
   tar -xpf /tmp/system/files_* opt/engines/run/containers/$source \
   | tar -cpf - |curl $CURL_OPTS https://172.17.0.1:2380/v0/restore/system/files/$source
 fi
+echo "Restored system $replace $source $section"
 
 rm -r /tmp/system

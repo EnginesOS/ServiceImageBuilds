@@ -18,4 +18,6 @@ case $1 in
  ;;
 esac
 
+echo "Restored $restore_name $replace $source $section"
+
 exit 0

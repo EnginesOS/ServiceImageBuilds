@@ -44,10 +44,12 @@ fi
 if test -z $path
  then
   /home/run_duply logs restore /tmp/logs $from_date
+   echo "Restoring full logs $replace"
   sudo -n /home/restore/_restore.sh $replace logs
   sudo -n /home/restore/_clr_restore.sh logs
 else
  /home/run_duply logs fetch $path /tmp/logs 
+  echo "Restoring logs $path $replace"
   sudo -n /home/restore/_restore.sh $replace logs
   sudo -n /home/restore/_clr_restore.sh logs
 fi
@@ -64,9 +66,10 @@ fi
 
 if test -z $path
  then
+ echo "Restoring engines_fs full $replace"
  /home/run_duply engines_fs restore /tmp/volumes/fs/ $from_date
 else
- 
+ echo "Restoring engines_fs $path"
  /home/run_duply engines_fs fetch $path /tmp/volumes/fs/$path $from_date
 fi
   
@@ -76,6 +79,7 @@ fi
 }
 
 function service_restore {
+echo "Restoring $service $replace $section"
 /home/run_duply $service restore /tmp/$service $from_date
  
 
