@@ -15,7 +15,7 @@ if test -z $section
  	dest=/backup_src/$restore_name/$source/`dirname $section`
  	src=/tmp/$restore_name/$source/$section
  fi
-end
+fi
 
 case $1 in
  replace)
