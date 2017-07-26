@@ -17,12 +17,15 @@ if test -z $section
 
 case $1 in
  replace)
+ echo "replace $src $dest"
 	cp -rp $src $dest
  ;;
  rename)
+ 	echo "rename $src $dest_restored"
 	cp -rp $src $dest_restored
  ;;
  missing)
+ 	echo "missing $src $dest"
 	cp -rnp $src $dest
  ;;
 esac
