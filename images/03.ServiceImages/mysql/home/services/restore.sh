@@ -1,7 +1,8 @@
 #!/bin/bash
 
-. /home/engines/functions/params_to_env.sh
-parms_to_env
+echo $0 $1 $2 >/tmp/called
+replace=$1
+section=$2
 
 #--replace
 if ! test -z $replace
