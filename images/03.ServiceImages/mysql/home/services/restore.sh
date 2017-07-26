@@ -7,11 +7,11 @@ section=$2
 #--replace
 if ! test -z $replace
  then
-  opts=--delete
+  opts=
 fi
 if ! test -z $section
  then
- opts=$opts --one-database $section
+ opts="$opts --one-database $section"
  fi
  
 echo "cat /tmp/mysql_server/backup.* | mysql -B $opts -h 127.0.0.1 -u rma  2> /tmp/mysqlimport.errs" >/tmp/restore.run

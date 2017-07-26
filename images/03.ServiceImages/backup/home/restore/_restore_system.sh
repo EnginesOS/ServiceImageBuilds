@@ -8,7 +8,7 @@ if test -z $source
 	cat /tmp/system/files* |curl $CURL_OPTS https://172.17.0.1:2380/v0/restore/system/files/$section
 else
   tar -xpf /tmp/system/files_* opt/engines/run/containers/$source \
-  | tar -cpf - |curl $CURL_OPTS https://172.17.0.1:2380/v0/restore/system/files/$source
+  | tar -cpf - |curl $CURL_OPTS https://172.17.0.1:2380/v0/restore/system/files/$replace/$source/$section
 fi
 echo "Restored system $replace $source $section"
 
