@@ -3,7 +3,7 @@
 restore_name=`echo $2 |sed "/[ ;\\\'\"]/s///g"`
 if test -z $source
  then
-    dest=/backup_src
+    dest=/backup_src/`dirname $restore_name`
     src=/tmp/$restore_name
 else
 
