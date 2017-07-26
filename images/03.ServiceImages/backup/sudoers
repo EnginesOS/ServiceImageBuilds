@@ -4,11 +4,11 @@ backup ALL = (root) NOPASSWD: /home/engines/scripts/_start_syslog.sh
 
 backup ALL = (root) NOPASSWD: /usr/bin/duply
 backup ALL = (root) NOPASSWD: /home/engines/scripts/_kill_syslog.sh
-backup ALL = (root) NOPASSWD: /home/restore/_restore_registry.sh
+backup ALL = (root) NOPASSWD: SETENV: /home/restore/_restore_registry.sh
 backup ALL = (root) NOPASSWD: /home/restore/_clr_restore.sh
-backup ALL = (root) NOPASSWD: /home/restore/_restore.sh
+backup ALL = (root) NOPASSWD: SETENV: /home/restore/_restore.sh
 backup ALL = (root) NOPASSWD: /home/restore/_bundle_restore.sh
-backup ALL = (root) NOPASSWD: /home/restore/_restore_system.sh
+backup ALL = (root) NOPASSWD: SETENV: /home/restore/_restore_system.sh
 #must have blank after last sudoers line
 
 

@@ -11,8 +11,8 @@ if test -z $section
  	dest=/backup_src/
  	src=/tmp/$restore_name
  else
- 	dest=/backup_src/$section
- 	src=backup_src/`dirname $section`
+ 	dest=/backup_src/`dirname $section`
+ 	src=/tmp/$restore_name/$section
  fi
 
 case $1 in

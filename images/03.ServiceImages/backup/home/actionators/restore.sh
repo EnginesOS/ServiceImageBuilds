@@ -23,7 +23,7 @@ CURL_OPTS="-k -X PUT --header "Content-Type:application/octet-stream" --data-bin
 function restore_system {
 
 /home/run_duply system restore /tmp/system/ $from_date
-sudo -n /home/restore/_restore_system.sh
+sudo -n -E /home/restore/_restore_system.sh
 
 #cat /tmp/system/db*gz |curl $CURL_OPTS https://172.17.0.1:2380/v0/restore/system/db
 #sudo -n /home/restore/_clr_restore.sh system
@@ -31,7 +31,7 @@ sudo -n /home/restore/_restore_system.sh
 
 function restore_registry {
 /home/run_duply registry restore /tmp/registry $from_date
-sudo -n /home/restore/_restore_registry.sh
+sudo -n -E /home/restore/_restore_registry.sh
 }
 
 function restore_logs {
@@ -45,12 +45,12 @@ if test -z $path
  then
   /home/run_duply logs restore /tmp/logs $from_date
    echo "Restoring full logs $replace"
-  sudo -n /home/restore/_restore.sh $replace logs
+  sudo -n -E /home/restore/_restore.sh $replace logs
   sudo -n /home/restore/_clr_restore.sh logs
 else
  /home/run_duply logs fetch $path /tmp/logs 
   echo "Restoring logs $path $replace"
-  sudo -n /home/restore/_restore.sh $replace logs
+  sudo -n -E /home/restore/_restore.sh $replace logs
   sudo -n /home/restore/_clr_restore.sh logs
 fi
 }
@@ -73,7 +73,7 @@ else
  /home/run_duply engines_fs fetch $path /tmp/volumes/fs/$path $from_date
 fi
   
- sudo -n /home/restore/_restore.sh $replace volumes
+ sudo -n -E /home/restore/_restore.sh $replace volumes
  sudo -n /home/restore/_clr_restore.sh volumes
   
 }
