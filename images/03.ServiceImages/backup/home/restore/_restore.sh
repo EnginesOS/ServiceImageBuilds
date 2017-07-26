@@ -6,15 +6,24 @@ if ! test -z $section
    restore_name=restore_name/$section
 fi
 
+if test -z $section
+ then
+ 	dest=/backup_src/
+ 	src=/tmp/$restore_name
+ else
+ 	dest=/backup_src/$section
+ 	src=backup_src/`dirname $section`
+ fi
+
 case $1 in
  replace)
-	cp -rp /tmp/$restore_name /backup_src/
+	cp -rp $src $dest
  ;;
  rename)
-	cp -rp /tmp/$restore_name /backup_src/$restore_name_restored
+	cp -rp $src $dest_restored
  ;;
  missing)
-	cp -rnp /tmp/$restore_name /backup_src/
+	cp -rnp $src $dest
  ;;
 esac
 
