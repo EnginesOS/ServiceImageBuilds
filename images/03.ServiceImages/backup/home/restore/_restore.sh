@@ -1,17 +1,14 @@
 #!/bin/bash
 
 restore_name=`echo $2 |sed "/[ ;\\\'\"]/s///g"`
-if ! test -z $section
- then
-   restore_name=restore_name/$section
-fi
+
 
 if test -z $section
  then
  	dest=/backup_src/
  	src=/tmp/$restore_name
  else
- 	dest=/backup_src/`dirname $section`
+ 	dest=/backup_src/$restore_name/`dirname $section`
  	src=/tmp/$restore_name/$section
  fi
 
