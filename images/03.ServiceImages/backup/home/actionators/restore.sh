@@ -5,10 +5,10 @@ parms_to_env
 
 if test -z $section 
  then
-  $section=''
-elif test $section = all
+  section=''
+elif test "$section" = all
  then
-  $section=''
+  section=''
  fi  
  
 if test -z $replace
