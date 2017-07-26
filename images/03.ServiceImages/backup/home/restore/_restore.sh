@@ -4,7 +4,7 @@ restore_name=`echo $2 |sed "/[ ;\\\'\"]/s///g"`
 if test -z $source
  then
     dest=/backup_src
-    src=/tmp/$$restore_name
+    src=/tmp/$restore_name
 else
 
 if test -z $section
