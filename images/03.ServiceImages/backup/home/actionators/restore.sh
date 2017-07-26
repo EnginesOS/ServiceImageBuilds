@@ -73,7 +73,7 @@ else
  /home/run_duply engines_fs fetch $path /tmp/volumes/fs/$path $from_date
 fi
   
- sudo -n -E /home/restore/_restore.sh $replace volumes
+ sudo -n -E /home/restore/_restore.sh $replace volumes/fs
  sudo -n /home/restore/_clr_restore.sh volumes
   
 }
