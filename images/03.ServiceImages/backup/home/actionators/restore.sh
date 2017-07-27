@@ -90,7 +90,7 @@ sudo -n /home/restore/_clr_restore.sh $service
 
 function restore_engines {
 
- curl $CURL_OPTS https://172.17.0.1:2380/v0/restore/engines/$source 
+ curl $CURL_OPTS https://172.17.0.1:2380/v0/restore/engines
 }
 
 function restore_services {
@@ -99,6 +99,10 @@ for service in syslog mongo_server mysql_server pgsql_server auth cert_auth emai
    service_restore
 done
 }
+
+function restore_engine_services {
+}
+
 echo  $type > /engines/var/run/flags/restore
 
 if test $type = full
@@ -132,13 +136,19 @@ elif test $type = service
     fi
 elif test $type = engine
  then
+  if test -z $source
+   then
+    echo "missing engine name"
+    exit 127
+   fi
   restore_system  
   volume_restore
-  restore_services
+  restore_engine_services
+  restore_engine
 else
  echo "Unknown Restore Type"
  exit 255   
 fi
-chown -R backup /home/backup/.gnupg/
+
 rm /engines/var/run/flags/restore
 exit 0
