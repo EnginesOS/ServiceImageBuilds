@@ -94,7 +94,8 @@ then
   				
   if test $include_files = "true"
     then
-      mkdir -p $Backup_ConfigDir/engines_fs
+    echo -n incr > $Backup_ConfigDir/engines_fs/backup_type
+    mkdir -p $Backup_ConfigDir/engines_fs
   	chmod og-r $Backup_ConfigDir/engines_fs
   	/home/prep_conf.sh $Backup_ConfigDir/engines_fs/conf
   	_dest=$dest/engines_files
