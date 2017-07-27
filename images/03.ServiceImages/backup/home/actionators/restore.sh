@@ -101,6 +101,7 @@ done
 }
 
 function restore_engine_services {
+echo ""
 }
 
 echo  $type > /engines/var/run/flags/restore
