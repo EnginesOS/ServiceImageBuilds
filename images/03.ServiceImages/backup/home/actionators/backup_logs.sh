@@ -32,7 +32,7 @@ if ! test -z $date
   fi 
 if ! test -z $backup_name 
  then 
- echo -n '{"backup_name":"'$backup_name'","date":"'$date'","contents":['
+ echo -n '{"backup_name":"'$backup_name'","date":"'$date'","contents":"'
  cp $log_file /tmp/log
  echo -n '"}' >> /tmp/log
  cat /tmp/log | sed ':a;$!{N;s/\n/\\r\\n/;ba;}'
