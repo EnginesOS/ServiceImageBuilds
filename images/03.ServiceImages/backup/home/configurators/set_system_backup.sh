@@ -74,6 +74,10 @@ then
   			  then
   				 continue
   			 fi 
+  			 if test $service = 'volmanager' 
+  			  then
+  				 continue
+  			 fi 
   			echo ADD SERVICE $service
   			add_service 
   		done	  						
