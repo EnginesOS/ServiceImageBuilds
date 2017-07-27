@@ -27,5 +27,7 @@ if test $? -ne 0
    exit -1
 fi
 rm -fr /tmp/mysql_server
+
+mysqladmin -u rma flush-privileges
  
- exit 0
+exit 0
