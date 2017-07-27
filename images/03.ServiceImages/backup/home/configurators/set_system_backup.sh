@@ -87,8 +87,8 @@ then
       /home/prep_conf.sh $Backup_ConfigDir/logs/conf
       _dest=$dest/logs
       echo "TARGET='$_dest'" >>$Backup_ConfigDir/logs/conf
-      echo "TARGET_USER='$user'"  >>$Backup_ConfigDir/logs/conf
-      echo "TARGET_PASS='$pass'"  >>$Backup_ConfigDir/logs/conf
+      echo "TARGET_USER='$user'" >>$Backup_ConfigDir/logs/conf
+      echo "TARGET_PASS='$pass'" >>$Backup_ConfigDir/logs/conf
       echo "SOURCE=/backup_src/logs/" >>$Backup_ConfigDir/logs/conf
   fi
   				
