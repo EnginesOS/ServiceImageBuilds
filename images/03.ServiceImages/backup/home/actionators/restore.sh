@@ -21,8 +21,9 @@ export replace section source
 CURL_OPTS="-k -X PUT --header "Content-Type:application/octet-stream" --data-binary  @-"
 
 function restore_system {
-
+echo "Restoring system $replace $source $section $from_date"
 /home/run_duply system restore /tmp/system/ $from_date
+
 sudo -n -E /home/restore/_restore_system.sh
 
 #cat /tmp/system/db*gz |curl $CURL_OPTS https://172.17.0.1:2380/v0/restore/system/db
@@ -87,6 +88,11 @@ sudo -n /home/restore/_bundle_restore.sh $service |curl $CURL_OPTS https://172.1
 sudo -n /home/restore/_clr_restore.sh $service
 }
 
+function restore_engines {
+
+ curl $CURL_OPTS https://172.17.0.1:2380/v0/restore/engines/$source 
+}
+
 function restore_services {
 for service in syslog mongo_server mysql_server pgsql_server auth cert_auth email imap 
  do
@@ -99,9 +105,10 @@ if test $type = full
  then
   restore_logs
   volume_restore
+  restore_system  
   restore_services
   restore_registry 
-  restore_system  
+  restore_engines 
 elif test $type = system
  then
   restore_system 
