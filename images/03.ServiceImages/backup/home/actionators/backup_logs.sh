@@ -6,9 +6,13 @@ parms_to_env
 
 cd /var/log/
 n=0
-if test -z $backup_name 
+if test -z $backup_name  
  then
-echo -n '{"backup_logs":['
+  echo -n '{"backup_logs":['
+fi
+if test -z $date  
+ then
+   echo -n '{"backup_logs":['
 fi
 
 for log_file in ` ls *_*`
