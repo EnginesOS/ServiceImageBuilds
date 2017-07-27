@@ -29,7 +29,9 @@ if ! test -z $date
   fi 
 if ! test -z $backup_name 
  then 
+ echo -n '{"backup_name":"'$backup_name'","date":'$date'","contents":"'
  cat $log_file
+  echo -n '"}'
  exit 0
 fi
 fi
