@@ -2,7 +2,7 @@ FROM engines/servicebase:$release
 Maintainer image.maintainer@engines.onl
 
 RUN apt-get -y update &&\
-	adduser -q --disabled-password -uid 22013 openldap &&\
+	adduser -q --disabled-password -uid 22030 openldap &&\
 	usermod -G containers -a openldap &&\
 	/home/no_init.sh &&\	
 	apt-get -y install slapd ldap-utils apache2 libapache2-mod-php  php7.0 apache2-utils phpldapadmin &&\
