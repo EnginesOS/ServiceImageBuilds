@@ -4,6 +4,10 @@ if ! test -f /engines/var/run/flags/first_run
   then
   	touch /engines/var/run/flags/first_run
   fi
+if ! test -d /var/log/apache2/
+ then 
+ mkdir -p /var/log/apache2/
+fi
 
 PID_FILE=/tmp/pids
 export PID_FILE
