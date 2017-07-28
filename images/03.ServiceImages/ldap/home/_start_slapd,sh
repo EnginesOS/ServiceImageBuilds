@@ -1,0 +1,6 @@
+#!/bin/bash
+ulimit -n 1024 
+/usr/sbin/slapd -d 4
+echo -n $! > /tmp/pids
+chmod g+x /tmp/pids
+chgrp containers /tmp/pids
