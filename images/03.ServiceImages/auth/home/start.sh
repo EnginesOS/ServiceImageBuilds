@@ -37,23 +37,19 @@ chmod og-rwx  /home/auth/.dbenv
 SIGNAL=0
 sudo -n /home/engines/scripts/_start_syslog.sh
 sudo -n /home/_start_sshd.sh
-sudo -n /home/_start_kerobos.sh &
-pid=$!
-touch /engines/var/run/flags/startup_complete
-echo "startup complete"
-wait $pid
-exit_code=$?
+sudo -n /home/_start_kerobos.sh 
 
- while test $SIGNAL -ne 3 -a $SIGNAL -ne 15
- do
-  if test -f $PID_FILE
-  	then
-  	echo "waiting"
-  	sleep 500 &
-		wait 
-		#echo $SIGNAL
-  fi
- done
+
+#while test $SIGNAL -ne 3 -a $SIGNAL -ne 15
+#do
+# if test -f $PID_FILE
+# 	then
+# 	echo "waiting"
+# 	sleep 500 &
+#		wait 
+#		#echo $SIGNAL
+# fi
+#done
 
 sudo /home/engines/scripts/_kill_syslog.sh
 rm -f /engines/var/run/flags/startup_complete
