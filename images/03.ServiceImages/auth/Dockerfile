@@ -11,12 +11,13 @@ COPY home home
 COPY kadm5.acl /etc/
 COPY krb5.conf /etc/
 COPY sudoers /etc/sudoers.d/auth
-	
-RUN	ssh-keygen -f /home/auth/ssh/ssh_host_rsa_key -N '' -t rsa &&\
-	ssh-keygen -f /home/auth/ssh/ssh_host_dsa_key -N '' -t dsa &&\
-	ssh-keygen -f /home/auth/ssh/ssh_host_ecdsa_key -N '' -t ecdsa &&\
-	ssh-keygen -f /home/auth/ssh/ssh_host_ed25519_key -N '' -t ed25519 &&\
-	mkdir -p  /home/auth/keys &&\
+
+# HUGE SECURITY HOLE !!!
+#RUN	ssh-keygen -f /home/auth/ssh/ssh_host_rsa_key -N '' -t rsa &&\
+#	ssh-keygen -f /home/auth/ssh/ssh_host_dsa_key -N '' -t dsa &&\
+#	ssh-keygen -f /home/auth/ssh/ssh_host_ecdsa_key -N '' -t ecdsa &&\
+#	ssh-keygen -f /home/auth/ssh/ssh_host_ed25519_key -N '' -t ed25519 &&\
+RUN	mkdir -p  /home/auth/keys &&\
 	chown -R auth /home/auth &&\
  	mkdir -p  /home/auth/static &&\
  	chown root /home/auth/static &&\
