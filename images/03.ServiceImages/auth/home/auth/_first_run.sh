@@ -1,5 +1,8 @@
 #!/bin/sh
 
+ssh-keygen -f /etc/ssh/ssh_host_rsa_key -N '' -t rsa
+ssh-keygen -f /etc/ssh/ssh_host_dsa_key -N '' -t dsa
+
 if test -f /home/home_dir/.ssh/krb.pass
  then 
   pass=`cat /home/home_dir/.ssh/krb.pass`
