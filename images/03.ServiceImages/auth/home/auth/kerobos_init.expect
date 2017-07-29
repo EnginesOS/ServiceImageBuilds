@@ -5,7 +5,7 @@ set timeout 10
 
 spawn  kdb5_util create -r ENGINES.INTERNAL -s
 
-expect "Enter KDC database master key:" { send "$env(key)\r" }
-expect "Re-enter KDC database master key to verify:" { send "$env(key)\r" }
+expect "Enter KDC database master key:" { send "$env(pass)\r" }
+expect "Re-enter KDC database master key to verify:" { send "$env(pass)\r" }
 
 interact
