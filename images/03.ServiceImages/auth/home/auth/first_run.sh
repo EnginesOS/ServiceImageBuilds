@@ -11,6 +11,11 @@ else
   chmod og-rwx /home/home_dir/.ssh/krb.pass
 fi
 
+
+cp -rp /var/lib/krb5kdc.init /var/lib/krb5kdc
+cp -rp /etc/krb5kdc.orig /etc/krb5kdc  
+	
+	
 export pass 
 expect /home/auth/kerobos_init.expect
 

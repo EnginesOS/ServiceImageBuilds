@@ -17,7 +17,9 @@ COPY sudoers /etc/sudoers.d/auth
 #	ssh-keygen -f /home/auth/ssh/ssh_host_dsa_key -N '' -t dsa &&\
 #	ssh-keygen -f /home/auth/ssh/ssh_host_ecdsa_key -N '' -t ecdsa &&\
 #	ssh-keygen -f /home/auth/ssh/ssh_host_ed25519_key -N '' -t ed25519 &&\
-RUN	mkdir -p  /home/auth/keys &&\
+RUN	mv /var/lib/krb5kdc /var/lib/krb5kdc.init &&\
+	mv /etc/krb5kdc /etc/krb5kdc.orig &&\
+	mkdir -p  /home/auth/keys &&\
 	chown -R auth /home/auth &&\
  	mkdir -p  /home/auth/static &&\
  	chown root /home/auth/static &&\
