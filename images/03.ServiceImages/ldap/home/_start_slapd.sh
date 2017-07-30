@@ -1,6 +1,6 @@
 #!/bin/bash
 ulimit -n 1024 
-/usr/sbin/slapd -d 4  -h ldap://0.0.0.0/  ldapi://%2Fusr%2Flocal%2Fvar%2Fldapi &
+/usr/sbin/slapd -d 4  -h "ldap://0.0.0.0/  ldapi:///"&
 pid=$!
 
 echo -n " $pid " >> /tmp/pids
