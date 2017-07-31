@@ -19,9 +19,6 @@ expect /home/auth/kerobos_init.expect
 
 kdb5_ldap_util -D  cn=admin,dc=engines,dc=internal create \
 	-subtrees dc=engines,dc=internal -r ENGINES.INTERNAL -s -H ldap://ldap.engines.internal
-	
 
-kdb5_ldap_util -D  cn=admin,dc=engines,dc=internal stashsrvpw \
-	-f /etc/krb5kdc/service.keyfile cn=admin,dc=engines,dc=internal
 	
 
