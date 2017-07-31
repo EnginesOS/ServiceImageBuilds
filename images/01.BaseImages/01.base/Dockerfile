@@ -27,7 +27,7 @@ RUN	echo '#!/bin/sh' >/usr/sbin/policy-rc.d &&\
 	/home/no_init.sh &&\
 	apt-get -y --fix-missing install krb5-user krb5-config expect-lite rsyslog git language-pack-en-base apt-file software-properties-common build-essential unzip curl  dnsutils git  wget bzip2 zlibc &&\ 
 	apt-get -y clean &&\
-	mkdir -p /var/run &&\krb5-user:
+	mkdir -p /var/run &&\
 	mkdir -p /etc/apt/apt.conf.d/ &&\
 	dpkg-divert --local --rename --add /sbin/initctl &&\
 	rm /sbin/initctl &&\
