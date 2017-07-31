@@ -4,7 +4,7 @@ FROM engines/xenialbase:$release
 ENV DEBIAN_FRONTEND noninteractive
 
 COPY invoke-rc.d /usr/sbin/
-ADD sources.list /etc/apt/
+
 ADD home /home/
 	
 ENV	build 20161007

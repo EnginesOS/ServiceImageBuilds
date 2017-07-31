@@ -25,4 +25,4 @@ ldapadd -Q -Y EXTERNAL -H ldapi:/// -f /tmp/cn\=kerberos.ldif
 
 
 kdb5_ldap_util -D  cn=admin,dc=engines,dc=internal stashsrvpw \
-	-f /etc/krb5kdc/service.keyfile cn=admin,dc=engines,dc=internal
+	-f /etc/krb5kdc/keys/service.keyfile cn=admin,dc=engines,dc=internal
