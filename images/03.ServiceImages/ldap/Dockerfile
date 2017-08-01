@@ -10,8 +10,7 @@ RUN apt-get -y update &&\
 	
 ADD home home
 
-RUN	/home/configure_kerobos.sh &&\
- 	/home/post_build_clean.sh &&\
+RUN	/home/post_build_clean.sh &&\
  	mkdir -p /var/log/apache2 &&\
  	chown www-data /var/log/apache2 
  	
