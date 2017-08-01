@@ -13,13 +13,16 @@ ADD home home
 
 RUN	/home/post_build_clean.sh &&\
  	mkdir -p /var/log/apache2 &&\
- 	chown www-data /var/log/apache2 
+ 	chown www-data /var/log/apache2  &&\
+ 	mkdir /var/run/slapd &&\
+ 	chown openldap /var/run/slapd
  	
 
 ADD 000-default.conf /etc/apache2/sites-enabled/
 ADD ports.conf /etc/apache2/
 ADD sudoers /etc/sudoers.d/ldap
 ADD ldap.conf /etc/ldap/
+ADD slapd.d /etc/ldap/
 
 ADD config.php /usr/share/phpldapadmin/config/config.php
 

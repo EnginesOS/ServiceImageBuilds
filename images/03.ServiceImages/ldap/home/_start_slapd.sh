@@ -3,6 +3,15 @@ ulimit -n 1024
 /usr/sbin/slapd -d 4  -h "ldap://0.0.0.0/  ldapi:///"&
 pid=$!
 
+if ! test -f /engines/var/run/flags/kerobos_configured
+ then
+  /home/configure_kerobos.sh
+   if test $? -eq 0
+    then
+     touch /engines/var/run/flags/kerobos_configured
+   fi
+fi  
+
 echo -n " $pid " >> /tmp/pids
 chmod g+x /tmp/pids
 chgrp containers /tmp/pids

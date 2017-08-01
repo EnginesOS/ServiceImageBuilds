@@ -22,21 +22,23 @@ tail -$l /tmp/cn >>/tmp/cn=kerberos.ldif
 ldapadd -Q -Y EXTERNAL -H ldapi:/// -f /tmp/cn\=kerberos.ldif
 
 echo "dn: olcDatabase={1}mdb,cn=config
- add: olcDbIndex
- olcDbIndex: krbPrincipalName eq,pres,sub
+add: olcDbIndex
+olcDbIndex: krbPrincipalName eq,pres,sub
  " | ldapmodify -Q -Y EXTERNAL -H ldapi:///
 
 echo "dn: olcDatabase={1}mdb,cn=config
- add: olcAccess
- olcAccess: to dn.base="" by * read
+add: olcAccess
+olcAccess: to dn.base="" by * read
 -
- add: olcAccess
- olcAccess: to * by dn="cn=admin,dc=engines,dc=internal" write by * read
+add: olcAccess
+olcAccess: to * by dn="cn=admin,dc=engines,dc=internal" write by * read
 -
 replace: olcAccess
- olcAccess: to attrs=userPassword,shadowLastChange,krbPrincipalKey by
- dn="cn=admin,dc=engines,dc=internal" write by anonymous auth by self write by * none
+olcAccess: to attrs=userPassword,shadowLastChange,krbPrincipalKey by \
+dn="cn=admin,dc=engines,dc=internal" write by anonymous auth by self write by * none
 " | ldapmodify -Q -Y EXTERNAL -H ldapi:///
+
+
 
 
 #move to expect script
@@ -46,3 +48,5 @@ kdb5_ldap_util -D  cn=admin,dc=engines,dc=internal stashsrvpw \
 #Password for "cn=admin,dc=engines,dc=internal": 
 #Re-enter password for "cn=admin,dc=engines,dc=internal": 
 #root@ldap:/# 
+
+exit 0
