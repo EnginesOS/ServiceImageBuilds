@@ -6,10 +6,11 @@ dn: ou=Groups,dc=engines,dc=internal
 objectClass: organizationalUnit
 ou: Groups
 
-dn: ou=Groups,dc=engines,dc=internal
+dn: ou=Services,dc=engines,dc=internal
 objectClass: organizationalUnit
 ou: Services
 
 dn: ou=Users,dc=engines,dc=internal
 objectClass: organizationalUnit
 ou: Users
+
