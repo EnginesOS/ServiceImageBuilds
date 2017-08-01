@@ -21,14 +21,12 @@ echo  "dn: cn=kerberos,cn=schema,cn=config
 tail -$l /tmp/cn >>/tmp/cn=kerberos.ldif
 ldapadd -Q -Y EXTERNAL -H ldapi:/// -f /tmp/cn\=kerberos.ldif
 
-echo " 
-dn: olcDatabase={1}mdb,cn=config
+echo "dn: olcDatabase={1}mdb,cn=config
  add: olcDbIndex
  olcDbIndex: krbPrincipalName eq,pres,sub
  " | ldapmodify -Q -Y EXTERNAL -H ldapi:///
 
-echo " 
-dn: olcDatabase={1}mdb,cn=config
+echo "dn: olcDatabase={1}mdb,cn=config
  add: olcAccess
  olcAccess: to dn.base="" by * read
 -
