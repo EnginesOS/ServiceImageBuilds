@@ -27,8 +27,7 @@ ADD slapd.d /home/slapd.d
 ADD config.php /usr/share/phpldapadmin/config/config.php
 
 RUN cat /home/Alias >> /etc/apache2/apache2.conf &&\
-	chmod -R go-rw /etc/sudoers /etc/sudoers.d/ &&\
-	chown openldap -R /etc/ldap/slapd.d
+	chmod -R go-rw /etc/sudoers /etc/sudoers.d/ 
 
 ENV ContUser openldap
 ENV ContGrp openldap
