@@ -16,8 +16,8 @@ head -$l /tmp/cn=kerberos.ldif > /tmp/cn
 l=`wc -l /tmp/cn |cut -f1 -d" "`
 l=`expr $l - 3`
 echo  "dn: cn=kerberos,cn=schema,cn=config
- objectClass: olcSchemaConfig
- cn: kerberos" >/tmp/cn=kerberos.ldif
+objectClass: olcSchemaConfig
+cn: kerberos" >/tmp/cn=kerberos.ldif
 tail -$l /tmp/cn >>/tmp/cn=kerberos.ldif
 ldapadd -Q -Y EXTERNAL -H ldapi:/// -f /tmp/cn\=kerberos.ldif
 
@@ -30,11 +30,11 @@ echo "dn: olcDatabase={1}mdb,cn=config
  add: olcAccess
  olcAccess: to dn.base="" by * read
 -
-add: olcAccess
-olcAccess: to * by dn="cn=admin,dc=engines,dc=internal" write by * read
+ add: olcAccess
+ olcAccess: to * by dn="cn=admin,dc=engines,dc=internal" write by * read
 -
 replace: olcAccess
-olcAccess: to attrs=userPassword,shadowLastChange,krbPrincipalKey by
+ olcAccess: to attrs=userPassword,shadowLastChange,krbPrincipalKey by
  dn="cn=admin,dc=engines,dc=internal" write by anonymous auth by self write by * none
 " | ldapmodify -Q -Y EXTERNAL -H ldapi:///
 
