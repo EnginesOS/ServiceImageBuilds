@@ -1,5 +1,7 @@
 #!/bin/sh
 
+touch /engines/var/run/flags/kerobos_configured
+
 if ! test -f /engines/var/run/flags/first_run
   then
     sudo -n /home/_first_run.sh

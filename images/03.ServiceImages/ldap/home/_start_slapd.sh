@@ -2,7 +2,7 @@
 ulimit -n 1024 
 /usr/sbin/slapd -d 4  -h "ldap://0.0.0.0/  ldapi:///"&
 pid=$!
-
+  
 if ! test -f /engines/var/run/flags/kerobos_configured
  then
   /home/configure_kerobos.sh
