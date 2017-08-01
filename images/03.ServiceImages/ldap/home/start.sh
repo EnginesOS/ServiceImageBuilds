@@ -2,8 +2,7 @@
 
 if ! test -f /engines/var/run/flags/first_run
   then
-  /home/configure_kerobos.sh
-  	touch /engines/var/run/flags/first_run
+    sudo -n /home/_first_run.sh
   fi
 if ! test -d /var/log/apache2/
  then 

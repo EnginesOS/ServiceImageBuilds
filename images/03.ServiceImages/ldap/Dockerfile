@@ -22,7 +22,7 @@ ADD 000-default.conf /etc/apache2/sites-enabled/
 ADD ports.conf /etc/apache2/
 ADD sudoers /etc/sudoers.d/ldap
 ADD ldap.conf /etc/ldap/
-ADD slapd.d /etc/ldap/slapd.d
+ADD slapd.d /home/slapd.d
 
 ADD config.php /usr/share/phpldapadmin/config/config.php
 
