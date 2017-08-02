@@ -16,7 +16,12 @@ fi
 	
 export pass 
 expect /home/auth/kerobos_init.expect
+expect /home/auth/kerobos_stash_key.expect
+ 
 
+#
+#
+#
 
 #kdb5_ldap_util -D  cn=admin,dc=engines,dc=internal create -subtrees dc=engines,dc=internal -r ENGINES.INTERNAL -s -H ldap://ldap.engines.internal
 kdb5_ldap_util  -sf /etc/krb5kdc/ldap/service.keyfile  create -subtrees dc=engines,dc=internal -r ENGINES.INTERNAL -s -H ldap://ldap.engines.internal
