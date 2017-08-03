@@ -26,6 +26,7 @@ RUN	echo '#!/bin/sh' >/usr/sbin/policy-rc.d &&\
 	apt-get -y update &&\
 	/home/no_init.sh &&\
 	apt-get -y --fix-missing install ldap-utils \
+			           			     ca-certificates \
 		 						     krb5-user \
 	 								 krb5-config \
 	 								 expect-lite \
