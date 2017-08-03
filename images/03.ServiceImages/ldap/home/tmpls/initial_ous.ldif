@@ -28,3 +28,9 @@ dn: ou=Users,dc=engines,dc=internal
 objectClass: organizationalUnit
 ou: Users
 
+dn: cn=Users,ou=Groups,dc=engines,dc=internal
+cn: Users
+gidnumber: 500
+objectclass: posixGroup
+objectclass: top
+
