@@ -4,7 +4,11 @@ ENV  RBENV_ROOT /usr/local/rbenv
 
 RUN /home/no_init.sh &&\			
 	apt-get update -y &&\
-	apt-get -y install build-essential ruby-dev libssl-dev libreadline-dev zlib1g-dev &&\
+	apt-get -y install build-essential \
+					   ruby-dev \
+					   libssl-dev \
+					   libreadline-dev \
+					   zlib1g-dev &&\
 	echo "Y" | adduser -q  --uid 22023 --home /home/registry --disabled-password registry &&\
 	usermod -G containers -a registry &&\
  	/home/post_build_clean.sh ;\

@@ -1,7 +1,8 @@
 FROM  engines/ngpassenger:$release
 
 RUN /usr/sbin/usermod -u 22050 www-data &&\
-	apt-get -y install libsqlite3-dev  libcurl4-openssl-dev &&\
+	apt-get -y install libsqlite3-dev \
+					   libcurl4-openssl-dev &&\
  	/home/post_build_clean.sh
 
 ENV ContUser www-data
