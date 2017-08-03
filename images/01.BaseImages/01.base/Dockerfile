@@ -38,7 +38,7 @@ RUN	echo '#!/bin/sh' >/usr/sbin/policy-rc.d &&\
 	 								 unzip \
 	 								 curl \
 	 								 dnsutils \
-	 								 wget 
+	 								 wget \
 	 								 bzip2 \
 	 								 zlibc &&\ 
 	apt-get -y clean &&\
