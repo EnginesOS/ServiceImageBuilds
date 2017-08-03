@@ -14,18 +14,18 @@
 #olcToolThreads: 1
 #
 ## Frontend settings
-dn: olcDatabase={-1}frontend,cn=config
-objectClass: olcDatabaseConfig
-objectClass: olcFrontendConfig
-olcDatabase: {-1}frontend
-# The maximum number of entries that is returned for a search operation
-olcSizeLimit: 500
-# Allow unlimited access to local connection from the local root user
-olcAccess: {0}to * by dn.exact=gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth manage by * break
-# Allow unauthenticated read access for schema and base DN autodiscovery
-olcAccess: {1}to dn.exact="" by * read
-olcAccess: {2}to dn.base="cn=Subschema" by * read
-
+#dn: olcDatabase={-1}frontend,cn=config
+#objectClass: olcDatabaseConfig
+#objectClass: olcFrontendConfig
+#olcDatabase: {-1}frontend
+## The maximum number of entries that is returned for a search operation
+#olcSizeLimit: 500
+## Allow unlimited access to local connection from the local root user
+#olcAccess: {0}to * by dn.exact=gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth manage by * break
+## Allow unauthenticated read access for schema and base DN autodiscovery
+#olcAccess: {1}to dn.exact="" by * read
+#olcAccess: {2}to dn.base="cn=Subschema" by * read
+#
 # Config db settings
 dn: olcDatabase=config,cn=config
 objectClass: olcDatabaseConfig
@@ -38,18 +38,18 @@ dn: cn=schema,cn=config
 objectClass: olcSchemaConfig
 cn: schema
 
-include: file:///etc/ldap/schema/core.ldif
-include: file:///etc/ldap/schema/cosine.ldif
-include: file:///etc/ldap/schema/nis.ldif
-include: file:///etc/ldap/schema/inetorgperson.ldif
+#include: file:///etc/ldap/schema/core.ldif
+#include: file:///etc/ldap/schema/cosine.ldif
+#include: file:///etc/ldap/schema/nis.ldif
+#include: file:///etc/ldap/schema/inetorgperson.ldif
 
 # Load module
-dn: cn=module{0},cn=config
-objectClass: olcModuleList
-cn: module{0}
+#dn: cn=module{0},cn=config
+#objectClass: olcModuleList
+#cn: module{0}
 # Where the dynamically loaded modules are stored
-olcModulePath: /usr/lib/ldap
-olcModuleLoad: back_mdb
+#olcModulePath: /usr/lib/ldap
+#olcModuleLoad: back_mdb
 
 # Set defaults for the backend
 dn: olcBackend=mdb,cn=config
@@ -68,12 +68,12 @@ olcDbMaxSize: 1073741824
 # Save the time that the entry gets modified, for database #1
 olcLastMod: TRUE
 # The base of your directory in database #1
-olcSuffix: cn=engines,cn=internal
+olcSuffix: dc=engines,dc=internal
 # Where the database file are physically stored for database #1
 olcDbDirectory: /var/lib/ldap
 # olcRootDN directive for specifying a superuser on the database. This
 # is needed for syncrepl.
-olcRootDN: cn=admin,cn=engines,cn=internal
+olcRootDN: cn=admin,dc=engines,dc=internal
 olcRootPW: password
 # Indexing options for database #1
 olcDbIndex: objectClass eq
