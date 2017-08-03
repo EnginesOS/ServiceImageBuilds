@@ -95,5 +95,10 @@ olcAccess: to attrs=shadowLastChange
   by * read
 # The admin dn (olcRootDN) bypasses ACLs and so has total access,
 # everyone else can read everything.
+#olcAccess: to *
+#  by * read
 olcAccess: to *
-  by * read
+        by dn="cn=admin,dc=engines,dc=internal" write
+        by dn="gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth" write
+        by dn="gidNumber=0,uidNumber=0,cn=peercred,cn=external,cn=auth" write
+        by * read

@@ -6,7 +6,7 @@ RUN apt-get -y update &&\
 	usermod -G containers -a openldap &&\
 	/home/no_init.sh &&\	
 	echo slapd slapd/no_configuration boolean true | debconf-set-selections &&\	
-	apt-get -y install sasl2-bin libsasl2-2 libsasl2-modules-gssapi-mit libsasl2-modules-ldap libsasl2-modules-ldap krb5-config krb5-user slapd ldap-utils apache2 libapache2-mod-php  php7.0 apache2-utils phpldapadmin 	
+	apt-get -y install sasl2-bin libsasl2-2  libsasl2-modules-gssapi-mit libsasl2-modules-ldap libsasl2-modules-ldap  krb5-kdc-ldap krb5-config krb5-user slapd ldap-utils apache2 libapache2-mod-php  php7.0 apache2-utils phpldapadmin 	
 
 ADD home home
 
