@@ -25,7 +25,22 @@ RUN	echo '#!/bin/sh' >/usr/sbin/policy-rc.d &&\
 	apt-get -y dist-upgrade &&\
 	apt-get -y update &&\
 	/home/no_init.sh &&\
-	apt-get -y --fix-missing install krb5-user krb5-config expect-lite rsyslog git language-pack-en-base apt-file software-properties-common build-essential unzip curl  dnsutils git  wget bzip2 zlibc &&\ 
+	apt-get -y --fix-missing install ldap-utils \
+		 						     krb5-user \
+	 								 krb5-config \
+	 								 expect-lite \
+	 								 rsyslog \
+	 								 git \
+	 								 language-pack-en-base \
+	 								 apt-file \
+	 								 software-properties-common \
+	 								 build-essential \
+	 								 unzip \
+	 								 curl \
+	 								 dnsutils \
+	 								 wget 
+	 								 bzip2 \
+	 								 zlibc &&\ 
 	apt-get -y clean &&\
 	mkdir -p /var/run &&\
 	mkdir -p /etc/apt/apt.conf.d/ &&\
