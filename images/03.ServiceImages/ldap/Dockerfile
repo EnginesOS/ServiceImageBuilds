@@ -28,7 +28,9 @@ RUN	/home/post_build_clean.sh &&\
  	mkdir -p /var/log/apache2 &&\
  	chown www-data /var/log/apache2  &&\
  	mkdir /var/run/slapd &&\
- 	chown openldap /var/run/slapd
+ 	chown openldap /var/run/slapd &&\
+ 	cp /usr/share/doc/samba-doc/examples/LDAP/samba.schema.gz /etc/ldap/schema/ &&\
+ 	gunzip /etc/ldap/schema/samba.schema.gz
  	
 
 ADD 000-default.conf /etc/apache2/sites-enabled/
