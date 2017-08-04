@@ -19,7 +19,8 @@ RUN apt-get -y update &&\
 				       libapache2-mod-php \
 				       php7.0 \
 				       apache2-utils \
-				       phpldapadmin 	
+				       phpldapadmin \
+				       samba-doc
 
 ADD home home
 

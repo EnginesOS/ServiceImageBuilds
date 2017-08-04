@@ -3,6 +3,7 @@ FROM engines/servicebase:$release
 RUN  /home/no_init.sh &&\			
 	apt-get update -y &&\
 	apt-get install -y  samba \
+						smbldap-tools \
 	                    libnss-mysql-bg \
 	                    libpam-mysql \
 	                    mysql-client \
