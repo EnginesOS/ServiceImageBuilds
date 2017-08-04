@@ -9,6 +9,7 @@ COPY etc /etc/
 RUN chmod 600 /etc/nss-mysql-root.conf &&\
 	adduser --uid 22018 -q --home /home/nfs --disabled-password nfs &&\
 	apt-get install -y git-core \
+					   bison \
 	                   cmake \
 	                   build-essential \
 	                   inetutils-syslogd \
