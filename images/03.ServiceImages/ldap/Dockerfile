@@ -19,8 +19,7 @@ RUN apt-get -y update &&\
 				       libapache2-mod-php \
 				       php7.0 \
 				       apache2-utils \
-				       phpldapadmin \
-				       samba-doc
+				       phpldapadmin 
 
 ADD home home
 
@@ -28,9 +27,7 @@ RUN	/home/post_build_clean.sh &&\
  	mkdir -p /var/log/apache2 &&\
  	chown www-data /var/log/apache2  &&\
  	mkdir /var/run/slapd &&\
- 	chown openldap /var/run/slapd &&\
- 	cp /usr/share/doc/samba-doc/examples/LDAP/samba.schema.gz /etc/ldap/schema/ &&\
- 	gunzip /etc/ldap/schema/samba.schema.gz
+ 	chown openldap /var/run/slapd 
  	
 
 ADD 000-default.conf /etc/apache2/sites-enabled/
