@@ -10,7 +10,6 @@ RUN apt-get -y update &&\
 				       libsasl2-2  \
 				       libsasl2-modules-gssapi-mit \
 				       libsasl2-modules-ldap \
-				       krb5-kdc-ldap \
 				       krb5-config \
 				       krb5-user \
 				       slapd \
