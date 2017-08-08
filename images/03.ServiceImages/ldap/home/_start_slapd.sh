@@ -5,6 +5,7 @@ pid=$!
   
 if ! test -f /engines/var/run/flags/init_ous_configured
  then
+ sleep 10
   /home/init_ous_configured.sh
    if test $? -eq 0
     then
