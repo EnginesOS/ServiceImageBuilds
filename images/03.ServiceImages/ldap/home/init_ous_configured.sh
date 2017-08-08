@@ -1,3 +1,3 @@
 #!/bin/bash
 
-sudo -h _init_ous_configured.sh
+sudo -n /home/_init_ous_configured.sh

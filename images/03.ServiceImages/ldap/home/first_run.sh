@@ -1,4 +1,4 @@
 #!/bin/bash
-sudo -n /home_first_run.sh
+sudo -n /home/_first_run.sh
  
  

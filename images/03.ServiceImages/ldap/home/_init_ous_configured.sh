@@ -1,5 +1,6 @@
 #!/bin/bash
-#dc=engines,dc=internal
+
+#Create dc=engines,dc=internal
 ldapadd -Y EXTERNAL -H ldapi:/// -f /home/tmpls/init.ldif
 
 #tree root groups and ous 
