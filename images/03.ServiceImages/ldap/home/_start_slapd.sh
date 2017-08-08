@@ -3,12 +3,12 @@ ulimit -n 1024
 /usr/sbin/slapd -d 4  -h "ldap://0.0.0.0/  ldapi:///"&
 pid=$!
   
-if ! test -f /engines/var/run/flags/kerobos_configured
+if ! test -f /engines/var/run/flags/init_ous_configured
  then
-  /home/configure_kerobos.sh
+  /home/init_ous_configured.sh
    if test $? -eq 0
     then
-     touch /engines/var/run/flags/kerobos_configured
+     touch /engines/var/run/flags/init_ous_configured
    fi
 fi  
 
