@@ -46,3 +46,6 @@ gidnumber: 500
 objectclass: posixGroup
 objectclass: top
 
+dn: ou=hosts,dc=engines,dc=internal
+objectClass: organizationalUnit
+ou: hosts

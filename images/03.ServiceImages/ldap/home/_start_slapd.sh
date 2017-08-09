@@ -1,5 +1,7 @@
 #!/bin/bash
 ulimit -n 1024 
+export KRB5_KTNAME=/etc/krb5kdc/keys/ldap.keytab
+
 /usr/sbin/slapd -d 4  -h "ldap://0.0.0.0/  ldapi:///"&
 pid=$!
   

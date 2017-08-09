@@ -1,0 +1,11 @@
+olcSaslHost: auth.engines.internal
+
+olcSaslRealm: ENGINES.INTERNAL
+
+olcSaslSecProps: noplain,noactive,noanonymous,minssf=56
+
+olcAuthzRegexp: {0}"uid=([^/]*),cn=engines.internal,cn=GSSAPI,cn=auth" "uid=$1,ou=people,dc=engines,dc=internal"
+
+olcAuthzRegexp: {1}"uid=host/([^/]*).engines.internal,cn=engines.internal,cn=gssapi,cn=auth" "cn=$1,ou=hosts,dc=engines,dc=internal"
+
+olcAuthzRegexp: {2}"uid=ldap/admin,cn=engines.internal,cn=gssapi,cn=auth" "cn=admin,cn=config"

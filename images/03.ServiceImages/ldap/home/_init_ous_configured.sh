@@ -9,3 +9,4 @@ ldapadd -Y EXTERNAL -H ldapi:/// -f /home/tmpls/initial_ous.ldif
 #Schema for postfix virtual accounts integration
 ldapadd -Y EXTERNAL -H ldapi:/// -f /home/tmpls/postfix.ldif
  
+ldapmodify -Y EXTERNAL -H ldapi:/// -f /home/tmpls/auth.ldif

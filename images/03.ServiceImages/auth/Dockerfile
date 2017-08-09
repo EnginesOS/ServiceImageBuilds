@@ -13,6 +13,7 @@ RUN /home/no_init.sh &&\
 COPY home home
 COPY kadm5.acl /etc/krb5kdc
 COPY krb5.conf /etc/
+COPY kdc.conf /etc/krb5
 COPY sudoers /etc/sudoers.d/auth
 
 
