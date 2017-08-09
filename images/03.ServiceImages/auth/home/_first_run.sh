@@ -1,9 +1,9 @@
 #!/bin/bash
 
 function gen_service_key {
-echo addprinc -randkey $service/$service@ENGINES.INTERNAL  | kadmin.local 
+echo addprinc -randkey $service/$service.ENGINES.INTERNAL@ENGINES.INTERNAL  | kadmin.local 
 mkdir /etc/krb5kdc/$service 
-echo ktadd -k /etc/krb5kdc/$service/$service.keytab $service/$service@ENGINES.INTERNAL | kadmin.local 
+echo ktadd -k /etc/krb5kdc/$service/$service.keytab $service/$service.ENGINES.INTERNAL@ENGINES.INTERNAL | kadmin.local 
 
 }
 
