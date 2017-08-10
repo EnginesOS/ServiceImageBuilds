@@ -26,7 +26,8 @@ RUN	/home/post_build_clean.sh &&\
  	mkdir -p /var/log/apache2 &&\
  	chown www-data /var/log/apache2  &&\
  	mkdir /var/run/slapd &&\
- 	chown openldap /var/run/slapd 
+ 	chown openldap /var/run/slapd  &&\
+ 	usermod -a -G sasl openldap
  	
 
 ADD 000-default.conf /etc/apache2/sites-enabled/
@@ -34,7 +35,7 @@ ADD ports.conf /etc/apache2/
 ADD sudoers /etc/sudoers.d/ldap
 ADD ldap.conf /etc/ldap/
 ADD slapd.d /home/slapd.d
-
+ADD sasl2_slapd.conf /usr/lib/sasl2/
 ADD config.php /usr/share/phpldapadmin/config/config.php
 
 RUN cat /home/Alias >> /etc/apache2/apache2.conf &&\
