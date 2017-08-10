@@ -1,6 +1,7 @@
 dn: cn=config
+changetype: modify
 add: olcSaslHost
-olcSaslHost: localhost
+olcSaslHost: ldap.engines.internal
 -
 add: olcSaslRealm
 olcSaslRealm: ENGINES.INTERNAL
@@ -9,10 +10,10 @@ add: olcSaslSecProps
 olcSaslSecProps: noplain,noactive,noanonymous,minssf=56
 -
 add: olcAuthzPolicy
-olcAuthzPolicy:    to
+olcAuthzPolicy: to
 -
 add: olcAuthzRegexp
-olcAuthzRegexp: {0}"uid=([^/]*),cn=gsapi,cn=auth" "uid=$1,ou=people,dc=engines,dc=internal"
+olcAuthzRegexp: {0}"uid=([^/]*),cn=gsapi,cn=auth" "ldap:///ou=people,dc=engines,dc=internal??one?(uid=$1)"
 olcAuthzRegexp: {1}"uid=host/([^/]*).engines.internal,cn=gssapi,cn=auth" "cn=$1,ou=hosts,dc=engines,dc=internal"
 olcAuthzRegexp: {2}"uid=ldap/admin,cn=cn=gssapi,cn=auth" "cn=admin,cn=config"
 
