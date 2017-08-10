@@ -30,3 +30,9 @@ for service in ldap ftp imap email postfix
  do
   gen_service_key
  done 
+ 
+echo addprinc -randkey ldap/ldap.engines.internal@ENGINES.INTERNAL | kadmin.local
+
+echo  ktadd -k /etc/krb5kdc/ldap/ldap.keytab ldap/ldap.engines.internal@ENGINES.INTERNAL | kadmin.local
+ 
+ 

@@ -1,0 +1,14 @@
+dn: cn=config
+add: olcAuthzRegexp
+olcAuthzRegexp:
+                uid=([^,]*),cn=digest-md5,cn=auth
+                cn=$1,dc=engines,dc=internal
+-
+add: olcAuthzPolicy
+olcAuthzPolicy:    to
+-
+replace: olcAccess
+olcAccess: to attrs=authzTo
+        by self none
+        by users none
+        by anonymous none
