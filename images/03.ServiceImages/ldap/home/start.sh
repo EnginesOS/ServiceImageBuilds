@@ -21,16 +21,11 @@ sudo -n /home/engines/scripts/_start_syslog.sh
 echo started syslog
 
 
-
-sudo -n /usr/sbin/apache2ctl start 
-echo -n " " >> /tmp/pids
-cat  /run//apache2/apache2.pid > /tmp/pids
-
 sudo -n /home/_start_slapd.sh
 
 exit_code=$?
 
-sleep 300
+
 
 sudo -n /home/engines/scripts/_kill_syslog.sh
 exit $exit_code

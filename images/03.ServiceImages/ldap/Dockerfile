@@ -13,12 +13,7 @@ RUN apt-get -y update &&\
 				       krb5-config \
 				       krb5-user \
 				       slapd \
-				       ldap-utils \
-				       apache2 \
-				       libapache2-mod-php \
-				       php7.0 \
-				       apache2-utils \
-				       phpldapadmin 
+				       ldap-utils 
 
 ADD home home
 
@@ -30,16 +25,13 @@ RUN	/home/post_build_clean.sh &&\
  	usermod -a -G sasl openldap
  	
 
-ADD  000-default.conf /etc/apache2/sites-enabled/
-ADD  ports.conf /etc/apache2/
 ADD  sudoers /etc/sudoers.d/ldap
 ADD  ldap.conf /etc/ldap/
 ADD  slapd.d /home/slapd.d
 COPY sasl2_slapd.conf /usr/lib/sasl2/slapd.conf
-ADD  config.php /usr/share/phpldapadmin/config/config.php
 
-RUN cat /home/Alias >> /etc/apache2/apache2.conf &&\
-	chmod -R go-rw /etc/sudoers /etc/sudoers.d/ 
+
+RUN  chmod -R go-rw /etc/sudoers /etc/sudoers.d/ 
 
 ENV ContUser openldap
 ENV ContGrp openldap
