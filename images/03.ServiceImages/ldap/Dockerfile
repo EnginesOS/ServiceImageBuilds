@@ -30,13 +30,13 @@ RUN	/home/post_build_clean.sh &&\
  	usermod -a -G sasl openldap
  	
 
-ADD 000-default.conf /etc/apache2/sites-enabled/
-ADD ports.conf /etc/apache2/
-ADD sudoers /etc/sudoers.d/ldap
-ADD ldap.conf /etc/ldap/
-ADD slapd.d /home/slapd.d
-ADD sasl2_slapd.conf /usr/lib/sasl2/
-ADD config.php /usr/share/phpldapadmin/config/config.php
+ADD  000-default.conf /etc/apache2/sites-enabled/
+ADD  ports.conf /etc/apache2/
+ADD  sudoers /etc/sudoers.d/ldap
+ADD  ldap.conf /etc/ldap/
+ADD  slapd.d /home/slapd.d
+COPY sasl2_slapd.conf /usr/lib/sasl2/slapd.conf
+ADD  config.php /usr/share/phpldapadmin/config/config.php
 
 RUN cat /home/Alias >> /etc/apache2/apache2.conf &&\
 	chmod -R go-rw /etc/sudoers /etc/sudoers.d/ 

@@ -28,11 +28,14 @@ olcDbDirectory: /var/lib/ldap
 # is needed for syncrepl.
 olcRootDN: cn=admin,dc=engines,dc=internal
 olcRootPW: password
+olcLastMod: TRUE
 # Indexing options for database #1
 olcDbIndex: objectClass eq
 olcDbIndex: cn,uid eq
 olcDbIndex: uidNumber,gidNumber eq
 olcDbIndex: member,memberUid eq
+olcDbIndex: uid pres,eq
+olcDbIndex: cn,sn,mail pres,eq,approx,sub
 # The userPassword by default can be changed by the entry owning it if
 # they are authenticated. Others should not be able to see it, except
 # the admin entry above.
