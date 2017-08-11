@@ -12,6 +12,9 @@ RUN	groupadd ruby &&\
 	mkdir -p ~www-data &&\
 	apt-get -y update &&\
 	chown www-data ~www-data &&\
-	apt-get install -y ruby-dev zlib1g zlib1g-dev gem &&\
+	apt-get install -y ruby-dev \
+					   zlib1g \
+					   zlib1g-dev \
+					   gem &&\
 	gem install bundle
 		

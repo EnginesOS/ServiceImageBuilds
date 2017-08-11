@@ -1,0 +1,15 @@
+#!/usr/bin/expect
+
+set timeout 10
+
+spawn kdb5_util stash
+
+expect "Enter KDC database master key:" { send "$env(pass)\r" }
+
+interact
+
+
+## kdb5_util stash
+#kdb5_util: Can not fetch master key (error: No such file or directory). while reading master key
+#kdb5_util: Warning: proceeding without master key
+#Enter KDC database master key:

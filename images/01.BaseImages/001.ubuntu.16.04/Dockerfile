@@ -1,6 +1,7 @@
 FROM engines/xenial:current
 
 COPY dpkg.conf.d /etc/dpkg/dpkg.cfg.d
+ADD sources.list /etc/apt/
 
 RUN echo '#!/bin/sh' > /usr/sbin/policy-rc.d &&\
 	echo 'exit 101' >> /usr/sbin/policy-rc.d &&\

@@ -6,7 +6,8 @@ COPY krb5.conf /etc/
 RUN echo "Y"| adduser --uid 22010 -q --home /home/ftpd --disabled-password proftpd &&\
 	/home/no_init.sh &&\	
 	apt-get -y update &&\
-  	apt-get -y install proftpd proftpd-mod-mysql libpam-krb5 &&\
+  	apt-get -y install proftpd \
+  					  proftpd-mod-ldap &&\
 	usermod -G containers -a proftpd &&\
 	ln -s /home/ftpd /run/proftpd &&\
  	/home/post_build_clean.sh

@@ -3,7 +3,8 @@ FROM  engines/servicebase:$release
 RUN echo "Y" |/usr/sbin/usermod -u 22012 syslog &&\
 	/home/no_init.sh &&\		
 	apt-get update -y &&\
- 	apt-get -y install syslog-ng-core syslog-ng &&\
+ 	apt-get -y install syslog-ng-core \
+ 					   syslog-ng &&\
  	mkdir -p /home/rlog/ &&\
  	chown syslog /var/lib/syslog-ng/ &&\
  	usermod -G containers -a syslog &&\

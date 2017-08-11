@@ -3,7 +3,7 @@
 . /home/engines/functions/params_to_env.sh
 parms_to_env
 
-
+sudo -n /home/actionators/_fix_perms.sh
 
 if test -z "$pub_key"
  then

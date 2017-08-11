@@ -4,7 +4,7 @@ FROM engines/xenialbase:$release
 ENV DEBIAN_FRONTEND noninteractive
 
 COPY invoke-rc.d /usr/sbin/
-ADD sources.list /etc/apt/
+
 ADD home /home/
 	
 ENV	build 20161007
@@ -25,7 +25,23 @@ RUN	echo '#!/bin/sh' >/usr/sbin/policy-rc.d &&\
 	apt-get -y dist-upgrade &&\
 	apt-get -y update &&\
 	/home/no_init.sh &&\
-	apt-get -y --fix-missing install expect-lite rsyslog git language-pack-en-base apt-file software-properties-common build-essential unzip curl  dnsutils git  wget bzip2 zlibc &&\ 
+	apt-get -y --fix-missing install ldap-utils \
+			           			     ca-certificates \
+		 						     krb5-user \
+	 								 krb5-config \
+	 								 expect-lite \
+	 								 rsyslog \
+	 								 git \
+	 								 language-pack-en-base \
+	 								 apt-file \
+	 								 software-properties-common \
+	 								 build-essential \
+	 								 unzip \
+	 								 curl \
+	 								 dnsutils \
+	 								 wget \
+	 								 bzip2 \
+	 								 zlibc &&\ 
 	apt-get -y clean &&\
 	mkdir -p /var/run &&\
 	mkdir -p /etc/apt/apt.conf.d/ &&\
@@ -52,6 +68,7 @@ RUN	echo '#!/bin/sh' >/usr/sbin/policy-rc.d &&\
  	mkdir /var/run/engines &&\
  	chgrp containers /var/run/engines && chmod g+w /var/run/engines 
 
+ADD krb5.conf /etc/
 ADD rsyslog.conf /etc/		
 
 CMD ["/home/init.sh"]

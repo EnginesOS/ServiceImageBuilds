@@ -2,7 +2,12 @@ FROM engines/servicebase:$release
 
 RUN  /home/no_init.sh &&\			
 	apt-get update -y &&\
-	apt-get install -y  samba libnss-mysql-bg libpam-mysql mysql-client rpcbind &&\
+	apt-get install -y  samba \
+						smbldap-tools \
+	                    libnss-mysql-bg \
+	                    libpam-mysql \
+	                    mysql-client \
+	                    rpcbind &&\
  	/home/post_build_clean.sh
 	
 COPY etc /etc/

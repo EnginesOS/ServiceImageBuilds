@@ -1,2 +1,2 @@
 #!/bin/sh
-htpasswd -b -c /etc/apache2/htpasswd ldap $1
+htpasswd -b -c /etc/apache2/htpasswd ldap "$1"

@@ -5,7 +5,9 @@ RUN echo "Y" | adduser -q --disabled-password --home /home/cron -uid 22016 cron 
 	usermod -G docker -a cron &&\
 	usermod -G containers -a cron &&\
 	apt-get  update &&\
-	apt-get -y install build-essential gcc make &&\
+	apt-get -y install build-essential \
+	                   gcc \
+	                   make &&\
 	cd /tmp &&\
   	wget ftp://ftp.seul.org/pub/fcron/fcron-3.3.0.src.tar.gz &&\
   	tar -xzpf fcron-3.3.0.src.tar.gz &&\

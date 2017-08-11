@@ -1,0 +1,60 @@
+
+# Load schemas
+dn: cn=schema,cn=config
+objectClass: olcSchemaConfig
+cn: schema
+
+# Set defaults for the backend
+dn: olcBackend=mdb,cn=config
+objectClass: olcBackendConfig
+olcBackend: mdb
+
+# The database definition.
+dn: olcDatabase=mdb,cn=config
+objectClass: olcDatabaseConfig
+objectClass: olcMdbConfig
+olcDatabase: mdb
+# Checkpoint the database periodically in case of system
+# failure and to speed slapd shutdown.
+olcDbCheckpoint: 512 30
+olcDbMaxSize: 1073741824
+# Save the time that the entry gets modified, for database #1
+olcLastMod: TRUE
+# The base of your directory in database #1
+olcSuffix: dc=engines,dc=internal
+# Where the database file are physically stored for database #1
+olcDbDirectory: /var/lib/ldap
+# olcRootDN directive for specifying a superuser on the database. This
+# is needed for syncrepl.
+olcRootDN: cn=admin,dc=engines,dc=internal
+olcRootPW: password
+olcLastMod: TRUE
+# Indexing options for database #1
+olcDbIndex: objectClass eq
+olcDbIndex: cn,uid eq
+olcDbIndex: uidNumber,gidNumber eq
+olcDbIndex: member,memberUid eq
+olcDbIndex: uid pres,eq
+olcDbIndex: cn,sn,mail pres,eq,approx,sub
+# The userPassword by default can be changed by the entry owning it if
+# they are authenticated. Others should not be able to see it, except
+# the admin entry above.
+olcAccess: to attrs=userPassword
+  by self write
+  by anonymous auth
+  by * none
+# Allow update of authenticated user's shadowLastChange attribute.
+# Updating it on password change is implemented at least by libpam-ldap,
+# libpam-ldapd, and the slapo-smbk5pwd overlay.
+olcAccess: to attrs=shadowLastChange
+  by self write
+  by * read
+# The admin dn (olcRootDN) bypasses ACLs and so has total access,
+# everyone else can read everything.
+#olcAccess: to *
+#  by * read
+olcAccess: to *
+        by dn="cn=admin,dc=engines,dc=internal" write
+        by dn="gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth" write
+        by dn="gidNumber=0,uidNumber=0,cn=peercred,cn=external,cn=auth" write
+        by * read
