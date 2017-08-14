@@ -22,10 +22,9 @@ olcDbDirectory: /var/lib/ldap
 olcRootDN: cn=admin,dc=engines,dc=internal
 olcRootPW: password
 olcDbIndex: objectClass eq
-olcDbIndex: cn,uid eq
+olcDbIndex: uid pres,eq
 olcDbIndex: uidNumber,gidNumber eq
 olcDbIndex: member,memberUid eq
-olcDbIndex: uid pres,eq
 olcDbIndex: cn,sn,mail pres,eq,approx,sub
 olcAccess: to attrs=userPassword
   by self write
