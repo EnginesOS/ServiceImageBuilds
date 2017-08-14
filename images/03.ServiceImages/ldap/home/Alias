@@ -1,3 +1,0 @@
-<IfModule mod_alias.c>
-    Alias /ldap /usr/share/phpldapadmin/htdocs
-</IfModule>

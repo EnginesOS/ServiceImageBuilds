@@ -21,7 +21,12 @@ export PID_FILE
 . /home/engines/functions/trap.sh
 
 SIGNAL=0
- 	
+
+if test -f  /var/run/mysqld/mysqld.sock.lock 
+  then
+  rm  /var/run/mysqld/mysqld.sock.lock
+fi 	
+
 /usr/sbin/mysqld --defaults-file=/etc/mysql/my.cnf --basedir=/usr --datadir=/var/lib/mysql --plugin-dir=/usr/lib/mysql/plugin --user=mysql --log-error=/var/log/mysql/error.log --pid-file=/var/run/mysqld/mysqld.pid --socket=/var/run/mysqld/mysqld.sock --bind-address=0.0.0.0 --port=3306 &
 touch  /engines/var/run/flags/startup_complete
 sleep 1

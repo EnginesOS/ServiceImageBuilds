@@ -2,7 +2,7 @@
 
 openldap ALL=(root) NOPASSWD: /home/configurators/_set_password.sh
 openldap ALL=(root) NOPASSWD: /home/_start_slapd.sh
-openldap ALL=(root) NOPASSWD: /usr/sbin/apache2ctl
+
 
 openldap ALL=(root) NOPASSWD: /home/engines/scripts/_start_syslog.sh
 openldap ALL=(root) NOPASSWD: /home/_signal.sh
