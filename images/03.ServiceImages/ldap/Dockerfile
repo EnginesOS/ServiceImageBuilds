@@ -28,7 +28,7 @@ RUN	/home/post_build_clean.sh &&\
 ADD  sudoers /etc/sudoers.d/ldap
 ADD  ldap.conf /etc/ldap/
 ADD  slapd.d /home/slapd.d
-COPY sasl2_slapd.conf /usr/lib/sasl2/slapd.conf
+COPY sasl2_slapd.conf /usr/lib/sasl2/
 
 
 RUN  chmod -R go-rw /etc/sudoers /etc/sudoers.d/ 
