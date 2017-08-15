@@ -7,7 +7,7 @@ export KRB5_KTNAME=/etc/krb5kdc/keys/ldap.keytab
 saslauthd -a kerberos5 -d &> /tmp/sas.log &
 
 ulimit -n 1024 
-/usr/sbin/slapd -d 4  -h "ldap://0.0.0.0/  ldapi:///"&
+/usr/sbin/slapd -d 52  -h "ldap://0.0.0.0/  ldapi:///"&
 pid=$!
 
  touch /engines/var/run/flags/init_ous_configured

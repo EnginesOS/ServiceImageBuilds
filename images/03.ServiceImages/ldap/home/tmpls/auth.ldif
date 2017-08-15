@@ -1,6 +1,5 @@
 dn: cn=config
 changetype: modify
--
 add: olcAccess
 olcAccess: to *
         by dn="cn=admin,dc=engines,dc=internal" write
@@ -25,4 +24,5 @@ add: olcAuthzRegexp
 olcAuthzRegexp: {0}"uid=host/([^/]*).engines.internal,cn=engines.internal,cn=gssapi,cn=auth" "cn=$1,ou=hosts,dc=engines,dc=internal"
 olcAuthzRegexp: {2}"uid=config/ldap,cn=engines.internal,cn=gssapi,cn=auth" "cn=admin,cn=config"
 olcAuthzRegexp: {3}"uid=admin/ldap,cn=engines.internal,cn=gssapi,cn=auth" "cn=admin,dc=engines,dc=internal"
-olcAuthzRegexp: {1}"uid=(*),cn=engines.internal,cn=gsapi,cn=auth" ldapi:///ou=People,dc=engines,dc=internal??one?(uid=$1)
+olcAuthzRegexp: {4}"gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth" "cn=admin,dc=engines,dc=internal"
+olcAuthzRegexp: {1}"uid=(.*),cn=engines.internal,cn=gsapi,cn=auth" ldapi:///ou=People,dc=engines,dc=internal??one?(uid=$1)
