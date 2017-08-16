@@ -1,13 +1,16 @@
 FROM engines/servicebase:$release
 
-COPY kadm5.acl /etc/
+#COPY kadm5.acl /etc/
 COPY krb5.conf /etc/
 
 RUN echo "Y"| adduser --uid 22010 -q --home /home/ftpd --disabled-password proftpd &&\
 	/home/no_init.sh &&\	
 	apt-get -y update &&\
-  	apt-get -y install proftpd \
-  					  proftpd-mod-ldap &&\
+  	apt-get -y install proftpd \sasl2-bin \
+				       libsasl2-2  \
+				       libsasl2-modules-gssapi-mit \
+				       libsasl2-modules-ldap \
+  					  	proftpd-mod-ldap &&\
 	usermod -G containers -a proftpd &&\
 	ln -s /home/ftpd /run/proftpd &&\
  	/home/post_build_clean.sh

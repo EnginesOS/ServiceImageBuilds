@@ -43,10 +43,23 @@ ou: Users
 
 dn: cn=Users,ou=Groups,dc=engines,dc=internal
 cn: Users
-gidnumber: 500
+gidnumber: 5000
 objectclass: posixGroup
 objectclass: top
+
+dn: cn=FTP Users,ou=Groups,dc=engines,dc=internal
+cn: FTP Users
+gidnumber: 5001
+objectclass: posixGroup
+objectclass: top
+
+dn: ou=Distribution Groups,ou=Groups,dc=engines,dc=internal
+objectclass: organizationalUnit
+objectclass: top
+ou: Distribution Groups
 
 dn: ou=hosts,dc=engines,dc=internal
 objectClass: organizationalUnit
 ou: hosts
+
+
