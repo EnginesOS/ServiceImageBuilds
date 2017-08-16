@@ -17,6 +17,8 @@ if test -z ${ip}
  else
    update_line=" update add $fqdn_str 30 A $ip"        
 fi  
+
+ip_reversed=`echo $ip |awk  ' BEGIN {  FS="."} {print $4 "." $3 "." $2 "." $1}'`
     
 echo server 127.0.0.1 > /tmp/.dns_cmd
 echo update delete $fqdn_str >> /tmp/.dns_cmd
