@@ -1,12 +1,12 @@
 #!/bin/sh
 
 
-
+touch /engines/var/run/flags/startup_complete
 /usr/sbin/krb5kdc -P /var/run/krb5kdc.pid -n & 
 /usr/sbin/kadmind -P /var/run/krb5admin.pid -nofork  &
 pid=$!
 
-kpid=`cat var/run/krb5kdc.pid `
+kpid=`cat /var/run/krb5kdc.pid `
  echo " $pid" >> $PID_FILE
 touch /engines/var/run/flags/startup_complete
 echo "startup complete"
