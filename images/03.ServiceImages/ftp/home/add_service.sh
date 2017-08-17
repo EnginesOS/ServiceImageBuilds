@@ -1,11 +1,24 @@
 #!/bin/bash
-if test $# -eq 0 
+kinit  -t /etc/krb5kdc/keys/ftp.keytab 
+
+if ! test -z
  then
- 	cat -   | ssh -p 2222  -o UserKnownHostsFile=/dev/null  -o StrictHostKeyChecking=no -i /home/ftpd/.ssh/add_rsa auth@auth.engines.internal /home/auth/scripts/ftp/add_service.sh 
+  if test $rw_access -eq 1
+   then
+     access=rw
+   else
+     access=ro
+   fi
  else
-	echo $1  | ssh -p 2222  -o UserKnownHostsFile=/dev/null  -o StrictHostKeyChecking=no -i /home/ftpd/.ssh/add_rsa auth@auth.engines.internal /home/auth/scripts/ftp/add_service.sh 
-fi
-
-
+    access=ro
+fi   
+cat /home/tmpls/new_user.ldif \
+ |sed "s/SN//$service_handle/" \
+ | sed "s/DIR/$engines_name\/$access\/$folder/" \
+ | sed "s/UID/$service_handle/" \
+ | sed "s/USER/$service_handle/" > /tmp/newuser.ldif
+ 
+ cat /tmp/newuser.ldif | ldapadd -H ldap://ldap/
+  
  
 
