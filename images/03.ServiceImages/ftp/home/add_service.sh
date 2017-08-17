@@ -19,6 +19,9 @@ cat /home/tmpls/new_user.ldif \
  | sed "s/USER/$service_handle/" > /tmp/newuser.ldif
  
  cat /tmp/newuser.ldif | ldapadd -H ldap://ldap/
+ 
+ #dont leave ticket open
+ kdestroy
   
  
 

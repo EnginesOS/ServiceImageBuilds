@@ -1,0 +1,10 @@
+dn: cn=SN,ou=ftp,ou=Service accounts,dc=engines,dc=internal
+cn:  SN
+gidnumber: 5001
+homedirectory: /ftp/DIR
+objectclass: inetOrgPerson
+objectclass: posixAccount
+objectclass: top
+sn: SN
+uid: UID
+userpassword: {SASL}USER/ftp@ENGINES.INTERNAL
