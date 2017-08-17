@@ -8,9 +8,9 @@ olcSaslRealm: ENGINES.INTERNAL
 -
 add: olcSaslSecProps
 olcSaslSecProps: noplain,noactive,noanonymous,minssf=56
-#-
-#add: olcAuthzPolicy
-#olcAuthzPolicy: to
+-
+add: olcAuthzPolicy
+olcAuthzPolicy: to
 -
 add: olcAuthzRegexp
 olcAuthzRegexp: {0}"uid=host/([^/]*).engines.internal,cn=engines.internal,cn=gssapi,cn=auth" "cn=$1,ou=hosts,dc=engines,dc=internal"
