@@ -17,34 +17,41 @@ olcAuthzRegexp: {0}"uid=host/([^/]*).engines.internal,cn=engines.internal,cn=gss
 olcAuthzRegexp: {1}"uid=config/ldap,cn=engines.internal,cn=gssapi,cn=auth" "cn=admin,cn=config"
 olcAuthzRegexp: {2}"uid=admin/ldap,cn=engines.internal,cn=gssapi,cn=auth" "cn=admin,dc=engines,dc=internal"
 olcAuthzRegexp: {3}"uid=([^,]*),cn=engines.internal,cn=gsapi,cn=auth" "ldap:///ou=people,dc=engines,dc=internal??one?(uid=$1)"
--
-add: cn
-cn: config
--
-add: olcArgsFile
-olcArgsFile: /var/run/slapd/slapd.args
--
-add: olcLogLevel
-olcLogLevel: none
--
-add: olcPidFile
-olcPidFile: /var/run/slapd/slapd.pid
--
-add: olcToolThreads
-olcToolThreads: 1
+#-
+#add: cn
+#cn: config
+#-
+#add: olcArgsFile
+#olcArgsFile: /var/run/slapd/slapd.args
+#-
+#add: olcLogLevel
+#olcLogLevel: none
+#-
+#add: olcPidFile
+#olcPidFile: /var/run/slapd/slapd.pid
+#-
+#add: olcToolThreads
+#olcToolThreads: 1
 -
 add: olcAccess
-olcAccess: {0} to attrs=userPassword
+olcAccess: {0}to attrs=userPassword
   by self write
   by anonymous auth
   by * none
-olcAccess: {1} to attrs=shadowLastChange
+-
+add: olcAccess
+olcAccess: {1}to attrs=shadowLastChange
   by self write
   by * read
-olcAccess: {2} to *
+-
+add: olcAccess
+olcAccess: {2}to *
         by dn="cn=admin,dc=engines,dc=internal" write
         by dn="cn=admin,cn=config" write
-        by dn="cn=ftp,ou=hosts,dc=engines,dc=internal" write
         by dn="gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth" write
         by dn="gidNumber=0,uidNumber=0,cn=peercred,cn=external,cn=auth" write
         by * read
+-
+add: olcAccess
+olcAccess: {3}to dn.subtree="ou=ftp,ou=Service accounts,dc=engines,dc=internal" by dn="cn=ftp,ou=hosts,dc=engines,dc=internal" write
+
