@@ -3,7 +3,6 @@ dn: cn=schema,cn=config
 objectClass: olcSchemaConfig
 cn: schema
 
-
 dn: dc=engines,dc=internal
 objectClass: dcObject
 objectclass: organization
@@ -41,13 +40,19 @@ gidnumber: 5000
 objectclass: posixGroup
 objectclass: top
 
-dn: cn=FTP Users,ou=Groups,dc=engines,dc=internal
-cn: FTP Users
+dn: cn=ftp,ou=Groups,dc=engines,dc=internal
+cn: ftp
 gidnumber: 5001
 objectclass: posixGroup
 objectclass: top
 
-dn: ou=Distribution Groups,ou=Groups,dc=engines,dc=internal
+dn: cn=data_access,ou=Groups,dc=engines,dc=internal
+cn: data_access
+gidnumber: 11111
+objectclass: posixGroup
+objectclass: top
+
+dn: ou=Distribution Groups,dc=engines,dc=internal
 objectclass: organizationalUnit
 objectclass: top
 ou: Distribution Groups
