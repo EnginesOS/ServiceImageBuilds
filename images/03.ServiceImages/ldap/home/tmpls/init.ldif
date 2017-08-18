@@ -48,5 +48,3 @@ olcAccess: {2}to *
 #        by * read
 olcAccess: {4}to dn.subtree="ou=ftp,ou=Service accounts,dc=engines,dc=internal" by dn="cn=ftp,ou=hosts,dc=engines,dc=internal" write
 
-            
-
