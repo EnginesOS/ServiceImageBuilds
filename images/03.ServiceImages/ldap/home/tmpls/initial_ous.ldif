@@ -71,3 +71,13 @@ objectclass: organizationalUnit
 objectclass: top
 ou: ftp
        
+dn: cn=uidNext,dc=engines,dc=internal
+objectClass: uidNext
+uidNumber: 25000
+cn: uidNext
+
+dn: cn=gidNext,dc=engines,dc=internal
+objectClass: gidNext
+gidNumber: 25000
+cn: gidNext
+

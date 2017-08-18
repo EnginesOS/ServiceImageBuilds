@@ -46,5 +46,9 @@ olcAccess: {2}to *
 #        by dn="gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth" write
 #        by dn="gidNumber=0,uidNumber=0,cn=peercred,cn=external,cn=auth" write
 #        by * read
-olcAccess: {4}to dn.subtree="ou=ftp,ou=Service accounts,dc=engines,dc=internal" by dn="cn=ftp,ou=hosts,dc=engines,dc=internal" write
+#FTP ONLY
+olcAccess: {4}to dn="cn=ftp,ou=Groups,dc=engines,dc=internal" by dn="cn=ftp,ou=hosts,dc=engines,dc=internal" write
+olcAccess: {5}to dn.subtree="ou=ftp,ou=Service accounts,dc=engines,dc=internal" by dn="cn=ftp,ou=hosts,dc=engines,dc=internal" write
+#Add Any Service that create user
+olcAccess: {6}to dn="cn=uidNext,dc=engines,dc=internal" by dn="cn=ftp,ou=hosts,dc=engines,dc=internal" write
 
