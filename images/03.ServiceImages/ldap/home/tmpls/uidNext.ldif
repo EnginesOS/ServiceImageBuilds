@@ -7,6 +7,3 @@ dn: cn=gidNext,cn=schema,cn=config
 objectClass: olcSchemaConfig
 cn: gidNext
 olcObjectClasses: ( 1.3.6.1.4.1.4203.666.600 NAME 'gidNext' SUP top STRUCTURAL MUST ( cn $ gidNumber ) )
-
-
-

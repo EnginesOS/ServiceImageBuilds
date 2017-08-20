@@ -7,4 +7,5 @@ objectclass: top
 sn: SN
 uid: UID
 userpassword: {SASL}USER/ftp@ENGINES.INTERNAL
+uidnumber: IDNUMBER
 homedirectory: 
