@@ -23,6 +23,7 @@ uid=`/home/next_id.sh`
 cat /home/tmpls/new_user.ldif \
  | sed "s/SN/$service_handle/" \
  | sed "s/IDNUMBER/$uid/" \
+ | sed "s/GID/${ftp_gid}/" \
  | sed "s/PASSWORD/${password}/" \
  | sed "s/UID/${service_handle}\/${service_container_name}/" \
  | sed "s/USER/${username}/" > /tmp/newuser.ldif
@@ -30,7 +31,9 @@ cat /home/tmpls/new_user.ldif \
  echo /ftp/$access/$parent_engine/$volume/$folder >> /tmp/newuser.ldif
 
 cat /tmp/newuser.ldif | ldapadd -H ldap://ldap/
- 
+
+/home/add_to_ftp_group.sh $uid
+
 #dont leave ticket open
 kdestroy
   

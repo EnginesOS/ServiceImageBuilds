@@ -6,4 +6,4 @@ changetype: modify
 increment: uidNumber
 uidNumber: 1" |  ldapmodify -H ldap://ldap/ &>/null
 
-ldapsearch -H ldap://ldap/ -b cn=uidNext,dc=engines,dc=internal |grep uidNu | awk '{print $2}'
+ldapsearch -H ldap://ldap/ -b cn=uidNext,dc=engines,dc=internal |grep uidNumber | awk '{print $2}'
