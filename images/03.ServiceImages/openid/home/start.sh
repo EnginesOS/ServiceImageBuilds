@@ -1,7 +1,7 @@
 #!/bin/sh
 
 
-PID_FILE=/var/run/nginx/nginx.pid
+PID_FILE=/var/run/apache.pid
 export PID_FILE
 . /home/engines/functions/trap.sh
 
@@ -9,8 +9,9 @@ mkdir /var/log/apache2
 mkdir /var/run/apache2
   
  
-sleep 3600 &
 
+/usr/sbin/apache2ctl -DFOREGROUND &	
+echo $? > /var/run/apache.pid
 touch  /engines/var/run/flags/startup_complete
 
 wait
