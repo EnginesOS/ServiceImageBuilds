@@ -4,6 +4,8 @@ install_target=$1
 cert_name=$2
 domain_name=$3
 
+store_name=`dirname $2`
+
 function install_cert {
 if test -z ${dest_name}
  then 
@@ -16,7 +18,8 @@ cp /home/certs/store/public/certs/${cert_name}.crt /home/certs/store/services/${
 cp /home/certs/store/public/keys/${cert_name}.key /home/certs/store/services/${service}/keys/${dest_name}.key
 chown $id /home/certs/store/services/${service}/keys/${dest_name}.key /home/certs/store/services/${service}/certs/${dest_name}.crt 
 chmod og-rw /home/certs/store/services/${service}/keys/${dest_name}.key 
-chmod og-w /home/certs/store/services/${service}/certs/${dest_name}.crt 
+chmod og-w /home/certs/store/services/${service}/certs/${dest_name}.crt
+echo $store_name > /home/certs/store/services/${service}/certs/store
 }
 
 function install_system {
