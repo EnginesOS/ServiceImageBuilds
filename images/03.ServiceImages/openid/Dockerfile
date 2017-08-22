@@ -12,7 +12,9 @@ RUN adduser -q --disabled-password --home /home/auth -uid 22032 openid &&\
 	                   php-apcu \
 	                   php-ldap \
 	                   php-dev  &&\
-	usermod -G containers -a openid &&\
+	 phpenmod ldap &&\
+	 pear install Net_LDAP2 &&\
+	 usermod -G containers -a openid &&\
  	/home/post_build_clean.sh
 
 COPY home home

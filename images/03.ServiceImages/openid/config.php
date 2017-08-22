@@ -203,7 +203,7 @@ define('SIMPLEID_EXTENSIONS', 'sreg,ui');
  * @since 0.7
  *
  */
-define('SIMPLEID_LOGFILE', ' /var/log/openid.log');
+define('SIMPLEID_LOGFILE', '/var/log/openid.log');
 
 /**
  * The level of detail for log messages.
