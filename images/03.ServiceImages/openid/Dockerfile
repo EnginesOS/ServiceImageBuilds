@@ -4,6 +4,7 @@ RUN adduser -q --disabled-password --home /home/auth -uid 22032 openid &&\
 	/home/no_init.sh &&\			
 	apt-get update -y &&\
 	apt-get -y install apache2 \
+						libapache2-mpm-itk \
 	                   php-gettext \
 	                   php-mbstring \
 	                   libapache2-mod-php7.0 \
