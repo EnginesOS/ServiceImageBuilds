@@ -11,11 +11,12 @@ mkdir /var/run/apache2
  
 
 /usr/sbin/apache2ctl -DFOREGROUND &	
+
 echo $? > /var/run/apache.pid
 touch  /engines/var/run/flags/startup_complete
 
 wait
 exit_code=$?
-	
+sleep 3600	
 rm /engines/var/run/flags/startup_complete
 exit $exit_code
