@@ -1,7 +1,7 @@
 #!/bin/sh
 
 
-PID_FILE=/var/run/apache.pid
+PID_FILE=/var/run/engines/apache.pid
 export PID_FILE
 . /home/engines/functions/trap.sh
 
@@ -12,7 +12,7 @@ mkdir /var/run/apache2
 
 /usr/sbin/apache2ctl -DFOREGROUND &	
 
-echo $? > /var/run/apache.pid
+echo $? > /var/run/engines/apache.pid
 touch  /engines/var/run/flags/startup_complete
 
 wait
