@@ -22,9 +22,13 @@ RUN mkdir -p /home/consumers/saved/ &&\
 	cd /tmp &&\
 	 wget http://downloads.sourceforge.net/simpleid/simpleid-1.0.2.tar.gz &&\
 	 tar -xzpf simpleid-1.0.2.tar.gz &&\
-	 mv simpleid /home/simpleid 
+	 mv simpleid /home/simpleid &&\
+	 wget https://raw.githubusercontent.com/simpleid/simpleid-ldap/master/ldap-filesystem.store.php &&\
+	 mv ldap-filesystem.store.php /home/simpleid/www/
+	 
 	 
 COPY config.php /home/simpleid/www/
+COPY ldap-filesystem.store.config.php /home/simpleid/www/
 COPY apache2 /etc/apache2
 
 ENV ContUser openid
