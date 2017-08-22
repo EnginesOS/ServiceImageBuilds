@@ -10,6 +10,7 @@ RUN adduser -q --disabled-password --home /home/auth -uid 22032 openid &&\
 	                   php-mcrypt \
 	                   php-gd \
 	                   php-apcu \
+	                   php-ldap \
 	                   php-dev  &&\
 	usermod -G containers -a openid &&\
  	/home/post_build_clean.sh
