@@ -26,7 +26,7 @@ expect /home/auth/kerobos_init.expect
 #expect /home/auth/kerobos_stash_key.expect
  
 
-for service in ldap ftp imap email postfix
+for service in ldap ftp imap email postfix openid
  do
   gen_service_key
  done 

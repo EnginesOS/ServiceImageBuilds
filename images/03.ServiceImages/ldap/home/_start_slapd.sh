@@ -10,7 +10,7 @@ ulimit -n 1024
 /usr/sbin/slapd -d 225  -h "ldap://0.0.0.0/  ldapi:///"&
 pid=$!
 
- touch /engines/var/run/flags/init_ous_configured
+#touch /engines/var/run/flags/init_ous_configured
   
 if ! test -f /engines/var/run/flags/init_ous_configured
  then

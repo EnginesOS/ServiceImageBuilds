@@ -21,8 +21,11 @@ for service in `ls /home/certs/store/services/`
    then
     echo -n ,
  fi
-  
- echo -n '{"service_name":"'$service'","cert_name":"'$domain'"}'
+ if test -f /home/certs/store/services/${service}/certs/store
+  then
+  	store_name=`cat /home/certs/store/services/${service}/certs/store`
+  fi
+ echo -n '{"service_name":"'$service'","cert_name":"'$domain'","store_name":"'$store_name'"}'
  n=1
 done
 

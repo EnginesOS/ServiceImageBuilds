@@ -3,19 +3,12 @@ dn: cn=schema,cn=config
 objectClass: olcSchemaConfig
 cn: schema
 
-
 dn: dc=engines,dc=internal
 objectClass: dcObject
 objectclass: organization
 o: engines.internal
 dc: engines
 description: LDAP Root
- olcAccess: to *
-        by dn="cn=admin,dc=engines,dc=internal" write
-        by dn="cn=admin,cn=config" write
-        by dn="gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth" write
-        by dn="gidNumber=0,uidNumber=0,cn=peercred,cn=external,cn=auth" write
-        by * read
 
 
 dn: cn=admin,dc=engines,dc=internal
@@ -47,13 +40,19 @@ gidnumber: 5000
 objectclass: posixGroup
 objectclass: top
 
-dn: cn=FTP Users,ou=Groups,dc=engines,dc=internal
-cn: FTP Users
+dn: cn=ftp,ou=Groups,dc=engines,dc=internal
+cn: ftp
 gidnumber: 5001
 objectclass: posixGroup
 objectclass: top
 
-dn: ou=Distribution Groups,ou=Groups,dc=engines,dc=internal
+dn: cn=data_access,ou=Groups,dc=engines,dc=internal
+cn: data_access
+gidnumber: 11111
+objectclass: posixGroup
+objectclass: top
+
+dn: ou=Distribution Groups,dc=engines,dc=internal
 objectclass: organizationalUnit
 objectclass: top
 ou: Distribution Groups
@@ -62,4 +61,23 @@ dn: ou=hosts,dc=engines,dc=internal
 objectClass: organizationalUnit
 ou: hosts
 
+dn: ou=Service accounts,dc=engines,dc=internal
+objectclass: organizationalUnit
+objectclass: top
+ou: Service accounts
+
+dn: ou=ftp,ou=Service accounts,dc=engines,dc=internal
+objectclass: organizationalUnit
+objectclass: top
+ou: ftp
+       
+dn: cn=uidNext,dc=engines,dc=internal
+objectClass: uidNext
+uidNumber: 25000
+cn: uidNext
+
+dn: cn=gidNext,dc=engines,dc=internal
+objectClass: gidNext
+gidNumber: 25000
+cn: gidNext
 
