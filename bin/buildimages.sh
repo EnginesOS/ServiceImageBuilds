@@ -47,6 +47,7 @@ export release
 cd images
 MasterImagesDir=`pwd`
 build_rest=0
+mkdir /tmp/$release/ &> /dev/null
 
 	for class in `ls $MasterImagesDir`
 		do 
@@ -89,9 +90,9 @@ build_rest=0
 							 cat Dockerfile | sed "/\$release/s//$release/" > Dockerfile.$release
 							  if test -f nocache
 							   then
-							 	docker build $extra --no-cache --rm=true -t $tag -f Dockerfile.$release .
+							 	docker build $extra --no-cache --rm=true -t $tag -f Dockerfile.$release .  &> /tmp/$release/$tag.build
 							   else
-							   		docker build $extra --rm=true -t $tag -f Dockerfile.$release .
+							   		docker build $extra --rm=true -t $tag -f Dockerfile.$release . &> /tmp/$release/$tag.build
 							   fi
 								if test $? -eq 0
 									then
