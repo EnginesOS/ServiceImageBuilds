@@ -48,6 +48,7 @@ cd images
 MasterImagesDir=`pwd`
 build_rest=0
 
+
 	for class in `ls $MasterImagesDir`
 		do 
 			cd $class
@@ -89,9 +90,9 @@ build_rest=0
 							 cat Dockerfile | sed "/\$release/s//$release/" > Dockerfile.$release
 							  if test -f nocache
 							   then
-							 	docker build $extra --no-cache --rm=true -t $tag -f Dockerfile.$release .
+							 	docker build $extra --no-cache --rm=true -t $tag -f Dockerfile.$release .  &> build.log
 							   else
-							   		docker build $extra --rm=true -t $tag -f Dockerfile.$release .
+							   		docker build $extra --rm=true -t $tag -f Dockerfile.$release . &> build.log
 							   fi
 								if test $? -eq 0
 									then
@@ -107,7 +108,7 @@ build_rest=0
 										touch last_built
 										build_rest=1
 							
-										docker rmi $( docker images -f "dangling=true" -q) 
+										docker rmi $( docker images -f "dangling=true" -q) &>/dev/null
 									else
 										echo "Failed to build $tag in $class/$dir"
 										exit
@@ -127,7 +128,7 @@ build_rest=0
 		done
 
 echo Clearing unlinked images
-docker rmi $( docker images -f "dangling=true" -q) 
+docker rmi $( docker images -f "dangling=true" -q) &>/dev/null
 
 
 
