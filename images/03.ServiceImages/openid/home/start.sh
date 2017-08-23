@@ -1,6 +1,11 @@
 #!/bin/sh
 
-
+if ! test -f /engines/run/flags/first_run_done
+ then
+   sudo -n /home/_setup.sh
+   touch /engines/run/flags/first_run_done
+fi
+  
 PID_FILE=/var/run/engines/apache.pid
 export PID_FILE
 . /home/engines/functions/trap.sh

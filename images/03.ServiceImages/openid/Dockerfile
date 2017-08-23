@@ -18,7 +18,7 @@ RUN adduser -q --disabled-password --home /home/auth -uid 22032 openid &&\
  	/home/post_build_clean.sh
 
 COPY home home
-
+ADD sudoers /etc/sudoers
 
 RUN mkdir -p /home/consumers/saved/ &&\
 	chown openid -R  /home/configurators/saved  /home/consumers/saved/ &&\
@@ -27,7 +27,8 @@ RUN mkdir -p /home/consumers/saved/ &&\
 	 tar -xzpf simpleid-1.0.2.tar.gz &&\
 	 mv simpleid /home/simpleid &&\
 	 wget https://raw.githubusercontent.com/simpleid/simpleid-ldap/master/ldap-filesystem.store.php &&\
-	 mv ldap-filesystem.store.php /home/simpleid/www/
+	 mv ldap-filesystem.store.php /home/simpleid/www/ &&\
+	 chmod -R go-rw /etc/sudoers /etc/sudoers.d/
 	 
 	 
 COPY config.php /home/simpleid/www/
