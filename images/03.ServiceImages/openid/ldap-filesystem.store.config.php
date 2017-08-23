@@ -14,4 +14,4 @@ define('LDAP_PORT', 389);
 /**
  * The LDAP base DN for the search
  */
-define('LDAP_BASE_DN', 'cn=People,dc=engines,dc=internal');
+define('LDAP_BASE_DN', 'ou=People,dc=engines,dc=internal');

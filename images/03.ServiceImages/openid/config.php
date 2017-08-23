@@ -188,7 +188,7 @@ define('SIMPLEID_ASSOC_EXPIRES_IN', 3600);
  * extensions you wish to load with a comma.
  *
  */
-define('SIMPLEID_EXTENSIONS', 'sreg,ui');
+define('SIMPLEID_EXTENSIONS', 'sreg,ui,core');
 
 /**
  * Log file.
