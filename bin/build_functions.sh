@@ -76,7 +76,7 @@ for arg in $*
     push all images $0 -pushonly "
     exit
   fi
-  		
+  		echo proceessing $arg
   if test $arg = '-A'
    then 	
      rm `find . -name last_built`
@@ -147,7 +147,6 @@ cd $dir
         echo "Forced Build"
         new="yesy yesy yesy"
       else
-        echo "test for Change driven build"
         new=`find . -newer ./last_built`
       fi      
       if ! test -z $pushonly
