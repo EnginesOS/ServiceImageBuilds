@@ -1,6 +1,6 @@
 #/bin/bash
 
-function builder_docker_image {
+function build_docker_image {
 							echo "----------------------"
 							echo "Building $tag"
 								if test -f setup.sh
