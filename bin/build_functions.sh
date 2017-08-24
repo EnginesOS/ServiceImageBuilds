@@ -103,7 +103,7 @@ for arg in $ARGS
   elif ! test -z $build 
    then
      builddir=$arg
-     echo "using Builddir"
+     echo "Build root"
      unset  build 
   elif test $arg = '-c'
    then
@@ -111,7 +111,7 @@ for arg in $ARGS
    elif ! test -z $cname
    then
      container=$arg
-     echo "Build $cname"
+     echo "Build Image $cname"
      unset  cname      
   fi
 done 	
@@ -137,7 +137,7 @@ if test -f dependancies
      then
        if test `find $image_dir -newer ./last_built|wc -c` -gt 1
         then
-         echo clear last built due to change in $image_dir
+         echo Clear last_built flag as $image_dir is newer
          rm ./last_built
          break
        fi
@@ -149,6 +149,7 @@ function process_build_dir {
 cd $dir
  if test -f TAG
    then 
+     echo "===========$tag==========="      	
      tag_r=`cat TAG`
      tag=$(eval "echo $tag_r")
      eval_dependancies 					
@@ -158,6 +159,10 @@ cd $dir
         new=99
       else
         new=`find . -newer ./last_built|wc -c`
+         if test $new -gt 1
+          then
+           echo "Changed Files"
+         fi
       fi      
       
       if ! test -z $pushonly
@@ -167,7 +172,7 @@ cd $dir
        then       
          build_docker_image
       fi
-     echo "===========$tag==========="      				
+     			
       if ! test -z $pushall
        then
         docker push ${tag}

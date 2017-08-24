@@ -17,7 +17,6 @@ if test -z $container
      then
        class_list=`ls $MasterImagesDir`
    else
-      echo BUILD DIR  $builddir
       class_list=$builddir 
   fi
 else
