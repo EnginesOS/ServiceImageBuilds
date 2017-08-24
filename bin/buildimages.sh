@@ -81,7 +81,7 @@ for arg in $*
      elif test $arg =  -p
      then 
       pushbuild=1
-     elsif test $arg = -t
+     elif test $arg = -t
      then
      TEE=" | tee "  
  	fi
