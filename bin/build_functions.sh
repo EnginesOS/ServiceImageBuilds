@@ -74,8 +74,9 @@ for arg in $ARGS
     build all changed images $0\
     build all changed images and push freshly built $0 -p\
     build all changed images and push all images $0 -pushall \
-    build all images and push all images $0 -A \
+    build all images and push all images $0 -A  \
     push all images $0 -pushonly "
+    set the stop level dir -b dir  where dir is 01.BaseImages|02.FrameWorkImages|03.serviceImages|04.SystemServices|05.SystemApplications
     exit
   fi
   		echo proceessing $arg
@@ -83,6 +84,7 @@ for arg in $ARGS
    then 	
      rm `find . -name last_built`
      echo "Force rebuild all"
+     pushall=1
   elif test $arg = "-nocache"
    then
      extra=" --no-cache "
@@ -112,6 +114,14 @@ for arg in $ARGS
      builddir=$arg
      echo "using Builddir"
      unset  build 
+  elif test $arg = '-c'
+   then
+     cname=1     
+   elif ! test -z $cname
+   then
+     container=$arg
+     echo "using name"
+     unset  cname      
   fi
 done 	
 

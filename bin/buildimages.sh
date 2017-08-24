@@ -10,15 +10,25 @@ get_release
 
 cd images
 MasterImagesDir=`pwd`
-
-if  test -z $builddir
+if test -z $container
  then
-  class_list=`ls $MasterImagesDir`
+   if  test -z $builddir
+     then
+       class_list=`ls $MasterImagesDir`
+   else
+      echo BUILD DIR  $builddir
+      class_list=$builddir 
+  fi
 else
-  echo BUILD DIR  $builddir
-  class_list=$builddir 
+ dir=`find . -type d  -name $container`
+  if test -z "$dir"
+   then 
+    echo Failed to find $container
+   else
+    process_build_dir
+  fi
+ exit 
 fi
-
 build_rest=0
 
 for class in $class_list
