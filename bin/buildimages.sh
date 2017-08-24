@@ -62,7 +62,7 @@ fi
 
 clear_old 
 
-TEE=" &> "
+
 for arg in $*
  do
   if test $arg = -h
