@@ -9,17 +9,19 @@ get_release
  	
 
 cd images
+MasterImagesDir=`pwd`
 
-if ! test -z $builddir
+if  test -z $builddir
  then
- echo BUILD DIR  $builddir
-   
+  class_list=`ls $MasterImagesDir`
+else
+  echo BUILD DIR  $builddir
+  class_list=$builddir 
 fi
 
-MasterImagesDir=`pwd`
 build_rest=0
 
-for class in `ls $MasterImagesDir`
+for class in $class_list
  do 
 	cd $class
 	 if test $build_rest -ne 0
