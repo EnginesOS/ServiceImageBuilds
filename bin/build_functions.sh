@@ -135,7 +135,7 @@ if test -f dependancies
    do
    echo -n check $image_dir changes = 
    find $image_dir -newer ./last_built|wc -c
-    if test -f /last_built
+    if test -f last_built
      then
        if test `find $image_dir -newer ./last_built|wc -c` -gt 1
         then
