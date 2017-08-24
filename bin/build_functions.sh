@@ -118,6 +118,8 @@ function process_build_dir {
 echo Processing Dir $dir
  if ! test -d $dir
   then 
+  echo "Not a dir $dir "
+  pwd
 	continue
  fi
 
@@ -129,15 +131,17 @@ cd $dir
      tag=$(eval "echo $tag_r") 					
       if ! test -f ./last_built
        then
+        echo "Forced Build"
         new="yesy yesy yesy"
       else
+        echo "test for Change driven build"
         new=`find . -newer ./last_built`
       fi      
       if ! test -z $pushonly
        then
         docker push ${tag}
       elif test 1 -lt `echo $new |wc -c`
-       then
+       then       
          build_docker_image
       fi
      echo "===========$tag==========="      				
