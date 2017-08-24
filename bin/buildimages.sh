@@ -2,7 +2,7 @@
 
 . bin/build_functions.sh
 clear_old 
-
+ARGS=$*
 process_args	
 
 get_release

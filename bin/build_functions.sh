@@ -64,7 +64,9 @@ fi
 
 
 function process_args {
-for arg in $*
+echo ARGS $ARGS
+
+for arg in $ARGS
  do
   if test $arg = -h
    then
