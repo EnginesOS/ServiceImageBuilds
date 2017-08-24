@@ -22,7 +22,7 @@ if test -z $TEE
  then
   docker $args  >& build.log
 else
-  docker args  | tee build.log
+  docker $args  | tee build.log
 fi
 
 if test $? -eq 0
