@@ -12,6 +12,7 @@ function build_docker_image {
 							   then
 							 	docker build $extra --no-cache --rm=true -t $tag -f Dockerfile.$release .  $TEE build.log
 							   else
+							   echo "docker build $extra --rm=true -t $tag -f Dockerfile.$release . $TEE  build.log "
 							   		docker build $extra --rm=true -t $tag -f Dockerfile.$release . $TEE  build.log
 							   fi
 								if test $? -eq 0
