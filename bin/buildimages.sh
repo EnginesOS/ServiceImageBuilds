@@ -34,13 +34,12 @@ build_rest=0
 
 for class in $class_list
  do 
-	cd $class
-	 
-	for dir in `find  -maxdepth 1 -type d  |grep /`
+   cd $class	 
+	for dir in `find  -maxdepth 1 -type d  |grep / |sort`
 	  do
 	    process_build_dir
        done
-  cd $MasterImagesDir	
+    cd ..     
 done
 
 echo Clearing unlinked images

@@ -79,7 +79,7 @@ for arg in $ARGS
     set the stop level dir -b dir  where dir is 01.BaseImages|02.FrameWorkImages|03.serviceImages|04.SystemServices|05.SystemApplications
     exit
   fi
-  		echo proceessing $arg
+  		
   if test $arg = '-A'
    then 	
      rm `find . -name last_built`
@@ -104,7 +104,6 @@ for arg in $ARGS
       echo "Push as built" 
   elif test $arg = '-t'
    then
-   echo "tail" 
      TEE=1
   elif test $arg = '-b'
    then
@@ -120,7 +119,7 @@ for arg in $ARGS
    elif ! test -z $cname
    then
      container=$arg
-     echo "using name"
+     echo "Build $cname"
      unset  cname      
   fi
 done 	
@@ -143,12 +142,15 @@ if test -f dependancies
  then
   for image_dir in `cat  dependancies`
    do
-    if test `find $image_dir -newer ./last_built|wc -c` -gt 1
+    if test -f /last_built
      then
-      echo clear last built due to change in $image_dir
-      rm ./last_built
-      break
-    fi 
+       if test `find $image_dir -newer ./last_built|wc -c` -gt 1
+        then
+         echo clear last built due to change in $image_dir
+         rm ./last_built
+         break
+       fi
+     fi   
   done
  fi
 }
