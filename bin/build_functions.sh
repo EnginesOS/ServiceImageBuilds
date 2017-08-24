@@ -1,5 +1,4 @@
 function build_docker_image {
-echo "----------------------"
 echo "Building $tag"
 
 if test -f setup.sh
@@ -35,7 +34,7 @@ if test $? -eq 0
 else
   echo "Failed to build $tag in $class/$dir"
   exit
-fi						
+fi				
 }
 
 function clear_old {
@@ -151,7 +150,7 @@ cd $dir
    then        	
      tag_r=`cat TAG`
      tag=$(eval "echo $tag_r")
-      echo "===========$tag==========="   
+     echo "===========$tag==========="   
      eval_dependancies 					
       if ! test -f ./last_built
        then
@@ -177,6 +176,7 @@ cd $dir
        then
         docker push ${tag}
      fi
+   echo "----------------------"	
  fi
 cd ..
 }
