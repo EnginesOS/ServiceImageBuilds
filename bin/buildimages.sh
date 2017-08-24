@@ -26,7 +26,7 @@ for class in `ls $MasterImagesDir`
 	  then
 		rm `find . -name last_built`
 	 fi 
-	for dir in `find  -type d -maxdepth 1 |grep /`
+	for dir in `find  -maxdepth 1 -type d  |grep /`
 	  do
 	    process_build_dir
        done
