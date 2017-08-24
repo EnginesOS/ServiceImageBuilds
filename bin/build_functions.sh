@@ -143,8 +143,9 @@ if test -f dependancies
  then
   for image_dir in `cat  dependancies`
    do
-    if test `find $build_dir -newer ./last_built|wc -c` -gt 1
+    if test `find $image_dir -newer ./last_built|wc -c` -gt 1
      then
+      echo clear last built due to change in $image_dir
       rm ./last_built
       break
     fi 
