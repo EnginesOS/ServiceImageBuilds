@@ -15,7 +15,7 @@ if test -f nocache
 else
   args="build $extra --rm=true -t $tag -f Dockerfile.$release ."
 fi
-echo " Running   docker $args "
+echo " Running   docker $args $TEE"
 pwd
 
 
