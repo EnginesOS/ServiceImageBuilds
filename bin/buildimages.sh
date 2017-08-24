@@ -1,38 +1,88 @@
 #/bin/bash
-es=`docker ps  |grep -v CON | awk '{print $1}'`
+
+function builder_docker_image {
+							echo "----------------------"
+							echo "Building $tag"
+								if test -f setup.sh
+									then 
+										./setup.sh
+									fi
+							 cat Dockerfile | sed "/\$release/s//$release/" > Dockerfile.$release
+							  if test -f nocache
+							   then
+							 	docker build $extra --no-cache --rm=true -t $tag -f Dockerfile.$release .  $TEE build.log
+							   else
+							   		docker build $extra --rm=true -t $tag -f Dockerfile.$release . $TEE  build.log
+							   fi
+								if test $? -eq 0
+									then
+										echo "Built $tag"
+										if test $# -gt 0
+										then
+											if ! test -z $pushbuild 
+											then
+												docker push ${tag}
+											fi
+										fi
+										
+										touch last_built
+										build_rest=1
+							
+										docker rmi $( docker images -f "dangling=true" -q) &>/dev/null
+									else
+										echo "Failed to build $tag in $class/$dir"
+										exit
+								fi
+						fi
+}
+
+function clear_old {
+es=`docker ps  |grep -v CON | awk '{print $1}' &> /dev/null`
 if ! test -z "$es"
 then
 	docker stop $es
 fi
-es=`docker ps -a |grep -v CON | awk '{print $1}'`
+es=`docker ps -a |grep -v CON | awk '{print $1}' &> /dev/null`
 if ! test -z "$es"
 then
-	docker rm $es
+	docker rm $es &> /dev/null
 fi
+}
 
-if test "$1" = -h
- then
-  echo "Usage\
-  build all changed images $0\
-  build all changed images and push freshly built $0 -p\
-  build all changed images and push all images $0 -pushall \
-  build all images and push all images $0 -buildall \
-  push all images $0 -pushonly "
-  exit
- fi
- 
- if test "$1" = "-buildall"
- 	then
- 		shift
+clear_old 
+
+TEE=" &> "
+for arg in $*
+ do
+	if test $arg = -h
+ 	 then
+  	   echo "Usage\
+  	   build all changed images $0\
+  	   build all changed images and push freshly built $0 -p\
+  	   build all changed images and push all images $0 -pushall \
+  	   build all images and push all images $0 -buildall \
+  	   push all images $0 -pushonly "
+  	   exit
+  	fi
+  	
+  	
+  	if test $arg = "-buildall"
+ 	 then 	
  		rm `find . -name last_built`
- fi
- 	
-if test "$1" = "-nocache"
- 	then
+ 	elif test $arg = "-nocache"
+ 	 then
  		extra=" --no-cache "
- 		#--use-cache=false "
- 		shift
- fi
+ 		#--use-cache=false "	
+    elif test $arg = "-pushall"
+      pushall=1		 
+     elif test $arg =  -pushonly  
+     pushonly=1
+     elif test $arg =  -p
+      pushbuild=1
+     elsif test $arg = -t
+     TEE=" | tee "  
+ 	fi
+done 	
  	
  	
  	
@@ -75,48 +125,16 @@ build_rest=0
 							new=`find . -newer ./last_built`
 					    fi
 							
-							if test "$1" = "-pushonly"
+							if ! test -z $pushonly
 								then
 									docker push ${tag}
 							elif test 1 -lt `echo $new |wc -c`
 							then
-		
-							echo "----------------------"
-							echo "Building $tag"
-								if test -f setup.sh
-									then 
-										./setup.sh
-									fi
-							 cat Dockerfile | sed "/\$release/s//$release/" > Dockerfile.$release
-							  if test -f nocache
-							   then
-							 	docker build $extra --no-cache --rm=true -t $tag -f Dockerfile.$release .  &> build.log
-							   else
-							   		docker build $extra --rm=true -t $tag -f Dockerfile.$release . &> build.log
-							   fi
-								if test $? -eq 0
-									then
-										echo "Built $tag"
-										if test $# -gt 0
-										then
-											if test $1 = "-p"
-											then
-												docker push ${tag}
-											fi
-										fi
-										
-										touch last_built
-										build_rest=1
-							
-										docker rmi $( docker images -f "dangling=true" -q) &>/dev/null
-									else
-										echo "Failed to build $tag in $class/$dir"
-										exit
-								fi
-						fi
+		                     build_docker_image
+
 							echo "===========$tag==========="
 					
-					if test "$1" = "-pushall"
+					if ! test -z $pushall
 								then
 									docker push ${tag}
 								fi
