@@ -155,11 +155,7 @@ if test -f dependancies
  fi
 }
 function process_build_dir {
-echo Processing Dir $dir
-
-
 cd $dir
-
  if test -f TAG
    then 
      tag_r=`cat TAG`
