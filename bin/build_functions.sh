@@ -84,7 +84,7 @@ for arg in $*
   elif test $arg = "-nocache"
    then
      extra=" --no-cache "
-     echo "No Cache
+     echo "No Cache"
   	#--use-cache=false "	
   elif test $arg = "-pushall"
    then
@@ -108,7 +108,7 @@ for arg in $*
   elif ! test -z $build 
    then
      builddir=$arg
-     ecoh "using Builddir"
+     echo "using Builddir"
      unset  build 
   fi
 done 	
