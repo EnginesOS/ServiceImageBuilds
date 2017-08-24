@@ -151,7 +151,7 @@ cd $dir
  	
 clear_old 
 
-function process_args	
+process_args	
 
 get_release
  	
