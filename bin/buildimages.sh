@@ -78,9 +78,8 @@ for arg in $*
      elif test $arg =  -pushonly
      then  
      pushonly=1
-     elif
-     then
-      test $arg =  -p
+     elif test $arg =  -p
+     then 
       pushbuild=1
      elsif test $arg = -t
      then
