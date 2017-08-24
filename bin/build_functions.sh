@@ -150,5 +150,6 @@ cd $dir
         docker push ${tag}
      fi
  fi
+cd ..
 }
  	
