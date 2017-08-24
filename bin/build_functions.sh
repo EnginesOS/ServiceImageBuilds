@@ -113,7 +113,7 @@ for arg in $*
   fi
 done 	
 
-echo "
+
 }
 
 function get_release {
