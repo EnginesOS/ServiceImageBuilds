@@ -16,11 +16,14 @@ else
   args="build $extra --rm=true -t $tag -f Dockerfile.$release ."
 fi
 echo " Running   docker $args "
+pwd
+
 
 if test -z $TEE
  then
   docker $args  >& build.log
 else
+ echo "TEST"
   docker $args  | tee build.log
 fi
 
