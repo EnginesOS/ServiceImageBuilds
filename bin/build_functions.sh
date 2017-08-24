@@ -143,7 +143,7 @@ if test -f dependancies
  then
   for image_dir in `cat  dependancies`
    do
-    if find $build_dir -newer ./last_built|wc -c`
+    if `find $build_dir -newer ./last_built|wc -c` -gt 1
      then
       rm ./last_built
       break
@@ -153,12 +153,7 @@ if test -f dependancies
 }
 function process_build_dir {
 echo Processing Dir $dir
-# if ! test -d $dir
-#  then 
-#  echo "Not a dir $dir "
-#  pwd
-#	continue
-# fi
+
 
 cd $dir
 
