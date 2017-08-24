@@ -73,12 +73,17 @@ for arg in $*
  		extra=" --no-cache "
  		#--use-cache=false "	
     elif test $arg = "-pushall"
+    then
       pushall=1		 
-     elif test $arg =  -pushonly  
+     elif test $arg =  -pushonly
+     then  
      pushonly=1
-     elif test $arg =  -p
+     elif
+     then
+      test $arg =  -p
       pushbuild=1
      elsif test $arg = -t
+     then
      TEE=" | tee "  
  	fi
 done 	
