@@ -8,9 +8,9 @@ cn: schema
 dn: olcBackend=mdb,cn=config
 objectClass: olcBackendConfig
 olcBackend: mdb
-olcSuffix: cn=config
-olcRootDN: cn=admin,cn=config
-olcRootPW: password
+#olcSuffix: cn=config
+#olcRootDN: cn=admin,cn=config
+#olcRootPW: password
 
 # The database definition.
 dn: olcDatabase=mdb,cn=config

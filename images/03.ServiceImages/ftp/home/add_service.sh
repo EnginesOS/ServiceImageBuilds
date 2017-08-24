@@ -31,8 +31,8 @@ cat /home/tmpls/new_user.ldif \
  echo /ftp/$access/$parent_engine/$volume/$folder >> /tmp/newuser.ldif
 
 cat /tmp/newuser.ldif | ldapadd -H ldap://ldap/
-
-/home/add_to_ftp_group.sh $uid
+/home/add_to_ftp_group.sh ${service_handle}/${service_container_name}
+#/home/add_to_ftp_group.sh $uid
 
 #dont leave ticket open
 kdestroy
