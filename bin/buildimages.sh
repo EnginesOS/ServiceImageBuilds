@@ -32,8 +32,7 @@ function builder_docker_image {
 									else
 										echo "Failed to build $tag in $class/$dir"
 										exit
-								fi
-						fi
+								fi						
 }
 
 function clear_old {
@@ -131,7 +130,7 @@ build_rest=0
 							elif test 1 -lt `echo $new |wc -c`
 							then
 		                     build_docker_image
-
+						fi
 							echo "===========$tag==========="
 					
 					if ! test -z $pushall
