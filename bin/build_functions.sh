@@ -133,8 +133,6 @@ if test -f dependancies
  then
   for image_dir in `cat  dependancies`
    do
-   echo -n check $image_dir changes = 
-   find $image_dir -newer ./last_built|wc -c
     if test -f last_built
      then
        if test `find $image_dir -newer ./last_built|wc -c` -gt 1
@@ -156,7 +154,7 @@ cd $dir
      eval_dependancies 					
       if ! test -f ./last_built
        then
-        echo "Forced Build"
+        echo "Dependacy changed"
         new=99
       else
         new=`find . -newer ./last_built|wc -c`
