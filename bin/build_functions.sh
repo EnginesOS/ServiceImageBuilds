@@ -141,12 +141,12 @@ export release
 
 function process_build_dir {
 echo Processing Dir $dir
- if ! test -d $dir
-  then 
-  echo "Not a dir $dir "
-  pwd
-	continue
- fi
+# if ! test -d $dir
+#  then 
+#  echo "Not a dir $dir "
+#  pwd
+#	continue
+# fi
 
 cd $dir
 
