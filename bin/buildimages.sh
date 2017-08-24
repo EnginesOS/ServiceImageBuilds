@@ -10,6 +10,7 @@ get_release
 
 cd images
 MasterImagesDir=`pwd`
+echo build $container
 if test -z $container
  then
    if  test -z $builddir
