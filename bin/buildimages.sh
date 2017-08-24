@@ -30,7 +30,6 @@ else
   fi
  exit 
 fi
-build_rest=0
 
 for class in $class_list
  do 

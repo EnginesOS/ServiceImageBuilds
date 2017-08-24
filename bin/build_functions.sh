@@ -15,30 +15,22 @@ if test -f nocache
 else
   args="build $extra --rm=true -t $tag -f Dockerfile.$release ."
 fi
-echo " Running   docker $args $TEE"
-pwd
-
 
 if test -z $TEE
  then
   docker $args  >& build.log
 else
- echo "TEST"
   docker $args  | tee build.log
 fi
 
 if test $? -eq 0
  then
   echo "Built $tag"
-    if test $# -gt 0
+	if ! test -z $pushbuild 
 	  then
-		if ! test -z $pushbuild 
-		  then
-		   docker push ${tag}
-		fi
+	   docker push ${tag}
 	fi
   touch last_built
-  build_rest=1
   docker rmi $( docker images -f "dangling=true" -q) &>/dev/null
 else
   echo "Failed to build $tag in $class/$dir"
@@ -123,20 +115,19 @@ for arg in $ARGS
      unset  cname      
   fi
 done 	
-
-
 }
 
 function get_release {
-if test -f release
-then
-  release=`cat release`
-else
-  release=latest
-fi
-
+ if test -f release
+  then
+   release=`cat release`
+ else
+    release=latest
+  fi
 export release
 }
+
+
 function eval_dependancies {
 if test -f dependancies
  then
