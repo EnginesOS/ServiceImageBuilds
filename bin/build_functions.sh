@@ -138,7 +138,19 @@ fi
 
 export release
 }
-
+function eval_dependancies {
+if test -f dependancies
+ then
+  for image_dir in `cat  dependancies`
+   do
+    if find $build_dir -newer ./last_built|wc -c`
+     then
+      rm ./last_built
+      break
+    fi 
+  done
+ fi
+}
 function process_build_dir {
 echo Processing Dir $dir
 # if ! test -d $dir
@@ -153,18 +165,20 @@ cd $dir
  if test -f TAG
    then 
      tag_r=`cat TAG`
-     tag=$(eval "echo $tag_r") 					
+     tag=$(eval "echo $tag_r")
+     eval_dependancies 					
       if ! test -f ./last_built
        then
         echo "Forced Build"
-        new="yesy yesy yesy"
+        new=99
       else
-        new=`find . -newer ./last_built`
+        new=`find . -newer ./last_built|wc -c`
       fi      
+      
       if ! test -z $pushonly
        then
         docker push ${tag}
-      elif test 1 -lt `echo $new |wc -c`
+      elif test 1 -lt $new
        then       
          build_docker_image
       fi

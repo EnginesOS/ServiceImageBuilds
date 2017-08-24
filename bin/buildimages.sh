@@ -35,10 +35,7 @@ build_rest=0
 for class in $class_list
  do 
 	cd $class
-	 if test $build_rest -ne 0
-	  then
-		rm `find . -name last_built`
-	 fi 
+	 
 	for dir in `find  -maxdepth 1 -type d  |grep /`
 	  do
 	    process_build_dir
