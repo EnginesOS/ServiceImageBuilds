@@ -77,34 +77,43 @@ for arg in $*
     exit
   fi
   		
-  if test $arg = "-A"
+  if test $arg = '-A'
    then 	
      rm `find . -name last_built`
+     echo "Force rebuild all"
   elif test $arg = "-nocache"
    then
      extra=" --no-cache "
+     echo "No Cache
   	#--use-cache=false "	
   elif test $arg = "-pushall"
    then
-     pushall=1		 
-  elif test $arg =  -pushonly
+     pushall=1		
+     echo "Pushing all"      
+  elif test $arg =  '-pushonly'
     then  
+    echo "Pushing only" 
       pushonly=1
-  elif test $arg =  -p
+  elif test $arg = '-p'
    then 
      pushbuild=1
-  elif test $arg = -t
+      echo "Push as built" 
+  elif test $arg = '-t'
    then
+   echo "tail" 
      TEE=1
-  elif test $arg = -b
+  elif test $arg = '-b'
    then
      build=1
   elif ! test -z $build 
    then
      builddir=$arg
+     ecoh "using Builddir"
      unset  build 
   fi
 done 	
+
+echo "
 }
 
 function get_release {
