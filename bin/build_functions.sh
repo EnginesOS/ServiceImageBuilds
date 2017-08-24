@@ -148,10 +148,10 @@ if test -f dependancies
 function process_build_dir {
 cd $dir
  if test -f TAG
-   then 
-     echo "===========$tag==========="      	
+   then        	
      tag_r=`cat TAG`
      tag=$(eval "echo $tag_r")
+      echo "===========$tag==========="   
      eval_dependancies 					
       if ! test -f ./last_built
        then
