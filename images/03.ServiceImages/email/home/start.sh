@@ -21,13 +21,15 @@ sudo -n /home/engines/scripts/_start_syslog.sh
 
 sudo -n /usr/sbin/postmap /etc/postfix/transport 
 sudo -n /usr/sbin/postmap /etc/postfix/smarthost_passwd
-sudo -n /usr/lib/postfix/sbin/master  -w &
 
 echo '{"default_domain":"'$DEFAULT_DOMAIN'"}' |/home/configurators/set_default_domain.sh 
 
 
  
 sudo /home/configurators/rebuild_main.sh
+
+sudo -n /usr/lib/postfix/sbin/master  -w &
+
 
 if test -f /home/configurators/saved/grey_listing_enabled
   then

@@ -13,7 +13,7 @@ ADD home home
 RUN cd /tmp/ &&\
 	 usermod -G containers -a postfix &&\
 	 touch /etc/postfix/smarthost_passwd &&\
-	 mkdir /usr/share/doc/postfix/html \
+	 mkdir /usr/share/doc/postfix/html /var/lib/postgrey \
 	 	  	/usr/lib/postfix/libutil \
 	 	  	/usr/lib/postfix/libmaster \
 	 	  	/usr/lib/postfix/libdns \

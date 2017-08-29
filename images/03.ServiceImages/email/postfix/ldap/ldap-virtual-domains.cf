@@ -1,4 +1,4 @@
-server_host = ldap://ldap.example.net/
+server_host = ldap://ldap/
 search_base = ou=domains,ou=email,ou=Services,dc=engines,dc=internal
 version = 3
 bind = no
