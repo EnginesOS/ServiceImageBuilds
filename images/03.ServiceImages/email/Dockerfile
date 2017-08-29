@@ -11,7 +11,6 @@ RUN echo "Y" | adduser -q --disabled-password --home /var/spool/postfix -uid 220
 ADD home home
 
 RUN cd /tmp/ &&\
-	 chmod g+w /home/app/templates_c &&\
 	 usermod -G containers -a postfix &&\
 	 touch /etc/postfix/smarthost_passwd &&\
 	 mkdir /usr/share/doc/postfix/html \
@@ -40,11 +39,12 @@ RUN cd /tmp/ &&\
 	
 ADD postgrey /etc/default/postgrey
 ADD sudoers /etc/sudoers.d/postfix	 
+
 ADD postfix/main.cf /etc/postfix/
 ADD postfix/master.cf /etc/postfix/
 ADD postfix/mailname /etc/postfix/mailname
 ADD postfix/transport /etc/postfix/transport
-ADD ldap /etc/postfix/ldap
+ADD postfix/ldap /etc/postfix/ldap
 
     #postmap /etc/postfix/smarthost_passwd 
 RUN postmap /etc/postfix/transport &&\
