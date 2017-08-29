@@ -1,4 +1,4 @@
-server_host = ldap
+server_host = ldap://ldap/
 search_base = ou=People,dc=engines,dc=internal
 version = 3
 bind = no
