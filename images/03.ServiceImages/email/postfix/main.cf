@@ -37,7 +37,7 @@ myhostname = email.engines.internal
 alias_maps = hash:/etc/aliases, ldap:/etc/postfix/ldap/ldap-aliases.cf
 alias_database = hash:/etc/aliases
 
-smtp_generic_maps  = hash:/etc/postfix/generic
+smtp_generic_maps = hash:/etc/postfix/generic
 
 myorigin = /etc/postfix/mailname
 mydestination = email.engines.internal, email, localhost.localdomain, localhost

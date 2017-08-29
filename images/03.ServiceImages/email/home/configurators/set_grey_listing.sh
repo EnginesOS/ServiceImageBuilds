@@ -25,7 +25,8 @@ else
     truncate --size 0 /home/configurators/grey/white_clients
 fi
 
-
+if ! test -z $enable_grey_listing  
+ then
 if  test $enable_grey_listing -eq 1
  then
  	touch  /home/configurators/saved/grey_listing_enabled
@@ -33,7 +34,11 @@ if  test $enable_grey_listing -eq 1
  else
     rm /home/configurators/saved/grey_listing_enabled
     sudo /home/kill_grey.sh  
-  fi    
+  fi 
+else
+    rm /home/configurators/saved/grey_listing_enabled
+     sudo /home/kill_grey.sh  
+fi
 
 sudo /home/configurators/rebuild_main.sh
    	 
