@@ -23,7 +23,7 @@ sudo -n /usr/sbin/postmap /etc/postfix/transport
 sudo -n /usr/sbin/postmap /etc/postfix/smarthost_passwd
 sudo -n /usr/lib/postfix/sbin/master  -w &
 
-/home/configurators/set_default_domain.sh '{"default_domain":"'$DEFAULT_DOMAIN'"}'
+echo '{"default_domain":"'$DEFAULT_DOMAIN'"}' |/home/configurators/set_default_domain.sh 
 
 
  
