@@ -1,0 +1,6 @@
+server_host = ldap
+search_base = ou=People,dc=engines,dc=internal
+version = 3
+bind = no
+query_filter = (&(objectclass=postfixUser)(maildrop=%s))
+result_attribute = maildrop

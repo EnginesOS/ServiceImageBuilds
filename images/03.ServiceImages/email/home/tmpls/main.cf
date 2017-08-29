@@ -11,7 +11,7 @@ delay_warning_time = 4h
 
 readme_directory = no
 
-#FIXME SHOULD GENERATE THESES
+#FIXME SHOULD GENERATE THESES ?
 # TLS parameters
 smtpd_tls_cert_file=/etc/ssl/certs/engines.crt
 smtpd_tls_key_file=/etc/ssl/keys/engines.key

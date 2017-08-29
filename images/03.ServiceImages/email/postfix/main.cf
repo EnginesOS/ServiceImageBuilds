@@ -22,6 +22,7 @@ smtpd_tls_security_level = may
 smtpd_tls_received_header = yes
 smtpd_tls_loglevel = 0
 tls_random_source = dev:/dev/urandom
+
 smtpd_tls_auth_only = yes
 smtpd_sasl_auth_enable = yes
 smtpd_sasl_exceptions_networks = $mynetworks
@@ -32,8 +33,10 @@ smtpd_sasl_path = inet:imap.engines.internal:26561
 
 
 myhostname = email.engines.internal
-alias_maps = hash:/etc/aliases
+#alias_maps = hash:/etc/aliases
+alias_maps = hash:/etc/aliases, ldap:/etc/postfix/ldap/ldap-aliases.cf
 alias_database = hash:/etc/aliases
+
 myorigin = /etc/postfix/mailname
 mydestination = email.engines.internal, email, localhost.localdomain, localhost
 mynetworks = 172.17.0.0/16 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128
@@ -42,10 +45,16 @@ recipient_delimiter = +
 inet_interfaces = all
 
 
-relay_domains = mysql:/etc/postfix/mysql/relay_domains.cf
-virtual_alias_maps = mysql:/etc/postfix/mysql/virtual_alias_maps.cf
-virtual_mailbox_domains = mysql:/etc/postfix/mysql/virtual_domains_maps.cf
-virtual_mailbox_maps = mysql:/etc/postfix/mysql/virtual_mailbox_maps.cf
+#relay_domains = mysql:/etc/postfix/mysql/relay_domains.cf
+relay_domains = hash:/etc/postfix/relay_domains, ldap:/etc/postfix/ldap/ldap-virtual-domains.cf
+
+#virtual_alias_maps = mysql:/etc/postfix/mysql/virtual_alias_maps.cf
+
+#virtual_mailbox_domains = mysql:/etc/postfix/mysql/virtual_domains_maps.cf
+
+#virtual_mailbox_maps = mysql:/etc/postfix/mysql/virtual_mailbox_maps.cf
+virtual_mailbox_maps =  hash:/etc/postfix/mailbox_maps, ldap:/etc/postfix/ldap/ldap-vmailbox.cf
+
 virtual_mailbox_base = /var/mail/vmail
 virtual_mailbox_limit = 512000000
 virtual_minimum_uid = 8

@@ -44,10 +44,10 @@ ADD postfix/main.cf /etc/postfix/
 ADD postfix/master.cf /etc/postfix/
 ADD postfix/mailname /etc/postfix/mailname
 ADD postfix/transport /etc/postfix/transport
+ADD ldap /etc/postfix/ldap
 
-
+    #postmap /etc/postfix/smarthost_passwd 
 RUN postmap /etc/postfix/transport &&\
-    postmap /etc/postfix/smarthost_passwd &&\
 	chown postfix /etc/postfix/smarthost_passwd* /home/configurators/saved/ /etc/postfix/mailname /etc/postfix/transport.db /etc/postfix/transport &&\
 	mkdir -p /home/email /home/configurators/grey/ &&\
 	chown postfix /home/email /home/configurators/saved/antispam/ /home/configurators/grey/ &&\
