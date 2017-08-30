@@ -35,6 +35,9 @@ RUN cd /tmp/ &&\
 	 /usr/sbin/postfix -c /etc/postfix/ set-permissions create-missing ;\
 	 cp /etc/resolv.conf /var/spool/postfix/etc/ &&\
 	 cp /etc/services /var/spool/postfix/etc/ &&\
+	mkdir /etc/postfix/maps &&\
+	touch /etc/postfix/maps/generic
+	
  	/home/post_build_clean.sh
 	
 ADD postgrey /etc/default/postgrey
@@ -43,12 +46,12 @@ ADD sudoers /etc/sudoers.d/postfix
 ADD postfix/main.cf /etc/postfix/
 ADD postfix/master.cf /etc/postfix/
 ADD postfix/mailname /etc/postfix/mailname
-ADD postfix/transport /etc/postfix/transport
+ADD postfix/transport /etc/postfix/maps/transport
 ADD postfix/ldap /etc/postfix/ldap
 
     #postmap /etc/postfix/smarthost_passwd 
-RUN postmap /etc/postfix/transport &&\
-	chown postfix /etc/postfix/smarthost_passwd* /home/configurators/saved/ /etc/postfix/mailname /etc/postfix/transport.db /etc/postfix/transport &&\
+RUN postmap /etc/postfix/maps/transport &&\
+	chown postfix -R /etc/postfix/maps /home/configurators/saved/ /etc/postfix/mailname &&\
 	mkdir -p /home/email /home/configurators/grey/ &&\
 	chown postfix /home/email /home/configurators/saved/antispam/ /home/configurators/grey/ &&\
 	chmod -R go-rw /etc/sudoers /etc/sudoers.d/postfix

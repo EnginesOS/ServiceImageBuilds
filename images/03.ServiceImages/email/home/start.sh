@@ -19,8 +19,9 @@ export KILL_SCRIPT
 sudo -n /home/engines/scripts/_start_syslog.sh
 
 
-sudo -n /usr/sbin/postmap /etc/postfix/transport 
-sudo -n /usr/sbin/postmap /etc/postfix/smarthost_passwd
+sudo -n /usr/sbin/postmap /etc/postfix/maps/transport 
+sudo -n /usr/sbin/postmap /etc/postfix/maps/smarthost_passwd
+sudo -n /usr/sbin/postmap /etc/postfix/maps/generic
 
 echo '{"default_domain":"'$DEFAULT_DOMAIN'"}' |/home/configurators/set_default_domain.sh 
 
