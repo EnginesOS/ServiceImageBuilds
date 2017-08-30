@@ -24,7 +24,7 @@ ADD dovecot/conf.d /etc/dovecot/conf.d
 ADD dovecot/dovecot-ldap.conf.ext /etc/dovecot/
 ADD sudoers /etc/sudoers.d/dovecot
 ADD home home
-
+COPY pam.d /etc/
 RUN chown dovecot /etc/dovecot/dovecot-ldap.conf.ext &&\
 	chmod -R go-rw /etc/sudoers /etc/sudoers.d/
 

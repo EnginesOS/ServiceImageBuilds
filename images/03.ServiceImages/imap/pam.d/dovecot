@@ -1,0 +1,2 @@
+auth sufficient pam_krb5.so
+account sufficient pam_krb5.so
