@@ -21,10 +21,10 @@ RUN adduser -q --disabled-password -uid 22013 dovecot &&\
  	/home/post_build_clean.sh
 	
 ADD dovecot/conf.d /etc/dovecot/conf.d
-ADD dovecot/dovecot-ldap.conf.ext /etc/dovecot/
+ADD dovecot/dovecot-ldap.conf.ext /etc/dovecot/dovecot-ldap.conf.ext
 ADD sudoers /etc/sudoers.d/dovecot
 ADD home home
-COPY pam.d /etc/
+COPY pam.d/dovecot /etc/pam.d/
 RUN  chmod -R go-rw /etc/sudoers /etc/sudoers.d/
 
 USER dovecot
