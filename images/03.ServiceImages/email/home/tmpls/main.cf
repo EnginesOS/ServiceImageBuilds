@@ -86,7 +86,12 @@ local_recipient_maps = $virtual_mailbox_maps
 ## this is only needed if you want vacation support -
 
 relayhost = smtp.engines.internal
-
+#no auth as on same subnet
+#actual smarthost is set on smtp
+smtp_sasl_auth_enable = no 
+smtp_sasl_password_maps = hash:/etc/postfix/maps/smarthost_passwd  
+smtp_sasl_security_options =    
+smtp_use_tls = yes
 
 
 #reject_rbl_client zen.spamhaus.org,reject_rbl_client bl.spamcop.net,reject_rbl_client cbl.abuseat.org,reject_rbl_client dnsbl.njabl.org,reject_rbl_client dnsbl.sorbs.net,reject_rhsbl_sender dsn.rfc-ignorant.org,permit
