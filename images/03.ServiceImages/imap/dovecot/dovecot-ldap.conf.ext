@@ -1,6 +1,5 @@
-server_host = ldap
+hosts = ldap
 base = ou=People,dc=engines,dc=internal
-version = 3
 auth_bind = no
 deref = never
 scope = subtree
