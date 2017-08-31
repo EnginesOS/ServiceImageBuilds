@@ -43,7 +43,7 @@ RUN cd /tmp/ &&\
 ADD postgrey /etc/default/postgrey
 ADD sudoers /etc/sudoers.d/postfix	 
 
-ADD postfix/main.cf /etc/postfix/
+#ADD postfix/main.cf /etc/postfix/
 ADD postfix/master.cf /etc/postfix/
 ADD postfix/mailname /etc/postfix/mailname
 ADD postfix/transport /etc/postfix/maps/transport
