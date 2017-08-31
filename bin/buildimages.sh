@@ -5,8 +5,8 @@ clear_old
 ARGS=$*
 process_args	
 
-get_release
- 	
+get_edition_and_release
+
 
 cd images
 MasterImagesDir=`pwd`

@@ -6,7 +6,8 @@ if test -f setup.sh
   ./setup.sh
 fi
 
-cat Dockerfile | sed "/\$release/s//$release/" > Dockerfile.$release
+cat Dockerfile | sed "/\$release/s//$release/" \
+			   | sed "/\$edition/s//$edition/" > Dockerfile.$release
 
 if test -f nocache
  then
@@ -116,14 +117,31 @@ for arg in $ARGS
 done 	
 }
 
-function get_release {
+function get_edition_and_release {
  if test -f release
   then
    release=`cat release`
  else
     release=latest
   fi
+  
+if test -f edition
+ then
+  edition=`cat edition`
+else
+   edition=engines
+fi
+
+if test -f arch
+ then
+  arch=`cat arch`
+else
+   arch=x86
+fi
+
 export release
+export edition
+export arch
 }
 
 
