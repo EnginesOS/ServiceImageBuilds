@@ -39,8 +39,7 @@ RUN cd /tmp/ &&\
 	touch /etc/postfix/maps/smarthost_passwd &&\
 	touch /etc/postfix/maps/generic &&\
 	postmap hash:/etc/postfix/maps/generic &&\
-	postmap hash:/etc/postfix/maps/smarthost_passwd
-	
+	postmap hash:/etc/postfix/maps/smarthost_passwd &&\
  	/home/post_build_clean.sh
 	
 ADD postgrey /etc/default/postgrey
