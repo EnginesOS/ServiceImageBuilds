@@ -36,7 +36,10 @@ RUN cd /tmp/ &&\
 	 cp /etc/resolv.conf /var/spool/postfix/etc/ &&\
 	 cp /etc/services /var/spool/postfix/etc/ &&\
 	mkdir /etc/postfix/maps &&\
-	touch /etc/postfix/maps/generic
+	touch /etc/postfix/maps/smarthost_passwd &&\
+	touch /etc/postfix/maps/generic &&\
+	postmap hash:/etc/postfix/maps/generic &&\
+	postmap hash:/etc/postfix/maps/smarthost_passwd
 	
  	/home/post_build_clean.sh
 	
@@ -49,7 +52,7 @@ ADD postfix/mailname /etc/postfix/mailname
 ADD postfix/transport /etc/postfix/maps/transport
 ADD postfix/ldap /etc/postfix/ldap
 
-    #postmap /etc/postfix/smarthost_passwd 
+  
 RUN postmap /etc/postfix/maps/transport &&\
 	chown postfix -R /etc/postfix/maps /home/configurators/saved/ /etc/postfix/mailname &&\
 	mkdir -p /home/email &&\
