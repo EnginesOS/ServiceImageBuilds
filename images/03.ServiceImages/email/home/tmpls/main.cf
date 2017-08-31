@@ -38,14 +38,13 @@ smtpd_sasl_path = inet:imap.engines.internal:26561
 myhostname = email.engines.internal
 #alias_maps = hash:/etc/aliases
 #alias_database = hash:/etc/aliases
-alias_maps = hash:/etc/aliases, ldap:/etc/postfix/ldap/ldap-aliases.cf
+alias_maps = hash:/etc/aliases
 alias_database = hash:/etc/aliases
-
 
 smtp_generic_maps = hash:/etc/postfix/maps/generic
 transport_maps = hash:/etc/postfix/maps/transport
 
-
+#relay_domains = ldap:/etc/postfix/ldap/ldap-virtual-domains.cf
 
 myorigin = /etc/postfix/mailname
 mydestination = email.engines.internal, email, localhost.localdomain, localhost
@@ -54,9 +53,7 @@ mailbox_size_limit = 0
 recipient_delimiter = +
 inet_interfaces = all
 
-
-#relay_domains = ldap:/etc/postfix/ldap/ldap-virtual-domains.cf
-
+virtual_alias_maps = ldap:/etc/postfix/ldap/ldap-aliases.cf
 virtual_mailbox_maps = ldap:/etc/postfix/ldap/ldap-vmailbox.cf
 virtual_mailbox_domains = ldap:/etc/postfix/ldap/ldap-virtual-domains.cf
 virtual_mailbox_base = /var/mail/vmail
@@ -68,10 +65,6 @@ virtual_gid_maps = static:8
 local_transport = virtual
 local_recipient_maps = $virtual_mailbox_maps
 
-#relay_domains = mysql:/etc/postfix/mysql/relay_domains.cf
-#virtual_alias_maps = mysql:/etc/postfix/mysql/virtual_alias_maps.cf
-#virtual_mailbox_domains = mysql:/etc/postfix/mysql/virtual_domains_maps.cf
-#virtual_mailbox_maps = mysql:/etc/postfix/mysql/virtual_mailbox_maps.cf
 
 #no auth as on same subnet
 #actual smarthost is set on smtp
