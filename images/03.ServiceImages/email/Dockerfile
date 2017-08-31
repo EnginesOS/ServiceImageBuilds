@@ -52,7 +52,7 @@ ADD postfix/ldap /etc/postfix/ldap
     #postmap /etc/postfix/smarthost_passwd 
 RUN postmap /etc/postfix/maps/transport &&\
 	chown postfix -R /etc/postfix/maps /home/configurators/saved/ /etc/postfix/mailname &&\
-	mkdir -p /home/email /home/configurators/grey/ &&\
+	mkdir -p /home/email &&\
 	chown postfix /home/email /home/configurators/saved/antispam/ /home/configurators/grey/ &&\
 	chmod -R go-rw /etc/sudoers /etc/sudoers.d/postfix
 
