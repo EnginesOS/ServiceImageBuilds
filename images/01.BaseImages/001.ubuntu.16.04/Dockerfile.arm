@@ -1,4 +1,4 @@
-FROM engines/xenial:current
+FROM armv7/armhf-ubuntu_core
 
 COPY dpkg.conf.d /etc/dpkg/dpkg.cfg.d
 ADD sources.list /etc/apt/

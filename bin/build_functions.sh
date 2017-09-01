@@ -175,7 +175,7 @@ cd $dir
         echo "Dependacy changed"
         new=99
       else
-        new=`find . -newer ./last_built|wc -c`
+        new=`find . -newer ./last_built | wc -c`
          if test $new -gt 1
           then
            echo "Changed Files"
