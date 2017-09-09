@@ -13,21 +13,20 @@ if ! test -f /engines/var/run/flags/first_run
 KILL_SCRIPT=/home/kill_postfix.sh
 export KILL_SCRIPT
 
-
-
-
 sudo -n /home/engines/scripts/_start_syslog.sh
 
 
-sudo -n /usr/sbin/postmap /etc/postfix/transport 
-sudo -n /usr/sbin/postmap /etc/postfix/smarthost_passwd
-sudo -n /usr/lib/postfix/sbin/master  -w &
+sudo -n /usr/sbin/postmap /etc/postfix/maps/transport 
+sudo -n /usr/sbin/postmap /etc/postfix/maps/smarthost_passwd
+sudo -n /usr/sbin/postmap /etc/postfix/maps/generic
 
-/home/configurators/set_default_domain.sh '{"default_domain":"'$DEFAULT_DOMAIN'"}'
-
+echo '{"default_domain":"'$DEFAULT_DOMAIN'"}' |/home/configurators/set_default_domain.sh 
 
  
 sudo /home/configurators/rebuild_main.sh
+
+sudo -n /usr/lib/postfix/sbin/master  -w &
+
 
 if test -f /home/configurators/saved/grey_listing_enabled
   then
