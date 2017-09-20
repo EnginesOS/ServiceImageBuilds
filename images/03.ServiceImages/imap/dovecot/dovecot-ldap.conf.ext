@@ -1,9 +1,11 @@
 hosts = ldap
 base = ou=People,dc=engines,dc=internal
+ldap_version = 3
 auth_bind = no
 deref = never
 scope = subtree
-user_attrs = uidNumber=uid,gidNumber=gid,mailHomeDirectory=home,quotaBytes=quota_rule=*:bytes=%$
+user_attrs = uidNumber=uid,gidNumber=gid,mailHomeDirectory=home
+#,quotaBytes=quota_rule=*:bytes=%$
 user_filter = (&(objectclass=postfixUser)(maildrop=%s))
 #pass_attrs = mail=uid,userPassword=password
 #pass_filter = (&(objectClass=posixAccount)(uid=%u))
