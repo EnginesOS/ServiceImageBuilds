@@ -6,7 +6,10 @@ deref = never
 scope = subtree
 user_attrs = uidNumber=uid,gidNumber=gid,mailHomeDirectory=home
 #,quotaBytes=quota_rule=*:bytes=%$
-user_filter = (&(objectclass=postfixUser)(maildrop=%s))
+#user_filter = (&(objectclass=postfixUser)(maildrop=%s))
+user_filter = objectclass=postfixUser)
+
+
 #pass_attrs = mail=uid,userPassword=password
 #pass_filter = (&(objectClass=posixAccount)(uid=%u))
 #default_pass_scheme = SASL
