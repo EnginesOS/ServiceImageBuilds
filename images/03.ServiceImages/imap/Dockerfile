@@ -11,6 +11,7 @@ RUN adduser -q --disabled-password -uid 22013 dovecot &&\
 					   dovecot-lmtpd \
 					   dovecot-sieve \
 					   dovecot-sieve \
+					   dovecot-pam \
 					   dovecot-gssapi \
 					   dovecot-ldap &&\
 	mkdir -p /var/mail &&\
