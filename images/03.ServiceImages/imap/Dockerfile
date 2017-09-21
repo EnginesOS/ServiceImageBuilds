@@ -10,10 +10,9 @@ RUN adduser -q --disabled-password -uid 22013 dovecot &&\
 					   dovecot-sieve \
 					   dovecot-lmtpd \
 					   dovecot-sieve \
-					   dovecot-sieve \
-					   dovecot-pam \
 					   dovecot-gssapi \
-					   dovecot-ldap &&\
+					   dovecot-ldap \
+					   libpam-krb &&\
 	mkdir -p /var/mail &&\
 	chown dovecot /var/mail &&\
 	mkdir -p /var/run/dovecot &&\
