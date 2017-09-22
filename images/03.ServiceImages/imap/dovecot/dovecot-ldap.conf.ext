@@ -7,7 +7,7 @@ scope = subtree
 user_attrs = uidNumber=uid,gidNumber=gid,mailHomeDirectory=home
 #,quotaBytes=quota_rule=*:bytes=%$
 #user_filter = (&(objectclass=postfixUser)(maildrop=%s))
-user_filter = (objectclass=postfixUser)
+user_filter = (&(objectclass=postfixUser)(uid=%s))
 
 
 #pass_attrs = mail=uid,userPassword=password
