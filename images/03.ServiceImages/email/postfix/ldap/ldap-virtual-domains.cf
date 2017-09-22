@@ -2,5 +2,5 @@ server_host = ldap://ldap/
 search_base = ou=domains,ou=email,ou=Services,dc=engines,dc=internal
 version = 3
 bind = no
-query_filter = (ObjectClass=dNSDomain)
+query_filter = (ObjectClass=dNSDomain)(dc=%s))
 result_attribute = dc
