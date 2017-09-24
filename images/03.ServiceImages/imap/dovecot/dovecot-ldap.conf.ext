@@ -5,6 +5,6 @@ auth_bind = no
 deref = never
 scope = subtree
 user_attrs = uidNumber=uid,gidNumber=gid,mailHomeDirectory=home
-user_filter = (&(objectclass=postfixUser)(uid=%u))
+user_filter = (&(objectclass=postfixUser)(uid=%n))
 
 
