@@ -15,45 +15,11 @@ if test -z $service
 		exit -1
 	fi	
 	
-if test -z $pubkey 
-	then
-	echo "Error pubkey not set"
-		exit -1
-	fi	
-	
-if test -z $command 
-	then
-	echo "Error command not set"
-		exit -1
-	fi
-
-
-if  test $command = "access"
-	then
-	if ! test -f /home/auth/static/access/$service/access
-	 then
-		mkdir -p /home/auth/static/access/$service/
-		cp /home/get_access.sh /home/auth/static/scripts/$service/
-		chmod u+x /home/auth/static/scripts/$service/get_access.sh 	
-		echo "command=\"/home/auth/static/scripts/$service/get_access.sh\",no-port-forwarding,no-X11-forwarding,no-agent-forwarding,no-pty ssh-rsa $pubkey auth" >  /home/auth/keys/${service}_${command}_authorized_keys		
-		password=`dd if=/dev/urandom count=6 bs=1  | od -h | awk '{ print $2$3$4}'`
-		echo "create user 'auth_$service'@'%' identified by '$password';;" | mysql -h $dbhost -u $dbuser --password=$dbpasswd $dbname 
-	    echo "create user 'auth_$service'@'%' identified by '$password';;" 
-		echo "GRANT SELECT on auth.* to 'auth_$service'@'%';" | mysql -h $dbhost -u $dbuser --password=$dbpasswd $dbname 
-		echo "GRANT SELECT on auth.* to 'auth_$service'@'%';"
-		#echo "create user 'auth_$service'@'%' identified by '$password';
-		#	SET PASSWORD FOR 'auth_ftp'@'%' = password('$password');
-		#	GRANT SELECT on auth.* to 'auth_$service'@'%'; | mysql -h $dbhost -u $dbuser --password=$dbpasswd $dbname " >>/tmp/add_access.log
-		#echo ":db_username=auth_$service:db_password=$password:database_name=$dbname:db_host=$dbhost:" > /home/auth/static/access/$service/access
-		echo '{"db_username":"auth_'$service'","db_password":"'$password'","database_name":"'$dbname'","db_host":"'$dbhost'"}' > /home/auth/static/access/$service/access
-	fi	
-else
-	echo "command=\"/home/auth/static/scripts/${service}/${command}_service.sh\",no-port-forwarding,no-X11-forwarding,no-agent-forwarding,no-pty ssh-rsa $pubkey auth" >  /home/auth/keys/${service}_${command}_authorized_keys	
-fi
-
-#
-cat /home/auth/keys/*_authorized_keys > /home/auth/keys/authorized_keys
-chmod og-rwx /home/auth/keys/authorized_keys	
-
+function gen_service_key {
+echo addprinc -randkey host/$service.engines.internal@ENGINES.INTERNAL | kadmin.local 
+mkdir /etc/krb5kdc/$service 
+echo ktadd -k /etc/krb5kdc/$service/$service.keytab host/$service.engines.internal@ENGINES.INTERNAL | kadmin.local 
+}
+gen_service_key
 echo "Success"
 exit 0
