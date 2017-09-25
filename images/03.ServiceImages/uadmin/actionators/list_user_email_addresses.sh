@@ -8,7 +8,7 @@ if test -z $uid
   exit 127
 fi
 
-emails=`ldapsearch -b "ou=People,dc=engines,dc=internal" -LLL -h ldap uid=$uid mailacceptinggeneralid  | grep ^mailacceptinggeneralid: |cut -f2 -d" "`
+emails=`/home/engines/scripts/ldapsearch -b "ou=People,dc=engines,dc=internal" -LLL -h ldap uid=$uid mailacceptinggeneralid | grep ^mailacceptinggeneralid: |cut -f2 -d" "`
 
 echo -n '{"addresses":['
 n=0

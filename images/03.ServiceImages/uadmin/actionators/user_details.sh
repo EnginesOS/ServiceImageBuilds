@@ -8,5 +8,5 @@ if test -z $uid
   exit 127
 fi
 
-details=`ldapsearch -b "ou=People,dc=engines,dc=internal" -h ldap uid=$uid '
+details=`/home/engines/scripts/ldapsearch -b "ou=People,dc=engines,dc=internal" -h ldap uid=$uid '
  

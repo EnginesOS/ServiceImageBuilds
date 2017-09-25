@@ -1,7 +1,7 @@
 
-
-
-volmgr ALL = (root) NOPASSWD: /home/engines/scripts/ldap.sh
-                        
+uadmin ALL = (root) NOPASSWD: /home/engines/scripts/ldapadd.sh
+uadmin ALL = (root) NOPASSWD: /home/engines/scripts/ldapmodify.sh
+uadmin ALL = (root) NOPASSWD: /home/engines/scripts/ldapsearch.sh
+uadmin ALL = (root) NOPASSWD: /home/engines/scripts/ldapdelete.sh                       
 #must have blank after last sudoers line
 
