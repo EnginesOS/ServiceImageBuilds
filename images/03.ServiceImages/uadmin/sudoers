@@ -1,7 +1,7 @@
 
-uadmin ALL = (root) NOPASSWD: /home/engines/scripts/ldapadd.sh
-uadmin ALL = (root) NOPASSWD: /home/engines/scripts/ldapmodify.sh
-uadmin ALL = (root) NOPASSWD: /home/engines/scripts/ldapsearch.sh
-uadmin ALL = (root) NOPASSWD: /home/engines/scripts/ldapdelete.sh                       
+uadmin ALL = (root) NOPASSWD: /home/engines/scripts/sudo/ldapadd.sh
+uadmin ALL = (root) NOPASSWD: /home/engines/scripts/sudo/ldapmodify.sh
+uadmin ALL = (root) NOPASSWD: /home/engines/scripts/sudo/ldapsearch.sh
+uadmin ALL = (root) NOPASSWD: /home/engines/scripts/sudo/ldapdelete.sh                       
 #must have blank after last sudoers line
 

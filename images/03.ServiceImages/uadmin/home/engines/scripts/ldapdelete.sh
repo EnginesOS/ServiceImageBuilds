@@ -1,4 +1,3 @@
 #/bin/bash
 
-kinit -t 
-/usr/bin/ldapadd $*
+sudo /home/engines/scripts/sudo/ldapdelete.sh $*
