@@ -1,0 +1,7 @@
+
+
+
+volmgr ALL = (root) NOPASSWD: /home/engines/scripts/ldap.sh
+                        
+#must have blank after last sudoers line
+
