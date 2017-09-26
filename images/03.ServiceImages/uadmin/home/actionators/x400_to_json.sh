@@ -6,9 +6,7 @@ echo '['
 
 start=1
 first=1
-echo $x400string
 
-echo "----"
 for fld in $x400string
  do
  if test $start -eq 1
@@ -38,7 +36,6 @@ else
 fi
 echo   '"'$name'":"'$val'"'
  fi
-#echo F $fld
 done
 echo '}]'
 

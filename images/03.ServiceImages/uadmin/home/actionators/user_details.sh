@@ -8,5 +8,11 @@ if test -z $uid
   exit 127
 fi
 
-details=`/home/engines/scripts/ldapsearch -b "ou=People,dc=engines,dc=internal" -h ldap uid=$uid '
+. /home/actionators/x400_to_json.sh
+
+x400string=`/home/engines/scripts/ldapsearch -b "ou=People,dc=engines,dc=internal" -h ldap uid=$uid '
+
+echo '{"user":'
+ldap_to_json
+echo '}'
  

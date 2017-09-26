@@ -6,8 +6,6 @@
 
 x400string=`/home/engines/scripts/ldapsearch.sh -LLL -b "ou=Groups,dc=engines,dc=internal" -h ldap objectClass=posixGroup cn gidNumber`
 
-
-
 echo '{"groups":'
 ldap_to_json
 echo '}'
