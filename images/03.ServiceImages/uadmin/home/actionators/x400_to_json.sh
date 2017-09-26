@@ -67,3 +67,28 @@ echo   '"'$name'":"'$val'"'
 done
 echo '}'
 }
+
+function map_ldap_to_json_array {
+for fld in $x400string
+ do
+ if test $start -eq 1
+  then
+   name=`echo $fld |sed "/:/s///"`
+   start=0   
+  else
+   val=$fld
+   start=1
+    if test $first -eq 1
+      then
+        echo '['
+        first=0
+      else
+        echo ","
+    fi
+    if test $name = $key
+     then
+echo   '"'$val'"'
+ fi
+done
+echo ']'
+}

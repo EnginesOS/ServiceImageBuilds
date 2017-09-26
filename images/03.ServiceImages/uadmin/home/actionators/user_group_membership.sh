@@ -3,9 +3,10 @@
 parms_to_env
 . /home/actionators/x400_to_json.sh
 
-x400string=`/home/engines/scripts/ldapsearch.sh -LLL  -b "ou=People,dc=engines,dc=internal" -h ldap objectClass=posixAccount`
+x400string=`/home/engines/scripts/ldapsearch.sh -LLL  -b "cn=$group_name,ou=People,dc=engines,dc=internal" -h ldap objectClass=posixGroup  memberUid`
 
 
-echo '{"groups":'
-ldap_to_json_array
+echo '{"members":'
+key=memberUid
+map_ldap_to_json_array
 echo '}'
