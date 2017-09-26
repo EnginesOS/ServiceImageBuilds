@@ -7,5 +7,5 @@ x400string=`/home/engines/scripts/ldapsearch.sh -LLL  -b "ou=People,dc=engines,d
 
 
 echo '{"users":'
-ldap_to_json
+ldap_to_json_array
 echo '}'

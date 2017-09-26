@@ -6,6 +6,6 @@ parms_to_env
 
 x400string=`/home/engines/scripts/ldapsearch.sh -LLL -b "cn=$group_name,ou=Groups,dc=engines,dc=internal" -h ldap objectClass=posixGroup ` 
 
-echo '{"groups":'
-ldap_to_json_array
+echo '{"group":'
+ldap_to_json
 echo '}'

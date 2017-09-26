@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function ldap_to_json {
+function ldap_to_json_array {
 
 echo '['
 
@@ -39,4 +39,31 @@ echo   '"'$name'":"'$val'"'
 done
 echo '}]'
 
+}
+
+function ldap_to_json {
+start=1
+first=1 
+
+
+for fld in $x400string
+ do
+ if test $start -eq 1
+  then
+   name=`echo $fld |sed "/:/s///"`
+   start=0   
+  else
+   val=$fld
+   start=1
+    if test $first -eq 1
+      then
+        echo '{'
+        first=0
+      else
+        echo ","
+    fi
+echo   '"'$name'":"'$val'"'
+ fi
+done
+echo '}'
 }
