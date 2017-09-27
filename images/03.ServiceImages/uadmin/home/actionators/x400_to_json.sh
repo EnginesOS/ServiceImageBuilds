@@ -71,7 +71,7 @@ if test $new_entry -eq 1
 else
  echo ","
 fi
-echo   '"'$name'":"'$val'"'
+echo   '"'$name'":"'$value'"'
 
 done
 echo '}]'
@@ -119,7 +119,6 @@ if test $first -eq 1
         echo ","
     fi
 echo   '"'$name'":"'$value'"'
- fi
 done
 echo '}'
 rm $LDAP_FILE
