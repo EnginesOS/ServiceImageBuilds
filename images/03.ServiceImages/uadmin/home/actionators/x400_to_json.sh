@@ -87,7 +87,8 @@ for fld in $x400string
     fi
     if test $name = $key
      then
-echo   '"'$val'"'
+      echo   '"'$val'"'
+    fi
  fi
 done
 echo ']'
