@@ -9,4 +9,4 @@ x400string=`/home/engines/scripts/ldapsearch.sh -LLL -b "cn=$group_name,ou=Group
 echo '{"members":'
 key=memberUid
 map_ldap_to_json_array
-echo '}''
+echo '}'

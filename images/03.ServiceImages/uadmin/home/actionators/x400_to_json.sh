@@ -69,6 +69,8 @@ echo '}'
 }
 
 function map_ldap_to_json_array {
+start=1
+first=1
 for fld in $x400string
  do
  if test $start -eq 1
