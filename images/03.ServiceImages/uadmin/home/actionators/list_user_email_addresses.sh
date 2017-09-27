@@ -8,10 +8,15 @@ if test -z $uid
   exit 127
 fi
 
+. /home/actionators/x400_to_json.sh
+
 /home/engines/scripts/ldapsearch.sh -b "ou=People,dc=engines,dc=internal" -LLL -h ldap uid=$uid mailacceptinggeneralid  > $LDAP_FILE
 
-
-
+echo '{"email_addresses":'
+key=mailacceptinggeneralid
+map_ldap_to_json_array
 echo '}'
+
+
 
  
