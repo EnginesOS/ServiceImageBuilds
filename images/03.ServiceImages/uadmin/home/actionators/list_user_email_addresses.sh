@@ -8,20 +8,10 @@ if test -z $uid
   exit 127
 fi
 
-emails=`/home/engines/scripts/ldapsearch -b "ou=People,dc=engines,dc=internal" -LLL -h ldap uid=$uid mailacceptinggeneralid | grep ^mailacceptinggeneralid: |cut -f2 -d" "`
+/home/engines/scripts/ldapsearch.sh -b "ou=People,dc=engines,dc=internal" -LLL -h ldap uid=$uid mailacceptinggeneralid  > $LDAP_FILE
 
-echo -n '{"addresses":['
-n=0
-for email in emails
-do
- if test $n -ne 0
-  then
-   echo -n ','
-   fi
-    n=1
- echo -n '"'$email'"'
-done
 
-echo ']}'
+
+echo '}'
 
  

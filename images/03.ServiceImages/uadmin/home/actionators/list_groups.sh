@@ -4,7 +4,7 @@
 
 . /home/actionators/x400_to_json.sh
 
-x400string=`/home/engines/scripts/ldapsearch.sh -LLL -b "ou=Groups,dc=engines,dc=internal" -h ldap objectClass=posixGroup cn gidNumber`
+/home/engines/scripts/ldapsearch.sh -LLL -b "ou=Groups,dc=engines,dc=internal" -h ldap objectClass=posixGroup cn gidNumber > $LDAP_FILE
 
 echo '{"groups":'
 ldap_to_json_array
