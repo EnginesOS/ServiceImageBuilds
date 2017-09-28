@@ -10,7 +10,7 @@ RUN echo "Y"| adduser --uid 22010 -q --home /home/ftpd --disabled-password proft
 				       libsasl2-2  \
 				       libsasl2-modules-gssapi-mit \
 				       libsasl2-modules-ldap \
-  					  	proftpd-mod-ldap &&\
+  					   proftpd-mod-ldap &&\
 	usermod -G containers -a proftpd &&\
 	ln -s /home/ftpd /run/proftpd &&\
  	/home/post_build_clean.sh

@@ -6,7 +6,8 @@ RUN echo "Y" | adduser -q --disabled-password --home /var/spool/postfix -uid 220
 	apt-get -y install postfix \
 	                   postfix-pcre \
 	                   postfix-ldap \
-	                   postgrey 
+	                   postgrey \
+				       libsasl2-modules-gssapi-mit 
 	
 ADD home home
 

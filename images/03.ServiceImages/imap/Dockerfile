@@ -10,9 +10,9 @@ RUN adduser -q --disabled-password -uid 22013 dovecot &&\
 					   dovecot-sieve \
 					   dovecot-lmtpd \
 					   dovecot-sieve \
-					   dovecot-sieve \
 					   dovecot-gssapi \
-					   dovecot-ldap &&\
+					   dovecot-ldap \
+					   libpam-krb5 &&\
 	mkdir -p /var/mail &&\
 	chown dovecot /var/mail &&\
 	mkdir -p /var/run/dovecot &&\
@@ -25,6 +25,7 @@ ADD dovecot/dovecot-ldap.conf.ext /etc/dovecot/dovecot-ldap.conf.ext
 ADD sudoers /etc/sudoers.d/dovecot
 ADD home home
 COPY pam.d/dovecot /etc/pam.d/
+
 RUN  chmod -R go-rw /etc/sudoers /etc/sudoers.d/
 
 USER dovecot
