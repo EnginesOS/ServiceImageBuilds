@@ -4,7 +4,7 @@ parms_to_env
 
 if test -z $uid
  then
-  echo '{"error":"No ui specified"}'
+  echo '{"error":"No uid specified"}'
   exit 127
 fi
 
