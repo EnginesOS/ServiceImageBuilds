@@ -9,7 +9,7 @@ mkdir -p /home/auth/logs/
 if ! test -f /engines/var/run/flags/first_run.done
   then
 	/home/first_run.sh		
-	if test $? -eq -
+	if test $? -eq 0
 	 then
 	   touch /engines/var/run/flags/first_run.done
 	fi
