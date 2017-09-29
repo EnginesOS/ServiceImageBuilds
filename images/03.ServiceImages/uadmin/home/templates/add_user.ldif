@@ -1,0 +1,16 @@
+dn: cn=$first_name $last_name,ou=People,dc=engines,dc=internal
+cn: $first_name $last_name
+gidnumber: 5000
+givenname: $first_name
+homedirectory: /home/users/$uid
+loginshell: /bin/sh
+mailacceptinggeneralid: $uid@$domain
+maildrop: $uid@$domain
+objectclass: postfixUser
+objectclass: posixAccount
+objectclass: inetOrgPerson
+objectclass: top
+sn: $last_name
+uid: $uid
+uidnumber: $uidnumber
+userpassword: {SASL}$uid@ENGINES.INTERNAL
