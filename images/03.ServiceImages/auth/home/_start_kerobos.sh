@@ -7,7 +7,7 @@ touch /engines/var/run/flags/startup_complete
 pid=$!
 
 kpid=`cat /var/run/krb5kdc.pid `
- echo " $pid" >> $PID_FILE
+ echo -n " $pid" >> /var/run/krb5kdc.pid 
 touch /engines/var/run/flags/startup_complete
 echo "startup complete"
 wait $kpid
