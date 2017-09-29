@@ -5,10 +5,13 @@
 . /home/engines/functions/params_to_env.sh
 parms_to_env
 
-if test $ip = null
-  then
-    echo unset ip
-    unset ip
+it ! test -z $ip
+ then
+   if test $ip = null -o  $ip = nil
+     then
+      echo unset ip
+      unset ip
+   fi
 fi
 
 if ! test -z $domain_name
