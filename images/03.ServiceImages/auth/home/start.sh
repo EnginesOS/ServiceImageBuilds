@@ -16,7 +16,9 @@ SIGNAL=0
 sudo -n /home/engines/scripts/_start_syslog.sh
 #sudo -n /home/_start_sshd.sh
 sudo -n /home/_start_kerobos.sh 
+sleep 500
 exit_code=$?
 sudo /home/engines/scripts/_kill_syslog.sh
 rm -f /engines/var/run/flags/startup_complete
+
 exit $exit_code
