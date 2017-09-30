@@ -17,6 +17,7 @@ touch /engines/var/run/flags/startup_complete
   then 
   sleep 500
  fi  
+ 
 wait $kpid
 exit_code=$?
 rm /engines/var/run/flags/startup_complete
