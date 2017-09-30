@@ -7,7 +7,9 @@ ENV ContGrp python
 
 RUN echo "Y" | adduser -q --uid 22674 --home /home/python --disabled-password python &&\
 	apt-get update -y &&\
-	apt-get install -y wget python python-dev python-lxml &&\
+	apt-get install -y python \
+					   python-dev \
+					   python-lxml &&\
     usermod -G containers -a python &&\
     cd /tmp &&\
     wget --no-check-certificate https://bootstrap.pypa.io/get-pip.py &&\ 

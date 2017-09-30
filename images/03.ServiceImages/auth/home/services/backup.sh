@@ -1,4 +1,4 @@
 #!/bin/bash
 
 . /home/auth/.dbenv
-mysqldump -h $dbhost -u $dbuser --password=$dbpasswd $dbname | gzip -c
+mysqldump -h $dbhost -u $dbuser --password=$dbpasswd $dbname 

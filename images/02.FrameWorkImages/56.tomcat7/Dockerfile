@@ -1,4 +1,4 @@
-FROM engines/openjdk8:$release
+FROM engines/openjdk7:$release
 
 RUN  apt-mark unhold tzdata &&\
 	/usr/sbin/usermod -u 22671 www-data &&\

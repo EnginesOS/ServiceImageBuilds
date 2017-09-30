@@ -1,0 +1,4 @@
+dn: cn=James Vodanovich,ou=People,dc=engines,dc=internal
+changetype: modify
+add: userPassword
+userPassword: {SASL}jvodanovich@ENGINES.INTERNAL

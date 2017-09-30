@@ -1,5 +1,5 @@
 #!/bin/sh
-
+echo backup_run > /engines/var/run/flags/backup_run
 default_email=`cat /home/configurators/saved/backup_email`
 Backup_ConfigDir=/home/backup/.duply/
 
@@ -24,7 +24,7 @@ for backup in `ls $Backup_ConfigDir |grep -v duply_conf`
 	   backup_type=full
 	fi
 
-	duply $backup backup   $backup_type --s3-use-new-style > /var/log/backup/$bfn           
+	/home/run_duply $backup backup   $backup_type --s3-use-new-style > /var/log/backup/$bfn           
 	result=`grep "Finished state FAILED"  /var/log/backup/$bfn`
 	if test $? -ne 0
 	 then
@@ -37,3 +37,5 @@ for backup in `ls $Backup_ConfigDir |grep -v duply_conf`
 	echo "Subject:$subject" > /tmp/email                 
 	cat /tmp/email /var/log/backup/$bfn | sendmail -t $email -f $email
 done 
+
+rm /engines/var/run/flags/backup_run

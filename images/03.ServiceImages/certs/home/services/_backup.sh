@@ -1,5 +1,5 @@
 #!/bin/bash
-tar -czpf - /home/certs/store/ 2>/tmp/tar.errs
+tar -cpf - /home/certs/store/ 2>/tmp/tar.errs
 if test $? -ne 0
  then 
    cat  /tmp/tar.errs  >&2

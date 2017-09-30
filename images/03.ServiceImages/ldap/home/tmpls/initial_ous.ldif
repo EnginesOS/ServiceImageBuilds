@@ -1,0 +1,83 @@
+
+dn: cn=schema,cn=config
+objectClass: olcSchemaConfig
+cn: schema
+
+dn: dc=engines,dc=internal
+objectClass: dcObject
+objectclass: organization
+o: engines.internal
+dc: engines
+description: LDAP Root
+
+
+dn: cn=admin,dc=engines,dc=internal
+objectClass: simpleSecurityObject
+objectClass: organizationalRole
+cn: admin
+userPassword: password
+description: LDAP administrator
+
+dn: ou=People,dc=engines,dc=internal
+objectClass: organizationalUnit
+ou: People
+
+dn: ou=Groups,dc=engines,dc=internal
+objectClass: organizationalUnit
+ou: Groups
+
+dn: ou=Services,dc=engines,dc=internal
+objectClass: organizationalUnit
+ou: Services
+
+dn: ou=Users,dc=engines,dc=internal
+objectClass: organizationalUnit
+ou: Users
+
+dn: cn=Users,ou=Groups,dc=engines,dc=internal
+cn: Users
+gidnumber: 5000
+objectclass: posixGroup
+objectclass: top
+
+dn: cn=ftp,ou=Groups,dc=engines,dc=internal
+cn: ftp
+gidnumber: 5001
+objectclass: posixGroup
+objectclass: top
+
+dn: cn=data_access,ou=Groups,dc=engines,dc=internal
+cn: data_access
+gidnumber: 11111
+objectclass: posixGroup
+objectclass: top
+
+dn: ou=Distribution Groups,dc=engines,dc=internal
+objectclass: organizationalUnit
+objectclass: top
+ou: Distribution Groups
+
+dn: ou=hosts,dc=engines,dc=internal
+objectClass: organizationalUnit
+ou: hosts
+
+dn: ou=Service accounts,dc=engines,dc=internal
+objectclass: organizationalUnit
+objectclass: top
+ou: Service accounts
+
+dn: ou=ftp,ou=Service accounts,dc=engines,dc=internal
+objectclass: organizationalUnit
+objectclass: top
+ou: ftp
+
+dn: cn=uidNext,dc=engines,dc=internal
+objectClass: uidNext
+uidNumber: 25000
+cn: uidNext
+
+dn: cn=gidNext,dc=engines,dc=internal
+objectClass: gidNext
+gidNumber: 25000
+cn: gidNext
+

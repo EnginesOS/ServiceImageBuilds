@@ -1,14 +1,12 @@
 #!/bin/bash
-cd /tmp
-cat - | tar -xpzf - dump
 passwd=`cat  /data/db/.priv/db_master_pass
-cd dump
-mongorestore  -h mongo --password $passwd -u admin  --oplog  2>/tmp/mongorestore.errs
+cd /tmp
+mongodump  -h mongo --password $passwd -u admin  --oplog  2>/tmp/mongodump.errs
 if test $? -ne 0
  then 
  	cat  /tmp/mongodump.errs  >&2
  	exit -1
  fi
-
+tar -cpf - dump 
 rm -r dump
 exit 0

@@ -11,7 +11,11 @@ delay_warning_time = 4h
 
 readme_directory = no
 
-#FIXME SHOULD GENERATE THESES
+#need to set AAA records internal before this can be removed
+inet_protocols = ipv4
+
+
+#FIXME SHOULD GENERATE THESES ?
 # TLS parameters
 smtpd_tls_cert_file=/etc/ssl/certs/engines.crt
 smtpd_tls_key_file=/etc/ssl/keys/engines.key
@@ -34,6 +38,12 @@ smtpd_sasl_path = inet:imap.engines.internal:26561
 myhostname = email.engines.internal
 alias_maps = hash:/etc/aliases
 alias_database = hash:/etc/aliases
+
+smtp_generic_maps = hash:/etc/postfix/maps/generic
+transport_maps = hash:/etc/postfix/maps/transport
+
+#relay_domains = ldap:/etc/postfix/ldap/ldap-virtual-domains.cf
+
 myorigin = /etc/postfix/mailname
 mydestination = email.engines.internal, email, localhost.localdomain, localhost
 mynetworks = 172.17.0.0/16 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128
@@ -41,24 +51,27 @@ mailbox_size_limit = 0
 recipient_delimiter = +
 inet_interfaces = all
 
-
-relay_domains = mysql:/etc/postfix/mysql/relay_domains.cf
-virtual_alias_maps = mysql:/etc/postfix/mysql/virtual_alias_maps.cf
-virtual_mailbox_domains = mysql:/etc/postfix/mysql/virtual_domains_maps.cf
-virtual_mailbox_maps = mysql:/etc/postfix/mysql/virtual_mailbox_maps.cf
+virtual_alias_maps = ldap:/etc/postfix/ldap/ldap-aliases.cf
+virtual_mailbox_maps = ldap:/etc/postfix/ldap/ldap-vmailbox.cf
+virtual_mailbox_domains = ldap:/etc/postfix/ldap/ldap-virtual-domains.cf
 virtual_mailbox_base = /var/mail/vmail
 virtual_mailbox_limit = 512000000
 virtual_minimum_uid = 8
-#virtual_transport = virtual
 virtual_transport = lmtp:inet:imap.engines.internal:2501
 virtual_uid_maps = static:8
 virtual_gid_maps = static:8
 local_transport = virtual
 local_recipient_maps = $virtual_mailbox_maps
-# this is only needed if you want vacation support -
 
+
+#no auth as on same subnet
+#actual smarthost is set on smtp
+# T
 relayhost = smtp.engines.internal
-
+smtp_sasl_auth_enable = no 
+smtp_sasl_password_maps = hash:/etc/postfix/maps/smarthost_passwd  
+smtp_sasl_security_options =    
+smtp_use_tls = no 
 
 
 #reject_rbl_client zen.spamhaus.org,reject_rbl_client bl.spamcop.net,reject_rbl_client cbl.abuseat.org,reject_rbl_client dnsbl.njabl.org,reject_rbl_client dnsbl.sorbs.net,reject_rhsbl_sender dsn.rfc-ignorant.org,permit

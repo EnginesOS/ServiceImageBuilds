@@ -1,0 +1,12 @@
+# Authentication for ldap users. Included from 10-auth.conf.
+
+
+userdb {
+  args = /etc/dovecot/dovecot-ldap.conf.ext
+  default_fields = home=/home/vmail/%u
+  driver = ldap
+}
+#passdb {
+#  driver = pam
+#  args = failure_show_msg=yes 
+#}

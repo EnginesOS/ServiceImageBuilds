@@ -1,0 +1,4 @@
+dn: cn=$first_name $last_name,ou=People,dc=engines,dc=internal
+changetype: modify
+add: userPassword
+userPassword: {SASL}$uid@ENGINES.INTERNAL

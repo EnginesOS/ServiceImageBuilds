@@ -1,0 +1,11 @@
+dn: cn=SN,ou=ftp,ou=Service accounts,dc=engines,dc=internal
+cn: SN
+gidnumber: GID
+objectclass: inetOrgPerson
+objectclass: posixAccount
+objectclass: top
+sn: SN
+uid: UID
+userpassword: PASSWORD
+uidnumber: IDNUMBER
+homedirectory: 

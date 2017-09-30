@@ -1,0 +1,3 @@
+dn: dc=DOMAIN,ou=domains,ou=email,ou=Services,dc=engines,dc=internal
+dc: DOMAIN
+objectclass: dNSDomain

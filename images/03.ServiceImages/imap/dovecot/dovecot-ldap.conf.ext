@@ -1,0 +1,10 @@
+hosts = ldap
+base = ou=People,dc=engines,dc=internal
+ldap_version = 3
+auth_bind = no
+deref = never
+scope = subtree
+user_attrs = uidNumber=uid,gidNumber=gid,mailHomeDirectory=home
+user_filter = (&(objectclass=postfixUser)(uid=%n))
+
+

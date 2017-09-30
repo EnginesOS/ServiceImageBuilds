@@ -1,9 +1,12 @@
 #!/bin/sh
 
+touch /engines/var/run/flags/kerobos_configured
+
 if ! test -f /engines/var/run/flags/first_run
   then
-  	touch /engines/var/run/flags/first_run
+    sudo -n /home/_first_run.sh
   fi
+
 
 PID_FILE=/tmp/pids
 export PID_FILE
@@ -13,16 +16,13 @@ export PID_FILE
 sudo -n /home/engines/scripts/_start_syslog.sh
 
 echo started syslog
-sudo -n /usr/sbin/slapd -d 4
-echo -n $% > /tmp/pids
-sudo -n /usr/sbin/apache2ctl start 
-echo -n " " >> /tmp/pids
-cat  /run//apache2/apache2.pid >> /tmp/pids
-touch  /engines/var/run/flags/startup_complete
-wait
+
+
+sudo -n /home/_start_slapd.sh
+
 exit_code=$?
 
-rm /engines/var/run/flags/startup_complete  
+
 sudo -n /home/engines/scripts/_kill_syslog.sh
 exit $exit_code
 

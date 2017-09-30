@@ -1,2 +1,2 @@
 #!/bin/sh
- tar -cpf - /var/fs/local/ | gzip -c
+ tar -cpf - /var/fs/local/ 

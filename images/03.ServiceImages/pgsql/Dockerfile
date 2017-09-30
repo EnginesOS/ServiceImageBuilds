@@ -3,7 +3,9 @@ FROM  engines/servicebase:$release
 RUN echo "Y" | adduser -q --disabled-password -uid 22002 postgres &&\
 	/home/no_init.sh &&\			
 	apt-get update -y &&\
-	apt-get -y install postgresql postgresql-contrib libpq-dev &&\
+	apt-get -y install postgresql \
+				       postgresql-contrib \
+				       libpq-dev &&\
  	/home/post_build_clean.sh
  	
 ADD home home

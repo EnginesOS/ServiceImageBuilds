@@ -1,2 +1,0 @@
-
-query = SELECT domain FROM domain WHERE domain='%s' and backupmx = false and active = true
