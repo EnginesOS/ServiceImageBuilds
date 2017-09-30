@@ -9,14 +9,16 @@ mkdir -p /home/auth/logs/
 if ! test -f /engines/var/run/flags/first_run.done
   then
 	/home/first_run.sh		
-	touch /engines/var/run/flags/first_run.done
+	if test $? -eq 0
+	 then
+	   touch /engines/var/run/flags/first_run.done
+	fi
  fi
 
 SIGNAL=0
 sudo -n /home/engines/scripts/_start_syslog.sh
-#sudo -n /home/_start_sshd.sh
+
 sudo -n /home/_start_kerobos.sh 
-exit_code=$?
 sudo /home/engines/scripts/_kill_syslog.sh
-rm -f /engines/var/run/flags/startup_complete
+
 exit $exit_code
