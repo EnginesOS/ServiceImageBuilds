@@ -12,6 +12,11 @@ pid=$!
 touch /engines/var/run/flags/startup_complete
 echo "startup complete"
 touch /engines/var/run/flags/startup_complete
+ kill -0 $kpid
+ if ! test $? -eq 0
+  then 
+  sleep 500
+ fi  
 wait $kpid
 exit_code=$?
 rm /engines/var/run/flags/startup_complete
