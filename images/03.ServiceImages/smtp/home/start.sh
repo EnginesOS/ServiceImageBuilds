@@ -2,7 +2,7 @@
 
 if ! test -f /engines/var/run/flags/first_run
   then
-  	sudo /home/fix_permissions.sh
+  	sudo /home/setup_dirs.sh
   	echo Fixed perms
   	touch /engines/var/run/flags/first_run
 fi
