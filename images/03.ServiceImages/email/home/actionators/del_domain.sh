@@ -11,7 +11,7 @@ fi
 
  kinit -t /etc/krb5kdc/keys/email.keytab 
  
- cat /home/actionators/tmp/del_domain.ldif | sed "/DOMAIN/s//$domain_name/" | ldapdelete  -h ldap
+ cat /home/actionators/tmpls/del_domain.ldif | sed "/DOMAIN/s//$domain_name/" | ldapdelete  -h ldap
  
  result=$?
  
