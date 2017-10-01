@@ -43,7 +43,8 @@ RUN mkdir /usr/share/doc/postfix/html \
 	postmap /etc/postfix/transport &&\
 	chown postfix /etc/postfix/ /etc/postfix/sender_canonical* /etc/postfix/generic /etc/postfix/generic.db /etc/postfix/smarthost_passwd /etc/postfix/sender_canonical /etc/postfix/smarthost_passwd /etc/postfix/transport /etc/postfix/transport.smart /etc/postfix/transport.db /etc/postfix/mailname &&\
 	chown postfix /home/configurators/saved /etc/postfix/ &&\
-	chgrp postfix /home/configurators/*.sh 
+	chgrp postfix /home/configurators/*.sh &&\
+	cp -rp /var/spool/postfix /tmp/spool_postfix
 	
 ADD sudoers /etc/sudoers.d/smtp
 
