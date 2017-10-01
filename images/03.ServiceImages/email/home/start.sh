@@ -3,7 +3,11 @@ PID_FILE=/var/spool/postfix/pid/master.pid
 
 export PID_FILE
 . /home/engines/functions/trap.sh
- 
+
+if ! test -d /var/spool/postfix/pid/
+ then 
+  mkdir -p  /var/spool/postfix/pid/
+ fi
 if ! test -f /engines/var/run/flags/first_run
   then
   	sudo /home/fix_permissions.sh
