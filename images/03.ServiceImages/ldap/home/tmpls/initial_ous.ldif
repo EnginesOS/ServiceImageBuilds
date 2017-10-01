@@ -30,6 +30,14 @@ dn: ou=Services,dc=engines,dc=internal
 objectClass: organizationalUnit
 ou: Services
 
+dn: ou=email,ou=Services,dc=engines,dc=internal
+objectClass: organizationalUnit
+ou: email
+
+dn: ou=domains,ou=email,ou=Services,dc=engines,dc=internal
+objectClass: organizationalUnit
+ou: domains
+
 dn: ou=Users,dc=engines,dc=internal
 objectClass: organizationalUnit
 ou: Users
