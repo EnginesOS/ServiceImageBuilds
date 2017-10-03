@@ -20,7 +20,6 @@ olcDatabase: mdb
 olcDbCheckpoint: 512 30
 olcDbMaxSize: 1073741824
 olcLastMod: TRUE
-olcSuffix: dc=engines,dc=internal
 olcDbDirectory: /var/lib/ldap
 olcRootDN: cn=admin,dc=engines,dc=internal
 olcRootPW: password
