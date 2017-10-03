@@ -20,5 +20,5 @@ sudo -n /home/engines/scripts/_start_syslog.sh
 
 sudo -n /home/_start_kerobos.sh 
 sudo /home/engines/scripts/_kill_syslog.sh
-
+sleep 500
 exit $exit_code

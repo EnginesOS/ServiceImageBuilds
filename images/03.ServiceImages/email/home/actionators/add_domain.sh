@@ -10,7 +10,7 @@ if test -z $domain_name
 fi
  kinit -t /etc/krb5kdc/keys/email.keytab 
 
-cat /home/actionators/tmp/add_domain.ldif | sed "/DOMAIN/s//$domain_name/" | ldapadd -h ldap
+cat /home/actionators/tmpls/add_domain.ldif | sed "/DOMAIN/s//$domain_name/" | ldapadd -h ldap
 
  
  result=$?
