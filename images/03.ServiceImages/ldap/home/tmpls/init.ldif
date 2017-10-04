@@ -34,21 +34,20 @@ olcAccess: {0} to attrs=userPassword
 olcAccess: {1} to attrs=shadowLastChange
   by self write
   by * read
-olcAccess: {2}to dn="cn=ftp,ou=Groups,dc=engines,dc=internal" by dn="cn=ftp,ou=hosts,dc=engines,dc=internal" write
-olcAccess: {3}to dn.subtree="ou=ftp,ou=Service accounts,dc=engines,dc=internal" by dn="cn=ftp,ou=hosts,dc=engines,dc=internal" write 
-olcAccess: {4}to dn.subtree="ou=domains,ou=email,ou=Services,dc=engines,dc=internal" by dn="cn=email,ou=hosts,dc=engines,dc=internal" write
-olcAccess: {5}to dn.subtree="ou=People,dc=engines,dc=internal" by dn="cn=uadmin,ou=hosts,dc=engines,dc=internal" write
-olcAccess: {6}to dn.subtree="ou=Groups,dc=engines,dc=internal" by dn="cn=uadmin,ou=hosts,dc=engines,dc=internal" write
-olcAccess: {7}to dn="cn=uidNext,dc=engines,dc=internal" 
+olcAccess: {2} to dn="cn=ftp,ou=Groups,dc=engines,dc=internal" by dn="cn=ftp,ou=hosts,dc=engines,dc=internal" write
+olcAccess: {3} to dn.subtree="ou=ftp,ou=Service accounts,dc=engines,dc=internal" by dn="cn=ftp,ou=hosts,dc=engines,dc=internal" write 
+olcAccess: {4} to dn.subtree="ou=domains,ou=email,ou=Services,dc=engines,dc=internal" by dn="cn=email,ou=hosts,dc=engines,dc=internal" write
+olcAccess: {5} to dn.subtree="ou=People,dc=engines,dc=internal" by dn="cn=uadmin,ou=hosts,dc=engines,dc=internal" write
+olcAccess: {5} to dn.subtree="ou=Groups,dc=engines,dc=internal" by dn="cn=uadmin,ou=hosts,dc=engines,dc=internal" write
+olcAccess: {6} to dn="cn=uidNext,dc=engines,dc=internal" 
         by dn="cn=uadmin,ou=hosts,dc=engines,dc=internal" write
         by dn="cn=ftp,ou=hosts,dc=engines,dc=internal" write
-olcAccess: {8}to dn.subtree="cn=config"
-        by dn="cn=admin,dc=engines,dc=internal" write
-        by dn="cn=admin,cn=config" write
-        by dn="gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth" write
-        by dn="gidNumber=0,uidNumber=0,cn=peercred,cn=external,cn=auth" write
-olcAccess: {9}to *
+olcAccess: {7}to dn.subtree="cn=config"
         by dn="cn=admin,dc=engines,dc=internal" write
         by dn="gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth" write
         by dn="gidNumber=0,uidNumber=0,cn=peercred,cn=external,cn=auth" write
-        by * read         
+olcAccess: {8} to *
+        by dn="cn=admin,dc=engines,dc=internal" write
+        by dn="gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth" write
+        by dn="gidNumber=0,uidNumber=0,cn=peercred,cn=external,cn=auth" write
+        by * read
