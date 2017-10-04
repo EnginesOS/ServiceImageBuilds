@@ -1,14 +1,14 @@
 
-#dn: cn=schema,cn=config
-#objectClass: olcSchemaConfig
-#cn: schema
+dn: cn=schema,cn=config
+objectClass: olcSchemaConfig
+cn: schema
 #
-#dn: dc=engines,dc=internal
-#objectClass: dcObject
-#objectclass: organization
-#o: engines.internal
-#dc: engines
-#description: LDAP Root
+dn: dc=engines,dc=internal
+objectClass: dcObject
+objectclass: organization
+o: engines.internal
+dc: engines
+description: LDAP Root
 #
 
 #dn: cn=admin,dc=engines,dc=internal
