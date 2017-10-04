@@ -16,11 +16,9 @@ sudo -n /home/engines/scripts/_start_syslog.sh
 
 echo started syslog
 
-
 sudo -n /home/_start_slapd.sh
 
 exit_code=$?
-
 
 sudo -n /home/engines/scripts/_kill_syslog.sh
 exit $exit_code
