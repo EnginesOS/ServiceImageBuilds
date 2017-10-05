@@ -10,7 +10,7 @@ ldapadd -Y EXTERNAL -H ldapi:/// -f /home/tmpls/uidNext.ldif
 ldapadd -Y EXTERNAL -H ldapi:/// -f /home/tmpls/postfix.ldif
 
 #tree root ou 
-#ldapadd -Y EXTERNAL -H ldapi:/// -f /home/tmpls/root_ou.ldif
+ldapadd -Y EXTERNAL -H ldapi:/// -f /home/tmpls/root_ou.ldif
 
 
 #setup sasl params and user mapping to kererbos principles

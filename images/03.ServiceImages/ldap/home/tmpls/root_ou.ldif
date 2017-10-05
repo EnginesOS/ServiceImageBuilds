@@ -1,6 +1,3 @@
-
-#
-
 dn: dc=engines,dc=internal
 objectClass: dcObject
 objectclass: organization
@@ -9,9 +6,9 @@ dc: engines
 description: LDAP Root
 #
 
-dn: cn=admin,dc=engines,dc=internal
-objectClass: simpleSecurityObject
-objectClass: organizationalRole
-cn: admin
-userPassword: password
-description: LDAP administrator
+#dn: cn=admin,dc=engines,dc=internal
+#objectClass: simpleSecurityObject
+#objectClass: organizationalRole
+#cn: admin
+#userPassword: password
+#description: LDAP administrator

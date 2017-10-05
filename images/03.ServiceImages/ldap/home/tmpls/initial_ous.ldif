@@ -69,6 +69,6 @@ objectClass: gidNext
 gidNumber: 25000
 cn: gidNext
 
-dn: cn=schema,cn=config
-objectClass: olcSchemaConfig
-cn: schema
+#dn: cn=schema,cn=config
+#objectClass: olcSchemaConfig
+#cn: schema
