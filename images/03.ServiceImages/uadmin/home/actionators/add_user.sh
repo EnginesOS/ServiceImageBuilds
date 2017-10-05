@@ -7,10 +7,8 @@ do
  eval echo $LINE >> /tmp/ldif
 done
 
-ldapmodify -h ldap /home/templates/incre_uid.ldif
+uid_number=`/home/engines/scripts/next_uid.sh`
 
-uidnumber=`ldapsearch -h ldap -b "cn=uidNext,dc=engines,dc=internal" -LLL uidNumber |grep uidNumber |cut -f2.-d:`
+echo uidnumber: $uid_number >> /tmp/ldif
 
-echo uidnumber:$uidnumber >> /tmp/ldif
-
-cat /tmp/ldif | /home/engines/scripts/ldapadd.sh -h ldap 
+cat /tmp/ldif | /home/engines/scripts/ldapadd.sh 

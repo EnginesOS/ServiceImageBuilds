@@ -1,3 +1,3 @@
 #/bin/bash
 
-sudo /home/engines/scripts/sudo/ldapadd.sh $*
+sudo /home/engines/scripts/sudo/_ldapadd.sh $*

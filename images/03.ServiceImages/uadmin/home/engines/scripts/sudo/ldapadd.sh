@@ -1,5 +1,5 @@
 #/bin/bash
 
- kinit -t /etc/krb5kdc/keys/uadmin.keytab 
-/usr/bin/ldapadd $*
+ kinit -kt /etc/krb5kdc/keys/uadmin.keytab 
+/usr/bin/ldapadd -h ldap $*
 kdestroy
