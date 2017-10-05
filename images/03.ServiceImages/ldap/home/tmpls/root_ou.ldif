@@ -1,6 +1,4 @@
-dn: cn=schema,cn=config
-objectClass: olcSchemaConfig
-cn: schema
+
 #
 
 dn: dc=engines,dc=internal
