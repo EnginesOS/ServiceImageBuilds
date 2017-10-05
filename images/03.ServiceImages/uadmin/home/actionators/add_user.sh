@@ -7,8 +7,8 @@ do
  eval echo $LINE >> /tmp/ldif
 done
 
-uid_number=`/home/engines/scripts/next_uid.sh`
+uidnumber=`/home/engines/scripts/next_uid.sh`
 
-echo uidnumber: $uid_number >> /tmp/ldif
+echo uidnumber:$uidnumber >> /tmp/ldif
 
 cat /tmp/ldif | /home/engines/scripts/ldapadd.sh 
