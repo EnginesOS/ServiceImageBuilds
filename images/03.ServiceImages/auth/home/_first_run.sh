@@ -22,10 +22,10 @@ fi
 	
 	
 export pass 
-expect /home/auth/kerobos_init.expect
+expect -d /home/auth/kerobos_init.expect
 #expect /home/auth/kerobos_stash_key.expect
  
-/home/_start_kerobos.sh 
+/home/_start.sh 
 
 for service in ldap ftp imap email openid uadmin
  do

@@ -1,6 +1,6 @@
 #!/usr/bin/expect
 
-set timeout 10
+set timeout 90
 
 
 #spawn kdb5_ldap_util  -sf /etc/krb5kdc/ldap/service.keyfile  create -subtrees dc=engines,dc=internal -r ENGINES.INTERNAL -s -H ldap://ldap.engines.internal

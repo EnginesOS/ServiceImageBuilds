@@ -1,6 +1,6 @@
 #!/bin/sh
 
-
+/home/engines/scripts/_start_syslog.sh
 
 /usr/sbin/krb5kdc -P /var/run/krb5kdc.pid -n &
 kpid=$! 
@@ -18,7 +18,6 @@ sleep 5
 	exit_code=$?
 	rm /engines/var/run/flags/startup_complete
 	export exit_code
-	kill `cat /var/run/krb5admin.pid /var/run/krb5kdc.pid`
   else
    export kpid 	
  fi
