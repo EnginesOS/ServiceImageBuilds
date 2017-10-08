@@ -11,9 +11,14 @@ pid=$!
  echo -n " $pid" >> /var/run/krb5kdc.pid 
 echo "startup complete"
 touch /engines/var/run/flags/startup_complete
-sleep 5 
-wait $kpid
-exit_code=$?
-rm /engines/var/run/flags/startup_complete
-export exit_code
-kill `cat /var/run/krb5admin.pid /var/run/krb5kdc.pid`
+sleep 5
+ if test -f /engines/var/run/flags/first_run.done
+  then
+	wait $kpid 	
+	exit_code=$?
+	rm /engines/var/run/flags/startup_complete
+	export exit_code
+	kill `cat /var/run/krb5admin.pid /var/run/krb5kdc.pid`
+  else
+   export kpid 	
+ fi

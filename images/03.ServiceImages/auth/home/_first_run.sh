@@ -25,6 +25,7 @@ export pass
 expect /home/auth/kerobos_init.expect
 #expect /home/auth/kerobos_stash_key.expect
  
+/home/_start_kerobos.sh 
 
 for service in ldap ftp imap email openid uadmin
  do
@@ -35,4 +36,8 @@ echo addprinc -randkey admin/ldap.engines.internal@ENGINES.INTERNAL | kadmin.loc
 
 echo  ktadd -k /etc/krb5kdc/ldap/ldap.keytab host/ldap.engines.internal@ENGINES.INTERNAL | kadmin.local
  
+ 
+touch /engines/var/run/flags/first_run.done
+wait $pid
+exit $exit_code
  

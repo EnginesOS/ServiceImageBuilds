@@ -6,10 +6,16 @@ export PID_FILE
 
 mkdir -p /home/auth/logs/ 
 
-if ! test -f /engines/var/run/flags/first_run.done
+if test -f /engines/var/run/flags/first_run.done
   then
-	/home/first_run.sh		
-	touch /engines/var/run/flags/first_run.done
+  SIGNAL=0
+	sudo -n /home/engines/scripts/_start_syslog.sh
+	sudo -n /home/_start_kerobos.sh 
+	sudo /home/engines/scripts/_kill_syslog.sh
+	sleep 500
+	exit $exit_code
+  else
+	/home/first_run.sh			
  fi
 
 SIGNAL=0
