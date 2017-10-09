@@ -1,7 +1,7 @@
 #/bin/bash
 
 kinit -kt /etc/krb5kdc/keys/uadmin.keytab 
-/usr/bin/ldapdelete -h ldap $*  >& /tmp/ldap.del.out
+/usr/bin/ldapdelete -h ldap $*  &> /tmp/ldap.del.out
 ldap_result=$?
 export ldap_result
 if test $ldap_result -eq 0

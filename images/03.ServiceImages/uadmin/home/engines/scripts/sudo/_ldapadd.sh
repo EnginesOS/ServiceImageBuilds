@@ -1,7 +1,7 @@
 #/bin/bash
 
  kinit -kt /etc/krb5kdc/keys/uadmin.keytab 
-/usr/bin/ldapadd -h ldap $*  >&/tmp/ldap.add.out
+/usr/bin/ldapadd -h ldap $*  &>/tmp/ldap.add.out
 ldap_result=$?
 export ldap_result
 if test $ldap_result -eq 0
