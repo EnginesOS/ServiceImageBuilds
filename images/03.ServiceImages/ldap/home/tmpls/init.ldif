@@ -56,7 +56,7 @@ olcAccess: {8} to *
         by dn="gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth" write
         by dn="gidNumber=0,uidNumber=0,cn=peercred,cn=external,cn=auth" write
         by * read
-olcAccess: {7} to dn.subtree="cn=config"
-        by dn="cn=admin,dc=engines,dc=internal" write
-        by dn="gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth" write
-        by dn="gidNumber=0,uidNumber=0,cn=peercred,cn=external,cn=auth" write
+#olcAccess: {7} to dn.subtree="cn=config"
+#        by dn="cn=admin,dc=engines,dc=internal" write
+#        by dn="gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth" write
+#        by dn="gidNumber=0,uidNumber=0,cn=peercred,cn=external,cn=auth" write
