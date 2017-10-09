@@ -1,0 +1,5 @@
+dn: cn=$group_name,ou=Groups,dc=engines,dc=internal
+changetype: modify
+add: memberUid
+memberUid: $uid
+

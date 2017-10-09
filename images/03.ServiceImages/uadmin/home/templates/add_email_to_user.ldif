@@ -1,0 +1,5 @@
+dn: uid=$uid,ou=People,dc=engines,dc=internal
+changetype: modify
+add: mailacceptinggeneralid
+mailacceptinggeneralid: $email_address
+

@@ -2,6 +2,11 @@
 . /home/engines/functions/params_to_env.sh
 parms_to_env
 
-/home/engines/scripts/ldapmodify.sh
+rm /tmp/ldif
+cat /home/templates/add_email_to_user.ldif | while read LINE
+do
+ eval echo $LINE >> /tmp/ldif
+done
 
 
+cat /tmp/ldif | /home/engines/scripts/ldapmodify.sh 
