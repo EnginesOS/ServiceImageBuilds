@@ -20,7 +20,6 @@ else
 fi
 
 	
-	
 export pass 
 expect -d /home/auth/kerobos_init.expect
 #expect /home/auth/kerobos_stash_key.expect
