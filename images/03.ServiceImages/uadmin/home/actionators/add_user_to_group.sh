@@ -9,4 +9,4 @@ do
 done
 
 
-cat /tmp/ldif | /home/engines/scripts/ldapmodify.sh 
+cat /tmp/ldif | /home/engines/scripts/ldapmodify.sh  

@@ -1,0 +1,4 @@
+dn: $dn
+changetype: modify
+delete:  mailacceptinggeneralid
+mailacceptinggeneralid: $email_address
