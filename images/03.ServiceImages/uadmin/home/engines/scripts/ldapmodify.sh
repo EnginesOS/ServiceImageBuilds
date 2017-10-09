@@ -10,4 +10,5 @@ out=`cat /tmp/ldap.mod.out`
 #   echo  '{"Result":"FAIL","ReturnCode":'$ldap_result':"Output":"'$err'"}'
 # fi
 
-echo  '{"Result":"OK","ReturnCode":0,"Message":"'$out'"}'
+echo  '{"Result":"OK","ReturnCode":"0"}'
+#,"Message":"'$out'"}'

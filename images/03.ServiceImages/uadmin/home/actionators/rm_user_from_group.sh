@@ -1,7 +1,6 @@
 #!/bin/bash
 . /home/engines/functions/params_to_env.sh
 parms_to_env
-dn=
 
 rm /tmp/ldif
 cat /home/templates/rm_user_from_group.ldif | while read LINE
