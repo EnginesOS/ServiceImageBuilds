@@ -19,9 +19,6 @@ if ! test -f /engines/var/run/flags/init_ous_configured
    if test $? -eq 0
     then
      touch /engines/var/run/flags/init_ous_configured
-     mv /usr/lib/sasl2/sasl2_slapd.conf /usr/lib/sasl2/slapd.conf
-     sleep 1
-     kill $pid
    fi
 fi  
 
@@ -32,9 +29,8 @@ chgrp containers /tmp/pids
 touch /engines/var/run/flags/startup_complete
 wait $pid
 exit_code=$?
-
+rm /engines/var/run/flags/startup_complete  
 kill `cat /tmp/pids`
 
-rm /engines/var/run/flags/startup_complete  
 
 exit $exit_code

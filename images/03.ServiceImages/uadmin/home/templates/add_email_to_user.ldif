@@ -1,0 +1,5 @@
+dn: $dn
+changetype: modify
+add: mailacceptinggeneralid
+mailacceptinggeneralid: $email_address
+

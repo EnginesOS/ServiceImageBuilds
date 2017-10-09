@@ -1,10 +1,10 @@
 
 auth ALL = (root) NOPASSWD: /home/_start_sshd.sh
-auth ALL = (root) NOPASSWD: /home/_start_kerobos.sh
+auth ALL = (root) NOPASSWD: /home/_start.sh
 auth ALL = (root) NOPASSWD: /home/engines/scripts/_start_syslog.sh
 auth ALL = (root) NOPASSWD: /home/_signal.sh
 auth ALL = (root) NOPASSWD: /home/engines/scripts/_kill_syslog.sh
-auth ALL = (root) NOPASSWD: /home/_kill_auth.sh
+auth ALL = (root) NOPASSWD: /home/_kill_kerberos.sh
 auth ALL = (root) NOPASSWD: /home/_first_run.sh
 #must have blank after last sudoers line
 

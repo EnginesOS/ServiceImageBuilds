@@ -10,7 +10,7 @@ fi
 
 . /home/actionators/x400_to_json.sh
 
-/home/engines/scripts/ldapsearch.sh -LLL -b "ou=People,dc=engines,dc=internal" -h ldap uid=$uid > $LDAP_FILE
+/home/engines/scripts/ldapsearch.sh -b "ou=People,dc=engines,dc=internal" uid=$uid > $LDAP_FILE
 
 echo '{"user":'
 ldap_to_json
