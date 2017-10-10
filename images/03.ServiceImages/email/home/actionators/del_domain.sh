@@ -9,14 +9,11 @@ if test -z $domain_name
   exit 127
 fi
 
- kinit -t /etc/krb5kdc/keys/email.keytab 
+  dn=`eval cat /home/actionators/tmpls/del_domain.ldif `
+  /home/engines/scripts/ldapdelete.sh $dn
+  
+  
  
- cat /home/actionators/tmpls/del_domain.ldif | sed "/DOMAIN/s//$domain_name/" | ldapdelete  -h ldap
- 
- result=$?
- 
- kdestroy
- 
- exit $result 
+
   
   

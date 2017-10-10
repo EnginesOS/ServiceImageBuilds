@@ -8,13 +8,16 @@ if test -z $domain_name
   echo '{"error":"Missing $domain_name"}'
   exit 127
 fi
- kinit -t /etc/krb5kdc/keys/email.keytab 
 
-cat /home/actionators/tmpls/add_domain.ldif | sed "/DOMAIN/s//$domain_name/" | ldapadd -h ldap
+rm /tmp/ldif
+cat /home/actionators/tmpls/add_domain.ldif | while read LINE
+do
+ eval echo $LINE >> /tmp/ldif
+done
 
- 
- result=$?
- 
- kdestroy
- 
- exit $result 
+
+cat /tmp/ldif | /home/engines/scripts/ldapadd.sh 
+
+
+
+

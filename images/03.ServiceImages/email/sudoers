@@ -10,6 +10,10 @@ postfix ALL = (root) NOPASSWD: /home/engines/scripts/_kill_syslog.sh
 postfix ALL = (root) NOPASSWD: /usr/sbin/postgrey
 postfix ALL = (root) NOPASSWD: /home/kill_grey.sh  
 postfix ALL = (root) NOPASSWD: /home/_kill_postfix.sh
+postfix ALL = (root) NOPASSWD: /home/engines/scripts/sudo/_ldapadd.sh
+postfix ALL = (root) NOPASSWD: /home/engines/scripts/sudo/_ldapmodify.sh
+postfix ALL = (root) NOPASSWD: /home/engines/scripts/sudo/_ldapsearch.sh
+postfix ALL = (root) NOPASSWD: /home/engines/scripts/sudo/_ldapdelete.sh    
 #for debugging only
 #ALL ALL = (root) NOPASSWD: ALL
 
