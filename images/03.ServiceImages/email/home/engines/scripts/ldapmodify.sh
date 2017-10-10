@@ -1,14 +1,8 @@
 #/bin/bash
 
+. /home/engines/functions/ldap_support_functions.sh
 
-sudo /home/engines/scripts/sudo/_ldapmodify.sh $* &> /tmp/ldap.mod.out
-#if test $ldap_result -eq 0
-# then
-#  echo '{"Result":"OK","ReturnCode",0}'
-#  else
-out=`cat /tmp/ldap.mod.out`
-#   echo  '{"Result":"FAIL","ReturnCode":'$ldap_result':"Output":"'$err'"}'
-# fi
+sudo /home/engines/scripts/sudo/_ldapmodify.sh $* &> /tmp/ldap.out
+result=$?
 
-echo  '{"Result":"OK","ReturnCode":"0"}'
-#,"Message":"'$out'"}'
+process_ldap_result
