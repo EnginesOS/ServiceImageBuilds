@@ -58,12 +58,8 @@ if test -s $LDAP_FILE
         echo '{'
         first=0
       else
-        echo ","
+        echo $line 
       fi
-     if ! test -z $line
-       then 
-         echo $line
-       fi
            
       if test $name = "$last_name"
        then
@@ -73,15 +69,19 @@ if test -s $LDAP_FILE
            array=1
            line="'$name'":"['$value'"'
         else
-           line='"'$value'"'
+           line=',"'$value'"'
         fi   
       else
         if test $array -eq 1
          then
-          p=']'
+          p='],'
           array=0
-        else
+        elsif test $start -eq 0
+         then
           p=''
+        else
+         start=1
+         p=',' 
         fi 
          line=$p'"'$name'":"'$value'"'
        fi
