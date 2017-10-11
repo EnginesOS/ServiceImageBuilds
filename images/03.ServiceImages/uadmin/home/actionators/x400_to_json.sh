@@ -58,8 +58,13 @@ if test -s $LDAP_FILE
       else
         echo ","
       fi
-    echo   '"'$name'":"'$value'"'
+      if ! test -z $line
+       then 
+         echo $line
+       fi
+    line='"'$name'":"'$value'"'
    done
+   echo $line
   echo '}'
 else
   echo '""'
