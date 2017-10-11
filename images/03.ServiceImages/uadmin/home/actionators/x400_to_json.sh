@@ -63,7 +63,6 @@ if test -s $LDAP_FILE
            
       if test $name = "$last_name"
        then
-        echo "ARRAY"
         if test $array -eq 0
          then
            array=1
