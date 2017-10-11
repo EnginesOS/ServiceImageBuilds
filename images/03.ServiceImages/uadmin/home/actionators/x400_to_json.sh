@@ -4,6 +4,7 @@ LDAP_FILE=`mktemp`
 
 
 
+
 function process_ldap_entry {
 
  if test $start -eq 1
@@ -46,12 +47,17 @@ first=1
   then
    cat $LDAP_FILE | while read LINE
     do
+    if test -z $LINE
+      then
+       continue;
+     fi
      last_name="$name"
      name=` echo $LINE | cut -f1 -d:`
      value=`echo $LINE | cut -f2- -d: |sed "/^[ ]/s///"`
       if test "$name" = dn
        then
         new_entry=1
+        start=1
       else
         new_entry=0
       fi     
@@ -61,7 +67,7 @@ first=1
          then
           echo '{'
           first=0
-        else
+        else          
           echo '},{'
         fi
       fi
@@ -84,6 +90,10 @@ if test -s $LDAP_FILE
  then
    cat $LDAP_FILE | while read LINE
     do
+    if test -z $LINE
+      then
+       continue;
+     fi
      last_name="$name"
      name=` echo $LINE | cut -f1 -d:`
      value=`echo $LINE | cut -f2- -d: |sed "/^[ ]/s///"`
@@ -111,6 +121,10 @@ if test -s $LDAP_FILE
  then
   cat $LDAP_FILE | while read LINE
    do
+    if test -z $LINE
+      then
+       continue;
+     fi
 #echo LINE $LINE
     name=` echo $LINE | cut -f1 -d:`
     value=`echo $LINE | cut -f2- -d: |sed "/^[ ]/s///"`
