@@ -33,7 +33,8 @@ function process_ldap_entry {
         echo
         array=0
      fi
-      line=$p'"'$name'":"'$value'"'$post 
+      line=$post$p'"'$name'":"'$value'"'
+      echo $line >/tmp/line
  fi      
 }
 
@@ -74,7 +75,8 @@ first=1
       fi
      process_ldap_entry  
     done
-   echo $line
+   cat /tmp/line
+   rm /tmp/line
    echo '}'
   fi
 echo ']'
@@ -92,7 +94,7 @@ if test -s $LDAP_FILE
  then
    cat $LDAP_FILE | while read LINE
     do
-    if test -z $LINE
+    if test -z "$LINE"
       then
        continue;
      fi
@@ -106,7 +108,8 @@ if test -s $LDAP_FILE
       fi	
 	process_ldap_entry
    done
-   echo $line
+   cat /tmp/line
+   rm /tmp/line
   echo '}'
 else
   echo '""'
@@ -123,7 +126,7 @@ if test -s $LDAP_FILE
  then
   cat $LDAP_FILE | while read LINE
    do
-    if test -z $LINE
+    if test -z "$LINE"
       then
        continue;
      fi
