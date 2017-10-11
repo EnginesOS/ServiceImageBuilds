@@ -33,7 +33,7 @@ function process_ldap_entry {
         echo
         array=0
      fi
-      line=$p'"'$name'":"'$value'"'  
+      line=$p'"'$name'":"'$value'"'$post 
  fi      
 }
 
@@ -47,7 +47,7 @@ first=1
   then
    cat $LDAP_FILE | while read LINE
     do
-    if test -z $LINE
+    if test -z "$LINE"
       then
        continue;
      fi
@@ -60,7 +60,8 @@ first=1
         start=1
       else
         new_entry=0
-      fi     
+      fi  
+      post=''   
       if test $new_entry -eq 1
        then
         if test $first -eq 1
@@ -68,7 +69,7 @@ first=1
           echo '{'
           first=0
         else          
-          echo '},{'
+          post='},{'
         fi
       fi
      process_ldap_entry  
@@ -86,6 +87,7 @@ function ldap_to_json {
 start=1
 first=1 
 array=0
+post=''
 if test -s $LDAP_FILE
  then
    cat $LDAP_FILE | while read LINE
