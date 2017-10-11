@@ -1,5 +1,5 @@
 #/bin/bash
-
+. /home/engines/functions/ldap_support_functions.sh
 
 sudo /home/engines/scripts/sudo/_ldapsearch.sh $*  2> /tmp/ldap.err
 result=$?
@@ -10,7 +10,7 @@ result=$?
 	else 
      string_for_json=`cat /tmp/ldap.err | grep -v SASL `
      ldap_err_to_json_compat
-    '{"Result":"FAILED","ReturnCode":"'$result'","Error":"'$string_for_json'"}'
+    echo '{"Result":"FAILED","ReturnCode":"'$result'","Error":"'$string_for_json'"}'
     exit $result
   fi
   
