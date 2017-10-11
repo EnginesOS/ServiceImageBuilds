@@ -51,7 +51,7 @@ function process_ldap_entry {
         if test $array -eq 0
          then
            array=1
-           line='"'$name'":"['$value'"'
+           line='"'$name'":["'$value'"'
         else
            echo -n $line
            line=',"'$value'"'
