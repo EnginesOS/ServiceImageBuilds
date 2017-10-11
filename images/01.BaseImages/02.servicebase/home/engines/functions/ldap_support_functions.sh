@@ -1,10 +1,11 @@
 function ldap_err_to_json_compat {
-string_for_json=`echo $string_for_json | tr -d \r\"\f\b`
-string_for_json=${string_for_json//\\/\\\\} # \ 
-string_for_json=${string_for_json//\//\\\/} # / 
-string_for_json=${string_for_json//\'/\\\'} # ' (not strictly needed ?)
-string_for_json=${string_for_json//\"/\\\"} # " 
-string_for_json=${string_for_json//	/\\t} # \t (tab)
+string_for_json=`echo $string_for_json | tr -d "'\r\"\t\f\b\n\v"`
+#string_for_json=${string_for_json//\\/\\\\} # \
+#string_for_json=${string_for_json//\//\\\/} # /
+#string_for_json=${string_for_json//\'/\\\'} # ' (not strictly needed ?)
+#string_for_json=${string_for_json//\"/\\\"} # "
+#string_for_json=${string_for_json//    /\\t} # \t (tab)
+
 }
 
 function process_ldap_result {
@@ -16,7 +17,5 @@ function process_ldap_result {
      ldap_err_to_json_compat
      echo '{"Result":"FAILED","ReturnCode":"'$result'","Error":"'$string_for_json'"}'
  fi
-  
-exit $result
 
 }
