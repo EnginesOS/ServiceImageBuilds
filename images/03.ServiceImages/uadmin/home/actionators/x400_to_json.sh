@@ -45,10 +45,12 @@ rm $LDAP_FILE
 function ldap_to_json {
 start=1
 first=1 
+array=0
 if test -s $LDAP_FILE
  then
    cat $LDAP_FILE | while read LINE
     do
+    last_name="$name"
      name=` echo $LINE | cut -f1 -d:`
      value=`echo $LINE | cut -f2- -d: |sed "/^[ ]/s///"`
       if test $first -eq 1
@@ -58,11 +60,31 @@ if test -s $LDAP_FILE
       else
         echo ","
       fi
-      if ! test -z $line
+     if ! test -z $line
        then 
          echo $line
        fi
-    line='"'$name'":"'$value'"'
+           
+      if test $name = "$last_name"
+       then
+        echo "ARRAY"
+        if test $array -eq 0
+         then
+           array=1
+           line="'$name'":"['$value'"'
+        else
+           line='"'$value'"'
+        fi   
+      else
+        if test $array -eq 1
+         then
+          p=']'
+          array=0
+        else
+          p=''
+        fi 
+         line=$p'"'$name'":"'$value'"'
+       fi
    done
    echo $line
   echo '}'
