@@ -15,12 +15,13 @@ if test -s $LDAP_FILE
    do
    name=` echo $LINE | cut -f1 -d:`
    value=`echo $LINE | cut -f2- -d: |sed "/^[ ]/s///"`
-    if test $name = dn
+    if test "$name" = dn
      then
        new_entry=1
      else
        new_entry=0
      fi
+     
      if test $new_entry -eq 1
        then
        if test $first -eq 1
@@ -34,6 +35,8 @@ if test -s $LDAP_FILE
        echo ","
      fi
    echo   '"'$name'":"'$value'"'
+   
+   
   done
   echo '}'
 fi
@@ -41,6 +44,37 @@ echo ']'
 rm $LDAP_FILE
 }
 
+function process_ldap_entry {
+
+ if test "$name" = "$last_name"
+       then
+        if test $array -eq 0
+         then
+           array=1
+           line='"'$name'":"['$value'"'
+        else
+           echo -n $line
+           line=',"'$value'"'
+        fi
+      else
+        echo -n $line
+        if test $array -eq 1
+         then
+          echo -n '],'
+         echo
+          array=0
+        elif test $start -eq 1
+         then
+          p=''
+        start=0
+        else
+         start=0
+         echo ','
+        fi
+         line=$p'"'$name'":"'$value'"'
+       fi   
+       
+}
 
 function ldap_to_json {
 start=1
@@ -50,40 +84,44 @@ if test -s $LDAP_FILE
  then
    cat $LDAP_FILE | while read LINE
     do
-    last_name="$name"
+     last_name="$name"
      name=` echo $LINE | cut -f1 -d:`
      value=`echo $LINE | cut -f2- -d: |sed "/^[ ]/s///"`
       if test $first -eq 1
        then
         echo '{'
         first=0
-      else
-        echo $line 
       fi
-           
-      if test $name = "$last_name"
-       then
-        if test $array -eq 0
-         then
-           array=1
-           line="'$name'":"['$value'"'
-        else
-           line=',"'$value'"'
-        fi   
-      else
-        if test $array -eq 1
-         then
-          p='],'
-          array=0
-        elsif test $start -eq 0
-         then
-          p=''
-        else
-         start=1
-         p=',' 
-        fi 
-         line=$p'"'$name'":"'$value'"'
-       fi
+	
+	  process_ldap_entry
+	
+#      if test "$name" = "$last_name"
+#       then
+#        if test $array -eq 0
+#         then
+#           array=1
+#           line='"'$name'":"['$value'"'
+#        else
+#           echo -n $line
+#           line=',"'$value'"'
+#        fi
+#      else
+#        echo -n $line
+#        if test $array -eq 1
+#         then
+#          echo -n '],'
+#         echo
+#          array=0
+#        elif test $start -eq 1
+#         then
+#          p=''
+#        start=0
+#        else
+#         start=0
+#         echo ','
+#        fi
+#         line=$p'"'$name'":"'$value'"'
+#       fi   
    done
    echo $line
   echo '}'
@@ -92,6 +130,7 @@ else
 fi
 rm $LDAP_FILE
 }
+
 
 
 function map_ldap_to_json_array {
