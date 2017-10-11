@@ -8,12 +8,8 @@ if test -z $domain_name
   echo '{"error":"Missing $domain_name"}'
   exit 127
 fi
-
-  dn=`eval cat /home/actionators/tmpls/del_domain.ldif `
-  /home/engines/scripts/ldapdelete.sh $dn
-  
-  
- 
-
+dn_tmpl=`cat  /home/actionators/tmpls/del_domain.ldif`
+dn=`eval echo $dn_tmp. `
+/home/engines/scripts/ldapdelete.sh $dn
   
   
