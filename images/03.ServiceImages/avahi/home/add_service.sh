@@ -21,15 +21,7 @@ if test -f /tmp/avahi-publisher.pid
 fi
 
 	
-#	ps -ax |grep -v grep |grep avahi-alias.py
-#
-#	 if test $? -ne 0
-#	  then
-#	  		echo "avahi publisher had crashed"
-#			python /home/avahi-alias.py &
-#			echo $! >/tmp/avahi-publisher.pid			
-#	fi
-#
+
 echo Success
 exit 0
 

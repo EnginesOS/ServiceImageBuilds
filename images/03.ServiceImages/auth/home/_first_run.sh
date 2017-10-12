@@ -7,8 +7,7 @@ echo ktadd -k /etc/krb5kdc/$service/$service.keytab host/$service.engines.intern
 
 }
 
-#ssh-keygen -y -f /etc/ssh/ssh_host_rsa_key -N '' -t rsa
-#ssh-keygen -y -f /etc/ssh/ssh_host_dsa_key -N '' -t dsa
+
 
 if test -f /home/home_dir/.ssh/krb.pass
  then 
@@ -22,7 +21,6 @@ fi
 	
 export pass 
 expect -d /home/auth/kerobos_init.expect
-#expect /home/auth/kerobos_stash_key.expect
  
 /home/_start.sh 
 
