@@ -1,6 +1,6 @@
 #!/bin/bash
 . /home/engines/functions/params_to_env.sh
-parms_to_env
+params_to_env
 if test -z $email_address
  then
   echo "Missing email_address"
@@ -19,5 +19,5 @@ do
  eval echo $LINE >> $LDIF_FILE
 done
 
-cp 
+
 cat $LDIF_FILE | /home/engines/scripts/ldapmodify.sh  

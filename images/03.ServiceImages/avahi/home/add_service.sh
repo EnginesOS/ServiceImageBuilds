@@ -1,7 +1,7 @@
 #!/bin/bash
 
 . /home/engines/functions/params_to_env.sh
-parms_to_env
+params_to_env
  
 default_mdns_domain=`cat /home/configurators/saved/default_mdns_domain  | cut -f2 -d: | sed "s/\"//" | cut -f1 -d\"`
 
