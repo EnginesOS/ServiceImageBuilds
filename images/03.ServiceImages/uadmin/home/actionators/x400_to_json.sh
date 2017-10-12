@@ -76,8 +76,24 @@ first=1
         fi
       fi
      process_ldap_entry  
-    done
-   cat /tmp/line
+   
+  if test $array -ne 0 
+    then
+	 touch /tmp/ar
+  elif test -f /tmp/ar
+     then
+      rm /tmp/ar
+  fi	
+ done
+  if test -f /tmp/ar
+   then
+     val=`cat /tmp/line| cut -f2- -d:`
+     echo ,$val']'
+      rm /tmp/ar
+  else
+     cat /tmp/line
+  fi
+
    rm /tmp/line
    echo '}'
   fi
