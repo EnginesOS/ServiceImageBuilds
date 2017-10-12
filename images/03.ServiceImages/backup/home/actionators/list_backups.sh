@@ -4,7 +4,8 @@ backups=`find . -type d |grep / |sed "/\.\//s///"`
 
 echo -n '{"backups":['
 n=0
-
+if ! test -z "$backups"
+ then  
 for backup in $backups
 do
  if test $n == 0
@@ -15,5 +16,5 @@ do
  fi
  echo -n '"'$backup'"'
 done
-
+fi
 echo ']}'

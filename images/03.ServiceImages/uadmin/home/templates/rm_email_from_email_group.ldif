@@ -1,0 +1,4 @@
+dn: cn=$email_group,ou=Distribution Groups,dc=engines,dc=internal
+changetype: modify
+delete:  memberUid
+memberUid: $email_address

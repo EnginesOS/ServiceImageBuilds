@@ -1,1 +1,1 @@
-dc=DOMAIN,ou=domains,ou=email,ou=Services,dc=engines,dc=internal
+dc=$domain_name,ou=domains,ou=email,ou=Services,dc=engines,dc=internal

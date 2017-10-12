@@ -1,13 +1,10 @@
 #/bin/bash
 
-sudo /home/engines/scripts/sudo/_ldapadd.sh $* &> /tmp/ldap.add.out
-#if test $ldap_result -eq 0
-# then
-#  echo '{"Result":"OK","ReturnCode",0}'
-#  else
-out=`cat /tmp/ldap.add.out `
-#   echo  '{"Result":"FAIL","ReturnCode":'$ldap_result':"Output":"'$err'"}'
-# fi
+. /home/engines/functions/ldap_support_functions.sh
 
-echo  '{"Result":"OK","ReturnCode":"0"}'
-#,"Output":"'$out'"}'
+sudo /home/engines/scripts/sudo/_ldapadd.sh $* &> $LDAP_OUTF
+result=$?
+
+process_ldap_result
+
+

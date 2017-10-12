@@ -1,0 +1,2 @@
+dn: cn=$group_name,ou=Distribution Groups,dc=engines,dc=internal
+changetype: delete
