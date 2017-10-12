@@ -44,6 +44,7 @@ while test -f  /var/spool/postfix/pid/master.pid
     exit_code=$?
 done
 
+
 rm /engines/var/run/flags/startup_complete  
 exit $exit_code
 

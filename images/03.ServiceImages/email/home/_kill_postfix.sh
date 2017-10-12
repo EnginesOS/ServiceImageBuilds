@@ -6,5 +6,6 @@
     kill -$1 `cat /var/spool/postfix/pid/master.pid`
     echo kill -$1 `cat /var/spool/postfix/pid/master.pid`
     /home/engines/scripts/_kill_syslog.sh
+    rm /var/spool/postfix/pid/master.pid
  fi
  
