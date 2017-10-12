@@ -1,6 +1,6 @@
 #!/bin/bash
 . /home/engines/functions/params_to_env.sh
-parms_to_env
+params_to_env
 
 if test -z ${cert_name}
  then
@@ -57,7 +57,7 @@ exit 0
 ##!/bin/bash
 #
 #. /home/engines/functions/params_to_env.sh
-#parms_to_env
+#params_to_env
 #
 #if test -z "${cert_name}"
 #	then

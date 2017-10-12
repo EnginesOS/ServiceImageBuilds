@@ -1,5 +1,5 @@
 #!/bin/sh
-function parms_to_env
+function params_to_env
 {
 if test $# -eq 0 
  then

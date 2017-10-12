@@ -1,7 +1,7 @@
 #!/bin/bash
 
 . /home/engines/functions/params_to_env.sh
-parms_to_env
+params_to_env
 
 
 log_name=`echo $log_name | sed "/ /s//_/g"`

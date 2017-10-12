@@ -1,0 +1,5 @@
+dn: cn=$email_group,ou=Distribution Groups,dc=engines,dc=internal
+changetype: modify
+add: memberUid
+memberUid: $email_address
+

@@ -1,0 +1,7 @@
+dn: cn=$email_group,ou=Distribution Groups,dc=engines,dc=internal
+cn: $email_group
+gidnumber: $gidNumber
+description: $description
+objectclass: posixGroup
+objectclass: top
+#NO BLANK LINES

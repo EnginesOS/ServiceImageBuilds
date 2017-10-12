@@ -1,7 +1,7 @@
 #!/bin/bash
 
 . /home/engines/functions/params_to_env.sh
-parms_to_env
+params_to_env
 
 echo $1 |grep = >/dev/null
 if test $? -ne 0
