@@ -6,7 +6,7 @@ result=$?
 
 	if test $result -eq 0
 	then
-	 cat  /tmp/ldap.out
+	 cat  $LDAP_OUTF
 	else 
      string_for_json=`cat /tmp/ldap.err | grep -v SASL `
      ldap_err_to_json_compat

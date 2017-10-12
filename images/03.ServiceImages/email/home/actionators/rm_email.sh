@@ -9,7 +9,8 @@ if test -z $queue_id
   exit 127
 fi
 
-postsuper -d $queue_id &> /tmp/err
+
+sudo -n /home/actionators/_rm_email.sh   $queue_id &> /tmp/err
 result=$?
 string_for_json=`cat /tmp/err`
 rm /tmp/err

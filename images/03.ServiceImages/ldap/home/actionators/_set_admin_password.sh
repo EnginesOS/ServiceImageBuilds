@@ -5,12 +5,12 @@
 
 cat /home/tmpls/root_password.ldif | while read LINE
 do
- eval echo $LINE >> /tmp/ldif
+ eval echo $LINE >> $LDIF_FILE
 done
 kinit -kt /etc/krb5kdc/keys/ldap.keytab 
-lpdapmodify -H ldapi:/// -f /tmp/ldif
+lpdapmodify -H ldapi:/// -f $LDIF_FILE
 result=$?
-rm /tmp/ldif
+rm $LDIF_FILE
 #ldappasswd -D cn=admin,dc=engines,dc=internal -H ldapi:/// -s $password
 kdestroy
 exit $result

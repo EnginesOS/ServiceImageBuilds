@@ -9,15 +9,18 @@ if test -z $domain_name
   exit 127
 fi
 
-rm /tmp/ldif
+. /home/engines/functions/ldap_support_functions.sh
+
+
+
 cat /home/actionators/tmpls/add_domain.ldif | while read LINE
 do
- eval echo $LINE >> /tmp/ldif
+ eval echo $LINE >> $LDIF_FILE
 done
 
+cat $LDIF_FILE /home/engines/scripts/ldapadd.sh &> $LDAP_OUTF
+result=$?
 
-cat /tmp/ldif | /home/engines/scripts/ldapadd.sh 
+process_ldap_result
 
-
-
-
+rm $LDIF_FILE  $LDAP_OUTF
