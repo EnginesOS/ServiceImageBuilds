@@ -11,7 +11,7 @@ if test -z $group_name
 fi
 . /home/actionators/x400_to_json.sh
 
-/home/engines/scripts/ldapsearch.sh -b "cn=$group_name,ou=Groups,dc=engines,dc=internal" objectClass=posixGroup > $LDAP_FILE 
+/home/engines/scripts/ldapsearch.sh "cn=$group_name,ou=Groups,dc=engines,dc=internal" objectClass=posixGroup > $LDAP_FILE 
 
 echo '{"group":'
 ldap_to_json

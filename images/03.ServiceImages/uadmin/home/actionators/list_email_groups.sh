@@ -3,9 +3,11 @@
 #parms_to_env
 . /home/actionators/x400_to_json.sh
 
-/home/engines/scripts/ldapsearch.sh -b "ou=Distribution Groups,dc=engines,dc=internal"  objectClass=posixAccount > $LDAP_FILE
+/home/engines/scripts/ldapsearch.sh "ou=Distribution Groups,dc=engines,dc=internal"  objectClass=posixGroup > $LDAP_FILE
 
 
-echo '{"users":'
+echo '{"groups":'
 ldap_to_json_array
 echo '}'
+
+

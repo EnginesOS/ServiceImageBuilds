@@ -3,7 +3,7 @@
 #parms_to_env
 . /home/actionators/x400_to_json.sh
 
-/home/engines/scripts/ldapsearch.sh -b "ou=People,dc=engines,dc=internal"  objectClass=posixAccount > $LDAP_FILE
+/home/engines/scripts/ldapsearch.sh "ou=People,dc=engines,dc=internal"  objectClass=posixAccount > $LDAP_FILE
 
 
 echo '{"users":'

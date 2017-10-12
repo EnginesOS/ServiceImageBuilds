@@ -1,7 +1,7 @@
 #/bin/bash
 . /home/engines/functions/ldap_support_functions.sh
 
-sudo /home/engines/scripts/sudo/_ldapsearch.sh $*  2> /tmp/ldap.err
+sudo /home/engines/scripts/sudo/_ldapsearch.sh "$1" $2 $3 $4 $5 $6 $7 $8  2> /tmp/ldap.err
 result=$?
 
 	if test $result -eq 0

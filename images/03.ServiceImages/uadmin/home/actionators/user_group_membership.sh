@@ -10,7 +10,7 @@ fi
 
 . /home/actionators/x400_to_json.sh
 
-/home/engines/scripts/ldapsearch.sh -b "ou=Groups,dc=engines,dc=internal" memberUid=$uid cn > $LDAP_FILE
+/home/engines/scripts/ldapsearch.sh "ou=Groups,dc=engines,dc=internal" memberUid=$uid cn > $LDAP_FILE
 
 
 echo '{"groups":'
