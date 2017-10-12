@@ -1,7 +1,8 @@
 #!/bin/bash
 . /home/engines/functions/params_to_env.sh
 parms_to_env
-rm $LDIF_FILE
+. /home/engines/functions/ldap_support_functions.sh
+
 cat /home/templates/add_user.ldif | while read LINE
 do
  eval echo $LINE >> $LDIF_FILE
