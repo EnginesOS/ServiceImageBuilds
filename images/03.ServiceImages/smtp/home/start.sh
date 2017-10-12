@@ -31,6 +31,7 @@ fi
 sudo -n /usr/sbin/postmap /etc/postfix/transport
 
 sudo -n /usr/lib/postfix/sbin/master -w &
+
 dummy=$!
 echo started master $dummy
 touch  /engines/var/run/flags/startup_complete
@@ -42,7 +43,7 @@ while test -f  /var/spool/postfix/pid/master.pid
  	wait
     exit_code=$?
 done
+
 rm /engines/var/run/flags/startup_complete  
-sudo -n /home/engines/scripts/_kill_syslog.sh
 exit $exit_code
 
