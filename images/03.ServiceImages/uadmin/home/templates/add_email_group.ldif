@@ -1,5 +1,5 @@
-dn: cn=$group_name,ou=Distribution Groups,dc=engines,dc=internal
-cn: $group_name
+dn: cn=$email_group,ou=Distribution Groups,dc=engines,dc=internal
+cn: $email_group
 gidnumber: $gidNumber
 description: $description
 objectclass: posixGroup

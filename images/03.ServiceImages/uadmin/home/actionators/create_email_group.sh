@@ -2,7 +2,7 @@
 . /home/engines/functions/params_to_env.sh
 parms_to_env
 
-if test -z $group_name
+if test -z $email_group
  then 
   echo "Missing Group name"
   exit 127

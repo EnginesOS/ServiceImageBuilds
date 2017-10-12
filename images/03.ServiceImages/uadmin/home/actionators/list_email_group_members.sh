@@ -10,9 +10,10 @@ fi
  
 . /home/actionators/x400_to_json.sh
 
-/home/engines/scripts/ldapsearch.sh "ou=Distribution Groups,dc=engines,dc=internal" cn=$email_group > $LDAP_FILE
+/home/engines/scripts/ldapsearch.sh "ou=Distribution Groups,dc=engines,dc=internal" cn=$email_group memberUid > $LDAP_FILE
 
 
-echo '{"users":'
-ldap_to_json_array
+echo '{"email_addresses":'
+key=memberUid
+map_ldap_to_json_array
 echo '}'
