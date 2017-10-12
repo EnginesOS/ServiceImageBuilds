@@ -1,7 +1,7 @@
 #!/bin/sh
 
-password=$2
-current_password=$1
+#password=$2
+#current_password=$1
 
 cat /home/tmpls/root_password.ldif | while read LINE
 do
