@@ -26,6 +26,7 @@ function process_ldap_entry {
        echo -n $line
        line=',"'$value'"'
     fi
+    echo $line']' >/tmp/line   
  else
     echo -n $line
      if test $array -eq 1
@@ -35,8 +36,9 @@ function process_ldap_entry {
         array=0
      fi
       line=$post$p'"'$name'":"'$value'"'
-      echo $line >/tmp/line
- fi      
+      echo $line >/tmp/line   
+ fi   
+ 
 last_value=$value
 }
 
@@ -76,27 +78,11 @@ first=1
         fi
       fi
      process_ldap_entry  
-   
-  if test $array -ne 0 
-    then
-	 touch /tmp/ar
-  elif test -f /tmp/ar
-     then
-      rm /tmp/ar
-  fi	
- done
-  if test -f /tmp/ar
-   then
-     val=`cat /tmp/line| cut -f2- -d:`
-     echo ,$val']'
-      rm /tmp/ar
-  else
-     cat /tmp/line
-  fi
-
-   rm /tmp/line
-   echo '}'
-  fi
+    done
+  cat /tmp/line
+  rm /tmp/line
+  echo '}'
+ fi
 echo ']'
 rm $LDAP_FILE
 }
