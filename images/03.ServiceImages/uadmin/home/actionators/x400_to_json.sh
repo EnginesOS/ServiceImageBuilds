@@ -20,7 +20,8 @@ function process_ldap_entry {
     if test $array -eq 0
      then
        array=1
-       line=$p'"'$name'":["'$value'"'
+       echo $p'"'$name'":["'$last_value'"'
+       line=',"'$value'"'
     else
        echo -n $line
        line=',"'$value'"'
@@ -36,6 +37,7 @@ function process_ldap_entry {
       line=$post$p'"'$name'":"'$value'"'
       echo $line >/tmp/line
  fi      
+last_value=$value
 }
 
 function ldap_to_json_array {
