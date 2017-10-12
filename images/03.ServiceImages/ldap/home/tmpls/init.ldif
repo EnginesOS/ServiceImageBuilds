@@ -50,6 +50,9 @@ olcAccess: {5} to dn.subtree="ou=Groups,dc=engines,dc=internal"
 olcAccess: {6} to dn="cn=uidNext,dc=engines,dc=internal"
         by dn="cn=uadmin,ou=hosts,dc=engines,dc=internal" write
         by dn="cn=ftp,ou=hosts,dc=engines,dc=internal" write
+olcAccess: {7} to dn="cn=Distribution Groups,dc=engines,dc=internal"
+        by dn="cn=uadmin,ou=hosts,dc=engines,dc=internal" write
+        by * read
 olcAccess: {8} to *
         by dn="cn=admin,dc=engines,dc=internal" write
         by dn="cn=ldap,ou=hosts,dc=engines,dc=internal" write
