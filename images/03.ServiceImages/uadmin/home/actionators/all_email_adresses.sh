@@ -4,7 +4,6 @@
 
 /home/engines/scripts/ldapsearch.sh "ou=People,dc=engines,dc=internal"  objectClass=posixAccount mailacceptinggeneralid > $LDAP_FILE
 
-
 echo '{"email_adresses":{"user_adresses":'
 
 key=memberID
