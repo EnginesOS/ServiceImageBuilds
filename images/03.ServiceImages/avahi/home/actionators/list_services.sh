@@ -1,7 +1,5 @@
 #!/bin/bash
 
-/home/avahi/services_list
-
 echo -n '{"services":['
 first=1
  if test -f /home/avahi/services_list
