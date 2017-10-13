@@ -5,7 +5,7 @@ RUN adduser -q --disabled-password --home /home/volmgr -uid 22007 volmgr &&\
 	
 VOLUME /var/fs/
 
-COPY  sudoers /etc/
+COPY  sudoers /etc/sudoers.d/vol_man
 COPY  home/ /home
 
 RUN	chmod -R go-rw /etc/sudoers /etc/sudoers.d/

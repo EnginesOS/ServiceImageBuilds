@@ -7,7 +7,7 @@ RUN /home/no_init.sh &&\
  	/home/post_build_clean.sh
 
 COPY home home
-COPY sudoers /etc/sudoers.d/engine
+COPY sudoers /etc/sudoers.d/certs
 COPY openssl.cnf /etc/ssl/
 
 RUN mkdir -p /home/certs/saved /home/certs/store/ca /home/certs/store/keys /home/certs/store/certs /home/certs/home &&\

@@ -11,7 +11,7 @@ RUN  echo "Y" | adduser -q --disabled-password --home /home/ivpn -uid 22031 ivpn
 
 #libpam-krb5 krb5-user 
 
-COPY sudoers /etc/sudoers.d/engines
+COPY sudoers /etc/sudoers.d/ipsec
 
 COPY ipsec.secrets /etc/
 COPY strongswan.conf /etc/

@@ -16,7 +16,7 @@ RUN echo "Y"| adduser --uid 22010 -q --home /home/ftpd --disabled-password proft
  	/home/post_build_clean.sh
 
 COPY proftpd /etc/proftpd/
-ADD sudoers /etc/sudoers
+ADD sudoers /etc/sudoers.d/ftp
 
 RUN mkdir /ftp/ &&\
 	mkdir -p /home/home_dir/.ssh &&\

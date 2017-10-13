@@ -12,7 +12,7 @@ ENV ContUser syslog
 ENV ContGrp syslog
 
 ADD home /home/
-ADD sudoers /etc/
+ADD sudoers /etc/sudoers.d/sumologic
 
 RUN mkdir -p /home/configurators/saved &&\
 	chmod g+w /home/configurators/saved &&\

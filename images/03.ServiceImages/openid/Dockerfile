@@ -19,7 +19,7 @@ RUN adduser -q --disabled-password --home /home/auth -uid 22032 openid &&\
  	/home/post_build_clean.sh
 
 COPY home home
-ADD sudoers /etc/sudoers
+ADD sudoers /etc/sudoers.d/openid
 
 RUN mkdir -p /home/consumers/saved/ &&\
 	chown openid -R  /home/configurators/saved  /home/consumers/saved/ &&\

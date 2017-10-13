@@ -6,7 +6,7 @@ RUN /home/no_init.sh &&\
  	/home/post_build_clean.sh &&\
 	/usr/sbin/usermod -u 22025 dhcpd
 	
-COPY sudoers /etc/	
+COPY sudoers /etc/sudoers.d/dhcpd
 COPY home /home/
 
 ENV ContUser dhcpd

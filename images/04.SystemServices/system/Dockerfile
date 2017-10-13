@@ -37,12 +37,10 @@ WORKDIR /home/app/
 RUN	git init
 
 ADD gitconfig /home/app/.git/config
-ADD sudoers /etc/
 
 RUN mkdir -p /home/engines/.ssh/mgmt /home/app/tmp/ /home/app/public &&\	
  	chown -R 21000 /home/app/public /home/configurators/saved /home/app/tmp/ &&\
- 	usermod -G containers -a engines &&\
-	chmod -R go-rw /etc/sudoers /etc/sudoers.d/
+ 	usermod -G containers -a engines
 
 ENV PATH /usr/local/bin:/usr/bin:/bin:/usr/sbin
 ENV HOME /home/engines/

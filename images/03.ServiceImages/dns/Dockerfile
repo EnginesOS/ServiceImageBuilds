@@ -15,7 +15,7 @@ ADD named.conf.options etc/bind/
 ADD templates /etc/bind/templates
 ADD engines.internal.domain /var/lib/bind/engines/engines.dnsrecords
 
-COPY sudoers /etc/	
+COPY sudoers /etc/sudoers.d/dns
 COPY home home
 
 RUN chown bind /var/run/named &&\

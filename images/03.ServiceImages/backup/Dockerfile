@@ -53,7 +53,7 @@ RUN chown -R backup ~backup &&\
 	
 	
 	
-COPY sudoers /etc/	
+COPY sudoers /etc/sudoers/backup
 VOLUME /backup_src/volumes
 VOLUME /backup_src/engines
 VOLUME /local_backup_dests
