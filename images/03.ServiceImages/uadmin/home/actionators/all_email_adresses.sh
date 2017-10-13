@@ -5,7 +5,7 @@
 
 echo '{"email_adresses":{"user_adresses":'
 
-key=memberID
+key=mailacceptinggeneralid
 map_ldap_to_json_array
 echo ',"group_adresses":'
 
