@@ -4,7 +4,7 @@ export RUBY_GC_MALLOC_LIMIT_GROWTH_FACTOR=1.1
 
 /home/clear_flags.sh
 SYSTEM_IP=` cat /etc/hosts |grep system |cut -f1`
-#control_ip=`netstat -rn |grep ^0.0.0 | awk '{print $2}' | tr -d '\n'`
+
 echo $SYSTEM_IP > /engines/var/run/control_ip
 export SYSTEM_IP 
 PID_FILE=/engines/var/run/system.pid
@@ -19,7 +19,7 @@ cd /home
   else
 	thin  --threaded -C config.yaml -R ./config.ru start > /var/log/system.log &
  fi
-#--threaded  
+
 
 #touch /engines/var/run/flags/startup_complete  done in code
 wait 
