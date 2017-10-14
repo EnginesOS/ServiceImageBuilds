@@ -13,11 +13,11 @@ export PID_FILE
 
 
 cd /home
- if test -f  /opt/engines/etc/ssl/keys/engines.key
+ if test -f /opt/engines/etc/ssl/keys/engines.key
   then
 	thin --threaded --ssl --ssl-key-file /opt/engines/etc/ssl/keys/engines.key --ssl-cert-file /opt/engines/etc/ssl/certs/engines.crt -C config.yaml -R ./config.ru start > /var/log/system.log &
   else
-	thin  --threaded -C config.yaml -R ./config.ru start > /var/log/system.log &
+	thin --threaded -C config.yaml -R ./config.ru start > /var/log/system.log &
  fi
 
 
