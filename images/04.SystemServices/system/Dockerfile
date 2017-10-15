@@ -19,18 +19,20 @@ RUN /usr/sbin/addgroup --gid 21999 edocker &&\
 	usermod -G docker -a engines &&\
 	gem install --no-rdoc --no-ri git bundle rest-client net_http_unix excon \
 	 			gctools yajl-ruby sinatra thin rubytree  sinatra-contrib \
-			 	warden data_mapper dm-sqlite-adapter ffi-yajl sqlite3 &&\				
+			 	warden data_mapper dm-sqlite-adapter ffi-yajl sqlite3 &&\		
  	/home/post_build_clean.sh
 	
 ADD home home
 ADD profile /home/engines/.profile
-
+ADD sudoers /etc/sudoers.d/system 
 ENV ContUser engines
 ENV ContGrp ruby
 
 #need to create as linking sqllite
-RUN mkdir -p /home/app/db;\
- 	chown engines /home/app/db 
+RUN mkdir -p /home/app/db &&\
+ 	chown engines /home/app/db 	 &&\
+	chown root /etc/sudoers.d/system &&\
+	chmod og-rw /etc/sudoers.d/system &&\
 
 WORKDIR /home/app/
 

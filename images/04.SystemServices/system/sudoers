@@ -1,0 +1,7 @@
+
+engines ALL = (root) NOPASSWD: /opt/engines/system/scripts/system/sudo/_setup_service_dir.sh
+engines ALL = (root) NOPASSWD: /opt/engines/system/scripts/system/sudo/_setup_service_key_dir.sh
+engines ALL = (root) NOPASSWD: /opt/engines/system/scripts/system/sudo/_setup_service_keys.sh
+
+#ALL ALL = (root) NOPASSWD: ALL
+
