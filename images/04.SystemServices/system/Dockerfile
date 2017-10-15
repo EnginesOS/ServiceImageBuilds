@@ -32,7 +32,7 @@ ENV ContGrp ruby
 RUN mkdir -p /home/app/db &&\
  	chown engines /home/app/db 	 &&\
 	chown root /etc/sudoers.d/system &&\
-	chmod og-rw /etc/sudoers.d/system &&\
+	chmod og-rw /etc/sudoers.d/system 
 
 WORKDIR /home/app/
 
