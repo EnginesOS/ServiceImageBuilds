@@ -24,7 +24,7 @@ expect -d /home/auth/kerobos_init.expect
  
 /home/_start.sh 
 
-for service in ldap ftp imap email openid uadmin system
+for service in `cat /home/key_list`
  do
   gen_service_key
  done 
