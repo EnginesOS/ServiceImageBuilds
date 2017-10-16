@@ -1,10 +1,5 @@
 #!/bin/bash
 
-if ! test -f /tmp/setup
- then
-   /home/setup.sh
-   touch /tmp/setup
-fi 
 
 grep BLANK /var/lib/bind/engines/engines.dnsrecords >/dev/null
 if test $? -eq 0

@@ -1,13 +1,19 @@
 #!/bin/sh
 
-mkdir -p /var/run/named
-chown -R bind /var/run/named
-mkdir -p /var/log/named
-chown -R bind /var/log/named
+if ! test -d /var/run/named
+ then
+	mkdir -p /var/run/named
+	chown -R bind /var/run/named
+fi
+if ! test -d /var/log/named
+ then 	
+   mkdir -p /var/log/named
+   chown -R bind /var/log/named
+fi
 
 ip_r=`grep dns /etc/hosts|awk '{print $1}' |cut -d. -f-3`
 ip=${ip_r}.1
-net=`echo $ip_r |awk  ' BEGIN {  FS="."} {print $2 "." $1}'`
+net=`echo $ip_r |awk  ' BEGIN { FS="."} {print $2 "." $1}'`
 
 cd /tmp
 
