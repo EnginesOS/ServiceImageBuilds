@@ -15,7 +15,7 @@ else
    StorePref=${container_type}s/${parent_engine}/
 fi
 
-sudo -h /home/_fix_perms.sh
+sudo -n /home/_fix_perms.sh
 
 mkdir -p /home/certs/store/public/keys/$StorePref
 mkdir -p /home/certs/store/public/certs/$StorePref
