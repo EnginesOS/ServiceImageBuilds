@@ -8,8 +8,13 @@ if test -z "${cert_name}"
   echo Error:Missing cert_name
   exit -1
 fi
+if ${container_type} = system
+ then
+    StorePref=services/${parent_engine}/
+else
+   StorePref=${container_type}s/${parent_engine}/
+fi
 
-StorePref=${container_type}s/${parent_engine}/
 mkdir -p /home/certs/store/public/keys/$StorePref
 mkdir -p /home/certs/store/public/certs/$StorePref
  
