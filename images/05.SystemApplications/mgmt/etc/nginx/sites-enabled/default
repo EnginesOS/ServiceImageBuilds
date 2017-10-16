@@ -10,8 +10,8 @@
     ssl on;
     ssl_session_cache    shared:SSL:1m;
     ssl_session_timeout  10m;
-    ssl_certificate /opt/engines/etc/ssl/certs/engines.crt;
-    ssl_certificate_key /opt/engines/etc/ssl/keys/engines.key;
+    ssl_certificate /engines/ssl/certs/engines.crt;
+    ssl_certificate_key /engines/ssl/keys/engines.key;
     include /home/app/.env_vars;
     include /home/app/.ruby_env;
  	passenger_enabled on;
