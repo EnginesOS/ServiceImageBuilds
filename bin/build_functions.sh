@@ -68,7 +68,7 @@ for arg in $ARGS
     build all changed images and push all images $0 -pushall \
     build all images and push all images $0 -A  \
     push all images $0 -pushonly "
-    set the stop level dir -b dir  where dir is 01.BaseImages|02.FrameWorkImages|03.serviceImages|04.SystemServices|05.SystemApplications
+    set the top level dir -b dir  where dir is 01.BaseImages|02.FrameWorkImages|03.ServiceImages|04.SystemServices|05.SystemApplications
     exit
   fi
   		
