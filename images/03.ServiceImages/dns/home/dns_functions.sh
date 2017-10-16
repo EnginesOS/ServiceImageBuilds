@@ -8,7 +8,7 @@ if test -z ${hostname}
  fi
     
 host=`echo ${hostname} | sed "/[_.]/s//-/g"`
-engine=`echo ${parent_engine} | sed "/[_.]/s//-/g"`
+engine=`echo ${parent_engine} | sed "/[_.]/s///g"`
 fqdn_str=${host}.engines.internal
     
 if test -z ${ip}
