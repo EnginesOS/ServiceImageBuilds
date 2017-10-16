@@ -5,7 +5,7 @@ FROM engines/node6:$release
 ENV ContUser python
 ENV ContGrp python
 
-RUN echo "Y" | adduser -q --uid 22674 --home /home/python --disabled-password python &&\
+RUN adduser -q --uid 22674 --home /home/python --disabled-password python &&\
 	apt-get update -y &&\
 	apt-get install -y python \
 					   python-dev \

@@ -3,7 +3,7 @@ FROM engines/frameworkbuild:$release
 ENV ContUser python
 ENV ContGrp python
 
-RUN echo "Y" | adduser -q --uid 22676 --home /home/lua --disabled-password lua &&\
+RUN adduser -q --uid 22676 --home /home/lua --disabled-password lua &&\
 	apt-get update -y &&\
 	apt-get install -y lua5.1 \
 		               liblua5.1-dev \

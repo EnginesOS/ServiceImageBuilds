@@ -1,6 +1,6 @@
 FROM  engines/servicebase:$release
 
-RUN echo "Y" | adduser -q --disabled-password -uid 22002 postgres &&\
+RUN adduser -q --disabled-password -uid 22002 postgres &&\
 	/home/no_init.sh &&\			
 	apt-get update -y &&\
 	apt-get -y install postgresql \

@@ -1,6 +1,6 @@
 FROM  engines/servicebase:$release
 
-RUN echo "Y" |/usr/sbin/usermod -u  22012 syslog &&\
+RUN /usr/sbin/usermod -u  22012 syslog &&\
 	/home/no_init.sh &&\
 	 adduser --uid 22028 -q --home /home/logrotate --disabled-password logrotate &&\
 	usermod -G containers -a logrotate

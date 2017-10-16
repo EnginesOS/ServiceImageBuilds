@@ -1,6 +1,6 @@
 FROM  engines/servicebase:$release
 
-RUN echo "Y" |/usr/sbin/usermod -u 22012 syslog &&\
+RUN /usr/sbin/usermod -u 22012 syslog &&\
 	/home/no_init.sh &&\		
 	apt-get update -y &&\
  	apt-get -y install syslog-ng-core \

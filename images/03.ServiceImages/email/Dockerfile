@@ -1,6 +1,6 @@
 FROM  engines/servicebase:$release
 
-RUN echo "Y" | adduser -q --disabled-password --home /var/spool/postfix -uid 22003 postfix &&\
+RUN adduser -q --disabled-password --home /var/spool/postfix -uid 22003 postfix &&\
 	/home/no_init.sh &&\
 	apt-get -y update &&\	
 	apt-get -y install postfix \

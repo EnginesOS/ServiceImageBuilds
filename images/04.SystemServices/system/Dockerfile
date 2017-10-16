@@ -13,7 +13,7 @@ RUN /usr/sbin/addgroup --gid 21999 edocker &&\
 						libssl-dev \
 						libreadline-dev \
 						zlib1g-dev &&\
-	echo "Y" | adduser -q --uid 21000 --gid 21999 --home /home/engines --disabled-password engines &&\
+	adduser -q --uid 21000 --gid 21999 --home /home/engines --disabled-password engines &&\
 	mkdir -p /opt/engines/run/system/ &&\	
 	chown -R engines /opt/engines/run/system/ /home/engines /var/log/ &&\
 	usermod -G docker -a engines &&\

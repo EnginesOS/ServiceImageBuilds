@@ -18,7 +18,7 @@ RUN apt-get -y update &&\
 
 ADD etc  etc
 
-RUN echo "Y" | /usr/sbin/usermod -u 22015 -d /home/backup  backup &&\
+RUN /usr/sbin/usermod -u 22015 -d /home/backup  backup &&\
 	usermod -G containers -a backup &&\ 
 	usermod -G root -a backup &&\	 	
 	cd /tmp &&\

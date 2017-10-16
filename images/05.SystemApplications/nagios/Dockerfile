@@ -2,8 +2,8 @@ FROM  engines/base:$release
 
 RUN apt-get -y update;\
    apt-get -y install nagios3;\
-    echo "Y" | adduser -q --home /home/rma --disabled-password rma;\
-	apt-get clean
+    adduser -q --home /home/rma --disabled-password rma;\
+	apt-get -y clean
 	
 ADD sudoers /etc/
 RUN chown 0 /etc/sudoers

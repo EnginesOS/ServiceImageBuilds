@@ -1,6 +1,6 @@
 FROM engines/servicebase:$release
 Maintainer image.maintainer@engines.onl
-RUN echo "Y" | adduser -q --disabled-password --home /var/spool/postfix -uid 22003 postfix &&\
+RUN adduser -q --disabled-password --home /var/spool/postfix -uid 22003 postfix &&\
 	apt-get -y update &&\
 	/home/no_init.sh &&\	
 	apt-get -y install postfix &&\

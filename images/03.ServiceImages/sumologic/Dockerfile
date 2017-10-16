@@ -1,6 +1,6 @@
 FROM engines/servicebase:$release
 
-RUN echo "Y" | /usr/sbin/usermod -u 22012 syslog &&\
+RUN /usr/sbin/usermod -u 22012 syslog &&\
  	apt-get -y update &&\
 	wget -q -O /tmp/collector.deb https://collectors.sumologic.com/rest/download/deb/64 &&\
  	dpkg -i /tmp/collector.deb &&\

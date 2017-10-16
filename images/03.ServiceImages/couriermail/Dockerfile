@@ -1,7 +1,7 @@
 FROM  engines/apache:$release
 
 
-RUN echo "Y" | adduser -q --disabled-password -uid 22011 courier ;\
+RUN adduser -q --disabled-password -uid 22011 courier ;\
  	mkdir -p /var/run/courier/authdaemon;\
  	mkdir -p /usr/lib/courier/etc/webadmin/;\
  	echo firstpasswd > /usr/lib/courier/etc/webadmin/password;\ 	

@@ -1,8 +1,7 @@
 FROM  engines/servicebase:$release
 
-RUN echo "Y" | adduser -q --disabled-password -uid 22006 mysql
-
-RUN  /home/no_init.sh &&\		
+RUN adduser -q --disabled-password -uid 22006 mysql &&\
+    /home/no_init.sh &&\		
 	apt-get update -y &&\
 	apt-get -y install mysql-server &&\
 	echo max_allowed_packet = 4M >> /etc/mysql/mysql.conf.d/mysqld.cnf &&\

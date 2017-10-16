@@ -1,6 +1,6 @@
 FROM  engines/servicebase:$release
 
-RUN echo "Y" | adduser -q --disabled-password --home /home/cron -uid 22016 cron &&\
+RUN adduser -q --disabled-password --home /home/cron -uid 22016 cron &&\
 	groupadd -g 999 docker &&\
 	usermod -G docker -a cron &&\
 	usermod -G containers -a cron &&\

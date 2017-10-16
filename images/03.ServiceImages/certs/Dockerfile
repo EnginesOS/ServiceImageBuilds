@@ -1,7 +1,7 @@
 FROM  engines/servicebase:$release
 
 RUN /home/no_init.sh &&\
-	echo "Y" | adduser -q --disabled-password --home /home/certs -uid 22022 certs &&\
+	adduser -q --disabled-password --home /home/certs -uid 22022 certs &&\
 	usermod -G containers -a certs &&\
 	apt-get -y install openssl &&\
  	/home/post_build_clean.sh
