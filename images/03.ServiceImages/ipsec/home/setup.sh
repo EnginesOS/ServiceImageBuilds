@@ -1,10 +1,10 @@
 #/bin/bash
 
-cp /etc/ssl/keys/ipvpn.key /etc/ipsec.d/private/
-cp /etc/ssl/certs/ipvpn.crt /etc/ipsec.d/certs/  
-cp /usr/local/share/ca-certificates/engines_internal_ca.crt  /etc/ipsec.d/cacerts/     
+ln -s /engines/ssl/keys/ipvpn.key /etc/ipsec.d/private/
+ln -s /engines/ssl/certs/ipvpn.crt /etc/ipsec.d/certs/  
+ln -s /usr/local/share/ca-certificates/engines_internal_ca.crt  /etc/ipsec.d/cacerts/     
 
-domain=`cat /etc/ssl/certs/ipvpn.crt | openssl x509 -noout -subject  |sed "/^.*CN=/s///"`
+domain=`cat /engines/ssl/certs/ipvpn.crt | openssl x509 -noout -subject  |sed "/^.*CN=/s///"`
 
 if test -f /home/configurators/saved/rw_subnet
 then
