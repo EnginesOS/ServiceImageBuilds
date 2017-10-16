@@ -3,7 +3,7 @@
 function gen_service_key {
 echo addprinc -randkey host/$service.engines.internal@ENGINES.INTERNAL | kadmin.local 
 mkdir /etc/krb5kdc/$service 
-echo ktadd -k /etc/krb5kdc/$service/$service.keytab host/$service.engines.internal@ENGINES.INTERNAL | kadmin.local 
+echo ktadd -k /etc/krb5kdc/services/$service/$service.keytab host/$service.engines.internal@ENGINES.INTERNAL | kadmin.local 
 
 }
 
@@ -31,7 +31,7 @@ for service in `cat /home/key_list`
  
 echo addprinc -randkey ldap/ldap.engines.internal@ENGINES.INTERNAL | kadmin.local
 
-echo  ktadd -k /etc/krb5kdc/ldap/ldap.keytab ldap/ldap.engines.internal@ENGINES.INTERNAL | kadmin.local
+echo  ktadd -k /etc/krb5kdc/services/ldap/ldap.keytab ldap/ldap.engines.internal@ENGINES.INTERNAL | kadmin.local
  
  
 touch /engines/var/run/flags/first_run.done
