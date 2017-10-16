@@ -17,8 +17,8 @@
     ssl on;
     ssl_session_cache    shared:SSL:1m;
     ssl_session_timeout  10m;
-    ssl_certificate /etc/nginx/ssl/certs/CERTNAME.crt;
-    ssl_certificate_key /etc/nginx/ssl/keys/CERTNAME.key;
+    ssl_certificate /engines/ssl/certs/CERTNAME.crt;
+    ssl_certificate_key /engines/ssl/keys/CERTNAME.key;
     proxy_ssl_session_reuse off;
     ssl_verify_client off;
     ssl_protocols        SSLv3 TLSv1 TLSv1.1 TLSv1.2;
