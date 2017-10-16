@@ -8,10 +8,14 @@ if test -z $parent_engine
 	echo Error:No parent_engine value
 	exit -1
 fi
-
-kill -TERM `cat /var/run/engines/redis-server.$parent_engine.pid`
-rm /home/config/$parent_engine.redis.config
-
+if test -f /var/run/engines/redis-server.$parent_engine.pid
+ then
+	kill -TERM `cat /var/run/engines/redis-server.$parent_engine.pid`
+	rm /home/config/$parent_engine.redis.config
+else
+ echo "missing pid"
+ exit 127	
+fi
 if test $? -ge 0
 then 
 	echo "Success"	
