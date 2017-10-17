@@ -1,0 +1,1 @@
+mysql ALL = (root) NOPASSWD: /home/engines/scripts/mysql_server/_mkdir_rundir.sh
