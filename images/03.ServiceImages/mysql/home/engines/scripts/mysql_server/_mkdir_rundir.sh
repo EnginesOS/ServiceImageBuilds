@@ -7,9 +7,9 @@ if ! test -d  /var/run/mysqld/
  	chown mysql /var/run/mysqld/
 fi
 
-if ! test -d  /var/log/mysqld/
+if ! test -d  /var/log/mysql/
  then
  	echo "setup run dir"
- 	mkdir -p /var/log/mysqld/
- 	chown mysql /var/log/mysqld/ 	
+ 	mkdir -p /var/log/mysql
+ 	chown mysql /var/log/mysql/ 	
 fi
