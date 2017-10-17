@@ -13,7 +13,7 @@ RUN adduser -q --disabled-password -uid 22006 mysql &&\
 
 ADD home home
 ADD sudoers /etc/sudoers.d/mysql_server
-RUN chmod oog-rwx /etc/sudoers.d/mysql_server
+RUN chmod og-rwx /etc/sudoers.d/mysql_server
 EXPOSE 3306
 
 ENV ContUser mysql

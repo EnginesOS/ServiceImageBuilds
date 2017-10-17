@@ -6,10 +6,7 @@ sudo -n /home/engines/scripts/mysql_server/_mkdir_rundir.sh
 
 if ! test -d /var/lib/mysql/mysql
  then
-   cd /home/mysql
-   
-
-   #/usr/bin/mysql_install_db
+   cd /home/mysql   
 	mysqld --initialize-insecure  --explicit_defaults_for_timestamp 	 
 	 /usr/sbin/mysqld --basedir=/usr --datadir=/var/lib/mysql --plugin-dir=/usr/lib/mysql/plugin --user=mysql --log-error=/var/log/mysql/error.log --pid-file=/var/run/mysqld/mysqld.pid --socket=/var/run/mysqld/mysqld.sock &
      pid=$! 
