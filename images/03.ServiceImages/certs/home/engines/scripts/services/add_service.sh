@@ -15,7 +15,7 @@ else
    StorePref=${container_type}s/${parent_engine}/
 fi
 
-sudo -n  /home/engines/scripts/backup/_fix_perms.sh
+sudo -n  /home/engines/scripts/cert_auth/_fix_perms.sh
 
 mkdir -p /home/certs/store/public/keys/$StorePref
 mkdir -p /home/certs/store/public/certs/$StorePref
@@ -109,7 +109,7 @@ if test -z ${install_target}
 fi
 domain_name=`cat  /home/certs/store/public/certs/${StorePref}${cert_name}.crt | openssl x509 -noout -subject  |sed "/^.*CN=/s///"| sed "/\*/s///"`
 
-sudo -n  /home/engines/scripts/backup/_install_target.sh ${install_target} ${StorePref}/${cert_name} ${domain_name}
+sudo -n  /home/engines/scripts/cert_auth/_install_target.sh ${install_target} ${StorePref}/${cert_name} ${domain_name}
  
 echo "Success"
 exit 0
