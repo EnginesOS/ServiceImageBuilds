@@ -18,7 +18,7 @@ if test -z ${parent_engine}
     exit 127
 fi  
     
-sudo -n /home/engines/scripts/delete_volume.sh ${parent_engine} ${service_name} 
+sudo -n /home/engines/scripts/fs/delete_volume.sh ${parent_engine} ${service_name} 
 if test $? -eq 0
  then 
 	echo "Success"
