@@ -1,2 +1,2 @@
 #!/bin/sh
-sudo -n /home/_kill_auth.sh $1
+sudo -n /home/engines/scripts/auth/_kill_auth.sh $1
