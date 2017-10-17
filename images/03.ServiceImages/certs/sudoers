@@ -1,8 +1,8 @@
 certs ALL = (root) NOPASSWD: /home/engines/scripts/_start_syslog.sh
-certs ALL = (root) NOPASSWD: /home/install_target.sh 
+certs ALL = (root) NOPASSWD: /home/engines/scripts/backup/_install_target.sh 
 certs ALL = (root) NOPASSWD: /home/engines/scripts/_kill_syslog.sh
-certs ALL = (root) NOPASSWD: /home/remove.sh
-certs ALL = (root) NOPASSWD: /home/_fix_perms.sh
+certs ALL = (root) NOPASSWD: /home/engines/scripts/backup/_remove_cert.sh
+certs ALL = (root) NOPASSWD: /home/engines/scripts/backup/_fix_perms.sh
 certs ALL = (root) NOPASSWD: /home/services/_backup.sh
 certs ALL = (root) NOPASSWD: /home/services/_restore.sh
 #must have blank after last sudoers line

@@ -1,11 +1,11 @@
 
 
 
-dhcpd ALL = (root) NOPASSWD: /home/clear_dhcpd_conf.sh
-dhcpd ALL = (root) NOPASSWD: /home/install_dhcpd_conf.sh
+dhcpd ALL = (root) NOPASSWD: /home/engines/scripts/dhcpd/_clear_dhcpd_conf.sh
+dhcpd ALL = (root) NOPASSWD: /home/engines/scripts/dhcpd/_install_dhcpd_conf.sh
 dhcpd ALL = (root) NOPASSWD: /home/engines/scripts/_start_syslog.sh
 dhcpd ALL = (root) NOPASSWD: /usr/sbin/dhcpd
-dhcpd ALL = (root) NOPASSWD: /home/_signal.sh
+dhcpd ALL = (root) NOPASSWD:/home/engines/scripts/dhcpd/_signal.sh
 dhcpd ALL = (root) NOPASSWD: /home/engines/scripts/_kill_syslog.sh
 #must have blank after last sudoers line
 

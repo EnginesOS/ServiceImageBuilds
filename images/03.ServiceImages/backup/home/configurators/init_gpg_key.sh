@@ -11,7 +11,7 @@ if ! test -f /home/backup/.gnupg/pass
  		exit 
  	fi
  	
-	cat /home/tmpl/key.tmpl | sed "/EMAIL/s//$email/" | sed "/PASS/s//$pass/" > /tmp/key.tmpl
+	cat /home/engines/templates/backupkey.tmpl | sed "/EMAIL/s//$email/" | sed "/PASS/s//$pass/" > /tmp/key.tmpl
  	gpg --gen-key --batch /tmp/key.tmpl
  	rm /tmp/key.tmpl
    

@@ -2,7 +2,7 @@
 
 if ! test -f /engines/run/flags/first_run_done
  then
-   sudo -n /home/_setup.sh
+   sudo -n /home/engines/scripts/openid/_setup.sh
    touch /engines/run/flags/first_run_done
 fi
   

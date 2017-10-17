@@ -3,7 +3,7 @@
 #password=$2
 #current_password=$1
 
-cat /home/tmpls/root_password.ldif | while read LINE
+cat /home/engines/templates/ldap/root_password.ldif | while read LINE
 do
  eval echo $LINE >> $LDIF_FILE
 done

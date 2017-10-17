@@ -13,7 +13,7 @@ fi
 
 
 
-cat /home/actionators/tmpls/add_domain.ldif | while read LINE
+cat /home/engines/templates/email/add_domain.ldif | while read LINE
 do
  eval echo $LINE >> $LDIF_FILE
 done

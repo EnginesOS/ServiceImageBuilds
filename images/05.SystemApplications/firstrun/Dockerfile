@@ -24,12 +24,12 @@ RUN	git init
 
 ENV RELEASE $release
 
-ADD gitconfig.tmpl /home/app/.git/config.tmpl
+ADD src/gitconfig.tmpl /home/app/.git/config.tmpl
 
 RUN cat /home/app/.git/config.tmpl  | sed "/\$release/s//$release/" > /home/app/.git/config &&\
 	/home/deployment.sh
 
-ADD config.ru /home/app
+ADD src/config.ru /home/app
 
 ENV HOME /home/app
 

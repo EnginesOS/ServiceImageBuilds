@@ -28,7 +28,7 @@ if test -z $login
  	exit 127
  fi
 
-cat /home/providers/$provider/dyndns.conf.tmpl |sed --e /LOGIN/s//$login/ -e /PASSWORD/s//$password/ -e /DOMAIN/s//$domain_name/ >/home/dyndns/dyndns.conf 
+cat /home/engines/templates/dyndns/providers/$provider/dyndns.conf.tmpl |sed --e /LOGIN/s//$login/ -e /PASSWORD/s//$password/ -e /DOMAIN/s//$domain_name/ >/home/dyndns/dyndns.conf 
 chmod og-r /home/dyndns/dyndns.conf
 echo "Success"
 exit 0

@@ -13,8 +13,8 @@ RUN adduser -q --disabled-password --home /home/ivpn -uid 22031 ivpn &&\
 
 COPY sudoers /etc/sudoers.d/ipsec
 
-COPY ipsec.secrets /etc/
-COPY strongswan.conf /etc/
+COPY src/ipsec.secrets /etc/
+COPY src/strongswan.conf /etc/
 
 RUN	chmod -R go-rw /etc/sudoers /etc/sudoers.d/
 

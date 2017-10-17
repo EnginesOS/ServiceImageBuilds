@@ -10,10 +10,10 @@ RUN adduser -q --disabled-password --home /var/spool/postfix -uid 22003 postfix 
  	/home/post_build_clean.sh
 
 ADD home home
-ADD postfix/master.cf /etc/postfix/
-ADD postfix/main.cf /etc/postfix/
-ADD postfix/mailname /etc/postfix/mailname
-ADD postfix/transport /etc/postfix/
+ADD src/postfix/master.cf /etc/postfix/
+ADD src/postfix/main.cf /etc/postfix/
+ADD src/postfix/mailname /etc/postfix/mailname
+ADD src/postfix/transport /etc/postfix/
 
 RUN mkdir /usr/share/doc/postfix/html \
 	 	  	/usr/lib/postfix/libutil \

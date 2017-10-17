@@ -11,7 +11,7 @@ parms_to_file_and_env
    # echo "*	smtp:smtp.engines.internal" > /etc/postfix/maps/transport
   # 	echo ${default_domain} :[local]	>> /etc/postfix/maps/transport	
 	 # postmap /etc/postfix/maps/transport
-	/home/create_config.sh
+	/home//home/engines/scripts/email/create_config.sh
 fi
  
 exit 0

@@ -23,7 +23,7 @@ RUN /usr/sbin/addgroup --gid 21999 edocker &&\
  	/home/post_build_clean.sh
 	
 ADD home home
-ADD profile /home/engines/.profile
+ADD src/profile /home/engines/.profile
 ADD sudoers /etc/sudoers.d/system 
 ENV ContUser engines
 ENV ContGrp ruby
@@ -38,7 +38,7 @@ WORKDIR /home/app/
 
 RUN	git init
 
-ADD gitconfig /home/app/.git/config
+ADD src/gitconfig /home/app/.git/config
 
 RUN mkdir -p /home/engines/.ssh/system /home/app/tmp/ /home/app/public &&\	
  	chown -R 21000 /home/app/public /home/configurators/saved /home/app/tmp/ &&\

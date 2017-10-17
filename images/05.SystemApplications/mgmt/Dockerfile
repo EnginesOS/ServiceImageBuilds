@@ -27,21 +27,21 @@ RUN	git init
 
 ENV RELEASE $release
 
-ADD gitconfig.tmpl /home/app/.git/config.tmpl
+ADD src/gitconfig.tmpl /home/app/.git/config.tmpl
 
 RUN cat /home/app/.git/config.tmpl | sed "/\$release/s//$RELEASE/" > /home/app/.git/config &&\
 	/home/deployment.sh
 
-ADD profile /var/www/.profile
+ADD src/profile /var/www/.profile
 
 ENV HOME /home/app
 
-COPY etc/nginx/ /etc/nginx
-COPY ruby_env /home/app/.ruby_env
+COPY src/etc/nginx/ /etc/nginx
+COPY src/ruby_env /home/app/.ruby_env
 
 USER 0
 
-COPY passenger.conf /etc/nginx/
+COPY src/passenger.conf /etc/nginx/
 
 RUN chmod ugo+w -R /etc/nginx/sites-enabled/default /etc/nginx/ &&\
 	mkdir -p /var/run/nginx/ /var/lib/nginx /var/log/nginx &&\

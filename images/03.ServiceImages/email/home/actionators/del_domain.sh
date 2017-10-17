@@ -10,7 +10,7 @@ if test -z $domain_name
   exit 127
 fi
 
-dn_tmpl=`cat  /home/actionators/tmpls/del_domain.ldif`
+dn_tmpl=`cat /home/engines/templates/email/del_domain.ldif`
 dn=`eval echo $dn_tmp. `
 /home/engines/scripts/ldapdelete.sh $dn &> $LDAP_OUTF
 result=$?

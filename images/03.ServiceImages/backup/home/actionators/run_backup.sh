@@ -6,7 +6,7 @@ params_to_env
 cd /home/backup
 if test -z $backup_name
  then
-   /home/backup_run.sh
+   /home/engines/scripts/backup/run_duply.sh
 else
-  /home/run_duply $backup_name backup
+  /home/engines/scripts/backup/run_duply.sh $backup_name backup
 fi

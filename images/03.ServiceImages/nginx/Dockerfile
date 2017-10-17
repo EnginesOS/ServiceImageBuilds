@@ -10,8 +10,8 @@ RUN usermod www-data -u 22005 &&\
  	/home/post_build_clean.sh
 
 COPY home home
-COPY 502.html /usr/share/nginx/html/
-COPY etc/nginx/ /etc/nginx
+COPY src/502.html /usr/share/nginx/html/
+COPY src/etc/nginx/ /etc/nginx
 
 RUN mkdir -p /home/consumers/saved/ &&\
 	chown www-data -R /etc/nginx/sites-enabled /home/configurators/saved  /home/consumers/saved/

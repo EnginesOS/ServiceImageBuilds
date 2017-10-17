@@ -43,14 +43,14 @@ RUN cd /tmp/ &&\
 	postmap hash:/etc/postfix/maps/smarthost_passwd &&\
  	/home/post_build_clean.sh
 	
-ADD postgrey /etc/default/postgrey
+ADD src/postgrey /etc/default/postgrey
 ADD sudoers /etc/sudoers.d/postfix	 
 
-#ADD postfix/main.cf /etc/postfix/
-ADD postfix/master.cf /etc/postfix/
-ADD postfix/mailname /etc/postfix/mailname
-ADD postfix/transport /etc/postfix/maps/transport
-ADD postfix/ldap /etc/postfix/ldap
+
+ADD src/postfix/master.cf /etc/postfix/
+ADD src/postfix/mailname /etc/postfix/mailname
+ADD src/postfix/transport /etc/postfix/maps/transport
+ADD src/postfix/ldap /etc/postfix/ldap
 
   
 RUN postmap /etc/postfix/maps/transport &&\

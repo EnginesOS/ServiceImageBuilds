@@ -1,7 +1,7 @@
 FROM engines/servicebase:$release
 
 #COPY kadm5.acl /etc/
-COPY krb5.conf /etc/
+COPY src/krb5.conf /etc/
 
 RUN adduser --uid 22010 -q --home /home/ftpd --disabled-password proftpd &&\
 	/home/no_init.sh &&\	
@@ -15,7 +15,7 @@ RUN adduser --uid 22010 -q --home /home/ftpd --disabled-password proftpd &&\
 	ln -s /home/ftpd /run/proftpd &&\
  	/home/post_build_clean.sh
 
-COPY proftpd /etc/proftpd/
+COPY src/proftpd /etc/proftpd/
 ADD sudoers /etc/sudoers.d/ftp
 
 RUN mkdir /ftp/ &&\

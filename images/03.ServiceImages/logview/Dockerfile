@@ -20,7 +20,7 @@ ADD home home
 RUN	git clone https://github.com/potsky/PimpMyLog.git &&\
 	mv /PimpMyLog /home/app 
 	
-ADD config.user.php /home/app/
+ADD src/config.user.php /home/app/
 	
 RUN mkdir /home/saved &&\
 	chown 22027 /home/saved /home/app/config.user.php &&\
@@ -32,9 +32,9 @@ ENV APACHE_LOCK_DIR /var/run/apache2/lock/
 ENV ContUser www-data
 ENV ContGrp www-data
 
-ADD 000-default.conf /etc/apache2/sites-enabled/
-ADD ports.conf /etc/apache2/	
-ADD apache_envvars /etc/apache2/envvars	
+ADD src/000-default.conf /etc/apache2/sites-enabled/
+ADD src/ports.conf /etc/apache2/	
+ADD src/apache_envvars /etc/apache2/envvars	
 
 USER www-data
 

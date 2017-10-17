@@ -32,9 +32,9 @@ RUN mkdir -p /home/consumers/saved/ &&\
 	 chmod -R go-rw /etc/sudoers /etc/sudoers.d/
 	 
 	 
-COPY config.php /home/simpleid/www/
-COPY ldap-filesystem.store.config.php /home/simpleid/www/
-COPY apache2 /etc/apache2
+COPY src/config.php /home/simpleid/www/
+COPY src/ldap-filesystem.store.config.php /home/simpleid/www/
+COPY src/apache2 /etc/apache2
 
 ENV ContUser openid
 ENV ContGrp openid

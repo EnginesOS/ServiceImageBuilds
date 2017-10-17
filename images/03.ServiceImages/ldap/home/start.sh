@@ -3,7 +3,7 @@
 
 if ! test -f /engines/var/run/flags/first_run
   then
-    sudo -n /home/_first_run.sh
+    sudo -n /home/engines/scripts/ldap/_first_run.sh
   fi
 
 
@@ -16,7 +16,7 @@ sudo -n /home/engines/scripts/_start_syslog.sh
 
 echo started syslog
 
-sudo -n /home/_start_slapd.sh
+sudo -n /home/engines/scripts/ldap/_start_slapd.sh
 
 exit_code=$?
 

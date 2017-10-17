@@ -10,7 +10,7 @@ RUN  /home/no_init.sh &&\
 	                    rpcbind &&\
  	/home/post_build_clean.sh
 	
-COPY etc /etc/
+COPY src/etc /etc/
 
 RUN chmod 600 /etc/nss-mysql-root.conf &&\
 	adduser --uid 22019 -q --home /home/samba --disabled-password samba &&\

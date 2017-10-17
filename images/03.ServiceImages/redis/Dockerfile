@@ -7,7 +7,7 @@ RUN adduser -q --disabled-password  redis -uid 22029 &&\
 	mkdir -p /var/lib/redis /var/run/redis/ &&\ 
 	usermod -G containers -a redis 
 	
-COPY redis.conf /etc/redis/
+COPY src/redis.conf /etc/redis/
 COPY home home
 
 RUN mkdir -p /home/consumers/saved/ /home/configurators/saved /home/config &&\

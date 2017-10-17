@@ -13,7 +13,7 @@ RUN /usr/sbin/usermod -u 22012 syslog &&\
 ENV ContUser syslog
 ENV ContGrp syslog
 
-ADD syslog-ng.conf /etc/syslog-ng/
+ADD src/syslog-ng.conf /etc/syslog-ng/
 ADD home /home/
 ADD sudoers /etc/sudoers.d/syslog
 

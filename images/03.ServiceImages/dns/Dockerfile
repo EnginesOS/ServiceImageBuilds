@@ -10,10 +10,9 @@ RUN adduser -q --disabled-password --home /var/cache/bind -uid 22009 bind &&\
  	/home/post_build_clean.sh
     
 
-ADD named.conf.local /etc/bind/named.conf.local
-ADD named.conf.options etc/bind/
-ADD templates /etc/bind/templates
-ADD engines.internal.domain /var/lib/bind/engines/engines.dnsrecords
+ADD src/named.conf.local /etc/bind/named.conf.local
+ADD src/named.conf.options etc/bind/
+ADD src/engines.internal.domain /var/lib/bind/engines/engines.dnsrecords
 
 COPY sudoers /etc/sudoers.d/dns
 COPY home home

@@ -10,11 +10,11 @@ if ! test -d /var/spool/postfix/pid/
  fi
 if ! test -f /engines/var/run/flags/first_run
   then
-  	sudo /home/setup_dirs.sh
+  	sudo /home/engines/scripts/email/_setup_dirs.sh
   	touch /engines/var/run/flags/first_run
   fi
   
-KILL_SCRIPT=/home/kill_postfix.sh
+KILL_SCRIPT=/home/engines/scripts/email/kill_postfix.sh
 export KILL_SCRIPT
 
 sudo -n /home/engines/scripts/_start_syslog.sh

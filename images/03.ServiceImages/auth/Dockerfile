@@ -11,9 +11,9 @@ RUN /home/no_init.sh &&\
  	/home/post_build_clean.sh
 
 COPY home home
-COPY kadm5.acl /etc/krb5kdc
-COPY krb5.conf /etc/
-COPY kdc.conf /etc/
+COPY src/kadm5.acl /etc/krb5kdc
+COPY src/krb5.conf /etc/
+COPY src/kdc.conf /etc/
 COPY sudoers /etc/sudoers.d/auth
 
 
@@ -23,11 +23,8 @@ RUN	mkdir -p  /home/auth/keys &&\
  	chown root /home/auth/static &&\
  	chmod g-w /home/auth &&\
 	ln -s /home/.ssh /home/auth/ &&\
-	chmod -R go-rw /etc/sudoers /etc/sudoers.d/
- 
-#;\
-#	/usr/sbin/kdb5_util create -s;\
-#	 /usr/sbin/kadmin.local -q "addprinc administrator/admin"
+	chmod -R go-rw /etc/sudoers /etc/sudoers.d/ &&\
+	chmod og-rwx /home/auth/key_list
 
 USER auth
 Env	ContUser auth
