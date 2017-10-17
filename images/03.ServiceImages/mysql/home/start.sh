@@ -28,4 +28,5 @@ exit_code=$?
 cat /var/log/mysql/error.log
  
 rm /engines/var/run/flags/startup_complete
+sleep 500
 exit $exit_code
