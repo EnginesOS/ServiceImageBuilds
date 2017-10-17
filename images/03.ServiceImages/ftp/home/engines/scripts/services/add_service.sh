@@ -20,7 +20,7 @@ fi
 
 uid=`/home/engines/scripts/services/next_id.sh`
 
-cat /home/tmpls/new_user.ldif \
+cat /home/engines/templates/ftp/new_user.ldif \
  | sed "s/SN/$service_handle/" \
  | sed "s/IDNUMBER/$uid/" \
  | sed "s/GID/${ftp_gid}/" \
