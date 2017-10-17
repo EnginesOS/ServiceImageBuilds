@@ -10,12 +10,8 @@ RUN adduser -q --disabled-password -uid 22006 mysql &&\
 	usermod -G containers -a mysql &&\
  	/home/post_build_clean.sh
 
-	# cat /etc/mysql/my.cnf |grep -v  event-scheduler=DISABLED |sed "/127.0.0.1/s//0.0.0.0/" >/etc/mysql/my.cnf.sed;\
-	#mv /etc/mysql/my.cnf.sed /etc/mysql/my.cnf;\
 
 ADD home home
-
-RUN chown mysql /home/firstrun.sh
 
 EXPOSE 3306
 
