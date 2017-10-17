@@ -6,7 +6,7 @@ RUN /home/no_init.sh &&\
 				       mysql-client \
 				       krb5-kdc \
 				       krb5-admin-server &&\
-	sdduser -q --disabled-password --home /home/auth -uid 22017 auth &&\
+	adduser -q --disabled-password --home /home/auth -uid 22017 auth &&\
 	usermod -G containers -a auth &&\
  	/home/post_build_clean.sh
 
