@@ -17,7 +17,7 @@ export PID_FILE
 
 
 
-sudo -n /home/setup.sh
+sudo -n /home/_setup.sh
 
 sudo -n /home/engines/scripts/_start_syslog.sh
 
