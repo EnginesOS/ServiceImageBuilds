@@ -2,7 +2,7 @@
 
 auth ALL = (root) NOPASSWD: /home/engines/scripts/auth/_start.sh
 auth ALL = (root) NOPASSWD: /home/engines/scripts/_start_syslog.sh
-auth ALL = (root) NOPASSWD: /home/engines/scripts/auth/_signal.sh
+auth ALL = (root) NOPASSWD: /home/_signal.sh
 auth ALL = (root) NOPASSWD: /home/engines/scripts/_kill_syslog.sh
 auth ALL = (root) NOPASSWD: /home/engines/scripts/auth/_kill_kerberos.sh
 auth ALL = (root) NOPASSWD: /home/engines/scripts/auth/_first_run.sh

@@ -5,7 +5,6 @@ export PID_FILE
 . /home/engines/functions/trap.sh
 
 
-
 if test -f /engines/var/run/flags/restart_required
  then
   rm -f /engines/var/run/flags/restart_required
@@ -44,8 +43,8 @@ exit_code=$?
 
 kill -TERM   'cat PID_FILE'
 
-sudo -n /home/engines/scripts/avahi/kill_avahi.sh 
-sudo -n /home/engines/scripts/avahi/kill_dbus.sh $dbus_pid
+sudo -n /home/engines/scripts/avahi/_kill_avahi.sh 
+sudo -n /home/engines/scripts/avahi/_kill_dbus.sh $dbus_pid
 sudo -n /home/engines/scripts/_kill_syslog.sh
 
 rm /engines/var/run/flags/startup_complete
