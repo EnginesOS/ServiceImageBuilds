@@ -11,7 +11,7 @@ fi
 if test -f /var/run/engines/redis-server.$parent_engine.pid
  then
 	kill -TERM `cat /var/run/engines/redis-server.$parent_engine.pid`
-	rm /home/config/$parent_engine.redis.config
+	rm /home/redis/$parent_engine.redis.config
 else
  echo "missing pid"
  exit 127	

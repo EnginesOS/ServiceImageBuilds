@@ -37,7 +37,7 @@ res=`nslookup ${parent_engine}.engines.internal|grep -e "Address: *[0-9]" |awk '
         exit -1
  fi
 	 
-	 echo $1 > /home/consumers/saved/${proto}_$fqdn
+	# echo $1 > /home/consumers/saved/${proto}_$fqdn
 
 template="/etc/nginx/templates/${proto}_site.tmpl"
 

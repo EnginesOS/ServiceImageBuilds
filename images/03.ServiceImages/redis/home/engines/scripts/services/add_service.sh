@@ -15,16 +15,16 @@ if test -z $password
 	exit -1
 fi
 		
-next_port=`cat /home/resources/config/next_port`
+next_port=`cat /home/redis/next_port`
 if test $port -gt $next_port
   then
 	next_port=`expr $port + 1`
-	echo $next_port > /home/resources/config/next_port
+	echo $next_port > /home/redis/next_port
 fi
 
-cat /home/tmpl/redis.conf.tmpl | sed "s/PORT/$port/" | sed "s/PASSWORD/$password/" | sed "s/ENGINE/$parent_engine/"> /home/config/$parent_engine.redis.config
+cat /home/engines/templates/redis.conf.tmpl | sed "s/PORT/$port/" | sed "s/PASSWORD/$password/" | sed "s/ENGINE/$parent_engine/"> /home/redis/$parent_engine.redis.config
 touch /tmp/new_service.$parent_engine
-#redis-server /home/config/$parent_engine.redis.config &
+
 
 if test $? -ge 0
  then 

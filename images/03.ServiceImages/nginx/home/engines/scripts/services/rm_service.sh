@@ -10,10 +10,10 @@ if test -z $fqdn
  fi
 
 
-if test -f /home/consumers/saved/${proto}_$fqdn
- then
- 	rm -f /home/consumers/saved/${proto}_$fqdn
- fi
+#if test -f /home/consumers/saved/${proto}_$fqdn
+# then
+# 	rm -f /home/consumers/saved/${proto}_$fqdn
+# fi
  
 	if test -f /etc/nginx/sites-enabled/${proto}_${fqdn}.site
 	 then

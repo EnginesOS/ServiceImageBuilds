@@ -9,7 +9,7 @@ PID_FILE=/var/run/nginx/nginx.pid
 export PID_FILE
 . /home/engines/functions/trap.sh
 
-/home/clear_broken.sh
+/home/engines/scripts/nginx/clear_broken.sh
 
 /usr/sbin/nginx &
 
