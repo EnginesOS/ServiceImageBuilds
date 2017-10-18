@@ -11,7 +11,7 @@ if test -z $email_group
  . /home/engines/functions/ldap_support_functions.sh
 
 gidNumber=`/home/engines/scripts/next_gid.sh`
-cat /home/templates/add_email_group.ldif | while read LINE
+cat /home/engines/templates/add_email_group.ldif | while read LINE
 do
  eval echo $LINE >> $LDIF_FILE
 done

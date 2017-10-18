@@ -4,7 +4,7 @@ params_to_env
 
 . /home/engines/functions/ldap_support_functions.sh
 
-cat /home/templates/rm_email_from_email_group.ldif | while read LINE
+cat /home/engines/templates/rm_email_from_email_group.ldif | while read LINE
 do
  eval echo $LINE >> $LDIF_FILE
 done
