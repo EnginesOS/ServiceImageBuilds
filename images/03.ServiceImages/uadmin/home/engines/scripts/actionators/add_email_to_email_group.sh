@@ -12,7 +12,7 @@ if test -z $email_address
   exit 127
   fi
  
-. /home/engines/functions/ldap_support_functions.sh
+. /home/engines/functions/ldap/support_functions.sh
 
 cat /home/engines/templates/add_email_to_email_group.ldif | while read LINE
 do
@@ -20,4 +20,4 @@ do
 done
 
 
-cat $LDIF_FILE | /home/engines/scripts/ldapmodify.sh  
+cat $LDIF_FILE | /home/engines/scripts/ldap/ldapmodify.sh  

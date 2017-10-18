@@ -10,7 +10,7 @@ fi
  
 . /home/engines/scripts/actionators/x400_to_json.sh
 
-/home/engines/scripts/ldapsearch.sh "ou=Distribution Groups,dc=engines,dc=internal" cn=$email_group memberUid > $LDAP_FILE
+/home/engines/scripts/ldap/ldapsearch.sh "ou=Distribution Groups,dc=engines,dc=internal" cn=$email_group memberUid > $LDAP_FILE
 
 
 echo '{"email_addresses":'

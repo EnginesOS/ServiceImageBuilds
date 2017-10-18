@@ -10,7 +10,7 @@ fi
 
 . /home/engines/scripts/actionators/x400_to_json.sh
 
-/home/engines/scripts/ldapsearch.sh "ou=People,dc=engines,dc=internal" mailacceptinggeneralid=$email_address uid> $LDAP_FILE
+/home/engines/scripts/ldap/ldapsearch.sh "ou=People,dc=engines,dc=internal" mailacceptinggeneralid=$email_address uid> $LDAP_FILE
 
 echo '{"user":'
 ldap_to_json

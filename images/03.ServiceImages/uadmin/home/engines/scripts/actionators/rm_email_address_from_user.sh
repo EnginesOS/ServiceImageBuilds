@@ -3,7 +3,7 @@
 params_to_env
 dn=`/home/engines/scripts/get_dn.sh  ou=People,dc=engines,dc=internal uid=$uid`
 
-. /home/engines/functions/ldap_support_functions.sh
+. /home/engines/functions/ldap/support_functions.sh
 
 cat /home/engines/templates/del_user_email.ldif | while read LINE
 do
@@ -11,4 +11,4 @@ do
 done
 
 
-cat $LDIF_FILE | /home/engines/scripts/ldapmodify.sh 
+cat $LDIF_FILE | /home/engines/scripts/ldap/ldapmodify.sh 

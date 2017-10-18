@@ -9,7 +9,7 @@ if test -z $group_name
 fi
 . /home/engines/scripts/actionators/x400_to_json.sh
 
-/home/engines/scripts/ldapsearch.sh "ou=Groups,dc=engines,dc=internal" cn=$group_name memberUid > $LDAP_FILE 
+/home/engines/scripts/ldap/ldapsearch.sh "ou=Groups,dc=engines,dc=internal" cn=$group_name memberUid > $LDAP_FILE 
 
 echo '{"members":'
 key=memberUid
