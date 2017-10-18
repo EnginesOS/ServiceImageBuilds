@@ -20,7 +20,7 @@ else
 fi
 
 
-cat /home/tmpls/ipsec.conf.tmpl | sed "/COMMON_NAME/s//$domain/"\
+cat /home/engines/templates/ipsec.conf.tmpl | sed "/COMMON_NAME/s//$domain/"\
  | sed "/RW_SUBNET/s//$subnet/"   | sed "/RW_MASK/s//$mask/"> /etc/ipsec.conf
 chmod og-rwx /etc/ipsec.d/private/ipvpn.key /etc/ipsec.conf
  
