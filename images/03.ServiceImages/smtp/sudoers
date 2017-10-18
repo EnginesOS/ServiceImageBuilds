@@ -1,10 +1,10 @@
 postfix ALL=(root) NOPASSWD: /usr/lib/postfix/sbin/master
 postfix ALL=(root) NOPASSWD: /home/engines/scripts/_start_syslog.sh
 postfix ALL=(root) NOPASSWD: /home/_signal.sh
-postfix ALL=(root) NOPASSWD: /home/engines/scripts/smtp/_setup_dirs.sh
-postfix ALL=(root) NOPASSWD: /home/engines/scripts/smtp/_postmap.sh
-postfix ALL=(root) NOPASSWD: /home/engines/scripts/smtp/_set_mailname.sh
-postfix ALL=(root) NOPASSWD: /home/engines/scripts/_kill_syslog.sh
+postfix ALL=(root) NOPASSWD: /home/engines/scripts/first_run/_setup_dirs.sh
+postfix ALL=(root) NOPASSWD: /home/engines/scripts/engine/_postmap.sh
+postfix ALL=(root) NOPASSWD: /home/engines/scripts/engine/_set_mailname.sh
+postfix ALL=(root) NOPASSWD: /home/engines/scripts/signal/_kill_syslog.sh
 #for debugging only
 #ALL ALL = (root) NOPASSWD: ALL
 

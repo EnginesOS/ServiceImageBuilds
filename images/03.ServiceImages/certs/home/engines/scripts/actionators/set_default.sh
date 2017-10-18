@@ -20,4 +20,4 @@ fi
   exit 255
 fi
 
-sudo -n  /home/engines/scripts/cert_auth/_install_target.sh ${target} ${store}/${cert_name} default
+sudo -n  /home/engines/scripts/engine/_install_target.sh ${target} ${store}/${cert_name} default

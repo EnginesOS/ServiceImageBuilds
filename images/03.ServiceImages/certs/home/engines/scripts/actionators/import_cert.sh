@@ -42,7 +42,7 @@ mv /home/certs/store/public/certs/imported/tmp.crt /home/certs/store/public/cert
  
 if ! test -z ${target}
  then
-  sudo -n  /home/engines/scripts/cert_auth/_install_target.sh ${target} imported/${domain_name} ${domain_name}
+  sudo -n  /home/engines/scripts/engine/_install_target.sh ${target} imported/${domain_name} ${domain_name}
 fi
  
  exit 0

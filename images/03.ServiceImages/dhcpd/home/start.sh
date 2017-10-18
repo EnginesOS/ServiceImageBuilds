@@ -2,7 +2,7 @@
 
 PID_FILE=/var/run/dhcpd.pid
 export PID_FILE
-KILL_SCRIPT=/home/engines/scripts/dhcpd/_signal.sh
+KILL_SCRIPT=/home/engines/scripts/signal/_signal.sh
 export KILL_SCRIPT
 
 . /home/engines/functions/trap.sh

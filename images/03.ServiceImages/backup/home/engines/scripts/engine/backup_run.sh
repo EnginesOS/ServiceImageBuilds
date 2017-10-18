@@ -24,7 +24,7 @@ for backup in `ls $Backup_ConfigDir |grep -v duply_conf`
 	   backup_type=full
 	fi
 
-	/home/engines/scripts/backup/run_duply.sh $backup backup   $backup_type --s3-use-new-style > /var/log/backup/$bfn           
+	/home/engines/scripts/engine/run_duply.sh $backup backup   $backup_type --s3-use-new-style > /var/log/backup/$bfn           
 	result=`grep "Finished state FAILED"  /var/log/backup/$bfn`
 	if test $? -ne 0
 	 then

@@ -16,7 +16,7 @@ sudo -n /home/engines/scripts/_start_syslog.sh
 
 echo started syslog
 
-sudo -n /home/engines/scripts/ldap/_start_slapd.sh
+sudo -n /home/engines/scripts/startup/_start_slapd.sh
 
 exit_code=$?
 

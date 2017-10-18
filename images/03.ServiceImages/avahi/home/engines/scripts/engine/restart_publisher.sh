@@ -1,4 +1,4 @@
 #!/bin/bash
 
 kill -HUP `cat  /tmp/publish.pid`
-/home/engines/scripts/avahi/publish_aliases.sh
+/home/engines/scripts/engine/publish_aliases.sh

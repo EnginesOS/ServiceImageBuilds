@@ -22,7 +22,7 @@ CURL_OPTS="-k -X PUT --header "Content-Type:application/octet-stream" --data-bin
 
 function restore_system {
 echo "Restoring system $replace $source $section $from_date"
-/home/engines/scripts/backup/run_duply.sh system restore /tmp/system/ $from_date
+/home/engines/scripts/engine/run_duply.sh system restore /tmp/system/ $from_date
 
 sudo -n -E /home/engines/scripts/restore/_restore_system.sh
 
@@ -31,7 +31,7 @@ sudo -n -E /home/engines/scripts/restore/_restore_system.sh
 }
 
 function restore_registry {
-/home/engines/scripts/backup/run_duply.sh registry restore /tmp/registry $from_date
+/home/engines/scripts/engine/run_duply.sh registry restore /tmp/registry $from_date
 sudo -n -E /home/engines/scripts/restore/_restore_registry.sh
 }
 
@@ -44,12 +44,12 @@ fi
 
 if test -z $path
  then
-  /home/engines/scripts/backup/run_duply.sh logs restore /tmp/logs $from_date
+  /home/engines/scripts/engine/run_duply.sh logs restore /tmp/logs $from_date
    echo "Restoring full logs $replace"
   sudo -n -E /home/engines/scripts/restore/_restore.sh $replace logs
   sudo -n /home/engines/scripts/restore/_clr_restore.sh logs
 else
- /home/engines/scripts/backup/run_duply.sh logs fetch $path /tmp/logs 
+ /home/engines/scripts/engine/run_duply.sh logs fetch $path /tmp/logs 
   echo "Restoring logs $path $replace"
   sudo -n -E /home/engines/scripts/restore/_restore.sh $replace logs
   sudo -n /home/engines/scripts/restore/_clr_restore.sh logs
@@ -68,10 +68,10 @@ fi
 if test -z $path
  then
  echo "Restoring engines_fs full $replace"
- /home/engines/scripts/backup/run_duply.sh engines_fs restore /tmp/volumes/fs/ $from_date
+ /home/engines/scripts/engine/run_duply.sh engines_fs restore /tmp/volumes/fs/ $from_date
 else
  echo "Restoring engines_fs $path"
- /home/engines/scripts/backup/run_duply.sh engines_fs fetch $path /tmp/volumes/fs/$path $from_date
+ /home/engines/scripts/engine/run_duply.sh engines_fs fetch $path /tmp/volumes/fs/$path $from_date
 fi
   
  sudo -n -E /home/engines/scripts/restore/_restore.sh $replace volumes/fs
@@ -81,7 +81,7 @@ fi
 
 function service_restore {
 echo "Restoring $service $replace $section"
-/home/engines/scripts/backup/run_duply.sh $service restore /tmp/$service $from_date
+/home/engines/scripts/engine/run_duply.sh $service restore /tmp/$service $from_date
  
 
 sudo -n /home/engines/scripts/restore/_bundle_restore.sh $service |curl $CURL_OPTS https://172.17.0.1:2380/v0/restore/service/$service/$replace/$section 

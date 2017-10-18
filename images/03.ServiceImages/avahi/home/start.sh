@@ -32,7 +32,7 @@ touch /home/avahi/hosts/engines.local
 touch /home/avahi/hosts/avahi.local
 
 ls /home/avahi/hosts/ > /home/avahi/hosts_list
-/home/engines/scripts/avahi/publish_aliases.sh &
+/home/engines/scripts/engine/publish_aliases.sh &
 
 #echo $! > 
 
@@ -43,8 +43,8 @@ exit_code=$?
 
 kill -TERM   'cat PID_FILE'
 
-sudo -n /home/engines/scripts/avahi/_kill_avahi.sh 
-sudo -n /home/engines/scripts/avahi/_kill_dbus.sh $dbus_pid
+sudo -n /home/engines/scripts/engine/_kill_avahi.sh 
+sudo -n /home/engines/scripts/engine/_kill_dbus.sh $dbus_pid
 sudo -n /home/engines/scripts/_kill_syslog.sh
 
 rm /engines/var/run/flags/startup_complete

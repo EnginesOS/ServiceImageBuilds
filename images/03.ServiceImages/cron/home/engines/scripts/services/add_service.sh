@@ -50,7 +50,7 @@ fi
 
 echo "$when $cmd " > /home/cron/entries/${parent_engine}/$title
 
-/home/engines/scripts/cron/rebuild_crontab.sh
+/home/engines/scripts/engine/rebuild_crontab.sh
 
 echo "Success"
 exit 0

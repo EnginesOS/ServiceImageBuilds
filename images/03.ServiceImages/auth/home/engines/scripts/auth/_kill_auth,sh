@@ -1,6 +1,0 @@
-#!/bin/bash
-
-kill -$1 `cat /var/run/krb5admin.pid'
-kill -$1 `cat /var/run/krb5kdc.pid'
-kill -$1 `cat /var/run/sshd.pid'
-/home/engines/scripts/_kill_syslog.sh

@@ -1,1 +1,1 @@
-0 1 * * * /home/engines/scripts/backup/backup_run.sh  >>/var/log/backup/cron.log
+0 1 * * * /home/engines/scripts/engine/backup_run.sh  >>/var/log/backup/cron.log

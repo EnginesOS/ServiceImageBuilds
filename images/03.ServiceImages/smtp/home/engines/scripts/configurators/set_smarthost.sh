@@ -20,7 +20,7 @@ else
 	echo "*	smtp:"  > /home/postfix/transport
 fi 
 
-sudo -n /home/engines/scripts/smtp/_postmap.sh transport
+sudo -n /home/engines/scripts/engine/_postmap.sh transport
 if test -f /home/engines/scripts/configurators/saved/default_domain
   then
    cat /home/engines/scripts/configurators/saved/default_domain | /home/engines/bin/json_to_env >/tmp/.2env
@@ -31,14 +31,14 @@ if test -f /home/engines/scripts/configurators/saved/default_domain
     fi
 fi
     
-sudo -n /home/engines/scripts/smtp/_postmap.sh transport
+sudo -n /home/engines/scripts/engine/_postmap.sh transport
 
  
  if ! test -z $mail_name
  then
  	echo $mail_name > /etc/postfix/mailname
  fi
- sudo -n /home/engines/scripts/smtp/_set_mailname.sh $mail_name
+ sudo -n /home/engines/scripts/engine/_set_mailname.sh $mail_name
  
 # if test -z $smarthost_username -a -z $smarthost_password
 # then 
@@ -61,6 +61,6 @@ sudo -n /home/engines/scripts/smtp/_postmap.sh transport
 echo "$smarthost_hostname $smarthost_username:$smarthost_password" > /home/postfix/smarthost_passwd
 
 
-sudo -n /home/engines/scripts/smtp/_postmap.sh smarthost_passwd     
+sudo -n /home/engines/scripts/engine/_postmap.sh smarthost_passwd     
 
 exit 0

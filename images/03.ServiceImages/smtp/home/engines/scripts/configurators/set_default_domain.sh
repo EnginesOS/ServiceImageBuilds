@@ -10,9 +10,9 @@ echo ${domain_name} >/home/engines/scripts/configurators/saved/domain
 echo "@*local  no-reply@${domain_name}" > /home/postfix/generic
 echo "@localhost  no-reply@${domain_name}" >> /home/postfix/generic
 
-sudo -n /home/engines/scripts/smtp/_postmap.sh  generic
+sudo -n /home/engines/scripts/engine/_postmap.sh  generic
  
-sudo -n /home/engines/scripts/smtp/_set_mailname.sh smtp.${domain_name}
+sudo -n /home/engines/scripts/engine/_set_mailname.sh smtp.${domain_name}
 	
 	
 if test `wc -c /etc/postfix/transport.smart | cut -f 1 -d" " ` -gt 4
@@ -28,7 +28,7 @@ if ! test -z $deliver_local
 	 echo ${domain_name} :[email.engines.internal]	>> /home/postfix/transport 			
    fi
 fi	
-sudo -n /home/engines/scripts/smtp/_postmap.sh transport
+sudo -n /home/engines/scripts/engine/_postmap.sh transport
 
 
 exit $?

@@ -1,5 +1,5 @@
 
-openid ALL = (root) NOPASSWD: /home/engines/scripts/openid/_setup.sh
+openid ALL = (root) NOPASSWD: /home/engines/scripts/first_run/_setup.sh
 
 openid ALL = (root) NOPASSWD: /home/engines/scripts/_start_syslog.sh
 

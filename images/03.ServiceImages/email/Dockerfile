@@ -37,10 +37,6 @@ RUN cd /tmp/ &&\
 	 cp /etc/resolv.conf /var/spool/postfix/etc/ &&\
 	 cp /etc/services /var/spool/postfix/etc/ &&\
 	mkdir /etc/postfix/maps &&\
-	touch /etc/postfix/maps/smarthost_passwd &&\
-	touch /etc/postfix/maps/generic &&\
-	postmap hash:/etc/postfix/maps/generic &&\
-	postmap hash:/etc/postfix/maps/smarthost_passwd &&\
  	/home/post_build_clean.sh
 	
 ADD src/postgrey /etc/default/postgrey
@@ -49,16 +45,14 @@ ADD sudoers /etc/sudoers.d/postfix
 
 ADD src/postfix/master.cf /etc/postfix/
 ADD src/postfix/mailname /etc/postfix/mailname
-ADD src/postfix/transport /etc/postfix/maps/transport
 ADD src/postfix/ldap /etc/postfix/ldap
 
   
-RUN postmap /etc/postfix/maps/transport &&\
-	chown postfix -R /etc/postfix/maps /home/engines/scripts/configurators/saved/ /etc/postfix/mailname &&\
+RUN chown postfix -R /home/engines/scripts/configurators/saved/ /etc/postfix/mailname &&\
 	mkdir -p /home/email /home/engines/scripts/configurators/grey/ &&\
 	chown postfix /home/email /home/engines/scripts/configurators/saved/antispam/ /home/engines/scripts/configurators/grey/ &&\
 	chmod -R go-rw /etc/sudoers /etc/sudoers.d/postfix &&\
-	cp -rp /var/spool/postfix /tmp/spool_postfix
+	cp -rp /var/spool/postfix /tmp/spool_postfix 
 
 ENV ContUser postfix
 ENV ContGrp postfix
