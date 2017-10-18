@@ -22,7 +22,7 @@ COPY home home
 ADD sudoers /etc/sudoers.d/openid
 
 RUN mkdir -p /home/consumers/saved/ &&\
-	chown openid -R  /home/configurators/saved  /home/consumers/saved/ &&\
+	chown openid -R  /home/engines/scripts/configurators/saved  /home/consumers/saved/ &&\
 	cd /tmp &&\
 	 wget http://downloads.sourceforge.net/simpleid/simpleid-1.0.2.tar.gz &&\
 	 tar -xzpf simpleid-1.0.2.tar.gz &&\

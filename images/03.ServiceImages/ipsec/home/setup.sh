@@ -6,15 +6,15 @@ ln -s /usr/local/share/ca-certificates/engines_internal_ca.crt  /etc/ipsec.d/cac
 
 domain=`cat /engines/ssl/certs/ipvpn.crt | openssl x509 -noout -subject  |sed "/^.*CN=/s///"`
 
-if test -f /home/configurators/saved/rw_subnet
+if test -f /home/engines/scripts/configurators/saved/rw_subnet
 then
- subnet=`cat /home/configurators/saved/rw_subnet`
+ subnet=`cat /home/engines/scripts/configurators/saved/rw_subnet`
 else
  subnet=10.1.1.0
 fi
-if test -f /home/configurators/saved/rw_mask
+if test -f /home/engines/scripts/configurators/saved/rw_mask
 then
- mask=`cat /home/configurators/saved/rw_mask`
+ mask=`cat /home/engines/scripts/configurators/saved/rw_mask`
 else
  mask=24
 fi

@@ -12,8 +12,8 @@ COPY sudoers /etc/sudoers.d/logrotate
 
 ADD home /home/
 
-RUN mkdir -p /home/configurators/saved /home/logrotate.d /home/saved/ &&\
-	chown logrotate /home/configurators/saved /home/logrotate.d /home/saved/
+RUN mkdir -p /home/engines/scripts/configurators/saved /home/logrotate.d /home/saved/ &&\
+	chown logrotate /home/engines/scripts/configurators/saved /home/logrotate.d /home/saved/
 
 USER logrotate
 

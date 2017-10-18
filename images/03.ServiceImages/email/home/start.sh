@@ -24,15 +24,15 @@ sudo -n /usr/sbin/postmap /etc/postfix/maps/transport
 sudo -n /usr/sbin/postmap /etc/postfix/maps/smarthost_passwd
 sudo -n /usr/sbin/postmap /etc/postfix/maps/generic
 
-echo '{"default_domain":"'$DEFAULT_DOMAIN'"}' |/home/configurators/set_default_domain.sh 
+echo '{"default_domain":"'$DEFAULT_DOMAIN'"}' |/home/engines/scripts/configurators/set_default_domain.sh 
 
  
-sudo /home/configurators/rebuild_main.sh
+sudo /home/engines/scripts/configurators/rebuild_main.sh
 
 sudo -n /usr/lib/postfix/sbin/master  -w &
 
 
-if test -f /home/configurators/saved/grey_listing_enabled
+if test -f /home/engines/scripts/configurators/saved/grey_listing_enabled
   then
   /home/start_grey.sh
 fi

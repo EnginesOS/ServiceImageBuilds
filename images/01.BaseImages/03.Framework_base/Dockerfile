@@ -26,9 +26,9 @@ RUN	echo y y |sendmailconfig --no-reload &&\
 	adduser -q --disabled-password -uid 11111 data-user &&\
 	chgrp containers /var/log/ &&\
 	chmod g+w /var/log/ &&\
-	mkdir -p /home/actionators/saved/ &&\
-	chgrp containers  /home/actionators/saved/ &&\
-	chmod g+w /home/actionators/saved/ &&\	
+	mkdir -p /home/engines/scripts/actionators/saved/ &&\
+	chgrp containers  /home/engines/scripts/actionators/saved/ &&\
+	chmod g+w /home/engines/scripts/actionators/saved/ &&\	
 	mkdir $HOME &&\
 	chgrp containers $HOME &&\
 	chmod g+w $HOME &&\

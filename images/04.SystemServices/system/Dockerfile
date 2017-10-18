@@ -41,7 +41,7 @@ RUN	git init
 ADD src/gitconfig /home/app/.git/config
 
 RUN mkdir -p /home/engines/.ssh/system /home/app/tmp/ /home/app/public &&\	
- 	chown -R 21000 /home/app/public /home/configurators/saved /home/app/tmp/ &&\
+ 	chown -R 21000 /home/app/public /home/engines/scripts/configurators/saved /home/app/tmp/ &&\
  	usermod -G containers -a engines
 
 ENV PATH /usr/local/bin:/usr/bin:/bin:/usr/sbin

@@ -8,7 +8,7 @@ if test -z $email_address
   exit 127
 fi
 
-. /home/actionators/x400_to_json.sh
+. /home/engines/scripts/actionators/x400_to_json.sh
 
 /home/engines/scripts/ldapsearch.sh "ou=People,dc=engines,dc=internal" mailacceptinggeneralid=$email_address uid> $LDAP_FILE
 

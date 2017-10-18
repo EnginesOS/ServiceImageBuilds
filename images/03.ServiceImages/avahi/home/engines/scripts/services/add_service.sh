@@ -3,7 +3,7 @@
 . /home/engines/functions/params_to_env.sh
 params_to_env
  
-default_mdns_domain=`cat /home/configurators/saved/default_mdns_domain  | cut -f2 -d: | sed "s/\"//" | cut -f1 -d\"`
+default_mdns_domain=`cat /home/engines/scripts/configurators/saved/default_mdns_domain  | cut -f2 -d: | sed "s/\"//" | cut -f1 -d\"`
 
 echo "delete from action_tests where name = '$name';"
 if test -z ${hostname}

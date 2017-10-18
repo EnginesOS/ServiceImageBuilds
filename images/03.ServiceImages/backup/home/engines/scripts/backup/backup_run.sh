@@ -1,6 +1,6 @@
 #!/bin/sh
 echo backup_run > /engines/var/run/flags/backup_run
-default_email=`cat /home/configurators/saved/backup_email`
+default_email=`cat /home/engines/scripts/configurators/saved/backup_email`
 Backup_ConfigDir=/home/backup/.duply/
 
 for backup in `ls $Backup_ConfigDir |grep -v duply_conf`

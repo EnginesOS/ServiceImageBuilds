@@ -8,7 +8,7 @@ if test -z $uid
   exit 127
 fi
 
-. /home/actionators/x400_to_json.sh
+. /home/engines/scripts/actionators/x400_to_json.sh
 
 /home/engines/scripts/ldapsearch.sh "ou=Groups,dc=engines,dc=internal" memberUid=$uid cn > $LDAP_FILE
 

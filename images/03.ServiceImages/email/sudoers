@@ -5,7 +5,7 @@ postfix ALL = (root) NOPASSWD: /home/engines/scripts/_start_syslog.sh
 
 postfix ALL = (root) NOPASSWD: /usr/sbin/postmap
 postfix ALL = (root) NOPASSWD: /home/engines/scripts/email/_signal.sh
-postfix ALL = (root) NOPASSWD: /home/configurators/rebuild_main.sh
+postfix ALL = (root) NOPASSWD: /home/engines/scripts/configurators/rebuild_main.sh
 postfix ALL = (root) NOPASSWD: /home/engines/scripts/_kill_syslog.sh
 postfix ALL = (root) NOPASSWD: /usr/sbin/postgrey
 postfix ALL = (root) NOPASSWD: /home/engines/scripts/email/_kill_grey.sh  
@@ -14,7 +14,7 @@ postfix ALL = (root) NOPASSWD: /home/engines/scripts/sudo/_ldapadd.sh
 postfix ALL = (root) NOPASSWD: /home/engines/scripts/sudo/_ldapmodify.sh
 postfix ALL = (root) NOPASSWD: /home/engines/scripts/sudo/_ldapsearch.sh
 postfix ALL = (root) NOPASSWD: /home/engines/scripts/sudo/_ldapdelete.sh    
-postfix ALL = (root) NOPASSWD: /home/actionators/sudo/_rm_email.sh 
+postfix ALL = (root) NOPASSWD: /home/engines/scripts/actionators/sudo/_rm_email.sh 
 #for debugging only
 #ALL ALL = (root) NOPASSWD: ALL
 

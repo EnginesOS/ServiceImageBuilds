@@ -21,7 +21,7 @@ RUN chown bind /var/run/named &&\
 	chown bind /var/lib/bind/engines /home/bind/ &&\
 	usermod -G containers -a bind &&\
 	touch /home/bind/engines/forwarders &&\
-	chown bind /home/configurators/saved /home/bind/engines/forwarders &&\
+	chown bind /home/engines/scripts/configurators/saved /home/bind/engines/forwarders &&\
 	mkdir -p /etc/bind/keys/ /home/bind/engines/domains /home/bind/engines/zones/ &&\
 	chown bind -R /etc/bind/keys/ /etc/bind/named.conf.default-zones  /var/lib/bind/engines/engines.dnsrecords /home/bind/engines/domains.hosted /home/bind/engines/zones/ /home/bind/engines/domains// &&\
 	chmod -R go-rw /etc/sudoers /etc/sudoers.d/

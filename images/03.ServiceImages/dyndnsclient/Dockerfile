@@ -11,7 +11,7 @@ COPY sudoers /etc/sudoers.d/dyndns
 
 RUN chown dyndns -R /home/dyndns /var/cache/ddclient/ &&\
 	usermod -G containers -a dyndns &&\
-	chown dyndns /home/configurators/saved/ &&\
+	chown dyndns /home/engines/scripts/configurators/saved/ &&\
 	chmod -R go-rw /etc/sudoers /etc/sudoers.d/
 
 ENV ContUser dyndns

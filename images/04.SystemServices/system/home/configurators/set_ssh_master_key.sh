@@ -2,7 +2,7 @@
 
 service_hash=$1
 
-cat - >/home/configurators/saved/ssh_master_key
+cat - >/home/engines/scripts/configurators/saved/ssh_master_key
 
 
  echo - | /home/engines/bin/json_to_env >/tmp/.env

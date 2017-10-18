@@ -43,8 +43,8 @@ ADD home home
 ADD src/crontab  /home/backup/fcron/spool/backup.orig
 
 RUN chown -R backup ~backup &&\
-	chown backup /home/configurators/saved &&\
-	chgrp backup /home/configurators/*.sh &&\
+	chown backup /home/engines/scripts/configurators/saved &&\
+	chgrp backup /home/engines/scripts/configurators/*.sh &&\
 	addgroup --gid 11111 datauser &&\
 	usermod -G datauser -a backup &&\
 	usermod -G adm -a backup &&\

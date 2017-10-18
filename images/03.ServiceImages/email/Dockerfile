@@ -54,9 +54,9 @@ ADD src/postfix/ldap /etc/postfix/ldap
 
   
 RUN postmap /etc/postfix/maps/transport &&\
-	chown postfix -R /etc/postfix/maps /home/configurators/saved/ /etc/postfix/mailname &&\
-	mkdir -p /home/email /home/configurators/grey/ &&\
-	chown postfix /home/email /home/configurators/saved/antispam/ /home/configurators/grey/ &&\
+	chown postfix -R /etc/postfix/maps /home/engines/scripts/configurators/saved/ /etc/postfix/mailname &&\
+	mkdir -p /home/email /home/engines/scripts/configurators/grey/ &&\
+	chown postfix /home/email /home/engines/scripts/configurators/saved/antispam/ /home/engines/scripts/configurators/grey/ &&\
 	chmod -R go-rw /etc/sudoers /etc/sudoers.d/postfix &&\
 	cp -rp /var/spool/postfix /tmp/spool_postfix
 

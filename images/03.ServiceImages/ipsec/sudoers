@@ -8,9 +8,9 @@ ivpn ALL = (root) NOPASSWD: /usr/sbin/ipsec
 ivpn ALL = (root) NOPASSWD: /home/setup.sh
 ivpn ALL = (root) NOPASSWD: /home/_start.sh
 ivpn ALL = (root) NOPASSWD: /home/_shutdown.sh
-ivpn ALL = (root) NOPASSWD: /home/configurators/_add_user_vpn.sh
-ivpn ALL = (root) NOPASSWD: /home/configurators/_add_site_vpn.sh
-ivpn ALL = (root) NOPASSWD: /home/configurators/_rm_user_vpn.sh
-ivpn ALL = (root) NOPASSWD: /home/configurators/_rm_site_vpn.sh
+ivpn ALL = (root) NOPASSWD: /home/engines/scripts/configurators/_add_user_vpn.sh
+ivpn ALL = (root) NOPASSWD: /home/engines/scripts/configurators/_add_site_vpn.sh
+ivpn ALL = (root) NOPASSWD: /home/engines/scripts/configurators/_rm_user_vpn.sh
+ivpn ALL = (root) NOPASSWD: /home/engines/scripts/configurators/_rm_site_vpn.sh
 #must have blank after last sudoers line
 

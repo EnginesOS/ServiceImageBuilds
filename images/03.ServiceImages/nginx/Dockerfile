@@ -14,7 +14,7 @@ COPY src/502.html /usr/share/nginx/html/
 COPY src/etc/nginx/ /etc/nginx
 
 RUN mkdir -p /home/consumers/saved/ &&\
-	chown www-data -R /etc/nginx/sites-enabled /home/configurators/saved  /home/consumers/saved/
+	chown www-data -R /etc/nginx/sites-enabled /home/engines/scripts/configurators/saved  /home/consumers/saved/
 
 ENV ContUser www-data
 ENV ContGrp www-data

@@ -9,7 +9,7 @@ if test -z $group_name
   echo '{"error":"No Group Name specified"}'
   exit 127
 fi
-. /home/actionators/x400_to_json.sh
+. /home/engines/scripts/actionators/x400_to_json.sh
 
 /home/engines/scripts/ldapsearch.sh "cn=$group_name,ou=Groups,dc=engines,dc=internal" objectClass=posixGroup > $LDAP_FILE 
 

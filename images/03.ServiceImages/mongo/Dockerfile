@@ -14,7 +14,7 @@ ADD home home
 
 COPY src/mongod.conf /etc/
 
-RUN chown mongo /home/configurators/saved ; chmod 700 /home/configurators/saved
+RUN chown mongo /home/engines/scripts/configurators/saved ; chmod 700 /home/engines/scripts/configurators/saved
 
 ENV ContUser mongo
 ENV ContGrp mongo

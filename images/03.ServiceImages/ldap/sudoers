@@ -1,6 +1,6 @@
 
 
-openldap ALL=(root) NOPASSWD: /home/actionators/_set_admin_password.sh
+openldap ALL=(root) NOPASSWD: /home/engines/scripts/actionators/_set_admin_password.sh
 openldap ALL=(root) NOPASSWD: /home/engines/scripts/ldap/_start_slapd.sh
 
 
