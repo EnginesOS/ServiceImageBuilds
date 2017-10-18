@@ -41,22 +41,18 @@ olcAccess: {3} to dn.subtree="ou=ftp,ou=Service accounts,dc=engines,dc=internal"
         by * read
 olcAccess: {4} to dn.subtree="ou=domains,ou=email,ou=Services,dc=engines,dc=internal" 
         by dn="cn=email,ou=hosts,dc=engines,dc=internal" write
-        by dn="cn=admin,dc=engines,dc=internal" write
         by * read
 olcAccess: {5} to dn.subtree="ou=People,dc=engines,dc=internal"
         by dn="cn=uadmin,ou=hosts,dc=engines,dc=internal" write
-        by dn="cn=admin,dc=engines,dc=internal" write
         by * read
 olcAccess: {5} to dn.subtree="ou=Groups,dc=engines,dc=internal"
         dn="cn=system,ou=hosts,dc=engines,dc=internal" write
         by dn="cn=uadmin,ou=hosts,dc=engines,dc=internal" write
-        by dn="cn=admin,dc=engines,dc=internal" write
         by * read
 olcAccess: {6} to dn="cn=uidNext,dc=engines,dc=internal"
         by dn="cn=uadmin,ou=hosts,dc=engines,dc=internal" write
         by dn="cn=ftp,ou=hosts,dc=engines,dc=internal" write
 olcAccess: {7} to dn="cn=Distribution Groups,dc=engines,dc=internal"
-        by dn="cn=admin,dc=engines,dc=internal" write
         by dn="cn=uadmin,ou=hosts,dc=engines,dc=internal" write
         by * read
 olcAccess: {8} to *
