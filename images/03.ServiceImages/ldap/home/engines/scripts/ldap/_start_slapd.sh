@@ -14,7 +14,7 @@ pid=$!
   
 if ! test -f /engines/var/run/flags/init_ous_configured
  then
- sleep 10
+ sleep 1000
   /home/engines/scripts/ldap/init_ous_configured.sh
    if test $? -eq 0
     then
