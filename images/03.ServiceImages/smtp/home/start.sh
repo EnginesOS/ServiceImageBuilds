@@ -2,14 +2,14 @@
 
 if ! test -f /engines/var/run/flags/first_run
   then
-  	sudo /home/setup_dirs.sh
+  	sudo -n /home/engines/scripts/smtp/_setup_dirs.sh
   	echo Fixed perms
   	touch /engines/var/run/flags/first_run
 fi
 
 PID_FILE=/var/spool/postfix/pid/master.pid
 
-KILL_SCRIPT=/home/kill_postfix.sh
+KILL_SCRIPT=/home/engines/scripts/smtp/kill_postfix.sh
 export KILL_SCRIPT
 
 export PID_FILE
@@ -19,16 +19,16 @@ sudo -n /home/engines/scripts/_start_syslog.sh
 
 echo started syslog
 
-if ! test -f /etc/postfix/transport 
+if ! test -f /home/postfix/transport 
  then
-	 echo "	*	smtp:" >/etc/postfix/transport
+	 echo "	*	smtp:" >/home/postfix/transport
 fi 
 if ! test -f /etc/postfix/mailname
  then
-	echo "not.set" > /etc/postfix/mailname
+ sudo -n /home/engines/scripts/smtp/_set_mailname.sh "not.set"
 fi
 		
-sudo -n /usr/sbin/postmap /etc/postfix/transport
+sudo -n /home/engines/scripts/smtp/_postmap.sh transport
 
 sudo -n /usr/lib/postfix/sbin/master -w &
 

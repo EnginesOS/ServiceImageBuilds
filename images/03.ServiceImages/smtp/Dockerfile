@@ -42,7 +42,7 @@ RUN mkdir /usr/share/doc/postfix/html \
 	/usr/sbin/postfix -c /etc/postfix/ set-permissions create-missing ;\
 	postmap /etc/postfix/transport &&\
 	chown postfix /etc/postfix/ /etc/postfix/sender_canonical* /etc/postfix/generic /etc/postfix/generic.db /etc/postfix/smarthost_passwd /etc/postfix/sender_canonical /etc/postfix/smarthost_passwd /etc/postfix/transport /etc/postfix/transport.smart /etc/postfix/transport.db /etc/postfix/mailname &&\
-	chown postfix /home/engines/scripts/configurators/saved /etc/postfix/ &&\
+	chown postfix /home/engines/scripts/configurators/saved /home/postfix &&\
 	chgrp postfix /home/engines/scripts/configurators/*.sh &&\
 	cp -rp /var/spool/postfix /tmp/spool_postfix
 	

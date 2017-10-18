@@ -12,58 +12,55 @@ if ! test -z $smart_hostname
 		smart_host_port=25
    fi
 
-   echo "*	smtp:$smart_hostname:$smart_host_port"  > /etc/postfix/transport.smart
-   cp /etc/postfix/transport.smart /etc/postfix/transport
+   echo "*	smtp:$smart_hostname:$smart_host_port"  > /home/postfix/transport.smart
+   cp /etc/postfix/transport.smart /home/postfix/transport
 else
     rm -r /etc/postfix/transport.smart
     touch /etc/postfix/transport.smart
-	echo "*	smtp:"  > /etc/postfix/transport
+	echo "*	smtp:"  > /home/postfix/transport
 fi 
 
+sudo -n /home/engines/scripts/smtp/_postmap.sh transport
 if test -f /home/engines/scripts/configurators/saved/default_domain
   then
    cat /home/engines/scripts/configurators/saved/default_domain | /home/engines/bin/json_to_env >/tmp/.2env
    . /tmp/.2env
     if test $deliver_local =eq 1
      then
-      echo "[$domain_name] :email.engines.internal" >> /etc/postfix/transport
+      echo "[$domain_name] :email.engines.internal" >> /home/postfix/transport
     fi
 fi
     
-#chown root.root /etc/postfix/transport
-chmod 600 /etc/postfix/transport
-sudo -n postmap /etc/postfix/transport
-
-
-
+sudo -n /home/engines/scripts/smtp/_postmap.sh transport
 
  
  if ! test -z $mail_name
  then
  	echo $mail_name > /etc/postfix/mailname
  fi
+ sudo -n /home/engines/scripts/smtp/_set_mailname.sh $mail_name
  
- if test -z $smarthost_username -a -z $smarthost_password
- then 
- 	if test -f /etc/postfix/smarthost_passwd
- 	  then
- 		rm /etc/postfix/smarthost_passwd
- 	fi 	
- 	if test -f /etc/postfix/smarthost_passwd.db
- 	  then
- 		rm /etc/postfix/smarthost_passwd.db
- 	fi 
- 	exit
-fi
- 
-if test -z $smarthost_password
- then 
- 	exit
- fi
+# if test -z $smarthost_username -a -z $smarthost_password
+# then 
+# 	if test -f /etc/postfix/smarthost_passwd
+# 	  then
+# 		rm /etc/postfix/smarthost_passwd
+# 	fi 	
+# 	if test -f /etc/postfix/smarthost_passwd.db
+# 	  then
+# 		rm /etc/postfix/smarthost_passwd.db
+# 	fi 
+# 	exit
+#fi
+# 
+#if test -z $smarthost_password
+# then 
+# 	
+# fi
 
-echo "$smarthost_hostname $smarthost_username:$smarthost_password" > /etc/postfix/smarthost_passwd
-#chown  /etc/postfix/smarthost_passwd
-chmod 600 /etc/postfix/smarthost_passwd
-sudo -n postmap   /etc/postfix/smarthost_passwd     
+echo "$smarthost_hostname $smarthost_username:$smarthost_password" > /home/postfix/smarthost_passwd
+
+
+sudo -n /home/engines/scripts/smtp/_postmap.sh smarthost_passwd     
 
 exit 0
