@@ -2,7 +2,7 @@
 
 export RUBY_GC_MALLOC_LIMIT_GROWTH_FACTOR=1.1
 
-/home/clear_flags.sh
+/home/engines/scripts/system/clear_flags.sh
 SYSTEM_IP=` cat /etc/hosts |grep system |cut -f1`
 
 echo $SYSTEM_IP > /engines/var/run/control_ip
