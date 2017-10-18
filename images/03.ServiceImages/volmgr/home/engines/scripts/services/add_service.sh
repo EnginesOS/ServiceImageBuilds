@@ -31,7 +31,7 @@ if test -z ${parent_engine}
     exit -1
 fi  
     
-sudo -n /home/engines/scripts/volmanager/create_volume.sh ${parent_engine} ${service_name} ${user} ${group}
+sudo -n /home/engines/scripts/services/create_volume.sh ${parent_engine} ${service_name} ${user} ${group}
 if test $? -eq 0
  then 
 	echo "Success"

@@ -7,8 +7,8 @@ openldap ALL=(root) NOPASSWD: /home/engines/scripts/ldap/_start_slapd.sh
 openldap ALL=(root) NOPASSWD: /home/engines/scripts/_start_syslog.sh
 openldap ALL=(root) NOPASSWD: /home/_signal.sh
 openldap ALL=(root) NOPASSWD: /home/engines/scripts/_kill_syslog.sh
-openldap ALL=(root) NOPASSWD: /home/engines/scripts/ldap/_first_run.sh
-openldap ALL=(root) NOPASSWD: /home/engines/scripts/ldap/_init_ous_configured.sh
+openldap ALL=(root) NOPASSWD: /home/engines/scripts/first_run/_first_run.sh
+openldap ALL=(root) NOPASSWD: /home/engines/scripts/first_run/_init_ous_configured.sh
 #for debugging only
 #ALL ALL = (root) NOPASSWD: ALL
 
