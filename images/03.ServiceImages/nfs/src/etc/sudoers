@@ -1,11 +1,10 @@
 
 nfs ALL = (root) NOPASSWD: /usr/bin/ganesha.nfsd
- 
-nfs ALL = (root) NOPASSWD: /home/engines/scripts/_start_syslog.sh
+
 
 nfs ALL = (root) NOPASSWD: /etc/init.d/rpcbind
-nfs ALL = (root) NOPASSWD: /home/_signal.sh
-nfs ALL = (root) NOPASSWD: /home/engines/scripts/_kill_syslog.sh
+nfs ALL = (root) NOPASSWD: /home/engines/scripts/signal/_signal.sh
+
 
 #for debugging only
 #ALL ALL = (root) NOPASSWD: ALL

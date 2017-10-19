@@ -1,9 +1,6 @@
 
 openid ALL = (root) NOPASSWD: /home/engines/scripts/first_run/_setup.sh
 
-openid ALL = (root) NOPASSWD: /home/engines/scripts/_start_syslog.sh
-
-openid ALL = (root) NOPASSWD: /home/engines/scripts/_kill_syslog.sh
 
 #must have blank after last sudoers line
 

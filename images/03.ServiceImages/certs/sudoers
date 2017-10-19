@@ -1,6 +1,5 @@
-certs ALL = (root) NOPASSWD: /home/engines/scripts/_start_syslog.sh
+
 certs ALL = (root) NOPASSWD: /home/engines/scripts/engine/_install_target.sh 
-certs ALL = (root) NOPASSWD: /home/engines/scripts/_kill_syslog.sh
 certs ALL = (root) NOPASSWD: /home/engines/scripts/engine/_remove_cert.sh
 certs ALL = (root) NOPASSWD: /home/engines/scripts/engine/_fix_perms.sh
 certs ALL = (root) NOPASSWD: /home/services/_backup.sh

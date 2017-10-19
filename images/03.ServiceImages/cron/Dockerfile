@@ -24,9 +24,9 @@ RUN adduser -q --disabled-password --home /home/cron -uid 22016 cron &&\
  	/home/post_build_clean.sh
 
 COPY home home
-COPY sudoers /etc/sudoers.d/cron
+#COPY sudoers /etc/sudoers.d/cron
 
-RUN	chmod -R go-rw /etc/sudoers /etc/sudoers.d/
+#RUN	chmod -R go-rw /etc/sudoers /etc/sudoers.d/
 
 USER cron
 	
