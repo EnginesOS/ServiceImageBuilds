@@ -7,10 +7,10 @@ if test $? -ne 0
    exit -1
 fi
 
-tar -xpf /tmp/cert_auth/backup.*
+tar -xpf /tmp/certs/backup.*
  
 r=$?
 
-rm -r /tmp/cert_auth/backup.*
+rm -r /tmp/certs/backup.*
 
 exit $r

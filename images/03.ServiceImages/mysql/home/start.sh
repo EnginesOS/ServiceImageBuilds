@@ -9,7 +9,7 @@ export PID_FILE
 if ! test -f /engines/var/run/flags/first_run_done 
 then
  	echo running first run
-    /home/engines/scripts/mysql_server/firstrun.sh         
+    /home/engines/scripts/first_run/first_run.sh         
 fi
  
 

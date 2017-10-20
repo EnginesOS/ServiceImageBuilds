@@ -14,19 +14,19 @@ if ! test -z $section
  opts="$opts --one-database $section"
  fi
  
-echo "cat /tmp/mysql_server/backup.* | mysql -B $opts -h 127.0.0.1 -u rma  2> /tmp/mysqlimport.errs" >/tmp/restore.run
+echo "cat /tmp/mysqld/backup.* | mysql -B $opts -h 127.0.0.1 -u rma  2> /tmp/mysqlimport.errs" >/tmp/restore.run
 #--delete
-rm -fr /tmp/mysql_server
+rm -fr /tmp/mysqld
 tar -xpf - 2>/tmp/tar.errs
 
-cat /tmp/mysql_server/backup.* | mysql -B $opts -h 127.0.0.1 -u rma 2> /tmp/mysqlimport.errs
+cat /tmp/mysqld/backup.* | mysql -B $opts -h 127.0.0.1 -u rma 2> /tmp/mysqlimport.errs
 if test $? -ne 0
  then 
    cat  /tmp/mysqlimport.errs >&2
-	rm -fr /tmp/mysql_server
+	rm -fr /tmp/mysqld
    exit -1
 fi
-rm -fr /tmp/mysql_server
+rm -fr /tmp/mysqld
 
 mysqladmin -u rma flush-privileges
  

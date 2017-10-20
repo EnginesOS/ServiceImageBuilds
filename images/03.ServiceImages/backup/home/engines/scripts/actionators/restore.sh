@@ -94,7 +94,7 @@ function restore_engines {
 }
 
 function restore_services {
-for service in syslog mongo_server mysql_server pgsql_server auth cert_auth email imap 
+for service in syslog mongod mysqld pgsqld auth certs email imap 
  do
    service_restore
 done

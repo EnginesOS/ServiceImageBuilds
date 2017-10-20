@@ -2,7 +2,7 @@
 
 tar -xpf -  2>/tmp/tar.errs
 
-cat /tmp/pgsql_server/backup.* | psql 2>tmp/pg_sqlimport.errs
+cat /tmp/pgsqld/backup.* | psql 2>tmp/pg_sqlimport.errs
 
 if test $? -ne 0
  then 
