@@ -7,7 +7,7 @@ bind ALL = (root) NOPASSWD: /home/engines/scripts/_start_syslog.sh
 
 bind ALL = (root) NOPASSWD: /usr/sbin/named
 bind ALL = (root) NOPASSWD: /home/engines/scripts/engine/_setup.sh
-bind ALL = (root) NOPASSWD: /home/engines/scripts/sginal/_signal.sh
+bind ALL = (root) NOPASSWD: /home/engines/scripts/signal/_signal.sh
 
 #must have blank after last sudoers line
 

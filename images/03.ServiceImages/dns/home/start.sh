@@ -22,7 +22,7 @@ export PID_FILE
 
 
 
-sudo -n /home/engines/scripts/dns/_setup.sh
+sudo -n /home/engines/scripts/engine/_setup.sh
 
 sudo -n /home/engines/scripts/_start_syslog.sh
 
