@@ -81,8 +81,8 @@ service=mgmt
 id=22050
 install_cert
 }
-function install_nginx {
-service=nginx
+function install_wap {
+service=wap
 id=22005
 dest_name=${domain_name}
 install_cert
@@ -91,7 +91,7 @@ install_cert
 function set_default {
 domain_name=default
 
-service=nginx
+service=wap
 id=22005
 mkdir -p /home/certs/store/services/${service}/certs/
 mkdir -p /home/certs/store/services/${service}/keys/
@@ -146,6 +146,6 @@ default)
   set_default  
   ;;
 *)
-  install_nginx
+  install_wap
   ;;
 esac

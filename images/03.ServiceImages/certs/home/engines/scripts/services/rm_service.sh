@@ -45,10 +45,10 @@ domain_name=`cat /home/certs/store/public/certs/$store/${cert_name}.crt  | opens
        exit 255
     fi
     
-if test -f /home/certs/store/services/nginx/certs/${domain_name}.crt
+if test -f /home/certs/store/services/wap/certs/${domain_name}.crt
  then
-  sudo -n /home/remove.sh service nginx/certs/${domain_name}.crt
-  sudo -n /home/remove.sh service nginx/keys/${domain_name}.key
+  sudo -n /home/remove.sh service wap/certs/${domain_name}.crt
+  sudo -n /home/remove.sh service wap/keys/${domain_name}.key
 fi
 exit 0
  	

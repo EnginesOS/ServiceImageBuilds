@@ -105,7 +105,7 @@ fi
      
 if test -z ${install_target}
  then
-  install_target=nginx
+  install_target=wap
 fi
 domain_name=`cat  /home/certs/store/public/certs/${StorePref}${cert_name}.crt | openssl x509 -noout -subject  |sed "/^.*CN=/s///"| sed "/\*/s///"`
 
