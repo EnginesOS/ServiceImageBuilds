@@ -18,7 +18,7 @@ do
  eval echo $LINE >> $LDIF_FILE
 done
 
-cat $LDIF_FILE /home/engines/scripts/ldap/ldapadd.sh &> $LDAP_OUTF
+cat $LDIF_FILE | /home/engines/scripts/ldap/ldapadd.sh &> $LDAP_OUTF
 result=$?
 
 process_ldap_result
