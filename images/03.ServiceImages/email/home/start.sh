@@ -32,7 +32,7 @@ sudo -n /usr/lib/postfix/sbin/master  -w &
 
 if test -f /home/engines/scripts/configurators/saved/grey_listing_enabled
   then
-  /home/engines/scripts/startup/start_grey.sh
+  /home/engines/scripts/engine/start_grey.sh
 fi
 
 touch /engines/var/run/flags/startup_complete

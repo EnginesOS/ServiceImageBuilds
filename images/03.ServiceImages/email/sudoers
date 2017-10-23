@@ -6,7 +6,6 @@ postfix ALL=(root) NOPASSWD: /home/engines/scripts/engine/_postmap.sh
 postfix ALL=(root) NOPASSWD: /home/engines/scripts/engine/_set_mailname.sh
 postfix ALL = (root) NOPASSWD: /home/engines/scripts/signal/_signal.sh
 postfix ALL = (root) NOPASSWD: /home/engines/scripts/configurators/rebuild_main.sh
-postfix ALL = (root) NOPASSWD: /home/engines/scripts/engine/_kill_grey.sh  
 postfix ALL = (root) NOPASSWD: /home/engines/scripts/signal/_kill_postfix.sh
 postfix ALL = (root) NOPASSWD: /home/engines/scripts/actionators/sudo/_rm_email.sh 
 #for debugging only
