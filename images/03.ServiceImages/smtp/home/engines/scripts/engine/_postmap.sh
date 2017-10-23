@@ -1,5 +1,5 @@
 #!/bin/bash
-if ! test "/home/postfix/$1" 
+if ! test -f "/home/postfix/$1" 
  then
   touch "/home/postfix/$1" 
  fi 
