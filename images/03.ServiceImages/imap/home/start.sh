@@ -6,6 +6,15 @@ export PID_FILE
 
 mkdir -p /engines/var/run/flags
 
+if ! test -f /engines/var/run/flags/first_run_ran 
+ then
+  /home/engines/scripts/first_run/first_run.sh
+  if test $? -eq 0
+   then 
+     touch /engines/var/run/flags/first_run_ran 
+  fi   
+ fi
+
 sudo -n /home/engines/scripts/_start_syslog.sh
 
 sudo -n /usr/sbin/dovecot -F &
