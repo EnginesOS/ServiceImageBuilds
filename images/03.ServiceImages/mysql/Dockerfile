@@ -1,8 +1,7 @@
 FROM  engines/servicebase:$release
 
-RUN echo "Y" | adduser -q --disabled-password -uid 22006 mysql
-
-RUN  /home/no_init.sh &&\		
+RUN adduser -q --disabled-password -uid 22006 mysql &&\
+    /home/no_init.sh &&\		
 	apt-get update -y &&\
 	apt-get -y install mysql-server &&\
 	echo max_allowed_packet = 4M >> /etc/mysql/mysql.conf.d/mysqld.cnf &&\
@@ -11,13 +10,10 @@ RUN  /home/no_init.sh &&\
 	usermod -G containers -a mysql &&\
  	/home/post_build_clean.sh
 
-	# cat /etc/mysql/my.cnf |grep -v  event-scheduler=DISABLED |sed "/127.0.0.1/s//0.0.0.0/" >/etc/mysql/my.cnf.sed;\
-	#mv /etc/mysql/my.cnf.sed /etc/mysql/my.cnf;\
 
 ADD home home
-
-RUN chown mysql /home/firstrun.sh
-
+ADD sudoers /etc/sudoers.d/mysqld
+RUN chmod og-rwx /etc/sudoers.d/mysqld
 EXPOSE 3306
 
 ENV ContUser mysql

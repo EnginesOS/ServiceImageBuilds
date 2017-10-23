@@ -1,6 +1,6 @@
 FROM  engines/servicebase:$release
 
-RUN echo "Y" |/usr/sbin/usermod -u 22012 syslog &&\
+RUN /usr/sbin/usermod -u 22012 syslog &&\
 	/home/no_init.sh &&\		
 	apt-get update -y &&\
  	apt-get -y install syslog-ng-core \
@@ -13,7 +13,7 @@ RUN echo "Y" |/usr/sbin/usermod -u 22012 syslog &&\
 ENV ContUser syslog
 ENV ContGrp syslog
 
-ADD syslog-ng.conf /etc/syslog-ng/
+ADD src/syslog-ng.conf /etc/syslog-ng/
 ADD home /home/
 ADD sudoers /etc/sudoers.d/syslog
 

@@ -1,0 +1,6 @@
+engine=`echo $CONFDIR | awk -F/ '{print $NF}'` 
+ts=`date +%d_%m_%y`
+mkdir -p tmp/backup/
+
+/home/engines/scripts/engine/run_docker_backup.sh `cat pre_cmd_path` > /tmp/backup/backup.${ts}
+   

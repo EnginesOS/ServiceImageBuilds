@@ -12,7 +12,7 @@ RUN /home/no_init.sh &&\
 	rm -f /var/run/dbus/pid &&\
     chown avahi -R /var/run/ /etc/avahi/hosts
 
-COPY avahi-daemon.conf /etc/avahi/avahi-daemon.conf
+COPY src/avahi-daemon.conf /etc/avahi/avahi-daemon.conf
 COPY sudoers /etc/sudoers.d/avahi
 COPY home home
 

@@ -4,7 +4,7 @@ chdir: /opt/engines/src/server
 address: 0.0.0.0
 port: 2380
 pid: /engines/var/run/system.pid
-log: /var/log/systen.log
+log: /var/log/system.log
 max_conns: 1024
 timeout: 30
 max_persistent_conns: 512

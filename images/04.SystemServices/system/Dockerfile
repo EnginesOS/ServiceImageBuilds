@@ -13,36 +13,36 @@ RUN /usr/sbin/addgroup --gid 21999 edocker &&\
 						libssl-dev \
 						libreadline-dev \
 						zlib1g-dev &&\
-	echo "Y" | adduser -q --uid 21000 --gid 21999 --home /home/engines --disabled-password engines &&\
+	adduser -q --uid 21000 --gid 21999 --home /home/engines --disabled-password engines &&\
 	mkdir -p /opt/engines/run/system/ &&\	
 	chown -R engines /opt/engines/run/system/ /home/engines /var/log/ &&\
 	usermod -G docker -a engines &&\
 	gem install --no-rdoc --no-ri git bundle rest-client net_http_unix excon \
 	 			gctools yajl-ruby sinatra thin rubytree  sinatra-contrib \
-			 	warden data_mapper dm-sqlite-adapter ffi-yajl sqlite3 &&\				
+			 	warden data_mapper dm-sqlite-adapter ffi-yajl sqlite3 &&\		
  	/home/post_build_clean.sh
 	
 ADD home home
-ADD profile /home/engines/.profile
-
+ADD src/profile /home/engines/.profile
+ADD sudoers /etc/sudoers.d/system 
 ENV ContUser engines
 ENV ContGrp ruby
 
 #need to create as linking sqllite
-RUN mkdir -p /home/app/db;\
- 	chown engines /home/app/db 
+RUN mkdir -p /home/app/db &&\
+ 	chown engines /home/app/db 	 &&\
+	chown root /etc/sudoers.d/system &&\
+	chmod og-rw /etc/sudoers.d/system 
 
 WORKDIR /home/app/
 
 RUN	git init
 
-ADD gitconfig /home/app/.git/config
-ADD sudoers /etc/
+ADD src/gitconfig /home/app/.git/config
 
-RUN mkdir -p /home/engines/.ssh/mgmt /home/app/tmp/ /home/app/public &&\	
- 	chown -R 21000 /home/app/public /home/configurators/saved /home/app/tmp/ &&\
- 	usermod -G containers -a engines &&\
-	chmod -R go-rw /etc/sudoers /etc/sudoers.d/
+RUN mkdir -p /home/engines/.ssh/system /home/app/tmp/ /home/app/public &&\	
+ 	chown -R 21000 /home/app/public /home/engines/scripts/configurators/saved /home/app/tmp/ &&\
+ 	usermod -G containers -a engines
 
 ENV PATH /usr/local/bin:/usr/bin:/bin:/usr/sbin
 ENV HOME /home/engines/

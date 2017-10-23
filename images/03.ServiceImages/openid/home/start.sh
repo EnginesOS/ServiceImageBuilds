@@ -2,7 +2,7 @@
 
 if ! test -f /engines/run/flags/first_run_done
  then
-   sudo -n /home/_setup.sh
+   /home/engines/scripts/first_run/first_run.sh
    touch /engines/run/flags/first_run_done
 fi
   

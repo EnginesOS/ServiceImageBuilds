@@ -10,7 +10,7 @@ export PID_FILE
 
 cd /home/app
 
-/home/deployment.sh
+/home/engines/scripts/firstrun/deployment.sh
 
 bundle exec thin  -R ./config.ru start > /var/log/firstrun.log &
 

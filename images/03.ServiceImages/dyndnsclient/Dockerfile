@@ -7,12 +7,13 @@ RUN adduser -q --disabled-password  dyndns -uid 22021 &&\
  	/home/post_build_clean.sh
 
 COPY home home
-COPY sudoers /etc/sudoers.d/dyndns	
+#COPY sudoers /etc/sudoers.d/dyndns	
 
 RUN chown dyndns -R /home/dyndns /var/cache/ddclient/ &&\
 	usermod -G containers -a dyndns &&\
-	chown dyndns /home/configurators/saved/ &&\
-	chmod -R go-rw /etc/sudoers /etc/sudoers.d/
+	chown dyndns /home/engines/scripts/configurators/saved/
+	#&&\
+	#chmod -R go-rw /etc/sudoers /etc/sudoers.d/
 
 ENV ContUser dyndns
 ENV ContGrp dyndns

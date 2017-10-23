@@ -1,0 +1,10 @@
+Defaults  env_keep += "CONTAINER_NAME"
+%containers  ALL = (root) NOPASSWD: /home/engines/scripts/ldap/sudo/_next_uid.sh
+%containers ALL = (root) NOPASSWD: /home/engines/scripts/ldap/sudo/_ldapadd.sh
+%containers  ALL = (root) NOPASSWD: /home/engines/scripts/ldap/sudo/_ldapmodify.sh
+%containers  ALL = (root) NOPASSWD: /home/engines/scripts/ldap/sudo/_ldapsearch.sh
+%containers  ALL = (root) NOPASSWD: /home/engines/scripts/ldap/sudo/_ldapdelete.sh  
+%containers  ALL=(root) NOPASSWD: /home/engines/scripts/_kill_syslog.sh  
+%containers  ALL=(root) NOPASSWD: /home/engines/scripts/_start_syslog.sh   
+#must have blank after last sudoers line
+

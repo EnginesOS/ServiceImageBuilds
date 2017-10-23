@@ -1,0 +1,20 @@
+@  IN SOA engines.internal. root.engines.internal. (
+                9999 ; serial
+                7200 ; refresh (2 hrs)
+                120 ; retry (2 mins)
+                604800 ; expire (1 weeks)
+                60 ; minimum (1 min)
+        )
+        IN      NS      ns.engines.internal.
+        IN      NS      local.engines.internal.
+
+_kerberos._udp.engines.internal.        IN      SRV     0 0 88 kdc.engines.internal.
+_kerberos._tcp.engines.internal.        IN      SRV     0 0 88 kdc.engines.internal.
+_kerberos._tls._tcp.engines.internal.   IN      SRV     0 0 88 kdc.engines.internal.
+
+ns			A   IP
+pulseaudio	A	IP
+control		A 	IP
+local       A   127.0.0.1
+
+

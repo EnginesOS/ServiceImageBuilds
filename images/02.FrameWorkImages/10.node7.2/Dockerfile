@@ -13,7 +13,7 @@ RUN mkdir ~/node_js_src &&\
 	make &&\
 	make install &&\
 	groupadd node &&\
- 	echo "Y" | adduser --uid 22673 -q --ingroup node --home /home/node --disabled-password node &&\
+ 	adduser --uid 22673 -q --ingroup node --home /home/node --disabled-password node &&\
  	usermod -G containers -a node &&\
  	npm -g install npm@latest &&\
  	cd ~ ; rm -r ~/node_js_src

@@ -2,14 +2,16 @@
 
 if ! test -f /engines/var/run/flags/first_run
   then
-  	sudo /home/setup_dirs.sh
-  	echo Fixed perms
+  /home/engines/scripts/first_run/first_run.sh
+ if test $? -eq 0
+  then
   	touch /engines/var/run/flags/first_run
+  fi
 fi
 
 PID_FILE=/var/spool/postfix/pid/master.pid
 
-KILL_SCRIPT=/home/kill_postfix.sh
+KILL_SCRIPT=/home/engines/scripts/signal/kill_postfix.sh
 export KILL_SCRIPT
 
 export PID_FILE
@@ -19,18 +21,10 @@ sudo -n /home/engines/scripts/_start_syslog.sh
 
 echo started syslog
 
-if ! test -f /etc/postfix/transport 
- then
-	 echo "	*	smtp:" >/etc/postfix/transport
-fi 
-if ! test -f /etc/postfix/mailname
- then
-	echo "not.set" > /etc/postfix/mailname
-fi
-		
-sudo -n /usr/sbin/postmap /etc/postfix/transport
+
 
 sudo -n /usr/lib/postfix/sbin/master -w &
+
 dummy=$!
 echo started master $dummy
 touch  /engines/var/run/flags/startup_complete
@@ -42,7 +36,8 @@ while test -f  /var/spool/postfix/pid/master.pid
  	wait
     exit_code=$?
 done
+
+
 rm /engines/var/run/flags/startup_complete  
-sudo -n /home/engines/scripts/_kill_syslog.sh
 exit $exit_code
 

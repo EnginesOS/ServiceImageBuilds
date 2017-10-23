@@ -9,7 +9,7 @@ RUN /home/no_init.sh &&\
 					   libssl-dev \
 					   libreadline-dev \
 					   zlib1g-dev &&\
-	echo "Y" | adduser -q  --uid 22023 --home /home/registry --disabled-password registry &&\
+	adduser -q  --uid 22023 --home /home/registry --disabled-password registry &&\
 	usermod -G containers -a registry &&\
  	/home/post_build_clean.sh ;\
 	gem install bundle gctools rest-client sinatra thin yajl-ruby rubytree ffi-yajl
