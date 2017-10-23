@@ -20,35 +20,16 @@ export KILL_SCRIPT
 sudo -n /home/engines/scripts/_start_syslog.sh
 
 
-
-
 echo '{"default_domain":"'$DEFAULT_DOMAIN'"}' |/home/engines/scripts/configurators/set_default_domain.sh 
 
  
 sudo -n /home/engines/scripts/configurators/rebuild_main.sh
-
-sudo -n /home/engines/scripts/startup/_start_postfix.sh
-
 
 if test -f /home/engines/scripts/configurators/saved/grey_listing_enabled
   then
   /home/engines/scripts/engine/start_grey.sh
 fi
 
-touch /engines/var/run/flags/startup_complete
-  
-sleep 6
 
-while test -f /var/spool/postfix/pid/master.pid
- do
- 	sleep 10&
- 	wait
-    exit_code=$?
-done
-
-rm -f /engines/var/run/flags/startup_complete
-sudo -n /home/engines/scripts/_kill_syslog.sh
-
-exit $exit_code
- 
+sudo -n /home/engines/scripts/startup/_start_postfix.sh
 

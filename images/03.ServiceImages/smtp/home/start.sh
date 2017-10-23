@@ -23,14 +23,6 @@ echo started syslog
 
 /home/engines/scripts/startup/init_dbs.sh
 sudo -n /home/engines/scripts/startup/_start_postfix.sh
-dummy=$!
-echo started master $dummy
-touch  /engines/var/run/flags/startup_complete
-
-wait `cat /var/spool/postfix/pid/master.pid`
-exit_code=$?
 
 
-rm /engines/var/run/flags/startup_complete  
-exit $exit_code
 
