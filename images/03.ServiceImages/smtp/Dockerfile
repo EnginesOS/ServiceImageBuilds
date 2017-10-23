@@ -15,7 +15,8 @@ ADD src/postfix/main.cf /etc/postfix/
 ADD src/postfix/mailname /etc/postfix/mailname
 ADD src/postfix/transport /etc/postfix/
 
-RUN mkdir /usr/share/doc/postfix/html \
+RUN mkdir 	/home/postfix \
+			/usr/share/doc/postfix/html \
 	 	  	/usr/lib/postfix/libutil \
 	 	  	/usr/lib/postfix/libmaster \
 	 	  	/usr/lib/postfix/libdns \
@@ -41,13 +42,13 @@ RUN mkdir /usr/share/doc/postfix/html \
 	 	    /etc/postfix/generic && \
 	/usr/sbin/postfix -c /etc/postfix/ set-permissions create-missing ;\
 	postmap /etc/postfix/transport &&\
-	chown postfix /etc/postfix/ /etc/postfix/sender_canonical* /etc/postfix/generic /etc/postfix/generic.db /etc/postfix/smarthost_passwd /etc/postfix/sender_canonical /etc/postfix/smarthost_passwd /etc/postfix/transport /etc/postfix/transport.smart /etc/postfix/transport.db /etc/postfix/mailname &&\
+	chown postfix /home/postfix/ &&\
 	chown postfix /home/engines/scripts/configurators/saved /home/postfix &&\
 	chgrp postfix /home/engines/scripts/configurators/*.sh &&\
 	cp -rp /var/spool/postfix /tmp/spool_postfix
 	
 ADD sudoers /etc/sudoers.d/smtp
-
+# chown postfix /etc/postfix/generic /etc/postfix/generic.db /etc/postfix/smarthost_passwd /etc/postfix/sender_canonical /etc/postfix/smarthost_passwd /etc/postfix/transport /etc/postfix/transport.smart /etc/postfix/transport.db 
 RUN	chmod -R go-rw /etc/sudoers /etc/sudoers.d/
 
 ENV ContUser postfix

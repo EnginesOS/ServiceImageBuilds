@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo -n /home/engines/scripts/engine/_setup_dirs.sh
+sudo -n /home/engines/scripts/first_run/_setup_dirs.sh
 
 if ! test -f /home/postfix/transport 
  then
