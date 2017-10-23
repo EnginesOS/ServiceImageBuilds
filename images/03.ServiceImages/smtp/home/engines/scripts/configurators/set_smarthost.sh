@@ -53,13 +53,13 @@ sudo -n /home/engines/scripts/engine/_postmap.sh transport
 # 	exit
 #fi
 # 
-#if test -z $smarthost_password
-# then 
-# 	
-# fi
-
-echo "$smarthost_hostname $smarthost_username:$smarthost_password" > /home/postfix/smarthost_passwd
-
+if test -z $smarthost_password
+ then 	
+  rm /home/postfix/smarthost_passwd
+  touch /home/postfix/smarthost_passwd
+else
+ echo "$smarthost_hostname $smarthost_username:$smarthost_password" > /home/postfix/smarthost_passwd
+fi
 
 sudo -n /home/engines/scripts/engine/_postmap.sh smarthost_passwd     
 
