@@ -12,9 +12,14 @@ if test $r -eq 0
 fi
 touch  /engines/var/run/flags/startup_complete
 
-wait `cat /var/spool/postfix/pid/master.pid`
-exit_code=$?
+while test -f /var/spool/postfix/pid/master.pid
+ do
+  sleep 3600 &
+  echo $! > /tmp/sleep.pid
+  wait
+done 
+
 
 rm /engines/var/run/flags/startup_complete  
-/home/engines/scripts/_kill_syslog.sh
-exit $exit_code
+/home/engines/scripts/signal/_kill_postfix.sh
+/home/engines/scripts/signal/_kill_syslog.sh

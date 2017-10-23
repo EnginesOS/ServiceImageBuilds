@@ -1,5 +1,5 @@
 #!/bin/sh
-PID_FILE=/var/spool/postfix/pid/master.pid
+PID_FILE=/tmp/sleep.pid
 
 export PID_FILE
 . /home/engines/functions/trap.sh
@@ -14,7 +14,7 @@ if ! test -f /engines/var/run/flags/first_run
   	 fi
   fi
   
-KILL_SCRIPT=/home/engines/scripts/signal/kill_postfix.sh
+KILL_SCRIPT=/home/engines/scripts/signal/kill_sleep.sh
 export KILL_SCRIPT
 
 sudo -n /home/engines/scripts/_start_syslog.sh

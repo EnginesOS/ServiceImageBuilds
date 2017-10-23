@@ -9,9 +9,9 @@ if ! test -f /engines/var/run/flags/first_run
   fi
 fi
 
-PID_FILE=/var/spool/postfix/pid/master.pid
+PID_FILE=/tmp/sleep.pid
 
-KILL_SCRIPT=/home/engines/scripts/signal/kill_postfix.sh
+KILL_SCRIPT=/home/engines/scripts/signal/kill_sleep.sh
 export KILL_SCRIPT
 
 export PID_FILE
