@@ -21,21 +21,14 @@ sudo -n /home/engines/scripts/_start_syslog.sh
 
 echo started syslog
 
-
-
-sudo -n /usr/lib/postfix/sbin/master -w &
-
+/home/engines/scripts/startup/init_dbs.sh
+sudo -n /home/engines/scripts/startup/_start_postfix.sh
 dummy=$!
 echo started master $dummy
 touch  /engines/var/run/flags/startup_complete
 
-sleep 6
-while test -f  /var/spool/postfix/pid/master.pid
- do
- 	sleep 10 &
- 	wait
-    exit_code=$?
-done
+wait `cat /var/spool/postfix/pid/master.pid`
+exit_code=$?
 
 
 rm /engines/var/run/flags/startup_complete  

@@ -18,7 +18,6 @@ else
     rm -r /etc/postfix/transport.smart
     touch /etc/postfix/transport.smart
 	rm /home/postfix/transport
-	touch /home/postfix/transport
 fi 
 
 
@@ -57,7 +56,6 @@ sudo -n /home/engines/scripts/engine/_postmap.sh transport
 if test -z $smarthost_password
  then 	
   rm /home/postfix/smarthost_passwd
-  touch /home/postfix/smarthost_passwd
 else
  echo "$smarthost_hostname $smarthost_username:$smarthost_password" > /home/postfix/smarthost_passwd
 fi

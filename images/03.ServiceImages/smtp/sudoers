@@ -1,4 +1,5 @@
-postfix ALL=(root) NOPASSWD: /usr/lib/postfix/sbin/master
+#postfix ALL=(root) NOPASSWD: /usr/lib/postfix/sbin/master
+postfix ALL=(root) NOPASSWD: /home/engines/scripts/startup/_start_postfix.sh
 postfix ALL=(root) NOPASSWD: /home/engines/scripts/first_run/_setup_dirs.sh
 postfix ALL=(root) NOPASSWD: /home/engines/scripts/engine/_postmap.sh
 postfix ALL=(root) NOPASSWD: /home/engines/scripts/engine/_set_mailname.sh
