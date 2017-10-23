@@ -5,7 +5,7 @@ mkdir -p /engines/var/run/flags
 
 if ! test -f /engines/var/run/flags/first_run_done 
  then
-   bash /home/firstrun.sh         
+    /home/engines/scripts/first_run/first_run.sh         
 fi
 
 if ! test -f /home/postgres/.pgpass

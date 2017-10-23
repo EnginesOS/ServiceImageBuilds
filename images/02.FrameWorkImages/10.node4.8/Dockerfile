@@ -14,7 +14,7 @@ RUN apt-get -y install python &&\
     make &&\
     make install &&\
 	groupadd node &&\
- 	echo "Y" | adduser --uid 22673 -q --ingroup node --home /home/node --disabled-password node &&\
+ 	adduser --uid 22673 -q --ingroup node --home /home/node --disabled-password node &&\
  	usermod -G containers -a node &&\
  	npm -g install npm@latest &&\
  	ln -s /usr/local/bin/node /usr/local/bin/js &&\

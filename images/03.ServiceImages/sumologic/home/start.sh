@@ -2,9 +2,9 @@
 #wait for configurators
 sleep 10
 rm  -f /engines/var/run/flags/startup_complete
-if test -f /home/configurators/saved/credentials
+if test -f /home/engines/scripts/configurators/saved/credentials
  then
- 	 cat /home/configurators/saved/credentials | /home/engines/bin/json_to_env >/tmp/.env
+ 	 cat /home/engines/scripts/configurators/saved/credentials | /home/engines/bin/json_to_env >/tmp/.env
  	. /tmp/.env
  	rm -f /engines/var/run/missing_configuration
  	echo Configured

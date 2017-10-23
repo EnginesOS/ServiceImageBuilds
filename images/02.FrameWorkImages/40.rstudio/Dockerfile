@@ -16,5 +16,5 @@ RUN apt-get -y update &&\
 	gdebi shiny-server-1.5.3.838-amd64.deb &&\
 	apt-get clean -y &&\
 	groupadd rstudio &&\
- 	echo "Y" | adduser --uid 22675 -q --ingroup rstudio --home /home/rstudio --disabled-password rstudio &&\
+ 	adduser --uid 22675 -q --ingroup rstudio --home /home/rstudio --disabled-password rstudio &&\
  	usermod -G containers -a rstudio

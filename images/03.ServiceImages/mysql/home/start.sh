@@ -1,24 +1,17 @@
 #!/bin/sh
 
-mkdir -p /engines/var/run/flags
 
-if ! test -f /engines/var/run/flags/first_run_done 
-then
- 	echo running first run
-       bash /home/firstrun.sh         
-fi
-
-if ! test -d  /var/run/mysqld/
- then
- 	echo "setup run dir"
- 	mkdir -p /var/run/mysqld/
-fi
- 
-mkdir -p /var/run/mysqld/
 PID_FILE=/var/run/mysqld/mysqld.pid
 
 export PID_FILE
 . /home/engines/functions/trap.sh
+
+if ! test -f /engines/var/run/flags/first_run_done 
+then
+ 	echo running first run
+    /home/engines/scripts/first_run/first_run.sh         
+fi
+ 
 
 SIGNAL=0
 
@@ -35,4 +28,5 @@ exit_code=$?
 cat /var/log/mysql/error.log
  
 rm /engines/var/run/flags/startup_complete
+sleep 500
 exit $exit_code

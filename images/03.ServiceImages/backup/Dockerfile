@@ -16,9 +16,9 @@ RUN apt-get -y update &&\
 	                   make &&\
 	apt-get clean 
 
-ADD etc  etc
+ADD src/etc  etc
 
-RUN echo "Y" | /usr/sbin/usermod -u 22015 -d /home/backup  backup &&\
+RUN /usr/sbin/usermod -u 22015 -d /home/backup  backup &&\
 	usermod -G containers -a backup &&\ 
 	usermod -G root -a backup &&\	 	
 	cd /tmp &&\
@@ -40,11 +40,11 @@ RUN echo "Y" | /usr/sbin/usermod -u 22015 -d /home/backup  backup &&\
  	/home/post_build_clean.sh
  
 ADD home home
-ADD crontab  /home/backup/fcron/spool/backup.orig
+ADD src/crontab  /home/backup/fcron/spool/backup.orig
 
 RUN chown -R backup ~backup &&\
-	chown backup /home/configurators/saved &&\
-	chgrp backup /home/configurators/*.sh &&\
+	chown backup /home/engines/scripts/configurators/saved &&\
+	chgrp backup /home/engines/scripts/configurators/*.sh &&\
 	addgroup --gid 11111 datauser &&\
 	usermod -G datauser -a backup &&\
 	usermod -G adm -a backup &&\
@@ -53,7 +53,7 @@ RUN chown -R backup ~backup &&\
 	
 	
 	
-COPY sudoers /etc/	
+COPY sudoers /etc/sudoers/backup
 VOLUME /backup_src/volumes
 VOLUME /backup_src/engines
 VOLUME /local_backup_dests

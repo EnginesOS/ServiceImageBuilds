@@ -2,24 +2,24 @@
 
 export RUBY_GC_MALLOC_LIMIT_GROWTH_FACTOR=1.1
 
-/home/clear_flags.sh
+/home/engines/scripts/startup/clear_flags.sh
 SYSTEM_IP=` cat /etc/hosts |grep system |cut -f1`
-#control_ip=`netstat -rn |grep ^0.0.0 | awk '{print $2}' | tr -d '\n'`
+
 echo $SYSTEM_IP > /engines/var/run/control_ip
 export SYSTEM_IP 
 PID_FILE=/engines/var/run/system.pid
 export PID_FILE
 . /home/engines/functions/trap.sh
 
-
+# was /opt/engines/etc/ssl/keys/ and /opt/engines/etc/ssl/certs/engines.crt
 cd /home
- if test -f  /opt/engines/etc/ssl/keys/engines.key
+ if test -f /engines/ssl/keys/engines.key 
   then
-	thin --threaded --ssl --ssl-key-file /opt/engines/etc/ssl/keys/engines.key --ssl-cert-file /opt/engines/etc/ssl/certs/engines.crt -C config.yaml -R ./config.ru start > /var/log/system.log &
+	thin --threaded --ssl --ssl-key-file /engines/ssl/keys/engines.key --ssl-cert-file /engines/ssl/certs/engines.crt -C config.yaml -R ./config.ru start > /var/log/system.log &
   else
-	thin  --threaded -C config.yaml -R ./config.ru start > /var/log/system.log &
+	thin --threaded -C config.yaml -R ./config.ru start > /var/log/system.log &
  fi
-#--threaded  
+
 
 #touch /engines/var/run/flags/startup_complete  done in code
 wait 

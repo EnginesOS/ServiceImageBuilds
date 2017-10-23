@@ -1,7 +1,7 @@
 #!/bin/sh
 
 sudo /home/engines/scripts/_start_syslog.sh
-
+mkdir /var/log/proftpd
 PID_FILE=/var/run/ftpd.pid
 export PID_FILE
 . /home/engines/functions/trap.sh
