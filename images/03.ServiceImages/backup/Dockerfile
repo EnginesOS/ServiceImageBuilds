@@ -41,6 +41,7 @@ RUN /usr/sbin/usermod -u 22015 -d /home/backup  backup &&\
  
 ADD home home
 ADD src/crontab  /home/backup/fcron/spool/backup.orig
+COPY sudoers /etc/sudoers.d/backup
 
 RUN chown -R backup ~backup &&\
 	chown backup /home/engines/scripts/configurators/saved &&\
@@ -53,7 +54,7 @@ RUN chown -R backup ~backup &&\
 	
 	
 	
-COPY sudoers /etc/sudoers/backup
+
 VOLUME /backup_src/volumes
 VOLUME /backup_src/engines
 VOLUME /local_backup_dests
