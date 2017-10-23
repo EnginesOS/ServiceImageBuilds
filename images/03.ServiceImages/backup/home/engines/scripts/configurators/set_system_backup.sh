@@ -74,7 +74,7 @@ then
   			  then
   				 continue
   			 fi 
-  			 if test $service = 'volmanager' 
+  			 if test $service = 'volmgr' 
   			  then
   				 continue
   			 fi 
