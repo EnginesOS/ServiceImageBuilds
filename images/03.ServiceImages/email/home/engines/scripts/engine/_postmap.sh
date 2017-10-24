@@ -1,7 +1,7 @@
 #!/bin/bash
-if ! test -f "/home/postfix/$1" 
+if ! test -f "/home/email/$1" 
  then
-  touch "/home/postfix/$1" 
+  touch "/home/email/$1" 
  fi 
-cp "/home/postfix/$1" /etc/postfix/
+cp "/home/email/$1" /etc/postfix/
 postmap  /etc/postfix/"$1" 

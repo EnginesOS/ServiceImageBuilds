@@ -31,5 +31,6 @@ if test -f /home/engines/scripts/configurators/saved/grey_listing_enabled
 fi
 
 
+/home/engines/scripts/startup/init_dbs.sh
 sudo -n /home/engines/scripts/startup/_start_postfix.sh
 
