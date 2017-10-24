@@ -30,14 +30,14 @@ if ! test -z $enable_grey_listing
 if  test $enable_grey_listing -eq 1
  then
  	touch  /home/engines/scripts/configurators/saved/grey_listing_enabled
- 	/home/engines/scripts/email/start_grey.sh
+ 	/home/engines/scripts/engine/start_grey.sh
  else
     rm /home/engines/scripts/configurators/saved/grey_listing_enabled
-    sudo -n /home/engines/scripts/email/_kill_grey.sh  
+    /home/engines/scripts/engine/kill_grey.sh  
   fi 
 else
     rm /home/engines/scripts/configurators/saved/grey_listing_enabled
-     sudo -n /home/engines/scripts/email/_kill_grey.sh  
+     /home/engines/scripts/engine/kill_grey.sh  
 fi
 
 sudo /home/engines/scripts/configurators/rebuild_main.sh

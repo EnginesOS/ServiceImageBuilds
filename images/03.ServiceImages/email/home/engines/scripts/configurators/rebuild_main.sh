@@ -17,4 +17,4 @@ echo  ",permit"  >>  /home/engines/scripts/configurators/saved/rbls.conf
 
 rbl_conf=`cat /home/engines/scripts/configurators/saved/rbls.conf`
 cat /home/engines/templates/email/main.cf | sed "/RBL_CONF/s//$rbl_conf/" > /etc/postfix/main.cf
-kill -HUP `cat /var/spool/postfix/pid/master.pid`
+/home/engines/scripts/signal/kill_postfix.sh -HUP

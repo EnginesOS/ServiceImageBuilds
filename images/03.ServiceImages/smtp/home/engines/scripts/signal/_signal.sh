@@ -17,3 +17,8 @@ kill -$SIGNAL `cat $PID_FILE`
    		 (*)    wait $pid ;;  
 	  esac
 	fi
+	
+if test -f $PID_FILE
+ then	
+	rm  $PID_FILE 2>/dev/null
+fi

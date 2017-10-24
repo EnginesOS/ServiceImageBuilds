@@ -1,4 +1,4 @@
-FROM	engines/servicebase:$release
+FROM engines/servicebase:$release
 
 RUN apt-get -y update &&\
 	/home/no_init.sh &&\
@@ -17,6 +17,7 @@ RUN apt-get -y update &&\
 	apt-get clean 
 
 ADD src/etc  etc
+ADD home home
 
 RUN /usr/sbin/usermod -u 22015 -d /home/backup  backup &&\
 	usermod -G containers -a backup &&\ 
@@ -36,11 +37,11 @@ RUN /usr/sbin/usermod -u 22015 -d /home/backup  backup &&\
 	rm -r /tmp/fcron-3.3.0 &&\
 	rm /tmp/fcron-3.3.0.src.tar.gz &&\	
 	mkdir -p /var/log/backup/ /home/sql_dumps &&\
-	chown -R backup /home/sql_dumps /var/log/backup/ &&\
- 	/home/post_build_clean.sh
+	chown -R backup /home/sql_dumps /var/log/backup/
  
-ADD home home
+
 ADD src/crontab  /home/backup/fcron/spool/backup.orig
+COPY sudoers /etc/sudoers.d/backup
 
 RUN chown -R backup ~backup &&\
 	chown backup /home/engines/scripts/configurators/saved &&\
@@ -53,7 +54,7 @@ RUN chown -R backup ~backup &&\
 	
 	
 	
-COPY sudoers /etc/sudoers/backup
+
 VOLUME /backup_src/volumes
 VOLUME /backup_src/engines
 VOLUME /local_backup_dests

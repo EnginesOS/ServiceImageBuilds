@@ -1,10 +1,10 @@
 #!/bin/bash
 
-touch /home/email/maps/smarthost_passwd 
-touch /home/email/maps/generic 
-touch /home/email/maps/transport
-sudo -n /home/engines/scipts/engine/_postmap transport 
-sudo -n /home/engines/scipts/engine/_postmap smarthost_passwd
-sudo -n /home/engines/scipts/engine/_postmap generic
+touch /home/email/smarthost_passwd 
+touch /home/email/generic 
+touch /home/email/transport
+sudo -n /home/engines/scripts/engine/_postmap.sh transport 
+sudo -n /home/engines/scripts/engine/_postmap.sh smarthost_passwd
+sudo -n /home/engines/scripts/engine/_postmap.sh generic
  
 sudo -n /home/engines/scripts/first_run/_setup_dirs.sh

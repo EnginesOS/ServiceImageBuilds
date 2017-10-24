@@ -11,7 +11,7 @@ if test -z $domain_name
 fi
 
 dn_tmpl=`cat /home/engines/templates/email/del_domain.ldif`
-dn=`eval echo $dn_tmp. `
+dn=`eval echo $dn_tmpl `
 /home/engines/scripts/ldap/ldapdelete.sh $dn &> $LDAP_OUTF
 result=$?
 

@@ -41,7 +41,6 @@ RUN mkdir 	/home/postfix \
 	 		/etc/postfix/sender_canonical \
 	 	    /etc/postfix/generic && \
 	/usr/sbin/postfix -c /etc/postfix/ set-permissions create-missing ;\
-	postmap /etc/postfix/transport &&\
 	chown postfix /home/postfix/ &&\
 	chown postfix /home/engines/scripts/configurators/saved /home/postfix &&\
 	chgrp postfix /home/engines/scripts/configurators/*.sh &&\

@@ -19,7 +19,8 @@ if test `wc -c /etc/postfix/transport.smart | cut -f 1 -d" " ` -gt 4
  then
 	cp /etc/postfix/transport.smart /home/postfix/transport 
 else
-  	echo  "*	:" > /home/postfix/transport
+  	#echo  "*	:smtp" > /home/postfix/transport
+  	touch  /home/postfix/transport
 fi
 if ! test -z $deliver_local 
  then

@@ -9,9 +9,9 @@ if ! test -f /engines/var/run/flags/first_run
   fi
 fi
 
-PID_FILE=/var/spool/postfix/pid/master.pid
+PID_FILE=/tmp/sleep.pid
 
-KILL_SCRIPT=/home/engines/scripts/signal/kill_postfix.sh
+KILL_SCRIPT=/home/engines/scripts/signal/kill_sleep.sh
 export KILL_SCRIPT
 
 export PID_FILE
@@ -21,23 +21,8 @@ sudo -n /home/engines/scripts/_start_syslog.sh
 
 echo started syslog
 
+/home/engines/scripts/startup/init_dbs.sh
+sudo -n /home/engines/scripts/startup/_start_postfix.sh
 
 
-sudo -n /usr/lib/postfix/sbin/master -w &
-
-dummy=$!
-echo started master $dummy
-touch  /engines/var/run/flags/startup_complete
-
-sleep 6
-while test -f  /var/spool/postfix/pid/master.pid
- do
- 	sleep 10 &
- 	wait
-    exit_code=$?
-done
-
-
-rm /engines/var/run/flags/startup_complete  
-exit $exit_code
 
