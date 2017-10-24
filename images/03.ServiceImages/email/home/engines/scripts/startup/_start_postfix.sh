@@ -17,6 +17,7 @@ while test -f /var/spool/postfix/pid/master.pid
   sleep 3600 &
   echo $! > /tmp/sleep.pid
   wait
+  echo sleep dead
 done 
 
 
