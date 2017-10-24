@@ -1,3 +1,7 @@
 #!/bin/bash
-cp "/home/email/$1" /etc/postfix/maps
-postmap  /etc/postfix/maps/"$1"   
+if ! test -f "/home/postfix/$1" 
+ then
+  touch "/home/postfix/$1" 
+ fi 
+cp "/home/postfix/$1" /etc/postfix/
+postmap  /etc/postfix/"$1" 
