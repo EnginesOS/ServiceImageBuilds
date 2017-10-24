@@ -11,10 +11,6 @@ if ! test -f /etc/postfix/mailname
  sudo -n /home/engines/scripts/engine/_set_mailname.sh "not.set"
 fi
 
-sudo -n /home/engines/scripts/engine/_postmap.sh transport
-
-	touch	/home/postfix/generic
-	sudo -n /home/engines/scripts/engine/_postmap.sh generic
-	
-	touch /home/postfix/smarthost_passwd
-	sudo -n /home/engines/scripts/engine/_postmap.sh smarthost_passwd
+   sudo -n /home/engines/scripts/engine/_postmap.sh transport
+   sudo -n /home/engines/scripts/engine/_postmap.sh generic
+   sudo -n /home/engines/scripts/engine/_postmap.sh smarthost_passwd

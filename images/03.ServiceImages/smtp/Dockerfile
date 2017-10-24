@@ -13,7 +13,7 @@ ADD home home
 ADD src/postfix/master.cf /etc/postfix/
 ADD src/postfix/main.cf /etc/postfix/
 ADD src/postfix/mailname /etc/postfix/mailname
-ADD src/postfix/transport /etc/postfix/
+
 
 RUN mkdir 	/home/postfix \
 			/usr/share/doc/postfix/html \

@@ -1,0 +1,2 @@
+@*local  no-reply@${domain_name}
+@localhost  no-reply@${domain_name}
