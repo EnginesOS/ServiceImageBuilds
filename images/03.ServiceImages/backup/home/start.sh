@@ -6,8 +6,6 @@ PID_FILE=/home/cron/fcron.pid
 export PID_FILE
 . /home/engines/functions/trap.sh
 
-
-
 sudo -n /home/engines/scripts/_start_syslog.sh
 
 mkdir -p /home/backup/sql_dumps/
