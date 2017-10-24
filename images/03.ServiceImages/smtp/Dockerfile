@@ -30,22 +30,22 @@ RUN mkdir 	/home/postfix \
 	 	  	/usr/lib/postfix/sdbm \
 	 	  	/usr/lib/postfix/sqlite \
 	 	  	/etc/postfix/dynamicmaps.cf.d \
-	 	  	/etc/postfix/main.cf.proto \
 	 	  	/etc/postfix/makedefs.out \
-	 	  	/etc/postfix/master.cf.proto \
 	 	  	/etc/postfix/postfix-files.d \
-	 	  	/usr/lib/postfix/libglobal &&\
-	 		touch /etc/postfix/generic.db \
-	 		/etc/postfix/transport.smart \
-	 		/etc/postfix/smarthost_passwd \
-	 		/etc/postfix/sender_canonical \
-	 	    /etc/postfix/generic && \
+	 	  	/usr/lib/postfix/libglobal  && \
 	/usr/sbin/postfix -c /etc/postfix/ set-permissions create-missing ;\
 	chown postfix /home/postfix/ &&\
 	chown postfix /home/engines/scripts/configurators/saved /home/postfix &&\
 	chgrp postfix /home/engines/scripts/configurators/*.sh &&\
 	cp -rp /var/spool/postfix /tmp/spool_postfix
 	
+#	&&\
+#	 		touch /etc/postfix/generic.db \
+#	 		/etc/postfix/transport.smart \
+#	 		/etc/postfix/smarthost_passwd \
+#	 		/etc/postfix/sender_canonical \
+#	 	    /etc/postfix/generic
+#	
 ADD sudoers /etc/sudoers.d/smtp
 # chown postfix /etc/postfix/generic /etc/postfix/generic.db /etc/postfix/smarthost_passwd /etc/postfix/sender_canonical /etc/postfix/smarthost_passwd /etc/postfix/transport /etc/postfix/transport.smart /etc/postfix/transport.db 
 RUN	chmod -R go-rw /etc/sudoers /etc/sudoers.d/
