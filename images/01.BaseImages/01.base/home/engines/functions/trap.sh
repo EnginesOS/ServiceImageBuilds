@@ -19,6 +19,8 @@ custom_stop()
  fi
 }
 
+
+
 trap_term()
 {
 SIGNAL=15
@@ -26,17 +28,22 @@ export SIGNAL
 touch /engines/var/run/flags/sig_term
 custom_stop
 	
+	
  if ! test -z $KILL_SCRIPT
    then
 	  $KILL_SCRIPT $SIGNAL
+      touch /engines/var/run/flags/termed	
  fi
 		
  if test -f $PID_FILE  #if exists 
   then
-    if test -f /home/engines/scripts/signal/_signal.sh
-	 then
+   kill -0 `cat $PID_FILE `
+    if test $? -eq 0
+     then
+      if test -f /home/engines/scripts/signal/_signal.sh
+	   then
 		sudo -n /home/engines/scripts/signal/_signal.sh $SIGNAL	`cat $PID_FILE`
-	 else
+	  else
 		kill -$SIGNAL `cat    $PID_FILE `	
 		pid=`cat    $PID_FILE `				
 		echo $pid |grep ^[0-9]
@@ -47,8 +54,9 @@ custom_stop
            echo wait \"$pid\"
            wait $pid   >& /dev/null
 		 fi			
-	  fi
-   touch /engines/var/run/flags/termed	 			
+	 fi
+     touch /engines/var/run/flags/termed
+   fi	 			
  fi
 }
 	
@@ -61,17 +69,22 @@ touch /engines/var/run/flags/sig_hup
  if ! test -z $HUP_SCRIPT
 	then
 	 $HUP_SCRIPT $SIGNAL
+     touch /engines/var/run/flags/huped	
  fi
  
  if test -f $PID_FILE
   then
-	if test -f /home/engines/scripts/signal/_signal.sh
-	  then
+   kill -0 `cat $PID_FILE `
+    if test $? -eq 0
+     then
+	  if test -f /home/engines/scripts/signal/_signal.sh
+	   then
 		sudo -n /home/engines/scripts/signal/_signal.sh $SIGNAL	$PID_FILE
-	else
+	  else
 		kill -$SIGNAL `cat  $PID_FILE  `	
-	 fi
-  touch /engines/var/run/flags/huped			
+	  fi
+     touch /engines/var/run/flags/huped
+   fi			
  fi		
 }
 
@@ -84,27 +97,32 @@ custom_stop
 	
  if ! test -z $KILL_SCRIPT
 	then
-	  $KILL_SCRIPT $SIGNAL
+	  $KILL_SCRIPT $SIGNAL				
+     touch /engines/var/run/flags/quited
  fi
  
 if test -f $PID_FILE
  then
-	if test -f /home/engines/scripts/signal/_signal.sh
-	  then
-	    sudo	/home/engines/scripts/signal/_signal.sh $SIGNAL	$PID_FILE	
-	else
-	    kill -$SIGNAL `cat  $PID_FILE  `
-		pid=`cat    $PID_FILE `				
-		echo $pid |grep ^[0-9]
- 	 	  if test $? -ne 0
-        	then
-             echo no wait for \"$pid\"
-          else
-             echo wait \"$pid\"
-             wait $pid   
-		  fi
-	 fi				
-  touch /engines/var/run/flags/quited
+   kill -0 `cat $PID_FILE `
+    if test $? -eq 0
+     then
+	   if test -f /home/engines/scripts/signal/_signal.sh
+	    then
+	      sudo -n /home/engines/scripts/signal/_signal.sh $SIGNAL	$PID_FILE	
+	   else
+	      kill -$SIGNAL `cat  $PID_FILE  `
+		  pid=`cat  $PID_FILE `				
+		  echo $pid |grep ^[0-9]
+ 	 	    if test $? -ne 0
+        	  then
+               echo no wait for \"$pid\"
+            else
+               echo wait \"$pid\"
+               wait $pid   
+		    fi
+	   fi				
+      touch /engines/var/run/flags/quited
+    fi 
 fi	
 }
 
@@ -127,7 +145,7 @@ then
 	fi   	
     if test -f $PID_FILE
      then
-      #  echo "Warning stale $PID_FILE"
+      echo "Warning stale $PID_FILE"
       kill -0 `cat $PID_FILE &> /dev/null`
         if test $? -ne 0
          then
