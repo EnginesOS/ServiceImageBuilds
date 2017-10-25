@@ -12,7 +12,7 @@ ADD home home
 
 RUN	mkdir -p /home/app/data  &&\
  	mkdir -p /home/app/public  &&\
- 	chown -R www-data /home/app/data /home/app/public &&\ 	
+ 	chown -R www-data /home/app &&\ 	
  	usermod -G containers -a www-data 
  	
 USER www-data
