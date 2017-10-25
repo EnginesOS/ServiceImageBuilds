@@ -10,26 +10,22 @@ ENV ContGrp ruby
 RUN gem install oink rest-client net_http_unix yajl-ruby 
 ADD home home
 
-RUN	mkdir -p /home/app/data  &&\
- 	mkdir -p /home/app/public  &&\
- 	chown -R www-data /home/app &&\ 	
+RUN	chgrp containers /home &&\
+ 	chmod g+w /home &&\
  	usermod -G containers -a www-data 
  	
 USER www-data
 
-WORKDIR /home/app/
+RUN	/home/deploy.sh
 
-RUN	git init
-
-ENV RELEASE $release
-
-ADD src/gitconfig.tmpl /home/app/.git/config.tmpl
-
-RUN cat /home/app/.git/config.tmpl | sed "/\$release/s//$RELEASE/" > /home/app/.git/config &&\
-	/home/deployment.sh
+USER 0
+RUN	chown -R www-data /home/app &&\ 	
+ 	mkdir -p /home/app/data  &&\
+ 	mkdir -p /home/app/public  &&\
+ 	chmod g-w /home 
 
 ENV HOME /home/app
-
+WORKDIR /home/app/
 USER www-data
 
 CMD ["/home/start.sh"]
