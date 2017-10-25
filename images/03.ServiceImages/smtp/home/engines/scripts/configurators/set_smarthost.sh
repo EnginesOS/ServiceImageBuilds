@@ -17,15 +17,15 @@ if ! test -z $smart_hostname
 else
     rm -r /etc/postfix/transport.smart
     touch /etc/postfix/transport.smart
-	echo "*	smtp:"  > /home/postfix/transport
+	rm /home/postfix/transport
 fi 
 
-sudo -n /home/engines/scripts/engine/_postmap.sh transport
+
 if test -f /home/engines/scripts/configurators/saved/default_domain
   then
    cat /home/engines/scripts/configurators/saved/default_domain | /home/engines/bin/json_to_env >/tmp/.2env
    . /tmp/.2env
-    if test $deliver_local =eq 1
+    if test $deliver_local -eq 1
      then
       echo "[$domain_name] :email.engines.internal" >> /home/postfix/transport
     fi
@@ -56,7 +56,6 @@ sudo -n /home/engines/scripts/engine/_postmap.sh transport
 if test -z $smarthost_password
  then 	
   rm /home/postfix/smarthost_passwd
-  touch /home/postfix/smarthost_passwd
 else
  echo "$smarthost_hostname $smarthost_username:$smarthost_password" > /home/postfix/smarthost_passwd
 fi
