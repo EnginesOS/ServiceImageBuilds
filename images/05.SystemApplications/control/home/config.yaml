@@ -2,7 +2,7 @@
 environment: production
 chdir: /home/app
 address: 0.0.0.0
-port: 8484
+port: 8001
 pid: /engines/var/run/control.pid
 log: /var/log/controlcontrol.log
 max_conns: 1024
