@@ -1,0 +1,13 @@
+[core]
+				        repositoryformatversion = 0
+				        filemode = true
+				        bare = false
+				        logallrefupdates = true
+				[branch "$release"]
+				[remote "origin"]
+				        url = https://github.com/lachdoug/admin_gui
+				        fetch = +refs/heads/*:refs/remotes/origin/*
+				[branch "$release"]
+				        remote = origin
+				        merge = refs/heads/$release
+				
