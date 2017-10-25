@@ -1,6 +1,10 @@
 #!/bin/bash
 
-rm /var/spool/postfix/pid/master.pid
+if test -f /var/spool/postfix/pid/master.pid
+ then
+	rm /var/spool/postfix/pid/master.pid
+ fi
+
 /usr/lib/postfix/sbin/master -w
 r=$?
 if test $r -eq 0
