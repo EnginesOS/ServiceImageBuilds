@@ -10,16 +10,10 @@ export KILL_SCRIPT
 
 if ! test -f /etc/ipsec.d/private/ipvpn.key
  then
-	sudo -n /home/engines/scripts/first_run/setup.sh
+	sudo -n /home/engines/scripts/first_run/_setup.sh
 fi
 
-sudo -n /home/engines/scripts/_start_syslog.sh
-
-touch /engines/var/run/flags/startup_complete  
-
 sudo -n /home/engines/scripts/startup/_start.sh 
-exit_code=$?
 
-sudo -n  /home/engines/scripts/_kill_syslog.sh
-rm -f /engines/var/run/flags/startup_complete
-exit $exit_code
+
+
