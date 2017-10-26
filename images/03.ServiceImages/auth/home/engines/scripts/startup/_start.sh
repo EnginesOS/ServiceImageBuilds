@@ -15,8 +15,8 @@ sleep 5
  if test -f /engines/var/run/flags/first_run.done
   then
 	wait $kpid 	
-	/home/engines/scripts/signal/_kill_kerberos.sh TERM
 	exit_code=$?
+	/home/engines/scripts/signal/_kill_kerberos.sh TERM
 	rm /engines/var/run/flags/startup_complete
 	export exit_code
   else
