@@ -2,6 +2,9 @@
 
 PID_FILE=/tmp/avahi-publisher.pid
 export PID_FILE
+KILL_SCRIPT=/home/engines/scripts/signal/kill_avahi.sh
+export KILL_SCRIPT
+
 . /home/engines/functions/trap.sh
 
 
