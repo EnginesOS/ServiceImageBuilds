@@ -15,6 +15,5 @@ if test -f /engines/var/run/flags/first_run.done
   else
 	/home/engines/scripts/first_run/first_run.sh			
  fi
- 
-#sleep 500
+
 exit $exit_code
