@@ -1,4 +1,4 @@
- #!/bin/bash
+#!/bin/bash
 cron_list_file=`mktemp`
  /home/cron/bin/fcrontab -l | sed "/*/s//STAR/g"  > $cron_list_file
 first=1
