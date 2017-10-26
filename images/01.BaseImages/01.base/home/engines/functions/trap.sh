@@ -54,8 +54,9 @@ else
            wait $pid   >& /dev/null
 		 fi			
 	 fi
-   touch /engines/var/run/flags/termed
- fi	 			
+     touch /engines/var/run/flags/termed
+   fi	 			
+ fi
 fi
 }
 	
