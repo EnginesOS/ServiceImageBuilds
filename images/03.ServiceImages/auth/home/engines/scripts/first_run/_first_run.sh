@@ -34,6 +34,8 @@ echo addprinc -randkey ldap/ldap.engines.internal@ENGINES.INTERNAL | kadmin.loca
 mkdir /etc/krb5kdc/services/ldap
 echo ktadd -k /etc/krb5kdc/services/ldap/ldap.keytab ldap/ldap.engines.internal@ENGINES.INTERNAL | kadmin.local
  
+echo addprinc -randkey uadmin/admin.engines.internal@ENGINES.INTERNAL | kadmin.local
+echo ktadd -k /etc/krb5kdc/services/uadmin/uadmin_kadmin.keytab uadmin/admin.engines.internal@ENGINES.INTERNAL | kadmin.local
  
 touch /engines/var/run/flags/first_run.done
 wait $pid

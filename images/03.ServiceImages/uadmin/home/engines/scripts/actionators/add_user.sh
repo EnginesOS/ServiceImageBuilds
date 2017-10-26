@@ -12,4 +12,16 @@ uidnumber=`/home/engines/scripts/ldap/next_uid.sh`
 
 echo uidnumber:$uidnumber >> $LDIF_FILE
 
-cat $LDIF_FILE | /home/engines/scripts/ldap/ldapadd.sh 
+r=`cat $LDIF_FILE | /home/engines/scripts/ldap/ldapadd.sh` 
+if test $? -eq 0
+ then
+  echo "addprinc -pw $password  $uid" | sudo -n /home/engines/scripts/actionators/sudo/_add_kerberos_princ.sh
+fi   
+e=$?
+if test $e -eq 0
+ then
+   echo $r
+ else
+   echo '{"Error":"failed to add k user","Result":"Failed","exit":"'$e'"}'   
+ fi
+   

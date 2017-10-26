@@ -6,6 +6,8 @@ RUN adduser -q --disabled-password --home /home/app -uid 22033 uadmin &&\
 	apt-get -y install libsasl2-modules-gssapi-mit 
 	
 COPY  home/ /home
+COPY sudoers /etc/sudoers.d/uadmin
+RUN chmod og-rw /etc/sudoers.d/uadmin
 
 ENV ContUser uadmin
 ENV ContGrp uadmin
