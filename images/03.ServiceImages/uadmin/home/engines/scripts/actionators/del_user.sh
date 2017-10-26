@@ -14,3 +14,15 @@ done
 
 
 cat $LDIF_FILE | /home/engines/scripts/ldap/ldapmodify.sh 
+if test $? -eq 0
+ then
+  echo "delprinc -force  $uid" | sudo -n /home/engines/scripts/actionators/sudo/_add_kerberos_princ.sh
+fi   
+e=$?
+if test $e -eq 0
+ then
+   echo $r
+ else
+   echo '{"Error":"failed to add k user","Result":"Failed","exit":"'$e'"}'   
+ fi
+   
