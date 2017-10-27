@@ -1,4 +1,0 @@
-dn: cn=gidNext,dc=engines,dc=internal
-changetype: modify
-increment:gidNumber
-gidNumber: 1
