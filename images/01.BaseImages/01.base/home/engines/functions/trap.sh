@@ -1,12 +1,29 @@
 #!/bin/sh
 
+service_first_run_check()
+{
+if ! test -f /home/engines/run/flags/first_run.done
+  then
+    if test -f /home/engines/scripts/first_run/first_run.sh
+     then
+	   /home/engines/scripts/first_run/first_run.sh &> /home/engines/run/flags/first_run.log
+	    if test $? -eq 0 
+	     then
+	       touch /home/engines/run/flags/first_run.done
+	    fi
+	 else
+	   touch /home/engines/run/flags/first_run.done
+	 fi   			
+ fi
+
+}
 clear_stale_flags()
 {
  for flag in sig_term termed sig_hup huped sig_quit quited
  do
-   if test -f /engines/var/run/flags/$flag
+   if test -f /home/engines/run/flags/$flag
     then
-	 rm -f /engines/var/run/flags/$flag
+	 rm -f /home/engines/run/flags/$flag
    fi 
  done
 } 
@@ -15,7 +32,7 @@ custom_stop()
 {
  if test -f /home/engines/scripts/engine/custom_stop.sh
   then
-   /home/engines/scripts/engine/custom_stop.sh
+   /home/engines/scripts/engine/custom_stop.sh $SIGNAL
  fi
 }
 
@@ -24,14 +41,14 @@ trap_term()
 {
 SIGNAL=15
 export SIGNAL
-touch /engines/var/run/flags/sig_term
+touch /home/engines/run/flags/sig_term
 custom_stop
 	
 	
 if ! test -z $KILL_SCRIPT
  then
   $KILL_SCRIPT $SIGNAL
-  touch /engines/var/run/flags/termed	
+  touch /home/engines/run/flags/termed	
 else
  if test -f $PID_FILE  #if exists 
   then
@@ -53,9 +70,13 @@ else
            wait $pid   >& /dev/null
 		 fi			
 	 fi
-     touch /engines/var/run/flags/termed
+     touch /home/engines/run/flags/termed
    fi	 			
  fi
+fi
+if test -f /home/engines/etc/SYSLOG
+ then
+   sudo -n  /home/engines/scripts/_kill_syslog.sh
 fi
 }
 	
@@ -63,12 +84,12 @@ trap_hup()
 {
 SIGNAL=1
 export SIGNAL
-touch /engines/var/run/flags/sig_hup
+touch /home/engines/run/flags/sig_hup
 	
 if ! test -z $HUP_SCRIPT
  then
    $HUP_SCRIPT $SIGNAL
-   touch /engines/var/run/flags/huped	
+   touch /home/engines/run/flags/huped	
 else
  if test -f $PID_FILE
   then
@@ -81,7 +102,7 @@ else
 	  else
 		kill -$SIGNAL `cat  $PID_FILE  `	
 	  fi
-    touch /engines/var/run/flags/huped
+    touch /home/engines/run/flags/huped
    fi			
  fi	
 fi	
@@ -91,13 +112,13 @@ trap_quit()
 {
 SIGNAL=15
 export SIGNAL
-touch /engines/var/run/flags/sig_quit
+touch /home/engines/run/flags/sig_quit
 custom_stop
 	
 if ! test -z $KILL_SCRIPT
  then
   $KILL_SCRIPT $SIGNAL				
-  touch /engines/var/run/flags/quited
+  touch /home/engines/run/flags/quited
 else 
   if test -f $PID_FILE
    then
@@ -119,9 +140,14 @@ else
                  wait $pid   
   		    fi
   	   fi				
-        touch /engines/var/run/flags/quited
+        touch /home/engines/run/flags/quited
+        
       fi 
    fi	
+fi
+if test -f /home/engines/etc/SYSLOG
+ then
+   sudo -n  /home/engines/scripts/_kill_syslog.sh
 fi
 }
 
@@ -131,11 +157,31 @@ trap trap_term 15
 trap trap_hup  1
 trap trap_quit 3
 
-if ! test -d /engines/var/run/flags/
+if ! test -d /home/engines/run/flags/
  then 
-  mkdir -p /engines/var/run/flags/
+  mkdir -p /home/engines/run/flags/
 fi
 
+if test -f /home/engines/etc/SYSLOG
+ then
+  sudo -n /home/engines/scripts/_start_syslog.sh
+fi
+
+if test -f /home/engines/etc/LOG_DIR
+ then 
+  LOG_DIR=`cat /home/engines/etc/LOG_DIR`
+else
+  LOG_DIR=/var/log
+fi
+
+for DIR in $LOG_DIR
+do
+ if ! test -d $DIR
+  then
+   mkdir -p $DIR
+ fi
+done
+  
 if ! test -z $PID_FILE
 then
   if ! test -d `dirname $PID_FILE`

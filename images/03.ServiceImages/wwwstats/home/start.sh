@@ -8,10 +8,10 @@ export PID_FILE
 mkdir -p /var/log/apache2/
 
 /usr/sbin/apache2ctl  -DFOREGROUND & 
-touch /engines/var/run/flags/startup_complete  
+touch /home/engines/run/flags/startup_complete  
 wait 
 exit_code=$?
-rm -f /engines/var/run/flags/startup_complete
+rm -f /home/engines/run/flags/startup_complete
 exit $exit_code
 
 

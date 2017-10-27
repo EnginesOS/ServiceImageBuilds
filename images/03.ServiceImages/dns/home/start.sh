@@ -24,10 +24,9 @@ export PID_FILE
 
 sudo -n /home/engines/scripts/engine/_setup.sh
 
-sudo -n /home/engines/scripts/_start_syslog.sh
 
 sudo -n /usr/sbin/named  -c /etc/bind/named.conf -f -u bind &
-touch /engines/var/run/flags/startup_complete
+touch /home/engines/run/flags/startup_complete
 
 . /home/engines/scripts/services/dns_functions.sh
 hostname=lanhost
@@ -40,5 +39,5 @@ add_to_internal_domain
 wait  
 exit_code=$?
 
-rm /engines/var/run/flags/startup_complete
+rm /home/engines/run/flags/startup_complete
 exit $exit_code

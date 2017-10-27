@@ -1,11 +1,11 @@
 #!/bin/sh
 
-if ! test -f /engines/var/run/flags/built
+if ! test -f /home/engines/run/flags/built
  then
-   touch /engines/var/run/flags/built
+   touch /home/engines/run/flags/built
 fi
  
-if ! test -f /engines/var/run/flags/ca-update
+if ! test -f /home/engines/run/flags/ca-update
  then
    sudo -n /home/engines/scripts/_update_ca.sh		
 fi

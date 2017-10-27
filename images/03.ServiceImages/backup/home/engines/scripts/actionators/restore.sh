@@ -104,7 +104,7 @@ function restore_engine_services {
 echo ""
 }
 
-echo  $type > /engines/var/run/flags/restore
+echo  $type > /home/engines/run/flags/restore
 
 if test $type = full
  then
@@ -151,5 +151,5 @@ else
  exit 255   
 fi
 
-rm /engines/var/run/flags/restore
+rm /home/engines/run/flags/restore
 exit 0

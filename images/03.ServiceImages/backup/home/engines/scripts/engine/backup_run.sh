@@ -1,5 +1,5 @@
 #!/bin/sh
-echo backup_run > /engines/var/run/flags/backup_run
+echo backup_run > /home/engines/run/flags/backup_run
 default_email=`cat /home/engines/scripts/configurators/saved/backup_email`
 Backup_ConfigDir=/home/backup/.duply/
 
@@ -38,4 +38,4 @@ for backup in `ls $Backup_ConfigDir |grep -v duply_conf`
 	cat /tmp/email /var/log/backup/$bfn | sendmail -t $email -f $email
 done 
 
-rm /engines/var/run/flags/backup_run
+rm /home/engines/run/flags/backup_run

@@ -24,6 +24,6 @@ mkdir /var/run/postgresql/
 	 psql </tmp/t.sql	 
 	 kill -TERM $pid
 	 wait $pid	  	
-     touch /engines/var/run/flags/first_run_done   	 	 	 
+     touch /home/engines/run/flags/first_run_done   	 	 	 
  fi
  	

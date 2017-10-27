@@ -13,10 +13,10 @@ export PID_FILE
 
 /usr/sbin/nginx &
 
-touch /engines/var/run/flags/startup_complete
+touch /home/engines/run/flags/startup_complete
 
 wait
 exit_code=$?
 	
-rm /engines/var/run/flags/startup_complete
+rm /home/engines/run/flags/startup_complete
 exit $exit_code

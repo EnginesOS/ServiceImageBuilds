@@ -25,8 +25,8 @@ git pull
 # RAILS_ENV=production 
 RAILS_ENV=development
 
-touch  /engines/var/run/startup_complete
-chown 21000 /engines/var/run/startup_complete
+touch  /home/engines/run/startup_complete
+chown 21000 /home/engines/run/startup_complete
 SECRET_KEY_BASE=`/usr/local/rbenv/shims/bundle exec rake secret`
 export SECRET_KEY_BASE RAILS_ENV
 	if test -f /opt/engines/etc/ssl/keys/engines.key -a  -f /opt/engines/etc/ssl/certs/engines.crt 
@@ -36,4 +36,4 @@ export SECRET_KEY_BASE RAILS_ENV
 	 	/usr/local/rbenv/shims/bundle exec thin -p 8000   start
 	fi
 	
-rm /engines/var/run/startup_complete
+rm /home/engines/run/startup_complete

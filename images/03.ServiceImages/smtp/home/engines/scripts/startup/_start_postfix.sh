@@ -14,7 +14,7 @@ if test $r -eq 0
   echo "Failed with $r"
   exit $r	  
 fi
-touch  /engines/var/run/flags/startup_complete
+touch  /home/engines/run/flags/startup_complete
 
 while test -f /var/spool/postfix/pid/master.pid
  do
@@ -24,6 +24,6 @@ while test -f /var/spool/postfix/pid/master.pid
 done 
 
 
-rm /engines/var/run/flags/startup_complete  
+rm /home/engines/run/flags/startup_complete  
 /home/engines/scripts/signal/_kill_postfix.sh
-/home/engines/scripts/signal/_kill_syslog.sh
+

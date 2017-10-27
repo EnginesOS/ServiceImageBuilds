@@ -3,5 +3,5 @@
 if test -f /usr/local/share/ca-certificates/engines_internal_ca.crt
  then
    sudo -n update-ca-certificates
-   touch /engines/var/run/flags/ca-update
+   touch /home/engines/run/flags/ca-update
 fi

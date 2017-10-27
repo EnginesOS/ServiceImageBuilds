@@ -9,7 +9,7 @@ export KILL_SCRIPT
 
 mkdir -p /home/auth/logs/ 
 
-if test -f /engines/var/run/flags/first_run.done
+if test -f /home/engines/run/flags/first_run.done
   then
 	sudo -n /home/engines/scripts/startup/_start.sh 	
   else

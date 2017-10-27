@@ -33,7 +33,4 @@ if ! test $1 = HUP
       kill -0 $pid`
      done
  fi    
-
-
-	/home/engines/scripts/_kill_syslog.sh
 fi

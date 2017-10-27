@@ -12,7 +12,7 @@ echo $res | grep -vi ERROR
 if test $? -eq 0
  then 
 	echo "Success"
-	touch /engines/var/run/flags/first_run_done
+	touch /home/engines/run/flags/first_run_done
 	exit 0
 fi
 	
