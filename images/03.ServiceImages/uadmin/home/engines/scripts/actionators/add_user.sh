@@ -11,17 +11,21 @@ done
 uidnumber=`/home/engines/scripts/ldap/next_uid.sh`
 
 echo uidnumber:$uidnumber >> $LDIF_FILE
-
+err_file=`mktemp`
 r=`cat $LDIF_FILE | /home/engines/scripts/ldap/ldapadd.sh` 
 if test $? -eq 0
  then
-  echo "addprinc -pw $password  $uid" | sudo -n /home/engines/scripts/actionators/sudo/_add_kerberos_princ.sh
+  echo "addprinc -pw $password  $uid" | sudo -n /home/engines/scripts/actionators/sudo/_add_kerberos_princ.sh &> $err_file
 fi   
 e=$?
 if test $e -eq 0
  then
    echo $r
  else
-   echo '{"Error":"failed to add k user","Result":"Failed","exit":"'$e'"}'   
+   echo '{"uid":"'$uid'"}' | /home/engines/scripts/actionators/del_user.sh   
+    mesg=`cat $err_file`
+   echo '{"Error":"failed to add k user","Result":"Failed","exit":"'$e',"mesg":"'$mesg'"}'   
  fi
+  
+rm  $err_file
    
