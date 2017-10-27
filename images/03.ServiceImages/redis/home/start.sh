@@ -32,7 +32,7 @@ touch /home/engines/run/flags/startup_complete
 	wait
     exit_code=$?
 	
-	if test ` ls /tmp/  new_service.* | wc -l` -ne 0
+	if test ` ls /tmp/  new_service.* 2>/dev/null| wc -l ` -ne 0 
 	then
 		for service in ` ls /tmp/new_service.* |cut -f2 -d.`
 		  do
