@@ -1,5 +1,5 @@
 #!/bin/bash
-
+  echo kill postfix $1
 
  if  test -f /var/spool/postfix/pid/master.pid
   then
