@@ -1,8 +1,12 @@
 #!/bin/bash
-
+  echo kill postfix $1
 
  if  test -f /var/spool/postfix/pid/master.pid
   then
-    kill $1 `cat /var/spool/postfix/pid/master.pid`
+   kill -0 `cat /var/spool/postfix/pid/master.pid` 
+    if test $? -eq 0
+     then
+    	kill -$1 `cat /var/spool/postfix/pid/master.pid`
+     fi
  fi
  

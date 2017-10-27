@@ -47,7 +47,7 @@ olcAccess: {4} to dn.subtree="ou=Groups,dc=engines,dc=internal"
         by  dn="cn=system,ou=hosts,dc=engines,dc=internal" write
         by dn="cn=uadmin,ou=hosts,dc=engines,dc=internal" write
         by * read
-olcAccess: {5} to dn.subtree="cn=Distribution Groups,dc=engines,dc=internal"
+olcAccess: {5} to dn.subtree="ou=Distribution Groups,dc=engines,dc=internal"
         by dn="cn=uadmin,ou=hosts,dc=engines,dc=internal" write
         by * read
 olcAccess: {6} to dn.base="cn=ftp,ou=Groups,dc=engines,dc=internal" by dn="cn=ftp,ou=hosts,dc=engines,dc=internal" write

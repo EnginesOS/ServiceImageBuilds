@@ -28,9 +28,7 @@ RUN cd /tmp/ &&\
 	 	  	/usr/lib/postfix/sdbm \
 	 	  	/usr/lib/postfix/sqlite \
 	 	  	/etc/postfix/dynamicmaps.cf.d \
-	 	  	/etc/postfix/main.cf.proto \
 	 	  	/etc/postfix/makedefs.out \
-	 	  	/etc/postfix/master.cf.proto \
 	 	  	/etc/postfix/postfix-files.d \
 	 	  	/usr/lib/postfix/libglobal &&\
 	 /usr/sbin/postfix -c /etc/postfix/ set-permissions create-missing ;\

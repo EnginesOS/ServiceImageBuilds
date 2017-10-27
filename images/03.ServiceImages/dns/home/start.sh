@@ -1,9 +1,5 @@
 #!/bin/bash
 
-if ! test -d /var/log/named/
- then
-  mkdir /var/log/named/
-fi
 
 grep BLANK /var/lib/bind/engines/engines.dnsrecords >/dev/null
 
@@ -32,8 +28,10 @@ touch /home/engines/run/flags/startup_complete
 hostname=lanhost
 ip=`cat  /opt/engines/etc/net/ip`
 add_to_internal_domain
+
 ip=`cat  /opt/engines/etc/net/public`
 hostname=publichost
+no_inarpra=1
 add_to_internal_domain
 
 wait  

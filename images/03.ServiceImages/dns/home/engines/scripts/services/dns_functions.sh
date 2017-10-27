@@ -25,8 +25,12 @@ echo update delete $fqdn_str >> /tmp/.dns_cmd
 echo send >> /tmp/.dns_cmd
 echo $update_line >> /tmp/.dns_cmd
 echo send >> /tmp/.dns_cmd
-echo update add ${ip_reversed}.in-addr.arpa. 30 PTR $fqdn_str >> /tmp/.dns_cmd
-echo send >> /tmp/.dns_cmd
+if test -z $no_inarpra 
+ then
+	echo update add ${ip_reversed}.in-addr.arpa. 30 PTR $fqdn_str >> /tmp/.dns_cmd
+	echo send >> /tmp/.dns_cmd
+fi
+
 nsupdate -k /etc/bind/keys/ddns.private /tmp/.dns_cmd
 
 
