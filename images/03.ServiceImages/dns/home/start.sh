@@ -28,11 +28,12 @@ touch /home/engines/run/flags/startup_complete
 hostname=lanhost
 ip=`cat  /opt/engines/etc/net/ip`
 add_to_internal_domain
-cp /tmp/.dns_cmd /tmp/lanhost.dns_cmd
+
 ip=`cat  /opt/engines/etc/net/public`
 hostname=publichost
+no_inarpra=1
 add_to_internal_domain
-cp /tmp/.dns_cmd /tmp/publichost.dns_cmd
+
 wait  
 exit_code=$?
 
