@@ -21,6 +21,6 @@ if ! test -d /var/lib/mysql/mysql
 	/usr/bin/mysqladmin  -S /var/run/mysqld/mysqld.sock  --protocol=socket -u root  password $pass	 	
 	 kill -TERM $pid
 	 wait $pid
-	 touch /engines/var/run/flags/first_run_done
+	 touch /home/engines/run/flags/first_run_done
  fi
 	 

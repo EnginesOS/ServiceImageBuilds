@@ -35,7 +35,7 @@ if ! test -h /home/app/public/system
              
              
 /home/deployment.sh
-mkdir -p /engines/var/run/flags/
+mkdir -p /home/engines/run/flags/
              
              
 SECRET_KEY_BASE=`/opt/jruby-9.1.6.0/bin/bundle exec rake secret`
@@ -100,12 +100,12 @@ echo Starting Server
 sleep 5      
 nginx &      
 echo Server Started
-touch  /engines/var/run/flags/startup_complete
+touch  /home/engines/run/flags/startup_complete
 wait         
   echo Server Started
-touch  /engines/var/run/flags/startup_complete
+touch  /home/engines/run/flags/startup_complete
 wait         
              
 sleep 500   
-rm /engines/var/run/flags/startup_complete
+rm /home/engines/run/flags/startup_complete
   

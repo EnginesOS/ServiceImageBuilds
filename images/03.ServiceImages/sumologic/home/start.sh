@@ -1,15 +1,15 @@
 #!/bin/bash
 #wait for configurators
 sleep 10
-rm  -f /engines/var/run/flags/startup_complete
+rm  -f /home/engines/run/flags/startup_complete
 if test -f /home/engines/scripts/configurators/saved/credentials
  then
  	 cat /home/engines/scripts/configurators/saved/credentials | /home/engines/bin/json_to_env >/tmp/.env
  	. /tmp/.env
- 	rm -f /engines/var/run/missing_configuration
+ 	rm -f /home/engines/run/missing_configuration
  	echo Configured
  else
- 	touch /engines/var/run/missing_configuration
+ 	touch /home/engines/run/missing_configuration
  	echo "Not Configured"
  	sleep 500
  	exit
@@ -40,8 +40,8 @@ if [ ! -e $sources_json ]; then
 fi
 
 sudo -n /opt/SumoCollector/collector console -- -t -i $access_id -k $access_key -n $collector_name -s $sources_json &
-touch  /engines/var/run/flags/startup_complete
+touch  /home/engines/run/flags/startup_complete
 wait
 exit_code=$?
-rm /engines/var/run/flags/startup_complete
+rm /home/engines/run/flags/startup_complete
 exit $exit_code

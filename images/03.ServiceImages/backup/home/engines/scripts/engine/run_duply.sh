@@ -1,8 +1,8 @@
 #!/bin/bash
 
-echo -n $1 > /engines/var/run/flags/current_backup
-echo -n $2 > /engines/var/run/flags/current_operation
+echo -n $1 > /home/engines/run/flags/current_backup
+echo -n $2 > /home/engines/run/flags/current_operation
 sudo -n duply $*
 r=$?
-rm /engines/var/run/flags/current_backup /engines/var/run/flags/current_operation
+rm /home/engines/run/flags/current_backup /home/engines/run/flags/current_operation
 exit $r

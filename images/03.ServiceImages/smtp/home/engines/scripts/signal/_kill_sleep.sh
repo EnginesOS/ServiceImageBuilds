@@ -6,4 +6,5 @@ echo  /tmp/sleep.pid kill -$1 `cat /tmp/sleep.pid`
 if ! test HUP = $1
  then
   kill -$1 `cat /tmp/sleep.pid`
+  rm /tmp/sleep.pid
 fi

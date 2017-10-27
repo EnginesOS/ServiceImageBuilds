@@ -6,7 +6,7 @@ export PID_FILE
 . /home/engines/functions/trap.sh
 
 
-touch /engines/var/run/flags/startup_complete
+touch /home/engines/run/flags/startup_complete
 	while test 4 -ne 3
 	do 
 	    sleep 500 &
@@ -15,5 +15,5 @@ touch /engines/var/run/flags/startup_complete
 		exit_code=$?
 	done	
 
-rm -f /engines/var/run/flags/startup_complete
+rm -f /home/engines/run/flags/startup_complete
 exit $exit_code

@@ -5,9 +5,9 @@ export RUBY_GC_MALLOC_LIMIT_GROWTH_FACTOR=1.1
 /home/engines/scripts/startup/clear_flags.sh
 SYSTEM_IP=` cat /etc/hosts |grep system |cut -f1`
 
-echo $SYSTEM_IP > /engines/var/run/control_ip
+echo $SYSTEM_IP > /home/engines/run/control_ip
 export SYSTEM_IP 
-PID_FILE=/engines/var/run/system.pid
+PID_FILE=/home/engines/run/system.pid
 export PID_FILE
 . /home/engines/functions/trap.sh
 
@@ -21,9 +21,9 @@ cd /home
  fi
 
 
-#touch /engines/var/run/flags/startup_complete  done in code
+#touch /home/engines/run/flags/startup_complete  done in code
 wait 
 exit_code=$?
-rm -f /engines/var/run/flags/startup_complete
+rm -f /home/engines/run/flags/startup_complete
 exit $exit_code
 

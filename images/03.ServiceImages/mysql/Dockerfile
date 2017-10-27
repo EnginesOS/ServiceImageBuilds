@@ -8,6 +8,8 @@ RUN adduser -q --disabled-password -uid 22006 mysql &&\
 	echo event-scheduler = 1 >> /etc/mysql/mysql.conf.d/mysqld.cnf &&\
 	echo 'sql_mode=""' >> /etc/mysql/mysql.conf.d/mysqld.cnf &&\
 	usermod -G containers -a mysql &&\
+	mkdir /var/run/mysqld &&\
+	chown mysql /var/run/mysqld &&\
  	/home/post_build_clean.sh
 
 

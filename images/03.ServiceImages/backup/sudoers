@@ -1,7 +1,4 @@
 
-
-backup ALL = (root) NOPASSWD: /home/engines/scripts/_start_syslog.sh
-
 backup ALL = (root) NOPASSWD: /usr/bin/duply
 backup ALL = (root) NOPASSWD: SETENV: /home/engines/scripts/restore/_restore_registry.sh
 backup ALL = (root) NOPASSWD: /home/engines/scripts/restore/_clr_restore.sh

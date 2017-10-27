@@ -7,13 +7,13 @@ export PID_FILE
 . /home/engines/functions/trap.sh
 
 
-if test -f /engines/var/run/flags/restart_required
+if test -f /home/engines/run/flags/restart_required
  then
-  rm -f /engines/var/run/flags/restart_required
+  rm -f /home/engines/run/flags/restart_required
 fi
 
 
-touch /engines/var/run/flags/startup_complete
+touch /home/engines/run/flags/startup_complete
 
 configs=`ls /home/config/*.redis.config`
 for config in $configs
@@ -22,7 +22,7 @@ for config in $configs
 	echo -n $! >> $PID_FILE
 	echo -n " " >> $PID_FILE
 done
-touch /engines/var/run/flags/startup_complete
+touch /home/engines/run/flags/startup_complete
  
 # if test `ls /home/config/*.redis.config |wc -l` -eq 0
  # then
@@ -48,5 +48,5 @@ touch /engines/var/run/flags/startup_complete
 
 
 
-rm /engines/var/run/flags/startup_complete
+rm /home/engines/run/flags/startup_complete
 exit $exit_code
