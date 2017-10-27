@@ -1,9 +1,5 @@
 #!/bin/bash
 
-if ! test -d /var/log/named/
- then
-  mkdir /var/log/named/
-fi
 
 grep BLANK /var/lib/bind/engines/engines.dnsrecords >/dev/null
 
@@ -32,10 +28,11 @@ touch /home/engines/run/flags/startup_complete
 hostname=lanhost
 ip=`cat  /opt/engines/etc/net/ip`
 add_to_internal_domain
+cp /tmp/.dns_cmd /tmp/lanhost.dns_cmd
 ip=`cat  /opt/engines/etc/net/public`
 hostname=publichost
 add_to_internal_domain
-
+cp /tmp/.dns_cmd /tmp/publichost.dns_cmd
 wait  
 exit_code=$?
 
