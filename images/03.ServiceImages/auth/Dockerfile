@@ -24,7 +24,7 @@ RUN	mkdir -p  /home/auth/keys &&\
  	chmod g-w /home/auth &&\
 	ln -s /home/.ssh /home/auth/ &&\
 	chmod -R go-rw /etc/sudoers /etc/sudoers.d/ &&\
-	chmod og-rwx /home/auth/key_list
+	chmod og-rwx /home/engines/scripts/first_run/key_list
 
 USER auth
 Env	ContUser auth
