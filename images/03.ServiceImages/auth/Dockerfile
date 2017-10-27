@@ -2,9 +2,7 @@ FROM  engines/servicebase:$release
 
 RUN /home/no_init.sh &&\
 	apt-get -y update &&\
-	apt-get -y install openssh-server \
-				       mysql-client \
-				       krb5-kdc \
+	apt-get -y install krb5-kdc \
 				       krb5-admin-server &&\
 	adduser -q --disabled-password --home /home/auth -uid 22017 auth &&\
 	usermod -G containers -a auth &&\
