@@ -41,7 +41,6 @@ fi
 ip_reversed=`echo $ip |awk  ' BEGIN {  FS="."} {print $4 "." $3 "." $2 "." $1}'`
 echo server 127.0.0.1 > $dns_cmd_file
 echo update delete ${ip_reversed}.in-addr.arpa. >> $dns_cmd_file
-#echo update add ${ip_reversed}.in-addr.arpa.  30 IN PTR $fqdn_str  >> $dns_cmd_file
 echo send >> $dns_cmd_file
 nsupdate -k /etc/bind/keys/ddns.private $dns_cmd_file
 
