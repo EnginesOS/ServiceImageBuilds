@@ -45,6 +45,16 @@ objectclass: organizationalUnit
 objectclass: top
 ou: Distribution Groups
 
+dn: ou=Services,ou=Groups,dc=engines,dc=internal
+objectclass: organizationalUnit
+objectclass: top
+ou: Services
+
+dn: ou=Applications,ou=Groups,dc=engines,dc=internal
+objectclass: organizationalUnit
+objectclass: top
+ou: Applications
+
 dn: ou=hosts,dc=engines,dc=internal
 objectClass: organizationalUnit
 ou: hosts
