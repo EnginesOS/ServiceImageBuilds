@@ -127,7 +127,7 @@ else
        then
   	   if test -f /home/engines/scripts/signal/_signal.sh
   	    then
-  	      sudo -n /home/engines/scripts/signal/_signal.sh $SIGNAL	$PID_FILE	
+  	      sudo -n /home/engines/scripts/signal/_signal.sh $SIGNAL $PID_FILE	
   	   else
   	      kill -$SIGNAL `cat  $PID_FILE  `
   		  pid=`cat  $PID_FILE `				
