@@ -50,10 +50,11 @@ mv /usr/lib/sasl2/sasl2_slapd.conf /usr/lib/sasl2/slapd.conf
 kinit -kt /etc/krb5kdc/keys/ldap.keytab 
 ldapadd -h ldap -f /home/engines/templates/ldap/initial_ous.ldif
 exit_code=$?
-if $exit_code -ne 0
+if test $exit_code -ne 0
  then
   echo Failed initial_ous.ldif
   kdestroy
   exit $exit_code
 fi  
 kdestroy
+ exit $exit_code
