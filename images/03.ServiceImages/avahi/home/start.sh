@@ -19,7 +19,7 @@ ext_interface=`netstat -nr |grep ^0.0.0.0 | awk '{print $8}' |head -1`
 #`cat /home/net/gateway_interface`
 interfaces="${ext_interface} , docker0"
 echo binding to $interfaces
-cat /home/engines/templates/avahiavahi-daemon.conf.tmpl | sed "/INTERFACES/s//$interfaces/" > /tmp/avahi-daemon.conf
+cat /home/engines/templates/avahi/avahi-daemon.conf.tmpl | sed "/INTERFACES/s//$interfaces/" > /tmp/avahi-daemon.conf
 cp /tmp/avahi-daemon.conf /etc/avahi/avahi-daemon.conf
 
 
@@ -34,7 +34,7 @@ touch /home/avahi/hosts/engines.local
 touch /home/avahi/hosts/avahi.local
 
 ls /home/avahi/hosts/ > /home/avahi/hosts_list
-/home/engines/scripts/engine/publish_aliases.sh &
+/home/engines/scripts/engine/publish_aliases.sh  2>/dev/null &
 
 
 touch /home/engines/run/flags/startup_complete
