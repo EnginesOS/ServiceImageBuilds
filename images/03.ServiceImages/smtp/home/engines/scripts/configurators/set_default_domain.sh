@@ -23,10 +23,14 @@ sudo -n /home/engines/scripts/engine/_set_mailname.sh smtp.${domain_name}
 	
 cp /home/engines/templates/transport /home/postfix/
 
-if test `wc -c /etc/postfix/transport.smart | cut -f 1 -d" " ` -gt 4
+if test -f /etc/postfix/transport.smart 
  then
+  if test `wc -c /etc/postfix/transport.smart | cut -f 1 -d" " ` -gt 4
+   then
 	cat /etc/postfix/transport.smart >> /home/postfix/transport 
+  fi
 fi
+
 if ! test -z $deliver_local 
  then
   if test  $deliver_local -eq 1 
