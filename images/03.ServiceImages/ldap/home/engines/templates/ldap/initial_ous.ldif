@@ -69,3 +69,17 @@ objectClass: gidNext
 gidNumber: 25000
 cn: gidNext
 
+dn: ou=containers,dc=engines,dc=internal
+objectclass: organizationalUnit
+objectclass: top
+ou: containers
+
+dn: ou=applications,ou=containers,dc=engines,dc=internal
+objectclass: organizationalUnit
+objectclass: top
+ou: applications
+
+dn: ou=services,ou=containers,dc=engines,dc=internal
+objectclass: organizationalUnit
+objectclass: top
+ou: services
