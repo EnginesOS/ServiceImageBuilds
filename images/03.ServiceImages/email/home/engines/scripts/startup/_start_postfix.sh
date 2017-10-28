@@ -16,6 +16,8 @@ while test -f /var/spool/postfix/pid/master.pid
  do
   sleep 3600 &
   echo $! > /tmp/sleep.pid
+  chgrp containers /tmp/sleep.pid
+  chmod g+w /tmp/sleep.pid
   wait
   echo sleep dead
    if test -f /tmp/sleep.pid
