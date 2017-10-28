@@ -1,7 +1,5 @@
 #!/bin/bash
 
-
-
 PID_FILE=/var/run/engines/redis-server.pid
 export PID_FILE
 . /home/engines/functions/trap.sh
