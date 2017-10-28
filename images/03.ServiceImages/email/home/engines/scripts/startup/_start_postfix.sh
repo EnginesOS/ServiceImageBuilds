@@ -18,6 +18,10 @@ while test -f /var/spool/postfix/pid/master.pid
   echo $! > /tmp/sleep.pid
   wait
   echo sleep dead
+   if test -f /tmp/sleep.pid
+    then
+  		rm /tmp/sleep.pid
+  	fi
 done 
 
 
