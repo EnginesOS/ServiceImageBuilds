@@ -27,7 +27,6 @@ sudo -n /home/engines/scripts/engine/_setup.sh
 
 
 sudo -n /usr/sbin/named  -c /etc/bind/named.conf -f -u bind &
-touch /home/engines/run/flags/startup_complete
 
 . /home/engines/scripts/services/dns_functions.sh
 hostname=lanhost
@@ -38,6 +37,8 @@ ip=`cat  /opt/engines/etc/net/public`
 hostname=publichost
 no_inarpra=1
 add_to_internal_domain
+
+touch /home/engines/run/flags/startup_complete
 
 wait  
 exit_code=$?
