@@ -12,6 +12,11 @@ if test $? -eq 0
    cat  /home/engines/templates/dns/engines.internal.in-addr.arpa.tmpl |sed "/NET/s//$net/g" > /var/lib/bind/engines/engines.in-addr.arpa.dnsrecords
 fi
 
+
+KILL_SCRIPT=/home/engines/scripts/signal/kill_bind.sh
+export KILL_SCRIPT
+
+
 PID_FILE=/var/run/named/named.pid
 export PID_FILE
 . /home/engines/functions/trap.sh
