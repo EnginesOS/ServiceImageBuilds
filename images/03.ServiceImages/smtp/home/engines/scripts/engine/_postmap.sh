@@ -4,6 +4,7 @@ if ! test -f "/home/postfix/$1"
   if test -f "/home/engines/templates/$1"
    then
     cp "/home/engines/templates/$1" /home/postfix/
+    chown postfix "/home/postfix/$1"
   else  
     touch "/home/postfix/$1"
   fi   

@@ -2,9 +2,7 @@ FROM  engines/servicebase:$release
 
 RUN /home/no_init.sh &&\
 	apt-get -y update &&\
-	apt-get -y install openssh-server \
-				       mysql-client \
-				       krb5-kdc \
+	apt-get -y install krb5-kdc \
 				       krb5-admin-server &&\
 	adduser -q --disabled-password --home /home/auth -uid 22017 auth &&\
 	usermod -G containers -a auth &&\
@@ -24,7 +22,7 @@ RUN	mkdir -p  /home/auth/keys &&\
  	chmod g-w /home/auth &&\
 	ln -s /home/.ssh /home/auth/ &&\
 	chmod -R go-rw /etc/sudoers /etc/sudoers.d/ &&\
-	chmod og-rwx /home/auth/key_list
+	chmod og-rwx /home/engines/scripts/first_run/key_list
 
 USER auth
 Env	ContUser auth

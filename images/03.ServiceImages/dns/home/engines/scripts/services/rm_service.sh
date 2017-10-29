@@ -21,36 +21,36 @@ fi
 
     
 #FIXME make engines.internal settable
-
+dns_cmd_file=`mktemp`
 fqdn_str=${hostname}.engines.internal
-echo server 127.0.0.1 > /tmp/.dns_cmd
-echo update delete $fqdn_str >> /tmp/.dns_cmd
-echo send >> /tmp/.dns_cmd
+echo server 127.0.0.1 > $dns_cmd_file
+echo update delete $fqdn_str >> $dns_cmd_file
+echo send >> $dns_cmd_file
 	
-nsupdate -k /etc/bind/keys/ddns.private /tmp/.dns_cmd
+nsupdate -k /etc/bind/keys/ddns.private $dns_cmd_file
 	
 if test $? -ge 0
  then
   echo Success
  else
-  file=`cat /tmp/.dns_cmd`
+  file=`cat $dns_cmd_file`
   echo Error:With nsupdate $file
   exit -1
 fi
 	
 ip_reversed=`echo $ip |awk  ' BEGIN {  FS="."} {print $4 "." $3 "." $2 "." $1}'`
-echo server 127.0.0.1 > /tmp/.rdns_cmd
-echo update delete ${ip_reversed}.in-addr.arpa. >> /tmp/.rdns_cmd
-#echo update add ${ip_reversed}.in-addr.arpa.  30 IN PTR $fqdn_str  >> /tmp/.rdns_cmd
-echo send >> /tmp/.rdns_cmd
-nsupdate -k /etc/bind/keys/ddns.private /tmp/.rdns_cmd
+echo server 127.0.0.1 > $dns_cmd_file
+echo update delete ${ip_reversed}.in-addr.arpa. >> $dns_cmd_file
+echo send >> $dns_cmd_file
+nsupdate -k /etc/bind/keys/ddns.private $dns_cmd_file
 
 
 if test $? -ge 0
  then
+   rm $dns_cmd_file
    echo Success
  else
-   file=`cat /tmp/.rdns_cmd`
+   file=`cat $dns_cmd_file`
    echo Error:With nsupdate $file
    exit -1
 fi

@@ -8,8 +8,8 @@
  #       then
                 $ContUser=www-data
 #fi
-#mkdir -p /engines/var/run/
-#chown  -R   $ContUser /engines/var/run/
+#mkdir -p /home/engines/run/
+#chown  -R   $ContUser /home/engines/run/
 #chown  -R   $ContUser /home/app
 
 

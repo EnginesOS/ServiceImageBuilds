@@ -16,13 +16,13 @@ if ! test -f /etc/dhcp/dhcpd.conf
 fi
 rm /var/run/dhcpd.pid
 
-sudo -n /home/engines/scripts/_start_syslog.sh
+
 sudo -n /usr/sbin/dhcpd  -cf /etc/dhcp/dhcpd.conf -pf /var/run/dhcpd.pid  -f & 
 
-touch /engines/var/run/flags/startup_complete
+touch /home/engines/run/flags/startup_complete
 wait  
 exit_code=$?
-rm /engines/var/run/flags/startup_complete
+rm /home/engines/run/flags/startup_complete
 exit $exit_code
 
 

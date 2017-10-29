@@ -36,8 +36,8 @@ RUN /usr/sbin/usermod -u 22015 -d /home/backup  backup &&\
 	cd /home/backup &&\
 	rm -r /tmp/fcron-3.3.0 &&\
 	rm /tmp/fcron-3.3.0.src.tar.gz &&\	
-	mkdir -p /var/log/backup/ /home/sql_dumps &&\
-	chown -R backup /home/sql_dumps /var/log/backup/
+	mkdir -p /var/log/backup/ /home/backup/sql_dumps &&\
+	chown -R backup /home/backup/sql_dumps /var/log/backup/
  
 
 ADD src/crontab  /home/backup/fcron/spool/backup.orig

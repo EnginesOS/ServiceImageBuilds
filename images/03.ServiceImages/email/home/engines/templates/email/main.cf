@@ -42,7 +42,7 @@ alias_database = hash:/etc/aliases
 smtp_generic_maps = hash:/etc/postfix/maps/generic
 transport_maps = hash:/etc/postfix/maps/transport
 
-#relay_domains = ldap:/etc/postfix/ldap/ldap-virtual-domains.cf
+relay_domains = ldap:/etc/postfix/ldap/ldap-virtual-domains.cf
 
 myorigin = /etc/postfix/mailname
 mydestination = email.engines.internal, email, localhost.localdomain, localhost

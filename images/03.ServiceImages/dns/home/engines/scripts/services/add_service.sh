@@ -50,12 +50,13 @@ fi
 
 add_to_internal_domain
 	
-if test $? -eq 0
- then
-	echo Success
-	 exit 0
- else
-	 file=`cat /tmp/.dns_cmd`
-	 echo Error:With nsupdate $file
-	 exit 128
-fi
+#if test $? -eq 0
+# then
+#	echo Success
+#	 exit 0
+# else
+#	 file=`cat /tmp/.dns_cmd`
+#	 echo Error:With nsupdate $file
+#	 exit 128
+#fi
+#

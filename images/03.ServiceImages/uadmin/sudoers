@@ -1,0 +1,3 @@
+
+uadmin ALL=(root) NOPASSWD: /home/engines/scripts/actionators/sudo/_add_kerberos_princ.sh
+

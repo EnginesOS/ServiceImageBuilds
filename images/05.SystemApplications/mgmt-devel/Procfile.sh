@@ -43,8 +43,8 @@ export PID_FILE
 
 
 /usr/sbin/apache2ctl -DFOREGROUND &
-touch  /engines/var/run/startup_complete
+touch  /home/engines/run/startup_complete
 wait 
 
 rm /var/run/apache2/apache2.pid
-rm /engines/var/run/startup_complete
+rm /home/engines/run/startup_complete

@@ -3,7 +3,7 @@
 export RUBY_GC_MALLOC_LIMIT_GROWTH_FACTOR=1.1
 
 
-PID_FILE=/engines/var/run/registry.pid
+PID_FILE=/home/engines/run/registry.pid
 export PID_FILE
 . /home/engines/functions/trap.sh
 
@@ -18,11 +18,11 @@ pid=$!
 echo $pid >/tmp/pid
 #--threaded
 
-touch /engines/var/run/flags/startup_complete  
+touch /home/engines/run/flags/startup_complete  
 wait 
 exit_code=$?
 
-rm -f /engines/var/run/flags/startup_complete
+rm -f /home/engines/run/flags/startup_complete
 exit $exit_code
 
 

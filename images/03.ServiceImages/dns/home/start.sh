@@ -1,9 +1,5 @@
 #!/bin/bash
 
-if ! test -d /var/log/named/
- then
-  mkdir /var/log/named/
-fi
 
 grep BLANK /var/lib/bind/engines/engines.dnsrecords >/dev/null
 
@@ -16,6 +12,11 @@ if test $? -eq 0
    cat  /home/engines/templates/dns/engines.internal.in-addr.arpa.tmpl |sed "/NET/s//$net/g" > /var/lib/bind/engines/engines.in-addr.arpa.dnsrecords
 fi
 
+
+KILL_SCRIPT=/home/engines/scripts/signal/kill_bind.sh
+export KILL_SCRIPT
+
+
 PID_FILE=/var/run/named/named.pid
 export PID_FILE
 . /home/engines/functions/trap.sh
@@ -24,21 +25,23 @@ export PID_FILE
 
 sudo -n /home/engines/scripts/engine/_setup.sh
 
-sudo -n /home/engines/scripts/_start_syslog.sh
 
 sudo -n /usr/sbin/named  -c /etc/bind/named.conf -f -u bind &
-touch /engines/var/run/flags/startup_complete
 
 . /home/engines/scripts/services/dns_functions.sh
 hostname=lanhost
 ip=`cat  /opt/engines/etc/net/ip`
 add_to_internal_domain
+
 ip=`cat  /opt/engines/etc/net/public`
 hostname=publichost
+no_inarpra=1
 add_to_internal_domain
+
+touch /home/engines/run/flags/startup_complete
 
 wait  
 exit_code=$?
 
-rm /engines/var/run/flags/startup_complete
+rm /home/engines/run/flags/startup_complete
 exit $exit_code

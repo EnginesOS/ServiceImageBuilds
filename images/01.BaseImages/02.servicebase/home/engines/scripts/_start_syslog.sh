@@ -1,4 +1,6 @@
 #!/bin/sh
-
-#syslogd -n   -R syslog.engines.internal:514 &
+if test -f /var/run/rsyslogd.pid 
+ then
+   rm /var/run/rsyslogd.pid
+fi 
 rsyslogd  -i /var/run/rsyslogd.pid 

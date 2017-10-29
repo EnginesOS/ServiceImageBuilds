@@ -1,5 +1,5 @@
 #!/bin/bash
-rm -f /engines/var/run/startup_complete
+rm -f /home/engines/run/startup_complete
 #/home/dns-init.sh
 
 if test -f /home/firstrun.sh 

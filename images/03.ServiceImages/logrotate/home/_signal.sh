@@ -16,4 +16,4 @@ then
 	  esac
    fi
 fi
-/home/engines/scripts/_kill_syslog.sh
+

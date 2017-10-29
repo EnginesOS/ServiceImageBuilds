@@ -47,7 +47,7 @@ fi
 
 cp /home/newrelic.yml /home/app/
 
-mkdir -p /engines/var/run/flags/
+mkdir -p /home/engines/run/flags/
 RAILS_ENV=production
 
 sudo -n /home/_start_sshd.sh &
@@ -97,9 +97,9 @@ apache_pid=`cat /var/run/apache2/apache2.pid`
 sshd_pid=`cat /var/run/sshd.pid`
 
 echo -n "$apache_pid $sshd_pid" > /var/run/engines/pids
-touch  /engines/var/run/flags/startup_complete
+touch  /home/engines/run/flags/startup_complete
 wait 
 rm $PID_FILE
 
 
-rm /engines/var/run/flags/startup_complete
+rm /home/engines/run/flags/startup_complete
