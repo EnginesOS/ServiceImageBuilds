@@ -11,7 +11,7 @@ COPY src/redis.conf /etc/redis/
 COPY home home
 
 RUN mkdir -p /home/consumers/saved/ /home/engines/scripts/configurators/saved /home/redis &&\
-	chown redis -R  /home/redis /home/engines/scripts/configurators/saved /home/consumers/saved/ /home/resources/config/next_port
+	chown redis -R  /home/redis /home/engines/scripts/configurators/saved /home/consumers/saved/ 
 	
 ENV ContUser redis
 ENV ContGrp www-data
