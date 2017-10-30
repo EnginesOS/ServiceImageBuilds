@@ -23,7 +23,7 @@ echo "TARGET_PASS='$pass'"  >>$Backup_ConfigDir/$service/conf
 PARAMS_FILE=/home/engines/scripts/configurators/saved/system_backup
 parms_to_file_and_env
 
-cat home/configurators/saved/system_backup >>/var/log/backup/addbackup.log
+cat /home/engines/scripts/configurators/saved/system_backup >>/var/log/backup/addbackup.log
 
 Backup_ConfigDir=/home/backup/.duply/
 
