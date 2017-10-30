@@ -14,14 +14,22 @@ set > /tmp/full_env
    echo '{"Result":"Failed","Error Mesg":"Invalid container type"}'
    exit 127	
   fi
- if test -z $cn
-  then
-   dn="ou=$parent_engine,ou=$container_types,ou=Groups,dc=engines,dc=internal"
- else
-   dn=cn=$cn,ou=$parent_engine,ou=$top_ou,ou=Groups,dc=engines,dc=internal"
- fi
+  
+  
+  export top_ou parent_engine container_type cn
+  
+  if test $type = group
+ then
+	/home/engines/scripts/services/group/rm_group.sh
+elif test $type = ou
+ then
+ /home/engines/scripts/services/ou/rm_ou.sh
+else
+    echo '{"Result":"Failed","Error Mesg":"Invalid type"}'
+   exit 127	
+  fi 
+  
+  
  
- /home/engines/scripts/ldap/ldapdelete.sh "$dn"
-
 
   
