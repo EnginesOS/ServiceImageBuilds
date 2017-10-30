@@ -9,15 +9,15 @@ if ! test -f /home/app/app/config/mail.yml
 fi
 	 
 
- if ! test -d /var/run/nginx
- then
-  mkdir /var/run/nginx /var/log/nginx 
-fi
-
- if ! test -d /var/log/nginx
- then
-	mkdir /var/log/nginx 
-fi
+# if ! test -d /var/run/nginx
+# then
+#  mkdir /var/run/nginx /var/log/nginx 
+#fi
+#
+# if ! test -d /var/log/nginx
+# then
+#	mkdir /var/log/nginx 
+#fi
 
 if test -f /home/app/app/config/newrelic.yml
 	then
