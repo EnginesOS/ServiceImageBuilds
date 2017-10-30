@@ -10,10 +10,11 @@ if test -f /home/engines/run/flags/restart_required
   rm -f /home/engines/run/flags/restart_required
 fi
 
+mkdir /home/redis/config.d/
 
 touch /home/engines/run/flags/startup_complete
 
-configs=`ls /home/config/*.redis.config`
+configs=`ls /home/redis/config.d/*.redis.config`
 for config in $configs
  do
     redis-server $config &
@@ -22,7 +23,7 @@ for config in $configs
 done
 touch /home/engines/run/flags/startup_complete
  
-# if test `ls /home/config/*.redis.config |wc -l` -eq 0
+# if test `ls /home/redis/config.d/*.redis.config |wc -l` -eq 0
  # then
   while test 0 -ne 1
    do
@@ -34,7 +35,7 @@ touch /home/engines/run/flags/startup_complete
 	then
 		for service in ` ls /tmp/new_service.* |cut -f2 -d.`
 		  do
-		  	redis-server /home/config/$service.redis.config &
+		  	redis-server /home/redis/config.d/$service.redis.config &
 		  	echo -n $!  > /var/run/engines/redis-server.$parent_engine.pid
 		  done
 	fi
