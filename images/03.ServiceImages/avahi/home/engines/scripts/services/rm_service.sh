@@ -13,7 +13,7 @@ fi
 
 if test -f /home/avahi/hosts/${hostname}.${default_mdns_domain}
   then
-	rm /home/avahi/hosts/${hostname}.${domain_name}
+	rm /home/avahi/hosts/${hostname}.${default_mdns_domain}
 fi	
  
 ls /home/avahi/hosts/ > /home/avahi/hosts_list
