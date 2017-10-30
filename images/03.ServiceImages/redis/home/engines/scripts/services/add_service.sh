@@ -22,7 +22,7 @@ if test $port -gt $next_port
 	echo $next_port > /home/redis/next_port
 fi
 
-cat /home/engines/templates/redis.conf.tmpl | sed "s/PORT/$port/" | sed "s/PASSWORD/$password/" | sed "s/ENGINE/$parent_engine/"> /home/redis/$parent_engine.redis.config
+cat /home/engines/templates/redis.conf.tmpl | sed "s/PORT/$port/" | sed "s/PASSWORD/$password/" | sed "s/ENGINE/$parent_engine/"> /home/redis/config.d/$parent_engine.redis.config
 touch /tmp/new_service.$parent_engine
 
 

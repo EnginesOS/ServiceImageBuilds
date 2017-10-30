@@ -15,7 +15,7 @@ if test -f nocache
 else
   args="build $extra --rm=true -t $tag -f Dockerfile.$release ."
 fi
-
+docker rmi $tag 
 if test -z $TEE
  then
   docker $args  >& build.log
