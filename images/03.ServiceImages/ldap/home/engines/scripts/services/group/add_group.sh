@@ -2,15 +2,15 @@
 
 #if ! engine group ou exist
 #create engine group ou
-c=`/home/engines/scripts/ldap/ldapsearch.sh ou=${top_ou},ou=Groups,dc=engines,dc=internal ou=$parent_engine`
-
+c=`/home/engines/scripts/ldap/ldapsearch.sh ou=${top_ou},ou=Groups,dc=engines,dc=internal ou=$parent_engine  |wc -l`
+ . /home/engines/functions/ldap/support_functions.sh
 if test $c -eq 0
  then
   cat /home/engines/templates/ldap/services/add_group_ou.ldif | while read LINE
    do
      eval echo $LINE >> $LDIF_FILE
    done
- . /home/engines/functions/ldap/support_functions.sh
+
  cat $LDIF_FILE |sudo /home/engines/scripts/ldap/sudo/_ldapadd.sh $* &> $LDAP_OUTF 
 fi
 result=$?
