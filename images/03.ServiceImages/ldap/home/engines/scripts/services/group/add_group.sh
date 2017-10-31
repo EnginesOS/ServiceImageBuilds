@@ -25,7 +25,7 @@ if test -z $cn
  then
   cn=$parent_engine
 fi 
-
+gidNumber=`/home/engines/scripts/ldap/next_gid.sh`
 cat /home/engines/templates/ldap/services/add_group.ldif | while read LINE
 do
  eval echo $LINE >> $LDIF_FILE
