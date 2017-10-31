@@ -9,7 +9,7 @@ kinit -t /etc/krb5kdc/keys/ftp.keytab
 
 
 
-dn="cn=$service_handle,ou=ftp,ou=Service accounts,dc=engines,dc=internal"
+dn="cn=$service_handle,ou=ftp,ou=Service Accounts,ou=Engines,dc=engines,dc=internal"
 uid=`ldapsearch "$dn" |grep -i uid: | awk '{print $2'}`
 ldapdelete "$dn" -H ldap://ldap/
  

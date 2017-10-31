@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #Create dc=engines,dc=internal
-ldapadd -Y EXTERNAL -H ldapi:/// -f /home/engines/templates/ldap/init.ldif
+ldapadd -Y EXTERNAL -H ldapi:/// -f /home/engines/templates/ldap/first_run/init.ldif
 exit_code=$?
 if  test $exit_code -ne 0
  then
@@ -10,7 +10,7 @@ if  test $exit_code -ne 0
 fi  
 
 #oid for nextid attr type
-ldapadd -Y EXTERNAL -H ldapi:/// -f /home/engines/templates/ldap/uidNext.ldif
+ldapadd -Y EXTERNAL -H ldapi:/// -f /home/engines/templates/ldap/first_run/uidNext.ldif
 exit_code=$?
 if  test $exit_code -ne 0
  then
@@ -19,7 +19,7 @@ if  test $exit_code -ne 0
 fi  
 
 #Schema for postfix virtual accounts integration
-ldapadd -Y EXTERNAL -H ldapi:/// -f /home/engines/templates/ldap/postfix.ldif
+ldapadd -Y EXTERNAL -H ldapi:/// -f /home/engines/templates/ldap/first_run/postfix.ldif
 exit_code=$?
 if  test $exit_code -ne 0
  then
@@ -28,7 +28,7 @@ if  test $exit_code -ne 0
 fi  
 
 #tree root ou 
-ldapadd -Y EXTERNAL -H ldapi:/// -f /home/engines/templates/ldap/root_ou.ldif
+ldapadd -Y EXTERNAL -H ldapi:/// -f /home/engines/templates/ldap/first_run/root_ou.ldif
 exit_code=$?
 if test $exit_code -ne 0
  then
@@ -37,7 +37,7 @@ if test $exit_code -ne 0
 fi  
 
 #setup sasl params and user mapping to kererbos principles
-ldapmodify -Y EXTERNAL -H ldapi:/// -f /home/engines/templates/ldap/auth.ldif
+ldapmodify -Y EXTERNAL -H ldapi:/// -f /home/engines/templates/ldap/first_run/auth.ldif
 exit_code=$?
 if test $exit_code -ne 0
  then
@@ -48,8 +48,8 @@ fi
 mv /usr/lib/sasl2/sasl2_slapd.conf /usr/lib/sasl2/slapd.conf
 
 kinit -kt /etc/krb5kdc/keys/ldap.keytab 
-ldapadd -h ldap -f /home/engines/templates/ldap/initial_ous.ldif
-ldapadd -h ldap -f /home/engines/templates/ldap/group_ous.ldif
+ldapadd -h ldap -f /home/engines/templates/ldap/first_run/initial_ous.ldif
+ldapadd -h ldap -f /home/engines/templates/ldap/first_run/group_ous.ldif
 exit_code=$?
 if test $exit_code -ne 0
  then
