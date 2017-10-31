@@ -3,23 +3,8 @@
 . /home/engines/functions/params_to_env.sh
 params_to_env
 
-if test -z $engine
-	then
-		echo "Error engine not set"
-		exit -1
-	fi
+required_values="parent_engine container_type"
+check_required_values
+export parent_engine container_type
 	
-if test -z $service 
-	then
-	echo "Error service not set"
-		exit -1
-	fi	
-	
-function gen_service_key {
-echo addprinc -randkey host/$service.engines.internal@ENGINES.INTERNAL | kadmin.local 
-mkdir /etc/krb5kdc/services/$service 
-echo ktadd -k /etc/krb5kdc/services/$service/$service.keytab host/$service.engines.internal@ENGINES.INTERNAL | kadmin.local 
-}
-gen_service_key
-echo "Success"
-exit 0
+sudo -n /home/engines/scripts/actionators/_add_service.sh
