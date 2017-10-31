@@ -12,13 +12,20 @@ if test $c -eq 0
    done
 
  cat $LDIF_FILE |sudo /home/engines/scripts/ldap/sudo/_ldapadd.sh $* &> $LDAP_OUTF 
-fi
+
 result=$?
 if test $result -ne 0
  then
   process_ldap_result
   exit 127
  fi
+fi
+
+if test -z $cn
+ then
+  cn=$parent_engine
+fi 
+
 cat /home/engines/templates/ldap/services/add_group.ldif | while read LINE
 do
  eval echo $LINE >> $LDIF_FILE
