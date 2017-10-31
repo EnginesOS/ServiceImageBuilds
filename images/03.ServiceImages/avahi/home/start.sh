@@ -7,11 +7,11 @@ export KILL_SCRIPT
 
 . /home/engines/functions/trap.sh
 
-
-if test -f /home/engines/run/flags/restart_required
- then
-  rm -f /home/engines/run/flags/restart_required
-fi
+service_clear_restart_required
+#if test -f /home/engines/run/flags/restart_required
+# then
+#  rm -f /home/engines/run/flags/restart_required
+#fi
 
 ip=`cat /home/net/ip`
 echo "$ip mgmt.local" >/etc/avahi/hosts

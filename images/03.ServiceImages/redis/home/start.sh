@@ -4,11 +4,13 @@ PID_FILE=/var/run/engines/redis-server.pid
 export PID_FILE
 . /home/engines/functions/trap.sh
 
+#
+#if test -f /home/engines/run/flags/restart_required
+# then
+#  rm -f /home/engines/run/flags/restart_required
+#fi
 
-if test -f /home/engines/run/flags/restart_required
- then
-  rm -f /home/engines/run/flags/restart_required
-fi
+service_clear_restart_required
 
 mkdir /home/redis/config.d/
 

@@ -15,8 +15,16 @@ if ! test -f /home/engines/run/flags/first_run.done
 	   touch /home/engines/run/flags/first_run.done
 	 fi   			
  fi
-
 }
+
+service_clear_restart_required()
+{
+if test -f /home/engines/run/flags/restart_required
+ then
+  rm -f /home/engines/run/flags/restart_required
+fi
+}
+
 clear_stale_flags()
 {
  for flag in sig_term termed sig_hup huped sig_quit quited
