@@ -49,6 +49,7 @@ mv /usr/lib/sasl2/sasl2_slapd.conf /usr/lib/sasl2/slapd.conf
 
 kinit -kt /etc/krb5kdc/keys/ldap.keytab 
 ldapadd -h ldap -f /home/engines/templates/ldap/initial_ous.ldif
+ldapadd -h ldap -f /home/engines/templates/ldap/group_ous.ldif
 exit_code=$?
 if test $exit_code -ne 0
  then
