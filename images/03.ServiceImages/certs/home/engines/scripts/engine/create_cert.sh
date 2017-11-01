@@ -69,7 +69,7 @@ cat /etc/ssl/openssl.cnf /home/certs/saved/${cert_name}_config >/home/certs/save
 openssl genrsa -out  /home/certs/store/public/keys/${StorePref}${cert_name}.key.tmp 2048
 openssl req -new  -key /home/certs/store/public/keys/${StorePref}${cert_name}.key.tmp -out /home/certs/saved/${cert_name}.csr -config /home/certs/saved/${cert_name}_config
 
-if ! test if /home/certs/saved/${cert_name}.csr 
+if ! test -f /home/certs/saved/${cert_name}.csr 
   then
  	echo "Failed to Create CSR"
  	exit 127
