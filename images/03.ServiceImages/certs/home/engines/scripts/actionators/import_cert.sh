@@ -3,18 +3,9 @@
 . /home/engines/functions/params_to_env.sh
 params_to_env
 
+required_values="certificate private_key"
+check_required_values
 
-
-if test -z "${certificate}"
- then
-  echo Missing certificate
-  exit 255
-fi
-if test -z "${private_key}"
- then
-  echo Missing key
-  exit 255
-fi
 
 mkdir -p /home/certs/store/public/certs/imported /home/certs/store/public/keys/imported
 

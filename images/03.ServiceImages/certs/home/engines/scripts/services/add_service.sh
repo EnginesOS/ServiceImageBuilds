@@ -2,12 +2,9 @@
 . /home/engines/functions/params_to_env.sh
 params_to_env
 
-#FIXME make engines.internal settable
-if test -z "${cert_name}"
- then
-  echo Error:Missing cert_name
-  exit -1
-fi
+
+required_values="cert_name container_type parent_engine domainname country state city organisation person"
+check_required_values
 
 export cert_name container_type parent_engine domainname country state city organisation person wild alt_names hostname 
 
