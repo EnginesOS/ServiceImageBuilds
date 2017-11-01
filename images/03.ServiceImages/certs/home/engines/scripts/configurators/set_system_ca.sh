@@ -41,5 +41,5 @@ chmod og-rwx  /home/certs/store/private/ca/keys/
 openssl genrsa -out /home/certs/store/private/ca/keys/system_CA.key 2048
 openssl req -x509 -new -nodes -key /home/certs/store/private/ca/keys/system_CA.key -days 1024 -sha256 -out /home/certs/store/public/ca/certs/system_CA.pem < /home/engines/scripts/configurators/saved/ca_setup
         
-chod og-r /home/certs/store/private/ca/keys/system_CA.key        
+chmod og-r /home/certs/store/private/ca/keys/system_CA.key        
         
