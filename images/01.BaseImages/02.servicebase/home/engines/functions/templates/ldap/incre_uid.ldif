@@ -1,4 +1,4 @@
-dn: cn=uidNext,dc=engines,dc=internal
+dn: cn=uidNext,ou=System,ou=Engines,dc=engines,dc=internal
 changetype: modify
 increment:uidNumber
 uidNumber: 1

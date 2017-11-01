@@ -1,0 +1,59 @@
+dn: ou=People,dc=engines,dc=internal
+objectClass: organizationalUnit
+ou: People
+
+dn: ou=Users,dc=engines,dc=internal
+objectClass: organizationalUnit
+ou: Users
+
+dn: ou=Engines,dc=engines,dc=internal
+objectClass: organizationalUnit
+ou: Engines
+
+dn: ou=hosts,ou=Engines,dc=engines,dc=internal
+objectClass: organizationalUnit
+ou: hosts
+
+dn: ou=Service Accounts,ou=Engines,dc=engines,dc=internal
+objectclass: organizationalUnit
+objectclass: top
+ou: Service Accounts
+
+dn: ou=ftp,ou=Service Accounts,ou=Engines,dc=engines,dc=internal
+objectclass: organizationalUnit
+objectclass: top
+ou: ftp
+
+dn: ou=System,ou=Engines,dc=engines,dc=internal
+objectClass: organizationalUnit
+ou: System
+
+dn: cn=uidNext,ou=System,ou=Engines,dc=engines,dc=internal
+objectClass: uidNext
+uidNumber: 25000
+cn: uidNext
+
+dn: cn=gidNext,ou=System,ou=Engines,dc=engines,dc=internal
+objectClass: gidNext
+gidNumber: 25000
+cn: gidNext
+
+dn: ou=Containers,ou=Engines,dc=engines,dc=internal
+objectClass: organizationalUnit
+ou: Containers
+
+dn: ou=Applications,ou=Containers,ou=Engines,dc=engines,dc=internal
+objectClass: organizationalUnit
+ou: Applications
+
+dn: ou=Services,ou=Containers,ou=Engines,dc=engines,dc=internal
+objectClass: organizationalUnit
+ou: Services
+
+dn: ou=email,ou=Services,ou=Containers,ou=Engines,dc=engines,dc=internal
+objectClass: organizationalUnit
+ou: email
+
+dn: ou=domains,ou=email,ou=Services,ou=Containers,ou=Engines,dc=engines,dc=internal
+objectClass: organizationalUnit
+ou: domains

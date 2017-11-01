@@ -13,7 +13,7 @@ if test -z $hostname
    wild=no
 fi
 parent_engine=system
-container_type=system
+container_type=service
    
 export cert_name container_type parent_engine domainname country state city organisation person wild alt_names hostname 
 

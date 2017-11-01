@@ -1,4 +1,4 @@
-dn: cn=SN,ou=ftp,ou=Service accounts,dc=engines,dc=internal
+dn: cn=SN,ou=ftp,ou=Service Accounts,ou=Engines,dc=engines,dc=internal
 cn: SN
 gidnumber: GID
 objectclass: inetOrgPerson

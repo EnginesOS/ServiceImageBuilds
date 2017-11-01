@@ -1,7 +1,6 @@
 #!/bin/bash
 
 
-
 if test ${container_type} = system
  then
     StorePref=services/${parent_engine}/
@@ -70,8 +69,8 @@ cat /etc/ssl/openssl.cnf /home/certs/saved/${cert_name}_config >/home/certs/save
 openssl genrsa -out  /home/certs/store/public/keys/${StorePref}${cert_name}.key.tmp 2048
 openssl req -new  -key /home/certs/store/public/keys/${StorePref}${cert_name}.key.tmp -out /home/certs/saved/${cert_name}.csr -config /home/certs/saved/${cert_name}_config
 
-if test $? -ne 0
- then
+if ! test -f /home/certs/saved/${cert_name}.csr 
+  then
  	echo "Failed to Create CSR"
  	exit 127
 fi
@@ -92,17 +91,20 @@ else
    exit 127
  fi
    
-if test ${container_type} = service
+if ! test ${install_target} = default
  then
-  install_target=${parent_engine}
-fi
+  if test ${container_type} = service
+   then
+     install_target=${parent_engine}
+  fi
+ fi
      
 if test -z ${install_target}
  then
   install_target=wap
 fi
 domain_name=`cat  /home/certs/store/public/certs/${StorePref}${cert_name}.crt | openssl x509 -noout -subject  |sed "/^.*CN=/s///"| sed "/\*/s///"`
-
+echo  "/home/engines/scripts/engine/_install_target.sh ${install_target} ${StorePref}/${cert_name} ${domain_name}"
 sudo -n  /home/engines/scripts/engine/_install_target.sh ${install_target} ${StorePref}/${cert_name} ${domain_name}
  
 echo '{"Result":"Success"}'

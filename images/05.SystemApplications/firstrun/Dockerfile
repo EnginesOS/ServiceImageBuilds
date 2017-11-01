@@ -27,7 +27,7 @@ ENV RELEASE $release
 ADD src/gitconfig.tmpl /home/app/.git/config.tmpl
 
 RUN cat /home/app/.git/config.tmpl  | sed "/\$release/s//$release/" > /home/app/.git/config &&\
-	/home/deployment.sh
+	/home/engines/scripts/engine/deployment.sh
 
 ADD src/config.ru /home/app
 
