@@ -3,8 +3,10 @@
 install_target=$1
 cert_name=$2
 domain_name=$3
-
-store_name=`dirname $2`
+if test -z $store_name
+ then
+  store_name=`dirname $2`
+fi
 
 function install_cert {
 if test -z ${dest_name}

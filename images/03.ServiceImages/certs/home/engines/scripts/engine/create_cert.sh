@@ -91,10 +91,13 @@ else
    exit 127
  fi
    
-if test ${container_type} = service
+if ! test ${install_target} = default
  then
-  install_target=${parent_engine}
-fi
+  if test ${container_type} = service
+   then
+     install_target=${parent_engine}
+  fi
+ fi
      
 if test -z ${install_target}
  then
