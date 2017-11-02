@@ -3,17 +3,10 @@
 . /home/engines/functions/params_to_env.sh
 params_to_env
 
-if test -z $fqdn
- then
- 	echo "Error:no FQDN in nginx service hash"
- 	exit -1
- fi
+required_values="fqdn proto"
+check_required_values
 
 
-#if test -f /home/consumers/saved/${proto}_$fqdn
-# then
-# 	rm -f /home/consumers/saved/${proto}_$fqdn
-# fi
  
 	if test -f /etc/nginx/sites-enabled/${proto}_${fqdn}.site
 	 then

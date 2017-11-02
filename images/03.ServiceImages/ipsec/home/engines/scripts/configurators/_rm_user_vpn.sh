@@ -17,11 +17,8 @@ ipsec stroke rereadsecrets
 . /home/engines/functions/params_to_env.sh
 params_to_env
 
-if test -z "${vpn_name}" 
-then
- echo Error:Missing VPN Name
- exit -1
-fi
+required_values="vpn_name"
+check_required_values
 
 rm_user_vpn
 	

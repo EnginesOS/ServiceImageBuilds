@@ -3,17 +3,9 @@
 . /home/engines/functions/params_to_env.sh
 params_to_env
  
-if test -z $log_file_path
- then 
-  echo "no path"
-  exit -1
- fi
- 
-if test -z $parent_engine
- then 
-  echo "no engine"
-  exit -1
- fi 
+required_values="log_file_path parent_engine cycle rotate"
+check_required_values
+
 
 if ! test -d  /home/saved/$parent_engine/
  then

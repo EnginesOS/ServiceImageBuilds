@@ -3,30 +3,8 @@
 . /home/engines/functions/params_to_env.sh
 params_to_env
 
-if test -z $fqdn
- then
- 	echo Error:no FQDN in nginx service hash
- 	exit -1
- fi
- 
- if test -z $port
- then
- 	echo Error:no port in nginx service hash
- 	exit -1
- fi
-  if test -z "$proto"
- then
- 	echo Error:no proto in nginx service hash
- 	exit -1
- fi
- 
-   if test -z $parent_engine
- then
- 	echo Error:no name in nginx service hash
- 	exit -1
- fi
- 
-
+required_values="fqdn port proto parent_engine"
+check_required_values
 
 res=`nslookup ${parent_engine}.engines.internal|grep -e "Address: *[0-9]" |awk '{print $2}'`
 

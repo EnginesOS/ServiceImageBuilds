@@ -1,65 +1,17 @@
 #!/bin/bash
 
+dns_server2=8.8.8.8
+default_lease=3600
+max_lease=36000
+
 . /home/engines/functions/params_to_env.sh
 PARAMS_FILE=/home/engines/scripts/configurators/saved/dhcpd_settings
 parms_to_file_and_env
 
-if test -z $domain_name
- then
-  echo "domain_name not set"
-  exit 127
-fi
 
-if test -z  $netmask
- then
-  echo "netmask not set"
-  exit 127
-fi
- 
-if test -z $subnet 
- then
-  echo "subnet not set"
-  exit 127
-fi
- 
-if test -z $start
- then
-  echo "start not set"
-  exit 127
-fi
- 
-if test -z $end$
- then
-  echo "end not set"
-  exit 127
-fi
+required_values="domain_name netmask subnet start end default_gateway dns_server1"
+check_required_values
 
-if test -z $default_gateway
- then
-   echo "default_gateway not set"
- 	exit 127
-fi
- 
-if test -z $dns_server1
- then
-   echo "dns_server1 not set"
- 	exit 127
-fi
-
-if test -z $dns_server2
-  then
-    dns_server=8.8.8.8
-fi
- 
-if test -z $default_lease
-  then
-  	default_lease=3600
-fi
- 
-if test -z $max_lease
-  then
-  	max_lease=36000
-fi
 
 cat /home/engines/templates/dhcpd.conf.tmpl |sed -e /NETMASK/s//$netmask/ -e /DOMAIN_NAME/s//$domain_name/ -e /ENGINES_IP/s//$dns_server1/ -e /OPTIONAL_DNS/s//$dns_server2/ -e /DEFAULT_LEASE/s//$default_lease/ -e /MAX_LEASE/s//$max_lease/ -e /SUBNET/s//$subnet/ -e /RANGE_MIN/s//$start/ -e /RANGE_MAX/s//$end/ -e /GATEWAY/s//$default_gateway/ >/tmp/dhcpd.conf
 

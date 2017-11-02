@@ -12,16 +12,12 @@ if ! test -z $disabled
     	exit 0
     fi
 fi
-
-if test -z $key_id
- then
- 	echo "missing key"
- 	exit 255
- fi
+required_values="key_id"
+check_required_values
  
  if ! test -f /home/backup/.gnupg/pass_${key_id}
   then
-   echo "missing password"
+   echo "missing saved password"
  	exit 255
  fi
  

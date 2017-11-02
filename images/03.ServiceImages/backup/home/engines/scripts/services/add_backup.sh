@@ -9,6 +9,7 @@ dirname=${Backup_ConfigDir}/$dirname
 echo -n $backup_type > $dirname/backup_type
 echo dirname $dirname
 
+
 if test -d $dirname
 then 
  rm -rf $dirname

@@ -5,18 +5,9 @@ params_to_env
 
 #FIXME make engines.internal settable
 
-	
-if test -z ${service_name}
- then
-	echo Error:missing service_name
-    exit 127
-fi  
+required_values="service_name"
+check_required_values
 
-if test -z ${parent_engine}
- then
-	echo Error:missing parent_engine
-    exit 127
-fi  
     
 sudo -n /home/engines/scripts/services/_delete_volume.sh ${parent_engine} ${service_name} 
 if test $? -eq 0

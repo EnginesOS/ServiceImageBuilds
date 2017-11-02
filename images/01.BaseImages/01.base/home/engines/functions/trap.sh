@@ -55,6 +55,7 @@ custom_stop
 	
 if ! test -z $KILL_SCRIPT
  then
+ echo  termed $KILL_SCRIPT $SIGNAL
   $KILL_SCRIPT $SIGNAL
   touch /home/engines/run/flags/termed	
 else
@@ -96,6 +97,7 @@ touch /home/engines/run/flags/sig_hup
 	
 if ! test -z $HUP_SCRIPT
  then
+ echo  hup $HUP_SCRIPT $SIGNAL
    $HUP_SCRIPT $SIGNAL
    touch /home/engines/run/flags/huped	
 else
@@ -125,6 +127,7 @@ custom_stop
 	
 if ! test -z $KILL_SCRIPT
  then
+ echo  quited $KILL_SCRIPT $SIGNAL
   $KILL_SCRIPT $SIGNAL				
   touch /home/engines/run/flags/quited
 else 

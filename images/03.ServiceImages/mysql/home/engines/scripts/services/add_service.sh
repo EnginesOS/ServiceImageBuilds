@@ -3,36 +3,15 @@
 . /home/engines/functions/params_to_env.sh
 params_to_env
 
-
 BTICK='`'
 
 E_BADARGS=65
 MYSQL=`which mysql`
 
-if test -z $database_name
- then
-	echo Error:No database_name value
-	exit -1
-fi
-	
-if test -z $db_username
- then
-	echo Error:No db_username value
-	exit -1
-fi
-		
-if test -z $db_password
- then
-	echo Error:No db_password value
-	exit -1
-fi
-	
-if test -z $collation
- then
-	echo Error:No collation value
-	exit -1
-fi
-	
+required_values="database_name db_username db_password collation"
+check_required_values
+
+
 char_set=`echo $collation | cut -f1 -d_`
 
 if test -t "$char_set"

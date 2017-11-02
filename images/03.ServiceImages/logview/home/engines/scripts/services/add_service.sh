@@ -3,6 +3,8 @@
 . /home/engines/functions/params_to_env.sh
 params_to_env
 
+required_values="log_name log_file_path ctype log_type"
+check_required_values
 
 log_name=`echo $log_name | sed "/ /s//_/g"`
 

@@ -3,6 +3,8 @@
 cat -  | /home/engines/bin/json_to_env  | sed "/sources='\[/s//sources\[/" | sed "/\]'/s//\]/" > /tmp/.env
 . /tmp/.env
 
+required_values="backup_name dest_folder dest_proto parent_engine backup_type src_type"
+check_required_values
 echo $1 >/home/engines/scripts/configurators/saved/backup_$parent_engine
 
 echo "$*" >>/var/log/backup/addbackup.log

@@ -15,7 +15,7 @@ fi
 
 if test -z ${hostname}
  then
-  echo Error:Missing hostname ${domain_name}
+  echo Error:Missing hostname ${hostname}
   exit -1
 fi
 

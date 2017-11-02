@@ -3,12 +3,9 @@
 . /home/engines/functions/params_to_env.sh
 params_to_env
 
-echo $1 |grep = >/dev/null
-if test $? -ne 0
- then
-   exit
-fi
 
+required_values="db_master_pass"
+check_required_values  
         
 if test -n $db_master_pass
  then  

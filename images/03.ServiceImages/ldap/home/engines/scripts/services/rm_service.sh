@@ -3,6 +3,10 @@
 
 . /home/engines/functions/params_to_env.sh
 params_to_env
+
+required_values="type parent_engine container_type"
+check_required_values
+
 set > /tmp/full_env
  if test $container_type = container
   then
