@@ -3,17 +3,10 @@
 . /home/engines/functions/params_to_env.sh
 params_to_env
 
-if test -z $port
- then
-	echo Error:No port value
-	exit -1
-fi	
+required_values="port password"
+check_required_values
 
-if test -z $password
- then
-	echo Error:No password value
-	exit -1
-fi
+
 		
 next_port=`cat /home/redis/next_port`
 if test $port -gt $next_port
