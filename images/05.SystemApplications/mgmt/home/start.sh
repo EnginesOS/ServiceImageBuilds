@@ -5,7 +5,7 @@ cd /home/app/
 
 if ! test -f /home/app/app/config/mail.yml
  then
-	cat /home/tmpls/mail.yml.tmpl | sed "s/FQDN_PORT/$FQDN_PORT/" | sed "s/DOMAIN/$DOMAIN/" > /home/app/app/config/mail.yml
+	cat /home/engines/templates/mail.yml.tmpl | sed "s/FQDN_PORT/$FQDN_PORT/" | sed "s/DOMAIN/$DOMAIN/" > /home/app/app/config/mail.yml
 fi
 	 
 
@@ -38,7 +38,7 @@ if ! test -h /home/app/public/system
  fi
  
 
-/home/deployment.sh
+/home/engines/scripts/engine/deployment.sh
 
 
 SECRET_KEY_BASE=`bundle exec rake secret`
@@ -107,7 +107,7 @@ echo Server Started
 touch  /home/engines/run/flags/startup_complete
 wait 
 exit_code=$?
-
+sleep 500
 
 rm /home/engines/run/flags/startup_complete
 exit $exit_code
