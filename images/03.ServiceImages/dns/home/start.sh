@@ -24,6 +24,7 @@ export PID_FILE
 sudo -n /home/engines/scripts/engine/_setup.sh
 
 sudo -n /usr/sbin/named  -c /etc/bind/named.conf -f -u bind &
+sleep 2
 
 . /home/engines/scripts/services/dns_functions.sh
 hostname=lanhost
