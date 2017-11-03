@@ -210,4 +210,44 @@ then
       fi
   fi
 fi
-	 			
+
+
+function startup_complete()
+{
+touch /home/engines/run/flags/startup_complete
+debug_catch_crash
+}
+
+function shutdown_complete()
+{
+rm /home/engines/run/flags/startup_complete
+  if test -f /home/engines/run/flags/wait_before_shutdown
+   then
+    sleep 210
+  fi
+rm /home/engines/run/flags/startup_complete
+}
+
+function debug_catch_crash() 
+{
+ if test -f /home/engines/run/flags/debug
+ then
+  sleep 1
+   if test -z $DEBUG_SLEEP
+    then
+     DEBUG_SLEEP=30
+   fi
+   if ! test -f $PID_FILE
+    then 
+      echo $CONTAINER_NAME crashed on start sleeping $DEBUG_SLEEP secs to allow debug
+      sleep $DEBUG_SLEEP
+   else
+     kill -0 `cat $PID_FILE
+      if test $? -ne 0
+        then
+         echo $CONTAINER_NAME crashed on start sleeping $DEBUG_SLEEP secs to allow debug
+         sleep $DEBUG_SLEEP
+      fi
+   fi
+fi
+}

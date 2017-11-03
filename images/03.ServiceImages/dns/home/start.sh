@@ -24,13 +24,6 @@ export PID_FILE
 sudo -n /home/engines/scripts/engine/_setup.sh
 
 sudo -n /usr/sbin/named  -c /etc/bind/named.conf -f -u bind &
-sleep 2
-kill -0 $pid `cat $PID_FILE`
- if test $? -ne 0
-  then
-   echo failed to start
-   sleep 500
-  fi 
 
 . /home/engines/scripts/services/dns_functions.sh
 hostname=lanhost
