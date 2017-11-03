@@ -39,7 +39,7 @@ debug_catch_crash()
       echo $CONTAINER_NAME crashed on start sleeping $DEBUG_SLEEP secs to allow debug
       sleep $DEBUG_SLEEP
    else
-     kill -0 `cat $PID_FILE
+     kill -0 `cat $PID_FILE`
       if test $? -ne 0
         then
          echo $CONTAINER_NAME crashed on start sleeping $DEBUG_SLEEP secs to allow debug

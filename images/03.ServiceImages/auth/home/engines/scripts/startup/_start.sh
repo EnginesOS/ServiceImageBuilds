@@ -1,4 +1,5 @@
 #!/bin/sh
+. /home/engines/functions/system_functions.sh
 
 /usr/sbin/krb5kdc -P /var/run/krb5kdc.pid -n &
 kpid=$! 

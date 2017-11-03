@@ -1,4 +1,5 @@
 #!/bin/bash
+. /home/engines/functions/system_functions.sh
 
 rm /var/spool/postfix/pid/master.pid
 /usr/lib/postfix/sbin/master -w

@@ -1,5 +1,6 @@
 #!/bin/bash
 
+. /home/engines/functions/system_functions.sh
 
 
 export KRB5_KTNAME=/etc/krb5kdc/keys/ldap.keytab

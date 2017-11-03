@@ -1,5 +1,6 @@
 #!/bin/sh
 PID_FILE=/tmp/ipsec.pid
+. /home/engines/functions/system_functions.sh
 
 
 iptables -t nat -I POSTROUTING -s  10.1.1.0/24 -o eth+ -m policy --dir out --pol ipsec -j ACCEPT
