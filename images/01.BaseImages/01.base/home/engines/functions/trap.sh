@@ -1,5 +1,5 @@
 #!/bin/sh
-. /home/engines/system_functions.sh
+. /home/engines/functions/system_functions.sh
 
 startup_complete()
 {
