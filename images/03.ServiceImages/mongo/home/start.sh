@@ -18,9 +18,9 @@ if ! test -d /data/db/.priv
  	/home/firstrun.sh
 fi
 
-touch  /home/engines/run/flags/startup_complete
+startup_complete
+
 wait  
 exit_code=$?
 
-rm /home/engines/run/flags/startup_complete
-exit $exit_code
+shutdown_complete

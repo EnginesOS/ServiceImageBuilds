@@ -24,6 +24,8 @@ cd /home
 #touch /home/engines/run/flags/startup_complete  done in code
 wait 
 exit_code=$?
-rm -f /home/engines/run/flags/startup_complete
-exit $exit_code
+
+shutdown_complete
+
+
 

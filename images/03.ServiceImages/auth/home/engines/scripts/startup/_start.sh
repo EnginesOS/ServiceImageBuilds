@@ -6,19 +6,20 @@
 kpid=$! 
 /usr/sbin/kadmind -P /var/run/krb5admin.pid -nofork  &
 pid=$!
+echo -n " $pid" >> /var/run/krb5kdc.pid
+ 
+startup_complete
 
-#kpid=`cat /var/run/krb5kdc.pid `
- echo -n " $pid" >> /var/run/krb5kdc.pid 
-echo "startup complete"
-touch /home/engines/run/flags/startup_complete
-sleep 5
- if test -f /home/engines/run/flags/first_run.done
-  then
+#sleep 5
+# if test -f /home/engines/run/flags/first_run.done
+#  then
 	wait $kpid 	
 	exit_code=$?
 	/home/engines/scripts/signal/_kill_kerberos.sh TERM
-	rm /home/engines/run/flags/startup_complete
-	export exit_code
-  else
-   export kpid 	
- fi
+	
+    shutdown_complete
+#	
+#	export exit_code
+#  else
+#   export kpid 	
+# fi

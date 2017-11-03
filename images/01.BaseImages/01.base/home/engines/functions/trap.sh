@@ -214,6 +214,7 @@ fi
 
 function startup_complete()
 {
+echo "Startup Complete"
 touch /home/engines/run/flags/startup_complete
 debug_catch_crash
 }
@@ -225,7 +226,14 @@ rm /home/engines/run/flags/startup_complete
    then
     sleep 210
   fi
-rm /home/engines/run/flags/startup_complete
+  for P_FILE in $PID_FILE 
+   do
+    if test -f $P_FILE 
+     then 
+       rm $P_FILE
+    fi
+   done    
+exit $exit_code
 }
 
 function debug_catch_crash() 

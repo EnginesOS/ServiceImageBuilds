@@ -19,10 +19,12 @@ sysctl -w net.ipv4.icmp_ignore_bogus_error_responses=1
 
 /usr/sbin/ipsec start --nofork &
 echo $! > $PID_FILE
-touch /home/engines/run/flags/startup_complete  
+
+startup_complete 
+
 wait `cat $PID_FILE`
 exit_code=$?
-rm -f /home/engines/run/flags/startup_complete
 
-rm $PID_FILE
-exit $exit_code
+shutdown_complete
+
+

@@ -39,5 +39,5 @@ echo ktadd -k /etc/krb5kdc/services/uadmin/uadmin_kadmin.keytab uadmin/admin@ENG
  
 touch /home/engines/run/flags/first_run.done
 wait $pid
-exit $exit_code
+$exit_code=$?
  

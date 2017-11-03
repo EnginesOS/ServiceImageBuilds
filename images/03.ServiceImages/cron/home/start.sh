@@ -7,9 +7,10 @@ export PID_FILE
 
 
 /home/cron/sbin/fcron -f -p  /home/cron/log/cron.log &
-touch /home/engines/run/flags/startup_complete  
+
+startup_complete
+
 wait 
 exit_code=$?
 
-rm -f /home/engines/run/flags/startup_complete
-exit $exit_code
+shutdown_complete

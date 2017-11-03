@@ -14,7 +14,7 @@ service_clear_restart_required
 
 mkdir /home/redis/config.d/
 
-touch /home/engines/run/flags/startup_complete
+startup_complete
 
 configs=`ls /home/redis/config.d/*.redis.config`
 for config in $configs
@@ -46,8 +46,5 @@ touch /home/engines/run/flags/startup_complete
     
  # fi
 
+shutdown_complete
 
-
-
-rm /home/engines/run/flags/startup_complete
-exit $exit_code

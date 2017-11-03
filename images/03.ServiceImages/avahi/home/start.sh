@@ -8,10 +8,6 @@ export KILL_SCRIPT
 . /home/engines/functions/trap.sh
 
 service_clear_restart_required
-#if test -f /home/engines/run/flags/restart_required
-# then
-#  rm -f /home/engines/run/flags/restart_required
-#fi
 
 ip=`cat /home/net/ip`
 echo "$ip mgmt.local" >/etc/avahi/hosts
@@ -36,8 +32,7 @@ touch /home/avahi/hosts/avahi.local
 ls /home/avahi/hosts/ > /home/avahi/hosts_list
 /home/engines/scripts/engine/publish_aliases.sh  2>/dev/null &
 
-
-touch /home/engines/run/flags/startup_complete
+startup_complete
 
 wait
 exit_code=$?
@@ -47,5 +42,4 @@ kill -TERM   'cat PID_FILE'
 sudo -n /home/engines/scripts/engine/_kill_avahi.sh 
 sudo -n /home/engines/scripts/engine/_kill_dbus.sh $dbus_pid
 
-rm /home/engines/run/flags/startup_complete
-exit $exit_code
+shutdown_complete

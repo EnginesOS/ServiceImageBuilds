@@ -19,10 +19,10 @@ mkdir /var/log/apache2
 /usr/sbin/apache2ctl -DFOREGROUND &	
 
 echo $? > /var/run/engines/apache.pid
-touch  /home/engines/run/flags/startup_complete
+
+startup_complete
 
 wait
 exit_code=$?
 
-rm /home/engines/run/flags/startup_complete
-exit $exit_code
+shutdown_complete

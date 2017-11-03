@@ -13,9 +13,11 @@ cd /home/app
 
 bundle exec thin  -R ./config.ru start > /var/log/firstrun.log &
 
-touch /home/engines/run/flags/startup_complete  
+startup_complete
+
 wait 
 exit_code=$?
-kill -TERM  `cat /home/engines/run/firstrun.pid`
-rm -f /home/engines/run/flags/startup_complete
-exit $exit_code
+kill -TERM  cat /home/engines/run/firstrun.pid`
+
+shutdown_complete
+

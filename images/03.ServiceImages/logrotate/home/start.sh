@@ -1,5 +1,7 @@
 #!/bin/sh
-touch  /home/engines/run/flags/startup_complete
+
+startup_complete
+
 sleep 120
 echo "Log Rotated Started"
 date
@@ -18,9 +20,8 @@ exit_code=$?
 echo "Log Rotated Completed"
 date
 
-rm /home/engines/run/flags/startup_complete
+shutdown_complete
 
-exit $exit_code
 
 
 
