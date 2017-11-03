@@ -46,7 +46,7 @@ debug_catch_crash()
          sleep $DEBUG_SLEEP
       fi
    fi
-fi
+ fi
 }
 service_first_run_check()
 {
