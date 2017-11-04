@@ -12,7 +12,7 @@ service_clear_restart_required
 ip=`cat /home/net/ip`
 echo "$ip mgmt.local" >/etc/avahi/hosts
 ext_interface=`netstat -nr |grep ^0.0.0.0 | awk '{print $8}' |head -1`
-#`cat /home/net/gateway_interface`
+
 interfaces="${ext_interface} , docker0"
 echo binding to $interfaces
 cat /home/engines/templates/avahi/avahi-daemon.conf.tmpl | sed "/INTERFACES/s//$interfaces/" > /tmp/avahi-daemon.conf
