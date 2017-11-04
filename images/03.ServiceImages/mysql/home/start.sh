@@ -21,7 +21,7 @@ fi
 
 /usr/sbin/mysqld --defaults-file=/etc/mysql/my.cnf --basedir=/usr --datadir=/var/lib/mysql --plugin-dir=/usr/lib/mysql/plugin --user=mysql --log-error=/var/log/mysql/error.log --pid-file=/var/run/mysqld/mysqld.pid --socket=/var/run/mysqld/mysqld.sock --bind-address=0.0.0.0 --port=3306 &
 
-touch  /home/engines/run/flags/startup_completestartup_complete
+startup_complete
 
 wait 
 exit_code=$?

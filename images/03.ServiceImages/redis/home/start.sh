@@ -14,7 +14,7 @@ service_clear_restart_required
 
 mkdir /home/redis/config.d/
 
-startup_complete
+
 
 configs=`ls /home/redis/config.d/*.redis.config`
 for config in $configs
@@ -23,7 +23,8 @@ for config in $configs
 	echo -n $! >> $PID_FILE
 	echo -n " " >> $PID_FILE
 done
-touch /home/engines/run/flags/startup_complete
+
+startup_complete
  
 # if test `ls /home/redis/config.d/*.redis.config |wc -l` -eq 0
  # then

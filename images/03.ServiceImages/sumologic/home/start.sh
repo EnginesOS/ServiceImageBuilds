@@ -1,7 +1,7 @@
 #!/bin/bash
 #wait for configurators
 sleep 10
-rm  -f /home/engines/run/flags/startup_complete
+
 if test -f /home/engines/scripts/configurators/saved/credentials
  then
  	 cat /home/engines/scripts/configurators/saved/credentials | /home/engines/bin/json_to_env >/tmp/.env
