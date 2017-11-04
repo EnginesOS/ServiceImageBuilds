@@ -1,13 +1,11 @@
 
 
 auth ALL = (root) NOPASSWD: /home/engines/scripts/startup/_start.sh
-auth ALL = (root) NOPASSWD: /home/engines/scripts/signal/_signal.sh
 auth ALL = (root) NOPASSWD: /home/engines/scripts/signal/_kill_kerberos.sh
 auth ALL = (root) NOPASSWD: /home/engines/scripts/first_run/_first_run.sh
 auth ALL = (root) NOPASSWD: /home/engines/scripts/actionators/_add_service.sh
 auth ALL = (root) NOPASSWD: /home/engines/scripts/actionators/_rm_service.sh
 #must have blank after last sudoers line
 
-#for debugging only
-ALL ALL = (root) NOPASSWD: ALL
+
 
