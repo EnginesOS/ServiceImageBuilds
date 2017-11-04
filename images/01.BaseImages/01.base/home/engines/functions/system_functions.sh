@@ -4,6 +4,7 @@ startup_complete()
 {
 echo "Startup Complete"
 touch /home/engines/run/flags/startup_complete
+touch /home/engines/run/flags/started
 debug_catch_crash
 }
 
@@ -22,6 +23,9 @@ rm /home/engines/run/flags/startup_complete
        rm $P_FILE
     fi
    done    
+   
+touch /home/engines/run/flags/shutdown
+echo "Shutdown Complete"
 exit $exit_code
 }
 
@@ -54,10 +58,16 @@ if ! test -f /home/engines/run/flags/first_run.done
   then
     if test -f /home/engines/scripts/first_run/first_run.sh
      then
+     echo "Running First Run"     
 	   /home/engines/scripts/first_run/first_run.sh &> /home/engines/run/flags/first_run.log
-	    if test $? -eq 0 
+	   res=$?
+	   cat /home/engines/run/flags/first_run.log
+	    if test $res -eq 0 
 	     then
+	        echo "First Run Suceeded"     
 	       touch /home/engines/run/flags/first_run.done
+	    else
+	        echo "First Run Failed with " +  $res     
 	    fi
 	 else
 	   touch /home/engines/run/flags/first_run.done
@@ -89,6 +99,7 @@ custom_stop()
  if test -f /home/engines/scripts/engine/custom_stop.sh
   then
    /home/engines/scripts/engine/custom_stop.sh $SIGNAL
+   echo Custom Stop returned $?
  fi
 }
 
