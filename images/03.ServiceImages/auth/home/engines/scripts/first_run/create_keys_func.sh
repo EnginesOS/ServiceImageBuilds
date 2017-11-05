@@ -10,7 +10,7 @@ echo ktadd -k /etc/krb5kdc/services/$service/$service.keytab host/$service.engin
 
 }
 
-create_keys()
+create_init_keys()
 {
 
 for service in `cat /home/engines/scripts/first_run/key_list`
