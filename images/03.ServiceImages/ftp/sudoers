@@ -1,6 +1,6 @@
 
 proftpd ALL = (root) NOPASSWD: /usr/sbin/proftpd
-proftpd ALL = (root) NOPASSWD: /home/engines/scripts/_signal.sh
+proftpd ALL = (root) NOPASSWD: /home/engines/scripts/signal/_signal.sh
 
 
 #must have blank after last sudoers line
