@@ -1,6 +1,7 @@
+#!/bin/sh
 
-
-function gen_service_key {
+gen_service_key()
+{
 echo addprinc -randkey host/$service.engines.internal@ENGINES.INTERNAL | kadmin.local 
 mkdir -p /etc/krb5kdc/services/$service 
    
@@ -8,7 +9,8 @@ echo ktadd -k /etc/krb5kdc/services/$service/$service.keytab host/$service.engin
 
 }
 
-function create_keys {
+create_keys()
+{
 
 for service in `cat /home/engines/scripts/first_run/key_list`
  do
