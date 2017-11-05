@@ -2,6 +2,7 @@
 
 gen_service_key()
 {
+echo Generating $service
 echo addprinc -randkey host/$service.engines.internal@ENGINES.INTERNAL | kadmin.local 
 mkdir -p /etc/krb5kdc/services/$service 
    
