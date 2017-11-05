@@ -91,18 +91,18 @@ else
    exit 127
  fi
    
-if ! test ${install_target} = default
- then
-  if test ${container_type} = service
+if test -z ${install_target}
+  then
+   if test ${container_type} = service
    then
      install_target=${parent_engine}
+  else
+    install_target=wap
   fi
- fi
-     
-if test -z ${install_target}
- then
-  install_target=wap
 fi
+
+     
+
 domain_name=`cat  /home/certs/store/public/certs/${StorePref}${cert_name}.crt | openssl x509 -noout -subject  |sed "/^.*CN=/s///"| sed "/\*/s///"`
 echo  "/home/engines/scripts/engine/_install_target.sh ${install_target} ${StorePref}/${cert_name} ${domain_name}"
 sudo -n  /home/engines/scripts/engine/_install_target.sh ${install_target} ${StorePref}/${cert_name} ${domain_name}
