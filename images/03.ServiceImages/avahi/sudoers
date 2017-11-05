@@ -1,6 +1,4 @@
-
-
-
+Defaults  env_keep += "SIGNAL CONTAINER_NAME PID_FILE"
 
 avahi ALL = (root) NOPASSWD: /usr/bin/dbus-daemon
 

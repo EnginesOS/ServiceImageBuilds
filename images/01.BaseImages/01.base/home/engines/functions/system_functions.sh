@@ -40,6 +40,7 @@ debug_catch_crash()
    fi
    if ! test -f $PID_FILE
     then 
+      echo Missing pid file $PID_FILE
       echo $CONTAINER_NAME crashed on start sleeping $DEBUG_SLEEP secs to allow debug
       sleep $DEBUG_SLEEP
    else

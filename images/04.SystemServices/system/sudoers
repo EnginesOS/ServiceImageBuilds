@@ -1,4 +1,4 @@
-
+Defaults  env_keep += "SIGNAL CONTAINER_NAME PID_FILE"
 engines ALL = (root) NOPASSWD: /opt/engines/system/scripts/system/sudo/_setup_service_dir.sh
 engines ALL = (root) NOPASSWD: /opt/engines/system/scripts/system/sudo/_setup_service_key_dir.sh
 engines ALL = (root) NOPASSWD: /opt/engines/system/scripts/system/sudo/_setup_service_keys.sh

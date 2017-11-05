@@ -1,4 +1,4 @@
-
+Defaults  env_keep += "SIGNAL CONTAINER_NAME PID_FILE"
 
 bind ALL = (root) NOPASSWD: /usr/sbin/named
 bind ALL = (root) NOPASSWD: /home/engines/scripts/engine/_setup.sh
