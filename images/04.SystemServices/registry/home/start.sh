@@ -18,12 +18,14 @@ pid=$!
 echo $pid >/tmp/pid
 #--threaded
 
-touch /home/engines/run/flags/startup_complete  
+startup_complete
+
 wait 
 exit_code=$?
 
-rm -f /home/engines/run/flags/startup_complete
-exit $exit_code
+shutdown_complete
+
+
 
 
 

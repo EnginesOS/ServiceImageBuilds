@@ -1,7 +1,7 @@
 #!/bin/bash
 #wait for configurators
 sleep 10
-rm  -f /home/engines/run/flags/startup_complete
+
 if test -f /home/engines/scripts/configurators/saved/credentials
  then
  	 cat /home/engines/scripts/configurators/saved/credentials | /home/engines/bin/json_to_env >/tmp/.env
@@ -40,8 +40,11 @@ if [ ! -e $sources_json ]; then
 fi
 
 sudo -n /opt/SumoCollector/collector console -- -t -i $access_id -k $access_key -n $collector_name -s $sources_json &
-touch  /home/engines/run/flags/startup_complete
+
+startup_complete
+
 wait
 exit_code=$?
-rm /home/engines/run/flags/startup_complete
-exit $exit_code
+
+shutdown_complete
+

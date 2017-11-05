@@ -8,11 +8,13 @@ if test -z $db_master_pass
  echo "NO Password"
 	exit -1
  fi
- 
+ required_values="db_master_pass"
+check_required_values
+
 cat /home/tmpls/change_pass.tmpl | sed "/DBPASSWD/s//$db_master_pass/" | sed "/DBUSER/s//admin/"  > /tmp/change_pass_cmd.js
  pass=`cat  /data/db/.priv/db_master_pass`
 
-   mongo -p $pass -u admin --authenticationDatabase admin < /tmp/change_pass_cmd.js&> /tmp/res
+mongo -p $pass -u admin --authenticationDatabase admin < /tmp/change_pass_cmd.js&> /tmp/res
 res=`cat /tmp/res`
 
 

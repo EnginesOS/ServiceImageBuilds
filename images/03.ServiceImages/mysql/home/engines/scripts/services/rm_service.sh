@@ -9,18 +9,10 @@ E_BADARGS=65
 MYSQL=`which mysql`
 
 
+required_values="database_name db_username"
+check_required_values
 
-if test -z $database_name
- then
-	echo Error:No database_name value
-	exit -1
-fi
-	
-if test -z $db_username
- then
-	echo Error:No db_username value
-	exit -1
-fi
+
 
 Q1="DELETE FROM mysql.user where user='$db_username';"
 Q2="FLUSH PRIVILEGES;"

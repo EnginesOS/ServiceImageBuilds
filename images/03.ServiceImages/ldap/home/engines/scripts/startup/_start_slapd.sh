@@ -1,5 +1,6 @@
 #!/bin/bash
 
+. /home/engines/functions/system_functions.sh
 
 
 export KRB5_KTNAME=/etc/krb5kdc/keys/ldap.keytab
@@ -10,7 +11,7 @@ ulimit -n 1024
 /usr/sbin/slapd -d 160  -h "ldap://0.0.0.0/  ldapi:///"&
 pid=$!
 
-#touch /home/engines/run/flags/init_ous_configured
+
   
 if ! test -f /home/engines/run/flags/init_ous_configured
  then
@@ -27,11 +28,14 @@ echo -n " $pid " >> /tmp/pids
 chmod g+x /tmp/pids
 chgrp containers /tmp/pids
 
-touch /home/engines/run/flags/startup_complete
+startup_complete
+
 wait $pid
 exit_code=$?
-rm /home/engines/run/flags/startup_complete  
+
 kill `cat /tmp/pids`
 
+shutdown_complete
 
-exit $exit_code
+
+

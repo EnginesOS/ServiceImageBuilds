@@ -2,6 +2,8 @@
 . /home/engines/functions/params_to_env.sh
 params_to_env
 . /home/engines/functions/ldap/support_functions.sh
+required_values="uid password last_name given_name domain_name"
+check_required_values 
 
 cat /home/engines/templates/add_user.ldif | while read LINE
 do

@@ -45,11 +45,11 @@ service_first_run_check
 
 echo Starting Server
 nginx &
-echo Server Started
-touch  /home/engines/run/flags/startup_complete
+
+startup_complete
+
 wait 
 exit_code=$?
-sleep 500
 
-rm /home/engines/run/flags/startup_complete
-exit $exit_code
+shutdown_complete
+

@@ -3,18 +3,10 @@
 . /home/engines/functions/params_to_env.sh
 params_to_env
 
+required_values="database_name db_username"
+check_required_values
 
-if test -z $database_name
- then
-	echo Error:No database_name value
-	exit -1
-fi
-	
-if test -z $db_username
- then
-	echo Error:No db_username value
-	exit -1
-fi
+
 
 cat /home/tmpls/destroy_db.tmpl | sed "/DBNAME/s//$database_name/" \
  								| sed "/DBUSER/s//$db_username/"  > /tmp/destroy_db_cmd.js

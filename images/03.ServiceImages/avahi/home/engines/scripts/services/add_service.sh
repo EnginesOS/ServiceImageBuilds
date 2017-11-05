@@ -3,14 +3,17 @@
 . /home/engines/functions/params_to_env.sh
 params_to_env
  
+ check_required_valueshostname
+check_required_values
+ 
 default_mdns_domain=`cat /home/engines/scripts/configurators/saved/default_mdns_domain  | cut -f2 -d: | sed "s/\"//" | cut -f1 -d\"`
 
-echo "delete from action_tests where name = '$name';"
-if test -z ${hostname}
-  then
-	echo Error:Missing hostname
-    exit 128
-fi
+#echo "delete from action_tests where name = '$name';"
+#if test -z ${hostname}
+#  then
+#	echo Error:Missing hostname
+#    exit 128
+#fi
 
 touch /home/avahi/hosts/${hostname}.${default_mdns_domain}
 ls /home/avahi/hosts/ > /home/avahi/hosts_list

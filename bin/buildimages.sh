@@ -7,6 +7,7 @@ process_args
 
 get_edition_and_release
 
+clear_old
 
 cd images
 MasterImagesDir=`pwd`

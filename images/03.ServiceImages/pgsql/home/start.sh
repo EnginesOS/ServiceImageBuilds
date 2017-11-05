@@ -24,10 +24,11 @@ fi
 
 /usr/lib/postgresql/9.5/bin/postgres -D /var/lib/postgresql/9.5/main -c config_file=/etc/postgresql/9.5/main/postgresql.conf &
 echo $! > /var/run/postgresql/9.5-main.pid
-touch /home/engines/run/flags/startup_complete
+
+startup_complete
 
 wait  
 exit_code=$?
 
-rm /home/engines/run/flags/startup_complete
-exit $exit_code
+shutdown_complete
+

@@ -21,6 +21,13 @@ parms_to_file_and_env
 required_values="cert_name domainname country state city organisation person"
 check_required_values
 
+CERT_DEFAULTS_FILE=/home/engines/scripts/configurators/saved/default_cert_details
+echo country=\"$country\" > $CERT_DEFAULTS_FILE
+echo state=\"$state\" >> $CERT_DEFAULTS_FILE
+echo organisation=\"$organisation\" >> $CERT_DEFAULTS_FILE
+echo city=\"$city\" >> $CERT_DEFAULTS_FILE
+echo person=\"$person\" >> $CERT_DEFAULTS_FILE
+ 
 cp /home/engines/scripts/configurators/saved/ca_setup /home/engines/scripts/configurators/saved/ca_params
 
 

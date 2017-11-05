@@ -7,10 +7,10 @@ export PID_FILE
 
 
 sudo -n  /usr/sbin/proftpd -n &
-touch  /home/engines/run/flags/startup_complete
+
+startup_complete
+
 wait 
 exit_code=$?
 
-
-rm /home/engines/run/flags/startup_complete
-exit $exit_code
+shutdown_complete

@@ -3,17 +3,9 @@
 . /home/engines/functions/params_to_env.sh
 params_to_env
 
-if test -z "${parent_engine}"
- then
-echo Error:Missing parent_engine
-      exit -1
-fi
+required_values="title parent_engine "
+check_required_values
 
-if test -z ${title}
- then
-	echo Error:missing title
-    exit -1
-fi  
 
 if test -f /home/cron/entries/${parent_engine}/$title
  then

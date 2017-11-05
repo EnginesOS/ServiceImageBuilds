@@ -1,36 +1,15 @@
 #!/bin/bash
-if test $# -eq 0 
- then
- 	cat -  | /home/engines/bin/json_to_env >/tmp/.env
- else
-	echo $1 | /home/engines/bin/json_to_env >/tmp/.env
-fi
 
- . /tmp/.env
+. /home/engines/functions/params_to_env.sh
+params_to_env
 
+required_values="database_name db_username db_password"
+check_required_values
 
 BTICK='`'
 
 E_BADARGS=65
 MYSQL=`which mysql`
-
-if test -z $database_name
- then
-	echo Error:No database_name value
-	exit -1
-fi
-	
-if test -z $db_username 
- then
- echo Error:No username"
-  exit 127
-fi  
-
-if test -z $db_password
- then
-	echo Error:No db_password value
-	exit 127
-fi   
 
 Q1="set password for '"$db_username"'@'%' = PASSWORD('"$db_password"');"	
 

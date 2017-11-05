@@ -1,4 +1,4 @@
-#postfix ALL=(root) NOPASSWD: /usr/lib/postfix/sbin/master
+Defaults  env_keep += "SIGNAL CONTAINER_NAME PID_FILE"
 postfix ALL=(root) NOPASSWD: /home/engines/scripts/startup/_start_postfix.sh
 postfix ALL=(root) NOPASSWD: /home/engines/scripts/first_run/_setup_dirs.sh
 postfix ALL=(root) NOPASSWD: /home/engines/scripts/engine/_postmap.sh

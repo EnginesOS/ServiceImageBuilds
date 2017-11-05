@@ -1,17 +1,22 @@
 #!/bin/bash
+if test -f /var/run/krb5kdc.pid
+  then
+   kill -0 `cat /var/run/krb5kdc.pid` &>/dev/null
+    if test $? -eq 0 
+     then
+	  kill -$1 `cat /var/run/krb5kdc.pid`	
+    fi
+ fi
 
-kill -0 `cat /var/run/krb5kdc.pid`
- if test $? -eq 0 
+if test -f /var/run/krb5admin.pid
   then
-	kill -$1 `cat /var/run/krb5kdc.pid`	
- fi
- 
-kill -0 `cat /var/run/krb5admin.pid ` 
- if test $? -eq 0 
-  then
-   kill -$1 `cat /var/run/krb5admin.pid `
- fi
- 
+   kill -0 `cat /var/run/krb5admin.pid` &>/dev/null
+    if test $? -eq 0 
+     then
+      kill -$1 `cat /var/run/krb5admin.pid `
+    fi
+fi 
+
 if ! test $1 = HUP
  then 
  if test -f /var/run/krb5kdc.pid
@@ -19,7 +24,7 @@ if ! test $1 = HUP
    pid=`cat /var/run/krb5kdc.pid` 
    count=30
    n=0
-   kill -0 $pid`
+   kill -0 $pid 
    r=$?
     while test $r -eq 0
      do
@@ -30,7 +35,7 @@ if ! test $1 = HUP
        fi
        n=`expr $n + 1` 
       sleep 1
-      kill -0 $pid`
+      kill -0 $pid
      done
  fi    
 fi

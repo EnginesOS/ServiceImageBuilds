@@ -6,7 +6,7 @@ params_to_env
 
 set > /tmp/full_env
 
-check_required_values="type parent_engine container_type"
+required_values="type parent_engine container_type"
 check_required_values
 
 

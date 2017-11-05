@@ -35,10 +35,10 @@ hostname=publichost
 no_inarpra=1
 add_to_internal_domain
 
-touch /home/engines/run/flags/startup_complete
+startup_complete
 
 wait  
 exit_code=$?
 
-rm /home/engines/run/flags/startup_complete
-exit $exit_code
+shutdown_complete
+

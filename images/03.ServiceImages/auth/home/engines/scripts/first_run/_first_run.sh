@@ -22,8 +22,8 @@ fi
 	
 export pass 
 expect -d /home/engines/scripts/first_run/kerobos_init.expect
- 
-/home/engines/scripts/auth/_start.sh 
+unset pass
+/home/engines/scripts/startup/_start.sh 
 
 for service in `cat /home/engines/scripts/first_run/key_list`
  do
@@ -37,7 +37,7 @@ echo ktadd -k /etc/krb5kdc/services/ldap/ldap.keytab ldap/ldap.engines.internal@
 echo addprinc -randkey uadmin/admin@ENGINES.INTERNAL | kadmin.local
 echo ktadd -k /etc/krb5kdc/services/uadmin/uadmin_kadmin.keytab uadmin/admin@ENGINES.INTERNAL | kadmin.local
  
-touch /home/engines/run/flags/first_run.done
+
 wait $pid
-exit $exit_code
+exit_code=$?
  

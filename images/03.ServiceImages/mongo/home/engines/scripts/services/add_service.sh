@@ -3,26 +3,8 @@
 . /home/engines/functions/params_to_env.sh
 params_to_env
 
-
-
-if test -z $database_name
- then
-	echo Error:No database_name value
-	exit -1
-fi
-	
-if test -z $db_username
- then
-	echo Error:No db_username value
-	exit -1
-fi
-		
-if test -z $db_password
- then
-	echo Error:No db_password value
-	exit -1
-fi
-
+required_values="database_name db_username db_password"
+check_required_values
 
  
  cat /home/tmpls/create_db.tmpl | sed "/DBNAME/s//$database_name/" \

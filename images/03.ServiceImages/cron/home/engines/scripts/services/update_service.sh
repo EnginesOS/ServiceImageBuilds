@@ -1,45 +1,12 @@
 #!/bin/bash
 
+. /home/engines/functions/params_to_env.sh
+params_to_env
 
-if test $# -eq 0 
- then
- 	cat -  | /home/engines/bin/json_to_env>/tmp/.env
- else
-	echo $1 | /home/engines/bin/json_to_env >/tmp/.env
-fi
+ required_values="cron_job when title parent_engine container_type"
+check_required_values
 
- . /tmp/.env
-#FIXME make engines.internal settable
 
-if test -z "${cron_job}" 
- then
-  echo Error:Missing cron_job
-  exit -1
-fi
-
-if test -z "${when}"
- then
-  echo Error:Missing when
-  exit -1
-fi
-
-if test -z ${title}
- then
-   echo Error:missing title
-   exit -1
-fi
-  
-if test -z ${parent_engine}
-then
-  echo Error:missing parent_engine
-  exit -1
-fi  
-   
-if test  ${container_type} = container
- then
-  container_type=engine
-fi
-      
 rm  /home/cron/entries/${parent_engine}/$title
 
 if test $action_type = "web"

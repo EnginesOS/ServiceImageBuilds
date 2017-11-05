@@ -1,9 +1,8 @@
-
-
+Defaults  env_keep += "SIGNAL CONTAINER_NAME PID_FILE"
 openldap ALL=(root) NOPASSWD: /home/engines/scripts/actionators/_set_admin_password.sh
 openldap ALL=(root) NOPASSWD: /home/engines/scripts/startup/_start_slapd.sh
 
-openldap ALL=(root) NOPASSWD: /home/engines/scripts/_signal.sh
+openldap ALL=(root) NOPASSWD: /home/engines/scripts/signal/_signal.sh
 openldap ALL=(root) NOPASSWD: /home/engines/scripts/first_run/_first_run.sh
 openldap ALL=(root) NOPASSWD: /home/engines/scripts/first_run/_init_ous_configured.sh
 #for debugging only

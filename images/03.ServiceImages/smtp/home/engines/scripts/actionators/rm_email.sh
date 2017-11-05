@@ -3,11 +3,8 @@
 . /home/engines/functions/params_to_env.sh
 params_to_env
 
-if test -z $queue_id
- then
-  echo '{"Result":"Failed","ErrorMesg","Missing queueid"}'
-  exit 127
-fi
+required_values="queue_id"
+check_required_values 
 
 
 sudo -n /home/engines/scripts/actionators/_rm_email.sh   $queue_id &> /tmp/err

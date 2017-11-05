@@ -39,18 +39,18 @@ fi
 }
 
 function clear_old {
-es=`docker ps  |grep -v CON | awk '{print $1}' &> /dev/null`
+es=`docker ps -aq`
 
-if ! test -z "$es"
+if ! test ${#es} -gt 1
  then
-  docker stop $es
+  docker stop $es &> /dev/null
 fi
 
-es=`docker ps -a |grep -v CON | awk '{print $1}' &> /dev/null`
+images=`docker images |grep none | awk '{print $3}'`
 
-if ! test -z "$es"
+if ! test ${#images} -gt 1
  then
-  docker rm $es &> /dev/null
+  docker rm $images &> /dev/null
 fi
 }
 
@@ -197,5 +197,12 @@ cd $dir
    echo "----------------------"	
  fi
 cd ..
+}
+
+function clean_up {
+	containers=`docker ps -aq`
+	docker rm $containers
+	images=`docker images |grep none | awk '{print $3}'`
+	docker rmi $images
 }
  	

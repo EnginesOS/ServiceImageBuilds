@@ -4,7 +4,9 @@
 PARAMS_FILE=/home/engines/scripts/configurators/saved/default_site_url
 parms_to_file_and_env
 
-        
+required_values="default_site_url"
+check_required_values    
+  
 if test  ${#default_site_url} -gt 4
  then  
   cat /etc/nginx/templates/default_site.tmpl | sed "/FQDN/s//$default_site_url/" > /tmp/site.fqdn

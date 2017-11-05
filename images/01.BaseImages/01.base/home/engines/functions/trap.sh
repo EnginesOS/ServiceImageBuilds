@@ -1,48 +1,5 @@
 #!/bin/sh
-
-service_first_run_check()
-{
-if ! test -f /home/engines/run/flags/first_run.done
-  then
-    if test -f /home/engines/scripts/first_run/first_run.sh
-     then
-	   /home/engines/scripts/first_run/first_run.sh &> /home/engines/run/flags/first_run.log
-	    if test $? -eq 0 
-	     then
-	       touch /home/engines/run/flags/first_run.done
-	    fi
-	 else
-	   touch /home/engines/run/flags/first_run.done
-	 fi   			
- fi
-}
-
-service_clear_restart_required()
-{
-if test -f /home/engines/run/flags/restart_required
- then
-  rm -f /home/engines/run/flags/restart_required
-fi
-}
-
-clear_stale_flags()
-{
- for flag in sig_term termed sig_hup huped sig_quit quited
- do
-   if test -f /home/engines/run/flags/$flag
-    then
-	 rm -f /home/engines/run/flags/$flag
-   fi 
- done
-} 
-
-custom_stop()
-{
- if test -f /home/engines/scripts/engine/custom_stop.sh
-  then
-   /home/engines/scripts/engine/custom_stop.sh $SIGNAL
- fi
-}
+. /home/engines/functions/system_functions.sh
 
 
 trap_term()
@@ -55,6 +12,7 @@ custom_stop
 	
 if ! test -z $KILL_SCRIPT
  then
+ echo  termed $KILL_SCRIPT $SIGNAL
   $KILL_SCRIPT $SIGNAL
   touch /home/engines/run/flags/termed	
 else
@@ -96,6 +54,7 @@ touch /home/engines/run/flags/sig_hup
 	
 if ! test -z $HUP_SCRIPT
  then
+ echo  hup $HUP_SCRIPT $SIGNAL
    $HUP_SCRIPT $SIGNAL
    touch /home/engines/run/flags/huped	
 else
@@ -125,6 +84,7 @@ custom_stop
 	
 if ! test -z $KILL_SCRIPT
  then
+ echo  quited $KILL_SCRIPT $SIGNAL
   $KILL_SCRIPT $SIGNAL				
   touch /home/engines/run/flags/quited
 else 
@@ -207,4 +167,5 @@ then
       fi
   fi
 fi
-	 			
+
+

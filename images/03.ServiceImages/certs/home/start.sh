@@ -1,12 +1,11 @@
 #!/bin/sh
 
-
 PID_FILE=/tmp/sleep.pid
 export PID_FILE
 . /home/engines/functions/trap.sh
 
+startup_complete
 
-touch /home/engines/run/flags/startup_complete
 	while test 4 -ne 3
 	do 
 	    sleep 500 &
@@ -15,5 +14,4 @@ touch /home/engines/run/flags/startup_complete
 		exit_code=$?
 	done	
 
-rm -f /home/engines/run/flags/startup_complete
-exit $exit_code
+shutdown_complete

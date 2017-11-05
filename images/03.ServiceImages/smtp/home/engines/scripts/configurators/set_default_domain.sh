@@ -12,6 +12,9 @@ sudo -n /home/engines/scripts/engine/_postmap.sh  $map_file
 PARAMS_FILE=/home/engines/scripts/configurators/saved/default_domain
 parms_to_file_and_env
 
+required_values="domain_name"
+check_required_values 
+
 echo ${domain_name} >/home/engines/scripts/configurators/saved/domain
 
 for map_file in generic sender_canonical

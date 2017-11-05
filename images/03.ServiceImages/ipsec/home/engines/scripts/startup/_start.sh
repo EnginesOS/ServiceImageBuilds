@@ -1,5 +1,6 @@
 #!/bin/sh
 PID_FILE=/tmp/ipsec.pid
+. /home/engines/functions/system_functions.sh
 
 
 iptables -t nat -I POSTROUTING -s  10.1.1.0/24 -o eth+ -m policy --dir out --pol ipsec -j ACCEPT
@@ -19,10 +20,12 @@ sysctl -w net.ipv4.icmp_ignore_bogus_error_responses=1
 
 /usr/sbin/ipsec start --nofork &
 echo $! > $PID_FILE
-touch /home/engines/run/flags/startup_complete  
+
+startup_complete 
+
 wait `cat $PID_FILE`
 exit_code=$?
-rm -f /home/engines/run/flags/startup_complete
 
-rm $PID_FILE
-exit $exit_code
+shutdown_complete
+
+
