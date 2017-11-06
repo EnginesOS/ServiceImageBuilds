@@ -1,7 +1,7 @@
 #!/bin/sh
 
 PID_FILE=/var/run/apache.pid
-/home/build_config.sh
+/home/scripts/services/build_config.sh
 export PID_FILE
 . /home/engines/functions/trap.sh
 mkdir -p /var/log/log_viewer
