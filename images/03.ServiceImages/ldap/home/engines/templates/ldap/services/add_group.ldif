@@ -3,3 +3,4 @@ cn: $cn
 gidnumber: $gidNumber
 objectclass: posixGroup
 objectclass: top
+

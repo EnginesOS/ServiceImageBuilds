@@ -21,6 +21,8 @@ if test $result -ne 0
  fi
 fi
 
+rm $LDIF_FILE 
+
 if test -z $cn
  then
   cn=$parent_engine
