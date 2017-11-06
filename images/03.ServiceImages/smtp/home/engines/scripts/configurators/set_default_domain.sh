@@ -3,7 +3,7 @@
 function build_templated_mapfile {
  if test -f /home/engines/templates/$map_file 
   then
-	rm /home/engines/templates/$map_file
+	rm /home/postfix/$map_file
  fi
   
  cat /home/engines/templates/$map_file | while read LINE
