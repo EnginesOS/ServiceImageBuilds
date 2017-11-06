@@ -4,7 +4,7 @@ Create a dir
  engines/servicename:$release
  
  Add docker file and any other files require to the creation
- add user that the service is going to run as and add mapping to /opt/engines/etc/container_uids
+ add user that the service is going to run as and add mapping to /opt/engines/etc/exported/container_uids
  service starts with /home/start.sh
  ensure you trap and handle the signals
  #!/bin/bash

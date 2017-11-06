@@ -27,10 +27,10 @@ sudo -n /usr/sbin/named  -c /etc/bind/named.conf -f -u bind &
 
 . /home/engines/scripts/services/dns_functions.sh
 hostname=lanhost
-ip=`cat  /opt/engines/etc/net/ip`
+ip=`cat  /home/engines/system/net/net/ip`
 add_to_internal_domain
 
-ip=`cat  /opt/engines/etc/net/public`
+ip=`cat  /home/engines/system/net/public`
 hostname=publichost
 no_inarpra=1
 add_to_internal_domain
