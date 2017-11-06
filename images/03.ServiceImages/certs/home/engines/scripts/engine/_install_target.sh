@@ -31,34 +31,34 @@ id=`grep _$service /home/engines/system/container_uids | awk '{print $3}'`
 function install_system {
 dest_name=engines
 service=system
-id=21000
+set_service_uid
 install_cert
 }
 
 function install_smtp {
 dest_name=engines
 service=smtp
-id=22003
+set_service_uid
 install_cert
 }
 
 function install_ftp {
 dest_name=engines
 service=ftp
-id=22010
+set_service_uid
 install_cert
 }
 
 function install_imap {
 dest_name=engines
 service=imap
-id=22013
+set_service_uid
 install_cert
 }
 
 function install_ivpn {
 service=ivpn
-id=22031
+set_service_uid
 dest_name=ipvpn
 install_cert
 }
@@ -66,25 +66,25 @@ install_cert
 function install_email {
 dest_name=engines
 service=email
-id=22005
+set_service_uid
 install_cert
 }
 function install_pqsql {
 dest_name=engines
 service=pqsql
-id=22002
+set_service_uid
 install_cert
 }
 function install_mysql {
 dest_name=engines
 service=mysql
-id=22006
+set_service_uid
 install_cert
 }
 function install_mgmt  {
 dest_name=engines
 service=mgmt
-id=22050
+set_service_uid
 install_cert
 }
 function install_wap {
@@ -98,7 +98,7 @@ install_cert
 function install_service {
 dest_name=$install_target
 service=$install_target
-id=$id
+set_service_uid
 install_cert
 }
 
@@ -160,7 +160,7 @@ default)
   set_default  
   ;;
 *)
-  id=$4
+  set_service_uid
   install_service
   ;;
 esac
