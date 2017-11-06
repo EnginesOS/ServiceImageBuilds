@@ -9,7 +9,7 @@ export KILL_SCRIPT
 
 service_clear_restart_required
 
-ip=`cat /home/net/ip`
+ip=`cat /home/engines/system/net/ip`
 echo "$ip mgmt.local" >/etc/avahi/hosts
 ext_interface=`netstat -nr |grep ^0.0.0.0 | awk '{print $8}' |head -1`
 

@@ -3,6 +3,8 @@
 install_target=$1
 cert_name=$2
 domain_name=$3
+
+
 if test -z $store_name
  then
   store_name=`dirname $2`
@@ -23,7 +25,9 @@ chmod og-rw /home/certs/store/services/${service}/keys/${dest_name}.key
 chmod og-w /home/certs/store/services/${service}/certs/${dest_name}.crt
 echo $store_name > /home/certs/store/services/${service}/certs/store
 }
-
+function set_service_uid {
+id=`grep _$service /home/engines/system/container_uids | awk '{print $3}'`
+}
 function install_system {
 dest_name=engines
 service=system
@@ -90,6 +94,14 @@ dest_name=${domain_name}
 install_cert
 }
 
+
+function install_service {
+dest_name=$install_target
+service=$install_target
+id=$id
+install_cert
+}
+
 function set_default {
 domain_name=default
 
@@ -148,6 +160,7 @@ default)
   set_default  
   ;;
 *)
-  install_wap
+  id=$4
+  install_service
   ;;
 esac

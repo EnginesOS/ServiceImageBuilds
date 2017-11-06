@@ -22,10 +22,10 @@ if ! test -z $domain_name
         then
            if test  $ip_type = lan
              then
-               ip=`cat /opt/engines/etc/net/ip`
+               ip=`cat /home/engines/system/net/ip`
            elif  test  $ip_type = gw
               then
-                ip=`cat /opt/engines/etc/net/public`
+                ip=`cat /home/engines/system/net/public`
            fi
       fi
      if ! test -z $ip_type
