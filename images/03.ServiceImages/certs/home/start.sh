@@ -6,7 +6,7 @@ export PID_FILE
 
 startup_complete
 
-	while test 4 -ne 3
+	while ! test -f /home/engines/run/flags/sig_term -o -f /home/engines/run/flags/sig_quit
 	do 
 	    sleep 500 &
 	    echo $! >/tmp/sleep.pid
