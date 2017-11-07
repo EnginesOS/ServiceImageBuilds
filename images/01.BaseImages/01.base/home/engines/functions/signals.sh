@@ -32,29 +32,37 @@ kill -0 $pid &>/dev/null
  
 default_signal_processor()
 {
- if test -f $PID_FILE  
+ if test -z $PID_FILES
   then
-   pids=`cat $PID_FILE`
-     for pid in $pids
-      do
+   PID_FILES=$PID_FILE
+ fi
+   
+ for PID_FILE in $PID_FILES
+  do
+   if test -f $PID_FILE  
+    then
+     pids=`cat $PID_FILE`
+      for pid in $pids
+       do
         kill -0 $pid	
          if test $? -eq 0
           then
            if test -f /home/engines/scripts/signal/_signal.sh
-  	        then
-  	         echo sudo -n /home/engines/scripts/signal/_signal.sh $SIGNAL $pid
-  	         sudo -n /home/engines/scripts/signal/_signal.sh $SIGNAL $pid
-  	        else
-  	   	     kill -$SIGNAL $pid	
-  	   	     echo "-$SIGNAL $pid" >>  /home/engines/run/flags/signals
-   	   	      if ! test $1 = HUP
+           then
+            echo sudo -n /home/engines/scripts/signal/_signal.sh $SIGNAL $pid
+            sudo -n /home/engines/scripts/signal/_signal.sh $SIGNAL $pid
+           else
+   	        kill -$SIGNAL $pid	
+   	        echo "-$SIGNAL $pid" >>  /home/engines/run/flags/signals
+    	         if ! test $1 = HUP
                then 
                  wait_for_pid_exit   
                fi   	         
-  	       fi    
-         fi
-     done	 			
- fi
+          fi    
+          fi
+       done	 			
+   fi
+  done 
  }
  
 process_signal()
