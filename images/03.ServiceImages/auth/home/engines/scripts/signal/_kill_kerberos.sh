@@ -18,7 +18,7 @@ if test -f /var/run/krb5kdc.pid
 	  kill -$1 $kdcpid
     fi
      kill -0 $kdcpid &>/dev/null
-    test $? -eq 0 
+    if test $? -eq 0 
      then
 	  wait $kdcpid
     fi
