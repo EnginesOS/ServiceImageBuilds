@@ -32,10 +32,10 @@ kill -0 $pid &>/dev/null
  
 default_signal_processor()
 {
- if test -z $PID_FILES
-  then
-   PID_FILES=$PID_FILE
- fi
+if test -z $PID_FILES
+ then
+  PID_FILES=$PID_FILE
+fi
    
  for PID_FILE in $PID_FILES
   do
@@ -54,16 +54,17 @@ default_signal_processor()
            else
    	        kill -$SIGNAL $pid	
    	        echo "-$SIGNAL $pid" >>  /home/engines/run/flags/signals
-    	         if ! test $1 = HUP
-               then 
-                 wait_for_pid_exit   
-               fi   	         
           fi    
+          if ! test $1 = HUP
+           then 
+             echo wait $pid >>  /home/engines/run/flags/signals
+             wait_for_pid_exit   
+           fi   	         
           fi
        done	 			
    fi
-  done 
- }
+ done 
+}
  
 process_signal()
 {
