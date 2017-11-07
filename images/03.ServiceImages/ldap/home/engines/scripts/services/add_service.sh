@@ -16,7 +16,7 @@ check_required_values
    top_ou=applications
  elif $container_type = services     
  then 
- 	top_ou=servics
+ 	top_ou=services
  else
    echo '{"Result":"Failed","Error Mesg":"Invalid container type"}'
    exit 127	

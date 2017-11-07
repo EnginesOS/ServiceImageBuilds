@@ -62,7 +62,7 @@ if ! test -d /home/saved/$parent_engine/
 
  
 echo  \"$parent_engine_$log_name\": { \"display\" : \"$parent_engine $log_name\", \"path\"    : \"/var/log/engines/$log_file_path\",  > /tmp/.conf
-cat  /home/engines/scripts/templates/logview/$log_type >>  /tmp/.conf
+cat  /home/engines/templates/logview/$log_type >>  /tmp/.conf
 if ! test -f /var/log/engines/$log_file_path
  then
  	echo "Log does not exist"

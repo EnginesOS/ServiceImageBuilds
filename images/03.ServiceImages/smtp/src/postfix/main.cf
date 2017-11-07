@@ -14,7 +14,7 @@ sender_canonical_maps = regexp:/etc/postfix/sender_canonical
 smtp_use_tls=no
 readme_directory = no
 
-#FIXME SHOULD GENERATE THESES
+
 # TLS parameters
 smtpd_tls_cert_file=/engines/ssl/certs/engines.crt
 smtpd_tls_key_file=/engines/ssl/keys/engines.key

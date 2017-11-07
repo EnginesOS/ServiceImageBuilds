@@ -16,7 +16,7 @@ RUN	chgrp containers /home &&\
  	
 USER www-data
 
-RUN	/home/deploy.sh
+RUN	/home/engines/scripts/engine/deploy.sh
 
 USER 0
 RUN	chown -R www-data /home/app &&\ 	
