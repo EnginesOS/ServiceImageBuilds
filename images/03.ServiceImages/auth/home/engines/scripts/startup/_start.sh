@@ -6,7 +6,9 @@ kpid=$!
 pid=$!
 echo -n " $pid" >> /var/run/krb5kdc.pid
 
+. /home/engines/functions/system_functions.sh
 startup_complete
+
 if test -f /home/engines/run/flags/first_just_run
  then
    sleep 5

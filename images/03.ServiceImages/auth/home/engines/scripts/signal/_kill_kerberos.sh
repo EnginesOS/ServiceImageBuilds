@@ -1,12 +1,4 @@
 #!/bin/bash
-if test -f /var/run/krb5kdc.pid
-  then
-   kill -0 `cat /var/run/krb5kdc.pid` &>/dev/null
-    if test $? -eq 0 
-     then
-	  kill -$1 `cat /var/run/krb5kdc.pid`	
-    fi
- fi
 
 if test -f /var/run/krb5admin.pid
   then
@@ -16,6 +8,23 @@ if test -f /var/run/krb5admin.pid
       kill -$1 `cat /var/run/krb5admin.pid `
     fi
 fi 
+
+if test -f /var/run/krb5kdc.pid
+  then
+  kdcpid=`cat /var/run/krb5kdc.pid`
+   kill -0 $kdcpid &>/dev/null
+    if test $? -eq 0 
+     then
+	  kill -$1 $kdcpid
+    fi
+     kill -0 $kdcpid &>/dev/null
+    test $? -eq 0 
+     then
+	  wait $kdcpid
+    fi
+ fi
+
+
 
 if ! test $1 = HUP
  then 
