@@ -39,7 +39,7 @@ exit_code=$?
 
 kill -TERM   'cat PID_FILE'
 
-sudo -n /home/engines/scripts/engine/_kill_avahi.sh 
-sudo -n /home/engines/scripts/engine/_kill_dbus.sh $dbus_pid
+sudo -n /home/engines/scripts/signal/_kill_avahi.sh 
+sudo -n /home/engines/scripts/signal/_kill_dbus.sh $dbus_pid
 
 shutdown_complete
