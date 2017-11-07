@@ -11,8 +11,8 @@ export KILL_SCRIPT
 service_first_run_check
 
 
-echo '{"default_domain":"'$DEFAULT_DOMAIN'"}' |/home/engines/scripts/configurators/set_default_domain.sh 
-
+#echo '{"default_domain":"'$DEFAULT_DOMAIN'"}' |/home/engines/scripts/configurators/set_default_domain.sh 
+echo '{}' > /home/engines/scripts/configurators/saved/default_domain
  
 sudo -n /home/engines/scripts/configurators/rebuild_main.sh
 
