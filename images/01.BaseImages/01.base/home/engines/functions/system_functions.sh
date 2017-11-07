@@ -86,7 +86,7 @@ fi
 
 clear_stale_flags()
 {
- for flag in sig_term termed sig_hup huped sig_quit quited
+ for flag in sig_term termed sig_hup huped sig_quit quited startup_complete
  do
    if test -f /home/engines/run/flags/$flag
     then
