@@ -18,7 +18,7 @@
 #	  kill -$1 $kdcpid
 #    fi
 # fi
-
+. /home/engines/functions/signals.sh
 default_signal_processor
 ps -axl
 rm /var/run/krb5kdc.pid  /var/run/krb5admin.pid
