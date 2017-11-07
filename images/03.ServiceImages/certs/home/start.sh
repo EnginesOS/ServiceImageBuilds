@@ -10,8 +10,8 @@ startup_complete
 	do 
 	    sleep 500 &
 	    echo $! >/tmp/sleep.pid
-		wait 
-		exit_code=$?
+		wait 		
+		exit_code=$?		
 	done	
 
 shutdown_complete
