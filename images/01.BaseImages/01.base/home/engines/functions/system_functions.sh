@@ -5,6 +5,8 @@ startup_complete()
 echo "Startup Complete"
 touch /home/engines/run/flags/startup_complete
 touch /home/engines/run/flags/started
+chgrg /home/engines/run/flags/started /home/engines/run/flags/startup_complete
+chmod g+w /home/engines/run/flags/started /home/engines/run/flags/startup_complete
 debug_catch_crash
 }
 

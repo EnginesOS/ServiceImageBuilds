@@ -30,6 +30,7 @@ if test $done -eq 0
   	         sudo -n /home/engines/scripts/signal/_signal.sh $SIGNAL $pid
   	        else
   	   	     kill -$SIGNAL $pid	
+  	   	     echo "-$SIGNAL $pid" >>  /home/engines/run/flags/signals
    	   	     kill -0  $pid	
    	           if test $? -ne 0
                 then
