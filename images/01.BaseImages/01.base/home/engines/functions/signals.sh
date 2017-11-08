@@ -17,7 +17,8 @@ if test $r -eq 0
   count=30
   n=0
   kill -0 $pid 
-   while test $? -eq 0
+  r=$?
+   while test $r -eq 0
     do
      if test $count -lt $n
       then
