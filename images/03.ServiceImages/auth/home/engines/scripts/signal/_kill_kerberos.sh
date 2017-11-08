@@ -23,7 +23,7 @@
 PID_FILES="/var/run/krb5kdc.pid /var/run/krb5admin.pid"
 default_signal_processor
 ps -axl
-
+exit 0
 
 #if ! test $1 = HUP
 # then 

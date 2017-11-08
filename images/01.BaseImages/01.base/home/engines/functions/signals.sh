@@ -96,7 +96,12 @@ else
        then
         echo  $KILL_SCRIPT $SIGNAL >> /home/engines/run/flags/signals
         $KILL_SCRIPT $SIGNAL
-        done=1
+        if test $? eq = 0
+         then
+          done=1
+        else
+          echo $KILL_SCRIPT error running default >> /home/engines/run/flags/signals
+        fi
       else  
         echo Missing script $KILL_SCRIPT >> /home/engines/run/flags/signals
       fi
