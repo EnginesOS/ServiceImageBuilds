@@ -39,7 +39,7 @@ fi
 
 default_signal_processor()
 {
-if test -z $PID_FILES
+if test -z "$PID_FILES"
  then
   PID_FILES=$PID_FILE
 fi
@@ -96,7 +96,7 @@ else
        then
         echo  $KILL_SCRIPT $SIGNAL >> /home/engines/run/flags/signals
         $KILL_SCRIPT $SIGNAL
-        if test $? eq = 0
+        if test $? -eq = 0
          then
           done=1
         else
