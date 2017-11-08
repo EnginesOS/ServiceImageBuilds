@@ -3,18 +3,20 @@ kill_syslog()
 {
 if test -f /home/engines/etc/SYSLOG
  then
-   sudo -n /home/engines/scripts/_kill_syslog.sh
+   sudo -n /home/engines/scripts/_kill_syslog.sh &>/dev/null
 fi
 }
 
 wait_for_pid_exit()
 {
-kill -0 $pid &>/dev/null
-if test $? -eq 0
+
+kill -0 $pid  
+r=$?
+if test $r -eq 0
  then
   count=30
   n=0
-  kill -0 $pid &>/dev/null
+  kill -0 $pid 
    while test $? -eq 0
     do
      if test $count -lt $n
@@ -24,7 +26,8 @@ if test $? -eq 0
       fi
       n=`expr $n + 1` 
      sleep 1
-     kill -0 $pid &>/dev/null
+     kill -0 $pid  
+     r=$?
     done
 fi  
 }
