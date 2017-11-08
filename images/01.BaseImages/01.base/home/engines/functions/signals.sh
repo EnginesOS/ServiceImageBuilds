@@ -49,7 +49,7 @@ fi
           then
            if test -f /home/engines/scripts/signal/_signal.sh
            then
-            echo sudo -n /home/engines/scripts/signal/_signal.sh $SIGNAL $pid
+            echo sudo -n /home/engines/scripts/signal/_signal.sh $SIGNAL $pid >>  /home/engines/run/flags/signals
             sudo -n /home/engines/scripts/signal/_signal.sh $SIGNAL $pid
            else
    	        kill -$SIGNAL $pid	
