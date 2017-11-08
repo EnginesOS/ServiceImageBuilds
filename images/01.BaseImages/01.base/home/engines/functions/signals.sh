@@ -24,11 +24,11 @@ if test $r -eq 0
        echo timeout shutting down $CONTAINER_NAME >> /home/engines/run/errors
        break
       fi
-      n=`expr $n + 1` 
+     n=`expr $n + 1` 
      sleep 1
      kill -0 $pid  
      r=$?
-    done
+   done
 fi  
 }
  
@@ -47,29 +47,29 @@ if test -z "$PID_FILES"
   PID_FILES=$PID_FILE
 fi
    
- for PID_FILE in $PID_FILES
-do
- if test -f $PID_FILE  
-  then
-   pids=`cat $PID_FILE`
-    for pid in $pids
-     do
-      kill -0 $pid	
-       if test $? -eq 0
-        then
- 	       kill -$SIGNAL $pid	
- 	       echo "-$SIGNAL $pid" >>  /home/engines/run/flags/signals   
-          if ! test $SIGNAL = HUP
-           then 
-             echo wait $pid >>  /home/engines/run/flags/signals
-             wait_for_pid_exit   
-             rm_pid_file
-          fi
-       else
-          rm_pid_file    
-       fi
-     done	 
- fi
+for PID_FILE in $PID_FILES
+ do
+  if test -f $PID_FILE  
+   then
+    pids=`cat $PID_FILE`
+     for pid in $pids
+      do
+       kill -0 $pid	
+        if test $? -eq 0
+         then
+  	       kill -$SIGNAL $pid	
+  	       echo "-$SIGNAL $pid" >> /home/engines/run/flags/signals  
+           if ! test $SIGNAL = HUP
+            then 
+              echo wait $pid >> /home/engines/run/flags/signals
+              wait_for_pid_exit   
+              rm_pid_file
+           fi
+        else
+           rm_pid_file    
+        fi
+      done	 
+  fi
 done 
 }
  
@@ -79,7 +79,7 @@ done=0
 
 if test $SIGNAL = HUP
  then
-if ! test -z $HUP_SCRIPT
+  if ! test -z $HUP_SCRIPT
     then
      echo  termed $HUP_SCRIPT $SIGNAL >> /home/engines/run/flags/signals
       if test -f $HUP_SCRIPT
@@ -90,25 +90,25 @@ if ! test -z $HUP_SCRIPT
       else  
         echo Missing script $HUP_SCRIPT >> /home/engines/run/flags/signals
       fi
-   fi     	   
+  fi     	   
 else
-   if ! test -z $KILL_SCRIPT
-    then
-     echo  termed $KILL_SCRIPT $SIGNAL >> /home/engines/run/flags/signals
-      if test -f $KILL_SCRIPT
-       then
+  if ! test -z $KILL_SCRIPT
+   then
+    echo  termed $KILL_SCRIPT $SIGNAL >> /home/engines/run/flags/signals
+     if test -f $KILL_SCRIPT
+      then
         echo  $KILL_SCRIPT $SIGNAL >> /home/engines/run/flags/signals
         $KILL_SCRIPT $SIGNAL
-        if test $? -eq = 0
-         then
-          done=1
-        else
-          echo $KILL_SCRIPT error running default >> /home/engines/run/flags/signals
-        fi
-      else  
+         if test $? -eq 0
+          then
+            done=1
+         else
+           echo $KILL_SCRIPT error running default >> /home/engines/run/flags/signals
+         fi
+     else  
         echo Missing script $KILL_SCRIPT >> /home/engines/run/flags/signals
-      fi
-   fi     	
+     fi
+  fi     	
 fi
 
 if test $done -eq 0
