@@ -30,6 +30,14 @@ kill -0 $pid &>/dev/null
  fi  
  }
  
+rm_pid_file()
+{
+if test -f $PID_FILE
+ then
+  rm $PID_FILE
+fi			
+}
+
 default_signal_processor()
 {
 if test -z $PID_FILES
@@ -47,25 +55,16 @@ fi
         kill -0 $pid	
          if test $? -eq 0
           then
-           if test -f /home/engines/scripts/signal/_signal.sh
-           then
-            echo sudo -n /home/engines/scripts/signal/_signal.sh $SIGNAL $pid >>  /home/engines/run/flags/signals
-            sudo -n /home/engines/scripts/signal/_signal.sh $SIGNAL $pid
-           else
    	        kill -$SIGNAL $pid	
-   	        echo "-$SIGNAL $pid" >>  /home/engines/run/flags/signals
-          fi    
-          if ! test $SIGNAL = HUP
-           then 
-             echo wait $pid >>  /home/engines/run/flags/signals
-             wait_for_pid_exit   
-           fi   	         
-          fi
+   	        echo "-$SIGNAL $pid" >>  /home/engines/run/flags/signals   
+             if ! test $SIGNAL = HUP
+              then 
+                echo wait $pid >>  /home/engines/run/flags/signals
+                wait_for_pid_exit   
+                rm_pid_file
+             fi   	         
+         fi
        done	 
-       if test -f $PID_FILE
-         then
-           rm $PID_FILE
-       fi			
    fi
  done 
 }
