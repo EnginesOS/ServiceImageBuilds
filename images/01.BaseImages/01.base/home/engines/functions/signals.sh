@@ -55,7 +55,7 @@ fi
    	        kill -$SIGNAL $pid	
    	        echo "-$SIGNAL $pid" >>  /home/engines/run/flags/signals
           fi    
-          if ! test $1 = HUP
+          if ! test $SIGNAL = HUP
            then 
              echo wait $pid >>  /home/engines/run/flags/signals
              wait_for_pid_exit   
