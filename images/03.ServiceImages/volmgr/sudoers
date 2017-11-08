@@ -1,4 +1,4 @@
-Defaults  env_keep += "SIGNAL CONTAINER_NAME PID_FILE"
+#Defaults  env_keep += "SIGNAL CONTAINER_NAME PID_FILE PID_FILES exit_code"
 
 
 volmgr ALL = (root) NOPASSWD: /home/engines/scripts/services/_create_volume.sh
