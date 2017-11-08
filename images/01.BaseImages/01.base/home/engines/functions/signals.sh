@@ -62,7 +62,9 @@ fi
                 echo wait $pid >>  /home/engines/run/flags/signals
                 wait_for_pid_exit   
                 rm_pid_file
-             fi   	         
+             fi
+         else
+            rm_pid_file    
          fi
        done	 
    fi
