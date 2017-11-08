@@ -13,8 +13,8 @@ server {
     ssl on;
     ssl_session_cache    shared:SSL:1m;
     ssl_session_timeout  10m;
-    ssl_certificate /engines/ssl/certs/default.crt;
-    ssl_certificate_key /engines/ssl/keys/default.key;
+    ssl_certificate /home/engines/etc/ssl//certs/wap.crt;
+    ssl_certificate_key /home/engines/etc/ssl//keys/wap.key;
     proxy_ssl_session_reuse off;
     ssl_verify_client off;
     ssl_protocols        SSLv3 TLSv1 TLSv1.1 TLSv1.2;

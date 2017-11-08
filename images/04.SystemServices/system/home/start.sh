@@ -11,11 +11,10 @@ PID_FILE=/home/engines/run/system.pid
 export PID_FILE
 . /home/engines/functions/trap.sh
 
-# was /opt/engines/etc/ssl/keys/ and /opt/engines/etc/ssl/certs/engines.crt
 cd /home
- if test -f /engines/ssl/keys/engines.key 
+ if test -f /home/engines/etc/ssl//keys/system.key 
   then
-	thin --threaded --ssl --ssl-key-file /engines/ssl/keys/engines.key --ssl-cert-file /engines/ssl/certs/engines.crt -C config.yaml -R ./config.ru start > /var/log/system.log &
+	thin --threaded --ssl --ssl-key-file /home/engines/etc/ssl//keys/system.key --ssl-cert-file /home/engines/etc/ssl/certs/system.crt -C config.yaml -R ./config.ru start > /var/log/system.log &
   else
 	thin --threaded -C config.yaml -R ./config.ru start > /var/log/system.log &
  fi
