@@ -11,8 +11,13 @@ check_required_values
 export parent_engine container_type
 
 echo delprinc  host/$parent_engine.engines.internal@ENGINES.INTERNAL | kadmin.local 
-rm -r /etc/krb5kdc/services/$parent_engine 
 
 
-echo "Success"
-exit 0
+if test $r -eq 0 
+ then
+  echo "Success"
+  rm -r /etc/krb5kdc/services/$parent_engine 
+fi
+
+exit $r
+

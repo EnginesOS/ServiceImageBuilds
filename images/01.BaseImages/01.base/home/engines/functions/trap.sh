@@ -45,8 +45,7 @@ for PID_FILE in $PID_FILES
      if ! test -d `dirname $PID_FILE`
       then
    	  mkdir -p `dirname $PID_FILE`
-     fi
-        	
+     fi        
      if test -f $PID_FILE
       then
         echo "Warning stale $PID_FILE"
