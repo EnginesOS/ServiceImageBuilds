@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 . /home/engines/functions/signals.sh
 
 default_signal_processor
