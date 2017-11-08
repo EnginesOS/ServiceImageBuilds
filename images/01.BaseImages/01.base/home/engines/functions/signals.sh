@@ -61,7 +61,11 @@ fi
              wait_for_pid_exit   
            fi   	         
           fi
-       done	 			
+       done	 
+       if test -f $PID_FILE
+         then
+           rm $PID_FILE
+       fi			
    fi
  done 
 }
