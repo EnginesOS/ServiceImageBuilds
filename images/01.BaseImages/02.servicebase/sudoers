@@ -7,4 +7,3 @@ Defaults  env_keep += "SIGNAL CONTAINER_NAME PID_FILE PID_FILES exit_code"
 %containers  ALL=(root) NOPASSWD: /home/engines/scripts/_kill_syslog.sh  
 %containers  ALL=(root) NOPASSWD: /home/engines/scripts/_start_syslog.sh   
 #must have blank after last sudoers line
-
