@@ -6,6 +6,10 @@ params_to_env
  required_values="cron_job when title parent_engine container_type"
 check_required_values
 
+if test  ${container_type} = app
+ then
+ 	container_type=engine
+fi
 
 rm  /home/cron/entries/${parent_engine}/$title
 
