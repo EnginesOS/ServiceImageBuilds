@@ -1,4 +1,4 @@
-#Defaults  env_keep += "SIGNAL CONTAINER_NAME PID_FILE PID_FILES exit_code"
+Defaults  env_keep += " parent_engine container_type"
 auth ALL = (root) NOPASSWD: /home/engines/scripts/startup/_start.sh
 auth ALL = (root) NOPASSWD: /home/engines/scripts/signal/_kill_kerberos.sh
 auth ALL = (root) NOPASSWD: /home/engines/scripts/first_run/_first_run.sh
