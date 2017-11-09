@@ -18,4 +18,5 @@ if ! test $delou
     then
      dn="ou=$parent_engine,ou=$top_ou,ou=Groups,dc=engines,dc=internal"
       /home/engines/scripts/ldap/ldapdelete.sh "$dn"
- fi
+   fi
+fi   
