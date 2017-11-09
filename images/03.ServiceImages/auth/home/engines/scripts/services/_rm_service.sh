@@ -11,7 +11,7 @@ check_required_values
 export parent_engine container_type
 
 echo delprinc  host/$parent_engine.engines.internal@ENGINES.INTERNAL | kadmin.local 
-
+r=$?
 
 if test $r -eq 0 
  then
