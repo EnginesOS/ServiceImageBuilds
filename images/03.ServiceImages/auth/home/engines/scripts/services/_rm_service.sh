@@ -5,8 +5,7 @@ r=$?
 
 if test $r -eq 0 
  then
-  echo "Success"
-  rm -r /etc/krb5kdc/services/$parent_engine 
+  rm -r /etc/krb5kdc/${container_type}s/$parent_engine 
 fi
 
 exit $r
