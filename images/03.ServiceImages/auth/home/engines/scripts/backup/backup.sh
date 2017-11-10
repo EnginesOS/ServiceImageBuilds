@@ -1,3 +1,4 @@
-#!/bin/bash
+#/bin/sh
 
-kdb5_util dump  -
+
+sudo -n /home/engines/scripts/backup/_backup.sh

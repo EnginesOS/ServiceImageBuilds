@@ -28,14 +28,14 @@ if ! test -d /home/saved/$parent_engine/
  apache_error_log)
  if test -z $ctype
   then
-   ctype=container
+   ctype=app
   fi
  log_file_path=${ctype}s/$parent_engine/$log_file_path
  ;;
  apache)
  if test -z $ctype
   then
-   ctype=container
+   ctype=app
   fi
  log_file_path=${ctype}s/$parent_engine/$log_file_path
  ;;
@@ -43,7 +43,7 @@ if ! test -d /home/saved/$parent_engine/
  raw_dated)
  if test -z $ctype
   then
-   ctype=engine 
+   ctype=app 
   fi
  log_file_path=${ctype}s/$parent_engine/$log_file_path
  ;;
@@ -51,7 +51,7 @@ if ! test -d /home/saved/$parent_engine/
  raw)
  if test -z $ctype
   then
-   ctype=engine 
+   ctype=app 
   fi
  log_file_path=${ctype}s/$parent_engine/$log_file_path
  ;;

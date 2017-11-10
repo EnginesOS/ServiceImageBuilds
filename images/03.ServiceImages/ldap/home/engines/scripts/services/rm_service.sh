@@ -8,7 +8,7 @@ required_values="type parent_engine container_type"
 check_required_values
 
 set > /tmp/full_env
- if test $container_type = container
+ if test $container_type = app
   then
    top_ou=applications
  elif $container_type = services     

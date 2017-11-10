@@ -30,6 +30,7 @@ touch /home/avahi/hosts/engines.local
 touch /home/avahi/hosts/avahi.local
 
 ls /home/avahi/hosts/ > /home/avahi/hosts_list
+
 /home/engines/scripts/engine/publish_aliases.sh  2>/dev/null &
 
 startup_complete
@@ -37,9 +38,9 @@ startup_complete
 wait
 exit_code=$?
 
-kill -TERM   'cat PID_FILE'
+#kill -TERM   'cat PID_FILE'
 
-sudo -n /home/engines/scripts/signal/_kill_avahi.sh 
-sudo -n /home/engines/scripts/signal/_kill_dbus.sh $dbus_pid
+#sudo -n /home/engines/scripts/signal/_kill_avahi.sh 
+#sudo -n /home/engines/scripts/signal/_kill_dbus.sh $dbus_pid
 
 shutdown_complete

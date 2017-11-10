@@ -13,8 +13,8 @@ readme_directory = no
 
 
 # TLS parameters
-smtpd_tls_cert_file=/engines/ssl/certs/engines.crt
-smtpd_tls_key_file=/engines/ssl/keys/engines.key
+smtpd_tls_cert_file=/home/engines/etc/ssl//certs/email.crt
+smtpd_tls_key_file=/home/engines/etc/ssl//keys/email.key
 smtpd_use_tls=yes
 smtpd_tls_session_cache_database = btree:${data_directory}/smtpd_scache
 smtp_tls_session_cache_database = btree:${data_directory}/smtp_scache

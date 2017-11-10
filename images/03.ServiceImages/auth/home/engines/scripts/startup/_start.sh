@@ -3,8 +3,6 @@
 /usr/sbin/krb5kdc -P /var/run/krb5kdc.pid -n &
 kpid=$! 
 /usr/sbin/kadmind -P /var/run/krb5admin.pid -nofork  &
-pid=$!
-echo -n " $pid" >> /var/run/krb5kdc.pid
 
 . /home/engines/functions/system_functions.sh
 startup_complete

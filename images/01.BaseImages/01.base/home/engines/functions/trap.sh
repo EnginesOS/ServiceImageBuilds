@@ -32,23 +32,29 @@ do
    mkdir -p $DIR
  fi
 done
-  
-if ! test -z $PID_FILE
-then
-  if ! test -d `dirname $PID_FILE`
-   then
-	  mkdir -p `dirname $PID_FILE`
-  fi
-     	
-  if test -f $PID_FILE
-   then
-     echo "Warning stale $PID_FILE"
-     kill -0 `cat $PID_FILE 2> /dev/null` &> /dev/null
-      if test $? -ne 0
-       then
-         rm -f $PID_FILE &>/dev/null
-      fi
-  fi
+
+if test -z $PID_FILES
+ then
+  PID_FILES=$PID_FILE
 fi
 
+for PID_FILE in $PID_FILES
+ do  
+   if ! test -z $PID_FILE
+   then
+     if ! test -d `dirname $PID_FILE`
+      then
+   	  mkdir -p `dirname $PID_FILE`
+     fi        
+     if test -f $PID_FILE
+      then
+        echo "Warning stale $PID_FILE"
+        kill -0 `cat $PID_FILE 2> /dev/null` &> /dev/null
+         if test $? -ne 0
+          then
+            rm -f $PID_FILE &>/dev/null
+         fi
+     fi
+   fi
+done
 

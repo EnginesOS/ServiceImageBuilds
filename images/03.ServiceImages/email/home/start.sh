@@ -26,18 +26,7 @@ fi
 sudo -n /home/engines/scripts/startup/_start_postfix.sh &
 startup_complete
 
-#
-#while test -f /var/spool/postfix/pid/master.pid
-# do
-#  sleep 3600 &
-#  echo $! > /tmp/sleep.pid
-#  wait
-#  echo sleep dead
-#   if test -f /tmp/sleep.pid
-#    then
-#  		rm /tmp/sleep.pid
-#  	fi
-#done 
+
 	while ! test -f /home/engines/run/flags/sig_term -o -f /home/engines/run/flags/sig_quit
 	do 		
 		 if ! test -f /var/spool/postfix/pid/master.pid

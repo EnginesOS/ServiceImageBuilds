@@ -11,7 +11,7 @@ check_required_values
 
 
  . /home/engines/functions/ldap/support_functions.sh
- if test $container_type = container
+ if test $container_type = app
   then
    top_ou=applications
  elif $container_type = services     

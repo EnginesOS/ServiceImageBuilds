@@ -1,3 +1,7 @@
-#!/bin/bash
+#!/bin/sh
 PID_FILE=/tmp/ipsec.pid
-kill -$1 ` cat $PID_FILE`
+
+. /home/engines/functions/signals.sh
+
+default_signal_processor
+exit 0

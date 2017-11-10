@@ -5,7 +5,6 @@ PID_FILE=/home/cron/fcron.pid
 export PID_FILE
 . /home/engines/functions/trap.sh
 
-
 /home/cron/sbin/fcron -f -p  /home/cron/log/cron.log &
 
 startup_complete
