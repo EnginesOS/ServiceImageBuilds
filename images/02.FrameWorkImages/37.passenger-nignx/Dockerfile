@@ -22,8 +22,8 @@ RUN /usr/sbin/usermod -u 22671 www-data &&\
  	touch /home/.env_vars  &&\
  	chown www-data /home/.env_vars /var/run/
  	 
-COPY etc/nginx/ /etc/nginx
-COPY ruby_env /home/
+COPY src/etc/nginx/ /etc/nginx
+COPY src/ruby_env /home/
 ENV ContUser www-data
 ENV ContGrp www-data
 

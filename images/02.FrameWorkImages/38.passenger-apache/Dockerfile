@@ -26,9 +26,9 @@ RUN /usr/sbin/usermod -u 22671 www-data &&\
  	passenger-config  build-native-support &&\
  	/home/post_build_clean.sh
 
-ADD 000-default.conf /etc/apache2/sites-enabled/
-ADD	passenger.conf /etc/apache2/mods-enabled/
-ADD ports.conf /etc/apache2/
+ADD src/000-default.conf /etc/apache2/sites-enabled/
+ADD	src/passenger.conf /etc/apache2/mods-enabled/
+ADD src/ports.conf /etc/apache2/
 
 ENV ContUser www-data
 ENV ContGrp www-data

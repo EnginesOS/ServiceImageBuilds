@@ -4,7 +4,7 @@ ENV ruby_version 2.3.1
 ENV ContUser ruby
 ENV ContGrp ruby
 
-ADD gemrc  /home/.gemrc
+ADD src/gemrc  /home/.gemrc
 	
 RUN	groupadd ruby &&\
 	adduser -q --ingroup ruby --uid 22672 --home /home/ruby --disabled-password ruby &&\
