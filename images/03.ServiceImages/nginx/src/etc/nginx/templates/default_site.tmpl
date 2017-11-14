@@ -1,15 +1,12 @@
- server {
-        listen 8000  default_server;
-    
-
-        location / {
-rewrite ^ http://FQDN$request_uri? redirect;
-        }
-    }
+server {
+        listen 8000  default_server; 
+  location / {
+         rewrite ^ http://FQDN$request_uri? redirect;
+  }
+}
 
 server {
-        listen 4430  default_server;
-
+    listen 4430  default_server;
     ssl on;
     ssl_session_cache    shared:SSL:1m;
     ssl_session_timeout  10m;
@@ -20,9 +17,8 @@ server {
     ssl_protocols        SSLv3 TLSv1 TLSv1.1 TLSv1.2;
     ssl_ciphers RC4:HIGH:!aNULL:!MD5;
     ssl_prefer_server_ciphers on;
-
-        location / {
-rewrite ^ https://FQDN$request_uri? redirect;
+ location / {
+    rewrite ^ https://FQDN$request_uri? redirect;
         }
-    }
+}
 
