@@ -10,6 +10,16 @@ RUN /usr/sbin/usermod -u 22671 www-data &&\
 	usermod -G containers -a www-data &&\
  	/home/post_build_clean.sh
 
+
+ENV APACHE_RUN_USER www-data
+ENV APACHE_RUN_GROUP www-data
+
+ENV APACHE_PID_FILE /var/run/engines/apache2$SUFFIX.pid
+ENV APACHE_RUN_DIR /var/run/engines
+ENV APACHE_LOCK_DIR /var/run/
+ENV APACHE_LOG_DIR /var/log/
+
+
 ADD src/000-default.conf /etc/apache2/sites-enabled/
 ADD src/ports.conf /etc/apache2/
 ADD src/envvars /etc/apache2/envvars
@@ -17,4 +27,4 @@ ADD home home
 
 ENV ContUser www-data
 ENV ContGrp www-data
-ENV APACHE_LOCK_DIR /var/run/apache2/lock/
+
