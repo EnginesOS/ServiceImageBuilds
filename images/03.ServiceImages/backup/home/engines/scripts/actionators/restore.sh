@@ -148,7 +148,7 @@ elif test $type = engine
   restore_engine
 else
  echo "Unknown Restore Type"
- exit 255   
+ exit 127   
 fi
 
 rm /home/engines/run/flags/restore
