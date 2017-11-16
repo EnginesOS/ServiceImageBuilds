@@ -11,7 +11,8 @@ check_required_values
 	if test -f /etc/nginx/sites-enabled/${proto}_${fqdn}.site
 	 then
 	 	rm /etc/nginx/sites-enabled/${proto}_${fqdn}.site	 
-	 	kill -HUP `cat /var/run/nginx/nginx.pid`
+	 	nginx -s reload	
+ #kill -HUP `cat /var/run/nginx/nginx.pid`
 	else
 		echo Success with Warning:config /etc/nginx/sites-enabled/${proto}_${fqdn}.site not found
 		exit 0
