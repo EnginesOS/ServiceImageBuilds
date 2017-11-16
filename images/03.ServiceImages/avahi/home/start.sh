@@ -38,9 +38,4 @@ startup_complete
 wait
 exit_code=$?
 
-#kill -TERM   'cat PID_FILE'
-
-#sudo -n /home/engines/scripts/signal/_kill_avahi.sh 
-#sudo -n /home/engines/scripts/signal/_kill_dbus.sh $dbus_pid
-
 shutdown_complete
