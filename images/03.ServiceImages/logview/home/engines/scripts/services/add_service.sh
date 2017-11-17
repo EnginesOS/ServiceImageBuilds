@@ -3,6 +3,8 @@
 . /home/engines/functions/params_to_env.sh
 params_to_env
 
+required_values="log_name log_file_path ctype log_type"
+check_required_values
 
 log_name=`echo $log_name | sed "/ /s//_/g"`
 
@@ -26,14 +28,14 @@ if ! test -d /home/saved/$parent_engine/
  apache_error_log)
  if test -z $ctype
   then
-   ctype=container
+   ctype=app
   fi
  log_file_path=${ctype}s/$parent_engine/$log_file_path
  ;;
  apache)
  if test -z $ctype
   then
-   ctype=container
+   ctype=app
   fi
  log_file_path=${ctype}s/$parent_engine/$log_file_path
  ;;
@@ -41,7 +43,7 @@ if ! test -d /home/saved/$parent_engine/
  raw_dated)
  if test -z $ctype
   then
-   ctype=engine 
+   ctype=app 
   fi
  log_file_path=${ctype}s/$parent_engine/$log_file_path
  ;;
@@ -49,7 +51,7 @@ if ! test -d /home/saved/$parent_engine/
  raw)
  if test -z $ctype
   then
-   ctype=engine 
+   ctype=app 
   fi
  log_file_path=${ctype}s/$parent_engine/$log_file_path
  ;;
@@ -60,7 +62,7 @@ if ! test -d /home/saved/$parent_engine/
 
  
 echo  \"$parent_engine_$log_name\": { \"display\" : \"$parent_engine $log_name\", \"path\"    : \"/var/log/engines/$log_file_path\",  > /tmp/.conf
-cat  /home/engines/scripts/templates/logview/$log_type >>  /tmp/.conf
+cat  /home/engines/templates/logview/$log_type >>  /tmp/.conf
 if ! test -f /var/log/engines/$log_file_path
  then
  	echo "Log does not exist"

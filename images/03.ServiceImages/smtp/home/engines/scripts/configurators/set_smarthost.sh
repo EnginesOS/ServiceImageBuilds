@@ -4,7 +4,11 @@
 . /home/engines/functions/params_to_env.sh
 PARAMS_FILE=/home/engines/scripts/configurators/saved/smarthost
 parms_to_file_and_env
-        
+     
+     
+required_values="smart_hostname"
+check_required_values 
+   
 if ! test -z $smart_hostname
  then 
    if ! test -z $smart_host_port

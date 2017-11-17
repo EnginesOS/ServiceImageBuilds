@@ -2,17 +2,9 @@
 . /home/engines/functions/params_to_env.sh
 params_to_env
 
-if test -z ${cert_name}
- then
-  echo Missig cert_name
-  exit 255
-fi
- 
- if test -z ${store}
- then
-  echo Missing store
-  exit 255
-fi
+required_values="cert_name store"
+check_required_values
+
 
 if test -f /home/certs/store/public/certs/${store}/${cert_name}.crt
   then

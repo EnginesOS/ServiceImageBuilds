@@ -1,19 +1,17 @@
 #!/bin/sh
+PID_FILES="/var/run/krb5kdc.pid /var/run/krb5admin.pid"
 
 PID_FILE=/var/run/krb5kdc.pid 
 export PID_FILE
+
 KILL_SCRIPT=/home/engines/scripts/signal/kill_kerberos.sh
 export KILL_SCRIPT
 
 . /home/engines/functions/trap.sh
+service_first_run_check
 
-mkdir -p /home/auth/logs/ 
+sudo -n /home/engines/scripts/startup/_start.sh &
+wait
 
-if test -f /home/engines/run/flags/first_run.done
-  then
-	sudo -n /home/engines/scripts/startup/_start.sh 	
-  else
-	/home/engines/scripts/first_run/first_run.sh			
- fi
 
-exit $exit_code
+shutdown_complete

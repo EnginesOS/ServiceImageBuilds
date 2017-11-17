@@ -1,4 +1,5 @@
 #!/bin/bash
+. /home/engines/functions/system_functions.sh
 
 if test -f /var/spool/postfix/pid/master.pid
  then
@@ -14,7 +15,8 @@ if test $r -eq 0
   echo "Failed with $r"
   exit $r	  
 fi
-touch  /home/engines/run/flags/startup_complete
+
+startup_complete
 
 while test -f /var/spool/postfix/pid/master.pid
  do
@@ -22,8 +24,9 @@ while test -f /var/spool/postfix/pid/master.pid
   echo $! > /tmp/sleep.pid
   wait
 done 
-
-
-rm /home/engines/run/flags/startup_complete  
 /home/engines/scripts/signal/_kill_postfix.sh
+
+shutdown_complete
+
+
 

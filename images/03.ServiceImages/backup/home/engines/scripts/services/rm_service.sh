@@ -5,12 +5,15 @@
 . /home/engines/functions/params_to_env.sh
 params_to_env
 
+required_values="backup_name src_type"
+check_required_values
+
 echo "$*" >>/var/log/backup/rmbackup.log
 
 Backup_ConfigDir=/home/backup/.duply/
 
 ts=`date`
-echo "$ts:$*" >>/var/log/backup/addbackup.log
+echo "$ts:rm $*" >>/var/log/backup/addbackup.log
 
 export Backup_ConfigDir
 export backup_name

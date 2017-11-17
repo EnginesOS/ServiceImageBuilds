@@ -1,4 +1,4 @@
 #!/bin/sh
 
-sudo -n /home/engines/scripts/signal/_kill_bind.sh $SIGNAL
+sudo -n /home/engines/scripts/signal/_kill_bind.sh $SIGNAL &>/dev/null
 

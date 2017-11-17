@@ -4,25 +4,29 @@ PID_FILE=/var/run/engines/redis-server.pid
 export PID_FILE
 . /home/engines/functions/trap.sh
 
+#
+#if test -f /home/engines/run/flags/restart_required
+# then
+#  rm -f /home/engines/run/flags/restart_required
+#fi
 
-if test -f /home/engines/run/flags/restart_required
- then
-  rm -f /home/engines/run/flags/restart_required
-fi
+service_clear_restart_required
+
+mkdir /home/redis/config.d/
 
 
-touch /home/engines/run/flags/startup_complete
 
-configs=`ls /home/config/*.redis.config`
+configs=`ls /home/redis/config.d/*.redis.config`
 for config in $configs
  do
     redis-server $config &
 	echo -n $! >> $PID_FILE
 	echo -n " " >> $PID_FILE
 done
-touch /home/engines/run/flags/startup_complete
+
+startup_complete
  
-# if test `ls /home/config/*.redis.config |wc -l` -eq 0
+# if test `ls /home/redis/config.d/*.redis.config |wc -l` -eq 0
  # then
   while test 0 -ne 1
    do
@@ -30,11 +34,11 @@ touch /home/engines/run/flags/startup_complete
 	wait
     exit_code=$?
 	
-	if test ` ls /tmp/  new_service.* 2>/dev/null| wc -l ` -ne 0 
+	if test ` ls /tmp/new_service.* 2>/dev/null| wc -l ` -ne 0 
 	then
 		for service in ` ls /tmp/new_service.* |cut -f2 -d.`
 		  do
-		  	redis-server /home/config/$service.redis.config &
+		  	redis-server /home/redis/config.d/$service.redis.config &
 		  	echo -n $!  > /var/run/engines/redis-server.$parent_engine.pid
 		  done
 	fi
@@ -43,8 +47,5 @@ touch /home/engines/run/flags/startup_complete
     
  # fi
 
+shutdown_complete
 
-
-
-rm /home/engines/run/flags/startup_complete
-exit $exit_code

@@ -1,4 +1,5 @@
-dn: ou=$parent_engine,ou=$container_types,ou=Groups,dc=engines,dc=internal
-ou: $cn
+dn: ou=$parent_engine,ou=${top_ou},ou=Groups,dc=engines,dc=internal
+ou: $parent_engine
 objectClass: organizationalUnit
 objectclass: top
+

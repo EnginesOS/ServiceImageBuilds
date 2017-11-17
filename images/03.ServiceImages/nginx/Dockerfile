@@ -10,7 +10,7 @@ RUN usermod www-data -u 22005 &&\
  	/home/post_build_clean.sh
 
 COPY home home
-COPY src/502.html /usr/share/nginx/html/
+COPY src/html /usr/share/nginx/html
 COPY src/etc/nginx/ /etc/nginx
 
 RUN mkdir -p /home/consumers/saved/ &&\

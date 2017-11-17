@@ -1,16 +1,5 @@
 #!/bin/bash
 
-
-
-
-#reject_rbl_client zen.spamhaus.org,
-#reject_rbl_client bl.spamcop.net,
-#reject_rbl_client cbl.abuseat.org,
-#reject_rbl_client dnsbl.njabl.org,
-#reject_rbl_client dnsbl.sorbs.net,
-#reject_rhsbl_sender dsn.rfc-ignorant.org,
-#permit
-#,check_policy_service inet:127.0.0.1:60000,permit
 config_dir=/home/engines/scripts/configurators/saved/antispam/
 
 if test -f ${config_dir}/zen.spamhaus.org

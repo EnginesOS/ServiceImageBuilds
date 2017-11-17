@@ -1,19 +1,6 @@
 #!/bin/sh
 
-echo received $1
-SIGNAL=$1
-PID_FILE=$2
-if test -f $PID_FILE
-then
-  kill -$SIGNAL  `cat $PID_FILE`
-	
-   if test -f $PID_FILE
- 	then
- 	 pid=`cat $PID_FILE`
-      case $pid in
-	    (*[^0-9]*|'') t=1;;
-   		(*)    wait $pid ;;  
-	  esac
-   fi
-fi
+. /home/engines/functions/signals.sh
 
+default_signal_processor
+exit 0

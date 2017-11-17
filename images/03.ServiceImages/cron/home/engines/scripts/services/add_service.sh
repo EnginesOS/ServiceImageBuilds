@@ -3,51 +3,13 @@
 . /home/engines/functions/params_to_env.sh
 params_to_env
 
-function check_required_values {
-for val in $required_values 
- do
-
-t=`eval echo \\$${key}`
-if test -z $t
- then
-  echo Abort no value receieved for $key
-  exit 127
-fi
-done
-
-}
-
-check_required_values="cron_job when title parent_engine container_type"
+required_values="cron_job when title parent_engine container_type"
 check_required_values
 
-#
-#if test -z "${cron_job}" 
-# then
-#  echo Error:Missing cron_job
-#  exit -1
-#fi
-#
-#if test -z "${when}"
-# then
-#  echo Error:Missing when
-#  exit -1
-#fi
-#
-#if test -z ${title}
-# then
-# echo Error:missing title
-# exit -1
-#fi  
-#
-#if test -z ${parent_engine}
-# then
-#  echo Error:missing parent_engine
-#  exit -1
-#fi  
-#    
+
 mkdir -p /home/cron/entries/${parent_engine}/
 
-if test  ${container_type} = container
+if test  ${container_type} = app
  then
  	container_type=engine
 fi

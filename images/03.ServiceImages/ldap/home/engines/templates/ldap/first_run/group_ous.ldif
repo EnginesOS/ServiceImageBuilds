@@ -1,0 +1,37 @@
+
+dn: ou=Groups,dc=engines,dc=internal
+objectClass: organizationalUnit
+ou: Groups
+
+dn: cn=Users,ou=Groups,dc=engines,dc=internal
+cn: Users
+gidnumber: 5000
+objectclass: posixGroup
+objectclass: top
+
+dn: cn=ftp,ou=Groups,dc=engines,dc=internal
+cn: ftp
+gidnumber: 5001
+objectclass: posixGroup
+objectclass: top
+
+dn: cn=data_access,ou=Groups,dc=engines,dc=internal
+cn: data_access
+gidnumber: 11111
+objectclass: posixGroup
+objectclass: top
+
+dn: ou=Distribution Groups,dc=engines,dc=internal
+objectclass: organizationalUnit
+objectclass: top
+ou: Distribution Groups
+
+dn: ou=Services,ou=Groups,dc=engines,dc=internal
+objectclass: organizationalUnit
+objectclass: top
+ou: Services
+
+dn: ou=Applications,ou=Groups,dc=engines,dc=internal
+objectclass: organizationalUnit
+objectclass: top
+ou: Applications

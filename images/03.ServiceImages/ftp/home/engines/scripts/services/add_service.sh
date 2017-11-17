@@ -1,12 +1,16 @@
 #!/bin/bash
-
-
 . /home/engines/functions/params_to_env.sh
 params_to_env
-set > /tmp/full_env
-kinit -t /etc/krb5kdc/keys/ftp.keytab 
 
-if ! test -z
+set > /tmp/full_env
+
+required_values="username password title folder"
+check_required_values
+
+
+#kinit -t /etc/krb5kdc/keys/ftp.keytab 
+
+if ! test -z $rw_access 
  then
   if test $rw_access = true
    then
@@ -35,7 +39,7 @@ cat /tmp/newuser.ldif | ldapadd -H ldap://ldap/
 
 
 #dont leave ticket open
-kdestroy
+#kdestroy
   
  
 

@@ -11,10 +11,10 @@ export KILL_SCRIPT
 service_first_run_check
 
 sudo -n /usr/sbin/dovecot -F &
-touch  /home/engines/run/flags/startup_complete
+
+startup_complete
+
 wait
-#sleep 500
 exit_code=$?
 
-rm /home/engines/run/flags/startup_complete
-exit $exit_code
+shutdown_complete

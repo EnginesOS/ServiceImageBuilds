@@ -17,21 +17,12 @@ else
    rm -f /home/engines/run/flags/not_configured
 fi
 
-
 ddclient  -daemon 300 -syslog -foreground -file /home/dyndns/dyndns.conf -cache /home/dyndns/cache   -pid /home/dyndns/dyndns.pid &
 
-if ! test -f /home/dyndns/dyndns.pid
- then
-  touch /home/engines/run/flags/startup_failed
-else
-  rm -r /home/engines/run/flags/startup_failed
-fi
+startup_complete
 
-touch /home/engines/run/flags/startup_complete
 wait 
 exit_code=$?
 	
-rm /home/engines/run/flags/startup_complete
+shutdown_complete
 
-
-exit $exit_code

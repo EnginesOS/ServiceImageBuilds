@@ -1,4 +1,4 @@
-
+#Defaults  env_keep += "SIGNAL CONTAINER_NAME PID_FILE PID_FILES exit_code"
 ivpn ALL = (root) NOPASSWD: /usr/sbin/ipsec
 ivpn ALL = (root) NOPASSWD: /home/engines/scripts/first_run/_setup.sh
 ivpn ALL = (root) NOPASSWD: /home/engines/scripts/startup/_start.sh

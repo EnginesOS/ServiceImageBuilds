@@ -3,25 +3,8 @@
 . /home/engines/functions/params_to_env.sh
 params_to_env
 
-
-BTICK='`'
-
-E_BADARGS=65
-MYSQL=`which mysql`
-
-
-
-if test -z $database_name
- then
-	echo Error:No database_name value
-	exit -1
-fi
-	
-if test -z $dbusername
- then
-	echo Error:No dbusername value
-	exit -1
-fi
+required_values="database_name dbusername"
+check_required_values
 
 
 #echo "$SQL"

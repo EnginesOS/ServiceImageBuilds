@@ -12,17 +12,10 @@ function add_user_vpn {
 . /home/engines/functions/params_to_env.sh
 params_to_env
 
-if test -z "${vpn_name}" 
- then
-   echo Error:Missing Username
-   exit -1
-fi
 
-if test -z "${password}"
- then
-   echo Error:Missing Password
-   exit -1
-fi
+required_values="vpn_name password"
+check_required_values
+
     
 add_user_vpn
 ipsec stroke rereadsecrets

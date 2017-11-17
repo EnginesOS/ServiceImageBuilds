@@ -1,4 +1,4 @@
-
+#Defaults  env_keep += "SIGNAL CONTAINER_NAME PID_FILE PID_FILES exit_code"
 certs ALL = (root) NOPASSWD: /home/engines/scripts/engine/_install_target.sh 
 certs ALL = (root) NOPASSWD: /home/engines/scripts/engine/_remove_cert.sh
 certs ALL = (root) NOPASSWD: /home/engines/scripts/engine/_fix_perms.sh

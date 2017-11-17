@@ -22,10 +22,10 @@ if ! test -z $domain_name
         then
            if test  $ip_type = lan
              then
-               ip=`cat /opt/engines/etc/net/ip`
+               ip=`cat /home/engines/system/net/ip`
            elif  test  $ip_type = gw
               then
-                ip=`cat /opt/engines/etc/net/public`
+                ip=`cat /home/engines/system/net/public`
            fi
       fi
      if ! test -z $ip_type
@@ -49,14 +49,3 @@ fi
 #FIXME make engines.internal settable
 
 add_to_internal_domain
-	
-#if test $? -eq 0
-# then
-#	echo Success
-#	 exit 0
-# else
-#	 file=`cat /tmp/.dns_cmd`
-#	 echo Error:With nsupdate $file
-#	 exit 128
-#fi
-#

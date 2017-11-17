@@ -3,34 +3,9 @@
 . /home/engines/functions/params_to_env.sh
 params_to_env
 
-BTICK='`'
+required_values="dbusername dbpassword"
+check_required_values
 
-E_BADARGS=65
-
-if test -z $database_name
- then
-	echo Error:No database_name value
-	exit -1
-fi
-	
-if test -z $dbusername
- then
-	echo Error:No dbusername value
-	exit -1
-fi
-		
-if test -z $dbpassword
- then
-	echo Error:No dbpassword value
-	exit -1
-fi
-	
-if test -z $encoding
- then
-	echo Error:No encoding value
-	exit -1
-fi
-	
 echo  "Alter ROLE $dbusername WITH ENCRYPTED PASSWORD '$dbpassword'  LOGIN;" >/tmp/.c.sql
 
 

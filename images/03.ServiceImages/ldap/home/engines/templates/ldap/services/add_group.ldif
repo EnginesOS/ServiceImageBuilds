@@ -1,5 +1,6 @@
-dn: cn=$cn,ou=$parent_engine,ou=$container_types,ou=Groups,dc=engines,dc=internal
+dn: cn=$cn,ou=$parent_engine,ou=${top_ou},ou=Groups,dc=engines,dc=internal
 cn: $cn
-gidnumber: $gid
+gidnumber: $gidNumber
 objectclass: posixGroup
 objectclass: top
+

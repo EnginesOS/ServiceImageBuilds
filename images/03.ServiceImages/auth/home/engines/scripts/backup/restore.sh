@@ -1,9 +1,4 @@
-#!/bin/bash
-cd /
-tar -xpf -  2>/tmp/tar.errs
+#/bin/sh
 
-. /home/auth/.dbenv
-cat /tmp/auth/backup.* | mysql -h $dbhost -u $dbuser --password=$dbpasswd $dbname
-r=$?
-rm  /tmp/auth/backup.*
-exit $r
+
+sudo -n /home/engines/scripts/backup/_restore.sh

@@ -6,39 +6,36 @@ params_to_env
 
 set > /tmp/full_env
 
-kinit -t /etc/krb5kdc/keys/ldap.keytab 
-
-function check_required_values {
-for val in $required_values 
- do
-
-t=`eval echo \\$${key}`
-if test -z $t
- then
-  echo Abort no value receieved for $key
-  exit 127
-fi
-done
-
-}
-
-
-check_required_values="type parent_engine container_type"
+required_values="type parent_engine container_type"
 check_required_values
 
 
  . /home/engines/functions/ldap/support_functions.sh
- if test $container_type = container
+ if test $container_type = app
   then
-   container_type=application   
+   top_ou=applications
+ elif $container_type = services     
+ then 
+ 	top_ou=services
+ else
+   echo '{"Result":"Failed","Error Mesg":"Invalid container type"}'
+   exit 127	
   fi
   
-cat /home/engines/templates/ldap/services/add_$type.ldif | while read LINE
-do
- eval echo $LINE >> $LDIF_FILE
-done
-cat $LDIF_FILE | /home/engines/scripts/ldap/ldapadd.sh 
-kdestroy
+export top_ou parent_engine container_type cn
+
+if test $type = group
+ then
+	/home/engines/scripts/services/group/add_group.sh
+elif test $type = ou
+ then
+ /home/engines/scripts/services/ou/add_ou.sh
+else
+    echo '{"Result":"Failed","Error Mesg":"Invalid type"}'
+   exit 127	
+  fi 
+  
+
   
  
 

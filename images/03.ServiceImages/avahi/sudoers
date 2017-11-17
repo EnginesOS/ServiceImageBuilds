@@ -1,12 +1,9 @@
-
-
-
+#Defaults  env_keep += "SIGNAL CONTAINER_NAME PID_FILE PID_FILES exit_code"
 
 avahi ALL = (root) NOPASSWD: /usr/bin/dbus-daemon
 
 avahi ALL = (root) NOPASSWD: /usr/sbin/avahi-daemon 
-avahi ALL = (root) NOPASSWD: /home/engines/scripts/signal/_signal.sh
-avahi ALL = (root) NOPASSWD: /home/engines/scripts/signal/kill_dbus.sh
-avahi ALL = (root) NOPASSWD: /home/engines/scripts/signal/kill_avahi.sh
+avahi ALL = (root) NOPASSWD: /home/engines/scripts/signal/_kill_dbus.sh
+avahi ALL = (root) NOPASSWD: /home/engines/scripts/signal/_kill_avahi.sh
 #must have blank after last sudoers line
 

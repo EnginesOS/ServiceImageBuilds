@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cat /home/engines/scripts/templates/logview/head > /home/app/config.user.php
+cat /home/engines/templates/logview/head > /home/app/config.user.php
 n=0
 for config_file in ` find /home/saved/ -type f`
 	do 	 

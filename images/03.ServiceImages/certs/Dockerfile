@@ -14,9 +14,7 @@ RUN mkdir -p /home/certs/saved /home/certs/store/ca /home/certs/store/keys /home
 	chown certs -R /home/certs/saved /home/certs/store/ /home/engines/scripts/configurators/saved/ /home/certs/home &&\
 	chgrp -R containers /home/engines/scripts/actionators/ &&\
 	chmod -R go-rw /etc/sudoers /etc/sudoers.d/
-	
-	#echo '[ v3_req ]' >> /etc/ssl/openssl.cnf;\
-	#echo 'subjectAltName =  DNS:$ENV::ALTNAME' >> /etc/ssl/openssl.cnf
+
 	
 ENV HOME /home/certs/home
 ENV ContUser certs

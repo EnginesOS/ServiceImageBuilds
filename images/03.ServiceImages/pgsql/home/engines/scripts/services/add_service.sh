@@ -3,33 +3,11 @@
 . /home/engines/functions/params_to_env.sh
 params_to_env
 
-BTICK='`'
 
-E_BADARGS=65
+required_values="database_name dbusername dbpassword encoding"
+check_required_values
 
-if test -z $database_name
- then
-	echo Error:No database_name value
-	exit -1
-fi
-	
-if test -z $dbusername
- then
-	echo Error:No dbusername value
-	exit -1
-fi
 		
-if test -z $dbpassword
- then
-	echo Error:No dbpassword value
-	exit -1
-fi
-	
-if test -z $encoding
- then
-	echo Error:No encoding value
-	exit -1
-fi
 	
 echo  "CREATE ROLE $dbusername WITH ENCRYPTED PASSWORD '$dbpassword'  LOGIN;" >/tmp/.c.sql
 if test $encoding = "ascii"

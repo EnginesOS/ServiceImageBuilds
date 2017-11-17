@@ -9,7 +9,7 @@ RUN /home/no_init.sh &&\
  	/home/post_build_clean.sh
 
 COPY home home
-COPY src/kadm5.acl /etc/krb5kdc
+COPY src/kadm5.acl /etc/krb5/kadm5.acl
 COPY src/krb5.conf /etc/
 COPY src/kdc.conf /etc/
 COPY sudoers /etc/sudoers.d/auth

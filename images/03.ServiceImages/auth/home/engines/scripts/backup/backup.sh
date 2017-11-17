@@ -1,4 +1,4 @@
-#!/bin/bash
+#/bin/sh
 
-. /home/auth/.dbenv
-mysqldump -h $dbhost -u $dbuser --password=$dbpasswd $dbname 
+
+sudo -n /home/engines/scripts/backup/_backup.sh

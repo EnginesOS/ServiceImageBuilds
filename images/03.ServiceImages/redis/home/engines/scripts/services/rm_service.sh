@@ -3,15 +3,11 @@
 . /home/engines/functions/params_to_env.sh
 params_to_env
 
-if test -z $parent_engine
- then
-	echo Error:No parent_engine value
-	exit -1
-fi
+
 if test -f /var/run/engines/redis-server.$parent_engine.pid
  then
 	kill -TERM `cat /var/run/engines/redis-server.$parent_engine.pid`
-	rm /home/redis/$parent_engine.redis.config
+	rm /home/redis/config.d/$parent_engine.redis.config
 else
  echo "missing pid"
  exit 127	

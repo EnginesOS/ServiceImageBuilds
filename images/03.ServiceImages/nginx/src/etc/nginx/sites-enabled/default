@@ -11,11 +11,14 @@ server {
 
   
         server_name localhost;
+        
+ 		location /index.html {     }
 
         location / {
 
         rewrite ^ https://$host:8484$request_uri? redirect;
                 
         }
+
 }
        

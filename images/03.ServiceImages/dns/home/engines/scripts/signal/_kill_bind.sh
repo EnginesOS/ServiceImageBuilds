@@ -1,19 +1,24 @@
 #!/bin/sh
-
-pid=`cat /var/run/named/named.pid`
-#if ! test $1 = HUP
-# then 
-#  rm /var/run/named/named.pid
+#if test -f /var/run/named/named.pid
+# then
+#  pid=`cat /var/run/named/named.pid`
+#
+#  if test `kill -0 $pid &>/dev/null` -eq 0
+#   then
+#     kill -$1 $pid
+#   fi
+#   
+#    if ! test $1 = HUP
+#     then 
+#      if test -f  /var/run/named/named.pid
+#       then
+#        rm /var/run/named/named.pid
+#      fi
+#    fi
 #fi
-# 
-kill -$1 $pid
 
+PID_FILES=" /var/run/named/named.pid"
+. /home/engines/functions/signals.sh
 
-
-if ! test $1 = HUP
- then 
-if test -f  /var/run/named/named.pid
-  rm /var/run/named/named.pid
-  fi
-fi
- 
+default_signal_processor
+exit 0

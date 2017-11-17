@@ -30,7 +30,7 @@ ENV RELEASE $release
 ADD src/gitconfig.tmpl /home/app/.git/config.tmpl
 
 RUN cat /home/app/.git/config.tmpl | sed "/\$release/s//$RELEASE/" > /home/app/.git/config &&\
-	/home/deployment.sh
+	/home/engines/scripts/engine/deployment.sh
 
 ADD src/profile /var/www/.profile
 
@@ -44,8 +44,8 @@ USER 0
 COPY src/passenger.conf /etc/nginx/
 
 RUN chmod ugo+w -R /etc/nginx/sites-enabled/default /etc/nginx/ &&\
-	mkdir -p /var/run/nginx/ /var/lib/nginx /var/log/nginx &&\
-	chown www-data /var/run/ /var/lib/nginx /var/run/nginx/ /var/log/nginx/
+	mkdir -p /var/run/nginx/ /var/lib/nginx &&\
+	chown www-data /var/run/ /var/lib/nginx /var/run/nginx/ 
 
 ENV PATH /usr/local/bin:/usr/bin:/bin:/usr/sbin
 

@@ -1,12 +1,8 @@
 #!/bin/bash
 . /home/engines/functions/params_to_env.sh
 params_to_env
-
-if test -z $email_group
- then 
-  echo "Missing Group name"
-  exit 127
- fi
+required_values="email_group"
+check_required_values 
  
  . /home/engines/functions/ldap/support_functions.sh
 

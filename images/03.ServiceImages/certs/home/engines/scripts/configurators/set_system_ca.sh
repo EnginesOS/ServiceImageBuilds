@@ -17,6 +17,17 @@ fi
 PARAMS_FILE=/home/engines/scripts/configurators/saved/ca_setup
 parms_to_file_and_env
 
+
+required_values="cert_name domainname country state city organisation person"
+check_required_values
+
+CERT_DEFAULTS_FILE=/home/certs/store/default_cert_details
+echo country=\"$country\" > $CERT_DEFAULTS_FILE
+echo state=\"$state\" >> $CERT_DEFAULTS_FILE
+echo organisation=\"$organisation\" >> $CERT_DEFAULTS_FILE
+echo city=\"$city\" >> $CERT_DEFAULTS_FILE
+echo person=\"$person\" >> $CERT_DEFAULTS_FILE
+ 
 cp /home/engines/scripts/configurators/saved/ca_setup /home/engines/scripts/configurators/saved/ca_params
 
 
@@ -37,4 +48,5 @@ chmod og-rwx  /home/certs/store/private/ca/keys/
 openssl genrsa -out /home/certs/store/private/ca/keys/system_CA.key 2048
 openssl req -x509 -new -nodes -key /home/certs/store/private/ca/keys/system_CA.key -days 1024 -sha256 -out /home/certs/store/public/ca/certs/system_CA.pem < /home/engines/scripts/configurators/saved/ca_setup
         
+chmod og-r /home/certs/store/private/ca/keys/system_CA.key        
         

@@ -5,27 +5,9 @@ params_to_env
 
 sudo -n /home/engines/scripts/actionators/_fix_perms.sh
 
-if test -z "$pub_key"
- then
-  echo "Missing Public key"
-  exit 127
-fi
+required_values="pub_key priv_key backup_password"
+check_required_values
 
-if test -z "$priv_key"
- then
-  echo "Missing Private key"
-  exit 127
-fi
-
-if test -z $backup_password
- then
-  echo "Missing Password"
-  exit 127
-fi
-
-#res=`echo $priv_key \
-#     | sed "/\\\r/s///g" | sed "/\\\n/s//\n/g" \
-#     | gpg --allow-secret-key-import --import - 2>&1`
 
 echo $priv_key |  sed "/\\\r/s///g" | sed "/\\\n/s//\n/g" >/tmp/.tt
 res=` cat /tmp/.tt | gpg --allow-secret-key-import --import - 2>&1`

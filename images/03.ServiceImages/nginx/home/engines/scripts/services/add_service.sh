@@ -3,30 +3,8 @@
 . /home/engines/functions/params_to_env.sh
 params_to_env
 
-if test -z $fqdn
- then
- 	echo Error:no FQDN in nginx service hash
- 	exit -1
- fi
- 
- if test -z $port
- then
- 	echo Error:no port in nginx service hash
- 	exit -1
- fi
-  if test -z "$proto"
- then
- 	echo Error:no proto in nginx service hash
- 	exit -1
- fi
- 
-   if test -z $parent_engine
- then
- 	echo Error:no name in nginx service hash
- 	exit -1
- fi
- 
-
+required_values="fqdn port proto parent_engine"
+check_required_values
 
 res=`nslookup ${parent_engine}.engines.internal|grep -e "Address: *[0-9]" |awk '{print $2}'`
 
@@ -37,7 +15,6 @@ res=`nslookup ${parent_engine}.engines.internal|grep -e "Address: *[0-9]" |awk '
         exit -1
  fi
 	 
-	# echo $1 > /home/consumers/saved/${proto}_$fqdn
 
 template="/etc/nginx/templates/${proto}_site.tmpl"
 
@@ -86,18 +63,18 @@ if test "$proto" = default
     cp /tmp/site.name /etc/nginx/sites-enabled/default
  elif ! test "$proto" = http
 	 then
-	 	if test -f /engines/ssl/certs/${fqdn}.crt
+	 	if test -f /home/engines/etc/ssl//certs/${fqdn}.crt
 	 		then
 	 			cert_name=${fqdn}
-	 		elif test -f /engines/ssl/erts/${domain}.crt 
+	 		elif test -f /home/engines/etc/ssl/certs/${domain}.crt 
 	 		 then
 	 		 	cert_name=$domain
-	 		 elif test -f /engines/ssl/certs/.${domain}.crt 
+	 		 elif test -f /home/engines/etc/ssl//certs/.${domain}.crt 
 	 		 then
 	 		 	cert_name=.$domain	
 	        else
 	        #	 cert_name=system_system_engines
-	        cert_name=default
+	        cert_name=wap
 	     fi
 		if test -f /etc/nginx/sites-enabled/http_https_${fqdn}.site
 	     		then
@@ -141,7 +118,7 @@ rm /tmp/site.*
  	then
  		mkdir -p /var/log/nginx/$fqdn/http/
  	fi
- 	
- kill -HUP `cat /run/nginx/nginx.pid`
+ nginx -s reload	
+ #kill -HUP `cat /run/nginx/nginx.pid`
 	 
 	 echo Success
