@@ -18,11 +18,11 @@ RUN usermod -u 22027 www-data &&\
 ADD home home
 
 RUN	git clone https://github.com/potsky/PimpMyLog.git &&\
-	mv /PimpMyLog /home/app /home/app/config.user.d/
+	mv /PimpMyLog /home/app 
 	
 ADD src/config.user.php /home/app/
 	
-RUN mkdir /home/saved &&\
+RUN mkdir /home/saved /home/app/config.user.d/ &&\
 	chown 22027 /home/saved /home/app/config.user.php /home/app/config.user.d/ &&\
 	usermod -G utmp -a www-data &&\
 	usermod -G syslog -a www-data &&\
