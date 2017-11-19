@@ -22,7 +22,7 @@ if ! test -d /home/saved/$parent_engine/
  ;;
 
  syslog)
- log_file_path=services/syslog/$log_file_path
+ log_file_path=/syslog/$log_file_path
  ;;
  
  apache_error_log)
@@ -63,7 +63,7 @@ if ! test -d /home/saved/$parent_engine/
    mkdir -p /home/app/config.user.d/${ctype}s/$parent_engine/
  fi
     
- conf=/home/app/config.user.d/${ctype}s/$parent_engine/$log_name
+ conf=/home/app/config.user.d/${ctype}s/$parent_engine/$log_name.json
 
  
 echo  '{'\"$parent_engine_$log_name\": { \"display\" : \"$parent_engine $log_name\", \"path\"    : \"/var/log/engines/$log_file_path\",  > /tmp/.conf
