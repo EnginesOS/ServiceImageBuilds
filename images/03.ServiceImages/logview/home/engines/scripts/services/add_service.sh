@@ -15,14 +15,14 @@ if ! test -d /home/saved/$parent_engine/
  
  case $log_type in
  nginx_error_log)
- log_file_path=services/nginx/nginx/$parent_engine.$log_file_path
+ log_file_path=services/wap/nginx/$parent_engine.$log_file_path
  ;;
  nginx)
- log_file_path=services/nginx/nginx/$parent_engine.$log_file_path
+ log_file_path=services/wap/nginx/$parent_engine.$log_file_path
  ;;
 
  syslog)
- log_file_path=syslog/$log_file_path
+ log_file_path=/syslog/$log_file_path
  ;;
  
  apache_error_log)
@@ -58,11 +58,17 @@ if ! test -d /home/saved/$parent_engine/
  
  esac
  
- conf=/home/saved/$parent_engine/$log_name
+ if ! test -d /home/app/config.user.d/${ctype}s/$parent_engine/
+  then	 
+   mkdir -p /home/app/config.user.d/${ctype}s/$parent_engine/
+ fi
+    
+ conf=/home/app/config.user.d/${ctype}s/$parent_engine/$log_name.json
 
  
-echo  \"$parent_engine_$log_name\": { \"display\" : \"$parent_engine $log_name\", \"path\"    : \"/var/log/engines/$log_file_path\",  > /tmp/.conf
+echo  '{'\"$parent_engine_$log_name\": { \"display\" : \"$parent_engine $log_name\", \"path\"    : \"/var/log/engines/$log_file_path\",  > /tmp/.conf
 cat  /home/engines/templates/logview/$log_type >>  /tmp/.conf
+echo '}' >> /tmp/.conf
 if ! test -f /var/log/engines/$log_file_path
  then
  	echo "Log does not exist"
@@ -70,5 +76,5 @@ if ! test -f /var/log/engines/$log_file_path
  	exit
  fi
 mv  /tmp/.conf $conf
-/home/engines/scripts/services/build_config.sh
+#/home/engines/scripts/services/build_config.sh
  
