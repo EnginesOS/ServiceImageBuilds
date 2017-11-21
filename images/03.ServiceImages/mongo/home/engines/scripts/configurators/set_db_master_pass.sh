@@ -3,11 +3,7 @@
 . /home/engines/functions/params_to_env.sh
 params_to_env
 
-if test -z $db_master_pass
- then 
- echo "NO Password"
-	exit -1
- fi
+
  required_values="db_master_pass"
 check_required_values
 
@@ -24,6 +20,7 @@ echo $res | grep -v ERROR
 if test $? -eq 0
 	then 
 		echo -n $db_master_pass >  /data/db/.priv/db_master_pass
+		chmod 600  /data/db/.priv/db_master_pass
 		echo "Success"
 		exit 0
 	fi
