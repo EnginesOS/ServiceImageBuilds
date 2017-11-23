@@ -21,7 +21,8 @@ r=$?
   then
    if test ${container_type} = app
     then
-     chown $owner /etc/krb5kdc/${container_type}s/$parent_engine/$parent_engine.keytab
+      uid=`grep ${1} /opt/engines/etc/exported/framework_user_uids |awk '{print $3}' | head -1`
+      chown $uid /etc/krb5kdc/${container_type}s/$parent_engine/$parent_engine.keytab
    fi    
  fi  
 }
