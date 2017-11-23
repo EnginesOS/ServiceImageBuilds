@@ -28,11 +28,4 @@ r=$?
 
 gen_service_key
 
-#if test $r -eq 0 
-# then
-#  echo "Success"
-#  else
-#   echo "Failed!"
-#fi
-#
 exit $r
