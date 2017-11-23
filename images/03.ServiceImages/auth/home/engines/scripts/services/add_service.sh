@@ -3,9 +3,9 @@
 . /home/engines/functions/params_to_env.sh
 params_to_env
 
-required_values="parent_engine container_type"
+required_values="parent_engine container_type owner"
 check_required_values
-export parent_engine container_type
+export parent_engine container_type owner
 err_log=`mktemp`
 sudo -n /home/engines/scripts/services/_add_service.sh &> $err_log
 r=$?
