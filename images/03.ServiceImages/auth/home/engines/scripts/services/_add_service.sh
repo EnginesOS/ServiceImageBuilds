@@ -17,6 +17,13 @@ r=$?
    echo "Failed to create principle  host/$parent_engine.engines.internal"
   fi  
  fi  
+ if ! test -z $owner
+  then
+   if test ${container_type} = app
+    then
+     chown $owner /etc/krb5kdc/${container_type}s/$parent_engine/$parent_engine.keytab
+   fi    
+ fi  
 }
 
 gen_service_key
