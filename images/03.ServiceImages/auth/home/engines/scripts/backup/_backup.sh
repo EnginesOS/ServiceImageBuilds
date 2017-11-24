@@ -1,3 +1,3 @@
 #!/bin/bash
 
-kdb5_util dump  -
+kdb5_util dump -

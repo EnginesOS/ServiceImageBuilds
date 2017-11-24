@@ -4,6 +4,8 @@ auth ALL = (root) NOPASSWD: /home/engines/scripts/signal/_kill_kerberos.sh
 auth ALL = (root) NOPASSWD: /home/engines/scripts/first_run/_first_run.sh
 auth ALL = (root) NOPASSWD: /home/engines/scripts/services/_add_service.sh
 auth ALL = (root) NOPASSWD: /home/engines/scripts/services/_rm_service.sh
+auth ALL = (root) NOPASSWD: /home/engines/scripts/backup/_backup.sh
+auth ALL = (root) NOPASSWD: /home/engines/scripts/backup/_restore.sh
 #must have blank after last sudoers line
 
 

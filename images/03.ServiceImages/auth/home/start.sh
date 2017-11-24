@@ -11,7 +11,6 @@ export KILL_SCRIPT
 service_first_run_check
 
 sudo -n /home/engines/scripts/startup/_start.sh &
-wait
 
 
-shutdown_complete
+
