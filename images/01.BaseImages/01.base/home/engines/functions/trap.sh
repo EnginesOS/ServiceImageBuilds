@@ -33,7 +33,7 @@ do
  fi
 done
 
-if test -z $PID_FILES
+if test -z "$PID_FILES"
  then
   PID_FILES=$PID_FILE
 fi
