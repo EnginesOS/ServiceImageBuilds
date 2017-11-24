@@ -26,7 +26,7 @@ chmod og-w /home/certs/store/services/${service}/certs/${dest_name}.crt
 echo $store_name > /home/certs/store/services/${service}/certs/store
 }
 function set_service_uid {
-id=`grep _$service /home/engines/system/container_uids | awk '{print $3}'`
+id=`grep _$service /home/engines/system/service_uids | awk '{print $3}'`
 }
 
 function install_service {

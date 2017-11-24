@@ -17,15 +17,16 @@ r=$?
    echo "Failed to create principle  host/$parent_engine.engines.internal"
   fi  
  fi  
+ if ! test -z $owner
+  then
+   if test ${container_type} = app
+    then
+      uid=`grep ${1} /home/engines/system/framework_user_uids |awk '{print $3}' | head -1`
+      chown $uid /etc/krb5kdc/${container_type}s/$parent_engine/$parent_engine.keytab
+   fi    
+ fi  
 }
 
 gen_service_key
 
-#if test $r -eq 0 
-# then
-#  echo "Success"
-#  else
-#   echo "Failed!"
-#fi
-#
 exit $r
