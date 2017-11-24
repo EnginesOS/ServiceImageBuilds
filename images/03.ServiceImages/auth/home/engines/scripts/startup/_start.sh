@@ -17,4 +17,5 @@ fi
 
  wait $kpid 	
  exit_code=$?
-
+ 
+shutdown_complete
