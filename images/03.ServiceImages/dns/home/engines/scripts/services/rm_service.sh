@@ -5,12 +5,15 @@ params_to_env
  
 if ! test -z ${domain_name}
   then	
-	rm /home/bind/engines/domains/${domain_name}
-	rm  /home/bind/domain_list/${ip_type}/${domain_name}
-	rm /home/bind/engines/zones/named.conf.${domain_name}
-	cat /home/bind/engines/domains/* > /home/bind/engines/domains.hosted
-	kill -HUP `cat /var/run/named/named.pid`
-	exit
+   if ! test ${domain_name} = engines.internal
+    then
+	 rm /home/bind/engines/domains/${domain_name}
+	 rm  /home/bind/domain_list/${ip_type}/${domain_name}
+	 rm /home/bind/engines/zones/named.conf.${domain_name}
+	 cat /home/bind/engines/domains/* > /home/bind/engines/domains.hosted
+	 kill -HUP `cat /var/run/named/named.pid`
+	 exit
+	fi
 fi
 
 if test -z ${hostname}
