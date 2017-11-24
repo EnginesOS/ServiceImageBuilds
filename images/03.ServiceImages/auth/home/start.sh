@@ -14,7 +14,7 @@ sleep 60
 
 service_first_run_check
 
-sudo -n /home/engines/scripts/startup/_start.sh &
+sudo -n /home/engines/scripts/startup/_start.sh 
 
 
 echo sleep 2
