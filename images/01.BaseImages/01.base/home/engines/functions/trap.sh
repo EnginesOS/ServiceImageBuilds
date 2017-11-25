@@ -13,6 +13,8 @@ if ! test -d /home/engines/run/flags/
   mkdir -p /home/engines/run/flags/
 fi
 
+echo trap > /home/engines/run/flags/state
+
 if test -f /home/engines/etc/SYSLOG
  then
   sudo -n /home/engines/scripts/_start_syslog.sh
