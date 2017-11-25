@@ -3,7 +3,7 @@
 . /home/engines/functions/params_to_env.sh
 params_to_env
 
-required_values="log_name log_file_path ctype log_type"
+required_values="log_name log_file_path container_type log_type"
 check_required_values
 
 log_name=`echo $log_name | sed "/ /s//_/g"`
@@ -26,52 +26,53 @@ if ! test -d /home/saved/$parent_engine/
  ;;
  
  apache_error_log)
- if test -z $ctype
+ if test -z $container_type
   then
-   ctype=app
+   container_type=app
   fi
- log_file_path=${ctype}s/$parent_engine/$log_file_path
+ log_file_path=${container_type}s/$parent_engine/$log_file_path
  ;;
  apache)
- if test -z $ctype
+ if test -z $container_type
   then
-   ctype=app
+   container_type=app
   fi
- log_file_path=${ctype}s/$parent_engine/$log_file_path
+ log_file_path=${container_type}s/$parent_engine/$log_file_path
  ;;
  
  raw_dated)
- if test -z $ctype
+ if test -z $container_type
   then
-   ctype=app 
+   container_type=app 
   fi
- log_file_path=${ctype}s/$parent_engine/$log_file_path
+ log_file_path=${container_type}s/$parent_engine/$log_file_path
  ;;
  
  raw)
- if test -z $ctype
+ if test -z $container_type
   then
-   ctype=app 
+   container_type=app 
   fi
- log_file_path=${ctype}s/$parent_engine/$log_file_path
+ log_file_path=${container_type}s/$parent_engine/$log_file_path
  ;;
  
  esac
  
- if ! test -d /home/app/config.user.d/${ctype}s/$parent_engine/
+ if ! test -d /home/app/config.user.d/${container_type}s/$parent_engine/
   then	 
-   mkdir -p /home/app/config.user.d/${ctype}s/$parent_engine/
+   mkdir -p /home/app/config.user.d/${container_type}s/$parent_engine/
  fi
     
- conf=/home/app/config.user.d/${ctype}s/$parent_engine/$log_name.json
+ conf=/home/app/config.user.d/${container_type}s/$parent_engine/$log_name.json
 
  
 echo  '{'\"$parent_engine_$log_name\": { \"display\" : \"$parent_engine $log_name\", \"path\"    : \"/var/log/engines/$log_file_path\",  > /tmp/.conf
 cat  /home/engines/templates/logview/$log_type >>  /tmp/.conf
 echo '}' >> /tmp/.conf
+
 if ! test -f /var/log/engines/$log_file_path
  then
- 	echo "Log does not exist"
+ 	echo "Log /var/log/engines/$log_file_path does not exist"
  	mv  /tmp/.conf /tmp/$parent_engine_$log_name.rejected
  	exit
  fi
