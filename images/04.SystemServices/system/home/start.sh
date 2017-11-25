@@ -12,6 +12,7 @@ export PID_FILE
 . /home/engines/functions/trap.sh
 
 cd /home
+sleep 500
  if test -f /home/engines/etc/ssl//keys/system.key 
   then
 	thin --threaded --ssl --ssl-key-file /home/engines/etc/ssl//keys/system.key --ssl-cert-file /home/engines/etc/ssl/certs/system.crt -C config.yaml -R ./config.ru start > /var/log/system.log &
