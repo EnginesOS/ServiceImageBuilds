@@ -51,10 +51,10 @@ for PID_FILE in $PID_FILES
      if test -f $PID_FILE
       then
         echo "Warning stale $PID_FILE"
-        kill -0 `cat $PID_FILE 2> /dev/null` &> /dev/null
+        kill -0 `cat $PID_FILE `
          if test $? -ne 0
           then
-            rm -f $PID_FILE &>/dev/null
+            rm -f $PID_FILE  
          fi
      fi
    fi
