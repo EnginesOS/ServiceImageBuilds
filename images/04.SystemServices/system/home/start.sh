@@ -20,7 +20,7 @@ cd /home
 	thin --threaded -C config.yaml -R ./config.ru start > /var/log/system.log &
  fi
 
-sleep 500
+echo startup_complete > 
 #touch /home/engines/run/flags/startup_complete  done in code
 wait 
 exit_code=$?
