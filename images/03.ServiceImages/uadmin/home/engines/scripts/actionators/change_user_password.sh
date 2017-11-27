@@ -15,5 +15,4 @@ check_required_values
    err=`cat $err_file`
    echo '{"Error":"failed to change user","Result":"Failed $err","exit":"'$r'"}'   
  fi
- rm $err
- 
+ rm $err_file
