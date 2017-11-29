@@ -12,13 +12,13 @@ export PID_FILE
 . /home/engines/functions/trap.sh
 
 cd /home
+
  if test -f /home/engines/etc/ssl//keys/system.key 
   then
-	thin --threaded --ssl --ssl-key-file /home/engines/etc/ssl//keys/system.key --ssl-cert-file /home/engines/etc/ssl/certs/system.crt -C config.yaml -R ./config.ru start > /var/log/system.log &
+	thin --threaded --ssl --ssl-key-file /home/engines/etc/ssl//keys/system.key --ssl-cert-file /home/engines/etc/ssl/certs/system.crt -C /home/app/config.yaml -R /home/app/config.ru start > /var/log/system.log &
   else
-	thin --threaded -C config.yaml -R ./config.ru start > /var/log/system.log &
+	thin --threaded -C /home/app/config.yaml -R /home/app/config.ru start > /var/log/system.log &
  fi
-
 
 #touch /home/engines/run/flags/startup_complete  done in code
 wait 
