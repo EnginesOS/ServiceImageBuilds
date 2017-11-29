@@ -1,8 +1,13 @@
 #!/bin/sh
 o=`mktemp`
-
+if test $1 = true
+ then
+  type=''
+ else
+  type=-update
+fi 
 cat - > $o
- kdb5_util load -update $o 2>/tmp/tar.errs
+ kdb5_util load $type $o 2>/tmp/tar.errs
 r=$?
 rm $o
 if test $r -ne 0
