@@ -91,7 +91,7 @@ else
    exit 127
  fi
    
-if test -z ${install_target}
+if test -z ${}
   then
    if test ${container_type} = service
    then
@@ -105,7 +105,12 @@ fi
 
 domain_name=`cat  /home/certs/store/public/certs/${StorePref}${cert_name}.crt | openssl x509 -noout -subject  |sed "/^.*CN=/s///"| sed "/\*/s///"`
 
-sudo -n  /home/engines/scripts/engine/_install_target.sh ${install_target} ${StorePref}/${cert_name} ${domain_name}
- 
-echo '{"Result":"Success"}'
-exit 0
+err=`sudo -n  /home/engines/scripts/engine/_install_target.sh ${install_target} ${StorePref}/${cert_name} ${domain_name}`
+r=$?
+ if $r -ne 0
+  then
+  	echo '{"Result":"Failed","ErrorMesg":"'$err'","ExitCode":"'$r'"}'
+  else 
+	echo '{"Result":"Success"}'
+fi
+exit $r
