@@ -39,7 +39,10 @@ id=`grep _$service /home/engines/system/service_uids | awk '{print $3}'`
 }
 
 function install_service {
-dest_name=$install_target
+ if test -z $dest_name
+  then
+	dest_name=$install_target
+  fi	
 service=$install_target
 set_service_uid
 install_cert
