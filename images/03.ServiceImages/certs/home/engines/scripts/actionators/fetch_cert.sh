@@ -11,8 +11,7 @@ if test -f /home/certs/store/public/certs/${store}/${cert_name}.crt
  	cat /home/certs/store/public/certs/${store}/${cert_name}.crt
   else
  	echo "Not Such Cert ${store}/${cert_name}.crt"
- 	exit 255
+ 	exit 127
 fi
 
-exit
- 	
+exit 0

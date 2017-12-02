@@ -16,7 +16,7 @@ if test -z ${dest_name}
  	dest_name=engines
 fi
 
-if test $service = wap
+if test $service=wap
  then
   if ! test $domain_name=default
    then

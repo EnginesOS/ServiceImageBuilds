@@ -1,12 +1,22 @@
 #!/bin/bash
 
-
-if test ${container_type} = system
+if ! test -z $cert_type 
  then
-    StorePref=services/${parent_engine}/
-else
-   StorePref=${container_type}s/${parent_engine}/
+ if test $cert_type=import -o $cert_type=user
+  then
+    StorePref=$cert_type/
+  fi   
 fi
+
+if test -z $StorePref
+ then
+	if test ${container_type}=system
+     then
+      StorePref=services/${parent_engine}/
+    else
+     StorePref=${container_type}s/${parent_engine}/
+   fi
+fi 
 
 sudo -n  /home/engines/scripts/engine/_fix_perms.sh
 
@@ -27,7 +37,7 @@ echo $city >>/home/certs/saved/${cert_name}_setup
 echo $organisation >>/home/certs/saved/${cert_name}_setup
 echo $person >>/home/certs/saved/${cert_name}_setup
 
-if test  $wild = "yes"
+if test  $wild="yes"
  then
   echo \*.$domainname  >>/home/certs/saved/${cert_name}_setup
   hostname=\*.$domainname
@@ -91,17 +101,16 @@ else
    exit 127
  fi
    
-if test -z ${}
+if test -z ${install_target}
   then
    if test ${container_type} = service
    then
      install_target=${parent_engine}
-  else
-    install_target=wap
+# else
+#    install_target=wap
   fi
 fi
 
-     
 
 domain_name=`cat  /home/certs/store/public/certs/${StorePref}${cert_name}.crt | openssl x509 -noout -subject  |sed "/^.*CN=/s///"| sed "/\*/s///"`
 
