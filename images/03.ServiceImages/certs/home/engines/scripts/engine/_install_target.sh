@@ -20,7 +20,7 @@ if test $service=wap
  then
   if ! test $domain_name=default
    then
-     dest_name=${cert_name}
+     dest_name=${domain_name}
   fi   
 fi
 
