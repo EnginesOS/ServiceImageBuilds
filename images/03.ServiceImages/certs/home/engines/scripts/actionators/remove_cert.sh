@@ -15,7 +15,7 @@ if ! test -f /home/certs/store/public/certs/$store/${cert_name}.crt
 
 domain_name=`cat /home/certs/store/public/certs/$store/${cert_name}.crt  | openssl x509 -noout -subject  |sed "/^.*CN=/s///"| sed "/\*/s///"`
 
-   sudo -n /home/engines/scripts/engines/_remove.sh certs/$store/${cert_name}.crt 
+   sudo -n /home/engines/scripts/engines/_remove_cert.sh certs/$store/${cert_name}.crt 
    
      if test $? -ne 0
      then
