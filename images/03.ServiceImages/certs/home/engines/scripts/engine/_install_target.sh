@@ -16,13 +16,7 @@ if test -z ${dest_name}
  	dest_name=engines
 fi
 
-if test $service=wap
- then
-  if ! test $domain_name=default
-   then
-     dest_name=${domain_name}
-  fi   
-fi
+
 
 mkdir -p /home/certs/store/services/${service}/certs/
 mkdir -p /home/certs/store/services/${service}/keys/
@@ -44,6 +38,14 @@ function install_service {
 	dest_name=$install_target
   fi	
 service=$install_target
+
+if test $service=wap
+ then
+  if ! test $domain_name=default
+   then
+     dest_name=${domain_name}
+  fi   
+fi
 set_service_uid
 install_cert
 }
