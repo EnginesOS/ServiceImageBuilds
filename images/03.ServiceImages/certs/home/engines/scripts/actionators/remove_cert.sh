@@ -1,35 +1,31 @@
 #!/bin/bash
-
 . /home/engines/functions/params_to_env.sh
 params_to_env
-
 
 required_values="cert_name store"
 check_required_values
 
 if ! test -f /home/certs/store/public/certs/$store/${cert_name}.crt 
  then
- 	 echo "Missing  $store/$cert_name"
-       exit 127
-    fi
+   echo "Missing  $store/$cert_name"
+   exit 127
+fi
 
-domain_name=`cat /home/certs/store/public/certs/$store/${cert_name}.crt  | openssl x509 -noout -subject  |sed "/^.*CN=/s///"| sed "/\*/s///"`
+domain_name=`cat /home/certs/store/public/certs/$store/${cert_name}.crt | openssl x509 -noout -subject  |sed "/^.*CN=/s///"| sed "/\*/s///"`
 
-   sudo -n /home/engines/scripts/engines/_remove_cert.sh certs/$store/${cert_name}.crt 
-   
-     if test $? -ne 0
-     then
-       echo "Failed to Delete Cert $cert_name"
-       exit 127
-    fi
+sudo -n /home/engines/scripts/engines/_remove_cert.sh certs/$store/${cert_name}.crt 
+if test $? -ne 0
+ then
+   echo "Failed to Delete Cert $cert_name"
+   exit 127
+fi
     
-   sudo -n /home/engines/scripts/engines/_remove_cert.sh keys/$store/${cert_name}.key
-   
-     if test $? -ne 0
-     then
-       echo "Failed to Delete Key $cert_name"
-       exit 127
-    fi
+sudo -n /home/engines/scripts/engines/_remove_cert.sh keys/$store/${cert_name}.key
+if test $? -ne 0
+ then
+  echo "Failed to Delete Key $cert_name"
+  exit 127
+fi
     
 if test -f /home/certs/store/services/wap/certs/${domain_name}.crt
  then
