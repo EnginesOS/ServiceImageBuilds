@@ -10,7 +10,7 @@ fi
 
 if test -z $StorePref
  then
-	if test ${container_type}=system
+	if test ${container_type} = system
      then
       StorePref=services/${parent_engine}/
     else
@@ -37,7 +37,7 @@ echo $city >>/home/certs/saved/${cert_name}_setup
 echo $organisation >>/home/certs/saved/${cert_name}_setup
 echo $person >>/home/certs/saved/${cert_name}_setup
 
-if test  $wild="yes"
+if test  $wild = "yes"
  then
   echo \*.$domain_name  >>/home/certs/saved/${cert_name}_setup
   hostname=\*.$domain_name
