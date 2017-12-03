@@ -29,7 +29,7 @@ if test -z $wild
 fi
  
  # before any addition of *\.
-domain=$domainname 
+domain=$domain_name 
 
 echo $country >/home/certs/saved/${cert_name}_setup
 echo $state >>/home/certs/saved/${cert_name}_setup
@@ -39,12 +39,12 @@ echo $person >>/home/certs/saved/${cert_name}_setup
 
 if test  $wild="yes"
  then
-  echo \*.$domainname  >>/home/certs/saved/${cert_name}_setup
-  hostname=\*.$domainname
-  domainname=\*.$domainname
-  alt_names="$alt_names ${parent_engine}.${domainname}" 	
+  echo \*.$domain_name  >>/home/certs/saved/${cert_name}_setup
+  hostname=\*.$domain_name
+  #domain_name=\*.$domain_name
+  alt_names="$alt_names ${parent_engine}.${domain_name}" 	
 else
-  echo $domainname  >>/home/certs/saved/${cert_name}_setup
+  echo $domain_name  >>/home/certs/saved/${cert_name}_setup
 fi
  
 if ! test $altName

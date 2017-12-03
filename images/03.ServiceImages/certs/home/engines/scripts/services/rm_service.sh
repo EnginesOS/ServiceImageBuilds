@@ -2,7 +2,7 @@
 . /home/engines/functions/params_to_env.sh
 params_to_env
 
-required_values="cert_name container_type parent_engine domainname"
+required_values="cert_name container_type parent_engine domain_name"
 check_required_values
 
 store=${container_type}s/${parent_engine}/
