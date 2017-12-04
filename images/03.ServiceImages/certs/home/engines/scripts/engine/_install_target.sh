@@ -28,6 +28,7 @@ chmod og-rw /home/certs/store/services/${service}/keys/${dest_name}.key
 chmod og-w /home/certs/store/services/${service}/certs/${dest_name}.crt
 echo $store_name > /home/certs/store/services/${service}/certs/store
 }
+
 function set_service_uid {
 id=`grep _$service /home/engines/system/service_uids | awk '{print $3}'`
 }
@@ -41,7 +42,7 @@ service=$install_target
 
 if test $service = wap
  then
-  if ! test $domain_name=default
+  if ! test $domain_name = default
    then
      dest_name=${domain_name}
   fi   
@@ -54,7 +55,6 @@ install_cert
 case $install_target in
 
 default)
-
   domain_name=default
    for install_target in system smtp ftp email mysql pqsql mgmt wap
     do
