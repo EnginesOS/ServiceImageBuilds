@@ -1,7 +1,7 @@
 #!/bin/bash
 
 release=$RELEASE
-if test -z release
+if test -z $release
  then
  if test -f /home/app/release
   then
