@@ -10,13 +10,14 @@ if test -z $release
 	release=master
   fi	
 fi	
+cd /home/app/
 
 if ! test -d /home/app/control
  then
  	pwd
  	ls -la /home/app
  	whoami
-    echo git clone --depth 1 --branch $release https://github.com/lachdoug/admin_gui /home/app/control
+    echo git clone --depth 1 --branch $release https://github.com/lachdoug/admin_gui control
 	git clone --depth 1 --branch $release https://github.com/lachdoug/admin_gui control
  else
    cd /home/app/control
