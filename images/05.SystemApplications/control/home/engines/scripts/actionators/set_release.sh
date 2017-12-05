@@ -10,7 +10,7 @@ if test $release = `cat /home/app/release`
   exit 0
 fi
 
-echo -n $release >  /home/app/release
+echo -n $release > /home/app/release
 
 if test -d /home/app
  then
