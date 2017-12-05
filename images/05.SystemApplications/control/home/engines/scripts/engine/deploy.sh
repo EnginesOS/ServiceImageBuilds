@@ -5,7 +5,7 @@ if test -z release
  then
  if test -f /home/app/release
   then
-   release=`cat /home/app/release`
+      release=`cat /home/app/release`
    else
 	release=master
   fi	
@@ -13,6 +13,7 @@ fi
 
 if ! test -d /home/app/control
  then
+    echo git clone --depth 1 --branch $release https://github.com/lachdoug/admin_gui control
 	git clone --depth 1 --branch $release https://github.com/lachdoug/admin_gui control
  else
    cd /home/app/control
