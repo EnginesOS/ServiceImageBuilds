@@ -13,6 +13,9 @@ fi
 
 if ! test -d /home/app/control
  then
+ 	pwd
+ 	ls -la /home/app
+ 	whoami
     echo git clone --depth 1 --branch $release https://github.com/lachdoug/admin_gui /home/app/control
 	git clone --depth 1 --branch $release https://github.com/lachdoug/admin_gui control
  else
