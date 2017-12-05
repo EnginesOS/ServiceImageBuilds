@@ -10,7 +10,7 @@ if test $release = `cat /home/app/release`
   exit 0
 fi
 
-echo -n $release >  /home/app/release
+echo -n $release > /home/app/release
 
 if test -d /home/app
  then
@@ -26,4 +26,6 @@ if ! test -d /home/app/control
  fi	
 cd /home/app/control
 echo installing Gems
-bundle install --standalone   
+bundle install --standalone  
+kill -TERM `cat /home/engines/run/control.pid`
+ 
