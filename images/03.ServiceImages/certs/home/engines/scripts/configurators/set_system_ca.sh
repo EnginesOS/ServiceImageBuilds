@@ -18,7 +18,7 @@ PARAMS_FILE=/home/engines/scripts/configurators/saved/ca_setup
 parms_to_file_and_env
 
 
-required_values="cert_name domainname country state city organisation person"
+required_values="cert_name domain_name country state city organisation person"
 check_required_values
 
 CERT_DEFAULTS_FILE=/home/certs/store/default_cert_details
@@ -37,7 +37,7 @@ echo $city >>/home/engines/scripts/configurators/saved/ca_setup
 echo $person >>/home/engines/scripts/configurators/saved/ca_setup
 echo $organisation >>/home/engines/scripts/configurators/saved/ca_setup
 cp /home/engines/scripts/configurators/saved/ca_setup /home/engines/scripts/configurators/saved/cn_defaults
-echo $domainname CA  >>/home/engines/scripts/configurators/saved/ca_setup
+echo $domain_name CA  >>/home/engines/scripts/configurators/saved/ca_setup
 echo "" >>/home/engines/scripts/configurators/saved/ca_setup
 echo "" >>/home/engines/scripts/configurators/saved/ca_setup
 mkdir -p /home/certs/store/public/ca/keys/
