@@ -11,7 +11,8 @@ RUN gem install oink rest-client net_http_unix yajl-ruby
 ADD home home
 
 RUN	chgrp containers /home &&\
- 	chmod g+w /home &&\
+    mkdir /home/app/ &&\
+ 	chmod g+w /home/app/ &&\
  	usermod -G containers -a www-data 
  	
 USER www-data
@@ -20,8 +21,8 @@ RUN	/home/engines/scripts/engine/deploy.sh
 
 USER 0
 RUN	chown -R www-data /home/app &&\ 	
- 	mkdir -p /home/app/data  &&\
- 	mkdir -p /home/app/public  &&\
+ 	mkdir -p /home/app/control/data  &&\
+ 	mkdir -p /home/app/control/public  &&\
  	chmod g-w /home 
 
 ENV HOME /home/app
