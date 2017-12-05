@@ -15,15 +15,13 @@ RUN	chgrp containers /home &&\
  	chmod g+w /home/app/ &&\
  	usermod -G containers -a www-data 
  	
-#USER www-data
+USER www-data
 
-#RUN	/home/engines/scripts/engine/deploy.sh
+RUN	/home/engines/scripts/engine/deploy.sh
 
-USER 0
-RUN	chown -R www-data /home/app &&\ 	
- 	mkdir -p /home/app/control/data  &&\
- 	mkdir -p /home/app/control/public  &&\
- 	chmod g-w /home 
+#RUSER 0
+#RUN	chown -R www-data /home/app &&\ 	
+
 
 ENV HOME /home/app
 WORKDIR /home/app/
