@@ -5,10 +5,17 @@ params_to_env
 required_values="release"
 check_required_values 
 
+if test $release = `cat /home/app/release`
+ then
+  exit 0
+fi
+
+echo -n $release >  /home/app/release
+
 if test -d /home/app
  then
   rm -rf /home/app/control
- fi 
+fi 
 
 if ! test -d /home/app/control
  then
