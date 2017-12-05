@@ -13,7 +13,7 @@ fi
 
 if ! test -d /home/app/control
  then
-    echo git clone --depth 1 --branch $release https://github.com/lachdoug/admin_gui control
+    echo git clone --depth 1 --branch $release https://github.com/lachdoug/admin_gui /home/app/control
 	git clone --depth 1 --branch $release https://github.com/lachdoug/admin_gui control
  else
    cd /home/app/control
