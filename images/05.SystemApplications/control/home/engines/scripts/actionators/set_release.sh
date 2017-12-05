@@ -26,4 +26,6 @@ if ! test -d /home/app/control
  fi	
 cd /home/app/control
 echo installing Gems
-bundle install --standalone   
+bundle install --standalone  
+kill -TERM `cat /home/engines/run/control.pid`
+ 
