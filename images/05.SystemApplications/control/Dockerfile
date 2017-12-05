@@ -18,7 +18,8 @@ RUN	chgrp containers /home &&\
  	
 USER www-data
 
-RUN	/home/engines/scripts/engine/deploy.sh
+RUN	echo -n master >/home/app/release;\
+    /home/engines/scripts/engine/deploy.sh
 
 #RUSER 0
 #RUN	chown -R www-data /home/app &&\ 	
