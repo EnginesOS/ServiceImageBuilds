@@ -5,7 +5,7 @@ kpid=$!
 /usr/sbin/kadmind -P /var/run/krb5admin.pid -nofork  &
 
 . /home/engines/functions/system_functions.sh
-startup_complete
+
 
 if test -f /home/engines/run/flags/first_just_run
  then
@@ -15,6 +15,10 @@ if test -f /home/engines/run/flags/first_just_run
    rm /home/engines/run/flags/first_just_run
 fi 
 
- wait $kpid 	
- exit_code=$?
+startup_complete
 
+wait $kpid 	
+
+exit_code=$?
+ 
+shutdown_complete

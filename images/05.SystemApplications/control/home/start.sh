@@ -6,9 +6,10 @@ export PID_FILE
 
 /home/engines/scripts/engine/deploy.sh
 
-cd /home/app/
+cd /home/app/control
 
 bundle exec thin --threaded --ssl --ssl-key-file /home/engines/etc/ssl//keys/control.key --ssl-cert-file /home/engines/etc/ssl//certs/control.crt -C /home/config.yaml -R /home/config.ru start &
+echo -n $! > /home/engines/run/control.pid 
 
 startup_complete
 

@@ -1,12 +1,22 @@
 #!/bin/bash
 
-
-if test ${container_type} = system
+if ! test -z $cert_type 
  then
-    StorePref=services/${parent_engine}/
-else
-   StorePref=${container_type}s/${parent_engine}/
+ if test $cert_type=import -o $cert_type=user
+  then
+    StorePref=$cert_type/
+  fi   
 fi
+
+if test -z $StorePref
+ then
+	if test ${container_type} = system
+     then
+      StorePref=services/${parent_engine}/
+    else
+     StorePref=${container_type}s/${parent_engine}/
+   fi
+fi 
 
 sudo -n  /home/engines/scripts/engine/_fix_perms.sh
 
@@ -19,7 +29,7 @@ if test -z $wild
 fi
  
  # before any addition of *\.
-domain=$domainname 
+domain=$domain_name 
 
 echo $country >/home/certs/saved/${cert_name}_setup
 echo $state >>/home/certs/saved/${cert_name}_setup
@@ -29,12 +39,12 @@ echo $person >>/home/certs/saved/${cert_name}_setup
 
 if test  $wild = "yes"
  then
-  echo \*.$domainname  >>/home/certs/saved/${cert_name}_setup
-  hostname=\*.$domainname
-  domainname=\*.$domainname
-  alt_names="$alt_names ${parent_engine}.${domainname}" 	
+  echo \*.$domain_name  >>/home/certs/saved/${cert_name}_setup
+  hostname=\*.$domain_name
+  #domain_name=\*.$domain_name
+  alt_names="$alt_names ${parent_engine}.${domain_name}" 	
 else
-  echo $domainname  >>/home/certs/saved/${cert_name}_setup
+  echo $domain_name  >>/home/certs/saved/${cert_name}_setup
 fi
  
 if ! test $altName
@@ -96,16 +106,20 @@ if test -z ${install_target}
    if test ${container_type} = service
    then
      install_target=${parent_engine}
-  else
-    install_target=wap
+# else
+#    install_target=wap
   fi
 fi
 
-     
 
 domain_name=`cat  /home/certs/store/public/certs/${StorePref}${cert_name}.crt | openssl x509 -noout -subject  |sed "/^.*CN=/s///"| sed "/\*/s///"`
-echo  "/home/engines/scripts/engine/_install_target.sh ${install_target} ${StorePref}/${cert_name} ${domain_name}"
-sudo -n  /home/engines/scripts/engine/_install_target.sh ${install_target} ${StorePref}/${cert_name} ${domain_name}
- 
-echo '{"Result":"Success"}'
-exit 0
+
+err=`sudo -n  /home/engines/scripts/engine/_install_target.sh ${install_target} ${StorePref}/${cert_name} ${domain_name}`
+r=$?
+ if $r -ne 0
+  then
+  	echo '{"Result":"Failed","ErrorMesg":"'$err'","ExitCode":"'$r'"}'
+  else 
+	echo '{"Result":"Success"}'
+fi
+exit $r

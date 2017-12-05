@@ -13,6 +13,8 @@ if ! test -d /home/engines/run/flags/
   mkdir -p /home/engines/run/flags/
 fi
 
+echo trap > /home/engines/run/flags/state
+
 if test -f /home/engines/etc/SYSLOG
  then
   sudo -n /home/engines/scripts/_start_syslog.sh
@@ -33,7 +35,7 @@ do
  fi
 done
 
-if test -z $PID_FILES
+if test -z "$PID_FILES"
  then
   PID_FILES=$PID_FILE
 fi
@@ -49,10 +51,10 @@ for PID_FILE in $PID_FILES
      if test -f $PID_FILE
       then
         echo "Warning stale $PID_FILE"
-        kill -0 `cat $PID_FILE 2> /dev/null` &> /dev/null
+        kill -0 `cat $PID_FILE `
          if test $? -ne 0
           then
-            rm -f $PID_FILE &>/dev/null
+            rm -f $PID_FILE  
          fi
      fi
    fi

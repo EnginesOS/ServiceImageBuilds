@@ -5,7 +5,7 @@ params_to_env
  
 default_mdns_domain=`cat /home/engines/scripts/configurators/saved/default_mdns_domain  | cut -f2 -d: | sed "s/\"//" | cut -f1 -d\"`
 
-check_required_valueshostname
+check_required_values hostname
 check_required_values
 
 
