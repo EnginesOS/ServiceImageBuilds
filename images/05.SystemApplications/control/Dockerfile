@@ -15,9 +15,9 @@ RUN	chgrp containers /home &&\
  	chmod g+w /home/app/ &&\
  	usermod -G containers -a www-data 
  	
-USER www-data
+#USER www-data
 
-RUN	/home/engines/scripts/engine/deploy.sh
+#RUN	/home/engines/scripts/engine/deploy.sh
 
 USER 0
 RUN	chown -R www-data /home/app &&\ 	
@@ -28,6 +28,6 @@ RUN	chown -R www-data /home/app &&\
 ENV HOME /home/app
 WORKDIR /home/app/
 USER www-data
-
+RUN	/home/engines/scripts/engine/deploy.sh
 CMD ["/home/start.sh"]
 
