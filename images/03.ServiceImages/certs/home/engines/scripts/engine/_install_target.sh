@@ -40,6 +40,11 @@ function install_service {
   fi	
 service=$install_target
 
+if test $domain_name = default
+ then
+   $domain_name=$service
+fi
+   
 if test $service = wap
  then
   if ! test $domain_name = default
