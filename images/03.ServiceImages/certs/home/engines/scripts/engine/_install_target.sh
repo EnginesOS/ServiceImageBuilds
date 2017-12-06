@@ -10,13 +10,12 @@ if test -z $store_name
   store_name=`dirname $2`
 fi
 
+
 function install_cert {
 if test -z ${dest_name}
  then 
  	dest_name=engines
 fi
-
-
 
 mkdir -p /home/certs/store/services/${service}/certs/
 mkdir -p /home/certs/store/services/${service}/keys/
@@ -42,7 +41,7 @@ service=$install_target
 
 if test $domain_name = default
  then
-   $domain_name=$service
+   domain_name=$service
 fi
    
 if test $service = wap
@@ -61,8 +60,9 @@ case $install_target in
 
 default)
   domain_name=default
-   for install_target in system smtp ftp email mysql pqsql mgmt wap
+   for install_target in system smtp ftp email mysql pgsql mgmt wap
     do
+      dest_name=$install_target
       install_service
     done  
   ;;
