@@ -1,0 +1,14 @@
+dn: cn=Administrator,ou=People,dc=engines,dc=internal
+cn: admin
+gidnumber: 5000
+givenname: System
+homedirectory: /home/users/admin
+loginshell: /bin/sh
+objectclass: inetOrgPerson
+objectclass: posixAccount
+objectclass: top
+sn: Administrator
+uid: admin
+uidnumber: 5000
+userpassword: {SASL}admin@ENGINES.INTERNAL
+
