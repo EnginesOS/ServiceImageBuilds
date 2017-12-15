@@ -12,19 +12,24 @@ engine=`echo ${parent_engine} | sed "/[_.]/s///g"`
 fqdn_str=${host}.engines.internal
     
 dns_cmd_file=`mktemp`
+
+if test -z $ttl
+ then
+  ttl=30
+fi   
    
 if test -z $record_type
  then
   if test -z ${ip}
    then
-    update_line=" update add $fqdn_str 30 CNAME ${engine}.engines.internal"
+    update_line=" update add $fqdn_str $ttl CNAME ${engine}.engines.internal"
    else
-     update_line=" update add $fqdn_str 30 A $ip"        
+     update_line=" update add $fqdn_str $ttl A $ip"        
   fi  
 elif test $record_type = custom
  then
     no_inarpra=y
-   update_line="update add $fqdn_str $record"
+   update_line="update add $fqdn_str 30 $record"
 fi 
 
     
@@ -37,7 +42,7 @@ echo send >> $dns_cmd_file
 if test -z $no_inarpra 
  then
     ip_reversed=`echo $ip |awk  ' BEGIN {  FS="."} {print $4 "." $3 "." $2 "." $1}'`
-	echo update add ${ip_reversed}.in-addr.arpa. 30 PTR $fqdn_str >> $dns_cmd_file
+	echo update add ${ip_reversed}.in-addr.arpa. $ttl PTR $fqdn_str >> $dns_cmd_file
 	echo send >> $dns_cmd_file
 fi
 
