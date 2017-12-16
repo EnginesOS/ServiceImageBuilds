@@ -1,6 +1,6 @@
 #!/bin/bash
 
-
+sudo -n /home/engines/scripts/engine/_fix_perms.sh
 
 if test -f /home/certs/store/private/ca/keys/system_CA.key
 	then	
