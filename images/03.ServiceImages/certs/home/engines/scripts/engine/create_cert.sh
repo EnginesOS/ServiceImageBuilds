@@ -30,7 +30,7 @@ fi
  
  # before any addition of *\.
 domain=$domain_name 
-if test -n  $country -a -n $state -a -n $organisation
+if test -z "$country" -a -z "$state" -a -z "$organisation"
  then
  . /home/certs/store/default_cert_details
  fi
