@@ -106,12 +106,16 @@ else
    
 if test -z ${install_target}
   then
-   if test ${container_type} = service
-   then
-     install_target=${parent_engine}
+  install_target=${parent_engine}
+#   if test ${container_type} = service
+#   then
+#    install_target=${parent_engine}
+#   elif test ${container_type} = app   		
+#   then
+#      install_target=${parent_engine}
 # else
 #    install_target=wap
-  fi
+#  fi
 fi
 
 
