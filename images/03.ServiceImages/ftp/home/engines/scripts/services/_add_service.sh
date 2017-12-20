@@ -1,8 +1,9 @@
 #!/bin/bash
 
-kinit -t /etc/krb5kdc/keys/ftp.keytab 
+kinit -kt /etc/krb5kdc/keys/ftp.keytab 
 
 uid=`/home/engines/scripts/services/next_id.sh`
+kinit -kt /etc/krb5kdc/keys/ftp.keytab 
 
 cat /home/engines/templates/ftp/new_user.ldif \
  | sed "s/SN/$service_handle/" \
