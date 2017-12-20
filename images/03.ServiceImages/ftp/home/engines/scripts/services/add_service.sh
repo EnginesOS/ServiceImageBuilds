@@ -22,5 +22,5 @@ if ! test -z $rw_access
 fi   
 
 export ftp_gid access username password title folder service_handle service_container_name parent_engine
-sudo -n /home/engines/scripts/servics/_add_service.sh
+sudo -n /home/engines/scripts/services/_add_service.sh
 
