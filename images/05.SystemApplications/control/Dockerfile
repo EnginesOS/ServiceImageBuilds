@@ -1,7 +1,7 @@
 FROM  engines/sinatra:$release
 
 RUN /usr/sbin/usermod -u 22050 www-data &&\
-	apt-get -y install libcurl4-openssl-dev &&\
+	apt-get -y install libcurl4-openssl-dev memcachedb&&\
  	/home/post_build_clean.sh
 
 ENV ContUser www-data
@@ -12,8 +12,9 @@ ADD home home
 
 RUN	chgrp containers /home &&\
     mkdir /home/app/ &&\
- 	chmod ug+w /home/app/ &&\
- 	chown www-data /home/app/ &&\
+    mkdir /home/app/cache
+ 	chmod -R ug+w /home/app/ &&\
+ 	chown -R www-data /home/app/ &&\
  	usermod -G containers -a www-data 
  	
 USER www-data

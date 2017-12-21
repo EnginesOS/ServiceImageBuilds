@@ -6,6 +6,8 @@ export PID_FILE
 
 /home/engines/scripts/engine/deploy.sh
 
+/usr/bin/memcachedb -H /home/app/cache
+
 cd /home/app/control
 
 bundle exec thin --threaded --ssl --ssl-key-file /home/engines/etc/ssl//keys/control.key --ssl-cert-file /home/engines/etc/ssl//certs/control.crt -C /home/config.yaml -R /home/config.ru start &
