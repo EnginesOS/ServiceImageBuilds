@@ -9,6 +9,12 @@ export PID_FILE
 
 cd /home/app
 
+subject="/C=AU/ST=NSW/L=Sydney/O=install/CN=installer"
+openssl req \
+       -newkey rsa:2048 -nodes -keyout first_run.key  -sub $subject \
+       -x509 -days 365 -out first_run.crt
+       
+       
 /home/engines/scripts/engine/deployment.sh
 
 bundle exec thin  -R ./config.ru start > /var/log/firstrun.log &

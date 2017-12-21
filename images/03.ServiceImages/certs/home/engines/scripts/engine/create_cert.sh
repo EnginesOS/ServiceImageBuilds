@@ -30,7 +30,10 @@ fi
  
  # before any addition of *\.
 domain=$domain_name 
-
+if test -z "$country" -a -z "$state" -a -z "$organisation"
+ then
+ . /home/certs/store/default_cert_details
+ fi
 echo $country >/home/certs/saved/${cert_name}_setup
 echo $state >>/home/certs/saved/${cert_name}_setup
 echo $city >>/home/certs/saved/${cert_name}_setup
@@ -103,12 +106,16 @@ else
    
 if test -z ${install_target}
   then
-   if test ${container_type} = service
-   then
-     install_target=${parent_engine}
+  install_target=${parent_engine}
+#   if test ${container_type} = service
+#   then
+#    install_target=${parent_engine}
+#   elif test ${container_type} = app   		
+#   then
+#      install_target=${parent_engine}
 # else
 #    install_target=wap
-  fi
+#  fi
 fi
 
 

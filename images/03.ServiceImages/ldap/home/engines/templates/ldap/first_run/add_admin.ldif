@@ -1,5 +1,5 @@
 dn: cn=Administrator,ou=People,dc=engines,dc=internal
-cn: admin
+cn: Administrator
 gidnumber: 5000
 givenname: System
 homedirectory: /home/users/admin
