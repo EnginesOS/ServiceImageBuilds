@@ -12,7 +12,7 @@ ADD home home
 
 RUN	chgrp containers /home &&\
     mkdir /home/app/ &&\
-    mkdir /home/app/cache
+    mkdir /home/app/cache &&\
  	chmod -R ug+w /home/app/ &&\
  	chown -R www-data /home/app/ &&\
  	usermod -G containers -a www-data 
