@@ -1,4 +1,5 @@
 #Defaults  env_keep += "SIGNAL CONTAINER_NAME PID_FILE PID_FILES exit_code"
+Defaults env_keep += "SIGNAL CONTAINER_NAME PID_FILE PID_FILES exit_code ftp_gid access username password title folder service_handle service_container_name parent_engine"
 proftpd ALL = (root) NOPASSWD: /usr/sbin/proftpd
 proftpd ALL = (root) NOPASSWD: /home/engines/scripts/signal/_signal.sh
 proftpd ALL = (root) NOPASSWD: /home/engines/scripts/services/_add_service.sh
