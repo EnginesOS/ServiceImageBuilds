@@ -1,6 +1,6 @@
 #!/bin/sh -x
 
-
+echo "Remove $* "
 
 for cmd in $*
  do

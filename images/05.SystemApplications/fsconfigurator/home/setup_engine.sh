@@ -6,6 +6,22 @@ echo Setup Engine user $fw_user
 #VOLUME /home/fs
 #VOLUME /dest/fs
 
+echo Contents of /client/var/log
+ls /client/var/log
+
+echo Contents of /client/log 
+ls /client/log
+
+echo Contents of /client/state
+ls /client/state
+
+echo Contents of dest/fs
+ls /dest/fs
+
+echo Contents of /home/fs
+ls /home/fs
+
+
 logs=`ls /var/log/`
 echo logs
 for log in $logs
@@ -52,7 +68,7 @@ chmod g+w  -R /client/state
 			cp -rp /home/app_src/.  /dest/fs/_home_app_/			
 			chown -R ${fw_user}.${data_gid}  /dest/fs/_home_app_/			
 			touch /dest/fs/_home_app_/.persistent
-			  echo "setup app persist"
+			echo "Setup app persist"
     fi
 
 touch /client/state/flags/volume_setup_complete
