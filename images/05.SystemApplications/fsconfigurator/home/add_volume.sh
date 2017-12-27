@@ -1,5 +1,5 @@
 #!/bin/sh -x
-echo "Add Volume $1"
+echo "Add Volume $1"  >> /client/var/log/fs_setup.log
 if ! test -z $1
  then 
  	chown -R $fw_user /dest/fs/$1

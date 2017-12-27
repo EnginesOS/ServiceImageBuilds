@@ -7,19 +7,19 @@ echo Setup Engine user $fw_user
 #VOLUME /dest/fs
 
 echo Contents of /client/var/log
-ls /client/var/log
+ls /client/var/log > /client/var/log/fs_setup.log
 
 echo Contents of /client/log 
-ls /client/log
+ls /client/log >> /client/var/log/fs_setup.log
 
 echo Contents of /client/state
-ls /client/state
+ls /client/state >> /client/var/log/fs_setup.log
 
 echo Contents of dest/fs
-ls /dest/fs
+ls /dest/fs >> /client/var/log/fs_setup.log
 
 echo Contents of /home/fs
-ls /home/fs
+ls /home/fs >> /client/var/log/fs_setup.log
 
 
 logs=`ls /var/log/`
@@ -38,14 +38,14 @@ chmod g+w  -R /client/state
 
 
 	cd /home/fs_src/
-	echo "moving fs src "
-	ls /dest/fs/
+	echo "moving fs src "  >> /client/var/log/fs_setup.log
+	ls /dest/fs/  >> /client/var/log/fs_setup.log
 	
 	for dest_dir in `ls /dest/fs/`
 	 do	 
 	 if test -f /dest/fs/$dest_dir/.persistent_lock
  		then
- 		echo "Already persistent $dest_dir"
+ 		echo "Already persistent $dest_dir"  >> /client/var/log/fs_setup.log
  		 chown -R $fw_user /dest/fs/$dest_dir
   		  chmod g+w -R  /dest/fs/$dest_dir
  		continue
@@ -54,7 +54,7 @@ chmod g+w  -R /client/state
 	   cp -rpn $src_dir/. /dest/fs/$dest_dir
 	   	   touch /dest/fs/$dest_dir/.persistent_lock
 	   chown -R ${fw_user}.${data_gid}  /dest/fs/$dest_dir
-	   echo "setup $dest_dir"
+	   echo "setup $dest_dir" >> /client/var/log/fs_setup.log
 	 done
 
 	#if no presistance dirs/files need to set permission here
@@ -68,9 +68,9 @@ chmod g+w  -R /client/state
 			cp -rp /home/app_src/.  /dest/fs/_home_app_/			
 			chown -R ${fw_user}.${data_gid}  /dest/fs/_home_app_/			
 			touch /dest/fs/_home_app_/.persistent
-			echo "Setup app persist"
+			echo "Setup app persist"  >> /client/var/log/fs_setup.log
     fi
 
 touch /client/state/flags/volume_setup_complete
-echo setup complete
+echo setup complete   >> /client/var/log/fs_setup.log
  exit 0

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-echo "Remove dir $1 "
+echo "Remove dir $1 " 
 
 #function remove_dir_contents {
 	#pd=`pwd
