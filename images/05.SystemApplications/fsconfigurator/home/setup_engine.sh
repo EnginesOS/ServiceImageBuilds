@@ -20,12 +20,6 @@ chown $fw_user -R /client/state
 chgrp 22020  -R /client/state
 chmod g+w  -R /client/state
 
-#if test -f /dest/fs/.persistent_lock
-# then
-#  chown -R $fw_user /dest/fs/*
-#  chmod g+w -R  /dest/fs/*
-  
-#else
 
 	cd /home/fs_src/
 	echo "moving fs src "
@@ -35,6 +29,7 @@ chmod g+w  -R /client/state
 	 do	 
 	 if test -f /dest/fs/$dest_dir/.persistent_lock
  		then
+ 		echo "Already persistent $dest_dir"
  		 chown -R $fw_user /dest/fs/$dest_dir
   		  chmod g+w -R  /dest/fs/$dest_dir
  		continue
@@ -43,6 +38,7 @@ chmod g+w  -R /client/state
 	   cp -rpn $src_dir/. /dest/fs/$dest_dir
 	   	   touch /dest/fs/$dest_dir/.persistent_lock
 	   chown -R ${fw_user}.${data_gid}  /dest/fs/$dest_dir
+	   echo "setup $dest_dir"
 	 done
 
 	#if no presistance dirs/files need to set permission here
@@ -56,15 +52,9 @@ chmod g+w  -R /client/state
 			cp -rp /home/app_src/.  /dest/fs/_home_app_/			
 			chown -R ${fw_user}.${data_gid}  /dest/fs/_home_app_/			
 			touch /dest/fs/_home_app_/.persistent
+			  echo "setup app persist"
     fi
 
-	#touch /dest/fs/.persistent_lock
-	#touch /dest/fs/.persistent
-	
-#fi
-
-   #chown 21000 /home/fs/
- #  chown 21000 /dest/fs/
 touch /client/state/flags/volume_setup_complete
 echo setup complete
  exit 0
