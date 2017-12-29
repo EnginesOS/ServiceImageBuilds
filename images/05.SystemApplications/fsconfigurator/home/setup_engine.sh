@@ -71,7 +71,7 @@ chmod g+w  -R /client/state
 			echo "Setup app persist"  >> /client/var/log/fs_setup.log
     fi
 
-sleep 600
+sleep 30
 touch /client/state/flags/volume_setup_complete
 echo setup complete   >> /client/var/log/fs_setup.log
  exit 0
