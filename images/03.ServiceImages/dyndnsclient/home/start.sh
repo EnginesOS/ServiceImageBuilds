@@ -6,7 +6,7 @@ export PID_FILE
 
 touch /tmp/start_dyndns
 
-mkdir -p /home/engines/run/flags
+startup_complete
 
 if ! test -f /home/dyndns/dyndns.conf
 then 
@@ -19,7 +19,7 @@ fi
 
 ddclient  -daemon 300 -syslog -foreground -file /home/dyndns/dyndns.conf -cache /home/dyndns/cache   -pid /home/dyndns/dyndns.pid &
 
-startup_complete
+
 
 wait 
 exit_code=$?
