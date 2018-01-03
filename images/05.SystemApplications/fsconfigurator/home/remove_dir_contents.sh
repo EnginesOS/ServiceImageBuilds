@@ -1,6 +1,6 @@
 #!/bin/sh
 
-echo "Remove dir $1 " 
+echo "Remove dir $1 "  >> /client/log/fs_setup.log
 
 #function remove_dir_contents {
 	#pd=`pwd

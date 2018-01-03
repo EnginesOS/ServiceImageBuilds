@@ -29,7 +29,7 @@ logs=`ls /var/log/`
 echo logs
 for log in $logs
  do
-	cp -rp /var/log/$log  /client/log
+	cp -rp /var/log/$log  /client/log/
 done
 
 chown $fw_user -R /client/log/
