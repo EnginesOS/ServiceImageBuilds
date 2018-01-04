@@ -1,5 +1,6 @@
 #!/bin/sh -x
 
+echo "Remove $* ">> /client/log/fs_setup.log
 
 
 for cmd in $*
