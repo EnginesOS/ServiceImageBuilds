@@ -7,6 +7,7 @@ check_required_values
 
 if test $release = `cat /home/app/release`
  then
+  echo "Already release $release"
   exit 0
 fi
 

@@ -38,7 +38,8 @@ if ! test -z $domain_name
            kill -HUP `cat /var/run/named/named.pid`
        fi
 
-    hostname=`echo $domain_name | sed "/[_.]/s//-/g"`
+  #  hostname=`echo $domain_name | sed "/[_.]/s//-/g"`
+  hostname=$domain_name
     domain_name=engines.internal
     add_to_internal_domain
     echo Success

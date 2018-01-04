@@ -2,13 +2,12 @@
 . /home/engines/functions/params_to_env.sh
 params_to_env
 
-set > /tmp/full_env
 
 required_values="username password title folder"
 check_required_values
 
 
-#kinit -t /etc/krb5kdc/keys/ftp.keytab 
+#
 
 if ! test -z $rw_access 
  then
@@ -22,24 +21,6 @@ if ! test -z $rw_access
     access=ro
 fi   
 
-uid=`/home/engines/scripts/services/next_id.sh`
-
-cat /home/engines/templates/ftp/new_user.ldif \
- | sed "s/SN/$service_handle/" \
- | sed "s/IDNUMBER/$uid/" \
- | sed "s/GID/${ftp_gid}/" \
- | sed "s/PASSWORD/${password}/" \
- | sed "s/UID/${service_handle}\/${service_container_name}/" \
- | sed "s/USER/${username}/" > /tmp/newuser.ldif
- 
- echo /ftp/$access/$parent_engine/$volume/$folder >> /tmp/newuser.ldif
-
-cat /tmp/newuser.ldif | ldapadd -H ldap://ldap/
-/home/engines/scripts/services/add_to_ftp_group.sh ${service_handle}/${service_container_name}
-
-
-#dont leave ticket open
-#kdestroy
-  
- 
+export ftp_gid access username password title folder service_handle service_container_name parent_engine
+sudo -n /home/engines/scripts/services/_add_service.sh
 

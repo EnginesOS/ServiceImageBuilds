@@ -6,20 +6,20 @@ export PID_FILE
 
 touch /tmp/start_dyndns
 
-mkdir -p /home/engines/run/flags
+startup_complete
 
 if ! test -f /home/dyndns/dyndns.conf
 then 
-	touch /home/engines/run/flags/not_configured
+touch /home/engines/run/flags/not_configured
 	sleep 20  #wait for system apply pending configuration
-	exit
-else
+      if ! test -f /home/dyndns/dyndns.conf
+       then 	 
+	    exit
+      fi
    rm -f /home/engines/run/flags/not_configured
 fi
 
 ddclient  -daemon 300 -syslog -foreground -file /home/dyndns/dyndns.conf -cache /home/dyndns/cache   -pid /home/dyndns/dyndns.pid &
-
-startup_complete
 
 wait 
 exit_code=$?

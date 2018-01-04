@@ -11,6 +11,7 @@ if test -f /home/engines/run/flags/first_just_run
  then
    sleep 5
   . /home/engines/scripts/first_run/create_keys_func.sh  
+   echo addprinc -pw password  admin@ENGINES.INTERNAL | kadmin.local 
    create_init_keys
    rm /home/engines/run/flags/first_just_run
 fi 

@@ -36,21 +36,30 @@ olcAccess: {0} to attrs=shadowLastChange
   by * read
 olcAccess: {1} to dn.base="cn=uidNext,ou=System,ou=Engines,dc=engines,dc=internal"
         by dn="cn=uadmin,ou=hosts,ou=Engines,dc=engines,dc=internal" write
+        by dn="cn=admin,ou=People,ou=Engines,dc=engines,dc=internal" write
         by dn="cn=ftp,ou=hosts,ou=Engines,dc=engines,dc=internal" write
 olcAccess: {1} to dn.base="cn=gidNext,ou=System,ou=Engines,dc=engines,dc=internal"
         by dn="cn=uadmin,ou=hosts,ou=Engines,dc=engines,dc=internal" write
+        by dn="cn=admin,ou=People,ou=Engines,dc=engines,dc=internal" write
         by dn="cn=ftp,ou=hosts,ou=Engines,dc=engines,dc=internal" write
-olcAccess: {2} to dn.subtree="ou=People,dc=engines,dc=internal"
+olcAccess: {2} to dn.base="cn=ftp,ou=Groups,dc=engines,dc=internal" 
+        by dn="cn=ftp,ou=hosts,ou=Engines,dc=engines,dc=internal" write
+        by dn="cn=uadmin,ou=hosts,ou=Engines,dc=engines,dc=internal" write
+        by dn="cn=admin,ou=People,ou=Engines,dc=engines,dc=internal" write       
+        by * read 
+olcAccess: {3} to dn.subtree="ou=People,dc=engines,dc=internal"
+        by dn="cn=uadmin,ou=hosts,ou=Engines,dc=engines,dc=internal" write
         by dn="cn=uadmin,ou=hosts,ou=Engines,dc=engines,dc=internal" write
         by * read
-olcAccess: {2} to dn.subtree="ou=Groups,dc=engines,dc=internal"
+olcAccess: {3} to dn.subtree="ou=Groups,dc=engines,dc=internal"
         by  dn="cn=system,ou=hosts,ou=Engines,dc=engines,dc=internal" write
         by dn="cn=uadmin,ou=hosts,ou=Engines,dc=engines,dc=internal" write
+        by dn="cn=admin,ou=People,ou=Engines,dc=engines,dc=internal" write
         by * read
-olcAccess: {2} to dn.subtree="ou=Distribution Groups,dc=engines,dc=internal"
+olcAccess: {3} to dn.subtree="ou=Distribution Groups,dc=engines,dc=internal"
         by dn="cn=uadmin,ou=hosts,ou=Engines,dc=engines,dc=internal" write
+        by dn="cn=admin,ou=People,ou=Engines,dc=engines,dc=internal" write
         by * read
-olcAccess: {3} to dn.base="cn=ftp,ou=Groups,dc=engines,dc=internal" by dn="cn=ftp,ou=hosts,ou=Engines,dc=engines,dc=internal" write
 olcAccess: {3} to dn.subtree="ou=ftp,ou=Service Accounts,ou=Engines,dc=engines,dc=internal"
         by dn="cn=ftp,ou=hosts,ou=Engines,dc=engines,dc=internal" write
         by * read
