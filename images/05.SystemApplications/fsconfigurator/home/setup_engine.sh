@@ -47,14 +47,14 @@ chmod g+w  -R /client/state
 	for file in `cat /home/fs_src/vol_dir_maps`
 	 do
 	  volume=`grep "$file " /home/fs_src/vol_dir_maps | awk '{print $2}'`
-	  echo Install dir $file in /dest/fs/$volume >>/client/var/test.out
-	  ls  /dest/fs/ >>/client/var/test.out
+	  echo Install dir $file in /dest/fs/$volume >>/client/log/test.out
+	  ls  /dest/fs/ >>/client/log/test.out
 	 done
 	 for file in `cat /home/fs_src/vol_file_maps`
 	 do
 	  volume=`grep "$file " /home/fs_src/vol_dir_maps | awk '{print $2}'`
-	  echo Install file $file in /dest/fs/$volume >>/client/var/test.out
-	  ls  /dest/fs/ >>/client/var/test.out
+	  echo Install file $file in /dest/fs/$volume >>/client/log/test.out
+	  ls  /dest/fs/ >>/client/log/test.out
 	 done
 	for dest_dir in `ls /dest/fs/`
 	 do	 
