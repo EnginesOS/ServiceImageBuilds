@@ -2,7 +2,7 @@ FROM engines/frameworkbuild:$release
 
 ENV ContUser node
 ENV ContGrp node
-ENV NODE_VERSION 6.12.0
+ENV NODE_VERSION 6.12.3
 
 RUN mkdir ~/node_js_src &&\
 	cd $_ &&\
