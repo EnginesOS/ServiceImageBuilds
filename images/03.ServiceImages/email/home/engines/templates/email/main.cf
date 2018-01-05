@@ -34,7 +34,7 @@ smtpd_sasl_path = inet:imap.engines.internal:26561
 
 myhostname = email.engines.internal
 
-alias_maps = hash:/etc/aliases, ldap:/etc/postfix/ldap/ldap-aliases.cf
+alias_maps = hash:/etc/aliases 
 alias_database = hash:/etc/aliases
 
 
@@ -51,7 +51,7 @@ inet_interfaces = all
 
 
 virtual_mailbox_domains =  ldap:/etc/postfix/ldap/ldap-virtual-domains.cf
-virtual_alias_maps =  ldap:/etc/postfix/ldap/ldap-groups.cf
+virtual_alias_maps = ldap:/etc/postfix/ldap/ldap-aliases.cf, ldap:/etc/postfix/ldap/ldap-groups.cf
 virtual_mailbox_maps =  ldap:/etc/postfix/ldap/ldap-vmailbox.cf
 
 virtual_mailbox_base = /var/mail/vmail
