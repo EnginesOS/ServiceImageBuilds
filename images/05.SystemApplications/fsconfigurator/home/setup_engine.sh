@@ -43,7 +43,8 @@ chmod g+w  -R /client/state
 	cd /home/fs_src/
 	echo "moving fs src "  >> /client/log/fs_setup.log
 	ls /dest/fs/  >> /client/log/fs_setup.log
-	
+	echo Contents of /home/fs_src >> /client/log/fs_setup.log
+	ls  >> /client/log/fs_setup.log
 	for file in `cat /home/fs_src/vol_dir_maps`
 	 do
 	  volume=`grep "$file " /home/fs_src/vol_dir_maps | awk '{print $2}'`
@@ -56,6 +57,7 @@ chmod g+w  -R /client/state
 	  echo Install file $file in /dest/fs/$volume >>/client/log/test.out
 	  ls  /dest/fs/ >>/client/log/test.out
 	 done
+	 
 	for dest_dir in `ls /dest/fs/`
 	 do	 
 	   if test -f /dest/fs/$dest_dir/.persistent_lock
