@@ -44,7 +44,7 @@ chmod g+w  -R /client/state
 	echo "moving fs src "  >> /client/log/fs_setup.log
 	ls -R /dest/fs/  >> /client/log/fs_setup.log
 	echo Contents of /home/fs_src >> /client/log/fs_setup.log
-	ls  >> /client/log/fs_setup.log
+	ls /home/fs_src >> /client/log/fs_setup.log
 	
 	for dir in `cat /home/fs_src/vol_dir_maps`
 	 do
@@ -57,9 +57,10 @@ chmod g+w  -R /client/state
 	  	echo Install dir $dir in /$volume >>/client/log/test.out
 	  	if ! test -d /dest/fs/$volume/`name $dir`
 	  	 then
-	  	 	mkdir -p/dest/fs/$volume/`dirname $dir`
+	  	 	mkdir -p /dest/fs/$volume/`dirname $dir`
 	  	fi
-	   		cp -nrp $file /dest/fs/$volume/$dir
+	  		echo cp -nrp /home/fs_src/$dir /dest/fs/$volume/$dir
+	   		cp -nrp /home/fs_src/$dir /dest/fs/$volume/$dir
 	   		chown -R ${fw_user}.${data_gid}  /dest/fs/$volume/$dir
 	   fi
 	 done
@@ -75,9 +76,10 @@ chmod g+w  -R /client/state
 	  	echo Install dir $file in /$volume >>/client/log/test.out
 	  	if ! test -d /dest/fs/$volume/`name $file`
 	  	 then
-	  	 	mkdir -p/dest/fs/$volume/`dirname $file`
+	  	 	mkdir -p /dest/fs/$volume/`dirname $file`
 	  	fi
-	   		cp -np $file /dest/fs/$volume/$file
+	  	echo cp -np /home/fs_src/$file /dest/fs/$volume/$file  >> /client/log/fs_setup.log
+	   		cp -np /home/fs_src/$file /dest/fs/$volume/$file
 	   		chown -R ${fw_user}.${data_gid}  /dest/fs/$volume/$file
 	   fi
 	 done
