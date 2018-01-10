@@ -109,7 +109,7 @@ chmod g+w  -R /client/state
 			cp -rp /home/app_src/.  /dest/fs/$volume/_home_app_/			
 			chown -R ${fw_user}.${data_gid}  /dest/fs/$volume/_home_app_/			
 			touch /dest/fs/_home_app_/.persistent
-			echo "Setup app persist"  >> /client/log/fs_setup.log
+			echo "Setup app persist" >> /client/log/fs_setup.log
     fi
 
 
