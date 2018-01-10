@@ -42,13 +42,14 @@ chmod g+w  -R /client/state
 
 	cd /home/fs_src/
 	echo "moving fs src "  >> /client/log/fs_setup.log
-	ls /dest/fs/  >> /client/log/fs_setup.log
+	ls -R /dest/fs/  >> /client/log/fs_setup.log
 	echo Contents of /home/fs_src >> /client/log/fs_setup.log
 	ls  >> /client/log/fs_setup.log
 	
 	for dir in `cat /home/fs_src/vol_dir_maps`
 	 do
 	  volume=`grep "$dir " /home/fs_src/vol_dir_maps | awk '{print $2}'`
+	  echo move $dir to $volume >> /client/log/fs_setup.log
 	  if test -f /dest/fs/$volume/.persistent_lock
 	   then 
 	   	echo Persistence configured for $volume  >> /client/log/fs_setup.log
@@ -66,7 +67,7 @@ chmod g+w  -R /client/state
 	 for file in `cat /home/fs_src/vol_file_maps`
 	 do
 	  volume=`grep "$file " /home/fs_src/vol_file_maps | awk '{print $2}'`	
-	  
+	    echo move $file to $volume >> /client/log/fs_setup.log
 	  if test -f /dest/fs/$volume/.persistent_lock
 	   then 
 	   	echo Persistence configured for $volume  >> /client/log/fs_setup.log
