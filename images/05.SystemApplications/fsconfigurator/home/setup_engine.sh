@@ -55,7 +55,7 @@ chmod g+w  -R /client/state
 	   	echo Persistence configured for $volume  >> /client/log/fs_setup.log
 	   else
 	  	echo Install dir $dir in /$volume >>/client/log/test.out
-	  	if ! test -d /dest/fs/$volume/`name $dir`
+	  	if ! test -d /dest/fs/$volume/`dirname $dir`
 	  	 then
 	  	 mkdir -p /dest/fs/$volume/`dirname $dir`
 	  	 echo	mkdir -p /dest/fs/$volume/`dirname $dir`>> /client/log/fs_setup.log
@@ -75,7 +75,7 @@ chmod g+w  -R /client/state
 	   	echo Persistence configured for $volume  >> /client/log/fs_setup.log
 	   else
 	  	echo Install dir $file in /$volume >>/client/log/test.out
-	  	if ! test -d /dest/fs/$volume/`name $file`
+	  	if ! test -d /dest/fs/$volume/`dirname $file`
 	  	 then
 	  	 	echo mkdir -p /dest/fs/$volume/`dirname $file`>> /client/log/fs_setup.log
 	  	 	mkdir -p /dest/fs/$volume/`dirname $file`
