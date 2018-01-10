@@ -57,16 +57,17 @@ chmod g+w  -R /client/state
 	  	echo Install dir $dir in /$volume >>/client/log/test.out
 	  	if ! test -d /dest/fs/$volume/`name $dir`
 	  	 then
-	  	 	mkdir -p /dest/fs/$volume/`dirname $dir`
+	  	 mkdir -p /dest/fs/$volume/`dirname $dir`
+	  	 echo	mkdir -p /dest/fs/$volume/`dirname $dir`>> /client/log/fs_setup.log
 	  	fi
-	  		echo cp -nrp /home/fs_src/$dir /dest/fs/$volume/$dir
+	  		echo cp -nrp /home/fs_src/$dir /dest/fs/$volume/$dir>> /client/log/fs_setup.log
 	   		cp -nrp /home/fs_src/$dir /dest/fs/$volume/$dir
 	   		chown -R ${fw_user}.${data_gid}  /dest/fs/$volume/$dir
 	   fi
 	 done
 	 
 	 for file in `cat /home/fs_src/vol_file_maps`
-	 do
+	 do	 
 	  volume=`grep "$file " /home/fs_src/vol_file_maps | awk '{print $2}'`	
 	    echo move $file to $volume >> /client/log/fs_setup.log
 	  if test -f /dest/fs/$volume/.persistent_lock
@@ -76,6 +77,7 @@ chmod g+w  -R /client/state
 	  	echo Install dir $file in /$volume >>/client/log/test.out
 	  	if ! test -d /dest/fs/$volume/`name $file`
 	  	 then
+	  	 	echo mkdir -p /dest/fs/$volume/`dirname $file`>> /client/log/fs_setup.log
 	  	 	mkdir -p /dest/fs/$volume/`dirname $file`
 	  	fi
 	  	echo cp -np /home/fs_src/$file /dest/fs/$volume/$file  >> /client/log/fs_setup.log
