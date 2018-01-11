@@ -117,8 +117,10 @@ chmod g+w  -R /client/state
 			echo "Setup app persist" >> /client/log/fs_setup.log
     fi
 
-
-sleep 300
+if test -f /client/state/flags/debug_engine_fs_setup
+ then
+  sleep 300
+fi 
 touch /client/state/flags/volume_setup_complete
-echo setup complete   >> /client/log/fs_setup.log
+echo setup complete >> /client/log/fs_setup.log
  exit 0
