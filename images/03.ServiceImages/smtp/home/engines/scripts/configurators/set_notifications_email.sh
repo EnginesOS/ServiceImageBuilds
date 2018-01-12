@@ -11,7 +11,7 @@ check_required_values
 
 if test -z $postmaster_email
   then
-   postmaster_email=$notifications_email fi
+   postmaster_email=$notifications_email 
 fi
 if test -z $hostmaster_email
   then
@@ -29,4 +29,5 @@ do
  eval echo $LINE >> $ALIAS_FILE
 done
 
-sudo -n /home/engines/scripts/configurators/_$0
+sudo -n /home/engines/scripts/configurators/_set_notifications_email.sh
+echo $0
