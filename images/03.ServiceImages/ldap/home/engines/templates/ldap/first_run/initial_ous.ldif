@@ -54,6 +54,10 @@ dn: ou=email,ou=Services,ou=Containers,ou=Engines,dc=engines,dc=internal
 objectClass: organizationalUnit
 ou: email
 
+dn: ou=default domain, ou=email,ou=Services,ou=Containers,ou=Engines,dc=engines,dc=internal
+objectClass: organizationalUnit
+ou: default domain
+
 dn: ou=domains,ou=email,ou=Services,ou=Containers,ou=Engines,dc=engines,dc=internal
 objectClass: organizationalUnit
 ou: domains

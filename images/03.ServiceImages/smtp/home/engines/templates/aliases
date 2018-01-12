@@ -1,0 +1,5 @@
+root:	$notifications_email
+abuse: $notifications_email
+postmaster: $postmaster_email
+hostmaster:  $hostmaster_email
+webmaster: $webmaster_email
