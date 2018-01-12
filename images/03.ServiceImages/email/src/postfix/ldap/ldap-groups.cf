@@ -1,7 +1,6 @@
 server_host = ldap
 search_base = ou=Distribution Groups,dc=engines,dc=internal
 version = 3
-query_filter = (&(objectclass=group)(mail=%s))
-leaf_result_attribute = cn
-special_result_attribute = memberUid
+query_filter = (cn=%s)
+result_attribute = memberUid
 bind = no

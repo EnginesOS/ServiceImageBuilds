@@ -49,7 +49,7 @@ olcAccess: {2} to dn.base="cn=ftp,ou=Groups,dc=engines,dc=internal"
         by * read 
 olcAccess: {3} to dn.subtree="ou=People,dc=engines,dc=internal"
         by dn="cn=uadmin,ou=hosts,ou=Engines,dc=engines,dc=internal" write
-        by dn="cn=uadmin,ou=hosts,ou=Engines,dc=engines,dc=internal" write
+        by dn="cn=admin,ou=People,ou=Engines,dc=engines,dc=internal" write
         by * read
 olcAccess: {3} to dn.subtree="ou=Groups,dc=engines,dc=internal"
         by  dn="cn=system,ou=hosts,ou=Engines,dc=engines,dc=internal" write
@@ -65,6 +65,7 @@ olcAccess: {3} to dn.subtree="ou=ftp,ou=Service Accounts,ou=Engines,dc=engines,d
         by * read
 olcAccess: {4} to dn.subtree="ou=domains,ou=email,ou=Services,ou=Containers,ou=Engines,dc=engines,dc=internal" 
         by dn="cn=email,ou=hosts,ou=Engines,dc=engines,dc=internal" write
+        by dn="cn=admin,ou=People,ou=Engines,dc=engines,dc=internal" write
         by * read
 olcAccess: {5} to dn.subtree="ou=containers,dc=engines,dc=internal"
         by dn="cn=system,ou=hosts,ou=Engines,dc=engines,dc=internal" write

@@ -4,8 +4,8 @@ gidnumber: 5000
 givenname: $given_name
 homedirectory: /home/users/$uid
 loginshell: /bin/sh
-mailacceptinggeneralid: $uid@${domain_name}
-maildrop: $uid@${domain_name}
+mailacceptinggeneralid: $uid@${default_domain}
+maildrop: $uid@${default_domain}
 objectclass: postfixUser
 objectclass: posixAccount
 objectclass: inetOrgPerson
