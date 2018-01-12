@@ -12,6 +12,7 @@ check_required_values
 if test -z $postmaster_email
   then
    postmaster_email=$notifications_email fi
+fi
 if test -z $hostmaster_email
   then
    hostmaster_email=$notifications_email
