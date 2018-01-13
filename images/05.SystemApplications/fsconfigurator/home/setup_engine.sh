@@ -36,6 +36,7 @@ chown $fw_user -R /client/log/
 chown $fw_user -R /client/log
 mkdir -p /client/state/flags
 chown $fw_user -R /client/state
+touch client/state/flags/fsconfigurated
 chgrp 22020  -R /client/state
 chmod g+w  -R /client/state
 
