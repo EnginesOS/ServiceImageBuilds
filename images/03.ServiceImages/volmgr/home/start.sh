@@ -12,8 +12,8 @@ do
 sleep 3600 &
 echo $! > /var/run/pid
 wait
-exit_code=$?
- if test $SIGNAL -ne 1
+
+ if test -f /home/engines/run/sig_term
   then
   	c=0
   fi
