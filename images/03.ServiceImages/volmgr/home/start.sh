@@ -12,10 +12,10 @@ do
 sleep 3600 &
 echo $! > /var/run/pid
 wait
-
+sleep 1
  if test -f /home/engines/run/sig_term
   then
-  	c=0
+  	break
   fi
 done
 
