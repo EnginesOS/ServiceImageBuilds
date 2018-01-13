@@ -1,5 +1,5 @@
 #!/bin/bash
 
-rm -r  /var/fs/local/$1/$2
+rm -r  /var/fs/local/${parent_engine}/${service_name}
 
 

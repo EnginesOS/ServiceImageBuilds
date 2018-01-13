@@ -5,11 +5,11 @@ params_to_env
 
 #FIXME make engines.internal settable
 
-required_values="service_name"
+required_values="parent_engine service_name"
 check_required_values
 
-    
-sudo -n /home/engines/scripts/services/_delete_volume.sh ${parent_engine} ${service_name} 
+sudo -n /home/engines/scripts/services/_delete_volume.sh
+ 
 if test $? -eq 0
  then 
 	echo "Success"
