@@ -6,8 +6,11 @@ params_to_env
 
 required_values="parent_engine service_name user group"
 check_required_values
-#FIXME make engines.internal settable
 
+export parent_engine
+export service_name
+export user
+export group
 
 sudo -n  /home/engines/scripts/services/_create_volume.sh
 if test $? -eq 0

@@ -8,6 +8,9 @@ params_to_env
 required_values="parent_engine service_name"
 check_required_values
 
+export parent_engine
+export service_name
+
 sudo -n /home/engines/scripts/services/_delete_volume.sh
  
 if test $? -eq 0
