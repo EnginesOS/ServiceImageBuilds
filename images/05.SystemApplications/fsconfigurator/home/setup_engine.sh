@@ -43,6 +43,7 @@ for dir in `cat /home/fs_src/vol_dir_maps`
   	    mkdir -p /dest/fs/$dest_volume/`dirname $dir`
   	    echo	mkdir -p /dest/fs/$dest_volume/`dirname $dir`>> /client/log/fs_setup.log
   	  fi
+  	 chown  ${fw_user}.${data_gid}  /dest/fs/$dest_volume/`dirname $dir`
   	 echo cp -nrp /home/fs_src/$dir /dest/fs/$dest_volume/$dir>> /client/log/fs_setup.log
    	 cp -nrp /home/fs_src/$dir /dest/fs/$dest_volume/$dir
    	 chown -R ${fw_user}.${data_gid}  /dest/fs/$dest_volume/$dir
@@ -67,6 +68,7 @@ for file in `cat /home/fs_src/vol_file_maps`
   	   echo mkdir -p /dest/fs/$dest_volume/`dirname $file`>> /client/log/fs_setup.log
   	   mkdir -p /dest/fs/$dest_volume/`dirname $file`
      fi
+  	 chown  ${fw_user}.${data_gid}  /dest/fs/$dest_volume/`dirname $file`
    echo cp -np /home/fs_src/$file /dest/fs/$dest_volume/$file  >> /client/log/fs_setup.log
    cp -np /home/fs_src/$file /dest/fs/$dest_volume/$file
    chown -R ${fw_user}.${data_gid}  /dest/fs/$dest_volume/$file
