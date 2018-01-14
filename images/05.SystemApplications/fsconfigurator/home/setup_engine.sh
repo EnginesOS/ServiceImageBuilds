@@ -42,8 +42,9 @@ for dir in `cat /home/fs_src/vol_dir_maps`
   	   then
   	    mkdir -p /dest/fs/$dest_volume/`dirname $dir`
   	    echo	mkdir -p /dest/fs/$dest_volume/`dirname $dir`>> /client/log/fs_setup.log
+  	    chown  ${fw_user}.${data_gid}  /dest/fs/$dest_volume/`dirname $dir`
   	  fi
-  	 chown  ${fw_user}.${data_gid}  /dest/fs/$dest_volume/`dirname $dir`
+  	
   	 echo cp -nrp /home/fs_src/$dir /dest/fs/$dest_volume/$dir>> /client/log/fs_setup.log
    	 cp -nrp /home/fs_src/$dir /dest/fs/$dest_volume/$dir
    	 chown -R ${fw_user}.${data_gid}  /dest/fs/$dest_volume/$dir
@@ -67,8 +68,9 @@ for file in `cat /home/fs_src/vol_file_maps`
   	  then
   	   echo mkdir -p /dest/fs/$dest_volume/`dirname $file`>> /client/log/fs_setup.log
   	   mkdir -p /dest/fs/$dest_volume/`dirname $file`
+  	   chown  ${fw_user}.${data_gid}  /dest/fs/$dest_volume/`dirname $file`
      fi
-  	 chown  ${fw_user}.${data_gid}  /dest/fs/$dest_volume/`dirname $file`
+  	 
    echo cp -np /home/fs_src/$file /dest/fs/$dest_volume/$file  >> /client/log/fs_setup.log
    cp -np /home/fs_src/$file /dest/fs/$dest_volume/$file
    chown -R ${fw_user}.${data_gid}  /dest/fs/$dest_volume/$file
@@ -97,6 +99,6 @@ if test -f /client/state/flags/debug_engine_fs_setup
   sleep 300
 fi 
 
-touch /client/state/flags/dest_volume_setup_complete
+touch /client/state/flagvolume_setup_complete
 echo setup complete >> /client/log/fs_setup.log
 exit 0
