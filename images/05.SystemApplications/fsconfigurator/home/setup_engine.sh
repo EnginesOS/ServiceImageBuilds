@@ -24,7 +24,7 @@ chmod g+w  -R /client/state
 
 
 cd /home/fs_src/
-	
+
 for dir in `cat /home/fs_src/vol_dir_maps`
  do
   dest_volume=`grep "$dir " /home/fs_src/vol_dir_maps | awk '{print $2}'`
@@ -32,11 +32,13 @@ for dir in `cat /home/fs_src/vol_dir_maps`
    if test -z $dest_volume
     then
      continue;
-   fi  
+   fi
+     
    if test -f /dest/fs/$dest_volume/.persistent_lock
     then 
    	 echo Persistence configured for $dest_volume  >> /client/log/fs_setup.log
    else
+   volumes="$volumes $dest_volume"
   	 echo Install dir $dir in /$dest_volume >>/client/log/test.out
   	  if ! test -d /dest/fs/$dest_volume/`dirname $dir`
   	   then
@@ -63,6 +65,7 @@ for file in `cat /home/fs_src/vol_file_maps`
    then 
    	echo Persistence configured for $dest_volume  >> /client/log/fs_setup.log
   else
+   volumes="$volumes $dest_volume"
   	echo Install dir $file in /$dest_volume >>/client/log/test.out
   	 if ! test -d /dest/fs/$dest_volume/`dirname $file`
   	  then
@@ -77,6 +80,12 @@ for file in `cat /home/fs_src/vol_file_maps`
   fi
 done
 	 
+volumes=`echo $volumes |sort|uniq`
+ for vol in $volumes
+  do  
+   touch /dest/fs/$vol/.persistent_lock
+   chown  ${fw_user}.${data_gid} /dest/fs/$vol/ /dest/fs/$vol/.persistent_lock
+  done
 
 #	#if no presistance dirs/files need to set permission here
 	
@@ -87,10 +96,14 @@ done
 if test -d /home/app_src
  then
   dest_volume=`grep "/home/app " /home/fs_src/vol_dir_maps | awk '{print $2}'`
-  cp -rp /home/app_src/.  /dest/fs/$dest_volume/_home_app_/			
-  chown -R ${fw_user}.${data_gid}  /dest/fs/$dest_volume/_home_app_/			
-  touch /dest/fs/_home_app_/.persistent
-  echo "Setup app persist" >> /client/log/fs_setup.log
+  if ! test -f /dest/fs/$dest_volume/_home_app_/.persistent	
+   then
+    cp -rp /home/app_src/.  /dest/fs/$dest_volume/_home_app_/			
+    chown -R ${fw_user}.${data_gid}  /dest/fs/$dest_volume/_home_app_/			
+    touch /dest/fs/$dest_volume/_home_app_/.persistent	
+    chown -R ${fw_user}.${data_gid}  /dest/fs/$dest_volume/_home_app_/ /dest/fs/$dest_volume/_home_app_/.persistent	
+    echo "Setup app persist" >> /client/log/fs_setup.log
+  fi
 fi
 
 if test -f /client/state/flags/debug_engine_fs_setup
@@ -99,6 +112,6 @@ if test -f /client/state/flags/debug_engine_fs_setup
   sleep 300
 fi 
 
-touch /client/state/flagvolume_setup_complete
+touch /client/state/flags/volume_setup_complete
 echo setup complete >> /client/log/fs_setup.log
 exit 0

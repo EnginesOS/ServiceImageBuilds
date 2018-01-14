@@ -1,5 +1,5 @@
 #!/bin/sh
-
+. /home/engines/functions/ldap/support_functions.sh
 #password=$2
 #current_password=$1
 
@@ -8,7 +8,7 @@ do
  eval echo $LINE >> $LDIF_FILE
 done
 kinit -kt /etc/krb5kdc/keys/ldap.keytab 
-lpdapmodify -H ldapi:/// -f $LDIF_FILE
+ldapmodify -H ldapi:/// -f $LDIF_FILE
 result=$?
 rm $LDIF_FILE
 #ldappasswd -D cn=admin,dc=engines,dc=internal -H ldapi:/// -s $password
