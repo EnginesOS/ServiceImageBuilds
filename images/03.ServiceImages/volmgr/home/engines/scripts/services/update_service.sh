@@ -10,5 +10,6 @@ export parent_engine
 export service_name
 export user
 export group
+export grp_write
 
 sudo -n /home/engines/scripts/services/_update_service.sh

@@ -1,5 +1,5 @@
 #Defaults  env_keep += "SIGNAL CONTAINER_NAME PID_FILE PID_FILES exit_code"
-Defaults  env_keep += "parent_engine service_name user group"
+Defaults  env_keep += "parent_engine service_name user group grp_write"
 volmgr ALL = (root) NOPASSWD: /home/engines/scripts/services/_update_service.sh
 volmgr ALL = (root) NOPASSWD: /home/engines/scripts/services/_create_volume.sh
 volmgr ALL = (root) NOPASSWD: /home/engines/scripts/services/_delete_volume.sh
