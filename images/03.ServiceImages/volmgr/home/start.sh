@@ -7,17 +7,14 @@ export PID_FILE
 startup_complete
 
 c=1
-while test $c -ne 0
-do
-sleep 3600 &
-echo $! > /var/run/pid
-wait
-sleep 1
- if test -f /home/engines/run/sig_term
-  then
-  	break
-  fi
+
+while ! test -f /home/engines/run/flags/sig_term -o -f /home/engines/run/flags/sig_quit
+	do 
+      sleep 3600 &
+      echo $! > /var/run/pid
+      wait
+     exit_code=$?	
 done
 
 shutdown_complete
-
+	
