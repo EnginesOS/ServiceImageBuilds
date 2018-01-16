@@ -25,12 +25,7 @@ while ! test -f /home/engines/run/flags/sig_term -o -f /home/engines/run/flags/s
 	wait 		
 	exit_code=$?		
 done	
-#while test -f /var/spool/postfix/pid/master.pid
-# do
-#  sleep 3600 &
-#  echo $! > /tmp/sleep.pid
-#  wait
-#done 
+
 /home/engines/scripts/signal/_kill_postfix.sh
 
 shutdown_complete
