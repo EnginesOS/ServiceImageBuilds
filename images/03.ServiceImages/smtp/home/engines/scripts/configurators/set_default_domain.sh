@@ -43,7 +43,7 @@ fi
 
 if ! test -z $deliver_local 
  then
-  if test  $deliver_local -eq 1 
+  if test  $deliver_local = true 
    then                 
 	 echo ${domain_name} :[email.engines.internal]	>> /home/postfix/transport 			
    fi

@@ -6,7 +6,7 @@ parms_to_file_and_env
 
 required_values="provider login domain_name password"
 check_required_values
-
+login=`echo $login | sed "/:/s//%23/"`
 cat /home/engines/templates/dyndns/providers/$provider/dyndns.conf.tmpl |sed --e /LOGIN/s//$login/ -e /PASSWORD/s//$password/ -e /DOMAIN/s//$domain_name/ >/home/dyndns/dyndns.conf 
 chmod og-r /home/dyndns/dyndns.conf
 echo "Success"
