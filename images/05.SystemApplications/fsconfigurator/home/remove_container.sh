@@ -20,9 +20,9 @@ for cmd in $*
  		/home/remove_dir_contents.sh $dir
  	    
  		;;
- 	volume)
- 		dir="/dest/fs/" + $2
- 		 /home/remove_dir_contents.sh $dir 	    
+ #	volume)
+ #		dir="/dest/fs/" + $2
+ #		 /home/remove_dir_contents.sh $dir 	    
  		;;
  	all)
  		dir="/client/log/"
@@ -32,8 +32,8 @@ for cmd in $*
  		dir="//client/state/"
  		/home/remove_dir_contents.sh $dir
  		
- 		dir="/dest/fs/"
- 		/home/remove_dir_contents.sh $dir
+ 	#	dir="/dest/fs/"
+ 	#	/home/remove_dir_contents.sh $dir
  		
  		;;
   esac
