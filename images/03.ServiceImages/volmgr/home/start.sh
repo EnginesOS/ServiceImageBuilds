@@ -1,6 +1,6 @@
 #!/bin/sh
 
-PID_FILE=/var/run/pid
+PID_FILE=/tmp/pid
 export PID_FILE
 . /home/engines/functions/trap.sh
 
@@ -11,7 +11,7 @@ c=1
 while ! test -f /home/engines/run/flags/sig_term -o -f /home/engines/run/flags/sig_quit
 	do 
       sleep 3600 &
-      echo $! > /var/run/pid
+      echo $! > /tmp/pid
       wait
      exit_code=$?	
 done
