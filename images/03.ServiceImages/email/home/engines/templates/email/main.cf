@@ -1,5 +1,4 @@
 # See /usr/share/postfix/main.cf.dist for a commented, more complete version
-
 smtpd_banner = $myhostname ESMTP $mail_name (Engines)
 biff = no
 inet_protocols = ipv4
@@ -11,10 +10,9 @@ delay_warning_time = 4h
 
 readme_directory = no
 
-
 # TLS parameters
-smtpd_tls_cert_file=/home/engines/etc/ssl//certs/email.crt
-smtpd_tls_key_file=/home/engines/etc/ssl//keys/email.key
+smtpd_tls_cert_file=/home/engines/etc/ssl/certs/email.crt
+smtpd_tls_key_file=/home/engines/etc/ssl/keys/email.key
 smtpd_use_tls=yes
 smtpd_tls_session_cache_database = btree:${data_directory}/smtpd_scache
 smtp_tls_session_cache_database = btree:${data_directory}/smtp_scache
@@ -31,16 +29,13 @@ broken_sasl_auth_clients = yes
 smtpd_sasl_type = dovecot
 smtpd_sasl_path = inet:imap.engines.internal:26561
 
-
 myhostname = email.engines.internal
 
 alias_maps = ldap:/etc/postfix/ldap/ldap-aliases.cf, hash:/etc/aliases 
 alias_database = hash:/etc/aliases
 
-
 smtp_generic_maps = hash:/etc/postfix/maps/generic
 transport_maps = hash:/etc/postfix/maps/transport
-
 
 myorigin = /etc/postfix/mailname
 mydestination = email.engines.internal, email, localhost.localdomain, localhost
@@ -48,7 +43,6 @@ mynetworks = 172.17.0.0/16 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128
 mailbox_size_limit = 0
 recipient_delimiter = +
 inet_interfaces = all
-
 
 virtual_mailbox_domains =  ldap:/etc/postfix/ldap/ldap-virtual-domains.cf
 virtual_alias_maps = ldap:/etc/postfix/ldap/ldap-groups.cf
@@ -61,7 +55,6 @@ virtual_transport = lmtp:inet:imap.engines.internal:2501
 virtual_uid_maps = static:8
 virtual_gid_maps = static:8
 local_transport = virtual
-
 
 relayhost = smtp.engines.internal
 
