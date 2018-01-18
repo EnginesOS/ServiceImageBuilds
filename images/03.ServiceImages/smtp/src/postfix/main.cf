@@ -10,7 +10,7 @@ append_dot_mydomain = no
 # Uncomment the next line to generate "delayed mail" warnings
 #delay_warning_time = 4h
 
-sender_canonical_maps = regexp:/etc/postfix/sender_canonical
+#sender_canonical_maps = regexp:/etc/postfix/sender_canonical
 smtp_use_tls=no
 readme_directory = no
 
