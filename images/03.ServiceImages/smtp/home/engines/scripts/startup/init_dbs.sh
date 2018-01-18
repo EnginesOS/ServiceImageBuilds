@@ -1,5 +1,7 @@
 #!/bin/bash
 
+sudo -n /home/engines/scripts/startup/_setup_dirs.sh
+
 for map_file in transport generic smarthost_passwd
  do 
   if ! test -f /etc/postfix/${map_file}.db
