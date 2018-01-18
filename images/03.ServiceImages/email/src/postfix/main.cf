@@ -1,5 +1,4 @@
 # See /usr/share/postfix/main.cf.dist for a commented, more complete version
-
 smtpd_banner = $myhostname ESMTP $mail_name (Engines)
 biff = no
 inet_protocols = ipv4
@@ -10,7 +9,6 @@ append_dot_mydomain = no
 delay_warning_time = 4h
 
 readme_directory = no
-
 
 # TLS parameters
 smtpd_tls_cert_file=/home/engines/etc/ssl/certs/email.crt
@@ -31,15 +29,13 @@ broken_sasl_auth_clients = yes
 smtpd_sasl_type = dovecot
 smtpd_sasl_path = inet:imap.engines.internal:26561
 
-
 myhostname = email.engines.internal
-alias_maps = hash:/etc/aliases, ldap:/etc/postfix/ldap/ldap-aliases.cf
-alias_database = hash:/etc/aliases
 
+alias_maps = ldap:/etc/postfix/ldap/ldap-aliases.cf, hash:/etc/postfix/maps/aliases/aliases
+alias_database = hash:/etc/postfix/maps/aliases/aliases
 
 smtp_generic_maps = hash:/etc/postfix/maps/generic
 transport_maps = hash:/etc/postfix/maps/transport
-
 
 myorigin = /etc/postfix/mailname
 mydestination = email.engines.internal, email, localhost.localdomain, localhost
@@ -48,8 +44,7 @@ mailbox_size_limit = 0
 recipient_delimiter = +
 inet_interfaces = all
 
-
-virtual_mailbox_domains = ldap:/etc/postfix/ldap/ldap-virtual-domains.cf
+virtual_mailbox_domains =  ldap:/etc/postfix/ldap/ldap-virtual-domains.cf
 virtual_alias_maps = ldap:/etc/postfix/ldap/ldap-groups.cf
 virtual_mailbox_maps = ldap:/etc/postfix/ldap/ldap-vmailbox.cf
 
@@ -61,12 +56,7 @@ virtual_uid_maps = static:8
 virtual_gid_maps = static:8
 local_transport = virtual
 
-
 relayhost = smtp.engines.internal
 
-
-smtpd_data_restrictions = reject_unauth_pipelining,reject_multi_recipient_bounce,permit
-#reject_rbl_client zen.spamhaus.org,reject_rbl_client bl.spamcop.net,reject_rbl_client cbl.abuseat.org,reject_rbl_client dnsbl.njabl.org,reject_rbl_client dnsbl.sorbs.net,reject_rhsbl_sender dsn.rfc-ignorant.org,permit
-#,check_policy_service inet:127.0.0.1:60000,permit
-
 smtpd_recipient_restrictions = permit_mynetworks,permit_sasl_authenticated,reject_non_fqdn_hostname,reject_non_fqdn_sender,reject_non_fqdn_recipient,reject_unauth_destination,reject_unauth_pipelining,reject_invalid_hostname,reject_unknown_sender_domain,reject_unknown_hostname,permit
+smtpd_data_restrictions = reject_unauth_pipelining,reject_multi_recipient_bounce 

@@ -31,8 +31,8 @@ smtpd_sasl_path = inet:imap.engines.internal:26561
 
 myhostname = email.engines.internal
 
-alias_maps = ldap:/etc/postfix/ldap/ldap-aliases.cf, hash:/etc/aliases 
-alias_database = hash:/etc/aliases
+alias_maps = ldap:/etc/postfix/ldap/ldap-aliases.cf, hash:/etc/postfix/maps/aliases/aliases
+alias_database = hash:/etc/postfix/maps/aliases/aliases
 
 smtp_generic_maps = hash:/etc/postfix/maps/generic
 transport_maps = hash:/etc/postfix/maps/transport
