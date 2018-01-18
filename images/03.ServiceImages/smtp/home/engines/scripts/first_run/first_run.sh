@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo -n /home/engines/scripts/first_run/_setup_dirs.sh
+
  
 if ! test -f /etc/postfix/mailname
  then
