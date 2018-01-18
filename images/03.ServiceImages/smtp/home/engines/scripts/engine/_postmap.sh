@@ -9,5 +9,5 @@ if ! test -f "/home/postfix/$1"
     touch "/home/postfix/$1"
   fi   
  fi 
-cp "/home/postfix/$1" /etc/postfix/
-postmap  /etc/postfix/"$1"   
+cp "/home/postfix/$1" /etc/postfix/maps/
+postmap  /etc/postfix/maps/"$1"   
