@@ -9,12 +9,6 @@ RUN adduser -q --disabled-password --home /var/spool/postfix -uid 22003 postfix 
 	cp /etc/services /var/spool/postfix/etc/ &&\
  	/home/post_build_clean.sh
 
-ADD home home
-ADD src/postfix/master.cf /etc/postfix/
-ADD src/postfix/main.cf /etc/postfix/
-ADD src/postfix/mailname /etc/postfix/mailname
-
-
 RUN mkdir 	/home/postfix \
 			/usr/share/doc/postfix/html \
 	 	  	/usr/lib/postfix/libutil \
@@ -39,16 +33,16 @@ RUN mkdir 	/home/postfix \
 	chgrp postfix /home/engines/scripts/configurators/*.sh &&\
 	cp -rp /var/spool/postfix /tmp/spool_postfix
 	
-#	&&\
-#	 		touch /etc/postfix/generic.db \
-#	 		/etc/postfix/transport.smart \
-#	 		/etc/postfix/smarthost_passwd \
-#	 		/etc/postfix/sender_canonical \
-#	 	    /etc/postfix/generic
-#	
+
 ADD sudoers /etc/sudoers.d/smtp
 # chown postfix /etc/postfix/generic /etc/postfix/generic.db /etc/postfix/smarthost_passwd /etc/postfix/sender_canonical /etc/postfix/smarthost_passwd /etc/postfix/transport /etc/postfix/transport.smart /etc/postfix/transport.db 
 RUN	chmod -R go-rw /etc/sudoers /etc/sudoers.d/
+
+ADD src/postfix/master.cf /etc/postfix/
+ADD src/postfix/main.cf /etc/postfix/
+ADD src/postfix/mailname /etc/postfix/mailname
+
+ADD home home
 
 ENV ContUser postfix
 ENV ContGrp postfix
