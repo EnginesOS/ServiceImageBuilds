@@ -1,5 +1,5 @@
 #!/bin/sh
-function create_dirs() 
+create_dirs() 
 {
 for dir_to_create in $dirs_to_create
 do
@@ -14,7 +14,7 @@ do
 done
 }
 
-dirs_to_create"=/etc/postfix/maps/ /etc/postfix/maps/aliases/"
+dirs_to_create="/etc/postfix/maps/ /etc/postfix/maps/aliases/"
 dir_ownership=postfix
 
 create_dirs
