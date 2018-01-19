@@ -16,7 +16,6 @@ if test $r -eq 0
   exit $r	  
 fi
 
-startup_complete
 
 while ! test -f /home/engines/run/flags/sig_term -o -f /home/engines/run/flags/sig_quit
  do 
@@ -26,9 +25,6 @@ while ! test -f /home/engines/run/flags/sig_term -o -f /home/engines/run/flags/s
 	exit_code=$?		
 done	
 
-/home/engines/scripts/signal/_kill_postfix.sh
-
-shutdown_complete
 
 
 
