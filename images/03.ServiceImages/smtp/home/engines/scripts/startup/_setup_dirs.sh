@@ -3,12 +3,14 @@ function create_dirs()
 {
 for dir_to_create in $dirs_to_create
 do
-if ! test -d $dir_to_create
- then
-   mkdir -p  $dir_to_create
- fi
- if ! test -z $dir_ownership
-  chown -R $dir_ownership $dir_to_create
+  if ! test -d $dir_to_create
+   then
+     mkdir -p  $dir_to_create
+  fi
+  if ! test -z $dir_ownership
+   then
+    chown -R $dir_ownership $dir_to_create
+  fi
 done
 }
 
