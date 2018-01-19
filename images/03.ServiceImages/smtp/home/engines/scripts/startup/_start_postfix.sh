@@ -8,8 +8,10 @@ if test -f /var/spool/postfix/pid/master.pid
 
 /usr/lib/postfix/sbin/master -w
 r=$?
+
 if test $r -eq 0
  then
+    startup_complete
 	sleep 5	
  else
   echo "Failed with $r"
@@ -25,6 +27,6 @@ while ! test -f /home/engines/run/flags/sig_term -o -f /home/engines/run/flags/s
 	exit_code=$?		
 done	
 
-
+shutdown_complete
 
 
