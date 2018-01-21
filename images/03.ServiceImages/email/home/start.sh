@@ -10,10 +10,11 @@ export KILL_SCRIPT
 
 service_first_run_check
 
+if ! test -f /home/engines/scripts/configurators/saved/default_domain
+ then
+	echo '{}' > /home/engines/scripts/configurators/saved/default_domain
+fi 
 
-#echo '{"default_domain":"'$DEFAULT_DOMAIN'"}' |/home/engines/scripts/configurators/set_default_domain.sh 
-echo '{}' > /home/engines/scripts/configurators/saved/default_domain
- 
 sudo -n /home/engines/scripts/configurators/rebuild_main.sh
 
 if test -f /home/engines/scripts/configurators/saved/grey_listing_enabled
@@ -26,19 +27,22 @@ fi
 sudo -n /home/engines/scripts/startup/_start_postfix.sh &
 startup_complete
 
+# FIXME be mroe intelligent on waiting for process to start
+sleep 5
 
-	while ! test -f /home/engines/run/flags/sig_term -o -f /home/engines/run/flags/sig_quit
-	do 		
-		 if ! test -f /var/spool/postfix/pid/master.pid
-		  then
-		   break
-		 fi
-	    sleep 500 &
-	    echo $! >/tmp/sleep.pid
-		wait 		
-		exit_code=$?
-		rm /tmp/sleep.pid
-	done
+while ! test -f /home/engines/run/flags/sig_term -o -f /home/engines/run/flags/sig_quit
+ do 		
+	 if ! test -f /var/spool/postfix/pid/master.pid
+	  then
+	   echo Exit as master pid file missing 
+	   break
+	 fi
+    sleep 500 &
+    echo $! >/tmp/sleep.pid
+	wait 		
+	exit_code=$?
+	rm /tmp/sleep.pid
+done
 
 shutdown_complete
 

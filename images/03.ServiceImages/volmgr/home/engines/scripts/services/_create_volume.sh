@@ -1,5 +1,5 @@
 #!/bin/bash
 
-mkdir -p /var/fs/local/$1/$2
-chown -R $3.$4 /var/fs/local/$1/$2
-
+mkdir -p /var/fs/local/${parent_engine}/${service_name}
+chown -R ${user}.${group} /var/fs/local/${parent_engine}/${service_name}
+chmod g+w /var/fs/local/${parent_engine}/${service_name}

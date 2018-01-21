@@ -9,6 +9,7 @@ for cmd in $*
  	state)
  	     dir="/client/state/"
  		/home/remove_dir_contents.sh $dir
+ 		chown 21000.22020 /client/state/
  		;;
  	logs)
  		dir="/client/log/"
@@ -19,19 +20,20 @@ for cmd in $*
  		/home/remove_dir_contents.sh $dir
  	    
  		;;
- 	volume)
- 		dir="/dest/fs/" + $2
- 		 /home/remove_dir_contents.sh $dir 	    
+ #	volume)
+ #		dir="/dest/fs/" + $2
+ #		 /home/remove_dir_contents.sh $dir 	    
  		;;
  	all)
  		dir="/client/log/"
  		/home/remove_dir_contents.sh $dir
+ 		chown 21000.22020 /client/state/
  		
  		dir="//client/state/"
  		/home/remove_dir_contents.sh $dir
  		
- 		dir="/dest/fs/"
- 		/home/remove_dir_contents.sh $dir
+ 	#	dir="/dest/fs/"
+ 	#	/home/remove_dir_contents.sh $dir
  		
  		;;
   esac

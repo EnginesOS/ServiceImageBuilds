@@ -48,7 +48,10 @@ if test $service = wap
  then
   if ! test $domain_name = default
    then
-     dest_name=${domain_name}
+     if ! test  $domain_name = wap
+      then
+       dest_name=${domain_name}
+     fi 
   fi   
 fi
 set_service_uid
