@@ -4,12 +4,12 @@ sudo -n /home/engines/scripts/engine/_fix_perms.sh
 
 if test -f /home/certs/store/private/ca/keys/system_CA.key
 	then	
-	#	echo "CA Exists"
-	#	exit 127
+		echo "CA Exists"
+		exit 127
  cp /home/certs/store/public/ca/certs/system_CA.pem  /home/certs/store/public/ca/certs/system_CA.pem.bak
- #	rm /home/certs/store/public/ca/certs/system_CA.pem
+
  cp /home/certs/store/private/ca/keys/system_CA.key  /home/certs/store/private/ca/keys/system_CA.key.bak
- #rm /home/certs/store/private/ca/keys/system_CA.key 
+
 fi
 
 
