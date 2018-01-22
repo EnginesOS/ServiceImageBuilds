@@ -100,7 +100,7 @@ if test -z ${install_target}
 fi
 if ! test $cert_type = user
  then
-  sudo -n  /home/engines/scripts/engine/_install_target.sh ${install_target} $cert_type ${StorePref}/${domain_name} ${domain_name}
+  sudo -n /home/engines/scripts/engine/_install_target.sh ${install_target} $cert_type ${StorePref}/${domain_name} ${domain_name}
   exit $?
 fi
 exit 0
