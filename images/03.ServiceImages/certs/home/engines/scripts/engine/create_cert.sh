@@ -100,14 +100,7 @@ if test -z ${install_target}
 fi
 if ! test $cert_type = user
  then
-  err=`sudo -n  /home/engines/scripts/engine/_install_target.sh ${install_target} $cert_type ${StorePref}/${domain_name} ${domain_name}`
-  r=$?
-   if test $r -ne 0
-    then
-  	 echo '{"Result":"Failed","ErrorMesg":"'$err'","ExitCode":"'$r'"}'
-   else 
-	 echo '{"Result":"Success"}'
-  fi
- exit $r
+  sudo -n  /home/engines/scripts/engine/_install_target.sh ${install_target} $cert_type ${StorePref}/${domain_name} ${domain_name}
+  exit $?
 fi
 exit 0
