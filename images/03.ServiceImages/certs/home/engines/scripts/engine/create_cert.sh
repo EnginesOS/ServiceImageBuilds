@@ -90,7 +90,7 @@ if test $? -ne 0
 fi
 
 if test -f $StoreRoot/$cert_type/keys/${StorePref}/${cert_name}.key.tmp -a -f $StoreRoot/$cert_type/certs/${StorePref}/${cert_name}.crt.tmp
- then
+ then 
    domain_name=`cat  $StoreRoot/$cert_type/certs/${StorePref}/${cert_name}.crt.tmp | openssl x509 -noout -subject  |sed "/^.*CN=/s///"| sed "/\*/s///"`
    mv $StoreRoot/$cert_type/keys/${StorePref}/${cert_name}.key.tmp $StoreRoot/$cert_type/keys/${StorePref}${domain_name}.key
    mv $StoreRoot/$cert_type/certs/${StorePref}/${cert_name}.crt.tmp $StoreRoot/$cert_type/certs/${StorePref}${domain_name}.crt 
@@ -106,6 +106,7 @@ fi
 if ! test $cert_type = user
  then
   sudo -n /home/engines/scripts/engine/_install_target.sh ${install_target} $cert_type ${StorePref}/${domain_name} ${domain_name}
+  echo  sudo -n /home/engines/scripts/engine/_install_target.sh ${install_target} $cert_type ${StorePref}/${domain_name} ${domain_name}
   exit $?
 fi
 exit 0

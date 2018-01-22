@@ -10,7 +10,7 @@ ctype=`echo $1 |cut -f1 -d/`
 cname=`echo $1 |cut -f2 -d/`
 
 StoreRoot=/home/certs/store
-InstalledRoot=/home/certs/store/
+InstalledRoot=/home/certs/store/live
 
 if test $ctype = services 
  then
@@ -33,12 +33,12 @@ function install_cert {
 mkdir -p $StoreRoot/${install_target}/certs/
 mkdir -p $StoreRoot/${install_target}/keys/
 
-cp $StoreRoot/$cert_type/certs/${cert_name}.crt $StoreRoot/${install_target}/certs/${dest_name}.crt 
-cp $StoreRoot/$cert_type/keys/${cert_name}.key $StoreRoot/${install_target}/keys/${dest_name}.key
-chown $id $StoreRoot/${install_target}/keys/${dest_name}.key $StoreRoot/${install_target}/certs/${dest_name}.crt 
-chmod og-rw $StoreRoot/${install_target}/keys/${dest_name}.key 
-chmod og-w $StoreRoot/${install_target}/certs/${dest_name}.crt
-echo $store_name > $StoreRoot/${install_target}/certs/store
+cp $StoreRoot/$cert_type/certs/${cert_name}.crt $InstalledRoot/${install_target}/certs/${dest_cert_name}.crt 
+cp $StoreRoot/$cert_type/keys/${cert_name}.key $InstalledRoot/${install_target}/keys/${dest_cert_name}.key
+chown $id $InstalledRoot/${install_target}/keys/${dest_cert_name}.key $InstalledRoot/${install_target}/certs/${dest_cert_name}.crt 
+chmod og-rw $InstalledRoot/${install_target}/keys/${dest_cert_name}.key 
+chmod og-w $InstalledRoot/${install_target}/certs/${dest_cert_name}.crt
+echo $store_name > $InstalledRoot/${install_target}/certs/store
 }
 
 install_cert
