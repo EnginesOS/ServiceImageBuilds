@@ -1,12 +1,17 @@
 #!/bin/bash
+StoreRoot=/home/certs/store
 
 if test -z $cert_type 
  then
   cert_type=generated
 fi
-StoreRoot=/home/certs/store
 
-StorePref=${container_type}s/${parent_engine}/
+if test $cert_type = user
+ then
+     cert_type=generated
+ else
+	StorePref=user
+fi
  
 sudo -n  /home/engines/scripts/engine/_fix_perms.sh
 
@@ -84,11 +89,11 @@ if test $? -ne 0
  	exit 127
 fi
 
-if test -f $StoreRoot/$cert_type/keys/${StorePref}${cert_name}.key.tmp -a -f $StoreRoot/$cert_type/certs/${StorePref}${cert_name}.crt.tmp
+if test -f $StoreRoot/$cert_type/keys/${StorePref}/${cert_name}.key.tmp -a -f $StoreRoot/$cert_type/certs/${StorePref}/${cert_name}.crt.tmp
  then
-   domain_name=`cat  $StoreRoot/$cert_type/certs/${StorePref}${cert_name}.crt.tmp | openssl x509 -noout -subject  |sed "/^.*CN=/s///"| sed "/\*/s///"`
-   mv $StoreRoot/$cert_type/keys/${StorePref}${cert_name}.key.tmp $StoreRoot/$cert_type/keys/${StorePref}${domain_name}.key
-   mv $StoreRoot/$cert_type/certs/${StorePref}${cert_name}.crt.tmp $StoreRoot/$cert_type/certs/${StorePref}${domain_name}.crt 
+   domain_name=`cat  $StoreRoot/$cert_type/certs/${StorePref}/${cert_name}.crt.tmp | openssl x509 -noout -subject  |sed "/^.*CN=/s///"| sed "/\*/s///"`
+   mv $StoreRoot/$cert_type/keys/${StorePref}/${cert_name}.key.tmp $StoreRoot/$cert_type/keys/${StorePref}${domain_name}.key
+   mv $StoreRoot/$cert_type/certs/${StorePref}/${cert_name}.crt.tmp $StoreRoot/$cert_type/certs/${StorePref}${domain_name}.crt 
 else
    echo "Cert and Key files not present"
    exit 127

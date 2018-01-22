@@ -14,10 +14,9 @@ if test -z $hostname
   else
    wild=no
 fi
-parent_engine=system
-container_type=service
+
 cert_type=user
-export cert_name container_type parent_engine domain_name country state city organisation person wild alt_names hostname cert_type
+export cert_name  domain_name country state city organisation person wild alt_names hostname cert_type
 
 err=`/home/engines/scripts/engine/create_cert.sh`
 
