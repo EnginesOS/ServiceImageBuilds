@@ -11,13 +11,13 @@ cname=`echo $1 |cut -f2 -d/`
 
 StoreRoot=/home/certs/store
 
-if test $ctype = service
+if test $ctype = services 
  then
    id=`grep _$service /home/engines/system/service_uids | awk '{print $3}'`
-elif test $ctype = app   
+elif test $ctype = apps
  then
    id=22671
-elif test $ctype = system
+elif test $ctype = system_services
  then
    id=21000
 else
