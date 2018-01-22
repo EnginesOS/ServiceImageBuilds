@@ -1,5 +1,5 @@
 #!/bin/bash
-#_install_target.sh ${install_target} $cert_type $cert_name ${dest_cert_name}`
+echo _install_target.sh $*
 
 install_target=$1
 cert_type=$2
