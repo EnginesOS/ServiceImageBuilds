@@ -16,7 +16,7 @@ exit $r
 
 targets="system_services/system services/smtp services/ftp services/emailservices/ services/mysql services/pgsql services/mgmt services/wap services/control"
 
-case $install_target
+case $install_target in
 
 all)
    for install_target in $targets
