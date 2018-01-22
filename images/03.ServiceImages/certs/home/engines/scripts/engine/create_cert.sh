@@ -4,13 +4,14 @@ if test -z $cert_type
  then
   cert_type=generated
 fi
+StoreRoot=/home/certs/store
 
-StorePref=$cert_type/${container_type}s/${parent_engine}/
+StorePref=${container_type}s/${parent_engine}/
  
 sudo -n  /home/engines/scripts/engine/_fix_perms.sh
 
-mkdir -p /home/certs/store/generated/keys/$StorePref
-mkdir -p /home/certs/store/generated/certs/$StorePref
+mkdir -p $StoreRoot/$cert_type/keys/$StorePref
+mkdir -p $StoreRoot/$cert_type/certs/$StorePref
  
 if test -z $wild
  then
@@ -21,7 +22,7 @@ fi
 domain_name_saved=$domain_name 
 if test -z "$country" -a -z "$state" -a -z "$organisation"
  then
- . /home/certs/store/default_cert_details
+ . $StoreRoot/default_cert_details
  fi
 echo $country >/home/certs/saved/${cert_name}_setup
 echo $state >>/home/certs/saved/${cert_name}_setup
@@ -35,7 +36,7 @@ if test  $wild = "true"
   hostname=\*.$domain_name
   alt_names="$alt_names ${parent_engine}.${domain_name}" 	
 else
-  echo $domain_name  >>/home/certs/saved/${cert_name}_setup
+  echo $domain_name >>/home/certs/saved/${cert_name}_setup
 fi
  
 if ! test $altName
@@ -67,8 +68,8 @@ if ! test -z "$alt_names"
 fi
 
 cat /etc/ssl/openssl.cnf /home/certs/saved/${cert_name}_config >/home/certs/saved/${cert_name}_config_full
-openssl genrsa -out  /home/certs/store/generated/keys/${StorePref}${cert_name}.key.tmp 2048
-openssl req -new  -key /home/certs/store/generated/keys/${StorePref}${cert_name}.key.tmp -out /home/certs/saved/${cert_name}.csr -config /home/certs/saved/${cert_name}_config
+openssl genrsa -out  $StoreRoot/$cert_type/keys/${StorePref}${cert_name}.key.tmp 2048
+openssl req -new  -key $StoreRoot/$cert_type/keys/${StorePref}${cert_name}.key.tmp -out /home/certs/saved/${cert_name}.csr -config /home/certs/saved/${cert_name}_config
 
 if ! test -f /home/certs/saved/${cert_name}.csr 
   then
@@ -76,18 +77,18 @@ if ! test -f /home/certs/saved/${cert_name}.csr
  	exit 127
 fi
 
-openssl x509 -req -in /home/certs/saved/${cert_name}.csr -sha256 -CA  /home/certs/store/public/ca/certs/system_CA.pem -CAkey /home/certs/store/private/ca/keys/system_CA.key -CAcreateserial -out /home/certs/store/generated/certs/${StorePref}${cert_name}.crt.tmp -days 500  -extensions req_ext -extfile  /home/certs/saved/${cert_name}_config
+openssl x509 -req -in /home/certs/saved/${cert_name}.csr -sha256 -CA  $StoreRoot/public/ca/certs/system_CA.pem -CAkey $StoreRoot/private/ca/keys/system_CA.key -CAcreateserial -out $StoreRoot/$cert_type/certs/${StorePref}${cert_name}.crt.tmp -days 500  -extensions req_ext -extfile  /home/certs/saved/${cert_name}_config
 if test $? -ne 0
  then
  	echo "Failed to sign CSR"
  	exit 127
 fi
 
-if test -f /home/certs/store/generated/keys/${StorePref}${cert_name}.key.tmp -a -f /home/certs/store/generated/certs/${StorePref}${cert_name}.crt.tmp
+if test -f $StoreRoot/$cert_type/keys/${StorePref}${cert_name}.key.tmp -a -f $StoreRoot/$cert_type/certs/${StorePref}${cert_name}.crt.tmp
  then
-   domain_name=`cat  /home/certs/store/generated/certs/${StorePref}${cert_name}.crt.tmp | openssl x509 -noout -subject  |sed "/^.*CN=/s///"| sed "/\*/s///"`
-   mv /home/certs/store/generated/keys/${StorePref}${cert_name}.key.tmp /home/certs/store/generated/keys/${StorePref}${domain_name}.key
-   mv /home/certs/store/generated/certs/${StorePref}${cert_name}.crt.tmp /home/certs/store/generated/certs/${StorePref}${domain_name}.crt 
+   domain_name=`cat  $StoreRoot/$cert_type/certs/${StorePref}${cert_name}.crt.tmp | openssl x509 -noout -subject  |sed "/^.*CN=/s///"| sed "/\*/s///"`
+   mv $StoreRoot/$cert_type/keys/${StorePref}${cert_name}.key.tmp $StoreRoot/$cert_type/keys/${StorePref}${domain_name}.key
+   mv $StoreRoot/$cert_type/certs/${StorePref}${cert_name}.crt.tmp $StoreRoot/$cert_type/certs/${StorePref}${domain_name}.crt 
 else
    echo "Cert and Key files not present"
    exit 127
@@ -98,10 +99,9 @@ if test -z ${install_target}
   install_target=${container_type}s/${parent_engine}
 fi
 
-
-err=`sudo -n  /home/engines/scripts/engine/_install_target.sh ${install_target} generated ${StorePref}/${domain_name} ${domain_name}`
+err=`sudo -n  /home/engines/scripts/engine/_install_target.sh ${install_target} $cert_type ${StorePref}/${domain_name} ${domain_name}`
 r=$?
- if $r -ne 0
+ if test $r -ne 0
   then
   	echo '{"Result":"Failed","ErrorMesg":"'$err'","ExitCode":"'$r'"}'
   else 
