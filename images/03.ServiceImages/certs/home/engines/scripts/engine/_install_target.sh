@@ -6,6 +6,12 @@ cert_type=$2
 cert_name=$3
 dest_cert_name=$4
 
+if test $install_target = default
+ then
+  /home/engines/scripts/engine/set_default.sh all ${cert_type} ${cert_name} 
+ exit
+ fi
+
 ctype=`echo $1 |cut -f1 -d/`
 cname=`echo $1 |cut -f2 -d/`
 
