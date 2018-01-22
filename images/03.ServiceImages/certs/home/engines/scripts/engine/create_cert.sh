@@ -3,7 +3,6 @@
 if test -z $cert_type 
  then
   cert_type=generated
-  fi   
 fi
 
 StorePref=$cert_type/${container_type}s/${parent_engine}/
@@ -15,7 +14,7 @@ mkdir -p /home/certs/store/generated/certs/$StorePref
  
 if test -z $wild
  then
-  wild="no"
+  wild="false"
 fi
  
  # before any addition of *\.
@@ -30,7 +29,7 @@ echo $city >>/home/certs/saved/${cert_name}_setup
 echo $organisation >>/home/certs/saved/${cert_name}_setup
 echo $person >>/home/certs/saved/${cert_name}_setup
 
-if test  $wild = "yes"
+if test  $wild = "true"
  then
   echo \*.$domain_name  >>/home/certs/saved/${cert_name}_setup
   hostname=\*.$domain_name
