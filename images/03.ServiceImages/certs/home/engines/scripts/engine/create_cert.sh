@@ -108,15 +108,19 @@ else
    echo "Cert and Key files not present"
    exit 127
  fi
+ 
+ cert_path=${container_type}s/${parent_engine}
    
-if test -z ${install_target}
+if test  ${install_target} = default
   then
-  install_target=${container_type}s/${parent_engine}
+  dest_name=default
+  else
+   dest_name=${domain_name}
 fi
 if ! test $cert_type = user
  then
-  sudo -n /home/engines/scripts/engine/_install_target.sh ${install_target} $cert_type ${StorePref}/${domain_name} ${domain_name}
-  echo  sudo -n /home/engines/scripts/engine/_install_target.sh ${install_target} $cert_type ${StorePref}/${domain_name} ${domain_name}
+  sudo -n /home/engines/scripts/engine/_install_target.sh ${cert_path} $cert_type ${StorePref}/${domain_name} ${dest_name}
+  echo  sudo -n /home/engines/scripts/engine/_install_target.sh ${cert_path} $cert_type ${StorePref}/${domain_name} ${dest_name}
   exit $?
 fi
 exit 0
