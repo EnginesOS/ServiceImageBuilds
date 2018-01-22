@@ -98,7 +98,7 @@ if test -z ${install_target}
   then
   install_target=${container_type}s/${parent_engine}
 fi
-it ! test $cert_type = user
+if ! test $cert_type = user
  then
   err=`sudo -n  /home/engines/scripts/engine/_install_target.sh ${install_target} $cert_type ${StorePref}/${domain_name} ${domain_name}`
   r=$?
