@@ -6,9 +6,9 @@ cert_type=$2
 cert_name=$3
 dest_cert_name=$4
 
-if test $install_target = default
+if test $dest_cert_name = default
  then
-  /home/engines/scripts/engine/set_default.sh all ${cert_type} ${cert_name} 
+  /home/engines/scripts/engine/set_default.sh $install_target ${cert_type} ${cert_name} 
  exit
  fi
 
