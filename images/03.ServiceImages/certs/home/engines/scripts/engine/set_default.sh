@@ -4,7 +4,7 @@ echo set_default.sh $*
 function install_service {
 
 dest_name=`basename $install_target`
-err=`sudo -n  /home/engines/scripts/engine/_install_target.sh ${install_target} ${cert_type} ${cert_name} ${install_target}
+err=`sudo -n  /home/engines/scripts/engine/_install_target.sh ${install_target} ${cert_type} ${cert_name} ${install_target}`
 r=$?
  if $r -ne 0
   then
