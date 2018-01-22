@@ -98,13 +98,16 @@ if test -z ${install_target}
   then
   install_target=${container_type}s/${parent_engine}
 fi
-
-err=`sudo -n  /home/engines/scripts/engine/_install_target.sh ${install_target} $cert_type ${StorePref}/${domain_name} ${domain_name}`
-r=$?
- if test $r -ne 0
-  then
-  	echo '{"Result":"Failed","ErrorMesg":"'$err'","ExitCode":"'$r'"}'
-  else 
-	echo '{"Result":"Success"}'
+it ! test $cert_type = user
+ then
+  err=`sudo -n  /home/engines/scripts/engine/_install_target.sh ${install_target} $cert_type ${StorePref}/${domain_name} ${domain_name}`
+  r=$?
+   if test $r -ne 0
+    then
+  	 echo '{"Result":"Failed","ErrorMesg":"'$err'","ExitCode":"'$r'"}'
+   else 
+	 echo '{"Result":"Success"}'
+  fi
+ exit $r
 fi
-exit $r
+exit 0

@@ -21,7 +21,7 @@ elif test $ctype = system
  then
    id=21000
 else
- echo unknown ctype
+ echo unknown ctype $ctype
  exit 127
 fi
 
