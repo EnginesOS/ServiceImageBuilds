@@ -110,13 +110,18 @@ else
  fi
  
  cert_path=${container_type}s/${parent_engine}
-   
-if test  ${install_target} = default
-  then
-  dest_name=default
+if ! test -z ${install_target}
+ then
+  if test  ${install_target} = default
+   then
+    dest_name=default
   else
-   dest_name=${domain_name}
+    dest_name=${domain_name}
+  fi
+else
+  dest_name=${domain_name} 
 fi
+
 if ! test $cert_type = user
  then
   sudo -n /home/engines/scripts/engine/_install_target.sh ${cert_path} $cert_type ${StorePref}/${domain_name} ${dest_name}

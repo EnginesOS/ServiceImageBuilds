@@ -20,7 +20,7 @@ InstalledRoot=/home/certs/store/live
 
 if test $ctype = services 
  then
- 	$service=`basename ${install_target}`
+ 	service=`basename ${install_target}`
    id=`grep _$service /home/engines/system/service_uids | awk '{print $3}'`
 elif test $ctype = apps
  then
@@ -35,9 +35,11 @@ fi
 
 
 function install_cert {
+dir_name=`dirname ${install_target}`
+mkdir -p $StoreRoot/${install_target}/certs/$dir_name/
+mkdir -p $StoreRoot/${install_target}/keys/$dir_name/
 
-mkdir -p $StoreRoot/${install_target}/certs/
-mkdir -p $StoreRoot/${install_target}/keys/
+ 
 
 cp $StoreRoot/$cert_type/certs/${cert_name}.crt $InstalledRoot/${install_target}/certs/${dest_cert_name}.crt 
 cp $StoreRoot/$cert_type/keys/${cert_name}.key $InstalledRoot/${install_target}/keys/${dest_cert_name}.key
