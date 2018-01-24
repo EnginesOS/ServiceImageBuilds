@@ -27,15 +27,15 @@ mv /home/certs/store/imported/keys/tmp.key /home/certs/store/imported/keys/${dom
 mv /home/certs/store/imported/certs/tmp.crt /home/certs/store/imported/certs/${domain_name}.crt
 
 store=imported/${domain_name}
-export cert_name store target
+export cert_name store install_target
 
-if ! test -z ${target}
+if ! test -z ${install_target}
  then
-   if $target=default
+   if $install_target=default
     then
      /home/engines/scripts/engine/set_default.sh all imported ${domain_name}
     else      
-     sudo -n /home/engines/scripts/engine/_install_target.sh ${target} imported ${domain_name} ${domain_name}
+     sudo -n /home/engines/scripts/engine/_install_target.sh ${install_target} imported ${domain_name} ${domain_name}
    fi  
 fi
  
