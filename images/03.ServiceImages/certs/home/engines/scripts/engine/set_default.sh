@@ -1,5 +1,5 @@
 #!/bin/bash
-#set_default.sh ${install_target} ${cert_type} ${cert_name} 
+
 echo set_default.sh $*
 install_target=$1
 cert_type=$2

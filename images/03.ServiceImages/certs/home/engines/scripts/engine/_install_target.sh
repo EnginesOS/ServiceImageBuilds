@@ -10,7 +10,7 @@ if test $dest_cert_name = default
  then
   /home/engines/scripts/engine/set_default.sh $install_target ${cert_type} ${cert_name} 
  exit
- fi
+fi
 
 ctype=`echo $1 |cut -f1 -d/`
 cname=`echo $1 |cut -f2 -d/`
@@ -33,13 +33,12 @@ else
  exit 127
 fi
 
+echo Using ID $id 
 
 function install_cert {
 dir_name=`dirname ${install_target}`
 mkdir -p $StoreRoot/${install_target}/certs/$dir_name/
 mkdir -p $StoreRoot/${install_target}/keys/$dir_name/
-
- 
 
 cp $StoreRoot/$cert_type/certs/${cert_name}.crt $InstalledRoot/${install_target}/certs/${dest_cert_name}.crt 
 cp $StoreRoot/$cert_type/keys/${cert_name}.key $InstalledRoot/${install_target}/keys/${dest_cert_name}.key
@@ -50,6 +49,4 @@ echo $store_name > $InstalledRoot/${install_target}/certs/store
 }
 
 install_cert
-
-
 
