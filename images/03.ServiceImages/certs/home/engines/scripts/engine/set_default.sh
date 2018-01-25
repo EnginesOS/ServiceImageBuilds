@@ -5,9 +5,12 @@ install_target=$1
 cert_type=$2
 cert_name=$3
 
+echo install target $install_target
+ 
 function install_service {
 
 dest_name=`basename $install_target`
+
 err=`sudo -n  /home/engines/scripts/engine/_install_target.sh ${install_target} ${cert_type} ${cert_name} ${dest_name}`
 r=$?
  if test $r -ne 0
@@ -23,6 +26,7 @@ targets="system_services/system services/smtp services/ftp services/emailservice
 case $install_target in
 
 all)
+	echo default for all
    for install_target in $targets
     do    
       install_service
