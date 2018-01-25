@@ -5,10 +5,22 @@ params_to_env
 required_values="cert_name store cert_type"
 check_required_values
 
+if test $cert_type = generated
+ then
+ echo "Cant remove  system generated certificate"
+ exit   
+ fi
+
+if test $cert_type = user
+ then
+  cert_type=generated 
+  store=user
+fi 
+
 if ! test -f /home/certs/store/$cert_type/certs/$store/${cert_name}.crt 
  then
-   echo "Missing  $store/$cert_name"
-   exit 127
+   echo "No such cert  $store/$cert_name"
+   exit 
 fi
 
 domain_name=`cat /home/certs/store/$cert_type/certs/$store/${cert_name}.crt | openssl x509 -noout -subject  |sed "/^.*CN=/s///"| sed "/\*/s///"`
