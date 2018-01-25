@@ -45,7 +45,7 @@ cp $StoreRoot/$cert_type/keys/${cert_name}.key $InstalledRoot/${install_target}/
 chown $id $InstalledRoot/${install_target}/keys/${dest_cert_name}.key $InstalledRoot/${install_target}/certs/${dest_cert_name}.crt 
 chmod og-rw $InstalledRoot/${install_target}/keys/${dest_cert_name}.key 
 chmod og-w $InstalledRoot/${install_target}/certs/${dest_cert_name}.crt
-echo $store_name > $InstalledRoot/${install_target}/certs/store
+echo '{"cert_type":"'$cert_type'","store_path":"'$store_path'"}' > $InstalledRoot/${install_target}/certs/`dirname ${dest_cert_name}`/store.`basename ${dest_cert_name}`
 }
 
 install_cert
