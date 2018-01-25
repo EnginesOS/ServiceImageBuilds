@@ -27,8 +27,9 @@ case $install_target in
 
 all)
 	echo default for all
-   for install_target in $targets
+   for target in $targets
     do    
+      install_target=$target
       install_service
     done  
   ;;
