@@ -16,6 +16,8 @@ for service in `ls /home/certs/store/live/services/`
    if test -f /home/certs/store/live/services/${service}/certs/store.$service
     then
     	store=`cat /home/certs/store/live/services/${service}/certs/store.$service`
+    	else 
+    	 store='""'
     fi
    echo -n '{"service_name":"'$service'","cert_name":"'$domain'","store":'$store'}'
    n=1
