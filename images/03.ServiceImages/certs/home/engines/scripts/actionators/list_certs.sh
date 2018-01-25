@@ -19,7 +19,7 @@ echo -n '{"certs":['
       	fi
       	store=`dirname $cert |sed "/^\.\//s///"`
       	cert=`basename $cert`
-        echo -n '{"cert_name":"'$cert'","store":"'$store'", "cert_type","'$cert_type'"}'
+        echo -n '{"cert_name":"'$cert'","store":"'$store'", "cert_type":"'$cert_type'"}'
       done
   fi
   done
