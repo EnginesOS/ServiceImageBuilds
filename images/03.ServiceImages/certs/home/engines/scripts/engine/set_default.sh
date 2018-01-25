@@ -17,7 +17,7 @@ r=$?
   then
   	echo '{"Result":"Failed","ErrorMesg":"'$err'","ExitCode":"'$r'"}'
 fi
-exit $r
+
 
 }
 
@@ -38,3 +38,5 @@ all)
    install_service
    ;;
 esac
+
+exit $r
