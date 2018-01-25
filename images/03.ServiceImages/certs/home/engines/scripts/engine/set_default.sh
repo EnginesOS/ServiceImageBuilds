@@ -8,7 +8,7 @@ cert_name=$3
 echo install target $install_target
  
 function install_service {
-
+ echo Install Service install_target=$target
 dest_name=`basename $install_target`
 
 err=`sudo -n  /home/engines/scripts/engine/_install_target.sh ${install_target} ${cert_type} ${cert_name} ${dest_name}`
@@ -30,6 +30,7 @@ all)
    for target in $targets
     do    
       install_target=$target
+      echo install_target=$target
       install_service
     done  
   ;;
