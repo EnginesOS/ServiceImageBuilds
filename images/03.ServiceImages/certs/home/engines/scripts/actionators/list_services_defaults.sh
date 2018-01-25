@@ -13,7 +13,7 @@ for service in `ls /home/certs/store/live/services/`
      then
       echo -n ,
    fi
-   if test -f /home/certs/store/live/services/${service}/certs/store.$domain
+   if test -f /home/certs/store/live/services/${service}/certs/store.$service
     then
     	store=`cat /home/certs/store/live/services/${service}/certs/store.$service`
     fi
