@@ -1,6 +1,11 @@
 #!/bin/bash
 StoreRoot=/home/certs/store
 
+if test -z $cert_name
+ then
+  cert_name=$domain_name
+fi
+
 if test -z $cert_type 
  then
   cert_type=generated
@@ -44,11 +49,11 @@ echo $person >>$setup_dir/${cert_name}_setup
 
 if test  $wild = "true"
  then
-  echo \*.$domain_name  >>$setup_dir/${cert_name}_setup
+  echo \*.$domain_name >> $setup_dir/${cert_name}_setup
   hostname=\*.$domain_name
   alt_names="$alt_names ${parent_engine}.${domain_name}" 	
 else
-  echo $domain_name >>$setup_dir/${cert_name}_setup
+  echo $domain_name >> $setup_dir/${cert_name}_setup
 fi
  
 if ! test $altName

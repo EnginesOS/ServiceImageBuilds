@@ -6,6 +6,12 @@ cert_type=$2
 cert_name=$3
 dest_cert_name=$4
 
+if $cert_type = user
+ then
+  cert_type=generated 
+  cert_name=user/$cert_name
+fi  
+
 if test $dest_cert_name = default
  then
   /home/engines/scripts/engine/set_default.sh $install_target ${cert_type} ${cert_name} 
