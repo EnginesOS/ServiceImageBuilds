@@ -8,7 +8,7 @@ check_required_values
 
 
 
-err=`sudo -n /home/engines/scripts/engine/_install_target.sh service/wap ${cert_type}/${cert_name} ${fqdn}`
+err=`sudo -n /home/engines/scripts/engine/_install_target.sh services/wap ${cert_type} ${cert_name} ${fqdn}`
 r=$?
  if $r -ne 0
   then
