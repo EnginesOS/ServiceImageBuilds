@@ -10,7 +10,7 @@ check_required_values
 
 err=`sudo -n /home/engines/scripts/engine/_install_target.sh services/wap ${cert_type} ${cert_name} ${fqdn}`
 r=$?
- if $r -ne 0
+ if test $r -ne 0
   then
   	echo '{"Result":"Failed","ErrorMesg":"'$err'","ExitCode":"'$r'"}'
   else 
