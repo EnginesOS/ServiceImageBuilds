@@ -3,33 +3,33 @@
 function find_certs 
 {
 echo '['
-for user in `ls /home/certs/store/live/$user_type_path/`
+for consumer in `ls /home/certs/store/live/$consumer_type_path/`
  do
-  certs=`ls /home/certs/store/live/$user_type_path/$user/certs/*.crt |sed "s/\.crt//"`
+  certs=`find /home/certs/store/live/$consumer_type_path/$consumer/certs/ -name "*.crt" |sed "s/\.crt//"`
  for cert_name in $certs 
    do
      cert_name=`basename $cert_name`
-     domain=`cat /home/certs/store/live/$user_type_path/$user/certs/$cert_name.crt \
+     domain=`cat /home/certs/store/live/$consumer_type_path/$consumer/certs/$cert_name.crt \
      | openssl x509 -noout -subject |sed "/^.*CN=/s///" | sed "/\*/s///" `
   
     if test $n = 1
       then
        echo -n ,
     fi
-   if test -f /home/certs/store/live/$user_type_path/${user}/certs/store.$cert_name
+   if test -f /home/certs/store/live/$consumer_type_path/${consumer}/certs/store.$cert_name
     then
-    	store=`cat /home/certs/store/live/$user_type_path/${user}/certs/store.$cert_name`
+    	store=`cat /home/certs/store/live/$consumer_type_path/${consumer}/certs/store.$cert_name`
     	else 
     	 store='""'
     fi
-     if test $user = $cert_name
+     if test $consumer = $cert_name
       then
        default=true
       else
        default=false
      fi   
-     user_type=`echo $user_type_path | sed "s/s$//"`
-   echo -n '{"user":'$service'","user_type":"'$user_type'","cert_name":"'$domain'","store":'$store',"default":"'$default'"}'
+     consumer_type=`echo $consumer_type_path | sed "s/s$//"`
+   echo -n '{"consumer":'$consumer'","consumer_type":"'$consumer_type'","cert_name":"'$domain'","store":'$store',"default":"'$default'"}'
    n=1
  done
 done
@@ -38,14 +38,14 @@ echo ']'
 function apps_certs 
 {
 echo '"services":'
-user_type_path=services
+consumer_type_path=services
 find_certs
 }
 
 function services_certs
 {
 echo '"apps":'
-user_type_path=apps
+consumer_type_path=apps
 find_certs
 
 }
