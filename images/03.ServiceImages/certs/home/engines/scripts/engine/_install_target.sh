@@ -6,7 +6,7 @@ cert_type=$2
 cert_name=$3
 dest_cert_name=$4
 
-if $cert_type = user
+if test $cert_type = user
  then
   cert_type=generated 
   cert_name=user/$cert_name
