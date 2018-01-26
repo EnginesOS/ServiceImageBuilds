@@ -57,9 +57,8 @@ find_certs
 }
 
 echo -n '{"deployed_certs":{'
-echo '"services":'
 services_certs
-echo ',"apps":'
+echo ,
 apps_certs
 echo '}}'
 
