@@ -1,5 +1,29 @@
 #!/bin/bash
 
+function get_alt_names 
+{
+names=`cat /home/certs/store/live/$consumer_type_path/$consumer/certs/$cert_name.crt \
+       | openssl x509 -text |grep DNS: | sed "s/DNS://g" | sed "s/,/ /g" `
+       an=0
+       alt_names='{"alt_names":'
+       for name in names
+        do
+         if test $an -eq 0
+          then
+            alt_names=$alt_names"["
+           an=1
+          else
+            alt_names=$alt_names","
+          fi
+          alt_names=$alt_names'"'$name"'            
+        done
+        if test $an -eq 1
+          then
+            alt_names=$alt_names"]"
+          else
+              alt_names='""'
+         fi 
+}
 function find_certs 
 {
 n=0
@@ -14,9 +38,10 @@ else
    for cert_name in $certs 
      do
        cert_name=`basename $cert_name`
-       domain=`cat /home/certs/store/live/$consumer_type_path/$consumer/certs/$cert_name.crt \
+       common_name=`cat /home/certs/store/live/$consumer_type_path/$consumer/certs/$cert_name.crt \
        | openssl x509 -noout -subject |sed "/^.*CN=/s///" | sed "/\*/s///" `
-    
+       get_alt_names
+       
       if test $n -eq 1
         then
          echo -n ,
@@ -34,7 +59,7 @@ else
          default=false
        fi   
        consumer_type=`echo $consumer_type_path | sed "s/s$//"`
-     echo -n '{"consumer":"'$consumer'","consumer_type":"'$consumer_type'","cert_name":"'$domain'","store":'$store',"default":"'$default'"}'
+     echo -n '{"consumer":"'$consumer'","consumer_type":"'$consumer_type'","cert_name":"'$cert_name'","CN":"'$common_name'","alt_names":'$alt_names',"store":'$store',"default":"'$default'"}'
      n=1
    done
   done
