@@ -5,7 +5,7 @@ params_to_env
 required_values="fqdn consumer_type consumer_name"
 check_required_values
 
-if test ${fqdn} = default
+if test ${fqdn} = $consumer_name
  then
   echo '{"Result":"Failed","ErrorMesg":"Cannot remove default","ExitCode":"127"}'
   exit
