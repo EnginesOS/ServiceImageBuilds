@@ -51,7 +51,8 @@ if test  $wild = "true"
  then
   echo \*.$domain_name >> $setup_dir/${cert_name}_setup
   hostname=\*.$domain_name
-  alt_names="$alt_names ${parent_engine}.${domain_name}" 	
+  alt_names="$alt_names ${parent_engine}.${domain_name} ${domain_name}" 
+  domain_name=\*.$domain_name	
 else
   echo $domain_name >> $setup_dir/${cert_name}_setup
 fi
