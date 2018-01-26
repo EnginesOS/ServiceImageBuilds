@@ -32,9 +32,6 @@ if test -z $wild
  then
   wild="false"
 fi
- 
- # before any addition of *\.
-domain_name_saved=$domain_name 
 
 if test -z "$country" -a -z "$state" -a -z "$organisation"
  then
@@ -50,16 +47,17 @@ echo $person >>$setup_dir/${cert_name}_setup
 if test  $wild = "true"
  then
   echo \*.$domain_name >> $setup_dir/${cert_name}_setup
-  hostname=\*.$domain_name
+  hostname='*.'$domain_name
   alt_names="$alt_names ${parent_engine}.${domain_name} ${domain_name}" 
-  domain_name=\*.$domain_name	
+  common_name='*.'$domain_name	
 else
   echo $domain_name >> $setup_dir/${cert_name}_setup
+  common_name=$domain_name
 fi
  
 if ! test $altName
  then
-  	ALTNAME=DNS:$domain_name_saved
+  	ALTNAME=DNS:$domain_name
 else
   	ALTNAME=DNS:$altName
 fi
@@ -70,12 +68,12 @@ echo "" >>$setup_dir/${cert_name}_setup
 echo "" >>$setup_dir/${cert_name}_setup
 if test -z $hostname
  then
-	hostname=$domain_name_saved
+	hostname=$domain_name
 fi
 
 cat /home/engines/templates/certs/request.template | sed -e "s/COUNTRY/$country/"  \
 													-e "s/STATE/$state/" -e "s/ORGANISATION/$organisation/" \
-													-e "s/PERSON/$person/" -e "s/DOMAINNAME/$domain/" \
+													-e "s/PERSON/$person/" -e "s/DOMAINNAME/$common_name/" \
 													-e "s/HOSTNAME/$hostname/" >  $setup_dir/${cert_name}_config
 
 n=2
