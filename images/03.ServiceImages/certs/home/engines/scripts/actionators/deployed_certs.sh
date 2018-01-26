@@ -34,7 +34,7 @@ else
          default=false
        fi   
        consumer_type=`echo $consumer_type_path | sed "s/s$//"`
-     echo -n '{"consumer":'$consumer'","consumer_type":"'$consumer_type'","cert_name":"'$domain'","store":'$store',"default":"'$default'"}'
+     echo -n '{"consumer":"'$consumer'","consumer_type":"'$consumer_type'","cert_name":"'$domain'","store":'$store',"default":"'$default'"}'
      n=1
    done
   done
