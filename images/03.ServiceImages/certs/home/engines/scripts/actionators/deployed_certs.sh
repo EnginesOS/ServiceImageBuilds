@@ -4,19 +4,19 @@ function get_alt_names
 {
 names=`cat /home/certs/store/live/$consumer_type_path/$consumer/certs/$cert_name.crt \
        | openssl x509 -text |grep DNS: | sed "s/DNS://g" | sed "s/,/ /g" `
-       an=0
-       alt_names='{"alt_names":'
-       for name in names
+       an=0     
+       for name in $names
         do
          if test $an -eq 0
           then
-            alt_names=$alt_names"["
+            alt_names="["
            an=1
           else
             alt_names=$alt_names","
           fi
           alt_names=$alt_names'"'$name'"'                 
         done
+        
         if test $an -eq 1
           then
             alt_names=$alt_names"]"
