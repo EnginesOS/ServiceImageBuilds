@@ -15,7 +15,7 @@ names=`cat /home/certs/store/$cert_type/certs/$store/$cert.crt \
           else
             alt_names=$alt_names","
           fi
-          alt_names=$alt_names'"'$name"'            
+          alt_names=$alt_names'"'$name'"'          
         done
         if test $an -eq 1
           then
