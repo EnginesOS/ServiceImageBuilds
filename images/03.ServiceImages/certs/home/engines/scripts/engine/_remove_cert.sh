@@ -1,5 +1,5 @@
 #!/bin/bash
-if test "$1" = service
+if test "$1" = live/service
  then
   if test $# -eq 2
    then
