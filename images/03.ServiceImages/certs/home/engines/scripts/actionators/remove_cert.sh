@@ -2,7 +2,7 @@
 . /home/engines/functions/params_to_env.sh
 params_to_env
 
-required_values="cert_name store cert_type"
+required_values="cert_name cert_type"
 check_required_values
 
 if test $cert_type = generated
@@ -25,14 +25,14 @@ fi
 
 domain_name=`cat /home/certs/store/$cert_type/certs/$store/${cert_name}.crt | openssl x509 -noout -subject  |sed "/^.*CN=/s///"| sed "/\*/s///"`
 
-sudo -n /home/engines/scripts/engine/_remove_cert.sh certs/$store/${cert_name}.crt 
+sudo -n /home/engines/scripts/engine/_remove_cert.sh $cert_type/certs/$store/${cert_name}.crt 
 if test $? -ne 0
  then
    echo "Failed to Delete Cert $cert_name"
    exit 127
 fi
     
-sudo -n /home/engines/scripts/engine/_remove_cert.sh keys/$store/${cert_name}.key
+sudo -n /home/engines/scripts/engine/_remove_cert.sh $cert_type/keys/$store/${cert_name}.key
 if test $? -ne 0
  then
   echo "Failed to Delete Key $cert_name"
