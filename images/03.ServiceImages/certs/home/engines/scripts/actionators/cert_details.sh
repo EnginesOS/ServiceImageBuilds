@@ -6,18 +6,18 @@ required_values="fqdn  cert_location"
 
 check_required_values
 
-if test $cert_type = user
+if test $cert_location = user
  then
   path=/generated/certs/user/$fqdn
- elif test $cert_type = live
+ elif test $cert_location = live
   then 
    required_values="fqdn  cert_location consumer_type consumer_name"
    check_required_values
     path=/live/${consumer_type}s/$consumer_name/certs/$fqdn
- elif test $cert_type = imported
+ elif test $cert_location = imported
   then
    path=/imported/certs/$fqdn
- elif test $cert_type = generated
+ elif test $cert_location = generated
   then  
    required_values="fqdn cert_location consumer_type consumer_name"
    check_required_values
