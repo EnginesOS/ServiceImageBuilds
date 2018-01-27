@@ -11,3 +11,9 @@ service_first_run_check
 
 sudo -n /home/engines/scripts/startup/_start_slapd.sh
 
+startup_complete
+
+wait
+exit_code=$?
+
+shutdown_complete

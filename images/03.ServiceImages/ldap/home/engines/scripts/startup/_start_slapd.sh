@@ -28,14 +28,8 @@ echo -n " $pid " >> /tmp/pids
 chmod g+x /tmp/pids
 chgrp containers /tmp/pids
 
-startup_complete
+fg
 
-wait $pid
-exit_code=$?
-
-kill `cat /tmp/pids`
-
-shutdown_complete
 
 
 
