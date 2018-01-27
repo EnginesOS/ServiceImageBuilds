@@ -39,7 +39,7 @@ if test $? -eq 0
   docker rmi $( docker images -f "dangling=true" -q) &>/dev/null
 else
   echo "Failed to build $tag in $class/$dir"
-  exit
+  exit 127
 fi				
 }
 
