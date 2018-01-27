@@ -19,7 +19,7 @@ if test $cert_type = user
    StorePref=${container_type}s/${parent_engine}
 fi
  
-sudo -n  /home/engines/scripts/engine/_fix_perms.sh
+sudo -n /home/engines/scripts/engine/_fix_perms.sh
 
 key_dir=$StoreRoot/$cert_type/keys/${StorePref}
 cert_dir=$StoreRoot/$cert_type/certs/${StorePref}
@@ -44,7 +44,7 @@ echo $city >>$setup_dir/${cert_name}_setup
 echo $organisation >>$setup_dir/${cert_name}_setup
 echo $person >>$setup_dir/${cert_name}_setup
 
-if test  $wild = "true"
+if test $wild = "true"
  then
   echo \*.$domain_name >> $setup_dir/${cert_name}_setup
   hostname='*.'$domain_name
@@ -73,7 +73,7 @@ fi
 
 cat /home/engines/templates/certs/request.template | sed -e "s/COUNTRY/$country/"  \
 													-e "s/STATE/$state/" -e "s/ORGANISATION/$organisation/" \
-													-e "s/PERSON/$person/" -e "s/DOMAINNAME/$common_name/" \
+													-e "s/PERSON/$person/" -e "s/COMMON_NAME/$common_name/" \
 													-e "s/HOSTNAME/$hostname/" >  $setup_dir/${cert_name}_config
 
 n=2
@@ -123,7 +123,7 @@ if ! test -z ${install_target}
     dest_name=${domain_name}
   fi
 else
-  dest_name=${domain_name} 
+  dest_name=${cert_name} 
 fi
 
 if ! test $cert_type = user
