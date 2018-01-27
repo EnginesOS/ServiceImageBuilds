@@ -27,7 +27,8 @@ RUN mkdir 	/home/postfix \
 	 	  	/etc/postfix/makedefs.out \
 	 	  	/etc/postfix/postfix-files.d \
 	 	  	/usr/lib/postfix/libglobal  && \
-	/usr/sbin/postfix -c /etc/postfix/ set-permissions create-missing 
+	/usr/sbin/postfix -c /etc/postfix/ create-missing set-permissions ;\
+	echo dirs setup 
 	
 
 ADD sudoers /etc/sudoers.d/smtp
