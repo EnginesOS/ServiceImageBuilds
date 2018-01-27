@@ -1,4 +1,17 @@
 #!/bin/bash
+n=0
+while test $n -ne 5
+ do
+   if ! test -f /var/run/slapd.pid
+    then 
+     sleep 5
+   else
+     break
+   fi
+  n=`expr $n + 1`
+done
+ 
+ sleep 5
 
 #Create dc=engines,dc=internal
 ldapadd -Y EXTERNAL -H ldapi:/// -f /home/engines/templates/ldap/first_run/init.ldif
@@ -59,4 +72,10 @@ if test $exit_code -ne 0
   exit $exit_code
 fi  
 kdestroy
+
+ if test exit_code -eq 0
+    then
+     touch /home/engines/run/flags/init_ous_configured
+   fi
  exit $exit_code
+ 

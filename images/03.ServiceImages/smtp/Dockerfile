@@ -27,15 +27,12 @@ RUN mkdir 	/home/postfix \
 	 	  	/etc/postfix/makedefs.out \
 	 	  	/etc/postfix/postfix-files.d \
 	 	  	/usr/lib/postfix/libglobal  && \
-	/usr/sbin/postfix -c /etc/postfix/ set-permissions create-missing ;\
-	chown postfix /home/postfix/ &&\
-	chown postfix /home/engines/scripts/configurators/saved /home/postfix &&\
-	chgrp postfix /home/engines/scripts/configurators/*.sh &&\
-	cp -rp /var/spool/postfix /tmp/spool_postfix
+	/usr/sbin/postfix -c /etc/postfix/ create-missing set-permissions ;\
+	echo dirs setup 
 	
 
 ADD sudoers /etc/sudoers.d/smtp
-# chown postfix /etc/postfix/generic /etc/postfix/generic.db /etc/postfix/smarthost_passwd /etc/postfix/sender_canonical /etc/postfix/smarthost_passwd /etc/postfix/transport /etc/postfix/transport.smart /etc/postfix/transport.db 
+
 RUN	chmod -R go-rw /etc/sudoers /etc/sudoers.d/
 
 ADD src/postfix/master.cf /etc/postfix/
@@ -43,6 +40,11 @@ ADD src/postfix/main.cf /etc/postfix/
 ADD src/postfix/mailname /etc/postfix/mailname
 
 ADD home home
+RUN	mkdir -p /home/engines/scripts/configurators/saved &&\
+	chown postfix /home/postfix/ &&\
+	chown postfix /home/engines/scripts/configurators/saved /home/postfix &&\
+	chgrp postfix /home/engines/scripts/configurators/*.sh &&\
+	cp -rp /var/spool/postfix /tmp/spool_postfix
 
 ENV ContUser postfix
 ENV ContGrp postfix

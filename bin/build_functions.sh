@@ -15,7 +15,12 @@ if test -f nocache
 else
   args="build $extra --rm=true -t $tag -f Dockerfile.$release ."
 fi
-docker rmi $tag 
+
+if ! test -z $del_first
+ then 
+	docker rmi $tag
+fi	 
+
 if test -z $TEE
  then
   docker $args  >& build.log
@@ -34,7 +39,7 @@ if test $? -eq 0
   docker rmi $( docker images -f "dangling=true" -q) &>/dev/null
 else
   echo "Failed to build $tag in $class/$dir"
-  exit
+  exit 127
 fi				
 }
 
@@ -105,6 +110,9 @@ for arg in $ARGS
      builddir=$arg
      echo "Build root"
      unset  build 
+  elif test $arg = '-d'
+   then
+     del_first=1     
   elif test $arg = '-c'
    then
      cname=1     

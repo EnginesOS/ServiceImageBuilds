@@ -6,38 +6,36 @@ params_to_env
 required_values="certificate private_key"
 check_required_values
 
-mkdir -p /home/certs/store/public/certs/imported /home/certs/store/public/keys/imported
-
-#echo ${private_key} | sed "/\\\n/s//\n/g"  | sed "/\\\r/s///g" > /home/certs/store/public/keys/imported/tmp.key
-#echo ${certificate}| sed "/\\\n/s//\n/g"  | sed  "/\\\r/s///g" > /home/certs/store/public/certs/imported/tmp.crt
+mkdir -p /home/certs/store/imported/certs/ /home/certs/store/imported/keys/
 
 if ! test -z $password
  then
-  openssl rsa -in /home/certs/store/public/keys/imported/tmp.key -out /home/certs/store/public/keys/imported/btmp.key -passin pass:${password}
-  mv /home/certs/store/public/keys/imported/btmp.key /home/certs/store/public/keys/imported/tmp.key
+  openssl rsa -in /home/certs/store/imported/keys/tmp.key -out /home/certs/store/imported/keys/btmp.key -passin pass:${password}
+  mv /home/certs/store/imported/keys/btmp.key /home/certs/store/imported/keys/tmp.key
 fi
 
-domain_name=`cat /home/certs/store/public/certs/imported/tmp.crt | openssl x509 -noout -subject  |sed "/^.*CN=/s///"| sed "/\*/s///"`
+domain_name=`cat /home/certs/store/imported/certs/tmp.crt | openssl x509 -noout -subject  |sed "/^.*CN=/s///"| sed "/\*/s///"`
 
 if test -z ${domain_name}
  then
   echo Missing domain_name
-  rm /home/certs/store/public/keys/imported/tmp.key /home/certs/store/public/certs/imported/tmp.crt
+  rm /home/certs/store/imported/keys/tmp.key /home/certs/store/imported/certs/tmp.crt
   exit 127
 fi
 
-mv /home/certs/store/public/keys/imported/tmp.key /home/certs/store/public/keys/imported/${domain_name}.key
-mv /home/certs/store/public/certs/imported/tmp.crt /home/certs/store/public/certs/imported/${domain_name}.crt
+mv /home/certs/store/imported/keys/tmp.key /home/certs/store/imported/keys/${domain_name}.key
+mv /home/certs/store/imported/certs/tmp.crt /home/certs/store/imported/certs/${domain_name}.crt
 
 store=imported/${domain_name}
-export cert_name store target
-if ! test -z ${target}
+export cert_name store install_target
+
+if ! test -z ${install_target}
  then
-   if $target=default
+   if $install_target=default
     then
-     /home/engines/scripts/engine/set_default.sh
+     /home/engines/scripts/engine/set_default.sh all imported ${domain_name}
     else      
-     sudo -n  /home/engines/scripts/engine/_install_target.sh ${target} imported/${domain_name} ${domain_name}
+     sudo -n /home/engines/scripts/engine/_install_target.sh ${install_target} imported ${domain_name} ${domain_name}
    fi  
 fi
  

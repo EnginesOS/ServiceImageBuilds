@@ -4,6 +4,7 @@ certs ALL = (root) NOPASSWD: /home/engines/scripts/engine/_remove_cert.sh
 certs ALL = (root) NOPASSWD: /home/engines/scripts/engine/_fix_perms.sh
 certs ALL = (root) NOPASSWD: /home/engines/scripts/backup/_backup.sh
 certs ALL = (root) NOPASSWD: /home/engines/scripts/backup/_restore.sh
+certs ALL = (root) NOPASSWD: /home/engines/scripts/engine/set_default.sh
 #must have blank after last sudoers line
 
 

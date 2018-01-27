@@ -10,6 +10,6 @@ startup_complete
 
 wait  
 exit_code=$?
-
+/home/engines/scripts/signal/_signal.sh
 shutdown_complete
 
