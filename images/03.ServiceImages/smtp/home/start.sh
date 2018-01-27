@@ -25,7 +25,12 @@ fi
 
 
 while ! test -f /home/engines/run/flags/sig_term -o -f /home/engines/run/flags/sig_quit
- do 
+ do 		
+	 if ! test -f /var/spool/postfix/pid/master.pid
+	  then
+	   echo Exit as master pid file missing 
+	   break
+	 fi
     sleep 120 &
     echo $! >/tmp/sleep.pid
 	wait 		
