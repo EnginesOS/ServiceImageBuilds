@@ -1,6 +1,6 @@
 #!/bin/sh
 
-PID_FILE=/tmp/pids
+PID_FILES="/var/run/slapd.pid /var/run/saslauthd.pid"
 export PID_FILE
 KILL_SCRIPT=/home/engines/scripts/signal/signal.sh
 
