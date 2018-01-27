@@ -1,6 +1,10 @@
 #!/bin/sh
 o=`mktemp`
-if test $1 = true
+if test -z $1
+ then
+  then
+  type=''
+elif test $1 = true
  then
   type=''
  else
