@@ -38,8 +38,7 @@ while ! test -f /home/engines/run/flags/sig_term -o -f /home/engines/run/flags/s
 done	
 
 
-#/home/engines/scripts/signal/kill_sleep.sh
-/home/engines/scripts/signal/kill_postfix.sh
+/home/engines/scripts/signal/kill_sleep.sh
 
 shutdown_complete
 
