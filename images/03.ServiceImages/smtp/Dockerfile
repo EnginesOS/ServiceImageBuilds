@@ -28,6 +28,7 @@ RUN mkdir 	/home/postfix \
 	 	  	/etc/postfix/postfix-files.d \
 	 	  	/usr/lib/postfix/libglobal  && \
 	/usr/sbin/postfix -c /etc/postfix/ set-permissions create-missing ;\
+	mkdir -p /home/engines/scripts/configurators/saved &&\
 	chown postfix /home/postfix/ &&\
 	chown postfix /home/engines/scripts/configurators/saved /home/postfix &&\
 	chgrp postfix /home/engines/scripts/configurators/*.sh &&\
@@ -35,7 +36,7 @@ RUN mkdir 	/home/postfix \
 	
 
 ADD sudoers /etc/sudoers.d/smtp
-# chown postfix /etc/postfix/generic /etc/postfix/generic.db /etc/postfix/smarthost_passwd /etc/postfix/sender_canonical /etc/postfix/smarthost_passwd /etc/postfix/transport /etc/postfix/transport.smart /etc/postfix/transport.db 
+
 RUN	chmod -R go-rw /etc/sudoers /etc/sudoers.d/
 
 ADD src/postfix/master.cf /etc/postfix/
