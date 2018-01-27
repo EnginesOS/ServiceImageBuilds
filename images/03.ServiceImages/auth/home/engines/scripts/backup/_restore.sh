@@ -2,7 +2,6 @@
 o=`mktemp`
 if test -z $1
  then
-  then
   type=''
 elif test $1 = true
  then
