@@ -15,7 +15,6 @@ r=$?
 rm $o
 if test $r -ne 0
  then
-  cat /tmp/restore.errs 
-  exit $r
+  cat /tmp/restore.errs   
 fi  
-
+exit $r
