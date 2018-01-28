@@ -54,7 +54,7 @@ else
   echo $domain_name >> $setup_dir/${cert_name}_setup
   common_name=$domain_name
 fi
- 
+ echo "" >>$setup_dir/${common_name}_setup
 if ! test $altName
  then
   	ALTNAME=DNS:$domain_name
