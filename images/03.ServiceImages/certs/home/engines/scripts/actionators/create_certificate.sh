@@ -8,13 +8,6 @@ required_values="cert_name domain_name country state city organisation person"
 check_required_values
 
 
-if test -z $hostname
- then
-  wild=yes
-  else
-   wild=no
-fi
-
 cert_type=user
 export cert_name  domain_name country state city organisation person wild alt_names hostname cert_type
 

@@ -44,7 +44,7 @@ echo $city >>$setup_dir/${cert_name}_setup
 echo $organisation >>$setup_dir/${cert_name}_setup
 echo $person >>$setup_dir/${cert_name}_setup
 
-if test $wild = "true"
+if test $wild = true
  then
   echo \*.$domain_name >> $setup_dir/${cert_name}_setup
   hostname='*.'$domain_name
@@ -54,7 +54,7 @@ else
   echo $domain_name >> $setup_dir/${cert_name}_setup
   common_name=$domain_name
 fi
- echo "" >>$setup_dir/${common_name}_setup
+ echo "" >>$setup_dir/${cert_name}_setup
 if ! test $altName
  then
   	ALTNAME=DNS:$domain_name
@@ -69,7 +69,14 @@ echo "" >>$setup_dir/${cert_name}_setup
 if test -z $hostname
  then
 	hostname=$domain_name
+ else
+  echo $hostname | grep $domain_name >/dev/null
+  if test $? -ne 0
+   then
+    hostname=$hostname.$domain_name
+  fi  
 fi
+
 
 cat /home/engines/templates/certs/request.template | sed -e "s/COUNTRY/$country/"  \
 													-e "s/STATE/$state/" -e "s/ORGANISATION/$organisation/" \
