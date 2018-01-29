@@ -7,7 +7,7 @@ environment 'production'
 daemonize false
 pidfile '/home/engines/run/system.pid'
 state_path '/home/engines/run/system.pid'
-threads 0, 16
+threads 8, 64
 
 
  ssl_bind '0.0.0.0', '2380', {
@@ -40,7 +40,7 @@ threads 0, 16
 #
 # The default is "0".
 #
-# workers 2
+workers 2
 
 # Code to run immediately before the master starts workers.
 #
