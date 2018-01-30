@@ -53,7 +53,7 @@ if test -z $hostname
    then
     hostname=$hostname.$domain_name
   fi  
-  
+fi  
 
 if test $wild = true
  then
@@ -65,6 +65,7 @@ else
   echo $domain_name >> $setup_dir/${cert_name}_setup
   common_name=$domain_name
 fi
+
  echo "" >>$setup_dir/${cert_name}_setup
 if ! test $altName
  then
@@ -78,7 +79,7 @@ echo "" >>$setup_dir/${cert_name}_setup
 echo "" >>$setup_dir/${cert_name}_setup
 echo "" >>$setup_dir/${cert_name}_setup
 
-fi
+
 
 
 cat /home/engines/templates/certs/request.template | sed -e "s/COUNTRY/$country/"  \
