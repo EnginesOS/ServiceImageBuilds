@@ -44,7 +44,7 @@ echo -n '{"certs":['
       	cert=`basename $cert`
       	get_alt_names
       	 common_name=`cat /home/certs/store/$cert_type/certs/$store/$cert.crt \
-       | openssl x509 -noout -subject |sed "/^.*CN=/s///" | sed "/\*/s///" `
+       | openssl x509 -noout -subject |sed "/^.*CN=/s///" | sed "/\*\./s///" `
         echo -n '{"cert_name":"'$cert'","CN":"'$common_name'","alt_names":'$alt_names',"store":"'$store'", "cert_type":"'$cert_type'"}'
       done
   fi

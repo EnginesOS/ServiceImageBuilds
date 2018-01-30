@@ -39,7 +39,7 @@ else
      do
        cert_name=`basename $cert_name`
        common_name=`cat /home/certs/store/live/$consumer_type_path/$consumer/certs/$cert_name.crt \
-       | openssl x509 -noout -subject |sed "/^.*CN=/s///" | sed "/\*/s///" `
+       | openssl x509 -noout -subject |sed "/^.*CN=/s///" | sed "/\*\./s///" `
        get_alt_names
        
       if test $n -eq 1

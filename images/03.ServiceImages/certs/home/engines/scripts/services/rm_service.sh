@@ -13,7 +13,7 @@ if ! test -f /home/certs/store/public/certs/$store/${cert_name}.crt
      exit 127
 fi
 
-domain_name=`cat /home/certs/store/public/certs/$store/${cert_name}.crt  | openssl x509 -noout -subject  |sed "/^.*CN=/s///"| sed "/\*/s///"`
+domain_name=`cat /home/certs/store/public/certs/$store/${cert_name}.crt  | openssl x509 -noout -subject  |sed "/^.*CN=/s///"| sed "/\*\./s///"`
 
 sudo -n /home/engines/scripts/engine/_remove_cert.sh certs/$store/${cert_name}.crt 
    

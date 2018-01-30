@@ -30,7 +30,7 @@ for service in `ls /home/certs/store/live/services/`
  if test -f /home/certs/store/live/services/$service/certs/$service.crt
   then
     domain=`cat /home/certs/store/live/services/$service/certs/$service.crt \
-    | openssl x509 -noout -subject |sed "/^.*CN=/s///" | sed "/\*/s///" `
+    | openssl x509 -noout -subject |sed "/^.*CN=/s///" | sed "/\*\./s///" `
   
   
    if test $n = 1

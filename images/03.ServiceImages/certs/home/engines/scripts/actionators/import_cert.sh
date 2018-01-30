@@ -14,7 +14,7 @@ if ! test -z $password
   mv /home/certs/store/imported/keys/btmp.key /home/certs/store/imported/keys/tmp.key
 fi
 
-domain_name=`cat /home/certs/store/imported/certs/tmp.crt | openssl x509 -noout -subject  |sed "/^.*CN=/s///"| sed "/\*/s///"`
+domain_name=`cat /home/certs/store/imported/certs/tmp.crt | openssl x509 -noout -subject  |sed "/^.*CN=/s///"| sed "/\*\./s///"`
 
 if test -z ${domain_name}
  then
