@@ -9,17 +9,18 @@ export PID_FILE
 
 cd /home/app
 
-subject="/C=AU/ST=NSW/L=Sydney/O=install/CN=installer"
-openssl req \
-       -newkey rsa:2048 -nodes -keyout first_run.key  -sub $subject \
-       -x509 -days 365 -out first_run.crt
-       
-chmod og-r  first_run.key
-      
-       
+if ! test -f ./first_run.key
+ then
+   subject="/C=AU/ST=NSW/L=Sydney/O=install/CN=installer"
+   openssl req \
+       -x509 -newkey rsa:2048 -nodes -keyout ./first_run.key -out  ./first_run.crt -subj $subject \
+       -days 365
+  chmod og-r  first_run.key     
+fi        
+        
 /home/engines/scripts/engine/deployment.sh
 
-bundle exec thin --ssl --ssl-key-file first_run.key --ssl-cert-file first_run.crt -R ./config.ru start > /var/log/firstrun.log &
+bundle exec thin --ssl --ssl-key-file ./first_run.key --ssl-cert-file ./first_run.crt -R ./config.ru start > /var/log/firstrun.log &
 
 startup_complete
 
