@@ -58,12 +58,12 @@ fi
 if test $wild = true
  then
   echo \*.$domain_name >> $setup_dir/${cert_name}_setup
-  #hostname='*.'$domain_name
   alt_names="$alt_names ${hostname} ${domain_name}" 
-  common_name=\*.$domain_name	
+  common_name='\\*.'$domain_name	
 else
   echo $domain_name >> $setup_dir/${cert_name}_setup
-  common_name=$domain_name
+  common_name=$hostname
+  alt_names=$hostname
 fi
 
  echo "" >>$setup_dir/${cert_name}_setup
