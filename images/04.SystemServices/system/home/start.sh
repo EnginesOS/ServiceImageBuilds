@@ -1,4 +1,5 @@
 #!/bin/sh
+touch /home/engines/run/flags/state
 
 start_thin()
 {
