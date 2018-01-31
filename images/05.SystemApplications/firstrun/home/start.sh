@@ -14,10 +14,12 @@ openssl req \
        -newkey rsa:2048 -nodes -keyout first_run.key  -sub $subject \
        -x509 -days 365 -out first_run.crt
        
+chmod og-r  first_run.key
+      
        
 /home/engines/scripts/engine/deployment.sh
 
-bundle exec thin  -R ./config.ru start > /var/log/firstrun.log &
+bundle exec thin --ssl --ssl-key-file first_run.key --ssl-cert-file first_run.crt -R ./config.ru start > /var/log/firstrun.log &
 
 startup_complete
 
