@@ -27,10 +27,16 @@ InstalledRoot=/home/certs/store/live
 if test $ctype = services 
  then
  	service=`basename ${install_target}`
-   id=`grep _$service /home/engines/system/service_uids | awk '{print $3}'`
+   if test -f /home/engines/system/containers/services/$service/uid
+    then
+   	  id=`cat /home/engines/system/containers/services/$service/uid`
+   else
+   	  id=`grep _$service /home/engines/system/service_uids | awk '{print $3}'`
+   fi		
 elif test $ctype = apps
  then
-   id=22671
+ 	engine=`basename ${install_target}`
+    id=`grep `cat /home/engines/system/containers/apps/${engine}/frame_work` /home/engines/system/framework_user_uids |awk '{print $3}'`
 elif test $ctype = system_services
  then
    id=21000
