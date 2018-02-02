@@ -85,6 +85,7 @@ volumes=`echo $volumes |sort|uniq`
   do  
    touch /dest/fs/$vol/.persistent_lock
    chown  ${fw_user}.${data_gid} /dest/fs/$vol/ /dest/fs/$vol/.persistent_lock
+   chmod o-rw /dest/fs/$vol/ 
   done
 
 #	#if no presistance dirs/files need to set permission here
