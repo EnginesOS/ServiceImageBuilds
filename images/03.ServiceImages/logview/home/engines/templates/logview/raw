@@ -4,8 +4,8 @@
                         "notify"  : false,
                         "format"  : {
                                 "type"         : "Raw",
-                                "regex"        : "|^(.*)|",
-                                "export_title" : "URL",
+                                "regex"        : "|(.*)$|",
+                                "export_title" : "Line",
                                 "match"        : {
                                         "Line"    : 1
                                 },

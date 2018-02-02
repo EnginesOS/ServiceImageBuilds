@@ -3,20 +3,18 @@
     "notify": false,
     "type": "Syslog",
       "format": {
-        "regex": "|(.*?) ([0-9]{1,2}) ([0-9]{1,2}:[0-9]{1,2}:[0-9]{1,2}) (\\S*) (\\S*) (\\S*) (.*)|",
+        "regex": "|([0-9]{4,4}-[0-9]{1,2}-[0-9]{1,2}T[0-9]{1,2}:[0-9]{1,2}:[0-9]{1,2}[-+]{1,1}[0-9]{4,4}:[0-9]{4,4}) (.*?) (.*?) (.*?)$|",
         "match": {
-            "Date": 3,
-        "Host": 4,
-        "Process": 5,
-        "Facility": 6,
-            "Message": 7
+        "Date": 1,
+        "Host": 2,
+        "Process": 3,        
+         "Message": 4
         },
         "types": {
             "Date": "date:H:i:s",
             "Source": "txt",
             "Host": "txt",
-            "Process": "txt",
-            "Facility": "txt",
+            "Process": "txt",        
             "Message": "txt"
         }
     }            

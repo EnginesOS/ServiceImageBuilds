@@ -6,7 +6,7 @@ params_to_env
 required_values="log_name log_file_path container_type log_type"
 check_required_values
 
-log_type=raw_dated
+
 log_name=`echo $log_name | sed "/ /s//_/g"`
 
 if ! test -d /home/saved/$parent_engine/
