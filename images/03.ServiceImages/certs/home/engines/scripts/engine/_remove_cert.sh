@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 if test "$1" = live/service
  then
   if test $# -eq 2
