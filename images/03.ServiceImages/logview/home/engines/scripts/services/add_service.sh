@@ -23,7 +23,7 @@ if ! test -d /home/saved/$parent_engine/
  ;;
 
  syslog)
- log_file_path=/syslog/$log_file_path
+ log_file_path=/services/syslog/$log_file_path
  ;;
  
  apache_error_log)
