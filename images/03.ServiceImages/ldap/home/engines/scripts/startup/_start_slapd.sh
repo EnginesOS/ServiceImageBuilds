@@ -3,12 +3,8 @@
 . /home/engines/functions/system_functions.sh
 
 
-export KRB5_KTNAME=/etc/krb5kdc/keys/ldap.keytab
-
-saslauthd -a kerberos5 -d &> /var/log/sas.log &
+saslauthd -a kerberos5 -d &> /var/log/sasl.log &
 echo $! >/var/run/saslauthd.pid
-
-
 
   
 if ! test -f /home/engines/run/flags/init_ous_configured
