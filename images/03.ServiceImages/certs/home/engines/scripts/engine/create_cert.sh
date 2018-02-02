@@ -125,11 +125,12 @@ else
  fi
  
  cert_path=${container_type}s/${parent_engine}
+ 
 if ! test -z ${install_target}
  then
   if test  ${install_target} = default
    then
-    dest_name=default
+    dest_name=${parent_engine}
   else
     dest_name=${domain_name}
   fi
