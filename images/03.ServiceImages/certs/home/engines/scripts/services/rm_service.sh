@@ -35,6 +35,12 @@ if test -f /home/certs/store/services/wap/certs/${domain_name}.crt
   sudo -n /home/engines/scripts/engine/_remove_cert.sh service wap/certs/${domain_name}.crt
   sudo -n /home/engines/scripts/engine/_remove_cert.sh service wap/keys/${domain_name}.key
 fi
-exit 0
- 	
 
+ 	
+if ! test -f /home/certs/store/live/{$}s/$store/certs/${cert_name}.crt
+   then
+    rm  /home/certs/store/live/{$}s/$store/certs/${cert_name}.crt
+    rm  /home/certs/store/live/{$}s/$store/keys/${cert_name}.key
+fi
+
+exit 0

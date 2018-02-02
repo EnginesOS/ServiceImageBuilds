@@ -6,5 +6,5 @@ if test "$1" = live/service
      rm "/home/certs/store/${1}s/$2"
    fi
 else
-   rm "/home/certs/store/$1"
+   rm "/home/certs/store/generated/$1"
 fi
