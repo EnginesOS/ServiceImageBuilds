@@ -7,7 +7,9 @@ RUN /usr/sbin/usermod -u 22050 www-data &&\
 ENV ContUser www-data
 ENV ContGrp ruby
 
-RUN gem install oink rest-client net_http_unix yajl-ruby  
+RUN gem install oink rest-client net_http_unix yajl-ruby rkerberos
+
+
 ADD home home
 
 RUN	chgrp containers /home &&\
@@ -26,5 +28,5 @@ ENV HOME /home/app
 WORKDIR /home/app/
 USER www-data
 RUN	/home/engines/scripts/engine/deploy.sh
-CMD ["/home/start.sh"]
 
+CMD ["/home/start.sh"]
