@@ -14,7 +14,7 @@ fi
 
 if ! test -f /home/certs/store/generated/certs/$store/${domain_name}.crt 
  then
- 	 echo "Missing Cert  /home/certs/store/generated/certs/$store/${domain_name}.crt 
+ 	 echo "Missing Cert  /home/certs/store/generated/certs/$store/${domain_name}.crt"
      exit 126
 fi
 
@@ -45,17 +45,18 @@ fi
 if ! test -f /home/certs/store/live/${container_type}s/$store/certs/${cert_name}.crt
    then
     rm  /home/certs/store/live/${container_type}s/$store/certs/${domain_name}.crt
-if test $? -ne 0
- then
-  echo "Failed to Delete cert /home/certs/store/live/${container_type}s/$store/certs/${domain_name}.crt"
-  exit 124
-fi
-    rm  /home/certs/store/live/${container_type}s/$store/keys/${domain_name}.key
-if test $? -ne 0
+  if test $? -ne 0
+   then
+    echo "Failed to Delete cert /home/certs/store/live/${container_type}s/$store/certs/${domain_name}.crt"
+    exit 124
+  fi
+
+ rm  /home/certs/store/live/${container_type}s/$store/keys/${domain_name}.key
+ if test $? -ne 0
  then
   echo "Failed to Delete Key /home/certs/store/live/${container_type}s/$store/keys/${domain_name}.key"
   exit 123
-fi
+ fi
 fi
 
 exit 0
