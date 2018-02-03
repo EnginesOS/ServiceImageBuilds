@@ -9,9 +9,9 @@ if test -z cert_name
   cert_name=$domain_name
 fi
 
-required_values="cert_name container_type parent_engine domain_name country state city organisation person"
+required_values="container_type parent_engine domain_name country state city organisation person"
 check_required_values
 
-export cert_name container_type parent_engine domain_name country state city organisation person wild alt_names hostname install_target
+export container_type parent_engine domain_name country state city organisation person wild alt_names hostname install_target
 
 /home/engines/scripts/engine/create_cert.sh

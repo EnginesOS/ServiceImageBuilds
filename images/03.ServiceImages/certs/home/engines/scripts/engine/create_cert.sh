@@ -1,10 +1,7 @@
 #!/bin/bash
 StoreRoot=/home/certs/store
 
-if test -z $cert_name
- then
-  cert_name=$domain_name
-fi
+cert_name=$domain_name
 
 if test -z $cert_type 
  then
