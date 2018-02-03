@@ -3,7 +3,7 @@
 params_to_env
 
 
-required_values="cert_name cert_type fqdn"
+required_values="common_name cert_type fqdn"
 check_required_values
 
 

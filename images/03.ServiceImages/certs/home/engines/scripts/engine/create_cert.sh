@@ -1,7 +1,8 @@
 #!/bin/bash
 StoreRoot=/home/certs/store
 
-cert_name=$domain_name
+cert_name=` echo $common_name | sed "s/$.//"` 
+
 
 if test -z $cert_type 
  then
@@ -41,32 +42,22 @@ echo $city >>$setup_dir/${cert_name}_setup
 echo $organisation >>$setup_dir/${cert_name}_setup
 echo $person >>$setup_dir/${cert_name}_setup
 
-if test -z $hostname
- then
-	hostname=$domain_name
- else
-  echo $hostname | grep $domain_name >/dev/null
-  if test $? -ne 0
-   then
-    hostname=$hostname.$domain_name
-  fi  
-fi  
+
 
 if test $wild = true
  then
-  echo \*.$domain_name >> $setup_dir/${cert_name}_setup
-  alt_names="$alt_names ${hostname} ${domain_name}" 
-  common_name='\\*.'$domain_name	
+  echo \*.$common_name >> $setup_dir/${cert_name}_setup
+  alt_names="$alt_names  ${common_name}" 
+  CN='\\*.'$common_name	
 else
-  echo $domain_name >> $setup_dir/${cert_name}_setup
-  common_name=$hostname
-  alt_names=$hostname
+  CN=$common_name	
+  echo $common_name >> $setup_dir/${cert_name}_setup
 fi
 
  echo "" >>$setup_dir/${cert_name}_setup
 if ! test $altName
  then
-  	ALTNAME=DNS:$domain_name
+  	ALTNAME=DNS:$common_name
 else
   	ALTNAME=DNS:$altName
 fi
@@ -81,7 +72,7 @@ echo "" >>$setup_dir/${cert_name}_setup
 
 cat /home/engines/templates/certs/request.template | sed -e "s/COUNTRY/$country/"  \
 													-e "s/STATE/$state/" -e "s/ORGANISATION/$organisation/" \
-													-e "s/PERSON/$person/" -e "s/COMMON_NAME/$common_name/" \
+													-e "s/PERSON/$person/" -e "s/COMMON_NAME/$CN/" \
 													-e "s/HOSTNAME/$hostname/" >  $setup_dir/${cert_name}_config
 
 n=2
@@ -113,9 +104,9 @@ fi
 
 if test -f $key_dir/${cert_name}.key.tmp -a -f $cert_dir/${cert_name}.crt.tmp
  then 
-   domain_name=`cat  $cert_dir/${cert_name}.crt.tmp | openssl x509 -noout -subject  |sed "/^.*CN=/s///"| sed "/\*\./s///"`
-   mv $key_dir/${cert_name}.key.tmp $key_dir/${domain_name}.key
-   mv $cert_dir/${cert_name}.crt.tmp $cert_dir/${domain_name}.crt 
+   common_name=`cat  $cert_dir/${cert_name}.crt.tmp | openssl x509 -noout -subject  |sed "/^.*CN=/s///"| sed "/\*\./s///"`
+   mv $key_dir/${cert_name}.key.tmp $key_dir/${common_name}.key
+   mv $cert_dir/${cert_name}.crt.tmp $cert_dir/${common_name}.crt 
 else
    echo "Cert and Key files not present"
    exit 127
@@ -129,7 +120,7 @@ if ! test -z ${install_target}
    then
     dest_name=${parent_engine}
   else
-    dest_name=${domain_name}
+    dest_name=${common_name}
   fi
 else
   dest_name=${cert_name} 
@@ -137,8 +128,8 @@ fi
 
 if ! test $cert_type = user
  then
-  sudo -n /home/engines/scripts/engine/_install_target.sh ${cert_path} $cert_type ${StorePref}/${domain_name} ${dest_name}
-  echo  sudo -n /home/engines/scripts/engine/_install_target.sh ${cert_path} $cert_type ${StorePref}/${domain_name} ${dest_name}
+  sudo -n /home/engines/scripts/engine/_install_target.sh ${cert_path} $cert_type ${StorePref}/${common_name} ${dest_name}
+  echo  sudo -n /home/engines/scripts/engine/_install_target.sh ${cert_path} $cert_type ${StorePref}/${common_name} ${dest_name}
   exit $?
 fi
 exit 0
