@@ -1,7 +1,7 @@
 FROM engines/sinatra:$release
 
 RUN /usr/sbin/usermod -u 22050 www-data &&\
-	apt-get -y install libcurl4-openssl-dev libkrb5-dev memcachedb&&\
+	apt-get -y install libkrb5-dev memcachedb&&\
  	/home/post_build_clean.sh
 
 ENV ContUser www-data
