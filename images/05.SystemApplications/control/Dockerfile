@@ -7,7 +7,7 @@ RUN /usr/sbin/usermod -u 22050 www-data &&\
 ENV ContUser www-data
 ENV ContGrp ruby
 
-RUN gem install oink rest-client net_http_unix yajl-ruby 
+RUN gem install oink rest-client net_http_unix yajl-ruby libkrb5-dev 
 ADD home home
 
 RUN	chgrp containers /home &&\
