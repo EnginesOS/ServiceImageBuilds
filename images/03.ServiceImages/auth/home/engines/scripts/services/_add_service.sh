@@ -21,9 +21,14 @@ r=$?
   then
    if test ${container_type} = app
     then
-      uid=`grep ${1} /home/engines/system/framework_user_uids |awk '{print $3}' | head -1`
-      chown $uid /etc/krb5kdc/${container_type}s/$parent_engine/$parent_engine.keytab
-   fi    
+      if test -f /home/engines/system/containers/${container_type}s/$parent_engine/uid
+       then
+        uid=`cat /home/engines/system/containers/${container_type}s/$parent_engine/uid`
+     else
+       fw=`cat /home/engines/system/containers/${container_type}s/$parent_engine/frame_work`
+       uid=`grep ${fw} /home/engines/system/framework_user_uids |awk '{print $3}' | head -1`        
+   fi
+   chown $uid /etc/krb5kdc/${container_type}s/$parent_engine/$parent_engine.keytab
  fi  
 }
 
