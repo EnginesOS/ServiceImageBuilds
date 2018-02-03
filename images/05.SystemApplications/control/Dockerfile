@@ -1,13 +1,13 @@
 FROM engines/sinatra:$release
 
 RUN /usr/sbin/usermod -u 22050 www-data &&\
-	apt-get -y install libcurl4-openssl-dev memcachedb&&\
+	apt-get -y install libcurl4-openssl-dev libkrb5-dev memcachedb&&\
  	/home/post_build_clean.sh
 
 ENV ContUser www-data
 ENV ContGrp ruby
 
-RUN gem install oink rest-client net_http_unix yajl-ruby libkrb5-dev 
+RUN gem install oink rest-client net_http_unix yajl-ruby  
 ADD home home
 
 RUN	chgrp containers /home &&\
