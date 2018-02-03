@@ -28,7 +28,8 @@ startup_complete
  
 # if test `ls /home/redis/config.d/*.redis.config |wc -l` -eq 0
  # then
-  while test 0 -ne 1
+
+ while ! test -f /home/engines/run/flags/sig_term -o -f /home/engines/run/flags/sig_quit 
    do
 	sleep 5 &
 	wait
@@ -43,9 +44,10 @@ startup_complete
 		  done
 	fi
    done	
- #  else
-    
- # fi
+   for pid_file in `ls /var/run/engines/redis-server.*.pid`
+    do
+     kill -$SIGNAL `cat /var/run/engines/$pid_file`
+   done
 
 shutdown_complete
 

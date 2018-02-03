@@ -7,6 +7,9 @@ required_values="log_name log_file_path container_type log_type"
 check_required_values
 
 log_name=`echo $log_name | sed "/ /s//_/g"`
+config_file=/home/app/config.user.d/${container_type}s/$parent_engine/$log_name.json
+
+
 
 if ! test -d /home/saved/$parent_engine/
  then
@@ -22,7 +25,7 @@ if ! test -d /home/saved/$parent_engine/
  ;;
 
  syslog)
- log_file_path=/syslog/$log_file_path
+ log_file_path=/services/syslog/$log_file_path
  ;;
  
  apache_error_log)
@@ -63,7 +66,7 @@ if ! test -d /home/saved/$parent_engine/
    mkdir -p /home/app/config.user.d/${container_type}s/$parent_engine/
  fi
     
- conf=/home/app/config.user.d/${container_type}s/$parent_engine/$log_name.json
+ 
 
  
 echo  '{'\"$parent_engine_$log_name\": { \"display\" : \"$parent_engine $log_name\", \"path\"    : \"/var/log/engines/$log_file_path\",  > /tmp/.conf
@@ -73,9 +76,9 @@ echo '}' >> /tmp/.conf
 if ! test -f /var/log/engines/$log_file_path
  then
  	echo "Log /var/log/engines/$log_file_path does not exist"
- 	mv  /tmp/.conf /tmp/$parent_engine_$log_name.rejected
+ 	mv  /tmp/.conf /tmp/$parent_engine_$log_name.rejected_no_such_log
  	exit
  fi
-mv  /tmp/.conf $conf
+mv  /tmp/.conf $config_file
 #/home/engines/scripts/services/build_config.sh
  

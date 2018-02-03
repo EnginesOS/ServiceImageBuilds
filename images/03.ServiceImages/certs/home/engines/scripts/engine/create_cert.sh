@@ -44,17 +44,29 @@ echo $city >>$setup_dir/${cert_name}_setup
 echo $organisation >>$setup_dir/${cert_name}_setup
 echo $person >>$setup_dir/${cert_name}_setup
 
-if test $wild = "true"
+if test -z $hostname
+ then
+	hostname=$domain_name
+ else
+  echo $hostname | grep $domain_name >/dev/null
+  if test $? -ne 0
+   then
+    hostname=$hostname.$domain_name
+  fi  
+fi  
+
+if test $wild = true
  then
   echo \*.$domain_name >> $setup_dir/${cert_name}_setup
-  hostname='*.'$domain_name
-  alt_names="$alt_names ${parent_engine}.${domain_name} ${domain_name}" 
-  common_name='*.'$domain_name	
+  alt_names="$alt_names ${hostname} ${domain_name}" 
+  common_name='\\*.'$domain_name	
 else
   echo $domain_name >> $setup_dir/${cert_name}_setup
-  common_name=$domain_name
+  common_name=$hostname
+  alt_names=$hostname
 fi
- echo "" >>$setup_dir/${common_name}_setup
+
+ echo "" >>$setup_dir/${cert_name}_setup
 if ! test $altName
  then
   	ALTNAME=DNS:$domain_name
@@ -66,10 +78,9 @@ export ALTNAME=$ALTNAME
 echo "" >>$setup_dir/${cert_name}_setup
 echo "" >>$setup_dir/${cert_name}_setup
 echo "" >>$setup_dir/${cert_name}_setup
-if test -z $hostname
- then
-	hostname=$domain_name
-fi
+
+
+
 
 cat /home/engines/templates/certs/request.template | sed -e "s/COUNTRY/$country/"  \
 													-e "s/STATE/$state/" -e "s/ORGANISATION/$organisation/" \
@@ -105,7 +116,7 @@ fi
 
 if test -f $key_dir/${cert_name}.key.tmp -a -f $cert_dir/${cert_name}.crt.tmp
  then 
-   domain_name=`cat  $cert_dir/${cert_name}.crt.tmp | openssl x509 -noout -subject  |sed "/^.*CN=/s///"| sed "/\*/s///"`
+   domain_name=`cat  $cert_dir/${cert_name}.crt.tmp | openssl x509 -noout -subject  |sed "/^.*CN=/s///"| sed "/\*\./s///"`
    mv $key_dir/${cert_name}.key.tmp $key_dir/${domain_name}.key
    mv $cert_dir/${cert_name}.crt.tmp $cert_dir/${domain_name}.crt 
 else
@@ -114,11 +125,12 @@ else
  fi
  
  cert_path=${container_type}s/${parent_engine}
+ 
 if ! test -z ${install_target}
  then
   if test  ${install_target} = default
    then
-    dest_name=default
+    dest_name=${parent_engine}
   else
     dest_name=${domain_name}
   fi
