@@ -1,4 +1,4 @@
-FROM  engines/sinatra:$release
+FROM engines/sinatra:$release
 
 RUN /usr/sbin/usermod -u 22050 www-data &&\
 	apt-get -y install libcurl4-openssl-dev memcachedb&&\
@@ -21,10 +21,6 @@ USER www-data
 
 RUN	echo -n master >/home/app/release;\
     /home/engines/scripts/engine/deploy.sh
-
-#RUSER 0
-#RUN	chown -R www-data /home/app &&\ 	
-
 
 ENV HOME /home/app
 WORKDIR /home/app/
