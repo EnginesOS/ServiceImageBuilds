@@ -1,7 +1,7 @@
 #!/bin/bash
 
 . /home/engines/scripts/services/dns_functions.sh
-funtion post_start
+function post_start
 {
 sleep 5
 hostname=lanhost
