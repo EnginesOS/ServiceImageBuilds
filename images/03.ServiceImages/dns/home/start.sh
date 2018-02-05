@@ -1,5 +1,18 @@
 #!/bin/bash
 
+. /home/engines/scripts/services/dns_functions.sh
+funtion post_start
+{
+sleep 5
+hostname=lanhost
+ip=`cat  /home/engines/system/net/ip`
+add_to_internal_domain
+
+ip=`cat  /home/engines/system/net/public`
+hostname=publichost
+no_inarpra=1
+add_to_internal_domain
+}
 
 grep BLANK /var/lib/bind/engines/engines.dnsrecords >/dev/null
 
@@ -25,18 +38,11 @@ sudo -n /home/engines/scripts/engine/_setup.sh
 
 sudo -n /usr/sbin/named  -c /etc/bind/named.conf -f -u bind &
 
-. /home/engines/scripts/services/dns_functions.sh
-hostname=lanhost
-ip=`cat  /home/engines/system/net/ip`
-add_to_internal_domain
 
-ip=`cat  /home/engines/system/net/public`
-hostname=publichost
-no_inarpra=1
-add_to_internal_domain
 
 startup_complete
 
+post_start 
 wait  
 exit_code=$?
 
