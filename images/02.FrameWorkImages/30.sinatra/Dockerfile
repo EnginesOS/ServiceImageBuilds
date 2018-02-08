@@ -6,7 +6,7 @@ ADD src/Gems /tmp
 RUN	gem  install bundle &&\
     for gem in `cat /tmp/Gems` ;\
      do \
-      gem install $gem &&\
+      gem install $gem ;\
       done;\ 
  	usermod -G containers -a ruby &&\
  	usr/sbin/usermod -u 22671 www-data &&\
