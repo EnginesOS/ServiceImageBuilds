@@ -1,8 +1,8 @@
 #!/bin/bash
+sudo -n /home/engines/scripts/engine/_fix_perms.sh
 StoreRoot=/home/certs/store
 
 cert_name=` echo $common_name | sed "s/$.//"` 
-
 
 if test -z $cert_type 
  then
@@ -17,7 +17,7 @@ if test $cert_type = user
    StorePref=${container_type}s/${parent_engine}
 fi
  
-sudo -n /home/engines/scripts/engine/_fix_perms.sh
+
 
 key_dir=$StoreRoot/$cert_type/keys/${StorePref}
 cert_dir=$StoreRoot/$cert_type/certs/${StorePref}
@@ -116,15 +116,20 @@ else
  
 if ! test -z ${install_target}
  then
-  if test  ${install_target} = default
+  if test ${install_target} = default
    then
     dest_name=${parent_engine}
+  elif test ${install_target} = wap
+   then
+  	 dest_name=${common_name}
+  	 StorePref=services/wap
   else
-    dest_name=${common_name}
+    dest_name=${common_name}    
   fi
 else
-  dest_name=${cert_name} 
+  dest_name=${common_name} 
 fi
+
 
 if ! test $cert_type = user
  then
