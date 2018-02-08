@@ -133,8 +133,9 @@ fi
 
 if ! test $cert_type = user
  then
+ echo /home/engines/scripts/engine/_install_target.sh ${cert_path} $cert_type ${StorePref}/${common_name} ${dest_name}
   sudo -n /home/engines/scripts/engine/_install_target.sh ${cert_path} $cert_type ${StorePref}/${common_name} ${dest_name}
-  echo  sudo -n /home/engines/scripts/engine/_install_target.sh ${cert_path} $cert_type ${StorePref}/${common_name} ${dest_name}
+  
   exit $?
 fi
 exit 0
