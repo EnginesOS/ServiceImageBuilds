@@ -33,4 +33,4 @@ RUN mkdir -p /home/bind/domain_list/lan /home/bind/domain_list/gw
 ENV ContUser bind
 ENV ContGrp bind
 
-CMD ["/home/start.sh"]
+CMD ["/home/engines/scripts/system/start.sh"]

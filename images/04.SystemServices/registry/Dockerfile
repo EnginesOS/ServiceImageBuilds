@@ -32,4 +32,4 @@ RUN cd /home/registry &&\
 
 ENV ContUser registry
 
-CMD ["/home/start.sh"]
+CMD ["/home/engines/scripts/system/start.sh"]

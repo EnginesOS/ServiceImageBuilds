@@ -28,4 +28,4 @@ WORKDIR /home/app/
 USER www-data
 RUN	/home/engines/scripts/engine/deploy.sh
 
-CMD ["/home/start.sh"]
+CMD ["/home/engines/scripts/system/start.sh"]

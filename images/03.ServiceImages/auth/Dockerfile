@@ -26,4 +26,4 @@ RUN	mkdir -p  /home/auth/keys &&\
 
 USER auth
 Env	ContUser auth
-CMD ["/home/start.sh"]
+CMD ["/home/engines/scripts/system/start.sh"]

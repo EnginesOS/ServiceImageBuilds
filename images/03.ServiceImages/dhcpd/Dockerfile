@@ -19,4 +19,4 @@ RUN chown dhcpd /home/engines/scripts/configurators/saved/ &&\
 	
 USER dhcpd
 
-CMD ["/home/start.sh"]
+CMD ["/home/engines/scripts/system/start.sh"]

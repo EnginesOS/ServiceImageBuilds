@@ -15,4 +15,4 @@ ENV ContGrp volmgr
 
 USER volmgr
 
-CMD ["/home/start.sh"]
+CMD ["/home/engines/scripts/system/start.sh"]

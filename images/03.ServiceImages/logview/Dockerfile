@@ -38,4 +38,4 @@ ADD src/apache_envvars /etc/apache2/envvars
 
 USER www-data
 
-CMD ["/home/start.sh"]	
+CMD ["/home/engines/scripts/system/start.sh"]	

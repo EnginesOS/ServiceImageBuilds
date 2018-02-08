@@ -23,5 +23,5 @@ ENV ContGrp mysql
 
 USER mysql
 ENV ContUser mysql 
-CMD ["/home/start.sh"]
+CMD ["/home/engines/scripts/system/start.sh"]
 

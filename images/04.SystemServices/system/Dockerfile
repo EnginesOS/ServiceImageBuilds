@@ -51,4 +51,4 @@ ENV HOME /home/engines/
 		
 USER 21000
 
-CMD ["/home/start.sh"]
+CMD ["/home/engines/scripts/system/start.sh" ]

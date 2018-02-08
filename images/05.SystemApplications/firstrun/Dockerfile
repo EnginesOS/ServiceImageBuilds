@@ -33,5 +33,5 @@ ADD src/config.ru /home/app
 
 ENV HOME /home/app
 
-CMD ["/home/start.sh"]
+CMD ["/home/engines/scripts/system/start.sh"]
 

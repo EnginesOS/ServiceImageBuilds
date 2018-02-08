@@ -20,4 +20,4 @@ ENV ContGrp dyndns
 
 USER dyndns
 
-CMD ["/home/start.sh"]
+CMD ["/home/engines/scripts/system/start.sh"]
