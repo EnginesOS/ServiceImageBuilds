@@ -1,6 +1,5 @@
 #!/bin/bash
-echo _install_target.sh $*
-
+echo _install_target.sh $*  >>/tmp/install_called
 install_target=$1
 cert_type=$2
 cert_name=$3
