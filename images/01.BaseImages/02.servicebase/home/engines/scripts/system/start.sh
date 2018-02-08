@@ -5,4 +5,4 @@ if ! test -f /home/engines/run/flags/ca-update
    sudo -n /home/engines/scripts/system/_update_ca.sh		
 fi
 
-exec /home/start.sh
+exec /home/engines/scripts/startup/start.sh
