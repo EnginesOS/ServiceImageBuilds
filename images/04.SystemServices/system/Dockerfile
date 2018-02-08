@@ -12,6 +12,8 @@ RUN /usr/sbin/addgroup --gid 21999 edocker &&\
 						build-essential \
 						libssl-dev \
 						libreadline-dev \
+						autoconf \
+						libltdl-dev \
 						zlib1g-dev &&\
 	adduser -q --uid 21000 --gid 21999 --home /home/engines --disabled-password engines &&\
 	mkdir -p /opt/engines/run/system/ &&\	
