@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 echo populating /etc/ldap/slapd.d
 cp -r /home/slapd.d /etc/ldap/
