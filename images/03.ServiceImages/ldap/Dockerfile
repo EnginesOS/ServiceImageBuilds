@@ -28,7 +28,9 @@ RUN	/home/post_build_clean.sh &&\
 ADD  sudoers /etc/sudoers.d/ldap
 ADD  src/ldap.conf /etc/ldap/
 ADD  src/slapd.d /home/slapd.d
-COPY src/sasl2_slapd.conf /usr/lib/sasl2/slapd.conf
+
+#This is not the final filename but sasl must be disabled until ldap schema is ready
+COPY src/sasl2_slapd.conf /usr/lib/sasl2/
 
 
 RUN  chmod -R go-rw /etc/sudoers /etc/sudoers.d/ 
