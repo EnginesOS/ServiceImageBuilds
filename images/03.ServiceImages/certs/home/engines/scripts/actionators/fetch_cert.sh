@@ -4,7 +4,7 @@ params_to_env
 
 required_values="common_name cert_type"
 check_required_values
-if test test $cert_type = generated
+if test $cert_type = generated
 then
   store=${owner_type}s/$owner/
 elif test $cert_type = user
