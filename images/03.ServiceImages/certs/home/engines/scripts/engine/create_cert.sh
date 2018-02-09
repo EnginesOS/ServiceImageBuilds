@@ -112,11 +112,11 @@ else
    exit 127
  fi
  
- if ! test -z $container_type
+ if ! test -z $parent_engine
  then
  	cert_path=${container_type}s/${parent_engine}
  else
-     cert_type = user
+     cert_path = user     
  fi	
  
 if ! test -z ${install_target}
@@ -136,7 +136,7 @@ else
 fi
 
 
-if ! test $cert_type = user
+if ! test cert_path = user
  then
  echo /home/engines/scripts/engine/_install_target.sh ${cert_path} $cert_type ${StorePref}/${common_name} ${dest_name}
  echo /home/engines/scripts/engine/_install_target.sh ${cert_path} $cert_type ${StorePref}/${common_name} ${dest_name} >>/tmp/callinstall
