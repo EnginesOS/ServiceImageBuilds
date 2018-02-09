@@ -6,9 +6,9 @@ export PID_FILE
 
 
 startup_complete
-sudo /usr/bin/freeradius  &
+sudo /usr/sbin/freeradius  -fX &
 wait
 exit_code=$?
-sleep 500
+
 shutdown_complete
 
