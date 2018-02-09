@@ -6,7 +6,7 @@ export PID_FILE
 
 
 startup_complete
-sudo /usr/bin/freeradius  -fX &
+/usr/bin/freeradius  -fX &
 wait
 exit_code=$?
 
