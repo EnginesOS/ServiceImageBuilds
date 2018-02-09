@@ -11,3 +11,4 @@ wait
 exit_code=$?
 
 shutdown_complete
+ sleep 400
