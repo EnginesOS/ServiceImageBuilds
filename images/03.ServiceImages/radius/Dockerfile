@@ -5,8 +5,7 @@ RUN /home/no_init.sh &&\
 	usermod -G containers -a freerad &&\
 	usermod -G containers -a freerad &&\
 	apt-get -y install freeradius freeradius-ldap&&\
- 	/home/post_build_clean.sh &&\
- 	chgrp radius -R /etc/freeradius/ &&\
+ 	/home/post_build_clean.sh
  	
 
 COPY home home
