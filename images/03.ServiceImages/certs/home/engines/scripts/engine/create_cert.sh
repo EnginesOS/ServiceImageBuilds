@@ -17,7 +17,10 @@ if test $cert_type = user
    StorePref=${container_type}s/${parent_engine}
 fi
  
-
+if test -z $hostname
+ then
+  hostname=$common_name
+fi
 
 key_dir=$StoreRoot/$cert_type/keys/${StorePref}
 cert_dir=$StoreRoot/$cert_type/certs/${StorePref}
@@ -41,8 +44,6 @@ echo $state >>$setup_dir/${cert_name}_setup
 echo $city >>$setup_dir/${cert_name}_setup
 echo $organisation >>$setup_dir/${cert_name}_setup
 echo $person >>$setup_dir/${cert_name}_setup
-
-
 
 if test $wild = true
  then
@@ -112,36 +113,32 @@ else
    exit 127
  fi
  
- if ! test -z $parent_engine
+ if !test -z $parent_engine
  then
- 	cert_path=${container_type}s/${parent_engine}
+ 	cert_path=user     
  else
-     cert_path = user     
- fi	
- 
-if ! test -z ${install_target}
- then
-  if test ${install_target} = default
-   then
-    dest_name=${parent_engine}
-  elif test ${install_target} = wap
-   then
-  	 dest_name=${common_name}
-  	 StorePref=services/wap
-  else
-    dest_name=${common_name}    
-  fi
-else
-  dest_name=${common_name} 
-fi
-
-
-if ! test cert_path = user
- then
+  cert_path=${container_type}s/${parent_engine}
+   if ! test -z ${install_target}
+    then
+     if test ${install_target} = default
+      then
+       dest_name=${parent_engine}
+     elif test ${install_target} = wap
+      then
+     	 dest_name=${common_name}
+     	 StorePref=services/wap
+     else
+       dest_name=${common_name}    
+     fi
+   else
+     dest_name=${common_name} 
+   fi
  echo /home/engines/scripts/engine/_install_target.sh ${cert_path} $cert_type ${StorePref}/${common_name} ${dest_name}
  echo /home/engines/scripts/engine/_install_target.sh ${cert_path} $cert_type ${StorePref}/${common_name} ${dest_name} >>/tmp/callinstall
  sudo -n /home/engines/scripts/engine/_install_target.sh ${cert_path} $cert_type ${StorePref}/${common_name} ${dest_name}
   
   exit $?
 fi
+
+
 exit 0
