@@ -113,7 +113,7 @@ else
    exit 127
  fi
  
- if !test -z $parent_engine
+ if ! test -z $parent_engine
  then
  	cert_path=user     
  else
