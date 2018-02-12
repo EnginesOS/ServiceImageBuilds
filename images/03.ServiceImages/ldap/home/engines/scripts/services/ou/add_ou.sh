@@ -10,10 +10,10 @@ if test $c -eq 0
    do
      eval echo $LINE >> $LDIF_FILE
    done
-fi
 cat $LDIF_FILE | /home/engines/scripts/ldap/ldapadd.sh 
+fi
    
-cat /home/engines/templates/ldap/services/add_$type.ldif | while read LINE
+cat /home/engines/templates/ldap/services/add_ou.ldif | while read LINE
 do
  eval echo $LINE >> $LDIF_FILE
 done
