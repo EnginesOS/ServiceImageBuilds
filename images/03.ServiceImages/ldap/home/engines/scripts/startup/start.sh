@@ -16,4 +16,10 @@ startup_complete
 wait
 exit_code=$?
 
+while test -f /home/engnes/run/flags/backup
+ do
+  sleep 10
+ done
+ 
+
 shutdown_complete

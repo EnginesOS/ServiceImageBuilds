@@ -1,9 +1,15 @@
 #!/bin/bash
-sudo -n /home/engines/scripts/backup/_restore.sh >& /tmp/restore.errs
+
+touch /home/engnes/run/flags/backup
+exit_code=0
+
+cat -  | sudo -n /home/engines/scripts/backup/_restore.sh >& /tmp/restore.errs
+
 if test $? -ne 0
  then 
    cat  /tmp/restore.errs  >&2
-   exit -1
+   exit_code=0
 fi
- 
- exit 0
+
+rm  /home/engnes/run/flags/backup
+exit $exit_code

@@ -1,2 +1,3 @@
 #!/bin/bash
-slapcat -n 1 
+kill -TERM /var/run/slapd.pid /var/run/saslauthd.pid
+slapcat 
