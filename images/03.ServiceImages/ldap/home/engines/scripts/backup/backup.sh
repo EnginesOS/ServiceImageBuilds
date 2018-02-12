@@ -10,5 +10,5 @@ if test $? -ne 0
    exit_code=1
 fi
 
-#rm /home/engines/run/flags/backup
+rm /home/engines/run/flags/backup
 exit $exit_code
