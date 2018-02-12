@@ -10,6 +10,7 @@ if test $? -ne 0
    cat  /tmp/restore.errs  >&2
    exit_code=0
 fi
-
+#KLUDGE FIX ME this is to give time to read buffers
+sleep 10
 rm  /home/engines/run/flags/backup
 exit $exit_code
