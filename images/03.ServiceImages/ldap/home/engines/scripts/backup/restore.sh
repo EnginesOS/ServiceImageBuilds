@@ -1,6 +1,6 @@
 #!/bin/bash
 
-touch /home/engnes/run/flags/backup
+touch /home/engines/run/flags/backup
 exit_code=0
 
 cat -  | sudo -n /home/engines/scripts/backup/_restore.sh >& /tmp/restore.errs
@@ -11,5 +11,5 @@ if test $? -ne 0
    exit_code=0
 fi
 
-rm  /home/engnes/run/flags/backup
+rm  /home/engines/run/flags/backup
 exit $exit_code

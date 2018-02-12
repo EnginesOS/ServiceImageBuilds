@@ -16,9 +16,10 @@ startup_complete
 wait
 exit_code=$?
 
-while test -f /home/engnes/run/flags/backup
+while test -f /home/engines/run/flags/backup
  do
   sleep 10
+  exit_code=1
  done
  
 

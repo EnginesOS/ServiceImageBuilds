@@ -1,3 +1,3 @@
 #!/bin/bash
-kill -TERM /var/run/slapd.pid /var/run/saslauthd.pid
+kill -TERM ` cat /var/run/slapd.pid /var/run/saslauthd.pid`
 slapcat 
