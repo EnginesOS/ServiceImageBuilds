@@ -19,7 +19,7 @@ exit_code=$?
 while test -f /home/engines/run/flags/backup
  do
   sleep 10
-  exit_code=1
+  exit_code=255
  done
  
 
