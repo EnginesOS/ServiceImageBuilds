@@ -1,7 +1,7 @@
 #!/bin/bash
 sudo -n /home/engines/scripts/engine/_fix_perms.sh
 StoreRoot=/home/certs/store
-
+isUserCert=0
 cert_name=` echo $common_name | sed "s/$.//"` 
 
 if test -z $cert_type 
@@ -13,6 +13,7 @@ if test $cert_type = user
  then
     cert_type=generated
 	StorePref=user
+	isUserCert=1
   else
    StorePref=${container_type}s/${parent_engine}
 fi
@@ -113,7 +114,7 @@ else
    exit 127
  fi
  
- if ! test -z $parent_engine
+ if ! test $isUserCert -eq 1
  then
  	cert_path=user     
  else
@@ -133,6 +134,7 @@ else
    else
      dest_name=${common_name} 
    fi
+   
  echo /home/engines/scripts/engine/_install_target.sh ${cert_path} $cert_type ${StorePref}/${common_name} ${dest_name}
  echo /home/engines/scripts/engine/_install_target.sh ${cert_path} $cert_type ${StorePref}/${common_name} ${dest_name} >>/tmp/callinstall
  sudo -n /home/engines/scripts/engine/_install_target.sh ${cert_path} $cert_type ${StorePref}/${common_name} ${dest_name}
