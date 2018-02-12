@@ -2,8 +2,10 @@
 
 #if ! engine group ou exist
 #create engine group ou
+. /home/engines/functions/ldap/support_functions.sh
+
 c=`/home/engines/scripts/ldap/ldapsearch.sh ou=${top_ou},ou=Groups,dc=engines,dc=internal ou=$parent_engine  |wc -l`
- . /home/engines/functions/ldap/support_functions.sh
+ 
 if test $c -eq 0
  then
   cat /home/engines/templates/ldap/services/add_group_ou.ldif | while read LINE
@@ -17,7 +19,7 @@ result=$?
 if test $result -ne 0
  then
   process_ldap_result
-  exit 127
+  exit 1
  fi
 fi
 

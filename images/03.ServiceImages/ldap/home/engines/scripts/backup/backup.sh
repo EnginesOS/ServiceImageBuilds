@@ -1,8 +1,9 @@
 #!/bin/bash
 exit_code=0
+
 touch /home/engines/run/flags/backup
 
-sudo -n /home/engines/scripts/backup/_backup.sh &2> /tmp/backup.errs
+sudo -n /home/engines/scripts/backup/_backup.sh $* &2> /tmp/backup.errs
 
 if test $? -ne 0
  then 
@@ -11,4 +12,5 @@ if test $? -ne 0
 fi
 
 rm /home/engines/run/flags/backup
+
 exit $exit_code

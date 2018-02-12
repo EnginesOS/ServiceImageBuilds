@@ -1,0 +1,4 @@
+dn: ou=$cn,ou=$parent_engine,ou=${top_ou},ou=Groups,dc=engines,dc=internal
+ou: $cn
+objectclass: OrganizationalUnit
+objectclass: top

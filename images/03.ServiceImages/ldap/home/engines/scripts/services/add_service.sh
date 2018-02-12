@@ -19,7 +19,7 @@ check_required_values
  	top_ou=services
  else
    echo '{"Result":"Failed","Error Mesg":"Invalid container type"}'
-   exit 127	
+   exit 1
   fi
   
 export top_ou parent_engine container_type cn
@@ -32,7 +32,7 @@ elif test $type = ou
  /home/engines/scripts/services/ou/add_ou.sh
 else
     echo '{"Result":"Failed","Error Mesg":"Invalid type"}'
-   exit 127	
+   exit 1
   fi 
   
 
