@@ -7,6 +7,8 @@ cn: schema
 # Set defaults for the backend
 dn: olcBackend=mdb,cn=config
 objectClass: olcBackendConfig
+olcRootDN: cn=config,dc=engines,dc=internal
+olcRootPW: password
 olcBackend: mdb
 
 
