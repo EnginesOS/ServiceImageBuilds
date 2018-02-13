@@ -1,7 +1,24 @@
-dn: dc=engines,dc=internal
 objectClass: dcObject
 objectclass: organization
 o: engines.internal
 dc: engines
-description: LDAP Root
+olcDatabase: mdb
+olcDbCheckpoint: 512 30
+olcDbMaxSize: 1073741824
+olcLastMod: TRUE
+olcSuffix: dc=engines,dc=internal
+olcDbDirectory: /var/lib/ldap
+olcRootDN: dc=engines,dc=internal
+olcRootPW: password
+olcDbIndex: objectClass eq
+olcDbIndex: uid pres,eq
+olcDbIndex: uidNumber,gidNumber eq
+olcDbIndex: member,memberUid eq
+olcDbIndex: cn,sn,mail pres,eq,approx,sub
+#dn: dc=engines,dc=internal
+#objectClass: dcObject
+#objectclass: organization
+#o: engines.internal
+#dc: engines
+#description: LDAP Root
 
