@@ -15,10 +15,12 @@ olcDbIndex: uid pres,eq
 olcDbIndex: uidNumber,gidNumber eq
 olcDbIndex: member,memberUid eq
 olcDbIndex: cn,sn,mail pres,eq,approx,sub
-#dn: dc=engines,dc=internal
-#objectClass: dcObject
-#objectclass: organization
-#o: engines.internal
-#dc: engines
-#description: LDAP Root
+
+dn: dc=engines,dc=internal
+objectClass: top
+objectClass: dcObject
+objectclass: organization
+o: engines.internal
+dc: engines
+description: LDAP Root
 

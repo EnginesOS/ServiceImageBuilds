@@ -19,7 +19,6 @@ olcDbCheckpoint: 512 30
 olcDbMaxSize: 1073741824
 olcLastMod: TRUE
 olcSuffix: cn=config
-BaseDN cn=config
 olcDbDirectory: /var/lib/ldap
 olcRootDN: cn=admin,cn=config
 olcRootPW: password
