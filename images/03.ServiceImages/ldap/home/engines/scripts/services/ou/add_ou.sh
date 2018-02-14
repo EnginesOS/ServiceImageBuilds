@@ -12,7 +12,7 @@ if test $c -eq 0
    done
 cat $LDIF_FILE | /home/engines/scripts/ldap/ldapadd.sh 
 
- /home/engines/scripts/serivces/access/add_access.sh ou=${top_ou},ou=Containers,ou=Engines,dc=engines,dc=internal
+ /home/engines/scripts/services/access/add_access.sh ou=${top_ou},ou=Containers,ou=Engines,dc=engines,dc=internal
 fi
 
 rm  $LDIF_FILE
