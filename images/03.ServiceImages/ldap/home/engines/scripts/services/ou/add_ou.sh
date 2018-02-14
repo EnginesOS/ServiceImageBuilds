@@ -12,9 +12,13 @@ if test $c -eq 0
    done
 cat $LDIF_FILE | /home/engines/scripts/ldap/ldapadd.sh 
 fi
+
+rm  $LDIF_FILE
    
 cat /home/engines/templates/ldap/services/add_ou.ldif | while read LINE
 do
  eval echo $LINE >> $LDIF_FILE
 done
-cat $LDIF_FILE | /home/engines/scripts/ldap/ldapadd.sh 
+cat $LDIF_FILE | /home/engines/scripts/ldap/ldapadd.sh
+
+rm  $LDIF_FILE

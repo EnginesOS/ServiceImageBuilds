@@ -1,4 +1,4 @@
-dn: ou=${top_ou},ou=Containers,ou=Engines,dc=engines,dc=internal
+dn: ou=$parent_engine,ou=${top_ou},ou=Containers,ou=Engines,dc=engines,dc=internal
 ou: $parent_engine
 objectClass: organizationalUnit
 objectclass: top
