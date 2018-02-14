@@ -3,7 +3,7 @@ n=0
 sleep 5
 while test $n -ne 5
  do
-   if ! test -f /var/run/slapd.pid
+   if ! test -f /var/run/slapd/slapd.pid
     then 
      sleep 5
    else
@@ -76,7 +76,7 @@ if test $exit_code -ne 0
 fi  
 kdestroy
 
- if test exit_code -eq 0
+ if test $exit_code -eq 0
     then
      touch /home/engines/run/flags/init_ous_configured
    fi

@@ -9,7 +9,7 @@ KILL_SCRIPT=/home/engines/scripts/signal/signal.sh
 service_first_run_check
 
 
-sudo -n /home/engines/scripts/startup/_start_slapd.sh &
+sudo -n /home/engines/scripts/startup/_start.sh &
 
 startup_complete
 
@@ -22,5 +22,6 @@ while test -f /home/engines/run/flags/backup
   exit_code=255
  done
  
+ /home/engines/scripts/signal/signal.sh
 
 shutdown_complete
