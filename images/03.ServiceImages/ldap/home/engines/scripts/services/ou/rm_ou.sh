@@ -19,6 +19,6 @@ if ! test $delou
     then
      dn="ou=$parent_engine,ou=$top_ou,ou=Containers,ou=Engines,dc=engines,dc=internal"
       /home/engines/scripts/ldap/ldapdelete.sh "$dn"
-      /home/engines/scripts/serivces/access/rm_access.sh ou=${top_ou},ou=Containers,ou=Engines,dc=engines,dc=internal
+      /home/engines/scripts/services/access/rm_access.sh ou=${top_ou},ou=Containers,ou=Engines,dc=engines,dc=internal
    fi
 fi   
