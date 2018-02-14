@@ -25,6 +25,6 @@ fi
      eval echo $LINE >> $LDIF_FILE
    done
 
-#possbile options -n -v
+
  cat $LDIF_FILE |sudo /home/engines/scripts/ldap/sudo/_ldapmodify.sh  &> $LDAP_OUTF
  

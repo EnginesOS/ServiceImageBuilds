@@ -41,6 +41,7 @@ RUN	echo '#!/bin/sh' >/usr/sbin/policy-rc.d &&\
 	 								 dnsutils \
 	 								 wget \
 	 								 bzip2 \
+	 								 libsasl2-modules-gssapi-mit \
 	 								 zlibc &&\ 
 	apt-get -y clean &&\
 	mkdir -p /var/run &&\
