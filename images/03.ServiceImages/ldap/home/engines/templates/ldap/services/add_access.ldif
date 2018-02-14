@@ -1,0 +1,4 @@
+dn: olcDatabase=mdb,cn=config
+changetype: modify
+delete: olcAccess
+olcAccess: to dn.subtree="$dn" write by $id read by $private

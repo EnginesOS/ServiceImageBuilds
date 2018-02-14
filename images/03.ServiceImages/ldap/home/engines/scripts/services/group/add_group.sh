@@ -13,7 +13,9 @@ if test $c -eq 0
      eval echo $LINE >> $LDIF_FILE
    done
 
- cat $LDIF_FILE |sudo /home/engines/scripts/ldap/sudo/_ldapadd.sh $* &> $LDAP_OUTF 
+ cat $LDIF_FILE |sudo /home/engines/scripts/ldap/sudo/_ldapadd.sh $* &> $LDAP_OUTF
+ 
+ /home/engines/scripts/serivces/access/add_access.sh ou=${top_ou},ou=Groups,dc=engines,dc=internal
 
 result=$?
 if test $result -ne 0
