@@ -5,13 +5,13 @@ objectClass: olcSchemaConfig
 cn: schema
 
 # Set defaults for the backend
-dn: olcBackend={1}mdb,cn=config
+dn: olcBackend=mdb,cn=config
 objectClass: olcBackendConfig
 olcBackend: mdb
 
 
 # The database definition.
-dn: olcDatabase=mdb{1},cn=config
+dn: olcDatabase=mdb,cn=config
 objectClass: olcDatabaseConfig
 objectClass: olcMdbConfig
 olcDatabase: mdb
