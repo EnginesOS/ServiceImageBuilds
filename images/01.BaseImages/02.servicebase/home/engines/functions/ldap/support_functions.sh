@@ -21,5 +21,8 @@ function process_ldap_result {
      ldap_err_to_json_compat
      echo '{"Result":"FAILED","ReturnCode":"'$result'","Error":"'$string_for_json'"}'
  fi
-
+if test $result -ne 0
+ then
+   $result=1
+fi   
 }
