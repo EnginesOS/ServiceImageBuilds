@@ -29,6 +29,7 @@ RUN	echo '#!/bin/sh' >/usr/sbin/policy-rc.d &&\
 			           			     ca-certificates \
 		 						     krb5-user \
 	 								 krb5-config \
+	 								 libsasl2-modules-gssapi-mit \
 	 								 expect-lite \
 	 								 rsyslog \
 	 								 git \
@@ -41,7 +42,6 @@ RUN	echo '#!/bin/sh' >/usr/sbin/policy-rc.d &&\
 	 								 dnsutils \
 	 								 wget \
 	 								 bzip2 \
-	 								 libsasl2-modules-gssapi-mit \
 	 								 zlibc &&\ 
 	apt-get -y clean &&\
 	mkdir -p /var/run &&\
