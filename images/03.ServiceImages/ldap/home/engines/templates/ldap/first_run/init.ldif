@@ -67,12 +67,9 @@ olcAccess: {4} to dn.subtree="ou=domains,ou=email,ou=Services,ou=Containers,ou=E
         by dn="cn=email,ou=hosts,ou=Engines,dc=engines,dc=internal" write
         by dn="cn=admin,ou=People,ou=Engines,dc=engines,dc=internal" write
         by * read
-olcAccess: {5} to dn.subtree="ou=containers,dc=engines,dc=internal"
+olcAccess: {5} to dn.subtree="ou=containers,ou=Engines,dc=engines,dc=internal"
         by dn="cn=system,ou=hosts,ou=Engines,dc=engines,dc=internal" write
         by * read
-#olcAccess: {7} to dn.subtree="cn=config"
-#        by dn="cn=admin,dc=engines,dc=internal" manage
-#        by dn="gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth" write
 olcAccess: {9} to *
         by dn="cn=admin,dc=engines,dc=internal" manage
         by dn="cn=ldap,ou=hosts,ou=Engines,dc=engines,dc=internal" manage
