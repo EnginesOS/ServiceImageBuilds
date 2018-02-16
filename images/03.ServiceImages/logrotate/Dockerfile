@@ -17,4 +17,4 @@ RUN mkdir -p /home/engines/scripts/configurators/saved /home/logrotate.d /home/s
 
 USER logrotate
 
-CMD ["/home/engines/scripts/system/start.sh"]
+CMD ["/home/engines/scripts/startup/start.sh"]

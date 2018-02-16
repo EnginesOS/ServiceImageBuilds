@@ -21,4 +21,4 @@ RUN	chmod -R go-rw /etc/sudoers /etc/sudoers.d/
 
 USER syslog
 
-CMD ["/home/engines/scripts/system/start.sh"]
+CMD ["/home/engines/scripts/startup/start.sh"]

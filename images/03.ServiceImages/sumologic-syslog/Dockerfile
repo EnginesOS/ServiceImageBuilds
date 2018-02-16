@@ -7,4 +7,4 @@ COPY src/sumo-sources.json /home/
 
 USER syslog
 
-CMD ["/home/engines/scripts/system/start.sh"]
+CMD ["/home/engines/scripts/startup/start.sh"]

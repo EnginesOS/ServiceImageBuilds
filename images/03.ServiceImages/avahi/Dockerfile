@@ -26,4 +26,4 @@ USER avahi
 ENV ContUser avahi
 ENV ContGrp avahi
 
-CMD ["/home/engines/scripts/system/start.sh"]
+CMD ["/home/engines/scripts/startup/start.sh"]

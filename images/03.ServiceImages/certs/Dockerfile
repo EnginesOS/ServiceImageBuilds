@@ -21,4 +21,4 @@ ENV ContUser certs
 
 USER certs
 
-CMD ["/home/engines/scripts/system/start.sh"]
+CMD ["/home/engines/scripts/startup/start.sh"]
