@@ -23,6 +23,6 @@ function process_ldap_result {
  fi
 if test $result -ne 0
  then
-   $result=1
+   result=1
 fi   
 }
