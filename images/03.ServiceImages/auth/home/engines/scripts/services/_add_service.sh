@@ -21,15 +21,20 @@ r=$?
   then
    if test ${container_type} = app
     then
-      if test -f /home/engines/system/containers/${container_type}s/$parent_engine/uid
+     if test -f /home/engines/system/containers/${container_type}s/$parent_engine/uid
        then
         uid=`cat /home/engines/system/containers/${container_type}s/$parent_engine/uid`
      else
        fw=`cat /home/engines/system/containers/${container_type}s/$parent_engine/frame_work`
        uid=`grep ${fw} /home/engines/system/framework_user_uids |awk '{print $3}' | head -1`        
-   fi
-   chown $uid /etc/krb5kdc/${container_type}s/$parent_engine/$parent_engine.keytab
- fi  
+     fi
+   else
+    uid=`cat /home/engines/system/containers/${container_type}s/$parent_engine/uid`
+   fi    
+else
+  uid=$owner
+fi
+chown $uid /etc/krb5kdc/${container_type}s/$parent_engine/$parent_engine.keytab  
 }
 
 gen_service_key
