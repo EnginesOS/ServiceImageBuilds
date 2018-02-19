@@ -1,0 +1,5 @@
+Defaults  env_keep += "KRB5_KTNAME SIGNAL CONTAINER_NAME PID_FILE PID_FILES exit_code"
+radius  ALL=(root) NOPASSWD: /usr/bin/freeradius
+#must have blank after last sudoers line
+
+

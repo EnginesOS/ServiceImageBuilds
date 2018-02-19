@@ -1,7 +1,7 @@
 dn: dc=engines,dc=internal
+objectClass: top
 objectClass: dcObject
 objectclass: organization
 o: engines.internal
 dc: engines
 description: LDAP Root
-

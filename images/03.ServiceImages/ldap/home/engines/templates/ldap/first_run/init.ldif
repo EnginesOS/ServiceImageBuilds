@@ -18,6 +18,7 @@ olcDatabase: mdb
 olcDbCheckpoint: 512 30
 olcDbMaxSize: 1073741824
 olcLastMod: TRUE
+olcReadOnly: FALSE
 olcSuffix: dc=engines,dc=internal
 olcDbDirectory: /var/lib/ldap
 olcRootDN: cn=admin,dc=engines,dc=internal
@@ -28,9 +29,9 @@ olcDbIndex: uidNumber,gidNumber eq
 olcDbIndex: member,memberUid eq
 olcDbIndex: cn,sn,mail pres,eq,approx,sub
 olcAccess: {0} to attrs=userPassword
-  by self write
-  by anonymous auth
-  by * none
+   by self write
+   by anonymous auth
+   by * none
 olcAccess: {0} to attrs=shadowLastChange
   by self write
   by * read
@@ -67,16 +68,16 @@ olcAccess: {4} to dn.subtree="ou=domains,ou=email,ou=Services,ou=Containers,ou=E
         by dn="cn=email,ou=hosts,ou=Engines,dc=engines,dc=internal" write
         by dn="cn=admin,ou=People,ou=Engines,dc=engines,dc=internal" write
         by * read
-olcAccess: {5} to dn.subtree="ou=containers,dc=engines,dc=internal"
+olcAccess: {5} to dn.subtree="ou=containers,ou=Engines,dc=engines,dc=internal"
         by dn="cn=system,ou=hosts,ou=Engines,dc=engines,dc=internal" write
         by * read
-olcAccess: {9} to *
-        by dn="cn=admin,dc=engines,dc=internal" write
-        by dn="cn=ldap,ou=hosts,ou=Engines,dc=engines,dc=internal" write
-        by dn="gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth" write
-        by dn="gidNumber=0,uidNumber=0,cn=peercred,cn=external,cn=auth" write
+olcAccess: {8} to dn.subtree="olcDatabase={1}mdb,cn=config"
+        by dn.exact="cn=admin,dc=engines,dc=internal" manage
+        by dn.exact="cn=ldap,ou=hosts,ou=Engines,dc=engines,dc=internal" manage
+        by dn.exact="gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth" manage
         by * read
-#olcAccess: {7} to dn.subtree="cn=config"
-#        by dn="cn=admin,dc=engines,dc=internal" write
-#        by dn="gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth" write
-#        by dn="gidNumber=0,uidNumber=0,cn=peercred,cn=external,cn=auth" write
+olcAccess: {9} to *
+        by dn.exact="cn=admin,dc=engines,dc=internal" manage
+        by dn.exact="cn=ldap,ou=hosts,ou=Engines,dc=engines,dc=internal" manage
+        by dn.exact="gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth" manage
+        by * read

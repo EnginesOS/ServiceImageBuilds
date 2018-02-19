@@ -1,5 +1,5 @@
 #!/bin/sh
-touch /home/engines/run/flags/state
+echo "started" > /home/engines/run/flags/state
 
 start_thin()
 {

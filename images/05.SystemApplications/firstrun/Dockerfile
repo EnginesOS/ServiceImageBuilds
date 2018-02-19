@@ -23,15 +23,14 @@ WORKDIR /home/app/
 RUN	git init
 
 ENV RELEASE $release
-
 ADD src/gitconfig.tmpl /home/app/.git/config.tmpl
 
-RUN cat /home/app/.git/config.tmpl  | sed "/\$release/s//$release/" > /home/app/.git/config &&\
+RUN cat /home/app/.git/config.tmpl | sed "/\$release/s//$release/" > /home/app/.git/config &&\
 	/home/engines/scripts/engine/deployment.sh
 
 ADD src/config.ru /home/app
 
 ENV HOME /home/app
 
-CMD ["/home/start.sh"]
+CMD ["/home/engines/scripts/startup/start.sh"]
 

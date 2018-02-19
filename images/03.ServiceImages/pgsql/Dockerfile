@@ -26,4 +26,4 @@ ENV ContGrp  postgres
 
 USER postgres
 
-CMD [ "/home/start.sh" ]
+CMD ["/home/engines/scripts/startup/start.sh" ]

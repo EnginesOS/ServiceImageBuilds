@@ -1,5 +1,6 @@
 #!/bin/sh
-touch /home/engines/run/flags/state
+
+echo "started" > /home/engines/run/flags/state
 export RUBY_GC_MALLOC_LIMIT_GROWTH_FACTOR=1.1
 
 

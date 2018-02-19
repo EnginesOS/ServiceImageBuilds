@@ -5,13 +5,13 @@ logging {
 #   print-time yes;
 #   };
 
-#channel queries_channel {
-#   file "/var/log/named/queries.log" versions 3 size 5m;
-#   severity dynamic;
-#   print-category yes;
-#   print-severity yes;
-#   print-time yes;
-#   };
+channel queries_channel {
+   file "/var/log/named/queries.log" versions 3 size 5m;
+   severity dynamic;
+   print-category yes;
+   print-severity yes;
+   print-time yes;
+   };
 
 channel security_channel {
    file "/var/log/named/security.log" versions 3 size 5m;
@@ -45,7 +45,7 @@ channel xfers_channel {
    print-time yes;
    };
 
-#category queries { queries_channel; };
+category queries { queries_channel; };
 category security { security_channel; };
 category update-security { update_security_channel; };
 category dnssec { dnssec_channel; };

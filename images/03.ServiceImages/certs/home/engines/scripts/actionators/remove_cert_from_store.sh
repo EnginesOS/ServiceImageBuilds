@@ -2,7 +2,7 @@
 . /home/engines/functions/params_to_env.sh
 params_to_env
 
-required_values="fqdn cert_type"
+required_values="common_name cert_type"
 check_required_values
 
 if test $cert_type = generated
@@ -17,24 +17,24 @@ if test $cert_type = user
   store=user
 fi 
 
-if ! test -f /home/certs/store/$cert_type/certs/$store/${fqdn}.crt 
+if ! test -f /home/certs/store/$cert_type/certs/$store/${common_name}.crt 
  then
    echo "No such cert  $store/$fqdn"
    exit 
 fi
 
 
-sudo -n /home/engines/scripts/engine/_remove_cert.sh $cert_type/certs/$store/${fqdn}.crt 
+sudo -n /home/engines/scripts/engine/_remove_cert.sh $cert_type/certs/$store/${common_name}.crt 
 if test $? -ne 0
  then
-   echo "Failed to Delete Cert $fqdn"
+   echo "Failed to Delete Cert $common_name"
    exit 127
 fi
     
-sudo -n /home/engines/scripts/engine/_remove_cert.sh $cert_type/keys/$store/${fqdn}.key
+sudo -n /home/engines/scripts/engine/_remove_cert.sh $cert_type/keys/$store/${common_name}.key
 if test $? -ne 0
  then
-  echo "Failed to Delete Key $fqdn"
+  echo "Failed to Delete Key $common_name"
   exit 127
 fi
     

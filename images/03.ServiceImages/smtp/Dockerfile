@@ -51,4 +51,4 @@ ENV ContGrp postfix
 
 USER postfix
 
-CMD ["/home/start.sh"]
+CMD ["/home/engines/scripts/startup/start.sh"]

@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/bin/sh
 
 echo populating /etc/ldap/slapd.d
-cp -r /home/slapd.d /etc/ldap/
-mv /home/slapd.d /home/slapd.d.init
+
+slaptest -f /home/engines/etc/slapd.conf -F  /etc/ldap/slapd.d/
 touch /home/engines/run/flags/first_run
