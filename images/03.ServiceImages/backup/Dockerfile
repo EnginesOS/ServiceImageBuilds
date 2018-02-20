@@ -61,7 +61,7 @@ VOLUME /local_backup_dests
 
 USER backup
 ENV HOME /home/backup
-CMD		["/home/start.sh"]
+CMD		["/home/engines/scripts/startup/start.sh"]
 
 
 
