@@ -1,19 +1,21 @@
 #!/bin/sh
 dn=$1
 
-if test $container_type = app
+if test ${container_type} = app
  then
- id = $parent_engine/host
+ id=${parent_engine}/host
 elif test $container_type =  service
  then
-  id = $parent_engine/service
-elif test $container_type = system_service
+  id=${parent_engine}/service
+elif test ${container_type} = system_service
  then
-  id = $parent_engine/service
+  id=${parent_engine}/service
 else
  echo incorrect container type $container_type
  exit 127
 fi  
+
+id=":cn=${parent_engine},ou=hosts,ou=engines,dc=engines,dc=internal"
 
 if test -z $private
  then

@@ -11,7 +11,7 @@ if test $c -eq 0
      eval echo $LINE >> $LDIF_FILE
    done
 cat $LDIF_FILE | /home/engines/scripts/ldap/ldapadd.sh 
-
+export top_ou parent_engine container_type cn
  /home/engines/scripts/services/access/add_access.sh ou=${top_ou},ou=Containers,ou=Engines,dc=engines,dc=internal
 fi
 
