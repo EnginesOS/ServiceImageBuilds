@@ -17,7 +17,7 @@ fi
 
 if test -z $private
  then
-  private='*'
+  private='\*'
 fi  
 
 LDIF_FILE=`mktemp`
