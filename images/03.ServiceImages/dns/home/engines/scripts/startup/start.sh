@@ -41,7 +41,7 @@ sudo -n /usr/sbin/named  -c /etc/bind/named.conf -f -u bind &
 
 
 startup_complete
-
+sleep 5
 post_start 
 wait  
 exit_code=$?
