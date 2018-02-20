@@ -4,7 +4,7 @@
 #create engine group ou
 . /home/engines/functions/ldap/support_functions.sh
 
-c=`/home/engines/scripts/ldap/ldapsearch.sh ou=${top_ou},ou=Groups,dc=engines,dc=internal ou=$parent_engine  |wc -l`
+c=`/home/engines/scripts/ldap/ldapsearch.sh ou=$parent_engine,ou=${top_ou},ou=Groups,dc=engines,dc=internal ou=$parent_engine  |wc -l`
  
 if test $c -eq 0
  then
@@ -15,7 +15,7 @@ if test $c -eq 0
 
  cat $LDIF_FILE |sudo /home/engines/scripts/ldap/sudo/_ldapadd.sh $* &> $LDAP_OUTF
  
- /home/engines/scripts/services/access/add_access.sh ou=${top_ou},ou=Groups,dc=engines,dc=internal
+ /home/engines/scripts/services/access/add_access.sh ou=$parent_engine,ou=${top_ou},ou=Groups,dc=engines,dc=internal
 
 result=$?
 if test $result -ne 0
