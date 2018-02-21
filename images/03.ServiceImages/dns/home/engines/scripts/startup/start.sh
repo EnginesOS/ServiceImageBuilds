@@ -3,9 +3,10 @@
 . /home/engines/scripts/services/dns_functions.sh
 function post_start
 {
-sleep 5
+sleep 10
 hostname=lanhost
 ip=`cat  /home/engines/system/net/ip`
+no_inarpra=1
 add_to_internal_domain
 
 ip=`cat  /home/engines/system/net/public`
