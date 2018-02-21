@@ -1,4 +1,4 @@
 dn: olcDatabase={1}mdb,cn=config
 changetype: modify
 add: olcAccess
-olcAccess: to dn.subtree="$dn" write by $id read by $private
+olcAccess: {4} to dn.subtree="$dn" by dn="$id" write $private 
