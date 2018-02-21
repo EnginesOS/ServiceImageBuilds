@@ -2,16 +2,29 @@
 . /home/engines/functions/params_to_env.sh
 params_to_env
 
-required_values="key_name store"
+required_values="common_name store cert_type"
 check_required_values
+ 
+ 
 
+if test $cert_type = imported -o $cert_type = generated
+ then
+  echo "Cannot export key from cert type $cert_type"
+  exit 1
+fi  
 
-if test -f /home/certs/store/public/keys/${store}/${key_name}.key
+if test $cert_type = user
+ then
+  cert_type=generated 
+  store=user
+fi 
+
+if test -f /home/certs/store/$cert_type/keys/${store}/${common_name}.key
   then
- 	cat /home/certs/store/public/keys/${store}/${key_name}.key
+ 	cat /home/certs/store/$cert_type/keys/${store}/${common_name}.key
   else
- 	echo "Not Such key ${store}/${key_name}.key"
- 	exit 127
+ 	echo "Not Such key $cert_type/${store}/${common_name}.key"
+ 	exit 1
 fi
 
 exit 0

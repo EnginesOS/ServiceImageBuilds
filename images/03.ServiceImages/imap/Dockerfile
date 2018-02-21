@@ -32,4 +32,4 @@ USER dovecot
 
 ENV ContUser dovecot
 
-CMD ["/home/start.sh"]
+CMD ["/home/engines/scripts/startup/start.sh"]

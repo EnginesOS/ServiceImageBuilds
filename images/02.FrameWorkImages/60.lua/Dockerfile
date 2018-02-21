@@ -1,7 +1,7 @@
 FROM engines/frameworkbuild:$release
 
-ENV ContUser python
-ENV ContGrp python
+ENV ContUser lua
+ENV ContGrp lua
 
 RUN adduser -q --uid 22676 --home /home/lua --disabled-password lua &&\
 	apt-get update -y &&\

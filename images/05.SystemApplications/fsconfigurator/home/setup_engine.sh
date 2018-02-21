@@ -24,15 +24,17 @@ chmod g+w  -R /client/state
 
 
 cd /home/fs_src/
+if test `ls volumes |wc -l` -ne 0
+ then
 
-for dir in `cat /home/fs_src/vol_dir_maps`
- do
-  dest_volume=`grep "$dir " /home/fs_src/vol_dir_maps | awk '{print $2}'`
-  echo move $dir to $dest_volume >> /client/log/fs_setup.log
-   if test -z $dest_volume
-    then
-     continue;
-   fi
+ for dir in `cat /home/fs_src/vol_dir_maps`
+  do
+   dest_volume=`grep "$dir " /home/fs_src/vol_dir_maps | awk '{print $2}'`
+   echo move $dir to $dest_volume >> /client/log/fs_setup.log
+    if test -z $dest_volume
+     then
+      continue;
+    fi
      
    if test -f /dest/fs/$dest_volume/.persistent_lock
     then 
@@ -51,21 +53,21 @@ for dir in `cat /home/fs_src/vol_dir_maps`
    	 cp -nrp /home/fs_src/$dir /dest/fs/$dest_volume/$dir
    	 chown -R ${fw_user}.${data_gid}  /dest/fs/$dest_volume/$dir
    fi
-done
+ done
 	 
-for file in `cat /home/fs_src/vol_file_maps`
- do	 
-  dest_volume=`grep "$file " /home/fs_src/vol_file_maps | awk '{print $2}'`	
-  echo move $file to $dest_volume >> /client/log/fs_setup.log
-   if test -z $dest_volume
-    then
-     continue;
-  fi  
-  if test -f /dest/fs/$dest_volume/.persistent_lock
-   then 
-   	echo Persistence configured for $dest_volume  >> /client/log/fs_setup.log
-  else
-   volumes="$volumes $dest_volume"
+ for file in `cat /home/fs_src/vol_file_maps`
+  do	 
+   dest_volume=`grep "$file " /home/fs_src/vol_file_maps | awk '{print $2}'`	
+   echo move $file to $dest_volume >> /client/log/fs_setup.log
+    if test -z $dest_volume
+     then
+      continue;
+   fi  
+   if test -f /dest/fs/$dest_volume/.persistent_lock
+    then 
+   	 echo Persistence configured for $dest_volume  >> /client/log/fs_setup.log
+   else
+    volumes="$volumes $dest_volume"
   	echo Install dir $file in /$dest_volume >>/client/log/test.out
   	 if ! test -d /dest/fs/$dest_volume/`dirname $file`
   	  then
@@ -78,33 +80,29 @@ for file in `cat /home/fs_src/vol_file_maps`
    cp -np /home/fs_src/$file /dest/fs/$dest_volume/$file
    chown -R ${fw_user}.${data_gid}  /dest/fs/$dest_volume/$file
   fi
-done
+ done
 	 
-volumes=`echo $volumes |sort|uniq`
- for vol in $volumes
-  do  
-   touch /dest/fs/$vol/.persistent_lock
-   chown  ${fw_user}.${data_gid} /dest/fs/$vol/ /dest/fs/$vol/.persistent_lock
-  done
-
-#	#if no presistance dirs/files need to set permission here
+ volumes=`echo $volumes |sort|uniq`
+  for vol in $volumes
+   do  
+    touch /dest/fs/$vol/.persistent_lock
+    chown  ${fw_user}.${data_gid} /dest/fs/$vol/ /dest/fs/$vol/.persistent_lock
+    chmod o-rxw /dest/fs/$vol/ 
+   done
 	
-	#chown  21000.${data_gid}  /dest/fs/
-	#chmod g+w -R  /dest/fs/*
-	#chmod g+rx ` find /dest/fs/ -type d`
-	
-if test -d /home/app_src
- then
-  dest_volume=`grep "/home/app " /home/fs_src/vol_dir_maps | awk '{print $2}'`
-  if ! test -f /dest/fs/$dest_volume/_home_app_/.persistent	
-   then
-    cp -rp /home/app_src/.  /dest/fs/$dest_volume/_home_app_/			
-    chown -R ${fw_user}.${data_gid}  /dest/fs/$dest_volume/_home_app_/			
-    touch /dest/fs/$dest_volume/_home_app_/.persistent	
-    chown -R ${fw_user}.${data_gid}  /dest/fs/$dest_volume/_home_app_/ /dest/fs/$dest_volume/_home_app_/.persistent	
-    echo "Setup app persist" >> /client/log/fs_setup.log
-  fi
-fi
+ if test -d /home/app_src
+  then
+   dest_volume=`grep "/home/app " /home/fs_src/vol_dir_maps | awk '{print $2}'`
+    if ! test -f /dest/fs/$dest_volume/_home_app_/.persistent	
+    then
+     cp -rp /home/app_src/.  /dest/fs/$dest_volume/_home_app_/			
+     chown -R ${fw_user}.${data_gid}  /dest/fs/$dest_volume/_home_app_/			
+     touch /dest/fs/$dest_volume/_home_app_/.persistent	
+     chown -R ${fw_user}.${data_gid}  /dest/fs/$dest_volume/_home_app_/ /dest/fs/$dest_volume/_home_app_/.persistent	
+     echo "Setup app persist" >> /client/log/fs_setup.log
+   fi
+ fi
+fi 
 
 if test -f /client/state/flags/debug_engine_fs_setup
  then

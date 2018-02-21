@@ -3,14 +3,13 @@
 params_to_env
 
 
-required_values="cert_name store fqdn"
+required_values="common_name cert_type fqdn"
 check_required_values
 
 
-
-err=`sudo -n  /home/engines/scripts/engine/_install_target.sh wap ${store}/${cert_name} ${fqdn}`
+err=`sudo -n /home/engines/scripts/engine/_install_target.sh services/wap ${cert_type} ${common_name} ${fqdn}`
 r=$?
- if $r -ne 0
+ if test $r -ne 0
   then
   	echo '{"Result":"Failed","ErrorMesg":"'$err'","ExitCode":"'$r'"}'
   else 

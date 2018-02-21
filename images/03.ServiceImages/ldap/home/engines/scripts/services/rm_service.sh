@@ -16,7 +16,7 @@ set > /tmp/full_env
  	top_ou=servics
  else
    echo '{"Result":"Failed","Error Mesg":"Invalid container type"}'
-   exit 127	
+   exit 1
   fi
   
   
@@ -30,7 +30,7 @@ elif test $type = ou
  /home/engines/scripts/services/ou/rm_ou.sh
 else
     echo '{"Result":"Failed","Error Mesg":"Invalid type"}'
-   exit 127	
+   exit 1	
   fi 
   
   

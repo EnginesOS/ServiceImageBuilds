@@ -4,14 +4,14 @@
                         "notify"  : false,
                         "format"  : {
                                 "type"         : "Raw",
-                                "regex"        : "|(.*?) ([0-9]{1,2}) ([0-9]{1,2}:[0-9]{1,2}:[0-9]{1,2}) (.*)|",
-                                "export_title" : "URL",
+                                "regex"        : "|(.*?) (.*?)$|",
+                                "export_title" : "Line",
                                 "match"        : {
                                 		"Date":	1,
                                         "Message"    : 2
                                 },
                                 "types": {
-                                        "Line"     : "txt",
+                                        "Message"     : "txt",
                                         "Date"    : "date:H:i:s"
                                 }
                         }

@@ -1,18 +1,20 @@
 #!/bin/sh
 o=`mktemp`
-if test $1 = true
+if test -z $1
+ then
+  type=''
+elif test $1 = true
  then
   type=''
  else
   type=-update
 fi 
 cat - > $o
- kdb5_util load $type $o 2>/tmp/tar.errs
+ kdb5_util load $type $o 2>/tmp/restore.errs
 r=$?
 rm $o
 if test $r -ne 0
  then
-  echo /tmp/tar.errs 
-  exit $r
+  cat /tmp/restore.errs   
 fi  
-
+exit $r

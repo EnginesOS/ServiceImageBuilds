@@ -1,9 +1,8 @@
-#!/bin/bash
+#!/bin/sh
 
-/home/engines/scripts/signal/_kill_postfix.sh $1
 
-if ! test HUP = $1
- then
-  kill -$1 `cat /tmp/sleep.pid`
-  rm /tmp/sleep.pid
-fi
+PID_FILES="/var/spool/postfix/pid/master.pid /tmp/sleep.pid"
+. /home/engines/functions/signals.sh
+
+default_signal_processor
+exit 0

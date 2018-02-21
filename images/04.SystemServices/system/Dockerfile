@@ -12,6 +12,8 @@ RUN /usr/sbin/addgroup --gid 21999 edocker &&\
 						build-essential \
 						libssl-dev \
 						libreadline-dev \
+						autoconf \
+						libltdl-dev \
 						zlib1g-dev &&\
 	adduser -q --uid 21000 --gid 21999 --home /home/engines --disabled-password engines &&\
 	mkdir -p /opt/engines/run/system/ &&\	
@@ -19,7 +21,7 @@ RUN /usr/sbin/addgroup --gid 21999 edocker &&\
 	usermod -G docker -a engines &&\
 	gem install --no-rdoc --no-ri git bundle rest-client net_http_unix excon \
 	 			gctools yajl-ruby sinatra thin rubytree  sinatra-contrib \
-			 	warden data_mapper dm-sqlite-adapter ffi-yajl sqlite3 &&\		
+			 	warden data_mapper dm-sqlite-adapter ffi-yajl sqlite3 rb-inotify puma timers&&\		
  	/home/post_build_clean.sh
 	
 ADD home home
@@ -49,4 +51,4 @@ ENV HOME /home/engines/
 		
 USER 21000
 
-CMD ["/home/start.sh"]
+CMD ["/home/engines/scripts/system/start.sh" ]

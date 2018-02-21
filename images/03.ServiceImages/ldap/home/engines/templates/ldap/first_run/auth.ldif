@@ -6,10 +6,10 @@ olcSaslHost: ldap.engines.internal
 add: olcSaslRealm
 olcSaslRealm: ENGINES.INTERNAL
 -
-add: olcSaslSecProps
+replace: olcSaslSecProps
 olcSaslSecProps: noplain,noactive,noanonymous,minssf=56
 -
-add: olcAuthzPolicy
+replace: olcAuthzPolicy
 olcAuthzPolicy: to
 -
 add: olcAuthzRegexp

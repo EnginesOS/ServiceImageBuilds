@@ -7,7 +7,7 @@ COPY invoke-rc.d /usr/sbin/
 
 ADD home /home/
 	
-ENV	build 20172710
+ENV	build 20180215
 RUN	echo '#!/bin/sh' >/usr/sbin/policy-rc.d &&\
 	echo exit 101 >> /usr/sbin/policy-rc.d &&\
 	chmod +x /usr/sbin/policy-rc.d &&\
@@ -29,6 +29,7 @@ RUN	echo '#!/bin/sh' >/usr/sbin/policy-rc.d &&\
 			           			     ca-certificates \
 		 						     krb5-user \
 	 								 krb5-config \
+	 								 libsasl2-modules-gssapi-mit \
 	 								 expect-lite \
 	 								 rsyslog \
 	 								 git \
