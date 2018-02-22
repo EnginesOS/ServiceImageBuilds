@@ -1,6 +1,6 @@
 #!/bin/sh
 
-PID_FILE=/tmp/avahi-publisher.pid
+PID_FILE=/home/engines/run/avahi-publisher.pid
 export PID_FILE
 KILL_SCRIPT=/home/engines/scripts/signal/kill_avahi.sh
 export KILL_SCRIPT
@@ -21,10 +21,10 @@ cp /tmp/avahi-daemon.conf /etc/avahi/avahi-daemon.conf
 
 sudo -n dbus-daemon --system --fork --nopidfile
 dbus_pid=$!
-echo $dbus_pid >/tmp/dbus.pid
+echo $dbus_pid >/home/engines/run/dbus.pid
 
 sudo -n /usr/sbin/avahi-daemon --no-chroot  & 
-echo $! >/tmp/avahi-daemon.pid
+echo $! >/home/engines/run/avahi-daemon.pid
 
 touch /home/avahi/hosts/engines.local
 touch /home/avahi/hosts/avahi.local

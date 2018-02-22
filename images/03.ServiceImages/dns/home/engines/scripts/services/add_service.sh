@@ -35,7 +35,7 @@ if ! test -z $domain_name
           cat /home/engines/templates/dns/selfhosted.tmpl | sed "/DOMAIN/s//${domain_name}/g"\
                | sed "/IP/s//${ip}/g" > /home/bind/engines/zones/named.conf.${domain_name}
           cat /home/bind/engines/domains/* > /home/bind/engines/domains.hosted
-           kill -HUP `cat /var/run/named/named.pid`
+           kill -HUP `cat /home/engines/run/named.pid`
        fi
 
   #  hostname=`echo $domain_name | sed "/[_.]/s//-/g"`

@@ -14,7 +14,7 @@ RUN adduser -q --disabled-password --home /home/cron -uid 22016 cron &&\
   	cd fcron-3.3.0 &&\
   	./configure --with-run-non-privileged --with-rootname=cron\
 	--with-rootgroup=cron --with-username=cron --with-groupname=cron\
-	--with-piddir=/home/cron\
+	--with-piddir=/home/engines/run\
 	--with-fifodir=/home/cron --with-spooldir=/home/cron/spool\
 	--with-docdir=/home/cron/doc --prefix=/home/cron &&\
 	make install &&\

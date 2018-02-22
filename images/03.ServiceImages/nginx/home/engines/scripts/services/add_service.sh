@@ -118,6 +118,6 @@ rm /tmp/site.*
  		mkdir -p /var/log/nginx/$fqdn/http/
  	fi
  nginx -s reload	
- #kill -HUP `cat /run/nginx/nginx.pid`
+
 	 
 	 echo Success

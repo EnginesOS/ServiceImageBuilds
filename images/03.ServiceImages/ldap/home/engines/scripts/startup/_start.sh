@@ -4,7 +4,7 @@
 export KRB5_KTNAME=/etc/krb5kdc/keys/ldap.keytab
 
 saslauthd -a kerberos5 -d &> /var/log/sasl.log &
-echo $! >/var/run/saslauthd.pid
+echo $! >//home/engines/run/saslauthd.pid
 
   
 if ! test -f /home/engines/run/flags/init_ous_configured

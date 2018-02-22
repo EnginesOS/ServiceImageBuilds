@@ -10,5 +10,5 @@ done
 touch /tmp/registry.lock
 cp /opt/engines/run/service_manager/services.yaml /opt/engines/run/service_manager/services.yaml.pre_restore
 mv  /tmp/registry_restored /opt/engines/run/service_manager/services.yaml
-kill -HUP `cat /tmp/pid`
+kill -HUP `cat /home/engines/run/registry.pid`
 rm /tmp/registry.lock

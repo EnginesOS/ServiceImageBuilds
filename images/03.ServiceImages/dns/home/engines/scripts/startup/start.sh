@@ -30,7 +30,7 @@ KILL_SCRIPT=/home/engines/scripts/signal/kill_bind.sh
 export KILL_SCRIPT
 
 
-PID_FILE=/var/run/named/named.pid
+PID_FILE=/home/engines/run/named.pid
 export PID_FILE
 . /home/engines/functions/trap.sh
 

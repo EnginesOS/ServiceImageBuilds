@@ -1,6 +1,6 @@
 #!/bin/sh
 
-PID_FILE=/var/run/ng-syslog.pid
+PID_FILE=/home/engines/run/syslog.pid
 export PID_FILE
 . /home/engines/functions/trap.sh
  

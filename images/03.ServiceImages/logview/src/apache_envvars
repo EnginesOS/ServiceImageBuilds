@@ -16,7 +16,7 @@ fi
 export APACHE_RUN_USER=www-data
 export APACHE_RUN_GROUP=www-data
 # temporary state file location. This might be changed to /run in Wheezy+1
-export APACHE_PID_FILE=/var/run/engines/apache2$SUFFIX.pid
+export APACHE_PID_FILE=/home/engines/run/apache2$SUFFIX.pid
 export APACHE_RUN_DIR=/var/run/engines
 export APACHE_LOCK_DIR=/var/lock/apache2$SUFFIX
 # Only /var/log/apache2 is handled by /etc/logrotate.d/apache2.

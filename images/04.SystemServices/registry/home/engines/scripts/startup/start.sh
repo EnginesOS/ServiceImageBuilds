@@ -14,9 +14,9 @@ git pull
 cd ..
  rm -f /tmp/registry.lock
 chmod og-rwx /opt/engines/run/service_manager/services.yaml*
-thin -C config.yaml -R config.ru start > /var/log/regsitry.log&
+thin -C config.yaml -R config.ru start > /var/log/regsitry.log &
 pid=$!
-echo $pid >/tmp/pid
+echo $pid > $PID_FILE
 #--threaded
 
 startup_complete

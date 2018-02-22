@@ -1,6 +1,6 @@
 #!/bin/sh
 
-PID_FILES="/var/run/krb5kdc.pid /var/run/krb5admin.pid"
+PID_FILES="/home/engines/run/krb5kdc.pid /home/engines/run/krb5admin.pid"
 
 . /home/engines/functions/signals.sh
 

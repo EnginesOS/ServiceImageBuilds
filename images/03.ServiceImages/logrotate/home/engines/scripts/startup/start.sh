@@ -1,5 +1,5 @@
 #!/bin/sh
-PID_FILE=/tmp/logrotate.pid
+PID_FILE=/home/engines/run/logrotate.pid
 export PID_FILE
 . /home/engines/functions/trap.sh
 

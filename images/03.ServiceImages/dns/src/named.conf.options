@@ -1,6 +1,6 @@
 options {
         directory "/var/cache/bind";
-
+     pid-file "/home/engines/run/named.pid";
      allow-recursion { trusted; };
      allow-query { any; };
      allow-query-cache { trusted; };

@@ -15,7 +15,7 @@ if test -f /home/avahi/hosts/${hostname}.${default_mdns_domain}
 fi	
  
 ls /home/avahi/hosts/ > /home/avahi/hosts_list
-kill -HUP `cat /tmp/avahi-publisher.pid`
+kill -HUP `cat /home/engines/run/avahi-publisher.pid`
   
 echo Success
 exit 0

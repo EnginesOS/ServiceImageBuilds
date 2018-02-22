@@ -1,7 +1,7 @@
 #!/bin/sh
 
 
-PID_FILES="PID_FILE=/var/run/ng-syslog.pid"
+PID_FILES=$PID_FILE
 . /home/engines/functions/signals.sh
 
 default_signal_processor
