@@ -17,7 +17,7 @@ bundle exec thin --threaded\
 	   -C /home/config.yaml \
 	   -R /home/config.ru \
 	   start &
-echo -n $! $memcache_pid > /home/engines/run/control.pid 
+echo -n $! $memcache_pid > $PID_FILE
 
 startup_complete
 

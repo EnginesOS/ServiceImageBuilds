@@ -1,6 +1,6 @@
 #!/bin/sh
 
-PID_FILE=//home/engines/run/sleep.pid
+PID_FILE=/home/engines/run/freeradius.pid
 export PID_FILE
 . /home/engines/functions/trap.sh
  sleep 400

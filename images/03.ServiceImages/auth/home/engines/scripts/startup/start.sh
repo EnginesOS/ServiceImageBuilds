@@ -1,5 +1,5 @@
 #!/bin/sh
-PID_FILES=".pidkrb5kdc.pid .pidkrb5admin.pid"
+PID_FILES="/home/engines/run/pidkrb5kdc.pid /home/engines/run/pidkrb5admin.pid"
 
 PID_FILE=/home/engines/run/krb5kdc.pid 
 export PID_FILE

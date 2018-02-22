@@ -17,7 +17,7 @@ fi
 rm /home/engines/run/dhcpd.pid
 
 
-sudo -n /usr/sbin/dhcpd  -cf /etc/dhcp/dhcpd.conf -pf /home/engines/run/dhcpd.pid  -f & 
+sudo -n /usr/sbin/dhcpd  -cf /etc/dhcp/dhcpd.conf -pf $PID_FILE  -f & 
 
 startup_complete
 

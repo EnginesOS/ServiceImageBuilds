@@ -14,7 +14,7 @@ service_first_run_check
 mongod -v  -f /etc/mongod.conf  --directoryperdb  --dbpath /data/db/  --journal &
 pid=$!
 
-echo -n $pid >//home/engines/run/mongodb.pid
+echo -n $pid >$PID_FILE
 if ! test -d /data/db/.priv
  then
  sleep 30

@@ -6,7 +6,7 @@ export PID_FILE
 
 
 /home/backup/fcron/sbin/fcron -f &
-echo $! > /home/engines/run/fcron.pid
+
 /home/backup/fcron/bin/fcrontab -u backup  -z 
 
 startup_complete

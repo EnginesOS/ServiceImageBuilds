@@ -40,6 +40,7 @@ if test -f /home/engines/run/flags/puma
  else 
   start_thin
 fi  
+echo $! > $PID_FILE
 
 #touch /home/engines/run/flags/startup_complete  done in code
 wait 
