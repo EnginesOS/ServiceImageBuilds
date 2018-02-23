@@ -1,3 +1,0 @@
- docker run -p 202:22 -p 88:8000 -p 8000:88  --memory=296m -v /var/log/engines/services/mgmt/:/home/app/log/:rw -h mgmt --name mgmt -d -e ContUser=dockuser  -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/engines/fs:/var/lib/engines/fs -v /opt/engines:/opt/engines -v /usr/bin/docker:/usr/bin/docker:ro -v /etc/localtime:/etc/localtime:ro  -v /var/log/engines:/var/log/engines:ro -v /var/lib/engines/fs/mgmt:/home/files:rw -t enginesos/mgmt /home/init.sh
-
- 

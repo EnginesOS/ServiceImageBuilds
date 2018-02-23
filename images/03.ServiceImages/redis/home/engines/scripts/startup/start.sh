@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PID_FILE=/var/run/engines/redis-server.pid
+PID_FILE=/home/engines/run/redis-server.pid
 export PID_FILE
 . /home/engines/functions/trap.sh
 
@@ -40,13 +40,13 @@ startup_complete
 		for service in ` ls /tmp/new_service.* |cut -f2 -d.`
 		  do
 		  	redis-server /home/redis/config.d/$service.redis.config &
-		  	echo -n $!  > /var/run/engines/redis-server.$parent_engine.pid
+		  	echo -n $!  > /home/engines/run/redis-server.$parent_engine.pid
 		  done
 	fi
    done	
-   for pid_file in `ls /var/run/engines/redis-server.*.pid`
+   for pid_file in `ls /home/engines/run/redis-server.*.pid`
     do
-     kill -$SIGNAL `cat /var/run/engines/$pid_file`
+     kill -$SIGNAL `cat /home/engines/run/$pid_file`
    done
 
 shutdown_complete

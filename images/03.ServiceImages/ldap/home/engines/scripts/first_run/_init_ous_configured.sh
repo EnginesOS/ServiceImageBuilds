@@ -3,7 +3,7 @@ n=0
 sleep 5
 while test $n -ne 5
  do
-   if ! test -f /var/run/slapd/slapd.pid
+   if ! test -f /home/engines/run/slapd.pid
     then 
      sleep 5
    else

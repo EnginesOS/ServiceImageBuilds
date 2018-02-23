@@ -8,7 +8,7 @@ if ! test -d /var/lib/mysql/mysql
  then
    cd /home/mysql   
 	mysqld --initialize-insecure  --explicit_defaults_for_timestamp 	 
-	 /usr/sbin/mysqld --basedir=/usr --datadir=/var/lib/mysql --plugin-dir=/usr/lib/mysql/plugin --user=mysql --log-error=/var/log/mysql/error.log --pid-file=/var/run/mysqld/mysqld.pid --socket=/var/run/mysqld/mysqld.sock &
+	 /usr/sbin/mysqld --basedir=/usr --datadir=/var/lib/mysql --plugin-dir=/usr/lib/mysql/plugin --user=mysql --log-error=/var/log/mysql/error.log --pid-file=/home/engines/run/mysqld.pid --socket=/var/run/mysqld/mysqld.sock &
      pid=$! 
      sleep 20 
        while ! test -n /var/run/mysqld/mysqld.sock 	

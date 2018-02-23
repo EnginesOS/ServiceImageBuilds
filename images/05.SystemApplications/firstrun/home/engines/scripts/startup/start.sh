@@ -21,7 +21,7 @@ fi
 /home/engines/scripts/engine/deployment.sh
 
 bundle exec thin --ssl --ssl-key-file ./first_run.key --ssl-cert-file ./first_run.crt -R ./config.ru start > /var/log/firstrun.log &
-
+echo $! >$PID_FILE
 startup_complete
 
 wait 

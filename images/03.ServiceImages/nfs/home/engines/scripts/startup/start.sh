@@ -1,6 +1,6 @@
 #!/bin/sh
 
-PID_FILE=/var/run/ganesha.pid
+PID_FILE=/home/engines/run/ganesha.pid
 export PID_FILE
 . /home/engines/functions/trap.sh
 		

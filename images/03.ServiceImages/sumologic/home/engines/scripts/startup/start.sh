@@ -15,7 +15,7 @@ if test -f /home/engines/scripts/configurators/saved/credentials
  	exit
 fi
 
-PID_FILE=opt/SumoCollector/collector.pid
+PID_FILE=/home/engines/run/collector.pid
 
 export PID_FILE
 . /home/engines/functions/trap.sh
@@ -40,7 +40,7 @@ if [ ! -e $sources_json ]; then
 fi
 
 sudo -n /opt/SumoCollector/collector console -- -t -i $access_id -k $access_key -n $collector_name -s $sources_json &
-
+echo $! >$PID_FILE
 startup_complete
 
 wait

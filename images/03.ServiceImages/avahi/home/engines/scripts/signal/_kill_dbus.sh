@@ -1,3 +1,3 @@
 #!/bin/sh
 
-kill -TERM ` cat /tmp/dbus.pid`
+kill -TERM ` cat /home/engines/run/dbus.pid`

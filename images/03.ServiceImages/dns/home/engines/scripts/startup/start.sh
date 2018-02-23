@@ -3,7 +3,6 @@
 . /home/engines/scripts/services/dns_functions.sh
 function post_start
 {
-sleep 10
 hostname=lanhost
 ip=`cat  /home/engines/system/net/ip`
 no_inarpra=1
@@ -31,7 +30,7 @@ KILL_SCRIPT=/home/engines/scripts/signal/kill_bind.sh
 export KILL_SCRIPT
 
 
-PID_FILE=/var/run/named/named.pid
+PID_FILE=/home/engines/run/named.pid
 export PID_FILE
 . /home/engines/functions/trap.sh
 
@@ -40,10 +39,10 @@ sudo -n /home/engines/scripts/engine/_setup.sh
 sudo -n /usr/sbin/named  -c /etc/bind/named.conf -f -u bind &
 
 
+post_start 
 
 startup_complete
-sleep 5
-post_start 
+
 wait  
 exit_code=$?
 

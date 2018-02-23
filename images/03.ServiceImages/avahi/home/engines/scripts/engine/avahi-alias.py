@@ -70,7 +70,7 @@ def advertise_cnames():
 if __name__ == '__main__':
     import time, sys, locale, os
     pid = os.getpid()
-    pid_file = open("/tmp/avahi-publisher.pid", "w+")
+    pid_file = open("/home/engines/run/avahi-publisher.pid", "w+")
     s = str(pid)
     pid_file.write(s)
     pid_file.close()

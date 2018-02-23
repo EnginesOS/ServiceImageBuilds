@@ -15,5 +15,5 @@ else
   cp /etc/nginx/templates/empty_default /etc/nginx/sites-enabled/default 	
 fi
 
-kill -HUP `cat /run/nginx/nginx.pid`
+kill -HUP `cat /home/engines/run/nginx.pid`
 exit 0

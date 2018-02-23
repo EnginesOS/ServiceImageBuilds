@@ -1,7 +1,7 @@
 #!/bin/sh
 
 
-PID_FILE=/var/run/engines/mongodb.pid
+PID_FILE=/home/engines/run/mongodb.pid
 export PID_FILE
 . /home/engines/functions/trap.sh
 
@@ -14,7 +14,7 @@ service_first_run_check
 mongod -v  -f /etc/mongod.conf  --directoryperdb  --dbpath /data/db/  --journal &
 pid=$!
 
-echo -n $pid >/var/run/engines/mongodb.pid
+echo -n $pid >$PID_FILE
 if ! test -d /data/db/.priv
  then
  sleep 30

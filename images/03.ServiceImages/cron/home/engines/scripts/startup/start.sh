@@ -1,7 +1,7 @@
 #!/bin/sh
 
 
-PID_FILE=/home/cron/fcron.pid
+PID_FILE=/home/engines/run/fcron.pid
 export PID_FILE
 . /home/engines/functions/trap.sh
 

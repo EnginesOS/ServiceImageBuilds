@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PID_FILE=/home/dyndns/dyndns.pid
+PID_FILE=/home/engines/run/dyndns.pid
 export PID_FILE
 . /home/engines/functions/trap.sh
 
@@ -19,7 +19,7 @@ touch /home/engines/run/flags/not_configured
    rm -f /home/engines/run/flags/not_configured
 fi
 
-ddclient  -daemon 300 -syslog -foreground -file /home/dyndns/dyndns.conf -cache /home/dyndns/cache   -pid /home/dyndns/dyndns.pid &
+ddclient  -daemon 300 -syslog -foreground -file /home/dyndns/dyndns.conf -cache /home/dyndns/cache   -pid $PID_FILE &
 
 wait 
 exit_code=$?
