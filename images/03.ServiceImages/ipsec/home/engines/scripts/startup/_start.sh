@@ -1,5 +1,5 @@
 #!/bin/sh
-PID_FILE=/tmp/ipsec.pid
+PID_FILE=/home/engines/run/ipsec.pid
 . /home/engines/functions/system_functions.sh
 
 
@@ -18,7 +18,10 @@ sysctl -w net.ipv4.conf.default.accept_source_route=0
 sysctl -w net.ipv4.conf.default.send_redirects=0
 sysctl -w net.ipv4.icmp_ignore_bogus_error_responses=1
 
-/usr/sbin/ipsec start --nofork 
+/usr/sbin/ipsec start --nofork &
+
+echo $! > $PID_FILE
+wait
 
 
 

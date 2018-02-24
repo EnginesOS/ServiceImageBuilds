@@ -5,7 +5,7 @@ if ! test -d /var/log/nginx
   mkdir -p  /var/log/nginx
 fi
 	
-PID_FILE=/var/run/nginx/nginx.pid
+PID_FILE=/home/engines/run/nginx.pid
 export PID_FILE
 . /home/engines/functions/trap.sh
 

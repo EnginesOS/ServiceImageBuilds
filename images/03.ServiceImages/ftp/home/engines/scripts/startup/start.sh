@@ -1,7 +1,7 @@
 #!/bin/sh
 
 
-PID_FILE=/var/run/ftpd.pid
+PID_FILE=/home/engines/run/ftpd.pid
 export PID_FILE
 . /home/engines/functions/trap.sh
 

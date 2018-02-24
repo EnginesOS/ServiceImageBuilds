@@ -1,7 +1,7 @@
 #!/bin/bash
 
-if  test -f /var/run/engines/grey.pid
+if  test -f /home/engines/run/grey.pid
   then
-    kill -TERM `cat /var/run/engines/grey.pid`
+    kill -TERM `cat /home/engines/run/grey.pid`
 fi
  

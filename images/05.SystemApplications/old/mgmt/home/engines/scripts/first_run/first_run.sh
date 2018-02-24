@@ -12,7 +12,7 @@ if ! test -d /var/log/app
 	mkdir /var/log/app
 fi
 
-rm -rf /home/app/log 
+rm -rf /home/engines/var/log/ 
 
 if ! test -f /home/fs/persistent/.setup	
 	then
@@ -28,6 +28,6 @@ if ! test -h /home/app/public/system
  fi
  
 
-ln -s /var/log/app /home/app/log 
+ln -s /var/log/app /home/engines/var/log/ 
 bundle exec rake db:migrate 
 bundle exec rake db:seed >/dev/null

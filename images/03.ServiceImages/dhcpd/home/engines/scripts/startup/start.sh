@@ -1,6 +1,6 @@
 #!/bin/sh
 
-PID_FILE=/var/run/dhcpd.pid
+PID_FILE=/home/engines/run/dhcpd.pid
 export PID_FILE
 KILL_SCRIPT=/home/engines/scripts/signal/_signal.sh
 export KILL_SCRIPT
@@ -14,10 +14,10 @@ if ! test -f /etc/dhcp/dhcpd.conf
      echo "Not configured"
      exit
 fi
-rm /var/run/dhcpd.pid
+rm /home/engines/run/dhcpd.pid
 
 
-sudo -n /usr/sbin/dhcpd  -cf /etc/dhcp/dhcpd.conf -pf /var/run/dhcpd.pid  -f & 
+sudo -n /usr/sbin/dhcpd  -cf /etc/dhcp/dhcpd.conf -pf $PID_FILE  -f & 
 
 startup_complete
 

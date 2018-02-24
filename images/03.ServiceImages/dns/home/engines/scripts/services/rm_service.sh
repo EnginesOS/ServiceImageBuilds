@@ -11,7 +11,7 @@ if ! test -z ${domain_name}
 	 rm  /home/bind/domain_list/${ip_type}/${domain_name}
 	 rm /home/bind/engines/zones/named.conf.${domain_name}
 	 cat /home/bind/engines/domains/* > /home/bind/engines/domains.hosted
-	 kill -HUP `cat /var/run/named/named.pid`
+	 kill -HUP `cat /home/engines/run/named.pid`
 	 exit
 	fi
 fi
