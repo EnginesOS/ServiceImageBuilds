@@ -3,7 +3,7 @@
 
 . /home/engines/functions/params_to_env.sh
 params_to_env
-
+set >/tmp/create_cert
 required_values="cert_name common_name country state city organisation person"
 check_required_values
 
