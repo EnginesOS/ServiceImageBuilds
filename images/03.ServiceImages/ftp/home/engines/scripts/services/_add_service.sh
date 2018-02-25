@@ -11,7 +11,7 @@ cat /home/engines/templates/ftp/new_user.ldif \
  | sed "s/IDNUMBER/$uid/" \
  | sed "s/GID/${ftp_gid}/" \
  | sed "s/PASSWORD/${password}/" \
- | sed "s/UID/${service_handle}\/${service_container_name}/" > $new_user_ldif
+ | sed "s/UID/${service_handle}/" > $new_user_ldif
  # \
  #| sed "s/USER/${username}/" > $new_user_ldif
  
