@@ -11,16 +11,17 @@ if test $exit_code -eq 0
  then 
    ldapdelete "$dn" -H ldap://ldap/
    exit_code=$?  
-  if test $exit_code -eq 0 
-   then 
-    /home/engines/scripts/services/del_from_ftp_group.sh $uid
-    exit_code=$?
-  else
-    echo "Failed to delete $uid"
-    exit_code=2
-  fi
- else
- echo "$dn Not Found" 
+    if test $exit_code -eq 0 
+     then 
+      /home/engines/scripts/services/del_from_ftp_group.sh $uid
+      exit_code=$?
+    else
+      echo "Failed to delete $uid"
+      exit_code=2
+    fi
+else
+  exit_code=2
+  echo "$dn Not Found" 
 fi
 #dont leave ticket open
 kdestroy
