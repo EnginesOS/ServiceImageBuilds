@@ -2,12 +2,35 @@ FROM engines/servicebase:$release
 
 RUN adduser -q --disabled-password --home /home/app -uid 22033 uadmin &&\
 	usermod -G containers -a uadmin &&\
-	apt-get -y update &&\
-	apt-get -y install libsasl2-modules-gssapi-mit 
+	apt-get -y install    &&\
+	/home/no_init.sh &&\	
+	apt-get update -y &&\
+	apt-get -y install ruby-dev \
+						telnet \
+						libsasl2-modules-gssapi-mit \
+						libsqlite3-dev \
+						libcurl4-openssl-dev \
+						build-essential \
+						libssl-dev \
+						libreadline-dev \
+						autoconf \
+						libltdl-dev \
+						zlib1g-dev &&\
+	chown -R engines /opt/engines/run/system/ /home/engines /var/log/ &&\
+	usermod -G docker -a engines &&\
+	gem install --no-rdoc --no-ri git bundle rest-client net_http_unix excon \
+	 			gctools yajl-ruby sinatra thin rubytree  sinatra-contrib \
+			    puma timers&&\		
+ 	/home/post_build_clean.sh
+	
 	
 COPY  home/ /home
 COPY sudoers /etc/sudoers.d/uadmin
-RUN chmod og-rw /etc/sudoers.d/uadmin
+RUN chmod og-rw /etc/sudoers.d/uadmin &&\
+	cd /home &&\
+	git clone https://github.com/lachdoug/user_admin app &&\
+	/home/engines/scripts/engine/deploy.sh
+
 
 ENV ContUser uadmin
 ENV ContGrp uadmin

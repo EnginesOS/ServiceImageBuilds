@@ -4,14 +4,13 @@ PID_FILE=/home/engines/run/sleep.pid
 export PID_FILE
 . /home/engines/functions/trap.sh
 
+/home/engines/scripts/engine/deploy.sh
+  
+thin -C /home/config.yaml -R /home/app/config.ru start > /var/log/system.log &
+echo $! >$PID_FILE
+    
 startup_complete
-
-while ! test -f /home/engines/run/flags/sig_term -o -f /home/engines/run/flags/sig_quit
- do 
-    sleep 120 &
-    echo $! >$PID_FILE
-	wait 		
-	exit_code=$?		
-done
+wait 		
+exit_code=$?		
 
 shutdown_complete
