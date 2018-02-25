@@ -37,11 +37,11 @@ olcAccess: {1} to attrs=shadowLastChange
 olcAccess: {2} to dn.base="cn=uidNext,ou=System,ou=Engines,dc=engines,dc=internal"
         by dn="cn=uadmin,ou=hosts,ou=Engines,dc=engines,dc=internal" write
         by dn="cn=admin,ou=People,ou=Engines,dc=engines,dc=internal" write
-        by dn="cn=ftp,ou=hosts,ou=Engines,dc=engines,dc=internal" write
+#         by dn="cn=ftp,ou=hosts,ou=Engines,dc=engines,dc=internal" write
 olcAccess: {3} to dn.base="cn=gidNext,ou=System,ou=Engines,dc=engines,dc=internal"
         by dn="cn=uadmin,ou=hosts,ou=Engines,dc=engines,dc=internal" write
         by dn="cn=admin,ou=People,ou=Engines,dc=engines,dc=internal" write
-        by dn="cn=ftp,ou=hosts,ou=Engines,dc=engines,dc=internal" write
+#         by dn="cn=ftp,ou=hosts,ou=Engines,dc=engines,dc=internal" write
 # olcAccess: {4} to dn.base="cn=ftp,ou=Groups,dc=engines,dc=internal" 
 #        by dn="cn=ftp,ou=hosts,ou=Engines,dc=engines,dc=internal" write
 #         by dn="cn=uadmin,ou=hosts,ou=Engines,dc=engines,dc=internal" write
