@@ -1,6 +1,6 @@
 FROM engines/servicebase:$release
 
-RUN adduser -q --disabled-password --home /home/app -uid 22033 uadmin &&\
+RUN adduser -q --disabled-password --home /home/.home_dir -uid 22033 uadmin &&\
 	usermod -G containers -a uadmin &&\
 	apt-get -y install    &&\
 	/home/no_init.sh &&\	
@@ -16,9 +16,9 @@ RUN adduser -q --disabled-password --home /home/app -uid 22033 uadmin &&\
 						autoconf \
 						libltdl-dev \
 						zlib1g-dev &&\
-	gem install --no-rdoc --no-ri git bundle rest-client net_http_unix excon \
-	 			gctools yajl-ruby sinatra thin rubytree  sinatra-contrib \
-			    puma timers&&\		
+	gem install --no-rdoc --no-ri git bundle  \
+	 			gctools  sinatra thin  sinatra-contrib \
+			     timers&&\		
  	/home/post_build_clean.sh
 	
 	
