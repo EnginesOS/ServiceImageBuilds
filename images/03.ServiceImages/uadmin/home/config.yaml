@@ -1,11 +1,11 @@
 ---
 environment: production
-chdir: /opt/engines/src/server
+chdir: /home/app
 address: 0.0.0.0
-port: 2380
-pid: /home/engines/run/system.pid
+port: 8000
+pid: /home/engines/run/uadmin.pid
 log: /var/log/system.log
 max_conns: 1024
-timeout: 300
+timeout: 60
 max_persistent_conns: 512
 daemonize: false
