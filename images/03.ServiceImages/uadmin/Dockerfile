@@ -1,8 +1,7 @@
 FROM engines/servicebase:$release
 
 RUN adduser -q --disabled-password --home /home/.home_dir -uid 22033 uadmin &&\
-	usermod -G containers -a uadmin &&\
-	apt-get -y install    &&\
+	usermod -G containers -a uadmin &&\	
 	/home/no_init.sh &&\	
 	apt-get update -y &&\
 	apt-get -y install ruby-dev \
@@ -26,7 +25,7 @@ COPY sudoers /etc/sudoers.d/uadmin
 RUN chmod og-rw /etc/sudoers.d/uadmin &&\
 	cd /home &&\
 	git clone https://github.com/lachdoug/user_admin.git /home/app &&\
-	/home/engines/scripts/engine/deploy.sh
+	chown -R uadmin /home/app
 
 
 ENV ContUser uadmin
