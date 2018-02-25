@@ -1,5 +1,6 @@
 #!/bin/sh
 cd /home/app
 git pull
-bundle -standalone
+bundle install --standalone   
+
 
