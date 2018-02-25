@@ -12,5 +12,5 @@ echo $! >$PID_FILE
 startup_complete
 wait 		
 exit_code=$?		
-
+sleep 500
 shutdown_complete
