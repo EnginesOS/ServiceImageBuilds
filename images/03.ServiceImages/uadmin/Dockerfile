@@ -16,8 +16,6 @@ RUN adduser -q --disabled-password --home /home/app -uid 22033 uadmin &&\
 						autoconf \
 						libltdl-dev \
 						zlib1g-dev &&\
-	chown -R engines /opt/engines/run/system/ /home/engines /var/log/ &&\
-	usermod -G docker -a engines &&\
 	gem install --no-rdoc --no-ri git bundle rest-client net_http_unix excon \
 	 			gctools yajl-ruby sinatra thin rubytree  sinatra-contrib \
 			    puma timers&&\		
