@@ -24,6 +24,7 @@ COPY  home/ /home
 COPY sudoers /etc/sudoers.d/uadmin
 RUN chmod og-rw /etc/sudoers.d/uadmin &&\
 	cd /home &&\
+	gem install net-ldap &&\
 	git clone https://github.com/lachdoug/user_admin.git /home/app &&\
 	/home/engines/scripts/engine/deploy.sh &&\
 	chown -R uadmin /home/app
