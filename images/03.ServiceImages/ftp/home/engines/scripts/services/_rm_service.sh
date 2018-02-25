@@ -1,8 +1,7 @@
 #!/bin/bash
 
 kinit -t /etc/krb5kdc/keys/ftp.keytab 
-dn="cn=$service_handle,ou=ftp,ou=Service Accounts,ou=Engines,dc=engines,dc=internal"
-
+dn="cn=$service_handle,ou=ftp,ou=Services,ou=Containers,ou=Engines,dc=engines,dc=internal"
 
 uid=`ldapsearch -h ldap "$dn" |grep -i uid: | awk '{print $2'}`
 exit_code=$?

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "
-dn: cn=ftp,ou=Groups,dc=engines,dc=internal
+dn: cn=ftp users,ou=ftp,ou=Services,ou=Groups,dc=engines,dc=internal
 changetype: modify
 delete: memberUid
 memberUid: $1 
