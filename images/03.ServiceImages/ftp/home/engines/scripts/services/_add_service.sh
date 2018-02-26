@@ -20,7 +20,7 @@ cat /home/engines/templates/ftp/new_user.ldif \
 echo /ftp/$access/$parent_engine/$volume/$folder >> $new_user_ldif
 
 cat $new_user_ldif | ldapadd -H ldap://ldap/
-/home/engines/scripts/services/add_to_ftp_group.sh ${service_handle}/${service_container_name}
+/home/engines/scripts/services/add_to_ftp_group.sh ${service_container_name}
 r=$?
 cp $new_user_ldif /tmp/new_user_ldif
 rm $new_user_ldif
