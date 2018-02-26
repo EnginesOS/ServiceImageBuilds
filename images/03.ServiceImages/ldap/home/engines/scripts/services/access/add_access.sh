@@ -21,7 +21,7 @@ if ! test -z $private
  then
   private='by none read'
  else
-  private='by * read'
+  private="by * read"
 fi  
 
 LDIF_FILE=`mktemp`
@@ -31,7 +31,7 @@ LDAP_OUTF=`mktemp`
    do
      eval echo $LINE >> $LDIF_FILE
    done
-echo $private >> $LDIF_FILE
+echo "$private" >> $LDIF_FILE
 echo by dn=cn=admin,ou=People,ou=Engines,dc=engines,dc=internal manage  >> $LDIF_FILE
 echo by dn="cn=uadmin,ou=hosts,ou=Engines,dc=engines,dc=internal" manage  >> $LDIF_FILE
  cat $LDIF_FILE |sudo /home/engines/scripts/ldap/sudo/_ldapmodify.sh  &> $LDAP_OUTF
