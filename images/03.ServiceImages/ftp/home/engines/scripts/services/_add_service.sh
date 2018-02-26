@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 new_user_ldif=`mktemp`
 
 kinit -kt /etc/krb5kdc/keys/ftp.keytab 

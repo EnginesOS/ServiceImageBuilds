@@ -2,12 +2,8 @@
 . /home/engines/functions/params_to_env.sh
 params_to_env
 
-
 required_values="username password title folder"
 check_required_values
-
-
-#
 
 if ! test -z $rw_access 
  then
