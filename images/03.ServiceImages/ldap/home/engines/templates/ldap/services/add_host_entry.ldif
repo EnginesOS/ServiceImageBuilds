@@ -1,5 +1,4 @@
 dn: uid=${parent_engine},ou=hosts,ou=engines,dc=engines,dc=internal
-uid: ${parent_engine}
 objectclass: account
 objectclass: simpleSecurityObject
 objectclass: top
