@@ -1,5 +1,5 @@
-#!/bin/sh
-
+#!/bin/bash
+LDIF_FILE=`mktemp`
 sha_pass=`echo $password | sha1sum | awk '{ print $1}'`
 cat /home/engines/templates/ldap/add_host_entry.ldif | while read LINE
 do
