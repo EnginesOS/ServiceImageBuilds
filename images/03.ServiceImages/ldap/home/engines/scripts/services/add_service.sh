@@ -22,7 +22,7 @@ check_required_values
    exit 1
   fi
   
-export top_ou parent_engine container_type cn auth password ldap_dn
+export top_ou parent_engine container_type cn auth ldap_password access_dn read_access write_access
 
 if test $type = group
  then
