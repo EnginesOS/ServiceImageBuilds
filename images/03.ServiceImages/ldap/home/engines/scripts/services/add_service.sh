@@ -30,7 +30,7 @@ if test $type = group
 elif test $type = ou
  then
  /home/engines/scripts/services/ou/add_ou.sh
-elif $type = access
+elif test $type = access
  then
   export parent_engine auth password access_dn
   /home/engines/services/access/create_ldap_host_entry.sh
