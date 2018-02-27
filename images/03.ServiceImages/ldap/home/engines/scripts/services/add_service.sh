@@ -33,7 +33,7 @@ elif test $type = ou
 elif test $type = access
  then
   export parent_engine auth password access_dn
-  /home/engines/services/access/create_ldap_host_entry.sh
+  /home/engines/scripts/services/access/create_ldap_host_entry.sh
 else
     echo '{"Result":"Failed","Error Mesg":"Invalid type"}'
    exit 1
