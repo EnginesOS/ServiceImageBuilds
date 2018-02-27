@@ -8,7 +8,7 @@ uid=`/home/engines/scripts/services/next_id.sh`
   fi
   
 kinit -kt /etc/krb5kdc/keys/ftp.keytab 
-cat /home/engines/templates/ftp/new_user.ldif \
+cat /home/engines/templates/ldap/new_user.ldif \
  | sed "s/SN/$service_handle/g" \
  | sed "s/IDNUMBER/$uid/" \
  | sed "s/GID/${ftp_gid}/" \
