@@ -20,8 +20,7 @@ RUN	chgrp containers /home &&\
  	
 USER www-data
 
-RUN	echo -n master >/home/app/release;\
-    /home/engines/scripts/startup/deploy.sh
+RUN	echo -n master >/home/app/release
 
 ENV HOME /home/app
 WORKDIR /home/app/
