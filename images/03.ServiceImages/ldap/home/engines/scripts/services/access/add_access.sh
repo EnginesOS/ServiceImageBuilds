@@ -17,12 +17,34 @@ fi
 
 id="cn=${parent_engine},ou=hosts,ou=engines,dc=engines,dc=internal"
 
-if ! test -z $private
+
+
+if test $read_access = all
  then
-  private='by none read'
- else
-  private="by * read"
-fi  
+  read_acl="by * read"
+elif test $read_access = private
+ then
+  read_acl="by * none"
+elif test $read_access = authenticated
+ then  
+  read_acl="by * authenticated"
+else
+   	read_acl=$read_access
+fi
+
+if test $write_access = all
+ then
+  write_acl="by * write"
+elif test $write_access = private
+ then
+  write_acl=""
+elif test $write_access = authenticated
+ then  
+  write_acl="by authenticated write" 
+else
+   	write_acl=$write_access
+fi
+
 
 LDIF_FILE=`mktemp`
 LDAP_OUTF=`mktemp`
@@ -31,9 +53,14 @@ LDAP_OUTF=`mktemp`
    do
      eval echo $LINE >> $LDIF_FILE
    done
-echo "$private" >> $LDIF_FILE
+
 echo by dn=cn=admin,ou=People,ou=Engines,dc=engines,dc=internal manage  >> $LDIF_FILE
 echo by dn="cn=uadmin,ou=hosts,ou=Engines,dc=engines,dc=internal" manage  >> $LDIF_FILE
+it ! test -z $write_acl
+ then
+	echo  $write_acl >> $LDIF_FILE
+fi
+echo $read_acl >> $LDIF_FILE
  cat $LDIF_FILE |sudo /home/engines/scripts/ldap/sudo/_ldapmodify.sh  &> $LDAP_OUTF
  cp $LDIF_FILE /tmp/access
  rm $LDIF_FILE

@@ -22,7 +22,7 @@ check_required_values
    exit 1
   fi
   
-export top_ou parent_engine container_type cn
+export top_ou parent_engine container_type cn auth password ldap_dn
 
 if test $type = group
  then
@@ -30,6 +30,10 @@ if test $type = group
 elif test $type = ou
  then
  /home/engines/scripts/services/ou/add_ou.sh
+elif $type = access
+ then
+  export parent_engine auth password access_dn
+  /home/engines/services/access/create_ldap_host_entry.sh
 else
     echo '{"Result":"Failed","Error Mesg":"Invalid type"}'
    exit 1
