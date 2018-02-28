@@ -2,8 +2,7 @@
 
 if ! test -f /home/engines/run/flags/first_run.done
  then
-   sudo -n /home/engines/scripts/first_run/_first_run.sh >/var/log/first_run.log
-   sleep 4
+   /home/engines/scripts/first_run/first_run.sh >/var/log/first_run.log
    touch /home/engines/run/flags/first_run.stage1_done
 fi   
 
