@@ -15,7 +15,7 @@ else
  exit 127
 fi  
 
-id="cn=${parent_engine},ou=${container_type},ou=hosts,ou=engines,dc=engines,dc=internal"
+id="cn=${parent_engine},ou=hosts,ou=engines,dc=engines,dc=internal"
 
 
 
