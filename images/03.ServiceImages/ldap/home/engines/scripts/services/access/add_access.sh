@@ -42,7 +42,7 @@ elif test $write_access = authenticated
  then  
   write_acl="  by authenticated write" 
 else
-   	write_acl="  by dn="$write_access""
+   	write_acl="  by dn="$write_access"
 fi
 
 
