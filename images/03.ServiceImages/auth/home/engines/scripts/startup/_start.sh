@@ -21,9 +21,9 @@ if test -f /home/engines/run/flags/first_run.stage1_done
    rm /home/engines/run/flags/first_run.stage1_done
    touch /home/engines/run/flags/first_run.done
 fi 
-
-wait $kpid 	
 startup_complete
+wait $kpid 	
+
 
 exit_code=$?
  
