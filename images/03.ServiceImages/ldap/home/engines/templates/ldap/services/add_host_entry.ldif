@@ -3,4 +3,4 @@ objectclass: account
 objectclass: simpleSecurityObject
 objectclass: top
 uid: ${parent_engine}
-userpassword: {SHA}${sha_pass}
+userpassword: ${sha_pass}
