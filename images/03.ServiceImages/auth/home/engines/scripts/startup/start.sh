@@ -7,13 +7,9 @@ export PID_FILE
 KILL_SCRIPT=/home/engines/scripts/signal/kill_kerberos.sh
 export KILL_SCRIPT
 
-
 . /home/engines/functions/trap.sh
 
-
 sudo -n /home/engines/scripts/startup/_start.sh &
-
-
 
 wait
 
