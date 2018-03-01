@@ -64,8 +64,6 @@ LDAP_OUTF=`mktemp`
      eval echo $LINE >> $LDIF_FILE
    done
 
-echo "  by dn=cn=admin,ou=People,ou=Engines,dc=engines,dc=internal manage" >> $LDIF_FILE
-echo "  by dn=cn=uadmin,ou=hosts,ou=Engines,dc=engines,dc=internal manage" >> $LDIF_FILE
 
 if ! test -z $write_acl
  then
