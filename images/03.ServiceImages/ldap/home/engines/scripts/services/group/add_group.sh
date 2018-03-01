@@ -16,7 +16,12 @@ if test $c -eq 0
  cat $LDIF_FILE |sudo /home/engines/scripts/ldap/sudo/_ldapadd.sh $* &> $LDAP_OUTF
 export top_ou parent_engine container_type cn auth password ldap_dn
  /home/engines/scripts/services/access/add_access.sh ou=$parent_engine,ou=${top_ou},ou=Groups,dc=engines,dc=internal
+r=$?
 
+if $r -ne 0
+ then 
+  exit $r
+fi
 result=$?
 if test $result -ne 0
  then
@@ -37,3 +42,9 @@ do
  eval echo $LINE >> $LDIF_FILE
 done
 cat $LDIF_FILE | /home/engines/scripts/ldap/ldapadd.sh 
+r=$?
+
+if $r -ne 0
+ then 
+  exit $r
+fi
