@@ -9,7 +9,7 @@ check_required_values
 gidNumber=`/home/engines/scripts/ldap/next_gid.sh`
 cat /home/engines/templates/add_email_group.ldif | while read LINE
 do
- eval echo $LINE >> $LDIF_FILE
+ eval echo "$LINE" >> $LDIF_FILE
 done
 
 

@@ -8,7 +8,7 @@ check_required_values
 
 cat /home/engines/templates/add_user_to_group.ldif | while read LINE
 do
- eval echo $LINE >> $LDIF_FILE
+ eval echo "$LINE" >> $LDIF_FILE
 done
 
 

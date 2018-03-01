@@ -10,7 +10,7 @@ if test -f /home/engines/templates/$map_file
    
   cat /home/engines/templates/$map_file | while read LINE
   do
-   eval echo $LINE >> /home/postfix/$map_file
+   eval echo "$LINE" >> /home/postfix/$map_file
   done
  sudo -n /home/engines/scripts/engine/_postmap.sh $map_file
 fi

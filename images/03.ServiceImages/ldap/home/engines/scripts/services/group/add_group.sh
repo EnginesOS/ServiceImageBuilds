@@ -10,7 +10,7 @@ if test $c -eq 0
  then
   cat /home/engines/templates/ldap/services/add_group_ou.ldif | while read LINE
    do
-     eval echo $LINE >> $LDIF_FILE
+     eval echo "$LINE" >> $LDIF_FILE
    done
 
  cat $LDIF_FILE |sudo /home/engines/scripts/ldap/sudo/_ldapadd.sh $* &> $LDAP_OUTF
@@ -39,7 +39,7 @@ fi
 gidNumber=`/home/engines/scripts/ldap/next_gid.sh`
 cat /home/engines/templates/ldap/services/add_group.ldif | while read LINE
 do
- eval echo $LINE >> $LDIF_FILE
+ eval echo "$LINE" >> $LDIF_FILE
 done
 cat $LDIF_FILE | /home/engines/scripts/ldap/ldapadd.sh 
 r=$?
