@@ -21,7 +21,7 @@ fi
 
 }
 
-targets="system_services/system services/smtp services/ftp services/emailservices/ services/mysql services/pgsql services/mgmt services/wap services/control"
+targets="system_services/system services/smtp services/ftp services/email services/imap services/mysql services/pgsql services/mgmt services/wap services/control"
 
 case $install_target in
 
