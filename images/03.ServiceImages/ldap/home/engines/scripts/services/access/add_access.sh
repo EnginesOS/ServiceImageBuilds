@@ -29,6 +29,9 @@ if ! test -z $read_access
   elif test $read_access = authenticated
    then  
     read_acl="  by * authenticated"
+  elif test $read_acl = none
+   then  
+    unset read_acl
   else
      	read_acl=" by dn="$read_access"
   fi
@@ -45,6 +48,9 @@ if ! test -z $write_access
   elif test $write_access = authenticated
    then  
     write_acl="  by authenticated write" 
+  elif test $write_access = none
+   then  
+    unset write_acl
   else
      	write_acl="  by dn="$write_access"
   fi
@@ -61,12 +67,15 @@ LDAP_OUTF=`mktemp`
 echo "  by dn=cn=admin,ou=People,ou=Engines,dc=engines,dc=internal manage" >> $LDIF_FILE
 echo "  by dn=cn=uadmin,ou=hosts,ou=Engines,dc=engines,dc=internal manage" >> $LDIF_FILE
 
-it ! test -z $write_acl
+if ! test -z $write_acl
  then
 	echo  $write_acl >> $LDIF_FILE
 fi
+if ! test -z $read_acl
+ then
+	echo  $read_acl >> $LDIF_FILE
+fi
 
-echo $read_acl >> $LDIF_FILE
 cat $LDIF_FILE |sudo /home/engines/scripts/ldap/sudo/_ldapmodify.sh  &> $LDAP_OUTF
 cp $LDIF_FILE /tmp/access
 rm $LDIF_FILE
