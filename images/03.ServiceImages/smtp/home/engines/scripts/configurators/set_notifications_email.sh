@@ -26,7 +26,7 @@ fi
 ALIAS_FILE=/tmp/aliases
 cat /home/engines/templates/aliases | while read LINE
 do
- eval echo $LINE >> $ALIAS_FILE
+ eval echo "$LINE" >> $ALIAS_FILE
 done
 
 sudo -n /home/engines/scripts/configurators/_set_notifications_email.sh

@@ -10,7 +10,7 @@ dn=`/home/engines/scripts/ldap/get_dn.sh  ou=People,dc=engines,dc=internal uid=$
 
 cat /home/engines/templates/del_user_email.ldif | while read LINE
 do
- eval echo $LINE >> $LDIF_FILE
+ eval echo "$LINE" >> $LDIF_FILE
 done
 
 

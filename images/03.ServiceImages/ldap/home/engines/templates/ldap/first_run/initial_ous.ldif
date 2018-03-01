@@ -14,16 +14,6 @@ dn: ou=hosts,ou=Engines,dc=engines,dc=internal
 objectClass: organizationalUnit
 ou: hosts
 
-dn: ou=Service Accounts,ou=Engines,dc=engines,dc=internal
-objectclass: organizationalUnit
-objectclass: top
-ou: Service Accounts
-
-dn: ou=ftp,ou=Service Accounts,ou=Engines,dc=engines,dc=internal
-objectclass: organizationalUnit
-objectclass: top
-ou: ftp
-
 dn: ou=System,ou=Engines,dc=engines,dc=internal
 objectClass: organizationalUnit
 ou: System

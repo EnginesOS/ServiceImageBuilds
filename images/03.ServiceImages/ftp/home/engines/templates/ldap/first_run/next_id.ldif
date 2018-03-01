@@ -1,0 +1,4 @@
+dn: cn=uidNext,ou=ftp,ou=Services,ou=Containers,ou=Engines,dc=engines,dc=internal
+objectClass: uidNext
+uidNumber: 25000
+cn: uidNext
