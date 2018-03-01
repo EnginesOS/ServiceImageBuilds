@@ -61,7 +61,7 @@ LDAP_OUTF=`mktemp`
 
  cat /home/engines/templates/ldap/services/add_access.ldif | while read LINE
    do
-     eval echo $LINE >> $LDIF_FILE
+     eval echo "$LINE" >> $LDIF_FILE
    done
 
 
