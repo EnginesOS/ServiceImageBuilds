@@ -33,7 +33,7 @@ if ! test -z $read_access
    then  
     unset read_acl
   else
-     	read_acl=" by dn="$read_access"
+     	read_acl="  by dn="$read_access"
   fi
 fi
 
@@ -67,14 +67,14 @@ LDAP_OUTF=`mktemp`
 
 if ! test -z $write_acl
  then
-	echo  $write_acl >> $LDIF_FILE
+	echo  "$write_acl" >> $LDIF_FILE
 fi
 if ! test -z $read_acl
  then
-	echo  $read_acl >> $LDIF_FILE
+	echo  "$read_acl" >> $LDIF_FILE
 fi
 
-cat $LDIF_FILE |sudo /home/engines/scripts/ldap/sudo/_ldapmodify.sh  &> $LDAP_OUTF
+cat $LDIF_FILE |sudo -n /home/engines/scripts/ldap/sudo/_ldapmodify.sh &> $LDAP_OUTF
 cp $LDIF_FILE /tmp/access
 rm $LDIF_FILE
 
