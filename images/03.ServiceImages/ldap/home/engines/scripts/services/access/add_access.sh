@@ -75,6 +75,12 @@ if ! test -z $read_acl
 fi
 
 cat $LDIF_FILE |sudo -n /home/engines/scripts/ldap/sudo/_ldapmodify.sh &> $LDAP_OUTF
+r=$?
+
+if $r -ne 0
+ then 
+  exit $r
+fi
 cp $LDIF_FILE /tmp/access
 rm $LDIF_FILE
 
