@@ -1,8 +1,5 @@
 FROM engines/servicebase:$release
 
-#COPY kadm5.acl /etc/
-COPY src/krb5.conf /etc/
-
 RUN adduser --uid 22010 -q --home /home/ftpd --disabled-password proftpd &&\
 	/home/no_init.sh &&\	
 	apt-get -y update &&\

@@ -28,10 +28,13 @@ set > /tmp/full_env
 elif test $type = ou
  then
  /home/engines/scripts/services/ou/rm_ou.sh
+elif test $type = ou
+ then
+   /home/engines/scripts/services/access/rm_access.sh
 else
     echo '{"Result":"Failed","Error Mesg":"Invalid type"}'
    exit 1	
-  fi 
+fi 
   
   
  

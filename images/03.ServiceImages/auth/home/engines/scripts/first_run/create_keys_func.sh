@@ -25,6 +25,7 @@ echo ktadd -k /etc/krb5kdc/services/ldap/ldap.keytab ldap/ldap.engines.internal@
 echo addprinc -randkey uadmin/admin@ENGINES.INTERNAL | kadmin.local
 echo ktadd -k /etc/krb5kdc/services/uadmin/uadmin_kadmin.keytab uadmin/admin@ENGINES.INTERNAL | kadmin.local
 
+mkdir -p /etc/krb5kdc/services/control/
 echo addprinc -randkey control/admin@ENGINES.INTERNAL | kadmin.local
 echo ktadd -k /etc/krb5kdc/services/control/control_kadmin.keytab control/admin@ENGINES.INTERNAL | kadmin.local
  

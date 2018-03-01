@@ -5,7 +5,7 @@
 
 cat /home/engines/templates/ldap/root_password.ldif | while read LINE
 do
- eval echo $LINE >> $LDIF_FILE
+ eval echo "$LINE" >> $LDIF_FILE
 done
 kinit -kt /etc/krb5kdc/keys/ldap.keytab 
 ldapmodify -H ldapi:/// -f $LDIF_FILE

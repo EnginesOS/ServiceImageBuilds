@@ -22,7 +22,7 @@ fi
  
  cat /home/engines/templates/ldap/services/rm_access.ldif | while read LINE
    do
-     eval echo $LINE >> $LDIF_FILE
+     eval echo "$LINE" >> $LDIF_FILE
    done
 
 

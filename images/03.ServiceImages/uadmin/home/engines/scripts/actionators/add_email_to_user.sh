@@ -11,7 +11,7 @@ dn=`/home/engines/scripts/ldap/get_dn.sh  ou=People,dc=engines,dc=internal uid=$
 
 cat /home/engines/templates/add_email_to_user.ldif | while read LINE
 do
- eval echo $LINE >> $LDIF_FILE
+ eval echo "$LINE" >> $LDIF_FILE
 done
 
 

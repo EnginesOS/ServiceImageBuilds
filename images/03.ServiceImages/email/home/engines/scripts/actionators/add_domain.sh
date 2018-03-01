@@ -15,7 +15,7 @@ fi
 
 cat /home/engines/templates/ldap/add_domain.ldif | while read LINE
 do
- eval echo $LINE >> $LDIF_FILE
+ eval echo "$LINE" >> $LDIF_FILE
 done
 
 cat $LDIF_FILE | /home/engines/scripts/ldap/ldapadd.sh &> $LDAP_OUTF

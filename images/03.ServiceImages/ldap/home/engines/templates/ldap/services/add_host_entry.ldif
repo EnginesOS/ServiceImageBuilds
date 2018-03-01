@@ -1,0 +1,6 @@
+dn: uid=${parent_engine},ou=hosts,ou=engines,dc=engines,dc=internal
+objectclass: account
+objectclass: simpleSecurityObject
+objectclass: top
+uid: ${parent_engine}
+userpassword: ${sha_pass}
