@@ -6,7 +6,7 @@ ENV NODE_VERSION 4.8.7
 
 RUN apt-get -y install python &&\
     mkdir ~/node_js_src &&\
-    cd $_ &&\
+    cd ~/node_js_src &&\
     wget https://nodejs.org/dist/latest-v4.x/node-v${NODE_VERSION}.tar.gz &&\
     tar xzvf node-v${NODE_VERSION}.tar.gz &&\
     cd node-v* &&\

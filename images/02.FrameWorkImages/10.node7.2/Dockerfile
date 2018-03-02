@@ -5,7 +5,7 @@ ENV ContGrp node
 ENV NODE_VERSION 7.10.0
 
 RUN mkdir ~/node_js_src &&\
-	cd $_ &&\
+	cd ~/node_js_src &&\
 	wget -N http://nodejs.org/dist/node-latest.tar.gz  &&\
 	tar xzvf node-latest.tar.gz &&\
 	cd node-v* &&\
