@@ -5,7 +5,7 @@ ENV ContGrp node
 ENV NODE_VERSION 6.12.3
 
 RUN mkdir ~/node_js_src &&\
-	cd $_ &&\
+	cd ~/node_js_src &&\
 	wget http://nodejs.org/dist/latest-v6.x/node-v${NODE_VERSION}.tar.xz &&\
 	tar xvf node-v${NODE_VERSION}.tar.xz &&\
 	cd node-v* &&\
