@@ -19,8 +19,24 @@ RUN /usr/sbin/addgroup --gid 21999 edocker &&\
 	mkdir -p /opt/engines/run/system/ &&\	
 	chown -R engines /opt/engines/run/system/ /home/engines /var/log/ &&\
 	usermod -G docker -a engines &&\
-	gem install --no-rdoc --no-ri git bundle rest-client net_http_unix excon \
-	 			gctools yajl-ruby sinatra thin rubytree  sinatra-contrib \
+	apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 561F9B9CAC40B2F7 &&\
+ 	apt-get update -y &&\
+	apt-get install -y apt-transport-https  &&\
+	echo deb https://oss-binaries.phusionpassenger.com/apt/passenger xenial main >/etc/apt/sources.list.d/passenger.list &&\ 
+	chmod 600 /etc/apt/sources.list.d/passenger.list &&\
+	apt-get update -y &&\
+	apt-get install -y passenger-dev &&\
+	gem install passenger &&\   
+	apt-get install -y nginx-common \
+	                   nginx-extras \
+	                   nginx &&\
+ 	mkdir -p /var/www/.passenger &&\
+ 	chown www-data /var/www/.passenger &&\
+	usermod -G containers -a www-data &&\
+ 	chown www-data /var/lib/nginx/ &&\
+ 	passenger-config  build-native-support &&\
+	gem install --no-rdoc --no-ri git bundle rest-client net_http_unix excon &&\
+	 			gctools yajl-ruby sinatra thin rubytree  sinatra-contrib &&\
 			 	warden data_mapper dm-sqlite-adapter ffi-yajl sqlite3 rb-inotify puma timers&&\		
  	/home/post_build_clean.sh
 	
