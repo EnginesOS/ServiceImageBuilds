@@ -35,8 +35,8 @@ RUN /usr/sbin/addgroup --gid 21999 edocker &&\
 	usermod -G containers -a www-data &&\
  	chown www-data /var/lib/nginx/ &&\
  	passenger-config  build-native-support &&\
-	gem install --no-rdoc --no-ri git bundle rest-client net_http_unix excon &&\
-	 			yajl-ruby sinatra thin rubytree  sinatra-contrib &&\
+	gem install --no-rdoc --no-ri git bundle rest-client net_http_unix excon \
+	 			gctools yajl-ruby sinatra thin rubytree  sinatra-contrib \
 			 	warden data_mapper dm-sqlite-adapter ffi-yajl sqlite3 rb-inotify puma timers&&\		
  	/home/post_build_clean.sh
 	
