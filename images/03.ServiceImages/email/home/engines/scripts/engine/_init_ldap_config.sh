@@ -1,5 +1,5 @@
 #!/bin/sh
-if test -d  /etc/postfix/ldap
+if ! test -d  /etc/postfix/ldap
  then
 	mkdir /etc/postfix/ldap
 fi	
@@ -7,7 +7,7 @@ fi
 
 files="ldap-aliases.cf ldap-groups.cf ldap-virtual-domains.cf ldap-vmailbox.cf"
 
-for file in files
+for $file in files
  do
   cat /home/engines/templates/email/ldap/$file |\
   	 sed "s/LDAP_BIND_DN/$ldap_dn/"|\
