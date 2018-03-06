@@ -1,4 +1,5 @@
 #Defaults  env_keep += "SIGNAL CONTAINER_NAME PID_FILE PID_FILES exit_code"
+Defaults  env_keep += "ldap_dn ldap_password"
 #postfix ALL = (root) NOPASSWD: /usr/lib/postfix/sbin/master
 postfix ALL=(root) NOPASSWD: /home/engines/scripts/startup/_start_postfix.sh
 postfix ALL = (root) NOPASSWD: /usr/sbin/postgrey
