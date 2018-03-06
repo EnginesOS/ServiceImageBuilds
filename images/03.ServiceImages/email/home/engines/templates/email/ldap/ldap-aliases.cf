@@ -1,6 +1,8 @@
 server_host = ldap://ldap/
 search_base = ou=People,dc=engines,dc=internal
 version = 3
-bind = no
+bind = yes
 query_filter = (&(objectclass=postfixUser)(mailacceptinggeneralid=%s))
 result_attribute = maildrop
+bind_dn LDAP_BIND_DN
+bind_pw LDAP_BIND_PW
