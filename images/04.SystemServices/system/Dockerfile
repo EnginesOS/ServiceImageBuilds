@@ -10,6 +10,7 @@ RUN /usr/sbin/addgroup --gid 21999 edocker &&\
 						libsqlite3-dev \
 						libcurl4-openssl-dev \
 						build-essential \
+						gctools \
 						libssl-dev \
 						libreadline-dev \
 						autoconf \
