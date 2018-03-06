@@ -35,22 +35,22 @@ olcAccess: {1} to attrs=shadowLastChange
   by self write
   by * read
 olcAccess: {2} to dn.base="cn=uidNext,ou=System,ou=Engines,dc=engines,dc=internal"
-        by dn="cn=uadmin,ou=hosts,ou=Engines,dc=engines,dc=internal" write
+        by dn="uid=uadmin,ou=hosts,ou=Engines,dc=engines,dc=internal" write
         by dn="cn=admin,ou=People,ou=Engines,dc=engines,dc=internal" write
 olcAccess: {3} to dn.base="cn=gidNext,ou=System,ou=Engines,dc=engines,dc=internal"
-        by dn="cn=uadmin,ou=hosts,ou=Engines,dc=engines,dc=internal" write
+        by dn="uid=uadmin,ou=hosts,ou=Engines,dc=engines,dc=internal" write
         by dn="cn=admin,ou=People,ou=Engines,dc=engines,dc=internal" write
 olcAccess: {5} to dn.subtree="ou=People,dc=engines,dc=internal"
-        by dn="cn=uadmin,ou=hosts,ou=Engines,dc=engines,dc=internal" write
+        by dn="uid=uadmin,ou=hosts,ou=Engines,dc=engines,dc=internal" write
         by dn="cn=admin,ou=People,ou=Engines,dc=engines,dc=internal" write
         by * read
 olcAccess: {6} to dn.subtree="ou=Groups,dc=engines,dc=internal"
         by  dn="cn=system,ou=hosts,ou=Engines,dc=engines,dc=internal" write
-        by dn="cn=uadmin,ou=hosts,ou=Engines,dc=engines,dc=internal" write
+        by dn="uid=uadmin,ou=hosts,ou=Engines,dc=engines,dc=internal" write
         by dn="cn=admin,ou=People,ou=Engines,dc=engines,dc=internal" write
         by * read
 olcAccess: {7} to dn.subtree="ou=Distribution Groups,dc=engines,dc=internal"
-        by dn="cn=uadmin,ou=hosts,ou=Engines,dc=engines,dc=internal" write
+        by dn="uid=uadmin,ou=hosts,ou=Engines,dc=engines,dc=internal" write
         by dn="cn=admin,ou=People,ou=Engines,dc=engines,dc=internal" write
         by * read
 #olcAccess: {9} to dn.subtree="ou=domains,ou=email,ou=Services,ou=Containers,ou=Engines,dc=engines,dc=internal" 
@@ -58,15 +58,15 @@ olcAccess: {7} to dn.subtree="ou=Distribution Groups,dc=engines,dc=internal"
 #        by dn="cn=admin,ou=People,ou=Engines,dc=engines,dc=internal" write
 #        by * read
 olcAccess: {10} to dn.subtree="ou=containers,ou=Engines,dc=engines,dc=internal"
-        by dn="cn=system,ou=hosts,ou=Engines,dc=engines,dc=internal" write
+        by dn="uid=system,ou=hosts,ou=Engines,dc=engines,dc=internal" write
         by * read
 olcAccess: {0} to dn.subtree="olcDatabase={1}mdb,cn=config"
         by dn.exact="cn=admin,dc=engines,dc=internal" manage
-        by dn.exact="cn=ldap,ou=hosts,ou=Engines,dc=engines,dc=internal" manage
+        by dn.exact="uid=ldap,ou=hosts,ou=Engines,dc=engines,dc=internal" manage
         by dn.exact="gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth" manage
         by * read
 olcAccess: {999} to *
         by dn.exact="cn=admin,dc=engines,dc=internal" manage
-        by dn.exact="cn=ldap,ou=hosts,ou=Engines,dc=engines,dc=internal" manage
+        by dn.exact="uid=ldap,ou=hosts,ou=Engines,dc=engines,dc=internal" manage
         by dn.exact="gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth" manage
         by * read
