@@ -5,5 +5,6 @@ proftpd ALL = (root) NOPASSWD: /home/engines/scripts/signal/_signal.sh
 proftpd ALL = (root) NOPASSWD: /home/engines/scripts/services/_add_service.sh
 proftpd ALL = (root) NOPASSWD: /home/engines/scripts/services/_rm_service.sh
 proftpd ALL = (root) NOPASSWD: /home/engines/scripts/first_run/_first_run.sh
+proftpd ALL = (root) NOPASSWD: /home/engines/scripts/engine/_init_ldap_config.sh
 #must have blank after last sudoers line
 

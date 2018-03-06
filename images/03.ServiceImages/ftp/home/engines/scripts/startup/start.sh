@@ -5,6 +5,7 @@ PID_FILE=/home/engines/run/ftpd.pid
 export PID_FILE
 . /home/engines/functions/trap.sh
 
+/home/engines/scripts/engine/init_ldap_config.sh
 
 sudo -n  /usr/sbin/proftpd -n &
 

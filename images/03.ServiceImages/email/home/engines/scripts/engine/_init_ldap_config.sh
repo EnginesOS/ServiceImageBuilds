@@ -1,5 +1,5 @@
 #!/bin/sh
-if ! test -d  /etc/postfix/ldap
+if test -d  /etc/postfix/ldap
  then
 	mkdir /etc/postfix/ldap
 fi	
