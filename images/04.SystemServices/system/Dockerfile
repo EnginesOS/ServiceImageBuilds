@@ -10,7 +10,6 @@ RUN /usr/sbin/addgroup --gid 21999 edocker &&\
 						libsqlite3-dev \
 						libcurl4-openssl-dev \
 						build-essential \
-						gctools \
 						libssl-dev \
 						libreadline-dev \
 						autoconf \
@@ -37,7 +36,7 @@ RUN /usr/sbin/addgroup --gid 21999 edocker &&\
  	chown www-data /var/lib/nginx/ &&\
  	passenger-config  build-native-support &&\
 	gem install --no-rdoc --no-ri git bundle rest-client net_http_unix excon &&\
-	 			gctools yajl-ruby sinatra thin rubytree  sinatra-contrib &&\
+	 			yajl-ruby sinatra thin rubytree  sinatra-contrib &&\
 			 	warden data_mapper dm-sqlite-adapter ffi-yajl sqlite3 rb-inotify puma timers&&\		
  	/home/post_build_clean.sh
 	
