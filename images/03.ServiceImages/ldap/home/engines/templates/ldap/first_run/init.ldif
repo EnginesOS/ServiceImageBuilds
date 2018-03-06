@@ -45,7 +45,7 @@ olcAccess: {5} to dn.subtree="ou=People,dc=engines,dc=internal"
         by dn="cn=admin,ou=People,ou=Engines,dc=engines,dc=internal" write
         by * read
 olcAccess: {6} to dn.subtree="ou=Groups,dc=engines,dc=internal"
-        by  dn="cn=system,ou=hosts,ou=Engines,dc=engines,dc=internal" write
+        by  dn="uid=system,ou=hosts,ou=Engines,dc=engines,dc=internal" write
         by dn="uid=uadmin,ou=hosts,ou=Engines,dc=engines,dc=internal" write
         by dn="cn=admin,ou=People,ou=Engines,dc=engines,dc=internal" write
         by * read
@@ -53,10 +53,6 @@ olcAccess: {7} to dn.subtree="ou=Distribution Groups,dc=engines,dc=internal"
         by dn="uid=uadmin,ou=hosts,ou=Engines,dc=engines,dc=internal" write
         by dn="cn=admin,ou=People,ou=Engines,dc=engines,dc=internal" write
         by * read
-#olcAccess: {9} to dn.subtree="ou=domains,ou=email,ou=Services,ou=Containers,ou=Engines,dc=engines,dc=internal" 
-#        by dn="cn=email,ou=hosts,ou=Engines,dc=engines,dc=internal" write
-#        by dn="cn=admin,ou=People,ou=Engines,dc=engines,dc=internal" write
-#        by * read
 olcAccess: {10} to dn.subtree="ou=containers,ou=Engines,dc=engines,dc=internal"
         by dn="uid=system,ou=hosts,ou=Engines,dc=engines,dc=internal" write
         by * read
