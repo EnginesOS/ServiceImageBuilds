@@ -25,14 +25,14 @@ puma $options &
 
 start_passenger()
 {
-cp /home/ruby_env /home/.env_vars
-  for env_name in `cat /home/app.env `
-  	do
-   	  if ! test -z  "${!env_name}"
-        then
-  	      echo  "passenger_env_var $env_name \"${!env_name}\";" >> /home/.env_vars
-  	  fi
-  	done 
+#cp /home/ruby_env /home/.env_vars
+  #for env_name in `cat /home/app.env `
+  	#do
+   	  #if ! test -z  "${!env_name}"
+       # then
+  	  #    echo  "passenger_env_var $env_name \"${!env_name}\";" >> /home/.env_vars
+  	 # fi
+  	#done 
 
  nginx &
 echo $! >  $PID_FILE
