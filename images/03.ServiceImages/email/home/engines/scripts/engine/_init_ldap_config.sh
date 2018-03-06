@@ -1,4 +1,9 @@
 #!/bin/sh
+if ! test -d  /etc/postfix/ldap
+ then
+	mkdir /etc/postfix/ldap
+fi	
+	
 
 files="ldap-aliases.cf ldap-groups.cf ldap-virtual-domains.cf ldap-vmailbox.cf"
 

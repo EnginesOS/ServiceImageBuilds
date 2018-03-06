@@ -42,8 +42,7 @@ ADD sudoers /etc/sudoers.d/postfix
 
 
 ADD src/postfix/master.cf /etc/postfix/
-ADD src/postfix/mailname /etc/postfix/mailname
-ADD src/postfix/ldap /etc/postfix/ldap
+ADD src/postfix/mailname /etc/postfix/mailname 
 
   
 RUN chown postfix -R /home/engines/scripts/configurators/saved/ /etc/postfix/mailname &&\
