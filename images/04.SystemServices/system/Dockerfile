@@ -42,6 +42,8 @@ RUN /usr/sbin/addgroup --gid 21999 edocker &&\
 	
 ADD home home
 ADD src/profile /home/engines/.profile
+COPY src/etc/nginx/ /etc/nginx
+COPY src/ruby_env /home/
 ADD sudoers /etc/sudoers.d/system 
 ENV ContUser engines
 ENV ContGrp ruby
