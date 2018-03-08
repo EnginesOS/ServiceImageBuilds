@@ -28,7 +28,7 @@ RUN /usr/sbin/usermod -u 22015 -d /home/backup  backup &&\
   	cd fcron-3.3.0 &&\
   	./configure --with-run-non-privileged --with-rootname=backup\
 	--with-rootgroup=backup --with-username=backup --with-groupname=backup\
-	--with-etcdir=/home/backup/fcron --with-piddir=/home/engines/run/
+	--with-etcdir=/home/backup/fcron --with-piddir=/home/engines/run/\
 	--with-fifodir=/home/backup/fcron --with-spooldir=/home/backup/fcron/spool\
 	--with-docdir=/home/backup/fcron/doc --prefix=/home/backup/fcron &&\
 	make install &&\
