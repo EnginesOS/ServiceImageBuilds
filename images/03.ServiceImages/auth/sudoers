@@ -6,6 +6,8 @@ auth ALL = (root) NOPASSWD: /home/engines/scripts/services/_add_service.sh
 auth ALL = (root) NOPASSWD: /home/engines/scripts/services/_rm_service.sh
 auth ALL = (root) NOPASSWD: /home/engines/scripts/backup/_backup.sh
 auth ALL = (root) NOPASSWD: /home/engines/scripts/backup/_restore.sh
+auth ALL = (root) NOPASSWD: /home/engines/scripts/actionators/_list_policies.sh
+auth ALL = (root) NOPASSWD: /home/engines/scripts/actionators/_list_principles.sh
 #must have blank after last sudoers line
 
 
