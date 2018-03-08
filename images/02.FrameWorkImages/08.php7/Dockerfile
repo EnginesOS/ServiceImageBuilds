@@ -16,7 +16,7 @@ RUN /usr/sbin/usermod -u 22671 www-data &&\
 					   re2c &&\
 	chown www-data /var/www/ &&\
 	usermod -G smmsp -a www-data &&\
- 	/home/post_build_clean.sh
+ 	/home/engines/scripts/build/post_build_clean.sh
 	
 
 #ADD 30-sendmail.ini /etc/php/7.0/apache2/conf.d/

@@ -1,7 +1,7 @@
 FROM engines/servicebase:$release
 
 RUN adduser --uid 22010 -q --home /home/ftpd --disabled-password proftpd &&\
-	/home/no_init.sh &&\	
+	/home/engines/scripts/build/no_init.sh &&\	
 	apt-get -y update &&\
   	apt-get -y install proftpd \
 				       libsasl2-2  \
@@ -10,7 +10,7 @@ RUN adduser --uid 22010 -q --home /home/ftpd --disabled-password proftpd &&\
   					   proftpd-mod-ldap &&\
 	usermod -G containers -a proftpd &&\
 	ln -s /home/ftpd /run/proftpd &&\
- 	/home/post_build_clean.sh
+ 	/home/engines/scripts/build/post_build_clean.sh
 
 COPY src/proftpd /etc/proftpd/
 ADD sudoers /etc/sudoers.d/ftp

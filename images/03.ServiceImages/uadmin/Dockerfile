@@ -2,7 +2,7 @@ FROM engines/servicebase:$release
 
 RUN adduser -q --disabled-password --home /home/.home_dir -uid 22033 uadmin &&\
 	usermod -G containers -a uadmin &&\	
-	/home/no_init.sh &&\	
+	/home/engines/scripts/build/no_init.sh &&\	
 	apt-get update -y &&\
 	apt-get -y install ruby-dev \
 						telnet \
@@ -17,7 +17,7 @@ RUN adduser -q --disabled-password --home /home/.home_dir -uid 22033 uadmin &&\
 						zlib1g-dev &&\
 	gem install --no-rdoc --no-ri git bundle  \
 	 			gctools  sinatra thin  sinatra-contrib &&\		
- 	/home/post_build_clean.sh
+ 	/home/engines/scripts/build/post_build_clean.sh
 	
 	
 COPY  home/ /home

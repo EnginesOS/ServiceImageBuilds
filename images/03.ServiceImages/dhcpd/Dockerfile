@@ -1,9 +1,9 @@
 FROM  engines/servicebase:$release
 
-RUN /home/no_init.sh &&\	
+RUN /home/engines/scripts/build/no_init.sh &&\	
 	apt-get  update &&\
 	apt-get -y install isc-dhcp-server &&\
- 	/home/post_build_clean.sh &&\
+ 	/home/engines/scripts/build/post_build_clean.sh &&\
 	/usr/sbin/usermod -u 22025 dhcpd
 	
 COPY sudoers /etc/sudoers.d/dhcpd

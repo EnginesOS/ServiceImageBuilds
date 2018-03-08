@@ -16,7 +16,7 @@ RUN /usr/sbin/usermod -u 22671 www-data &&\
 					   nginx &&\
  	mkdir -p /var/www/.passenger &&\
  	chown www-data /var/www/.passenger &&\
- 	/home/post_build_clean.sh &&\
+ 	/home/engines/scripts/build/post_build_clean.sh &&\
  	usermod -G containers -a www-data &&\
  	chown www-data /var/lib/nginx/ &&\
  	passenger-config build-native-support &&\

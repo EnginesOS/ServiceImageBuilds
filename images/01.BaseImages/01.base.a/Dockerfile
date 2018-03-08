@@ -16,7 +16,7 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ED8E640A;\
 	apt-get -y update;\
 	apt-get -y dist-upgrade;\
 	apt-get -y update;\
-	/home/no_init.sh ;\
+	/home/engines/scripts/build/no_init.sh ;\
 	apt-get -y  --fix-missing install build-essential   unzip curl dnsutils git  wget bzip2 zlibc ;\ 
 	apt-get clean;\
 	mkdir -p /var/run;\
@@ -35,10 +35,9 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ED8E640A;\
 	cp json_to_env /home/engines/bin;\
 	rm -r /home/src ;\
 	apt-get remove  build-essential;\
-	/home/install_utf8_langauges.sh;\
-	rm -r /tmp/* /home/install_utf8_langauges.sh;\
+	/home/engines/scripts/build/install_utf8_langauges.sh;\
+	rm -r /tmp/* /home/engines/scripts/build/install_utf8_langauges.sh;\
 		apt-get clean ;\	
 		rm -rf /tmp/*;\
  		mkdir /var/run/engines ; chgrp containers /var/run/engines; chmod g+w /var/run/engines	
 		
-CMD ["/home/init.sh"]

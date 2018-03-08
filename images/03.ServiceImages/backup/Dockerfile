@@ -1,7 +1,7 @@
 FROM engines/servicebase:$release
 
 RUN apt-get -y update &&\
-	/home/no_init.sh &&\
+	/home/engines/scripts/build/no_init.sh &&\
 	apt-get -y install mysql-client \
 	                   vim \
 	                   lftp \
@@ -49,7 +49,7 @@ RUN chown -R backup ~backup &&\
 	addgroup --gid 11111 datauser &&\
 	usermod -G datauser -a backup &&\
 	usermod -G adm -a backup &&\
- 	/home/post_build_clean.sh &&\
+ 	/home/engines/scripts/build/post_build_clean.sh &&\
 	chmod -R go-rw /etc/sudoers /etc/sudoers.d/
 	
 	

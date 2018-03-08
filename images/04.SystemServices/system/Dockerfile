@@ -3,7 +3,7 @@ FROM  engines/servicebase:$release
 
 RUN /usr/sbin/addgroup --gid 21999 edocker &&\
 	/usr/sbin/addgroup --gid 909 docker &&\
-	/home/no_init.sh &&\	
+	/home/engines/scripts/build/no_init.sh &&\	
 	apt-get update -y &&\
 	apt-get -y install ruby-dev \
 						telnet \
@@ -38,7 +38,7 @@ RUN /usr/sbin/addgroup --gid 21999 edocker &&\
 	gem install --no-rdoc --no-ri git bundle rest-client net_http_unix excon \
 	 			gctools yajl-ruby sinatra thin rubytree  sinatra-contrib \
 			 	warden data_mapper dm-sqlite-adapter ffi-yajl sqlite3 rb-inotify puma timers&&\		
- 	/home/post_build_clean.sh
+ 	/home/engines/scripts/build/post_build_clean.sh
 	
 ADD home home
 ADD src/profile /home/engines/.profile

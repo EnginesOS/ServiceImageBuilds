@@ -1,7 +1,7 @@
 FROM  engines/servicebase:$release
 
 RUN adduser -q --disabled-password --home /var/spool/postfix -uid 22003 postfix &&\
-	/home/no_init.sh &&\
+	/home/engines/scripts/build/no_init.sh &&\
 	apt-get -y update &&\	
 	apt-get -y install postfix \
 	                   postfix-pcre \
@@ -35,7 +35,7 @@ RUN cd /tmp/ &&\
 	 cp /etc/resolv.conf /var/spool/postfix/etc/ &&\
 	 cp /etc/services /var/spool/postfix/etc/ &&\
 	mkdir /etc/postfix/maps &&\
- 	/home/post_build_clean.sh
+ 	/home/engines/scripts/build/post_build_clean.sh
 	
 ADD src/postgrey /etc/default/postgrey
 ADD sudoers /etc/sudoers.d/postfix	 

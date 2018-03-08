@@ -5,7 +5,7 @@ RUN apt-mark unhold tzdata &&\
 	apt-get update -y &&\
 	apt-get install -y openjdk-9-jre-headless &&\
  	usermod -G containers -a www-data &&\
- 	/home/post_build_clean.sh
+ 	/home/engines/scripts/build/post_build_clean.sh
  	
 ADD home home
 

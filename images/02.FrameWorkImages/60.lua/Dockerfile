@@ -19,6 +19,6 @@ RUN adduser -q --uid 22676 --home /home/lua --disabled-password lua &&\
  	make build  &&\
  	make install &&\
  	cd / &&\ 	
- 	/home/post_build_clean.sh
+ 	/home/engines/scripts/build/post_build_clean.sh
     
 ADD home home
