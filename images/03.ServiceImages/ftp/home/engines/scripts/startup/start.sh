@@ -10,7 +10,7 @@ sudo -n /usr/sbin/proftpd -n &
 
 startup_complete
 
-chgrp containers /var/log/proftpd/ldap.log 
+chgrp containers -R /var/log/proftpd/ 
 
 wait 
 exit_code=$?
