@@ -1,7 +1,7 @@
 #!/bin/sh
 n=0
 echo -n '{"principles":['
-for princ in `kadmin.local -q listprincs`
+for princ in `kadmin.local -q listprincs|grep -v "Authenticating as principal"`
  do  
    if test $n -ne 0
     then
