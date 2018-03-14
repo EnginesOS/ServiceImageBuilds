@@ -2,9 +2,8 @@
 
 . /home/engines/functions/params_to_env.sh
 params_to_env
-if ! test -z $type
- then
-  if test $type = "domain"
+
+  if test $type_path = "domains"
     then	
      if ! test ${domain_name} = engines.internal
       then
@@ -17,7 +16,7 @@ if ! test -z $type
   	   exit
   	fi
   fi
-fi
+
 
 if test -z ${hostname}
  then

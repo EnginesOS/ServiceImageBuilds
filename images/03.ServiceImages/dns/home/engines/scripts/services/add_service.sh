@@ -5,9 +5,8 @@
 . /home/engines/functions/params_to_env.sh
 params_to_env
 
-if ! test -z $type
- then
-  if test $type = "domain"
+
+  if test $type_path = "domains"
    then        
      if test $wan_or_lan = lan
         then
@@ -25,7 +24,7 @@ if ! test -z $type
     echo Success
     exit 0
   fi
-fi
+
 
 domain_name=engines.internal
 add_to_internal_domain
