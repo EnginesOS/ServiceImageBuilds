@@ -6,7 +6,7 @@ export PID_FILE
  sleep 400
 
 startup_complete
-/usr/bin/freeradius  -fX &
+/usr/sbin/freeradius  -fX &
 wait
 exit_code=$?
 
