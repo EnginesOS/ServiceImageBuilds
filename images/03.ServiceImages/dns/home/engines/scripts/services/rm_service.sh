@@ -3,7 +3,7 @@
 . /home/engines/functions/params_to_env.sh
 params_to_env
  
-if ! test -z ${domain_name}
+if test $type = "domain"
   then	
    if ! test ${domain_name} = engines.internal
     then
