@@ -9,8 +9,7 @@ RUN adduser -q --disabled-password --home /home/.home_dir -uid 22033 settings &&
 	
 COPY  home/ /home
 COPY sudoers /etc/sudoers.d/settings
-RUN chmod og-rw /etc/sudoers.d/settings &&\
-	cd /home &&\
+RUN chmod og-rw /etc/sudoers.d/settings 
 	
 
 
