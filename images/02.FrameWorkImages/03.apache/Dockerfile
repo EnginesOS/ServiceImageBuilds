@@ -8,7 +8,7 @@ RUN /usr/sbin/usermod -u 22671 www-data &&\
 	         /var/run/apache2/lock &&\
 	chown www-data /var/run/apache2 &&\
 	usermod -G containers -a www-data &&\
- 	/home/post_build_clean.sh
+ 	/home/engines/scripts/build/post_build_clean.sh
 
 
 ENV APACHE_RUN_USER www-data

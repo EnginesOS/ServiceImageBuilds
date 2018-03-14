@@ -2,19 +2,21 @@
 
 . /home/engines/functions/params_to_env.sh
 params_to_env
- 
-if ! test -z ${domain_name}
-  then	
-   if ! test ${domain_name} = engines.internal
-    then
-	 rm /home/bind/engines/domains/${domain_name}
-	 rm  /home/bind/domain_list/${ip_type}/${domain_name}
-	 rm /home/bind/engines/zones/named.conf.${domain_name}
-	 cat /home/bind/engines/domains/* > /home/bind/engines/domains.hosted
-	 kill -HUP `cat /home/engines/run/named.pid`
-	 exit
-	fi
-fi
+
+  if test $type_path = "domains"
+    then	
+     if ! test ${domain_name} = engines.internal
+      then
+  	   rm /home/bind/engines/domains/${domain_name}
+  	   rm  /home/bind/domain_list/*/${domain_name}
+  	   rm /home/bind/engines/zones/named.conf.${domain_name}
+  	   cat /home/bind/engines/domains/* > /home/bind/engines/domains.hosted
+  	   kill -HUP `cat /home/engines/run/named.pid`
+       echo Success
+  	   exit
+  	fi
+  fi
+
 
 if test -z ${hostname}
  then

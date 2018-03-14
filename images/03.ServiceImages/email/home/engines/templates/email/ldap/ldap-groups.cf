@@ -3,4 +3,6 @@ search_base = ou=Distribution Groups,dc=engines,dc=internal
 version = 3
 query_filter = (cn=%s)
 result_attribute = memberUid
-bind = no
+bind = yes
+bind_dn = LDAP_BIND_DN
+bind_pw = LDAP_BIND_PW

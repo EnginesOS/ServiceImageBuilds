@@ -7,7 +7,7 @@ COPY invoke-rc.d /usr/sbin/
 
 ADD home /home/
 	
-ENV	build 20180215
+ENV	build 20180308
 RUN	echo '#!/bin/sh' >/usr/sbin/policy-rc.d &&\
 	echo exit 101 >> /usr/sbin/policy-rc.d &&\
 	chmod +x /usr/sbin/policy-rc.d &&\
@@ -24,7 +24,7 @@ RUN	echo '#!/bin/sh' >/usr/sbin/policy-rc.d &&\
 	apt-get -y upgrade &&\
 	apt-get -y dist-upgrade &&\
 	apt-get -y update &&\
-	/home/no_init.sh &&\
+	/home/engines/scripts/build/no_init.sh &&\
 	apt-get -y --fix-missing install ldap-utils \
 			           			     ca-certificates \
 		 						     krb5-user \
@@ -61,8 +61,8 @@ RUN	echo '#!/bin/sh' >/usr/sbin/policy-rc.d &&\
 	cp json_to_env /home/engines/bin &&\
 	rm -r /home/src &&\
 	apt-get -y remove  build-essential &&\
-	/home/install_utf8_langauges.sh &&\
-	rm -r /tmp/* /home/install_utf8_langauges.sh &&\
+	/home/engines/scripts/build/install_utf8_langauges.sh &&\
+	rm -r /tmp/* /home/engines/scripts/build/install_utf8_langauges.sh &&\
 	rm /etc/rsyslog.d/50-default.conf &&\ 
 	apt-get -y clean &&\	
 	rm -rf /tmp/* &&\
@@ -71,5 +71,3 @@ RUN	echo '#!/bin/sh' >/usr/sbin/policy-rc.d &&\
 
 ADD krb5.conf /etc/
 ADD rsyslog.conf /etc/		
-
-CMD ["/home/init.sh"]

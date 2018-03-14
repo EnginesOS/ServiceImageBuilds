@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bas
 echo "started" > /home/engines/run/flags/state
 
 start_thin()
@@ -22,6 +22,21 @@ if test -f /home/engines/etc/ssl/keys/system.key
 puma $options &
 
 }
+
+start_passenger()
+{
+#cp /home/ruby_env /home/.env_vars
+#  for env_name in `cat /home/app.env `
+#  	do
+#   	  if ! test -z  "${!env_name}"
+#        then
+#  	      echo  "passenger_env_var $env_name \"${!env_name}\";" >> /home/.env_vars
+#  	  fi
+#  	done 
+
+ nginx &
+echo $! >  $PID_FILE
+}
 export RUBY_GC_MALLOC_LIMIT_GROWTH_FACTOR=1.1
 
 /home/engines/scripts/startup/clear_flags.sh
@@ -37,6 +52,9 @@ cd /home
 if test -f /home/engines/run/flags/puma
  then
   start_puma
+ elif test -f /home/engines/run/flags/passenger
+  then
+   start_passenger
  else 
   start_thin
 fi  
@@ -45,6 +63,7 @@ echo $! > $PID_FILE
 #touch /home/engines/run/flags/startup_complete  done in code
 wait 
 exit_code=$?
+sleep 60
 
 shutdown_complete
 

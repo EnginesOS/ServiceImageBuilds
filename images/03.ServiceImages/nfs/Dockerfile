@@ -1,6 +1,6 @@
 FROM engines/servicebase:$release
 
-RUN  /home/no_init.sh &&\	
+RUN  /home/engines/scripts/build/no_init.sh &&\	
 	apt-get -y update &&\	
 	apt-get install -y libnss-mysql-bg libpam-mysql mysql-client rpcbind 
 	
@@ -32,7 +32,7 @@ RUN chmod 600 /etc/nss-mysql-root.conf &&\
 	mkdir -p /home/nfs/.ssh &&\
 	chown nfs /home/nfs/.ssh &&\
 	usermod -G containers -a nfs &&\
- 	/home/post_build_clean.sh
+ 	/home/engines/scripts/build/post_build_clean.sh
 	 
 COPY	src/ganesha.conf /usr/local/etc/ganesha.conf
 COPY 	home /home

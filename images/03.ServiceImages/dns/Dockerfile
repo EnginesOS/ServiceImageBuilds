@@ -7,7 +7,7 @@ RUN adduser -q --disabled-password --home /var/cache/bind -uid 22009 bind &&\
     mkdir -p /var/run/named &&\
     mkdir -p /home/bind/engines/zones/ &&\
     chown bind -R  /home/bind/ &&\
- 	/home/post_build_clean.sh
+ 	/home/engines/scripts/build/post_build_clean.sh
     
 
 ADD src/named.conf.local /etc/bind/named.conf.local

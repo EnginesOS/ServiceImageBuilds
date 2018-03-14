@@ -3,7 +3,7 @@ kill_syslog()
 {
 if test -f /home/engines/etc/SYSLOG
  then
-   sudo -n /home/engines/scripts/_kill_syslog.sh
+   sudo -n /home/engines/scripts/system/_kill_syslog.sh
 fi
 }
 

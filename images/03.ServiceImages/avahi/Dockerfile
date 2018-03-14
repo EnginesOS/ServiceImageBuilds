@@ -1,12 +1,12 @@
 FROM  engines/servicebase:$release
 
-RUN /home/no_init.sh &&\
+RUN /home/engines/scripts/build/no_init.sh &&\
 	apt-get -y update &&\
 	apt-get -y install avahi-daemon \
 	                   dbus \
 	                   python \
 	                   python-avahi &&\
-	/home/post_build_clean.sh &&\
+	/home/engines/scripts/build/post_build_clean.sh &&\
 	usermod avahi -u 22026 &&\	
 	mkdir /var/run/dbus/ &&\
 	rm -f /var/run/dbus/pid &&\

@@ -7,9 +7,7 @@ if test -z ${hostname}
    exit 128
  fi
     
-#host=`echo ${hostname} | sed "/[_.]/s//-/g"`
 host=${hostname}
-#engine=`echo ${parent_engine} | sed "/[_.]/s///g"`
 engine=${parent_engine}
 fqdn_str=${host}.engines.internal
     

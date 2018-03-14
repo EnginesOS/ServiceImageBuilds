@@ -24,7 +24,7 @@ RUN /usr/sbin/usermod -u 22671 www-data &&\
  	chown www-data /var/www/.passenger &&\
  	usermod -G containers -a www-data &&\
  	passenger-config  build-native-support &&\
- 	/home/post_build_clean.sh
+ 	/home/engines/scripts/build/post_build_clean.sh
 
 ADD src/000-default.conf /etc/apache2/sites-enabled/
 ADD	src/passenger.conf /etc/apache2/mods-enabled/

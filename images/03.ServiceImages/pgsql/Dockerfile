@@ -1,12 +1,12 @@
 FROM  engines/servicebase:$release
 
 RUN adduser -q --disabled-password -uid 22002 postgres &&\
-	/home/no_init.sh &&\			
+	/home/engines/scripts/build/no_init.sh &&\			
 	apt-get update -y &&\
 	apt-get -y install postgresql \
 				       postgresql-contrib \
 				       libpq-dev &&\
- 	/home/post_build_clean.sh
+ 	/home/engines/scripts/build/post_build_clean.sh
  	
 ADD home home
 

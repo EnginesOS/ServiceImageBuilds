@@ -1,14 +1,14 @@
 FROM  engines/servicebase:$release
 
 RUN /usr/sbin/usermod -u 22012 syslog &&\
-	/home/no_init.sh &&\		
+	/home/engines/scripts/build/no_init.sh &&\		
 	apt-get update -y &&\
  	apt-get -y install syslog-ng-core \
  					   syslog-ng &&\
  	mkdir -p /home/rlog/ &&\
  	chown syslog /var/lib/syslog-ng/ &&\
  	usermod -G containers -a syslog &&\
- 	/home/post_build_clean.sh
+ 	/home/engines/scripts/build/post_build_clean.sh
 
 ENV ContUser syslog
 ENV ContGrp syslog

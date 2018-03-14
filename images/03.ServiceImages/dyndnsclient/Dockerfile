@@ -1,10 +1,10 @@
 FROM engines/servicebase:$release
 
 RUN adduser -q --disabled-password  dyndns -uid 22021 &&\
-	/home/no_init.sh &&\	
+	/home/engines/scripts/build/no_init.sh &&\	
 	apt-get  update &&\
 	apt-get -y install ddclient &&\
- 	/home/post_build_clean.sh
+ 	/home/engines/scripts/build/post_build_clean.sh
 
 COPY home home
 #COPY sudoers /etc/sudoers.d/dyndns	

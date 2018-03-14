@@ -1,6 +1,6 @@
 FROM engines/servicebase:$release
 
-RUN  /home/no_init.sh &&\			
+RUN  /home/engines/scripts/build/no_init.sh &&\			
 	apt-get update -y &&\
 	apt-get install -y  samba \
 						smbldap-tools \
@@ -8,7 +8,7 @@ RUN  /home/no_init.sh &&\
 	                    libpam-mysql \
 	                    mysql-client \
 	                    rpcbind &&\
- 	/home/post_build_clean.sh
+ 	/home/engines/scripts/build/post_build_clean.sh
 	
 COPY src/etc /etc/
 
