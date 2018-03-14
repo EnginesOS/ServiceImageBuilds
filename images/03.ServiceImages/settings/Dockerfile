@@ -4,7 +4,7 @@ RUN adduser -q --disabled-password --home /home/.home_dir -uid 22033 settings &&
 	usermod -G containers -a settings &&\	
 	/home/engines/scripts/build/no_init.sh &&\	
 	apt-get update -y  &&\
-	apt-get install wireless-tools wpa_supplicant 
+	apt-get install -y wireless-tools wpa-supplicant 
 						
 	
 	
