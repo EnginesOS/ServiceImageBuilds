@@ -16,10 +16,10 @@ for dir in `find /sys/class/net/`
 
 #wlan_int=` find  /sys/class/net/ -name wireless |cut -f5 -d/ | head -1`
 
-iw dev $wlan_int scan | grep SSID | cut -f2 -d: > /tmp/$wlans
+iw dev $wlan_int scan | grep SSID | cut -f2 -d: > $wlans
 n=0
 
-cat /tmp/$wlans | while read LINE
+cat $wlans | while read LINE
 do
  if test $n -ne 0
   then 
