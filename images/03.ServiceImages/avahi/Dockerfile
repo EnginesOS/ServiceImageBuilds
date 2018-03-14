@@ -19,8 +19,10 @@ COPY home home
 RUN usermod -G containers -a avahi &&\
 	mkdir -p /home/avahi/hosts/ &&\
 	chown avahi -R /home/avahi/ /etc/avahi/avahi-daemon.conf &&\
-	chmod -R go-rw /etc/sudoers /etc/sudoers.d/
-	
+	chmod -R go-rw /etc/sudoers /etc/sudoers.d/  &&\
+	mkdir -p /home/engines/scripts/configurators/saved &&\
+	chown -R avahi /home/engines/scripts/configurators/saved
+
 USER avahi
 
 ENV ContUser avahi
