@@ -5,7 +5,16 @@ echo '{"wireless networks":['
 
 #FIX ME only supports single wireless interface
 
-wlan_int=` find  /sys/class/net/wlp2s0/ -name wireless |cut -f5 -d/ | head -1`
+for dir in `find /sys/class/net/`
+ do 
+   if test -d $dir/wireless
+    then
+      wlan_int=`echo $dir |cut -f5 -d/`
+      break
+    fi  
+ done 
+
+#wlan_int=` find  /sys/class/net/ -name wireless |cut -f5 -d/ | head -1`
 
 iw dev $wlan_int scan | grep SSID | cut -f2 -d: > /tmp/$wlans
 n=0
