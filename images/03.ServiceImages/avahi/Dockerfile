@@ -21,7 +21,6 @@ RUN usermod -G containers -a avahi &&\
 	chown avahi -R /home/avahi/ /etc/avahi/avahi-daemon.conf &&\
 	chmod -R go-rw /etc/sudoers /etc/sudoers.d/  &&\
 	mkdir -p /home/engines/scripts/configurators/saved &&\
-	echo engines.local > /home/engines/scripts/configurators/saved/default_mdns_domain &&\
 	chown -R avahi /home/engines/scripts/configurators/saved
 
 USER avahi
