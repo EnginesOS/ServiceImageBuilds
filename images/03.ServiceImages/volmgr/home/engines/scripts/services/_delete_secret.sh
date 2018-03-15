@@ -1,10 +1,10 @@
 #!/bin/bash
-if test -d /var/fs/local/${parent_engine}/${service_name} 
+if test -f /var/secrets/${container_type}/${parent_engine}/${service_handle}
  then
-	echo "rm /var/fs/local/${parent_engine}/${service_name}"
-	rm -r  /var/fs/local/${parent_engine}/${service_name}
+	echo "rm /var/secrets/${container_type}/${parent_engine}/${service_handle}"
+	rm -r  /var/secrets/${container_type}/${parent_engine}/${service_handle}
   else
-  	echo "No such dir /var/fs/local/${parent_engine}/${service_name}"
+  	echo "No such dir //var/secrets/${container_type}/${parent_engine}/${service_handle}"
   fi
 exit 0	
 
