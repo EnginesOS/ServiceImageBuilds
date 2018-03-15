@@ -4,6 +4,8 @@ volmgr ALL = (root) NOPASSWD: /home/engines/scripts/services/_update_service.sh
 volmgr ALL = (root) NOPASSWD: /home/engines/scripts/services/_create_volume.sh
 volmgr ALL = (root) NOPASSWD: /home/engines/scripts/services/_delete_volume.sh
 volmgr ALL = (root) NOPASSWD: /home/engines/scripts/backup/_backup.sh 
-volmgr ALL = (root) NOPASSWD: /home/engines/scripts/backup/_restore.sh                          
+volmgr ALL = (root) NOPASSWD: /home/engines/scripts/backup/_restore.sh        
+volmgr ALL = (root) NOPASSWD: /home/engines/scripts/services/_create_secret.sh
+volmgr ALL = (root) NOPASSWD: /home/engines/scripts/services/_delete_secret.sh
 #must have blank after last sudoers line
 

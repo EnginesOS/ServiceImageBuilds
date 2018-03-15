@@ -11,7 +11,18 @@ check_required_values
 export parent_engine
 export service_name
 
-sudo -n /home/engines/scripts/services/_delete_volume.sh
+if test -z $is_secret
+ then
+   sudo -n /home/engines/scripts/services/_delete_volume.sh
+ else 
+   echo $volume_src | grep "^/var/lib/engines/secrets/$container_type" >/dev/null
+    if test $? -ne 0
+     then
+      echo "invalid volume"
+      exit 2
+    fi
+   sudo -n /home/engines/scripts/services/_delete_secret.sh
+fi  
  
 if test $? -eq 0
  then 
