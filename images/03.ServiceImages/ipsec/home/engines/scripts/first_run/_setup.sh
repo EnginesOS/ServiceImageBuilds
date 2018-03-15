@@ -19,8 +19,13 @@ else
  mask=24
 fi
 
+secret=SECRET
 
+cat /home/engines/templates/eap-radius.conf | sed "/SECRET/s//$secret/" \
+  > /etc/strongswan.d/charon/eap-radius.conf
+  
 cat /home/engines/templates/ipsec.conf.tmpl | sed "/COMMON_NAME/s//$domain/"\
  | sed "/RW_SUBNET/s//$subnet/"   | sed "/RW_MASK/s//$mask/"> /etc/ipsec.conf
-chmod og-rwx /etc/ipsec.d/private/ipvpn.key /etc/ipsec.conf
+ 
+chmod og-rwx /etc/ipsec.d/private/ipvpn.key /etc/ipsec.conf /etc/strongswan.d/charon/eap-radius.conf
  
