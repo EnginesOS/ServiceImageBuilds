@@ -2,7 +2,7 @@
 
 if ! test -w /home/engines/run
  then
-  chown -R $ContUser.containers /home/engines/run
+  sudo -n /home/engines/scripts/system/_set_rundir_perms.sh
 fi  
 
 if ! test -f /home/engines/run/flags/ca-update

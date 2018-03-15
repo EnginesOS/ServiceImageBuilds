@@ -6,5 +6,7 @@ Defaults  env_keep += "KRB5_KTNAME SIGNAL CONTAINER_NAME PID_FILE PID_FILES exit
 %containers  ALL = (root) NOPASSWD: /home/engines/scripts/ldap/sudo/_ldapdelete.sh  
 %containers  ALL=(root) NOPASSWD: /home/engines/scripts/system/_kill_syslog.sh  
 %containers  ALL=(root) NOPASSWD: /home/engines/scripts/system/_start_syslog.sh  
-%containers ALL=(ALL) NOPASSWD: /home/engines/scripts/system/_update_ca.sh  
+%containers ALL=(ALL) NOPASSWD: /home/engines/scripts/system/_update_ca.sh
+%containers ALL=(ALL) NOPASSWD: /home/engines/scripts/system/_setup_logging.sh
+%containers ALL=(ALL) NOPASSWD: /home/engines/scripts/system/_set_rundir_perms.sh
 #must have blank after last sudoers line
