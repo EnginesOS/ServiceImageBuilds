@@ -21,4 +21,4 @@ ENV ContGrp www-data
 
 USER 22005
 
-CMD ["/home/engines/scripts/startup/start.sh"]
+CMD ["/home/engines/scripts/system/start.sh"]

@@ -22,4 +22,4 @@ USER ivpn
 	
 ENV ContUser ivpn
 
-CMD ["/home/engines/scripts/startup/start.sh"]
+CMD ["/home/engines/scripts/system/start.sh"]

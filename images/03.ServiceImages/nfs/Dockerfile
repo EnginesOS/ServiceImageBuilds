@@ -41,4 +41,4 @@ USER nfs
 
 ENV ContUser nfs
 
-CMD ["/home/engines/scripts/startup/start.sh"]
+CMD ["/home/engines/scripts/system/start.sh"]

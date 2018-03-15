@@ -21,4 +21,4 @@ ENV ContGrp mongo
 
 USER mongo
 
-CMD ["/home/engines/scripts/startup/start.sh"]
+CMD ["/home/engines/scripts/system/start.sh"]
