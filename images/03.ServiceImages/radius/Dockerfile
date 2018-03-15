@@ -10,7 +10,6 @@ RUN /home/engines/scripts/build/no_init.sh &&\
 
 COPY home home
 COPY sudoers /etc/sudoers.d/radius
-COPY src/clients.conf /etc/radius
 COPY src/eap.conf /etc/radius
 COPY src/radiusd.conf /etc/radius
 
