@@ -15,25 +15,8 @@ fi
 
 echo trap > /home/engines/run/flags/state
 
-if test -f /home/engines/etc/SYSLOG
- then
-  sudo -n /home/engines/scripts/_start_syslog.sh
-fi
 
-if test -f /home/engines/etc/LOG_DIR
- then 
-  LOG_DIR=`cat /home/engines/etc/LOG_DIR`
-else
-  LOG_DIR=/var/log
-fi
 
-for DIR in $LOG_DIR
-do
- if ! test -d $DIR
-  then
-   mkdir -p $DIR
- fi
-done
 
 if test -z "$PID_FILES"
  then

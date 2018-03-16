@@ -18,4 +18,4 @@ ENV ContGrp www-data
 
 USER redis
 
-CMD ["/home/engines/scripts/startup/start.sh"]
+CMD ["/home/engines/scripts/system/start.sh"]

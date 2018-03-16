@@ -23,5 +23,5 @@ RUN	groupadd xuser &&\
 	                   libxtst6 \
 	                   libxv1 
 		
-ADD sshd_config /etc/ssh/	
+ADD src/sshd_config /etc/ssh/	
 ADD sudoers /etc/sudoers.d/engines

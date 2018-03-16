@@ -10,11 +10,12 @@ RUN /home/engines/scripts/build/no_init.sh &&\
 
 COPY home home
 COPY sudoers /etc/sudoers.d/radius
-
+COPY src/eap.conf /etc/radius
+COPY src/radiusd.conf /etc/radius
 
 ENV HOME /home/radius/
 ENV ContUser freerad
 
 USER freerad
 
-CMD ["/home/engines/scripts/startup/start.sh"]
+CMD ["/home/engines/scripts/system/start.sh"]
