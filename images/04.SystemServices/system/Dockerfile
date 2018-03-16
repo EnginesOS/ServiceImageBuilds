@@ -22,11 +22,11 @@ RUN /usr/sbin/addgroup --gid 21999 edocker &&\
 	apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 561F9B9CAC40B2F7 &&\
  	apt-get update -y &&\
 	apt-get install -y apt-transport-https  &&\
-	echo deb https://oss-binaries.phusionpassenger.com/apt/passenger xenial main >/etc/apt/sources.list.d/passenger.list &&\ 
+	echo deb https://oss-binaries.phusionpassenger.com/apt/passenger xenial main >/etc/apt/sources.list.d/passenger.list &&\
 	chmod 600 /etc/apt/sources.list.d/passenger.list &&\
 	apt-get update -y &&\
 	apt-get install -y passenger-dev &&\
-	gem install passenger &&\   
+	gem install passenger &&\
 	apt-get install -y nginx-common \
 	                   nginx-extras \
 	                   nginx &&\
@@ -37,7 +37,7 @@ RUN /usr/sbin/addgroup --gid 21999 edocker &&\
  	passenger-config  build-native-support &&\
 	gem install --no-rdoc --no-ri git bundle rest-client net_http_unix excon \
 	 			gctools yajl-ruby sinatra thin rubytree  sinatra-contrib \
-			 	warden data_mapper dm-sqlite-adapter ffi-yajl sqlite3 rb-inotify puma timers&&\		
+			 	warden data_mapper dm-sqlite-adapter ffi-yajl sqlite3 rb-inotify puma timers &&\		
  	/home/engines/scripts/build/post_build_clean.sh
 	
 ADD home home
