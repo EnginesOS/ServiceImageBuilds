@@ -16,11 +16,11 @@ if test -z $is_secret
  then
    sudo -n /home/engines/scripts/services/_create_volume.sh
 else
-  volume_src=`echo $volume_src | sed "s/..//g"`
+  volume_src=`echo $volume_src | sed "s/\.\.//g"`
     echo $volume_src | grep "^/var/lib/engines/secrets/$container_type" >/dev/null
     if test $? -ne 0
      then
-      echo "invalid volume"
+      echo "Invalid volume:$volume_src"
       exit 2
     fi      
    sudo -n /home/engines/scripts/services/_create_secret.sh
