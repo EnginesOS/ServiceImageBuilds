@@ -7,7 +7,7 @@ params_to_env
 required_values="parent_engine service_name user group"
 check_required_values
 
-export parent_engine
+export parent_engine container_type
 export service_name
 export user
 export group
