@@ -19,6 +19,7 @@ if ! test -f /home/engines/run/flags/log_setup
 fi
 
 if test -f /home/engines/etc/SYSLOG
+ then
    if test -f /home/engines/run/rsyslogd.pid 
     then
      rm /home/engines/rsyslogd.pid
