@@ -16,7 +16,7 @@ RUN /usr/sbin/addgroup --gid 21999 edocker &&\
 						libltdl-dev \
 						zlib1g-dev &&\
 	adduser -q --uid 21000 --gid 21999 --home /home/engines --disabled-password engines &&\
-	mkdir -p /opt/engines/run/system/ &&\	
+	mkdir -p /opt/engines/run/system/ &&\
 	chown -R engines /opt/engines/run/system/ /home/engines /var/log/ &&\
 	usermod -G docker -a engines &&\
 	apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 561F9B9CAC40B2F7 &&\
