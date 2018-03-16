@@ -10,6 +10,7 @@ check_required_values
 
 export parent_engine
 export service_name
+export container_type
 
 if test -z $is_secret
  then
