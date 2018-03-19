@@ -9,5 +9,5 @@ fi
 dd if=/dev/urandom count=16 bs=1  | od -h | awk '{ print $2$3$4$6$6$7$8$9}'\
 	| head -1 >/var/secrets/${container_type}s/${parent_engine}/${service_handle} 
 
-chown -R ${user}.${group} /var/secrets/${container_type}s/${parent_engine}/${service_handle}
+chown -R ${ContUser}.containers /var/secrets/${container_type}s/${parent_engine}/${service_handle}
 chmod 440 /var/secrets/${container_type}s/${parent_engine}/${service_handle}
