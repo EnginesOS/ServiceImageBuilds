@@ -4,9 +4,6 @@
 . /home/engines/functions/params_to_env.sh
 params_to_env
 
-required_values="parent_engine service_name user group"
-check_required_values
-
 export parent_engine
 export container_type
 export service_name
@@ -17,7 +14,9 @@ export group
 
 if test -z $is_secret
  then
-   sudo -n /home/engines/scripts/services/_create_volume.sh
+  required_values="parent_engine service_name user group"
+  check_required_values
+  sudo -n /home/engines/scripts/services/_create_volume.sh
 else
   volume_src=`echo $volume_src | sed "s/\.\.//g"`
     echo $volume_src | grep "^/var/lib/engines/secrets/$container_type" >/dev/null

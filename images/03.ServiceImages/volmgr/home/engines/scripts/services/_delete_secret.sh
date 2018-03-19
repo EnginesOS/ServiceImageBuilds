@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 if test -f /var/secrets/${container_type}s/${parent_engine}/${service_handle}
  then
 	echo "rm /var/secrets/${container_type}s/${parent_engine}/${service_handle}"
