@@ -1,4 +1,4 @@
-#!/bin/bas
+#!/bin/bash
 echo "started" > /home/engines/run/flags/state
 
 start_thin()
