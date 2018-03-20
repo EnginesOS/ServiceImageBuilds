@@ -17,7 +17,7 @@ if test -z $is_secret
   required_values="parent_engine service_name user group"
   check_required_values
     volume_src=`echo $volume_src | sed "s/\.\.//g"`
-    echo $volume_src | grep "^/var/lib/engines/secrets/$container_type" >/dev/null
+    echo $volume_src | grep "^/var/lib/engines/$container_type" >/dev/null
     if test $? -ne 0
      then
       echo "Invalid volume:$volume_src"
