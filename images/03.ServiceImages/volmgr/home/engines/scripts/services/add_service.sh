@@ -17,12 +17,12 @@ if test -z $is_secret
   required_values="parent_engine service_name user group"
   check_required_values
     volume_src=`echo $volume_src | sed "s/\.\.//g"`
-    echo $volume_src | grep "^/var/lib/engines/$container_type" >/dev/null
-    if test $? -ne 0
-     then
-      echo "Invalid volume:$volume_src"
-      exit 2
-    fi      
+   # echo $volume_src | grep "^/var/lib/engines/$container_type" >/dev/null
+    #if test $? -ne 0
+     #then
+      #echo "Invalid volume:$volume_src"
+      #exit 2
+    #fi      
   sudo -n /home/engines/scripts/services/_create_volume.sh
 else
    sudo -n /home/engines/scripts/services/_create_secret.sh
