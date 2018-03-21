@@ -28,6 +28,9 @@ authenticate {
      Auth-Type PAP {
                 pap
         }
+        Auth-Type Kerberos {
+  krb5
+}
     Auth-Type CHAP {
                 chap
         }
@@ -36,7 +39,8 @@ authenticate {
         }
         Auth-Type LDAP {
  ldap
- eap 
+ }
+
  }
  
  preacct {
