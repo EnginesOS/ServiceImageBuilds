@@ -11,6 +11,7 @@ RUN /home/engines/scripts/build/no_init.sh &&\
 COPY home home
 COPY sudoers /etc/sudoers.d/radius
 COPY src/eap.conf /etc/freeradius/
+COPY src/users /etc/freeradius/
 COPY src/radiusd.conf /etc/freeradius/
 COPY src/ldap /etc/freeradius/modules
 COPY src/default_site /etc/freeradius/sites-available/default

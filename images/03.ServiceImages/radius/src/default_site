@@ -13,8 +13,11 @@ authorize {
   logintime
   pap  
 }
-  
+ 
 authenticate {
+ Auth-Type PAP {
+  pap
+ } 
  Auth-Type Kerberos {
   krb5
  }
