@@ -1,0 +1,111 @@
+authorize {
+
+  preprocess
+  
+  auth_log
+  
+  chap       
+  mschap
+  digest
+  suffix
+  
+  #
+        eap {
+                ok = return
+        }
+   ldap
+  
+      expiration
+        logintime
+  
+   pap
+  
+  }
+  
+authenticate {
+
+    
+     Auth-Type PAP {
+                pap
+        }
+    Auth-Type CHAP {
+                chap
+        }
+      Auth-Type MS-CHAP {
+                mschap
+        }
+        Auth-Type LDAP {
+ ldap
+ eap 
+ }
+ 
+ preacct {
+        preprocess
+
+   acct_unique
+       suffix
+ }
+ 
+ accounting {
+    detail
+    }
+    
+    session {
+        radutmp
+
+
+}
+    
+ post-auth {
+        #  Get an address from the IP Pool.
+#       main_pool
+
+        #
+        #  If you want to have a log of authentication replies,
+        #  un-comment the following line, and the 'detail reply_log'
+        #  section, above.
+#       reply_log
+
+        #
+        #  After authenticating the user, do another SQL query.
+        #
+        #  See "Authentication Logging Queries" in sql.conf
+#       sql
+
+        #
+        #  Instead of sending the query to the SQL server,
+        #  write it into a log file.
+        #
+#       sql_log
+
+        #
+        #  Un-comment the following if you have set
+        #  'edir_account_policy_check = yes' in the ldap module sub-section of
+        #  the 'modules' section.
+        #
+#       ldap
+
+        # For Exec-Program and Exec-Program-Wait
+        exec
+            Post-Auth-Type REJECT {
+                # log failed authentications in SQL, too.
+#               sql
+
+                # Insert EAP-Failure message if the request was
+                # rejected by policy instead of because of an
+                # authentication failure
+                eap
+
+                attr_filter.access_reject
+        }
+}
+    
+ pre-proxy {
+ }
+ post-proxy {
+  eap
+
+ }
+ 
+
+  
