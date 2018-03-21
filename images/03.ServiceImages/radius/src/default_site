@@ -1,66 +1,48 @@
 authorize {
-
   preprocess
-  
-  auth_log
-  
+  auth_log 
   chap       
   mschap
   digest
-  suffix
-  
-  #
-        eap {
-                ok = return
-        }
-   ldap
-  
-      expiration
-        logintime
-  
-   pap
-  
+  suffix  
+  eap {
+     ok = return
   }
+  ldap  
+  expiration
+  logintime
+  pap  
+}
   
 authenticate {
-
-    
-     Auth-Type PAP {
-                pap
-        }
-        Auth-Type Kerberos {
+ Auth-Type Kerberos {
   krb5
+ }
+ Auth-Type CHAP {
+  chap
+ }
+ Auth-Type MS-CHAP {
+  mschap
+ }
 }
-    Auth-Type CHAP {
-                chap
-        }
-      Auth-Type MS-CHAP {
-                mschap
-        }
-        Auth-Type LDAP {
- ldap
- }
-
+ 
+preacct {
+  preprocess
+  acct_unique
+  suffix
  }
  
- preacct {
-        preprocess
-
-   acct_unique
-       suffix
- }
- 
- accounting {
+accounting {
     detail
-    }
-    
-    session {
-        radutmp
+ }    
 
-
+session {
+   radutmp
 }
+
+
     
- post-auth {
+post-auth {
         #  Get an address from the IP Pool.
 #       main_pool
 
