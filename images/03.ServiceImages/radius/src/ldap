@@ -1,73 +1,49 @@
 ldap {
-  server = "ldap.engines.internal"
+ server = "ldap.engines.internal"
  #identity = "cn=admin,o=My Org,c=UA"
  #password = mypass
- basedn = "ou=People,dc=engines,dc=internal"
+ basedn = "dc=engines,dc=internal"
  filter = "(uid=%{%{Stripped-User-Name}:-%{User-Name}})"
- authtype = ldap
- groupname_attribute = cn
- groupmembership_filter = "(|(&(objectClass=GroupOfNames)(member=%{Ldap-UserDn}))(&(objectClass=GroupOfUniqueNames)(uniquemember=%{Ldap-UserDn})))"
- dictionary_mapping = ${raddbdir}/ldap.attrmap
- set_auth_type = yes
- auto_header = yes
- password_header = "{ssha}"
- password_attribute = userPassword
-        tls {
-                # Set this to 'yes' to use TLS encrypted connections
-                # to the LDAP database by using the StartTLS extended
-                # operation.
-                #
-                # The StartTLS operation is supposed to be
-                # used with normal ldap connections instead of
-                # using ldaps (port 636) connections
-                start_tls = no
-
-                # cacertfile    = /path/to/cacert.pem
-                # cacertdir             = /path/to/ca/dir/
-                # certfile              = /path/to/radius.crt
-                # keyfile               = /path/to/radius.key
-                # randfile              = /path/to/rnd
-
-                #  Certificate Verification requirements.  Can be:
-                #    "never" (don't even bother trying)
-                #    "allow" (try, but don't fail if the cerificate
-                #               can't be verified)
-                #    "demand" (fail if the certificate doesn't verify.)
-                #
-                #       The default is "allow"
-                # require_cert  = "demand"
-        }
-      dictionary_mapping = ${confdir}/ldap.attrmap
-  edir_account_policy_check = no
-    #
-        #  Group membership checking.  Disabled by default.
+ base_filter = "(objectClass=PosixUser)"
+ 
+ tls {
+        # Set this to 'yes' to use TLS encrypted connections
+        # to the LDAP database by using the StartTLS extended
+        # operation.
         #
-        # groupname_attribute = cn
-        # groupmembership_filter = "(|(&(objectClass=GroupOfNames)(member=%{control:Ldap-UserDn}))(&(objectClass=GroupOfUniqueNames)(uniquemember=%{control:Ldap-UserDn})))"
-        # groupmembership_attribute = radiusGroupName
+        # The StartTLS operation is supposed to be
+        # used with normal ldap connections instead of
+        # using ldaps (port 636) connections
+        start_tls = no
 
-        # compare_check_items == yes
-        # do_xlat = yes
-        # access_attr_used_for_allow = yes
-        
-        
-              #MIGHT NEED one
-        # chase_referrals = yes
-        # rebind = yes
-                # set_auth_type = yes
-        
-        
-        
-        
-           keepalive {
-                # LDAP_OPT_X_KEEPALIVE_IDLE
-                idle = 60
+        # cacertfile    = /path/to/cacert.pem
+        # cacertdir             = /path/to/ca/dir/
+        # certfile              = /path/to/radius.crt
+        # keyfile               = /path/to/radius.key
+        # randfile              = /path/to/rnd
 
-                # LDAP_OPT_X_KEEPALIVE_PROBES
-                probes = 3
+        #  Certificate Verification requirements.  Can be:
+        #    "never" (don't even bother trying)
+        #    "allow" (try, but don't fail if the cerificate
+        #               can't be verified)
+        #    "demand" (fail if the certificate doesn't verify.)
+        #
+        #       The default is "allow"
+        # require_cert  = "demand"
+ }
+ #default_profile = "uid=radius,ou=Accounts,dc=example,dc=com"
+  #          profile_attribute = "radiusProfileDn"
+   #         access_attr = "dialupAccess"
 
-                # LDAP_OPT_X_KEEPALIVE_INTERVAL
-                interval = 3
-        }
+            dictionary_mapping = ${raddbdir}/ldap.attrmap
+
+            ldap_connections_number = 5
+
+            groupname_attribute = cn
+            groupmembership_filter = "(|(&(objectClass=GroupOfNames)(member=%{Ldap-UserDn}))(&(objectClass=GroupOfUniqueNames)(uniquemember=%{Ldap-UserDn})))"
+            #groupmembership_attribute = radiusGroupName
+            timeout = 4
+            timelimit = 3
+            net_timeout = 1
 }
         
