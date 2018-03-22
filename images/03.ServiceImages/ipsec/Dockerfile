@@ -15,7 +15,7 @@ COPY sudoers /etc/sudoers.d/ipsec
 
 COPY src/ipsec.secrets /etc/
 COPY src/strongswan.conf /etc/
-
+COPY src/eap-radius.conf /etc/strongswan.d/charon/
 RUN	chmod -R go-rw /etc/sudoers /etc/sudoers.d/
 
 USER ivpn
