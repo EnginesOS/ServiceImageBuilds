@@ -25,8 +25,9 @@ ldap {
         # require_cert  = "demand"
  }
 default_profile = "cn=default_profile,ou=radius,ou=radius,ou=Services,ou=Containers,ou=Engines,dc=engines,dc=internal"
-profile_attribute = "radiusProfileDn"
-access_attr = "dialupAccess"
+
+#profile_attribute = "radiusProfileDn"
+#access_attr = "dialupAccess"
 
 dictionary_mapping = ${raddbdir}/ldap.attrmap
 
