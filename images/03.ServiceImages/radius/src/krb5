@@ -1,5 +1,4 @@
 krb5 {
    keytab = /etc/krb5kdc/keys/radius.keytab
    service_principal = host/radius.engines.internal@ENGINES.INTERNAL
-
 }

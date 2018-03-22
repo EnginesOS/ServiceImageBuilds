@@ -43,8 +43,6 @@ session {
    radutmp
 }
 
-
-    
 post-auth {
         #  Get an address from the IP Pool.
 #       main_pool

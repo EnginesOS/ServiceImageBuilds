@@ -1,19 +1,12 @@
 ldap {
  server = "ldap.engines.internal"
- #identity = "cn=admin,o=My Org,c=UA"
- #password = mypass
+ identity = "uid=radius,ou=hosts,ou=Engines,dc=engines,dc=internal"
+ password = PASSWORD
  basedn = "dc=engines,dc=internal"
  filter = "(uid=%{%{Stripped-User-Name}:-%{User-Name}})"
- base_filter = "(objectClass=PosixUser)"
+ base_filter = "(objectClass=radiusprofile)"
  
  tls {
-        # Set this to 'yes' to use TLS encrypted connections
-        # to the LDAP database by using the StartTLS extended
-        # operation.
-        #
-        # The StartTLS operation is supposed to be
-        # used with normal ldap connections instead of
-        # using ldaps (port 636) connections
         start_tls = no
 
         # cacertfile    = /path/to/cacert.pem
@@ -31,19 +24,18 @@ ldap {
         #       The default is "allow"
         # require_cert  = "demand"
  }
- #default_profile = "uid=radius,ou=Accounts,dc=example,dc=com"
-  #          profile_attribute = "radiusProfileDn"
-   #         access_attr = "dialupAccess"
+default_profile = "cn=default_profile,ou=radius,ou=radius,ou=Services,ou=Containers,ou=Engines,dc=engines,dc=internal"
+profile_attribute = "radiusProfileDn"
+access_attr = "dialupAccess"
 
-            dictionary_mapping = ${raddbdir}/ldap.attrmap
+dictionary_mapping = ${raddbdir}/ldap.attrmap
 
-            ldap_connections_number = 5
+ldap_connections_number = 5
 
-            groupname_attribute = cn
-            groupmembership_filter = "(|(&(objectClass=GroupOfNames)(member=%{Ldap-UserDn}))(&(objectClass=GroupOfUniqueNames)(uniquemember=%{Ldap-UserDn})))"
-            #groupmembership_attribute = radiusGroupName
-            timeout = 4
-            timelimit = 3
-            net_timeout = 1
+groupname_attribute = cn
+groupmembership_filter = "(|(&(objectClass=GroupOfNames)(member=%{Ldap-UserDn}))(&(objectClass=GroupOfUniqueNames)(uniquemember=%{Ldap-UserDn})))"
+groupmembership_attribute = radiusGroupName
+timeout = 4
+timelimit = 3
+net_timeout = 1
 }
-        

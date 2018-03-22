@@ -13,8 +13,10 @@ COPY sudoers /etc/sudoers.d/radius
 COPY src/eap.conf /etc/freeradius/
 COPY src/users /etc/freeradius/
 COPY src/radiusd.conf /etc/freeradius/
+COPY src/proxy.conf /etc/freeradius/
 COPY src/ldap /etc/freeradius/modules
 COPY src/default_site /etc/freeradius/sites-available/default
+COPY src/inner-tunnel /etc/freeradius/sites-available/inner-tunnel 
 
 ENV HOME /home/radius/
 ENV ContUser freerad
