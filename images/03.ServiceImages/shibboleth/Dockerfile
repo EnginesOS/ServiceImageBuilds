@@ -13,8 +13,8 @@ chown -R jetty:jetty /opt/jetty9&&\
 chmod u=rwx,g=rxs,o= /opt/jetty9&&\
 mkdir /var/log/jetty9&&\
 chown -R jetty:jetty /var/log/jetty &&\
-wget https://shibboleth.net/downloads/identity-provider/latest/shibboleth-identity-provider-3.3.2.tar.gz &&\
-tar -xzpf shibboleth-identity-provider-3.3.2.tar.gz
+wget https://shibboleth.net/downloads/identity-provider/latest/shibboleth-identity-provider-3.3.2.tar.gz 
+#tar -xzpf shibboleth-identity-provider-3.3.2.tar.gz
 
 USER jetty
 
