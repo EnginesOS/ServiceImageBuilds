@@ -7,8 +7,8 @@ RUN apt-mark unhold tzdata &&\
  	/home/engines/scripts/build/post_build_clean.sh&&\
 adduser -q --disabled-password -uid 22036 jetty &&\
 wget -c http://repo1.maven.org/maven2/org/eclipse/jetty/jetty-distribution/9.3.9.v20160517/jetty-distribution-9.3.9.v20160517.tar.gz&&\
-tar xzf jetty-distribution-9.3.12.v20160915.tar.gz&&\
-mv jetty-distribution-9.3.12.v20160915 /opt/jetty9&&\
+tar xzf jetty-distribution-9.3.9.v20160517.tar.gz&&\
+mv jetty-distribution-9.3.9.v20160517 /opt/jetty9&&\
 chown -R jetty:jetty /opt/jetty9&&\
 chmod u=rwx,g=rxs,o= /opt/jetty9&&\
 mkdir /var/log/jetty9&&\
