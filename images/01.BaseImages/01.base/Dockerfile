@@ -68,6 +68,7 @@ RUN	echo '#!/bin/sh' >/usr/sbin/policy-rc.d &&\
 	rm -rf /tmp/* &&\
  	mkdir /var/run/engines &&\
  	chgrp containers /var/run/engines && chmod g+w /var/run/engines 
-
+ 	
+ADD sudoers /etc/sudoers.d/system
 ADD krb5.conf /etc/
 ADD rsyslog.conf /etc/		
