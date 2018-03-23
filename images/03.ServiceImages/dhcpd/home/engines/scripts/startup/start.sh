@@ -12,6 +12,9 @@ touch /tmp/start_dhcpd
 if ! test -f /etc/dhcp/dhcpd.conf
    then		
      echo "Not configured"
+     startup_complete
+     sleep 15
+     shutdown_complete
      exit
 fi
 rm /home/engines/run/dhcpd.pid
