@@ -13,7 +13,7 @@ if ! test -f /etc/dhcp/dhcpd.conf
    then		
      echo "Not configured"
      startup_complete
-     sleep 15
+     sleep 25
      shutdown_complete
      exit
 fi
