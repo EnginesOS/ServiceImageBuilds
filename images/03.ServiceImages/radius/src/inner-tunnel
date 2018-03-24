@@ -1,4 +1,3 @@
-
 server inner-tunnel {
 
 
@@ -10,8 +9,6 @@ server inner-tunnel {
 
 
  authorize {
-        chap
-        pap
         mschap
         suffix
         update control {
@@ -20,6 +17,7 @@ server inner-tunnel {
         eap {
                 ok = return
         }
+ldap
         files
         expiration
         logintime
@@ -50,7 +48,6 @@ authenticate {
 
 
  session {
-        radutmp
  }
 
  post-auth {
@@ -78,4 +75,4 @@ post-proxy {
 
 
 } # inner-tunnel server block
-       
+ 

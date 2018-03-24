@@ -1,17 +1,13 @@
 authorize {
+pap
+chap
+mschap
   preprocess
-  auth_log 
-  chap       
-  mschap
-  digest
   suffix  
-  eap {
-     ok = return
-  }
-  ldap  
+  eap 
   expiration
   logintime
-  pap  
+ ldap
 }
  
 authenticate {
@@ -27,7 +23,7 @@ authenticate {
  Auth-Type MS-CHAP {
   mschap
  }
- eap
+eap
 }
  
 preacct {
@@ -53,8 +49,7 @@ post-auth {
         #  un-comment the following line, and the 'detail reply_log'
         #  section, above.
 #       reply_log
-
-        #
+      #
         #  After authenticating the user, do another SQL query.
         #
         #  See "Authentication Logging Queries" in sql.conf
@@ -94,6 +89,3 @@ post-auth {
   eap
 
  }
- 
-
-  

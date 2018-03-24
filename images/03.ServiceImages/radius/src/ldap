@@ -4,7 +4,9 @@ ldap {
  password = PASSWORD
  basedn = "dc=engines,dc=internal"
  filter = "(uid=%{%{Stripped-User-Name}:-%{User-Name}})"
- base_filter = "(objectClass=radiusprofile)"
+ base_filter = "(objectClass=radiusprofile)" 
+ password_attribute = radiusTunnelPassword
+ 
  
  tls {
         start_tls = no
