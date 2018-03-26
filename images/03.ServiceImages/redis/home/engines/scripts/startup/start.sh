@@ -4,25 +4,23 @@ PID_FILE=/home/engines/run/redis-server.pid
 export PID_FILE
 . /home/engines/functions/trap.sh
 
-#
-#if test -f /home/engines/run/flags/restart_required
-# then
-#  rm -f /home/engines/run/flags/restart_required
-#fi
 
 service_clear_restart_required
+if ! test -d /home/redis/config.d/
+ then
+	mkdir /home/redis/config.d/
+fi	
 
-mkdir /home/redis/config.d/
-
-
-
-configs=`ls /home/redis/config.d/*.redis.config`
-for config in $configs
- do
-    redis-server $config &
-	echo -n $! >> $PID_FILE
-	echo -n " " >> $PID_FILE
-done
+if test `ls /home/redis/config.d/*.redis.config |wc -l` -gt 0
+ then
+	configs=`ls /home/redis/config.d/*.redis.config`
+	 for config in $configs
+      do
+       redis-server $config &
+	   echo -n $! >> $PID_FILE
+	   echo -n " " >> $PID_FILE
+     done
+fi     
 
 startup_complete
  
@@ -43,7 +41,8 @@ startup_complete
 		  	echo -n $!  > /home/engines/run/redis-server.$parent_engine.pid
 		  done
 	fi
-   done	
+ done
+   	
    for pid_file in `ls /home/engines/run/redis-server.*.pid`
     do
      kill -$SIGNAL `cat /home/engines/run/$pid_file`
