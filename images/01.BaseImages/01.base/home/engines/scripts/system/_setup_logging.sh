@@ -11,11 +11,11 @@ if ! test -f /home/engines/run/flags/log_setup
 
   for log_dir in $log_dirs
    do
-    if ! test -d $log_dir 
-     then    
-      mkdir -p $log_dir 
-      chown -R $ContUser $log_dir 
-    fi
+     if ! test -d $log_dir 
+      then    
+       mkdir -p $log_dir 
+     fi
+    chown -R $ContUser $log_dir 
   done   
 fi
 
