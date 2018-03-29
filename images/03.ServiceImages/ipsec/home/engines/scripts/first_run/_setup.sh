@@ -25,7 +25,9 @@ cat /home/engines/templates/eap-radius.conf | sed "/SECRET/s//$secret/" \
   > /etc/strongswan.d/charon/eap-radius.conf
   
 cat /home/engines/templates/ipsec.conf.tmpl | sed "/COMMON_NAME/s//$domain/"\
- | sed "/RW_SUBNET/s//$subnet/"   | sed "/RW_MASK/s//$mask/"> /etc/ipsec.conf
+ | sed "/RW_SUBNET/s//$subnet/"   | sed "/RW_MASK/s//$mask/"> /etc/ipsec.head
  
-chmod og-rwx /etc/ipsec.d/private/ipvpn.key /etc/ipsec.conf /etc/strongswan.d/charon/eap-radius.conf
+cp /etc/ipsec.head /etc/ipsec.conf
+ 
+chmod og-rwx /etc/ipsec.d/private/ipvpn.key /etc/ipsec.conf /etc/strongswan.d/charon/eap-radius.conf /etc/ipsec.conf
  

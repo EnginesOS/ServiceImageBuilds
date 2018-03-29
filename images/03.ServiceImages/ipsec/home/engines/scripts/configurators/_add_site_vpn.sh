@@ -1,16 +1,16 @@
-#!/bin/bash
+#!/bin/sh
+/home/engine/scripts/engine/build_configs.sh
+ipsec update
 
-function add_site_vpn {
-cp /tmp/.env /home/ivpn/entries/site/${vpn_name}
-}
+cat /home/ivpn/entries/site/$1/nat | while read LINE 
+do
+ echo $LINE |grep -v \# >/dev/null
+ if test $? -eq 0
+  then
+    iptables $LINE
+  fi  
+done
 
-. /home/engines/functions/params_to_env.sh
-params_to_env
 
-required_values="vpn_name remote_site remote_lan remote_id psk"
-check_required_values
-
-add_site_vpn
-
-echo "Success"
-exit 0
+ 
+ 
