@@ -12,7 +12,7 @@ fi
 rm /home/ivpn/entries/user/${vpn_name}
  
 
-sudo -n /home/engines/scripts/configurators/_rm_user_vpn.sh
+sudo -n /home/engines/scripts/actionators/_rm_user_vpn.sh
 if test $? -eq 0
  then
 	echo '{"result":"Success"}'

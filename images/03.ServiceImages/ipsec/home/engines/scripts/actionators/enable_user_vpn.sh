@@ -19,7 +19,7 @@ if ! test -f /home/ivpn/entries/disabled_users/${vpn_name}
    exit 2
 fi
 mv /home/ivpn/entries/disabled_users/${vpn_name} /home/ivpn/entries/user/
-sudo -n /home/engines/scripts/configurators/_disable_user_vpn.sh
+sudo -n /home/engines/scripts/actionators/_disable_user_vpn.sh
 if test $? -eq 0
  then
 	echo '{"result":"Success"}'

@@ -25,7 +25,7 @@ fi
 
 add_user_vpn
 
-err=`sudo -n /home/engines/scripts/configurators/_set_vpn_user_pass.sh`
+err=`sudo -n /home/engines/scripts/actionators/_set_vpn_user_pass.sh`
 if test $? -eq 0
  then
 	echo '{"result":"Success"}'
