@@ -1,5 +1,6 @@
 #!/bin/sh
 /home/engine/scripts/engine/build_configs.sh
+/home/engine/scripts/engine/build_secrets.sh
 ipsec update
 
 cat /home/ivpn/entries/site/$1/nat | while read LINE 

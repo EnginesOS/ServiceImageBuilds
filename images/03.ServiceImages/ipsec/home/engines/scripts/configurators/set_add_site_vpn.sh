@@ -81,7 +81,12 @@ set_defaults
 get_local_values  
 
 add_site_vpn
-vpn_name=`echo $vpn_name | sed "s/[&;]//"`
-sudo -n /home/engines/scripts/configurators/_add_site_vpn.sh $vpn_name
-echo "Success"
-exit 0
+
+sudo -n /home/engines/scripts/configurators/_add_site_vpn.sh "$vpn_name"
+if test $? -eq 0
+ then
+	echo "Success"
+	exit 0
+else
+  exit 2
+fi	
