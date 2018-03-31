@@ -8,5 +8,12 @@ ivpn ALL = (root) NOPASSWD: /home/engines/scripts/configurators/_add_site_vpn.sh
 ivpn ALL = (root) NOPASSWD: /home/engines/scripts/configurators/_rm_user_vpn.sh
 ivpn ALL = (root) NOPASSWD: /home/engines/scripts/configurators/_rm_site_vpn.sh
 ivpn ALL = (root) NOPASSWD: /home/engines/scripts/configurators/_disable_user_vpn.sh
+
+ivpn ALL = (root) NOPASSWD: /home/engines/scripts/actionators/_add_user_vpn.sh
+ivpn ALL = (root) NOPASSWD: /home/engines/scripts/actionators/_disable_user_vpn.sh
+ivpn ALL = (root) NOPASSWD: /home/engines/scripts/actionators/_enable_user_vpn.sh
+ivpn ALL = (root) NOPASSWD: /home/engines/scripts/actionators/_rm_user_vpn.sh
+ivpn ALL = (root) NOPASSWD: /home/engines/scripts/actionators/_set_vpn_user_pass.sh
+
 #must have blank after last sudoers line
 
