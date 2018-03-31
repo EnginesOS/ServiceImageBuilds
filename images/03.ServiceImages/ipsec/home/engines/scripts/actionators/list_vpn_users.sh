@@ -1,7 +1,7 @@
 #!/bin/sh
 
 echo '{"Enabled":['
-users=`ls /home/ivpn/entries/user/`
+users=`ls /home/ivpn/entries/users/`
 n=0
 for user  in $users
  do

@@ -8,7 +8,7 @@ required_values="vpn_name"
 check_required_values
 
 
-if ! test -f /home/ivpn/entries/user/${vpn_name}
+if ! test -d /home/ivpn/entries/users/${vpn_name}
  then
    echo '{"result":"VPN User does not exist '${vpn_name}'"}'
    exit 2
@@ -19,7 +19,7 @@ if ! test -d  /home/ivpn/entries/disabled_users/
   mkdir -p /home/ivpn/entries/disabled_users/
 fi  
 
-mv /home/ivpn/entries/user/${vpn_name} /home/ivpn/entries/disabled_users/
+mv /home/ivpn/entries/users/${vpn_name} /home/ivpn/entries/disabled_users/
 sudo -n /home/engines/scripts/actionators/_disable_user_vpn.sh
 if test $? -eq 0
  then

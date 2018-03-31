@@ -4,25 +4,34 @@ function add_user_vpn {
 
 password=`echo -n "${password}" | iconv -t utf16le | openssl md4`
 
- #echo "${vpn_name} : EAP \"${password}\"" > /home/ivpn/entries/user/${vpn_name}
- echo "${vpn_name} : NTLM \"${password}\"" > /home/ivpn/entries/user/${vpn_name}
- echo "" >> /home/ivpn/entries/user/${vpn_name}
+ #echo "${vpn_name} : EAP \"${password}\"" > /home/ivpn/entries/users/${vpn_name}/secret
+ echo "${vpn_name} : NTLM \"${password}\"" > /home/ivpn/entries/users/${vpn_name}/secret
+ echo "" >> /home/ivpn/entries/user/${vpn_name}/secret
 
 }
 
 . /home/engines/functions/params_to_env.sh
-params_to_env
+PARAMS_FILE=`mktemp`
+parms_to_file_and_env
+#params_to_env
 
 
 required_values="vpn_name password"
 check_required_values
 
-if test -f /home/ivpn/entries/user/${vpn_name}
+if test -d /home/ivpn/entries/users/${vpn_name}/
  then
-   echo '{"result":"VPN User Exists '${vpn_name}'"}'
-   exit 2
+   echo '{"result":"VPN user exists '${vpn_name}'"}'
+   exit 2 
+ elif test -d /home/ivpn/entries/disabled_users/${vpn_name}/  
+ then
+   echo '{"result":"VPN user exists in disabled users '${vpn_name}'"}'
+   exit 2 
 fi
-    
+ 
+mkdir -p /home/ivpn/entries/users/${vpn_name}
+cat $PARAMS_FILE | sed "s/\"password\".*:.*".*"//" > /home/ivpn/entries/users/${vpn_name}/details
+rm    $PARAMS_FILE 
 add_user_vpn
 
 err=`sudo -n /home/engines/scripts/actionators/_add_user_vpn.sh`
