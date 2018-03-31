@@ -2,7 +2,7 @@
 
 function add_user_vpn {
 
-password=`echo -n "${password}" | iconv -t utf16le | openssl md4`
+password=`echo -n "${password}" | iconv -t utf16le | openssl md4|cut -f2 -d" "`
 
  #echo "${vpn_name} : EAP \"${password}\"" > /home/ivpn/entries/users/${vpn_name}/secret
  echo "${vpn_name} : NTLM \"${password}\"" > /home/ivpn/entries/users/${vpn_name}/secret
@@ -17,7 +17,7 @@ params_to_env
 required_values="vpn_name password"
 check_required_values
 
-if ! test -d /home/ivpn/entries/user/${vpn_name}
+if ! test -d /home/ivpn/entries/users/${vpn_name}
  then
    echo '{"result":"VPN User does not exist '${vpn_name}'"}'
    exit 2
