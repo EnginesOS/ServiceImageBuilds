@@ -22,11 +22,11 @@ check_required_values
 if test -d /home/ivpn/entries/users/${vpn_name}/
  then
    echo '{"result":"VPN user exists '${vpn_name}'"}'
-   exit 2 
+   exit 1
  elif test -d /home/ivpn/entries/disabled_users/${vpn_name}/  
  then
    echo '{"result":"VPN user exists in disabled users '${vpn_name}'"}'
-   exit 2 
+   exit 1
 fi
  
 mkdir -p /home/ivpn/entries/users/${vpn_name}
