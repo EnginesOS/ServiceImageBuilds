@@ -17,7 +17,7 @@ params_to_env
 required_values="vpn_name password"
 check_required_values
 
-if ! test -f /home/ivpn/entries/user/${vpn_name}
+if test -f /home/ivpn/entries/user/${vpn_name}
  then
    echo '{"result":"VPN User Exists '${vpn_name}'"}'
    exit 2

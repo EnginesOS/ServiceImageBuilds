@@ -7,9 +7,10 @@ params_to_env
 required_values="vpn_name"
 check_required_values
 
+
 if ! test -f /home/ivpn/entries/user/${vpn_name}
  then
-   echo '{"result":"No Such VPN '${vpn_name}'"'
+   echo '{"result":"VPN User does not exist '${vpn_name}'"}'
    exit 2
 fi
 

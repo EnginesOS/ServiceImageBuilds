@@ -12,6 +12,12 @@ if ! test -d  /home/ivpn/entries/disabled_users/
   mkdir -p /home/ivpn/entries/disabled_users/
 fi  
 
+
+if ! test -f /home/ivpn/entries/disabled_users/${vpn_name}
+ then
+   echo '{"result":"'${vpn_name}' is not disabled"'
+   exit 2
+fi
 mv /home/ivpn/entries/disabled_users/${vpn_name} /home/ivpn/entries/user/
 sudo -n /home/engines/scripts/configurators/_disable_user_vpn.sh
 if test $? -eq 0

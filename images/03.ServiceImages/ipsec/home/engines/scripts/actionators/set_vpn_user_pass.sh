@@ -17,6 +17,12 @@ params_to_env
 required_values="vpn_name password"
 check_required_values
 
+if ! test -f /home/ivpn/entries/user/${vpn_name}
+ then
+   echo '{"result":"VPN User does not exist '${vpn_name}'"}'
+   exit 2
+fi
+
 add_user_vpn
 
 err=`sudo -n /home/engines/scripts/configurators/_set_vpn_user_pass.sh`
