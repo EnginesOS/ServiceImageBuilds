@@ -88,5 +88,5 @@ if test $? -eq 0
 	echo "Success"
 	exit 0
 else
-  exit 2
+  exit 1
 fi	

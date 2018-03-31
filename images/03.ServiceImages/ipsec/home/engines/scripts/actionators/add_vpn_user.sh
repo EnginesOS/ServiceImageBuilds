@@ -41,6 +41,6 @@ if test $? -eq 0
 	exit 0
 else
  	echo '{"result":"'$err'"}'
-	exit 2
+	exit 1
 fi
 	

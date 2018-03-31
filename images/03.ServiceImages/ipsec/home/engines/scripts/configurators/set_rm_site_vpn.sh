@@ -7,7 +7,7 @@ parms_to_env
 if ! test -d /home/ivpn/entries/site/${vpn_name}
  then
    echo "No Such VPN ${vpn_name}"
-   exit 2
+   exit 1
 fi
 
 
