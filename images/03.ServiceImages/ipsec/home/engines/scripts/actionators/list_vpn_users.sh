@@ -15,17 +15,19 @@ for user  in $users
  done
  
 echo '],"Disabled":[' 
-
-disabled_users=`ls /home/ivpn/entries/disabled_users/`
-n=0
-for user  in $disabled_users
- do
-    if test $n -ne 0
-     then
-      echo -n ','
-    else
-      n=1
-    fi    
-  echo =n '"'$user'"' 	
- done
+if test -d /home/ivpn/entries/disabled_users/
+ then
+  disabled_users=`ls /home/ivpn/entries/disabled_users/`
+  n=0
+  for user  in $disabled_users
+   do
+      if test $n -ne 0
+       then
+        echo -n ','
+      else
+        n=1
+      fi    
+    echo =n '"'$user'"' 	
+   done
+fi
  echo ']}'

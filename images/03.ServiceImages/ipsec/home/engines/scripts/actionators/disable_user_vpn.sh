@@ -9,7 +9,7 @@ check_required_values
 
 if ! test -f /home/ivpn/entries/user/${vpn_name}
  then
-   echo "No Such VPN ${vpn_name}"
+   echo '{"result":"No Such VPN '${vpn_name}'"'
    exit 2
 fi
 
@@ -20,3 +20,11 @@ fi
 
 mv /home/ivpn/entries/user/${vpn_name} /home/ivpn/entries/disabled_users/
 sudo -n /home/engines/scripts/configurators/_disable_user_vpn.sh
+if test $? -eq 0
+ then
+	echo '{"result":"Success"}'
+	exit 0
+else
+ 	echo '{"result":"'$err'"}'
+	exit 2
+fi

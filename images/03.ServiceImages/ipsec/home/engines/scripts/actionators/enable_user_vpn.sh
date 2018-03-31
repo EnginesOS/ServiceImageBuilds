@@ -14,3 +14,11 @@ fi
 
 mv /home/ivpn/entries/disabled_users/${vpn_name} /home/ivpn/entries/user/
 sudo -n /home/engines/scripts/configurators/_disable_user_vpn.sh
+if test $? -eq 0
+ then
+	echo '{"result":"Success"}'
+	exit 0
+else
+ 	echo '{"result":"'$err'"}'
+	exit 2
+fi
