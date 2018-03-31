@@ -13,7 +13,12 @@ done
 rm -r /home/ivpn/entries/site/${vpn_name}
 /home/engine/scripts/engine/build_configs.sh
 ipsec update
-
+if test $? -eq 0
+ then
+	echo '{"result":"Success"}'
+	exit 0
+else
+ 	echo '{"result":"'$err'"}'
+	exit 1
+fi
 	
-echo "Success"
-exit 0
