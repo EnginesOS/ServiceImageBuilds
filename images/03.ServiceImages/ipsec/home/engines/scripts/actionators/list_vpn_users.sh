@@ -27,7 +27,7 @@ if test -d /home/ivpn/entries/disabled_users/
       else
         n=1
       fi    
-    echo =n '"'$user'"'	
+    echo  '"'$user'"'	
    done
 fi
  echo ']}'

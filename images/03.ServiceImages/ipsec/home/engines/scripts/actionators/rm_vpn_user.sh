@@ -14,7 +14,7 @@ if ! test -z ${vpn_name}
 fi	
 	
 
-sudo -n /home/engines/scripts/actionators/_rm_user_vpn.sh
+sudo -n /home/engines/scripts/actionators/_rm_vpn_user.sh
 if test $? -eq 0
  then
 	echo '{"result":"Success"}'

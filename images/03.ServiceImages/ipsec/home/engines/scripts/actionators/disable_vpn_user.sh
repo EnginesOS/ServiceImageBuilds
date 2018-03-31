@@ -7,19 +7,20 @@ params_to_env
 required_values="vpn_name"
 check_required_values
 
+
+if ! test -d /home/ivpn/entries/users/${vpn_name}
+ then
+   echo '{"result":"VPN User does not exist '${vpn_name}'"}'
+   exit 2
+fi
+
 if ! test -d  /home/ivpn/entries/disabled_users/
  then
   mkdir -p /home/ivpn/entries/disabled_users/
 fi  
 
-
-if ! test -d /home/ivpn/entries/disabled_users/${vpn_name}
- then
-   echo '{"result":"'${vpn_name}' is not disabled"'
-   exit 2
-fi
-mv /home/ivpn/entries/disabled_users/${vpn_name} /home/ivpn/entries/users/
-sudo -n /home/engines/scripts/actionators/_disable_user_vpn.sh
+mv /home/ivpn/entries/users/${vpn_name} /home/ivpn/entries/disabled_users/
+sudo -n /home/engines/scripts/actionators/_disable_vpn_user.sh
 if test $? -eq 0
  then
 	echo '{"result":"Success"}'
