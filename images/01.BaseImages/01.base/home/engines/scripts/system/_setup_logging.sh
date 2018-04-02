@@ -4,9 +4,7 @@ if ! test -f /home/engines/run/flags/log_setup
  then
   if test -f /home/engines/etc/LOG_DIR
    then
-	 log_dirs=`cat /home/engines/etc/LOG_DIR`
-  else
- 	 log_dirs=/var/log/
+	 log_dirs=`cat /home/engines/etc/LOG_DIR`  
   fi
 
   for log_dir in $log_dirs
@@ -15,7 +13,7 @@ if ! test -f /home/engines/run/flags/log_setup
       then    
        mkdir -p $log_dir 
      fi
-    chown -R $ContUser $log_dir 
+    chown $ContUser $log_dir 
   done   
 fi
 
