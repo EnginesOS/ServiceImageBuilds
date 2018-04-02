@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/sh
 
 ln -s /home/engines/etc/ssl/keys/ivpn.key /etc/ipsec.d/private/
 ln -s /home/engines/etc/ssl/certs/ivpn.crt /etc/ipsec.d/certs/  
@@ -29,5 +29,5 @@ cat /home/engines/templates/ipsec.conf.tmpl | sed "/COMMON_NAME/s//$domain/"\
  
 cp /etc/ipsec.head /etc/ipsec.conf
  
-chmod og-rwx /etc/ipsec.d/private/ipvpn.key /etc/ipsec.conf /etc/strongswan.d/charon/eap-radius.conf /etc/ipsec.conf
+chmod og-rwx /etc/ipsec.d/private/ivpn.key /etc/ipsec.conf /etc/strongswan.d/charon/eap-radius.conf /etc/ipsec.conf
  
