@@ -14,20 +14,20 @@ cp $PARAMS_FILE /home/ivpn/entries/site/${vpn_name}/params
 rm $PARAMS_FILE
 
 
-
-cat /home/engines/templates/site2site.tmpl | while read LINE
-do
- eval echo "$LINE" >> /home/ivpn/entries/site/${vpn_name}/entry
-done
 n=0
 cat /home/engines/templates/site2site.tmpl | while read LINE
 do
   if test $n -gt 0
    then
-    echo -n "      " >> /home/ivpn/entries/site/${vpn_name}/nat
+    echo -n "      " >> /home/ivpn/entries/site/${vpn_name}/entry
   else
     n=1
-  fi  
+  fi 
+ eval echo "$LINE" >> /home/ivpn/entries/site/${vpn_name}/entry
+done
+
+cat /home/engines/templates/subnet_nat.tmpl | while read LINE
+do 
  eval echo "$LINE" >> /home/ivpn/entries/site/${vpn_name}/nat  	
 done
 
