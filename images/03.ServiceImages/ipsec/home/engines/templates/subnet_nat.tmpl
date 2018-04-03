@@ -1,0 +1,3 @@
+-t nat -I POSTROUTING -s $remote_subnet -o eth+ -m policy --dir out --pol ipsec -j ACCEPT
+-t nat -I POSTROUTING -s $remote_subnet -o eth+ -j MASQUERADE
+#blank line required post template

@@ -8,6 +8,7 @@ RUN apt-mark unhold tzdata &&\
  	/home/engines/scripts/build/post_build_clean.sh
  	
 ADD home home
+ENV JAVA_HOME /usr/lib/jvm/java-9-openjdk-amd64/
 
 ENV ContUser www-data
 ENV ContGrp www-data

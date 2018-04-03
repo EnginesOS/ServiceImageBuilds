@@ -1,0 +1,44 @@
+ldap {
+ server = "ldap.engines.internal"
+ identity = "uid=radius,ou=hosts,ou=Engines,dc=engines,dc=internal"
+ password = PASSWORD
+ basedn = "dc=engines,dc=internal"
+ filter = "(uid=%{%{Stripped-User-Name}:-%{User-Name}})"
+ base_filter = "(objectClass=radiusprofile)" 
+ password_attribute = radiusTunnelPassword
+ 
+ 
+ tls {
+        start_tls = no
+
+        # cacertfile    = /path/to/cacert.pem
+        # cacertdir             = /path/to/ca/dir/
+        # certfile              = /path/to/radius.crt
+        # keyfile               = /path/to/radius.key
+        # randfile              = /path/to/rnd
+
+        #  Certificate Verification requirements.  Can be:
+        #    "never" (don't even bother trying)
+        #    "allow" (try, but don't fail if the cerificate
+        #               can't be verified)
+        #    "demand" (fail if the certificate doesn't verify.)
+        #
+        #       The default is "allow"
+        # require_cert  = "demand"
+ }
+default_profile = "cn=default_profile,ou=radius,ou=radius,ou=Services,ou=Containers,ou=Engines,dc=engines,dc=internal"
+
+#profile_attribute = "radiusProfileDn"
+#access_attr = "dialupAccess"
+
+dictionary_mapping = ${raddbdir}/ldap.attrmap
+
+ldap_connections_number = 5
+
+groupname_attribute = cn
+groupmembership_filter = "(|(&(objectClass=GroupOfNames)(member=%{Ldap-UserDn}))(&(objectClass=GroupOfUniqueNames)(uniquemember=%{Ldap-UserDn})))"
+groupmembership_attribute = radiusGroupName
+timeout = 4
+timelimit = 3
+net_timeout = 1
+}

@@ -20,7 +20,7 @@ if test -z $is_secret
     if test $? -ne 0
      then
       echo "invalid volume $volume_src"
-      exit 2
+      exit 1
     fi
    sudo -n /home/engines/scripts/services/_delete_secret.sh
 fi  

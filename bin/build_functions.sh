@@ -39,6 +39,7 @@ if test $? -eq 0
   docker rmi $( docker images -f "dangling=true" -q) &>/dev/null
 else
   echo "Failed to build $tag in $class/$dir"
+  docker rmi $( docker images -f "dangling=true" -q) &>/dev/null
   exit 127
 fi				
 }
@@ -49,7 +50,9 @@ es=`docker ps -aq`
 if ! test ${#es} -gt 1
  then
   docker stop $es &> /dev/null
+   docker rm $es 
 fi
+
 
 images=`docker images |grep none | awk '{print $3}'`
 

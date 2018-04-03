@@ -15,7 +15,7 @@ conn %default
         left=%any
         right=%any
         #leftauth=pubkey
-        leftcert=ipvpn.crt
+        leftcert=ivpn.crt
         leftid=COMMON_NAME
         leftsubnet=0.0.0.0/0
         rightsourceip=RW_SUBNET/RW_MASK
@@ -24,5 +24,5 @@ conn %default
 
 conn IKEv2-PSK
         eap_identity=%any
-        #rightauth=eap-mschapv2
-        rightauth=eap-radius
+        rightauth=eap-mschapv2
+       #rightauth=eap-radius

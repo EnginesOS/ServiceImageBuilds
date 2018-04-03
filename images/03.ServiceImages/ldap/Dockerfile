@@ -18,8 +18,6 @@ RUN apt-get -y update &&\
 ADD home home
 
 RUN	/home/engines/scripts/build/post_build_clean.sh &&\
- 	mkdir -p /var/log/apache2 &&\
- 	chown www-data /var/log/apache2  &&\
  	mkdir /var/run/slapd &&\
  	chown openldap /var/run/slapd  &&\
  	usermod -a -G sasl openldap

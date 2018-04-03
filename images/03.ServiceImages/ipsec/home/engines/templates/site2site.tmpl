@@ -1,0 +1,20 @@
+conn $vpn_name
+        keyexchange=ikev$ike_version
+        right=$remote_site
+        rightsubnet=$remote_subnet	
+        rightid=$remote_id
+        leftid=$local_id
+        leftsubnet=$local_subnet
+        rightauth=psk
+        leftauth=psk
+        esp=$phase1_enc-$phase1_hash-$phase1_dh
+        ike=$phase2_enc-$phase2_hash$pfs
+        type=tunnel
+        mobeike=no
+        rightcendcert=no
+        lifetime = $ike_lifes
+        ikelifetime = $sa_lifes
+        rekey = $rekey
+        reauth = $reauth
+        auto = $respond_only     
+#need one line post template
