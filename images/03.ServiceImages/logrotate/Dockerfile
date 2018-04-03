@@ -1,7 +1,7 @@
 FROM  engines/servicebase:$release
 
 RUN /usr/sbin/usermod -u  22012 syslog &&\
-	/home/no_init.sh &&\
+	/home/engines/scripts/build/no_init.sh &&\
 	 adduser --uid 22028 -q --home /home/logrotate --disabled-password logrotate &&\
 	usermod -G containers -a logrotate
  
@@ -17,4 +17,4 @@ RUN mkdir -p /home/engines/scripts/configurators/saved /home/logrotate.d /home/s
 
 USER logrotate
 
-CMD ["/home/engines/scripts/startup/start.sh"]
+CMD ["/home/engines/scripts/system/start.sh"]

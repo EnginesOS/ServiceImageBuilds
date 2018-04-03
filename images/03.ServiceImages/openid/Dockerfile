@@ -1,7 +1,7 @@
 FROM  engines/servicebase:$release
 
 RUN adduser -q --disabled-password --home /home/auth -uid 22032 openid &&\
-	/home/no_init.sh &&\			
+	/home/engines/scripts/build/no_init.sh &&\			
 	apt-get update -y &&\
 	apt-get -y install apache2 \
 	                   php-gettext \
@@ -16,7 +16,7 @@ RUN adduser -q --disabled-password --home /home/auth -uid 22032 openid &&\
 	 phpenmod ldap &&\
 	 pear install Net_LDAP2 &&\
 	 usermod -G containers -a openid &&\
- 	/home/post_build_clean.sh
+ 	/home/engines/scripts/build/post_build_clean.sh
 
 COPY home home
 ADD sudoers /etc/sudoers.d/openid
@@ -41,4 +41,4 @@ ENV ContGrp openid
 
 USER openid
 
-CMD ["/home/engines/scripts/startup/start.sh"]
+CMD ["/home/engines/scripts/system/start.sh"]

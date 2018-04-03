@@ -1,7 +1,7 @@
 FROM engines/servicebase:$release
 
 RUN apt-get -y update &&\
-	/home/no_init.sh &&\
+	/home/engines/scripts/build/no_init.sh &&\
 	apt-get -y install mysql-client \
 	                   vim \
 	                   lftp \
@@ -28,7 +28,7 @@ RUN /usr/sbin/usermod -u 22015 -d /home/backup  backup &&\
   	cd fcron-3.3.0 &&\
   	./configure --with-run-non-privileged --with-rootname=backup\
 	--with-rootgroup=backup --with-username=backup --with-groupname=backup\
-	--with-etcdir=/home/backup/fcron --with-piddir=/home/engines/run/
+	--with-etcdir=/home/backup/fcron --with-piddir=/home/engines/run/\
 	--with-fifodir=/home/backup/fcron --with-spooldir=/home/backup/fcron/spool\
 	--with-docdir=/home/backup/fcron/doc --prefix=/home/backup/fcron &&\
 	make install &&\
@@ -49,7 +49,7 @@ RUN chown -R backup ~backup &&\
 	addgroup --gid 11111 datauser &&\
 	usermod -G datauser -a backup &&\
 	usermod -G adm -a backup &&\
- 	/home/post_build_clean.sh &&\
+ 	/home/engines/scripts/build/post_build_clean.sh &&\
 	chmod -R go-rw /etc/sudoers /etc/sudoers.d/
 	
 	
@@ -61,8 +61,7 @@ VOLUME /local_backup_dests
 
 USER backup
 ENV HOME /home/backup
-CMD		["/home/engines/scripts/startup/start.sh"]
-
+CMD ["/home/engines/scripts/system/start.sh"]
 
 
 ENV ContUser backup

@@ -20,7 +20,7 @@ RUN /usr/sbin/usermod -u 22671 www-data &&\
 	apt-get remove  php7.0-common &&\
 	chown www-data /var/www/ &&\
 	usermod -G smmsp -a www-data &&\
- 	/home/post_build_clean.sh &&\
+ 	/home/engines/scripts/build/post_build_clean.sh &&\
 	a2dismod php7.0 ;\
 	a2enmod php5.6	
 

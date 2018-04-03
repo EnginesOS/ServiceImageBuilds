@@ -2,7 +2,7 @@ FROM  engines/servicebase:$release
 
 ENV  RBENV_ROOT /usr/local/rbenv
 
-RUN /home/no_init.sh &&\			
+RUN /home/engines/scripts/build/no_init.sh &&\			
 	apt-get update -y &&\
 	apt-get -y install build-essential \
 					   ruby-dev \
@@ -11,7 +11,7 @@ RUN /home/no_init.sh &&\
 					   zlib1g-dev &&\
 	adduser -q  --uid 22023 --home /home/registry --disabled-password registry &&\
 	usermod -G containers -a registry &&\
- 	/home/post_build_clean.sh ;\
+ 	/home/engines/scripts/build/post_build_clean.sh ;\
 	gem install bundle gctools rest-client sinatra thin yajl-ruby rubytree ffi-yajl
 
 COPY home home	

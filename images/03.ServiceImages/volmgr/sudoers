@@ -1,9 +1,11 @@
 #Defaults  env_keep += "SIGNAL CONTAINER_NAME PID_FILE PID_FILES exit_code"
-Defaults  env_keep += "parent_engine service_name user group grp_write"
+Defaults  env_keep += "parent_engine service_handle service_name user group permissions  grp_write container_type engine_path volume_src  "
 volmgr ALL = (root) NOPASSWD: /home/engines/scripts/services/_update_service.sh
 volmgr ALL = (root) NOPASSWD: /home/engines/scripts/services/_create_volume.sh
 volmgr ALL = (root) NOPASSWD: /home/engines/scripts/services/_delete_volume.sh
 volmgr ALL = (root) NOPASSWD: /home/engines/scripts/backup/_backup.sh 
-volmgr ALL = (root) NOPASSWD: /home/engines/scripts/backup/_restore.sh                          
+volmgr ALL = (root) NOPASSWD: /home/engines/scripts/backup/_restore.sh        
+volmgr ALL = (root) NOPASSWD: /home/engines/scripts/services/_create_secret.sh
+volmgr ALL = (root) NOPASSWD: /home/engines/scripts/services/_delete_secret.sh
 #must have blank after last sudoers line
 

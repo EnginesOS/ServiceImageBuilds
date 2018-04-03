@@ -1,7 +1,7 @@
 FROM  engines/servicebase:$release
 
 RUN adduser -q --disabled-password -uid 22006 mysql &&\
-    /home/no_init.sh &&\		
+    /home/engines/scripts/build/no_init.sh &&\		
 	apt-get update -y &&\
 	apt-get -y install mysql-server &&\
 	echo max_allowed_packet = 4M >> /etc/mysql/mysql.conf.d/mysqld.cnf &&\
@@ -10,7 +10,7 @@ RUN adduser -q --disabled-password -uid 22006 mysql &&\
 	usermod -G containers -a mysql &&\
 	mkdir /var/run/mysqld &&\
 	chown mysql /var/run/mysqld &&\
- 	/home/post_build_clean.sh
+ 	/home/engines/scripts/build/post_build_clean.sh
 
 
 ADD home home
@@ -23,5 +23,6 @@ ENV ContGrp mysql
 
 USER mysql
 ENV ContUser mysql 
-CMD ["/home/engines/scripts/startup/start.sh"]
+
+CMD ["/home/engines/scripts/system/start.sh"]
 

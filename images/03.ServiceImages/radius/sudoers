@@ -1,5 +1,7 @@
-Defaults  env_keep += "KRB5_KTNAME SIGNAL CONTAINER_NAME PID_FILE PID_FILES exit_code"
-radius  ALL=(root) NOPASSWD: /usr/bin/freeradius
+Defaults  env_keep += "secret_name fqdn"
+
+freerad  ALL=(root) NOPASSWD: /home/engines/scripts/startup/_setup_clients.sh
+
 #must have blank after last sudoers line
 
 

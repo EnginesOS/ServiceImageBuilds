@@ -1,10 +1,10 @@
 FROM  engines/servicebase:$release
 
-RUN /home/no_init.sh &&\
+RUN /home/engines/scripts/build/no_init.sh &&\
 	adduser -q --disabled-password --home /home/certs -uid 22022 certs &&\
 	usermod -G containers -a certs &&\
 	apt-get -y install openssl &&\
- 	/home/post_build_clean.sh
+ 	/home/engines/scripts/build/post_build_clean.sh
 
 COPY home home
 COPY sudoers /etc/sudoers.d/certs
@@ -21,4 +21,4 @@ ENV ContUser certs
 
 USER certs
 
-CMD ["/home/engines/scripts/startup/start.sh"]
+CMD ["/home/engines/scripts/system/start.sh"]

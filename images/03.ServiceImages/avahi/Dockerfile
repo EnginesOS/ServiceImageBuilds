@@ -1,12 +1,12 @@
 FROM  engines/servicebase:$release
 
-RUN /home/no_init.sh &&\
+RUN /home/engines/scripts/build/no_init.sh &&\
 	apt-get -y update &&\
 	apt-get -y install avahi-daemon \
 	                   dbus \
 	                   python \
 	                   python-avahi &&\
-	/home/post_build_clean.sh &&\
+	/home/engines/scripts/build/post_build_clean.sh &&\
 	usermod avahi -u 22026 &&\	
 	mkdir /var/run/dbus/ &&\
 	rm -f /var/run/dbus/pid &&\
@@ -19,11 +19,13 @@ COPY home home
 RUN usermod -G containers -a avahi &&\
 	mkdir -p /home/avahi/hosts/ &&\
 	chown avahi -R /home/avahi/ /etc/avahi/avahi-daemon.conf &&\
-	chmod -R go-rw /etc/sudoers /etc/sudoers.d/
-	
+	chmod -R go-rw /etc/sudoers /etc/sudoers.d/  &&\
+	mkdir -p /home/engines/scripts/configurators/saved &&\
+	chown -R avahi /home/engines/scripts/configurators/saved
+
 USER avahi
 
 ENV ContUser avahi
 ENV ContGrp avahi
 
-CMD ["/home/engines/scripts/startup/start.sh"]
+CMD ["/home/engines/scripts/system/start.sh"]

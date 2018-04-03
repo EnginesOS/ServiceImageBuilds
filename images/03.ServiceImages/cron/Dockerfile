@@ -21,7 +21,7 @@ RUN adduser -q --disabled-password --home /home/cron -uid 22016 cron &&\
 	mkdir -p /home/cron/doc /home/cron/man /home/cron/spool /home/cron/log/ &&\
 	chown -R cron /home/cron/ &&\
 	cd /home/cron &&\
- 	/home/post_build_clean.sh
+ 	/home/engines/scripts/build/post_build_clean.sh
 
 COPY home home
 
@@ -30,4 +30,4 @@ USER cron
 	
 ENV ContUser cron
 
-CMD ["/home/engines/scripts/startup/start.sh"]
+CMD ["/home/engines/scripts/system/start.sh"]

@@ -8,7 +8,7 @@ RUN  apt-mark unhold tzdata &&\
  	ln -s  /etc/tomcat8 /usr/share/tomcat8/conf &&\
  	ln -s /tmp /usr/share/tomcat8/temp &&\
  	usermod -G containers -a www-data &&\
- 	/home/post_build_clean.sh
+ 	/home/engines/scripts/build/post_build_clean.sh
 
 ADD home home
 ADD home/webapps/ /usr/share/tomcat8/webapps

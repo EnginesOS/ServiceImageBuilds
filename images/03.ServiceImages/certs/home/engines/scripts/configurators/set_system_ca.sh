@@ -15,7 +15,7 @@ fi
 
 . /home/engines/functions/params_to_env.sh
 PARAMS_FILE=/home/engines/scripts/configurators/saved/ca_setup
-parms_to_file_and_env
+params_to_file_and_env
 
 
 required_values="cert_name domain_name country state city organisation person"

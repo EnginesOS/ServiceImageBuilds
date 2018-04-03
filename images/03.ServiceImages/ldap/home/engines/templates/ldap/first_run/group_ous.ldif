@@ -9,12 +9,6 @@ gidnumber: 5000
 objectclass: posixGroup
 objectclass: top
 
-#dn: cn=ftp,ou=Groups,dc=engines,dc=internal
-#cn: ftp
-#gidnumber: 5001
-#objectclass: posixGroup
-#objectclass: top
-
 dn: cn=data_access,ou=Groups,dc=engines,dc=internal
 cn: data_access
 gidnumber: 11111

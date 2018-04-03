@@ -2,7 +2,7 @@ FROM engines/servicebase:$release
 
 RUN usermod -u 22027 www-data &&\ 
 	usermod -G containers -a www-data &&\
-	/home/no_init.sh &&\
+	/home/engines/scripts/build/no_init.sh &&\
 	apt-get  update &&\
 	apt-get install -y apache2 \
 					   libapache2-mod-php \
@@ -13,7 +13,7 @@ RUN usermod -u 22027 www-data &&\
 					   php-gd \
 					   php-apcu \
 					   php-dev &&\
- 	/home/post_build_clean.sh
+ 	/home/engines/scripts/build/post_build_clean.sh
 	
 ADD home home
 
@@ -38,4 +38,4 @@ ADD src/apache_envvars /etc/apache2/envvars
 
 USER www-data
 
-CMD ["/home/engines/scripts/startup/start.sh"]	
+CMD ["/home/engines/scripts/system/start.sh"]

@@ -1,0 +1,4 @@
+Defaults  env_keep += "SSID PSK"
+settings ALL=(root) NOPASSWD: /home/engines/scripts/actionators/sudo/_list_wifi_nets.sh
+settings ALL=(root) NOPASSWD: /home/engines/scripts/actionators/sudo/_join_wifi_net.sh
+

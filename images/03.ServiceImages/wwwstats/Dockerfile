@@ -1,7 +1,7 @@
 FROM  engines/servicebase:$release
 RUN apt-get -y update;\
 	apt-get upgrade -y;\
-	/home/no_init.sh ;\	
+	/home/engines/scripts/build/no_init.sh ;\	
 	 usermod www-data -u 22024 ;\
 	usermod -G containers -a www-data ;\
 	mkdir -p /home/wwwstats/output /var/run/apache2;\

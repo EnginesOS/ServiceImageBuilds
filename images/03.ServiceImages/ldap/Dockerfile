@@ -4,7 +4,7 @@ Maintainer image.maintainer@engines.onl
 RUN apt-get -y update &&\
 	adduser -q --disabled-password -uid 22030 openldap &&\
 	usermod -G containers -a openldap &&\
-	/home/no_init.sh &&\	
+	/home/engines/scripts/build/no_init.sh &&\	
 	echo slapd slapd/no_configuration boolean true | debconf-set-selections &&\	
 	apt-get -y install sasl2-bin \
 				       libsasl2-2  \
@@ -17,9 +17,7 @@ RUN apt-get -y update &&\
 
 ADD home home
 
-RUN	/home/post_build_clean.sh &&\
- 	mkdir -p /var/log/apache2 &&\
- 	chown www-data /var/log/apache2  &&\
+RUN	/home/engines/scripts/build/post_build_clean.sh &&\
  	mkdir /var/run/slapd &&\
  	chown openldap /var/run/slapd  &&\
  	usermod -a -G sasl openldap
@@ -40,4 +38,4 @@ ENV ContGrp openldap
 
 USER openldap
 
-CMD ["/home/engines/scripts/startup/start.sh"]
+CMD ["/home/engines/scripts/system/start.sh"]

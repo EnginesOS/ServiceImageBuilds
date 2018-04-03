@@ -2,7 +2,7 @@ FROM engines/servicebase:$release
 
 RUN adduser -q --disabled-password -uid 22013 dovecot &&\
 	adduser -q --disabled-password -uid 22014 vmail &&\
-	/home/no_init.sh &&\	
+	/home/engines/scripts/build/no_init.sh &&\	
 	apt-get -y update &&\	
 	apt-get -y install dovecot-core \
 					   dovecot-imapd \
@@ -18,7 +18,7 @@ RUN adduser -q --disabled-password -uid 22013 dovecot &&\
 	mkdir -p /var/run/dovecot &&\
 	chown -R dovecot /var/run/dovecot/ &&\
 	usermod -G containers -a dovecot &&\
- 	/home/post_build_clean.sh
+ 	/home/engines/scripts/build/post_build_clean.sh
 	
 ADD src/dovecot/conf.d /etc/dovecot/conf.d
 ADD src/dovecot/dovecot-ldap.conf.ext /etc/dovecot/dovecot-ldap.conf.ext
@@ -32,4 +32,4 @@ USER dovecot
 
 ENV ContUser dovecot
 
-CMD ["/home/engines/scripts/startup/start.sh"]
+CMD ["/home/engines/scripts/system/start.sh"]

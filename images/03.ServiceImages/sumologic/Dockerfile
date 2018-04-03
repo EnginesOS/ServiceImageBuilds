@@ -6,7 +6,7 @@ RUN /usr/sbin/usermod -u 22012 syslog &&\
  	dpkg -i /tmp/collector.deb &&\
  	rm /tmp/collector.deb &&\	
 	usermod -G containers -a syslog &&\
- 	/home/post_build_clean.sh
+ 	/home/engines/scripts/build/post_build_clean.sh
 
 ENV ContUser syslog
 ENV ContGrp syslog
@@ -21,4 +21,4 @@ RUN mkdir -p /home/engines/scripts/configurators/saved &&\
 
 USER syslog
 
-CMD ["/home/engines/scripts/startup/start.sh"]
+CMD ["/home/engines/scripts/system/start.sh"]
