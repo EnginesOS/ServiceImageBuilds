@@ -13,7 +13,7 @@ fi
 rm $env_file
 }
 
-function parms_to_file_and_env
+function params_to_file_and_env
 {
 env_file=`mktemp`
 cat - > $PARAMS_FILE

@@ -12,7 +12,7 @@ password=`echo -n "${password}" | iconv -t utf16le | openssl md4|cut -f2 -d" "`
 
 . /home/engines/functions/params_to_env.sh
 PARAMS_FILE=`mktemp`
-parms_to_file_and_env
+params_to_file_and_env
 #params_to_env
 
 

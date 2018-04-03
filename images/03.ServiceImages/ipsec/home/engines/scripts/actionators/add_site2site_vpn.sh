@@ -2,7 +2,7 @@
 
 . /home/engines/functions/params_to_env.sh
 PARAMS_FILE=`mktemp`
-parms_to_file_and_env
+params_to_file_and_env
 mkdir -p /home/ivpn/entries/site/${vpn_name}
 cp $PARAMS_FILE /home/ivpn/entries/site/${vpn_name}/params
 rm $PARAMS_FILE
@@ -72,7 +72,7 @@ if ! test -z $pfs
   pfs=-$pfs
 fi
 
-reauth
+
 if ! test -z $rekey
  then
   rekey=no

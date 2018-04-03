@@ -6,7 +6,7 @@ max_lease=36000
 
 . /home/engines/functions/params_to_env.sh
 PARAMS_FILE=/home/engines/scripts/configurators/saved/dhcpd_settings
-parms_to_file_and_env
+params_to_file_and_env
 
 
 required_values="domain_name netmask subnet start end default_gateway dns_server1"

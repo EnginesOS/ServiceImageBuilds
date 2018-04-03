@@ -2,7 +2,7 @@
 
 . /home/engines/functions/params_to_env.sh
 PARAMS_FILE=/home/engines/scripts/configurators/saved/default_site_url
-parms_to_file_and_env
+params_to_file_and_env
 
 required_values="default_site_url"
 check_required_values    

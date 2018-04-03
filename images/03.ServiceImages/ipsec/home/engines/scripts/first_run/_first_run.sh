@@ -18,6 +18,7 @@ then
 else
  mask=24
 fi
+chown -R ivpn /home/ivpn/entries/
 
 secret=SECRET
 

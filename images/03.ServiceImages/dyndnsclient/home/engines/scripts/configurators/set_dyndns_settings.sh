@@ -2,7 +2,7 @@
 
 . /home/engines/functions/params_to_env.sh
 PARAMS_FILE=/home/engines/scripts/configurators/saved/dyndns_settings
-parms_to_file_and_env
+params_to_file_and_env
 
 required_values="provider login domain_name password"
 check_required_values

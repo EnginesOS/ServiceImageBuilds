@@ -18,7 +18,7 @@ fi
 
 . /home/engines/functions/params_to_env.sh
 PARAMS_FILE=/home/engines/scripts/configurators/saved/default_domain
-parms_to_file_and_env
+params_to_file_and_env
 
 required_values="domain_name"
 check_required_values 
