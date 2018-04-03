@@ -13,10 +13,16 @@ cat /home/engines/templates/site2site.tmpl | while read LINE
 do
  eval echo "$LINE" >> /home/ivpn/entries/site/${vpn_name}/entry
 done
-
+n=0
 cat /home/engines/templates/site2site.tmpl | while read LINE
 do
- eval echo "$LINE" >> /home/ivpn/entries/site/${vpn_name}/nat
+  if test $n -gt 0
+   then
+    echo -n "      " >> /home/ivpn/entries/site/${vpn_name}/nat
+  else
+    n=1
+  fi  
+ eval echo "$LINE" >> /home/ivpn/entries/site/${vpn_name}/nat  	
 done
 
  cat /home/engines/templates/secret.tmpl | while read LINE
@@ -135,7 +141,7 @@ get_local_values
 
 add_site_vpn
 
-sudo -n /home/engines/scripts/configurators/_add_site_vpn.sh "$vpn_name"
+sudo -n /home/engines/scripts/actionators/_add_site2site_vpn.sh "$vpn_name"
 if test $? -eq 0
  then
 	echo '{"result":"Success"}'

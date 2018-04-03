@@ -6,7 +6,7 @@ password=`echo -n "${password}" | iconv -t utf16le | openssl md4|cut -f2 -d" "`
 
  #echo "${vpn_name} : EAP \"${password}\"" > /home/ivpn/entries/users/${vpn_name}/secret
  echo "${vpn_name} : NTLM \"${password}\"" > /home/ivpn/entries/users/${vpn_name}/secret
- echo "" >> /home/ivpn/entries/user/${vpn_name}/secret
+ echo "" >> /home/ivpn/entries/users/${vpn_name}/secret
 
 }
 
