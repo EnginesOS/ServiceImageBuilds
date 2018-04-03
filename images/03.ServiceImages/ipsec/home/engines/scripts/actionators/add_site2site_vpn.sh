@@ -79,11 +79,12 @@ if ! test -z $pfs
 fi
 
 
-if ! test -z $rekey
+if test -z $rekey
  then
   rekey=no
 fi
-if ! test -z $reauth
+
+if  test -z $reauth
  then
   reauth=no
 fi
