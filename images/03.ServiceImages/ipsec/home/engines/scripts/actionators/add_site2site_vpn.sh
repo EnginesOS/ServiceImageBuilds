@@ -1,13 +1,19 @@
 #!/bin/bash
 
+function add_site_vpn {
+
 . /home/engines/functions/params_to_env.sh
 PARAMS_FILE=`mktemp`
 params_to_file_and_env
+
+required_values="vpn_name remote_site remote_id remote_subnet psk ike_verion"
+check_required_values
+
 mkdir -p /home/ivpn/entries/site/${vpn_name}
 cp $PARAMS_FILE /home/ivpn/entries/site/${vpn_name}/params
 rm $PARAMS_FILE
 
-function add_site_vpn {
+
 
 cat /home/engines/templates/site2site.tmpl | while read LINE
 do
@@ -134,8 +140,7 @@ function set_defaults {
   set_encrypt_defaults
 }
 
-required_values="vpn_name remote_site remote_id remote_subnet psk ike_verion"
-check_required_values
+
 set_defaults
 get_local_values  
 
