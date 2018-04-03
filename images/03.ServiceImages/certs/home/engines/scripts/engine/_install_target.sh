@@ -43,7 +43,7 @@ function set_uid {
      id=21000
   else
    echo unknown ctype $ctype
-   exit 127
+   exit 0
   fi
 }
 
