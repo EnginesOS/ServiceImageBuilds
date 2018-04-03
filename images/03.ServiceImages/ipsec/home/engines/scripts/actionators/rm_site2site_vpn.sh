@@ -4,7 +4,7 @@
 
 params_to_env
 
-if ! test -d /home/ivpn/entries/site/${vpn_name}
+if ! test -d /home/ivpn/entries/sites/${vpn_name}
  then
    echo "No Such VPN ${vpn_name}"
    exit 1

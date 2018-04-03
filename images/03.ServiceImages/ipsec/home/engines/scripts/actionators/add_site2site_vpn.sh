@@ -9,8 +9,8 @@ params_to_file_and_env
 required_values="vpn_name remote_site remote_id remote_subnet psk ike_verion"
 check_required_values
 
-mkdir -p /home/ivpn/entries/site/${vpn_name}
-cp $PARAMS_FILE /home/ivpn/entries/site/${vpn_name}/params
+mkdir -p /home/ivpn/entries/sites/${vpn_name}
+cp $PARAMS_FILE /home/ivpn/entries/sites/${vpn_name}/params
 rm $PARAMS_FILE
 
 
@@ -19,28 +19,28 @@ cat /home/engines/templates/site2site.tmpl | while read LINE
 do
   if test $n -gt 0
    then
-    echo -n "      " >> /home/ivpn/entries/site/${vpn_name}/entry
+    echo -n "      " >> /home/ivpn/entries/sites/${vpn_name}/entry
   else
     n=1
   fi 
- eval echo "$LINE" >> /home/ivpn/entries/site/${vpn_name}/entry
+ eval echo "$LINE" >> /home/ivpn/entries/sites/${vpn_name}/entry
 done
 
 cat /home/engines/templates/subnet_nat.tmpl | while read LINE
 do 
- eval echo "$LINE" >> /home/ivpn/entries/site/${vpn_name}/nat  	
+ eval echo "$LINE" >> /home/ivpn/entries/sites/${vpn_name}/nat  	
 done
 
  cat /home/engines/templates/secret.tmpl | while read LINE
 do
- eval echo "$LINE" >> /home/ivpn/entries/site/${vpn_name}/secret
+ eval echo "$LINE" >> /home/ivpn/entries/sites/${vpn_name}/secret
 done
 
 if test $dpd = true
  then
-  echo "      dpdaction = $dpd_action" >> /home/ivpn/entries/site/${vpn_name}/entry
-  echo "      dpddelay = $dpd_delays" >> /home/ivpn/entries/site/${vpn_name}/entry
-  echo "      dpdtimeout = $dpd_timeouts" >> /home/ivpn/entries/site/${vpn_name}/entry
+  echo "      dpdaction = $dpd_action" >> /home/ivpn/entries/sites/${vpn_name}/entry
+  echo "      dpddelay = $dpd_delays" >> /home/ivpn/entries/sites/${vpn_name}/entry
+  echo "      dpdtimeout = $dpd_timeouts" >> /home/ivpn/entries/sites/${vpn_name}/entry
 fi  
 }
 

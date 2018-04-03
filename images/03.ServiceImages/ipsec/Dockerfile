@@ -5,11 +5,7 @@ COPY home home
 RUN adduser -q --disabled-password --home /home/ivpn -uid 22031 ivpn &&\
 	usermod -G containers -a ivpn &&\
 	apt-get -y update &&\
-	apt-get install -y strongswan libcharon-extra-plugins telnet strongswan-plugin-eap-mschapv2 strongswan-plugin-ldap strongswan-plugin-eap-radius moreutils &&\
-	mkdir -p /home/ivpn/entries/user /home/ivpn/entries/site &&\
-	chown -R ivpn /home/ivpn/entries/
-
-#libpam-krb5 krb5-user 
+	apt-get install -y strongswan libcharon-extra-plugins telnet strongswan-plugin-eap-mschapv2 strongswan-plugin-ldap strongswan-plugin-eap-radius moreutils 
 
 COPY sudoers /etc/sudoers.d/ipsec
 

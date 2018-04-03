@@ -17,7 +17,7 @@ sysctl -w net.ipv4.conf.default.accept_source_route=0
 sysctl -w net.ipv4.conf.default.send_redirects=0
 sysctl -w net.ipv4.icmp_ignore_bogus_error_responses=1
 
-cat /home/ivpn/entries/site/*/nat | while read LINE
+cat /home/ivpn/entries/sites/*/nat | while read LINE
 do
  echo $LINE |grep -v \# >/dev/null
  if test $? -eq 0
