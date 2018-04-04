@@ -9,20 +9,19 @@ config setup
 
 conn %default
         keyexchange=ikev2
-        dpdaction=clear
+        dpdaction=restart
         dpddelay=30s
         fragmentation=yes
-        left=%any
-        right=%any
-        #leftauth=pubkey
+        left=%any  
         leftcert=ivpn.crt
-        leftid=COMMON_NAME
-        leftsubnet=0.0.0.0/0
-        rightsourceip=RW_SUBNET/RW_MASK
+        leftid=COMMON_NAME    
         leftfirewall=yes
         auto=add
 
 conn IKEv2-PSK
+		right=%any  
         eap_identity=%any
+        leftsubnet=0.0.0.0/0    
         rightauth=eap-mschapv2
+        rightsubnet=RW_SUBNET/RW_MASK        
        #rightauth=eap-radius
