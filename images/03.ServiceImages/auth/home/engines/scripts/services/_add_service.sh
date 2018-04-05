@@ -21,15 +21,15 @@ r=$?
   then
    if test ${container_type} = app
     then
-     if test -f /home/engines/system/containers/${container_type}s/$parent_engine/uid
+     if test -f /home/engines/etc/containers/${container_type}s/$parent_engine/uid
        then
-        uid=`cat /home/engines/system/containers/${container_type}s/$parent_engine/uid`
+        uid=`cat /home/engines/etc/containers/${container_type}s/$parent_engine/uid`
      else
-       fw=`cat /home/engines/system/containers/${container_type}s/$parent_engine/frame_work`
+       fw=`cat /home/engines/etc/containers/${container_type}s/$parent_engine/frame_work`
        uid=`grep ${fw} /home/engines/system/framework_user_uids |awk '{print $3}' | head -1`        
      fi
    else
-    uid=`cat /home/engines/system/containers/${container_type}s/$parent_engine/uid`
+    uid=`cat /home/engines/etc/containers/${container_type}s/$parent_engine/uid`
    fi    
 else
   uid=$owner

@@ -13,6 +13,15 @@ mkdir -p /home/ivpn/entries/sites/${vpn_name}
 cp $PARAMS_FILE /home/ivpn/entries/sites/${vpn_name}/params
 rm $PARAMS_FILE
 
+if ! test -z $pfs
+ then
+  if test $pfs = off
+   then
+    unset pfs
+  else  
+   pfs=-$pfs
+  fi  
+fi
 
 n=0
 cat /home/engines/templates/site2site.tmpl | while read LINE

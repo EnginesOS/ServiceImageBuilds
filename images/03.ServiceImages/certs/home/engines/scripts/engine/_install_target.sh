@@ -28,16 +28,16 @@ function set_uid {
   if test $ctype = services 
    then
    	service=`basename ${install_target}`
-     if test -f /home/engines/system/containers/services/$service/uid
+     if test -f /home/engines/etc/containers/services/$service/uid
       then
-     	  id=`cat /home/engines/system/containers/services/$service/uid`
+     	  id=`cat /home/engines/etc/containers/services/$service/uid`
      else
      	  id=`grep _$service /home/engines/system/service_uids | awk '{print $3}'`
      fi		
   elif test $ctype = apps
    then
    	engine=`basename ${install_target}`
-      id=`grep `cat /home/engines/system/containers/apps/${engine}/frame_work` /home/engines/system/framework_user_uids |awk '{print $3}'`
+      id=`grep `cat /home/engines/etc/containers/apps/${engine}/frame_work` /home/engines/system/framework_user_uids |awk '{print $3}'`
   elif test $ctype = system_services
    then
      id=21000
