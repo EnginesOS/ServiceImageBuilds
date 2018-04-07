@@ -3,16 +3,19 @@
 params_to_env
 required_values="uid password"
 check_required_values 
+shapass=`echo -n $password  |sha1sum |cut -f1 -d" "`
 
 . /home/engines/functions/ldap/support_functions.sh
- err_file=`mktemp`
- echo "cpw -pw $password  $uid" | sudo -n /home/engines/scripts/actionators/sudo/_add_kerberos_princ.sh >& $err_file
- r=$?
- if test $r -eq 0
+
+cat /home/engines/templates/chg_user_pass.ldif | while read LINE
+do
+ eval echo "$LINE" >> $LDIF_FILE
+done
+err=`cat $LDIF_FILE | /home/engines/scripts/ldap/ldapmodify.sh` 
+e=$?
+ if test $e -eq 0
  then
    echo '{"Result":"OK","Code":"200"}'
  else
-   err=`cat $err_file`
    echo '{"Error":"failed to change user","Result":"Failed $err","exit":"'$r'"}'   
  fi
- rm $err_file
