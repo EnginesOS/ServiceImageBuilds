@@ -13,4 +13,4 @@ objectclass: top
 sn: $last_name
 uid: $uid
 userpassword: {SHA1}$shapass
-#NO BLANK LINES
+#NO BLANK LINES  
