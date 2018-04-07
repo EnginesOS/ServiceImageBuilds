@@ -6,6 +6,7 @@ required_values="uid password last_name given_name domain_name"
 check_required_values 
 
 shapass=`echo -n $password  |sha1sum |cut -f1 -d" "`
+
 cat /home/engines/templates/add_user.ldif | while read LINE
 do
  eval echo "$LINE" >> $LDIF_FILE
