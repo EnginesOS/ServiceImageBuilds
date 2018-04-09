@@ -67,7 +67,10 @@ RUN	echo '#!/bin/sh' >/usr/sbin/policy-rc.d &&\
 	apt-get -y clean &&\	
 	rm -rf /tmp/* &&\
  	mkdir /var/run/engines &&\
- 	chgrp containers /var/run/engines && chmod g+w /var/run/engines 
+ 	chgrp containers /var/run/engines && chmod g+w /var/run/engines  &&\
+ 	mkdir /usr/share/ca-certificates/engines &&\\
+ 	echo engines/engines_internal_ca.crt >> /etc/ca-certificates.conf
+ 	
  	
 ADD sudoers /etc/sudoers.d/system
 ADD krb5.conf /etc/
