@@ -12,5 +12,5 @@ objectclass: inetOrgPerson
 objectclass: top
 sn: $last_name
 uid: $uid
-userpassword: {SHA256}$shapass
+userpassword: {SHA1}$shapass
 #NO BLANK LINES  

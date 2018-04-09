@@ -4,7 +4,7 @@ params_to_env
 required_values="uid password"
 check_required_values 
 
-shapass=`echo -n $password  | openssl dgst -sha256 -binary | openssl enc -base64`
+shapass=`echo -n $password  | openssl dgst -sha1 -binary | openssl enc -base64`
 . /home/engines/functions/ldap/support_functions.sh
 
 cat /home/engines/templates/chg_user_pass.ldif | while read LINE
