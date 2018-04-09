@@ -41,10 +41,13 @@ olcAccess: {1} to attrs=shadowLastChange
 olcAccess: {2} to dn.base="cn=uidNext,ou=System,ou=Engines,dc=engines,dc=internal"
         by dn="uid=uadmin,ou=hosts,ou=Engines,dc=engines,dc=internal" write
         by dn="cn=admin,ou=People,ou=Engines,dc=engines,dc=internal" write
+        by dn.exact="uid=ldap,ou=hosts,ou=Engines,dc=engines,dc=internal" write
 olcAccess: {3} to dn.base="cn=gidNext,ou=System,ou=Engines,dc=engines,dc=internal"
         by dn="uid=uadmin,ou=hosts,ou=Engines,dc=engines,dc=internal" write
         by dn="cn=admin,ou=People,ou=Engines,dc=engines,dc=internal" write
+        by dn.exact="uid=ldap,ou=hosts,ou=Engines,dc=engines,dc=internal" write
 olcAccess: {5} to dn.subtree="ou=People,dc=engines,dc=internal"
+        by dn.exact="uid=ldap,ou=hosts,ou=Engines,dc=engines,dc=internal" write
         by dn="uid=uadmin,ou=hosts,ou=Engines,dc=engines,dc=internal" write
         by dn="cn=admin,ou=People,ou=Engines,dc=engines,dc=internal" write
         by * read
