@@ -3,13 +3,13 @@ dn=$1
 
 if test $container_type = app
  then
- id = $parent_engine/host
+ id=$parent_engine/host
 elif test $container_type =  service
  then
-  id = $parent_engine/service
+  id=$parent_engine/service
 elif test $container_type = system_service
  then
-  id = $parent_engine/service
+  id=$parent_engine/service
 else
  echo incorrect container type $container_type
  exit 127
