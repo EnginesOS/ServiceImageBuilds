@@ -28,7 +28,7 @@ set > /tmp/full_env
 elif test $type = ou
  then
  /home/engines/scripts/services/ou/rm_ou.sh
-elif test $type = ou
+elif test $type = access
  then
    /home/engines/scripts/services/access/rm_access.sh
 else

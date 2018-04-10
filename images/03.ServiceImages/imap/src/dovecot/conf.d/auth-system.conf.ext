@@ -7,12 +7,12 @@
 # PAM is typically used with either userdb passwd or userdb static.
 # REMEMBER: You'll need /etc/pam.d/dovecot file created for PAM
 # authentication to actually work. <doc/wiki/PasswordDatabase.PAM.txt>
-passdb {
-  driver = pam
+#passdb {
+ # driver = pam
   # [session=yes] [setcred=yes] [failure_show_msg=yes] [max_requests=<n>]
   # [cache_key=<key>] [<service name>]
   #args = dovecot
-}
+#}
 
 # System users (NSS, /etc/passwd, or similiar).
 # In many systems nowadays this uses Name Service Switch, which is

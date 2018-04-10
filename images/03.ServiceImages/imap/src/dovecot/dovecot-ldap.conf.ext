@@ -1,7 +1,10 @@
 hosts = ldap
 base = ou=People,dc=engines,dc=internal
 ldap_version = 3
-auth_bind = no
+auth_bind = yes
+pass_attrs = uid=user
+pass_filter = (&(objectClass=posixAccount)(uid=%u))
+#auth_bind_userdn = uid=%u,ou=People,dc=engines,dc=internal
 deref = never
 scope = subtree
 user_attrs = uidNumber=uid,gidNumber=gid,mailHomeDirectory=home

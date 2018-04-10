@@ -1,0 +1,5 @@
+dn: cn=$cn,ou=People,dc=engines,dc=internal
+changetype: modify
+replace: userpassword
+userpassword: {SHA}$shapass
+
