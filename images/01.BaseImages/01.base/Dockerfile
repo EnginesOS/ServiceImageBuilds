@@ -68,7 +68,7 @@ RUN	echo '#!/bin/sh' >/usr/sbin/policy-rc.d &&\
 	rm -rf /tmp/* &&\
  	mkdir /var/run/engines &&\
  	chgrp containers /var/run/engines && chmod g+w /var/run/engines  &&\
- 	mkdir /usr/share/ca-certificates/engines &&\\
+ 	mkdir /usr/share/ca-certificates/engines &&\
  	echo engines/engines_internal_ca.crt >> /etc/ca-certificates.conf
  	
  	
