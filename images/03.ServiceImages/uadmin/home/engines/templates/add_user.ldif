@@ -12,5 +12,5 @@ objectclass: inetOrgPerson
 objectclass: top
 sn: $last_name
 uid: $uid
-userpassword: {SASL}$uid@ENGINES.INTERNAL
-#NO BLANK LINES
+userpassword: {SHA}$shapass
+#NO BLANK LINES  
