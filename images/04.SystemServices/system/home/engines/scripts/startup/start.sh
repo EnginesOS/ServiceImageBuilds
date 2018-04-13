@@ -3,11 +3,17 @@ echo "started" > /home/engines/run/flags/state
 
 start_thin()
 {
+if test -z $THREADED
+ then
+  THREADED=' '
+ else
+    THREADED=--threaded
+ fi   
  if test -f /home/engines/etc/ssl/keys/system.key 
   then
-	thin --threaded --ssl --ssl-key-file /home/engines/etc/ssl//keys/system.key --ssl-cert-file /home/engines/etc/ssl/certs/system.crt -C /home/app/config.yaml -R /home/app/config.ru start > /var/log/system.log &
+	thin $THREADED --ssl --ssl-key-file /home/engines/etc/ssl//keys/system.key --ssl-cert-file /home/engines/etc/ssl/certs/system.crt -C /home/app/config.yaml -R /home/app/config.ru start > /var/log/system.log &
   else
-	thin --threaded -C /home/app/config.yaml -R /home/app/config.ru start > /var/log/system.log &
+	thin $THREADED -C /home/app/config.yaml -R /home/app/config.ru start > /var/log/system.log &
  fi
 }
 
