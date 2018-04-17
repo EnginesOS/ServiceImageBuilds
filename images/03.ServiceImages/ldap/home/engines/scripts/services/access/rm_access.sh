@@ -19,12 +19,17 @@ if test -z $private
  then
   private='*'
 fi  
- 
+LDIF_FILE=`mktemp`
  cat /home/engines/templates/ldap/services/rm_access.ldif | while read LINE
    do
      eval echo "$LINE" >> $LDIF_FILE
    done
 
-
- cat $LDIF_FILE |sudo /home/engines/scripts/ldap/sudo/_ldapmodify.sh  &> $LDAP_OUTF
- 
+LDAP_OUTF=`mktemp`
+cat $LDIF_FILE |sudo /home/engines/scripts/ldap/sudo/_ldapmodify.sh  &> $LDAP_OUTF
+if test $? -eq 0
+ then
+  rm  $LDAP_OUTF $LDIF_FILE
+ else
+  cat  LDAP_OUTF
+fi 

@@ -5,7 +5,7 @@ ENV ContGrp lua
 
 RUN adduser -q --uid 22676 --home /home/lua --disabled-password lua &&\
 	apt-get update -y &&\
-	apt-get install -y lua5.1 \
+	apt-get install -y lua5.3 \
 		               liblua5.3-dev \
 		               libidn11-dev \
 		               libssl-dev &&\
