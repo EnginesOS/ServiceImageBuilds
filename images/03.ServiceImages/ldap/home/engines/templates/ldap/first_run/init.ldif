@@ -31,13 +31,14 @@ olcAccess: {1} to attrs=userPassword
    by self write
    by dn="uid=uadmin,ou=hosts,ou=Engines,dc=engines,dc=internal" write
    by dn="cn=admin,ou=People,ou=Engines,dc=engines,dc=internal" write
+   by dn="uid=ldap,ou=hosts,ou=Engines,dc=engines,dc=internal"  write
    by anonymous auth
    by * none
 olcAccess: {1} to attrs=shadowLastChange
   by self write  
   by dn="uid=uadmin,ou=hosts,ou=Engines,dc=engines,dc=internal" write
   by dn="cn=admin,ou=People,ou=Engines,dc=engines,dc=internal" write
-  by * read
+  by dn="uid=ldap,ou=hosts,ou=Engines,dc=engines,dc=internal"  write
 olcAccess: {2} to dn.base="cn=uidNext,ou=System,ou=Engines,dc=engines,dc=internal"
         by dn="uid=uadmin,ou=hosts,ou=Engines,dc=engines,dc=internal" write
         by dn="cn=admin,ou=People,ou=Engines,dc=engines,dc=internal" write
