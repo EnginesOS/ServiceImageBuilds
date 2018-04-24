@@ -13,7 +13,7 @@ kinit -kt /etc/krb5kdc/keys/ldap.keytab
 ldapmodify -H ldapi:/// -f $LDIF_FILE
 result=$?
 rm $LDIF_FILE
-#ldappasswd -D cn=admin,dc=engines,dc=internal -H ldapi:/// -s $password
+
 kdestroy
 exit $result
 

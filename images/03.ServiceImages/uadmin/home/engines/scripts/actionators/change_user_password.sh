@@ -14,10 +14,11 @@ do
  eval echo "$LINE" >> $LDIF_FILE
 done
 err=`cat $LDIF_FILE | /home/engines/scripts/ldap/ldapmodify.sh` 
+rm $LDIF_FILE 
 e=$?
  if test $e -eq 0
  then
    echo '{"Result":"OK","Code":"200"}'
  else
-   echo '{"Error":"failed to change user","Result":"Failed $err","exit":"'$r'"}'   
+   echo '{"Error":"failed to change user","Result":"Failed '$err'","exit":"'$r'"}'   
  fi
