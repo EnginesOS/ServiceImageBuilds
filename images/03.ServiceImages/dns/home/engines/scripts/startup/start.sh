@@ -8,7 +8,7 @@ ip=`cat  /home/engines/system/net/ip`
 no_inarpra=1
 add_to_internal_domain
 
-ip=`cat  /home/engines/system/net/public`
+ip=`cat /home/engines/system/net/public`
 hostname=publichost
 no_inarpra=1
 add_to_internal_domain

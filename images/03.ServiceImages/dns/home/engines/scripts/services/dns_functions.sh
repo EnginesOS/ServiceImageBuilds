@@ -47,14 +47,13 @@ if test -z $no_inarpra
 fi
 
 nsupdate -k /etc/bind/keys/ddns.private $dns_cmd_file
-if test $? -ge 0
+if test $? -eq 0
  then
    rm $dns_cmd_file
    echo Success
  else
    file=`cat $dns_cmd_file`
    echo Error:With nsupdate $file
-   exit -1
 fi
 
 }
