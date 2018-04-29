@@ -37,11 +37,11 @@ export PID_FILE
 sudo -n /home/engines/scripts/engine/_setup.sh
 
 sudo -n /usr/sbin/named  -c /etc/bind/named.conf -f -u bind &
-sleep 10 
+ 
 
 startup_complete
 
-sleep 10
+sleep 15
 
 post_start 
 
