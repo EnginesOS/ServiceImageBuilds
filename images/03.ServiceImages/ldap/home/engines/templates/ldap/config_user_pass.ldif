@@ -1,4 +1,5 @@
-dn: cn=James Vodanovich,ou=People,dc=engines,dc=internal
- 
-add: userPassword
-userPassword: {SASL}jvodanovich@ENGINES.INTERNAL
+
+dn: cn=Administrator,ou=People,dc=engines,dc=internal
+changetype: modify
+replace: userpassword
+userpassword: {SHA1}$shapass

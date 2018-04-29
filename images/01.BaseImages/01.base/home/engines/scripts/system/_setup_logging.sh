@@ -21,7 +21,7 @@ if test -f /home/engines/etc/SYSLOG
  then
    if test -f /home/engines/run/rsyslogd.pid 
     then
-     rm /home/engines/rsyslogd.pid
+     rm /home/engines/run/rsyslogd.pid 
    fi 
 
   rsyslogd -i /home/engines/run/rsyslogd.pid

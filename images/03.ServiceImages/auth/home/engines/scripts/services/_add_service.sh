@@ -2,19 +2,20 @@
 
 function gen_service_key {
 
-echo addprinc -randkey host/$parent_engine.engines.internal@ENGINES.INTERNAL | kadmin.local
+echo addprinc -randkey $prefix/$parent_engine.engines.internal@ENGINES.INTERNAL | kadmin.local
 r=$?
 
+  
  if test $r -ne 0
   then
-   echo "Failed to create principle  host/$parent_engine.engines.internal"
+   echo "Failed to create principle  $prefix/$parent_engine.engines.internal"
  else 
   mkdir -p /etc/krb5kdc/${container_type}s/$parent_engine 
-  echo ktadd -k /etc/krb5kdc/${container_type}s/$parent_engine/$parent_engine.keytab host/$parent_engine.engines.internal@ENGINES.INTERNAL | kadmin.local
+  echo ktadd -k /etc/krb5kdc/${container_type}s/$parent_engine/$key_filename $prefix/$parent_engine.engines.internal@ENGINES.INTERNAL | kadmin.local
   r=$?
    if test $r -ne 0
   then
-   echo "Failed to create principle  host/$parent_engine.engines.internal"
+   echo "Failed to create principle  $prefix/$parent_engine.engines.internal"
   fi  
  fi  
  if ! test -z $owner
@@ -30,13 +31,32 @@ r=$?
      fi
    else
     uid=`cat /home/engines/etc/containers/${container_type}s/$parent_engine/uid`
-   fi    
+   fi
 else
   uid=$owner
 fi
-chown $uid /etc/krb5kdc/${container_type}s/$parent_engine/$parent_engine.keytab  
+
+if test -z $uid
+ then
+  uid=0
+fi
+    
+chown $uid /etc/krb5kdc/${container_type}s/$parent_engine/$key_filename
+  
 }
 
+if test -z $prefix
+ then
+  prefix=host
+fi  
+  
+if test $prefix = host
+ then
+  key_filename=${parent_engine}.keytab
+ else
+  key_filename=${prefix}_${parent_engine}.keytab
+fi
+  
 gen_service_key
 
 exit $r

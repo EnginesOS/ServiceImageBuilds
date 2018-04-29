@@ -1,4 +1,4 @@
-Defaults  env_keep += "KILL_SCRIPT SIGNAL PID_FILE PID_FILES parent_engine container_type owner"
+Defaults  env_keep += "KILL_SCRIPT SIGNAL PID_FILE PID_FILES parent_engine container_type owner prefix"
 auth ALL = (root) NOPASSWD: /home/engines/scripts/startup/_start.sh
 auth ALL = (root) NOPASSWD: /home/engines/scripts/signal/_kill_kerberos.sh
 auth ALL = (root) NOPASSWD: /home/engines/scripts/first_run/_first_run.sh

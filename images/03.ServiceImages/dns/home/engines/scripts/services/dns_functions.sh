@@ -38,6 +38,7 @@ echo update delete $fqdn_str >> $dns_cmd_file
 echo send >> $dns_cmd_file
 echo $update_line >> $dns_cmd_file
 echo send >> $dns_cmd_file
+ cp  $dns_cmd_file /tmp/add_ $fqdn_str
 
 if test -z $no_inarpra 
  then
@@ -45,16 +46,16 @@ if test -z $no_inarpra
 	echo update add ${ip_reversed}.in-addr.arpa. $ttl PTR $fqdn_str >> $dns_cmd_file
 	echo send >> $dns_cmd_file
 fi
+ cp  $dns_cmd_file /tmp/add_inapra_ $fqdn_str
 
 nsupdate -k /etc/bind/keys/ddns.private $dns_cmd_file
-if test $? -ge 0
+if test $? -eq 0
  then
    rm $dns_cmd_file
    echo Success
  else
    file=`cat $dns_cmd_file`
    echo Error:With nsupdate $file
-   exit -1
 fi
 
 }

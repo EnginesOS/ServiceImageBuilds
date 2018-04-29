@@ -2,10 +2,10 @@
 
 startup_complete()
 {
-echo startup_complete > /home/engines/run/flags/state
-echo "Startup Complete"
 touch /home/engines/run/flags/startup_complete
 touch /home/engines/run/flags/started
+echo startup_complete > /home/engines/run/flags/state
+echo "Startup Complete"
 chgrp containers /home/engines/run/flags/started /home/engines/run/flags/startup_complete
 chmod g+w /home/engines/run/flags/started /home/engines/run/flags/startup_complete
 debug_catch_crash

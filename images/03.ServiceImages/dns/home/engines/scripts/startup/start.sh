@@ -8,7 +8,7 @@ ip=`cat  /home/engines/system/net/ip`
 no_inarpra=1
 add_to_internal_domain
 
-ip=`cat  /home/engines/system/net/public`
+ip=`cat /home/engines/system/net/public`
 hostname=publichost
 no_inarpra=1
 add_to_internal_domain
@@ -37,13 +37,16 @@ export PID_FILE
 sudo -n /home/engines/scripts/engine/_setup.sh
 
 sudo -n /usr/sbin/named  -c /etc/bind/named.conf -f -u bind &
-
-
-post_start 
+ 
 
 startup_complete
 
+sleep 15
+
+post_start 
+
 wait  
+
 exit_code=$?
 
 shutdown_complete
