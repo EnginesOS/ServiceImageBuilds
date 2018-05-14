@@ -20,7 +20,7 @@ olcLastMod: TRUE
 olcReadOnly: FALSE
 olcSuffix: dc=engines,dc=internal
 olcDbDirectory: /var/lib/ldap
-olcRootDN: cn=admin,dc=engines,dc=internal
+olcRootDN: cn=admin,ou=People,ou=Engines,dc=engines,dc=internal
 olcRootPW: password
 olcDbIndex: objectClass eq
 olcDbIndex: uid pres,eq
@@ -74,13 +74,8 @@ olcAccess: {10} to dn.subtree="ou=Engines,dc=engines,dc=internal"
         by dn.exact="uid=ldap,ou=hosts,ou=Engines,dc=engines,dc=internal" manage
         by dn="cn=admin,ou=People,ou=Engines,dc=engines,dc=internal" write
         by * read        
-olcAccess: {0} to dn.subtree="olcDatabase={1}mdb,cn=config"
-        by dn.exact="cn=admin,dc=engines,dc=internal" manage
-        by dn="uid=ldap,ou=hosts,ou=Engines,dc=engines,dc=internal" manage
-        by dn.exact="gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth" manage
-        by * read
 olcAccess: {999} to *
-        by dn.exact="cn=admin,dc=engines,dc=internal" manage
+        by dn.exact="cn=admin,ou=People,ou=Engines,dc=engines,dc=internal" manage
         by dn.exact="uid=ldap,ou=hosts,ou=Engines,dc=engines,dc=internal" manage
         by dn.exact="gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth" manage
         by * read
