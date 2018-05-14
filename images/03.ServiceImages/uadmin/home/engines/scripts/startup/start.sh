@@ -3,6 +3,7 @@
 PID_FILE=/home/engines/run/sleep.pid
 export PID_FILE
 . /home/engines/functions/trap.sh
+export RACK_ENV production
 
 /home/engines/scripts/engine/deploy.sh
   
