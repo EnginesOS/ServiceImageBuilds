@@ -23,13 +23,12 @@ names=`cat /home/certs/store/$cert_type/certs/$store/$cert.crt \
               alt_names='""'
          fi 
 }
-
+i=0
 echo -n '{"certs":['
  for cert_type in `ls /home/certs/store`
   do
   if test -d /home/certs/store/$cert_type/certs/
    then
-    i=0
     cd /home/certs/store/$cert_type/certs/
     certs=`find . -name "*.crt" |grep -v default | sed "/\.crt/s///g"`
       for cert in $certs
