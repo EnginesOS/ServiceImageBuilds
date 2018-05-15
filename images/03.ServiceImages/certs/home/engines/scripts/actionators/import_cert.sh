@@ -7,6 +7,9 @@ required_values="certificate private_key"
 check_required_values
 
 mkdir -p /home/certs/store/imported/certs/ /home/certs/store/imported/keys/
+echo $certificate > /home/certs/store/imported/certs/tmp.crt
+echo $private_key >  /home/certs/store/imported/keys/tmp.key
+
 
 if ! test -z $password
  then

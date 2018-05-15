@@ -26,7 +26,7 @@ startup_complete
 
 wait 
 exit_code=$?
-kill -TERM  cat /home/engines/run/firstrun.pid`
+kill -TERM  `cat /home/engines/run/firstrun.pid`
 
 shutdown_complete
 
