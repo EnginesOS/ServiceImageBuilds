@@ -25,6 +25,7 @@ RUN	echo -n master >/home/app/release
 ENV HOME /home/app
 WORKDIR /home/app/
 USER www-data
+ENV RACK_ENV production
 RUN	/home/engines/scripts/engine/deploy.sh
 
 CMD ["/home/engines/scripts/startup/start.sh"]
