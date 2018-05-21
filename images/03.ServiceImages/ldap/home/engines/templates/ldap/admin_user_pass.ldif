@@ -1,4 +1,4 @@
 dn: cn=Administrator,ou=People,dc=engines,dc=internal
 changetype: modify
 replace: userpassword
-userpassword: {SHA1}$shapass
+userpassword: {SHA}$shapass
