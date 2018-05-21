@@ -3,7 +3,7 @@
 
 #FIXME check curent password
 password=`cat -`
-shapass=`echo -n "$password"  |sha1sum |cut -f1 -d" "`
+shapass=`echo -n $password  | openssl dgst -sha1 -binary | openssl enc -base64`
 
 cat /home/engines/templates/ldap/admin_user_pass.ldif | while read LINE
 do
