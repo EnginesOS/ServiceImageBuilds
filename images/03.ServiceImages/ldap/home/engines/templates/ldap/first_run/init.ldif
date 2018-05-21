@@ -21,7 +21,7 @@ olcReadOnly: FALSE
 olcSuffix: dc=engines,dc=internal
 olcDbDirectory: /var/lib/ldap
 olcRootDN: cn=config,dc=engines,dc=internal
-olcRootPW: password
+olcRootPW: {SHA}PASSWORD
 olcDbIndex: objectClass eq
 olcDbIndex: uid pres,eq
 olcDbIndex: uidNumber,gidNumber eq
