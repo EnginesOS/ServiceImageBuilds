@@ -1,11 +1,11 @@
-#!/bin/sh
+#!/bin/bash
 . /home/engines/functions/ldap/support_functions.sh
 
 #FIXME check curent password
 password=`cat -`
 shapass=`echo -n "$password"  |sha1sum |cut -f1 -d" "`
 
-cat /home/engines/templates/ldap/root_password.ldif | while read LINE
+cat /home/engines/templates/ldap/admin_user_pass.ldif | while read LINE
 do
  eval echo "$LINE" >> $LDIF_FILE
 done

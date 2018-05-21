@@ -13,7 +13,7 @@ replace: olcAuthzPolicy
 olcAuthzPolicy: to
 -
 add: olcAuthzRegexp
-olcAuthzRegexp: {0}"uid=config/ldap.engines.internal,cn=gssapi,cn=auth" " cn=admin,ou=People,ou=Engines,dc=engines,dc=internal"
+olcAuthzRegexp: {0}"uid=config/ldap.engines.internal,cn=gssapi,cn=auth" " cn=Administrator,ou=People,ou=Engines,dc=engines,dc=internal"
 olcAuthzRegexp: {1}"uid=host/([^/]*).engines.internal,cn=engines.internal,cn=gssapi,cn=auth" "uid=$1,ou=hosts,ou=Engines,dc=engines,dc=internal"
 olcAuthzRegexp: {2}"uid=([^,]*),cn=engines.internal,cn=gsapi,cn=auth" "ldap:///ou=people,dc=engines,dc=internal??one?(uid=$1)"
 
