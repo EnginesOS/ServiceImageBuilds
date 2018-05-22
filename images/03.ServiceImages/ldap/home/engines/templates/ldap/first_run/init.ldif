@@ -18,7 +18,7 @@ olcBackend: mdb
 dn: cn=module,cn=config
 objectClass: olcModuleList
 cn: module
-olcModuleLoad: ppolicy
+olcModuleLoad: ppolicy.so
 
 
 # The database definition.
@@ -32,18 +32,19 @@ olcLastMod: TRUE
 olcReadOnly: FALSE
 olcSuffix: dc=engines,dc=internal
 olcDbDirectory: /var/lib/ldap
-olcRootDN: uid=config/ldap.engines.internal,cn=engines.internal,cn=gssapi,cn=auth
+olcRootDN: cn=config,dc=engines,dc=internal
+#uid=config/ldap.engines.internal,cn=engines.internal,cn=gssapi,cn=auth
 #cn=config,dc=engines,dc=internal
-#olcRootPW: {SHA}PASSWORD
+olcRootPW: {SHA}PASSWORD
 olcDbIndex: objectClass eq
 olcDbIndex: uid pres,eq
 olcDbIndex: uidNumber,gidNumber eq
 olcDbIndex: member,memberUid eq
 olcDbIndex: cn,sn,mail pres,eq,approx,sub
 olcAccess: {1} to attrs=userPassword
-   b y self write
+    by self write
     by dn="uid=uadmin,ou=hosts,ou=Engines,dc=engines,dc=internal" write
-    by dn="cn=Administrator,ou=People,ou=Engines,dc=engines,dc=internal" write
+    by dn="cn=Administrator,ou=People,dc=engines,dc=internal" write
     by dn="uid=ldap,ou=hosts,ou=Engines,dc=engines,dc=internal"  write
     by anonymous auth
     by * none
@@ -94,7 +95,7 @@ olcAccess: {999} to *
         by * read
 
 
-dn: olcOverlay=ppolicy,olcDatabase=mdb,cn=config
+dn: olcOverlay=ppolicy,olcBackend=mdb,cn=config
 objectClass: olcOverlayConfig
 objectClass: olcPPolicyConfig
 olcOverlay: ppolicy
