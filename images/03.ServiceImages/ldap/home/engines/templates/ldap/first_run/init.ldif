@@ -15,6 +15,22 @@ dn: olcBackend=mdb,cn=config
 objectClass: olcBackendConfig
 olcBackend: mdb
 
+dn: cn=module{0},cn=config
+objectClass: olcModuleList
+cn: module{0}
+olcModuleLoad: ppolicy.la
+#loadmodule ppolicy.so
+
+
+dn: olcOverlay=ppolicy,olcDatabase=mdb,cn=config
+objectClass: olcOverlayConfig
+objectClass: olcPPolicyConfig
+olcOverlay: ppolicy
+olcPPolicyDefault: cn=defaultpwpolicy,ou=policies,ou=engines,dc=engines,dc=internal
+olcPPolicyHashCleartext: FALSE
+olcPPolicyUseLockout: TRUE
+olcPPolicyForwardUpdates: FALSE
+
 # The database definition.
 dn: olcDatabase=mdb,cn=config
 objectClass: olcDatabaseConfig
@@ -29,10 +45,6 @@ olcDbDirectory: /var/lib/ldap
 olcRootDN: uid=config/ldap.engines.internal,cn=engines.internal,cn=gssapi,cn=auth
 #cn=config,dc=engines,dc=internal
 olcRootPW: {SHA}PASSWORD
-olcPPolicyDefault: DN
-olcPPolicyDefault: cn=defaultpwpolicy,dc=engines,dc=internal
-olcPPolicyUseLockout: TRUE 
-olcPPolicyHashCleartext: FALSE
 olcDbIndex: objectClass eq
 olcDbIndex: uid pres,eq
 olcDbIndex: uidNumber,gidNumber eq
