@@ -5,21 +5,21 @@ objectClass: olcSchemaConfig
 cn: schema
 
 #global database parameters
-dn: olcDatabase=frontend,cn=config
-objectClass: olcDatabaseConfig
-olcDatabase: frontend
-olcAccess: to * by * read
+#dn: olcDatabase=frontend,cn=config
+#objectClass: olcDatabaseConfig
+#olcDatabase: frontend
+#olcAccess: to * by * read
 
 # Set defaults for the backend
 dn: olcBackend=mdb,cn=config
 objectClass: olcBackendConfig
 olcBackend: mdb
 
-dn: cn=module{0},cn=config
+dn: cn=module,cn=config
 objectClass: olcModuleList
-cn: module{0}
+cn: module
 olcModuleLoad: ppolicy.so
-#loadmodule ppolicy.so
+
 
 # The database definition.
 dn: olcDatabase=mdb,cn=config
