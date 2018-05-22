@@ -40,6 +40,15 @@ if  test $exit_code -ne 0
   exit $exit_code
 fi  
 
+echo Schema for password policy
+ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/ldap/schema/ppolicy.ldif
+exit_code=$?
+if  test $exit_code -ne 0
+ then
+  echo Failed /etc/ldap/schema/ppolicy.ldif
+  exit $exit_code
+fi  
+
 echo Schema for postfix virtual accounts integration
 ldapadd -Y EXTERNAL -H ldapi:/// -f /home/engines/templates/ldap/first_run/postfix.ldif
 exit_code=$?

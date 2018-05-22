@@ -1,5 +1,6 @@
 #Defaults  env_keep += "SIGNAL CONTAINER_NAME PID_FILE PID_FILES exit_code KRB5_KTNAME"
 openldap ALL=(root) NOPASSWD: /home/engines/scripts/actionators/_set_admin_password.sh
+openldap ALL=(root) NOPASSWD: /home/engines/scripts/actionators/_schema_update.sh
 openldap ALL=(root) NOPASSWD: /home/engines/scripts/startup/_start.sh
 
 openldap ALL=(root) NOPASSWD: /home/engines/scripts/signal/_signal.sh

@@ -4,6 +4,12 @@ dn: cn=schema,cn=config
 objectClass: olcSchemaConfig
 cn: schema
 
+#global database parameters
+dn: olcDatabase=frontend,cn=config
+objectClass: olcDatabaseConfig
+olcDatabase: frontend
+olcAccess: to * by * read
+
 # Set defaults for the backend
 dn: olcBackend=mdb,cn=config
 objectClass: olcBackendConfig
@@ -20,8 +26,13 @@ olcLastMod: TRUE
 olcReadOnly: FALSE
 olcSuffix: dc=engines,dc=internal
 olcDbDirectory: /var/lib/ldap
-olcRootDN: cn=config,dc=engines,dc=internal
+olcRootDN: uid=config/ldap.engines.internal,cn=engines.internal,cn=gssapi,cn=auth
+#cn=config,dc=engines,dc=internal
 olcRootPW: {SHA}PASSWORD
+olcPPolicyDefault: DN
+olcPPolicyDefault: cn=defaultpwpolicy,dc=engines,dc=internal
+olcPPolicyUseLockout: TRUE 
+olcPPolicyHashCleartext: FALSE
 olcDbIndex: objectClass eq
 olcDbIndex: uid pres,eq
 olcDbIndex: uidNumber,gidNumber eq
@@ -73,7 +84,7 @@ olcAccess: {10} to dn.subtree="ou=Engines,dc=engines,dc=internal"
         by dn="uid=uadmin,ou=hosts,ou=Engines,dc=engines,dc=internal" write
         by dn.exact="uid=ldap,ou=hosts,ou=Engines,dc=engines,dc=internal" manage
         by dn="cn=Administrator,ou=People,dc=engines,dc=internal" manage
-        by * read        
+        by * read       
 olcAccess: {999} to *
         by dn.exact="cn=Administrator,ou=People,dc=engines,dc=internal" manage
         by dn.exact="uid=ldap,ou=hosts,ou=Engines,dc=engines,dc=internal" manage
