@@ -18,18 +18,8 @@ olcBackend: mdb
 dn: cn=module{0},cn=config
 objectClass: olcModuleList
 cn: module{0}
-olcModuleLoad: ppolicy.la
+olcModuleLoad: ppolicy.so
 #loadmodule ppolicy.so
-
-
-dn: olcOverlay=ppolicy,olcDatabase=mdb,cn=config
-objectClass: olcOverlayConfig
-objectClass: olcPPolicyConfig
-olcOverlay: ppolicy
-olcPPolicyDefault: cn=defaultpwpolicy,ou=policies,ou=engines,dc=engines,dc=internal
-olcPPolicyHashCleartext: FALSE
-olcPPolicyUseLockout: TRUE
-olcPPolicyForwardUpdates: FALSE
 
 # The database definition.
 dn: olcDatabase=mdb,cn=config
@@ -44,7 +34,7 @@ olcSuffix: dc=engines,dc=internal
 olcDbDirectory: /var/lib/ldap
 olcRootDN: uid=config/ldap.engines.internal,cn=engines.internal,cn=gssapi,cn=auth
 #cn=config,dc=engines,dc=internal
-olcRootPW: {SHA}PASSWORD
+#olcRootPW: {SHA}PASSWORD
 olcDbIndex: objectClass eq
 olcDbIndex: uid pres,eq
 olcDbIndex: uidNumber,gidNumber eq
@@ -102,3 +92,13 @@ olcAccess: {999} to *
         by dn.exact="uid=ldap,ou=hosts,ou=Engines,dc=engines,dc=internal" manage
         by dn.exact="gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth" manage
         by * read
+        
+dn: olcOverlay=ppolicy,olcDatabase=mdb,cn=config
+objectClass: olcOverlayConfig
+objectClass: olcPPolicyConfig
+olcOverlay: ppolicy
+olcPPolicyDefault: cn=defaultpwpolicy,ou=policies,ou=engines,dc=engines,dc=internal
+olcPPolicyHashCleartext: FALSE
+olcPPolicyUseLockout: TRUE
+olcPPolicyForwardUpdates: FALSE
+        
