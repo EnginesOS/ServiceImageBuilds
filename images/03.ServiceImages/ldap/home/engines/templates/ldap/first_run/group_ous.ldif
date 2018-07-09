@@ -29,3 +29,9 @@ dn: ou=Applications,ou=Groups,dc=engines,dc=internal
 objectclass: organizationalUnit
 objectclass: top
 ou: Applications
+
+dn: cn=Administrators,ou=Groups,dc=engines,dc=internal
+cn: Administrators
+gidnumber: 5000
+objectclass: posixGroup
+objectclass: top
