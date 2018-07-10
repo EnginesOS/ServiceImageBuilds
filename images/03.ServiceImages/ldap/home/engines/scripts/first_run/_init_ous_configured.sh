@@ -16,9 +16,18 @@ export KRB5_KTNAME=/etc/krb5kdc/keys/ldap.keytab
  
  sleep 5
 
+password=`dd if=/dev/urandom count=16 bs=1  | od -h | awk '{ print $2$3$4$5$6$7$8}'`
+echo -n $password > /var/lib/ldap/.tok
+shapass=`echo -n $password  | openssl dgst -sha1 -binary | openssl enc -base64`
+
+cat /home/engines/templates/ldap/first_run/init_pre_password.ldif >  /tmp/init.ldif
+echo olcRootPW: {SHA}$shapass >> /tmp/init.ldif
+#| sed "s/PASSWORD/$shapass/" > /tmp/init.ldif
+cat /home/engines/templates/ldap/first_run/init_post_password.ldif >>  /tmp/init.ldif
 echo Create dc=engines,dc=internal
-ldapadd -Y EXTERNAL -H ldapi:/// -f /home/engines/templates/ldap/first_run/init.ldif
+ldapadd -Y EXTERNAL -H ldapi:/// -f /tmp/init.ldif
 exit_code=$?
+#rm  /tmp/init.ldif
 if  test $exit_code -ne 0
  then
   echo Failed init.ldif
@@ -31,6 +40,15 @@ exit_code=$?
 if  test $exit_code -ne 0
  then
   echo Failed uidNext.ldif
+  exit $exit_code
+fi  
+
+echo Schema for password policy
+ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/ldap/schema/ppolicy.ldif
+exit_code=$?
+if  test $exit_code -ne 0
+ then
+  echo Failed /etc/ldap/schema/ppolicy.ldif
   exit $exit_code
 fi  
 

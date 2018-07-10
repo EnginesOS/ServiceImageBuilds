@@ -29,3 +29,9 @@ dn: ou=Applications,ou=Groups,dc=engines,dc=internal
 objectclass: organizationalUnit
 objectclass: top
 ou: Applications
+
+dn: cn=administrators,ou=Groups,dc=engines,dc=internal
+cn: administrators
+member: cn=administrator,ou=People,dc=engines,dc=internal
+objectclass: groupOfNames
+objectclass: top
