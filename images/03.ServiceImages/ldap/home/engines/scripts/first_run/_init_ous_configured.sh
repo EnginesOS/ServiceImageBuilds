@@ -20,11 +20,14 @@ password=`dd if=/dev/urandom count=16 bs=1  | od -h | awk '{ print $2$3$4$5$6$7$
 echo -n $password > /var/lib/ldap/.tok
 shapass=`echo -n $password  | openssl dgst -sha1 -binary | openssl enc -base64`
 
-cat /home/engines/templates/ldap/first_run/init.ldif | sed "s/PASSWORD/$shapass/" > /tmp/init.ldif
+cat /home/engines/templates/ldap/first_run/init_pre_password.ldif >  /tmp/init.ldif
+echo olcRootPW: $shapass{SHA} >> /tmp/init.ldif
+#| sed "s/PASSWORD/$shapass/" > /tmp/init.ldif
+cat /home/engines/templates/ldap/first_run/init_post_password.ldif >>  /tmp/init.ldif
 echo Create dc=engines,dc=internal
 ldapadd -Y EXTERNAL -H ldapi:/// -f /tmp/init.ldif
 exit_code=$?
-rm  /tmp/init.ldif
+#rm  /tmp/init.ldif
 if  test $exit_code -ne 0
  then
   echo Failed init.ldif
