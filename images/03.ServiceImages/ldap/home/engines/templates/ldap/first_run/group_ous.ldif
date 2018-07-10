@@ -30,8 +30,8 @@ objectclass: organizationalUnit
 objectclass: top
 ou: Applications
 
-dn: cn=Administrators,ou=Groups,dc=engines,dc=internal
-cn: Administrators
-gidnumber: 5000
-objectclass: posixGroup
+dn: cn=administrators,ou=Groups,dc=engines,dc=internal
+cn: administrators
+member: cn=administrator,ou=People,dc=engines,dc=internal
+objectclass: groupOfNames
 objectclass: top

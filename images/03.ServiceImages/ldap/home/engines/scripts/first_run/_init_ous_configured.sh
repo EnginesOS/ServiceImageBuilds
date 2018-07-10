@@ -21,7 +21,7 @@ echo -n $password > /var/lib/ldap/.tok
 shapass=`echo -n $password  | openssl dgst -sha1 -binary | openssl enc -base64`
 
 cat /home/engines/templates/ldap/first_run/init_pre_password.ldif >  /tmp/init.ldif
-echo olcRootPW: $shapass{SHA} >> /tmp/init.ldif
+echo olcRootPW: {SHA}$shapass >> /tmp/init.ldif
 #| sed "s/PASSWORD/$shapass/" > /tmp/init.ldif
 cat /home/engines/templates/ldap/first_run/init_post_password.ldif >>  /tmp/init.ldif
 echo Create dc=engines,dc=internal
