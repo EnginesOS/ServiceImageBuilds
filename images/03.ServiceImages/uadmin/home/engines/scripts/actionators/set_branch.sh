@@ -10,9 +10,9 @@ if test $release = `git branch | grep \* | cut -d ' ' -f2`
   echo "Already release $release"
   exit 0
 fi
+git pull https://github.com/lachdoug/user_admin.git $release
+get checkout $release
 
-git checkout -b $branch 
-git pull	
 
 echo installing Gems
 bundle install --standalone  
