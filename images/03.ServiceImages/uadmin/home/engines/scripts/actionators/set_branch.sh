@@ -2,6 +2,8 @@
 . /home/engines/functions/params_to_env.sh
 params_to_env
 
+cd /home/app
+
 required_values="release"
 check_required_values 
 
