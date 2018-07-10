@@ -4,16 +4,16 @@ params_to_env
 
 cd /home/app
 
-required_values="release"
+required_values="branch"
 check_required_values 
 
 if test $release = `git branch | grep \* | cut -d ' ' -f2`
  then
-  echo "Already release $release"
+  echo "Already release $branch"
   exit 0
 fi
-git pull https://github.com/lachdoug/user_admin.git $release
-get checkout $release
+git pull https://github.com/lachdoug/user_admin.git $branch
+get checkout $branch
 
 
 echo installing Gems
