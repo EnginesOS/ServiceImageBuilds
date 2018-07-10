@@ -29,5 +29,6 @@ mkdir -p /home/app/control/data
 mkdir -p /home/app/control/public  
 
 echo installing Gems
+export RACK_ENV production
 bundle install --standalone   
 
