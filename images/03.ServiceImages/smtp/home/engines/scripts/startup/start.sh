@@ -9,6 +9,11 @@ export KILL_SCRIPT
 . /home/engines/functions/trap.sh
 
 service_first_run_check
+if test -f /home/engines/run/transport.overide
+ then
+  cp /home/engines/run/transport.overide /etc/postfix/maps/transport.overide
+  cp /etc/postfix/maps/transport.overide /etc/postfix/maps/transport
+fi
 
 /home/engines/scripts/startup/init_dbs.sh
 sudo -n /home/engines/scripts/startup/_start_postfix.sh 
