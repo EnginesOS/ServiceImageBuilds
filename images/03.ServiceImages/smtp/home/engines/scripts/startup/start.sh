@@ -11,8 +11,8 @@ export KILL_SCRIPT
 service_first_run_check
 if test -f /home/engines/run/transport.over_ride
  then
-  cp /home/engines/run/transport.overide /etc/postfix/maps/transport.over_ride
-  cp /etc/postfix/maps/transport.overide /etc/postfix/maps/transport
+  cp /home/engines/run/transport.over_ride /etc/postfix/maps/transport.over_ride
+  cp /etc/postfix/maps/transport.over_ride /etc/postfix/maps/transport
 fi
 
 /home/engines/scripts/startup/init_dbs.sh
