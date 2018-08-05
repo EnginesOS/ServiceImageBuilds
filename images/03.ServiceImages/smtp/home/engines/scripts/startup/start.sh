@@ -9,12 +9,7 @@ export KILL_SCRIPT
 . /home/engines/functions/trap.sh
 
 service_first_run_check
-if test -f /home/engines/run/transport.over_ride
- then
-  cp /home/engines/run/transport.over_ride /etc/postfix/maps/transport.over_ride
-  cp /etc/postfix/maps/transport.over_ride /etc/postfix/maps/transport
-fi
-
+sudo -n /home/engines/scripts/engine/_transport_over_ride.sh
 /home/engines/scripts/startup/init_dbs.sh
 sudo -n /home/engines/scripts/startup/_start_postfix.sh 
 r=$?
