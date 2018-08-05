@@ -57,7 +57,7 @@ if test -z $smarthost_password
 else
  echo "$smarthost_hostname $smarthost_username:$smarthost_password" > /home/postfix/smarthost_passwd
 fi
-
+sudo -n /home/engines/scripts/engine/_transport_over_ride.sh
 sudo -n /home/engines/scripts/engine/_postmap.sh smarthost_passwd     
 
 exit 0
