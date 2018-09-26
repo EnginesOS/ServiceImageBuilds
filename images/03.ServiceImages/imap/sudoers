@@ -1,4 +1,6 @@
 #Defaults  env_keep += "SIGNAL CONTAINER_NAME PID_FILE PID_FILES exit_code"
 dovecot ALL = (root) NOPASSWD: /usr/sbin/dovecot 
+dovecot ALL = (root) NOPASSWD: /home/engines/scripts/backup/_backup.sh 
+dovecot ALL = (root) NOPASSWD: /home/engines/scripts/backup/_restore.sh  
 dovecot ALL = (root) NOPASSWD: /home/engines/scripts/first_run/_first_run.sh
 dovecot ALL = (root) NOPASSWD: /home/engines/scripts/signal/_stop_dovecot.sh 

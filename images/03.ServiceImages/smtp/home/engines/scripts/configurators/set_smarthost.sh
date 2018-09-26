@@ -29,6 +29,17 @@ if test $deliver_local -eq 1
   fi
 fi
     
+    if test -f /etc/postfix/maps/transport.over_ride
+ then
+  cp /etc/postfix/maps/transport.over_ride /etc/postfix/maps/transport
+  if test -f /etc/postfix/transport.smart 
+   then
+    if test `wc -c /etc/postfix/transport.smart | cut -f 1 -d" " ` -gt 4
+     then
+	   cat /etc/postfix/transport.smart >> /home/postfix/maps/transport 
+    fi
+  fi
+fi 
 sudo -n /home/engines/scripts/engine/_postmap.sh transport
 
  
@@ -46,7 +57,7 @@ if test -z $smarthost_password
 else
  echo "$smarthost_hostname $smarthost_username:$smarthost_password" > /home/postfix/smarthost_passwd
 fi
-
+sudo -n /home/engines/scripts/engine/_transport_over_ride.sh
 sudo -n /home/engines/scripts/engine/_postmap.sh smarthost_passwd     
 
 exit 0

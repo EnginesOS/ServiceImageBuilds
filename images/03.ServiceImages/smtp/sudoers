@@ -2,6 +2,7 @@
 postfix ALL=(root) NOPASSWD: /home/engines/scripts/startup/_start_postfix.sh
 postfix ALL=(root) NOPASSWD: /home/engines/scripts/startup/_setup_dirs.sh
 postfix ALL=(root) NOPASSWD: /home/engines/scripts/engine/_postmap.sh
+postfix ALL=(root) NOPASSWD: /home/engines/scripts/engine/_transport_over_ride.sh
 postfix ALL=(root) NOPASSWD: /home/engines/scripts/engine/_set_mailname.sh
 postfix ALL=(root) NOPASSWD: /home/engines/scripts/actionators/_rm_email.sh
 postfix ALL=(root) NOPASSWD: /home/engines/scripts/configurators/_set_notifications_email.sh
