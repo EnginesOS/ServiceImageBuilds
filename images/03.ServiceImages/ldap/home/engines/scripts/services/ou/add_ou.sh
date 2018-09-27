@@ -21,7 +21,7 @@ if $r -ne 0
 fi
 fi
 
-rm  $LDIF_FILE
+rm $LDIF_FILE
 export top_ou parent_engine container_type cn  auth password ldap_dn
    
 cat /home/engines/templates/ldap/services/add_ou.ldif | while read LINE
