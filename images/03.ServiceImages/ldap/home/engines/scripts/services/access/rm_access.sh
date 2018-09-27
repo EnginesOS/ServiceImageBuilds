@@ -34,4 +34,3 @@ if test $? -eq 0
   cat  LDAP_OUTF
 fi 
 
- /home/engines/scripts/ldap/ldapdelete.sh uid=${parent_engine},ou=hosts,ou=engines,dc=engines,dc=internal

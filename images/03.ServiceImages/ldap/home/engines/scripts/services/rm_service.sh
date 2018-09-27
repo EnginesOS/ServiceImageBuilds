@@ -30,7 +30,8 @@ elif test $type = ou
  /home/engines/scripts/services/ou/rm_ou.sh
 elif test $type = access
  then
-   /home/engines/scripts/services/access/rm_access.sh
+  /home/engines/scripts/ldap/ldapdelete.sh uid=${parent_engine},ou=hosts,ou=engines,dc=engines,dc=internal
+   #/home/engines/scripts/services/access/rm_access.sh
 else
     echo '{"Result":"Failed","Error Mesg":"Invalid type"}'
    exit 1	
