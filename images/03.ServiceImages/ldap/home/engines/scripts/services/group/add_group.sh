@@ -22,12 +22,12 @@ if $r -ne 0
   mv $LDIF_FILE $LDIF_FILE.failed
   exit $r
 fi
-result=$?
-if test $result -ne 0
- then
-  process_ldap_result
-  exit 1
- fi
+#result=$? #WTF
+i#f test $result -ne 0
+# then
+#  process_ldap_result
+#  exit 1
+# fi
 fi
 
 rm $LDIF_FILE 
