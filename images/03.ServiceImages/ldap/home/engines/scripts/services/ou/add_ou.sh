@@ -12,7 +12,7 @@ if test $c -eq 0
    done
 cat $LDIF_FILE | /home/engines/scripts/ldap/ldapadd.sh 
 export top_ou parent_engine container_type cn  auth password ldap_dn
- /home/engines/scripts/services/access/add_access.sh ou=$parent_engine,ou=${top_ou},ou=Containers,ou=Engines,dc=engines,dc=internal
+ /home/engines/scripts/services/access/add_access.sh ou=$cn,ou=$parent_engine,ou=${top_ou},ou=Containers,ou=Engines,dc=engines,dc=internal
  r=$?
 
 if $r -ne 0

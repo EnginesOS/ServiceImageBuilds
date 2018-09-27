@@ -8,8 +8,8 @@ if test -z $cn
    dn="cn=$cn,ou=$parent_engine,ou=$top_ou,ou=Groups,dc=engines,dc=internal"
  fi
  
- /home/engines/scripts/ldap/ldapdelete.sh "$dn"
-
+/home/engines/scripts/ldap/ldapdelete.sh "$dn"
+/home/engines/scripts/services/access/rm_access.sh "$dn"
  
  
 if ! test $delou
@@ -19,6 +19,5 @@ if ! test $delou
     then
      dn="ou=$parent_engine,ou=${top_ou},ou=Groups,dc=engines,dc=internal"
       /home/engines/scripts/ldap/ldapdelete.sh "$dn"
-     /home/engines/scripts/services/access/rm_access.sh ou=${top_ou},ou=Groups,dc=engines,dc=internal
    fi
 fi   
