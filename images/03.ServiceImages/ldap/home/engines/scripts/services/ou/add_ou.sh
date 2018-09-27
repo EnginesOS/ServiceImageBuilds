@@ -13,7 +13,7 @@ if test $c -eq 0
 cat $LDIF_FILE | /home/engines/scripts/ldap/ldapadd.sh 
 
  r=$?
-
+cp $LDIF_FILE /tmp/addtopou
 if $r -ne 0
  then
   mv $LDIF_FILE $LDIF_FILE.failed
@@ -29,8 +29,9 @@ do
  eval echo "$LINE" >> $LDIF_FILE
 done
 cat $LDIF_FILE | /home/engines/scripts/ldap/ldapadd.sh
-r=$?
 
+r=$?
+cp $LDIF_FILE /tmp/addou
 if $r -ne 0
  then 
   mv $LDIF_FILE $LDIF_FILE.failed
