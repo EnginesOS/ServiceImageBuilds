@@ -7,7 +7,7 @@ dn="ou=$cn,ou=$parent_engine,ou=$top_ou,ou=Containers,ou=Engines,dc=engines,dc=i
  /home/engines/scripts/services/access/rm_access.sh "$dn"
  
 
-`c=/home/engines/scripts/ldap/ldapsearch.sh ou=${top_ou},ou=Containers,ou=Engines,dc=engines,dc=internal ou=$parent_engine dn |grep dn |wc -l
+`c=/home/engines/scripts/ldap/ldapsearch.sh ou=${top_ou},ou=Containers,ou=Engines,dc=engines,dc=internal ou=$parent_engine dn |grep dn |wc -l`
 `
   if test $c -eq 1
    then
