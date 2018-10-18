@@ -23,7 +23,7 @@ if $r -ne 0
   exit $r
 fi
 #result=$? #WTF
-i#f test $result -ne 0
+#if test $result -ne 0
 # then
 #  process_ldap_result
 #  exit 1
