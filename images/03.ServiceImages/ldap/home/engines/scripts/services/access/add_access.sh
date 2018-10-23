@@ -77,7 +77,7 @@ fi
 cat $LDIF_FILE |sudo -n /home/engines/scripts/ldap/sudo/_ldapmodify.sh &> $LDAP_OUTF
 r=$?
 
-if $r -ne 0
+if test $r -ne 0
  then 
   exit $r
 fi
