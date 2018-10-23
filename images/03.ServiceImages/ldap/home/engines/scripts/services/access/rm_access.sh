@@ -33,3 +33,4 @@ if test $? -eq 0
  else
   cat  LDAP_OUTF
 fi 
+
