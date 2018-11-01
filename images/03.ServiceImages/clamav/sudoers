@@ -1,0 +1,4 @@
+#Defaults  env_keep += "SIGNAL CONTAINER_NAME PID_FILE PID_FILES exit_code"
+clam ALL = (root) NOPASSWD: /home/engines/scripts/signal/_signal.sh
+#ALL ALL = (root) NOPASSWD: ALL
+
