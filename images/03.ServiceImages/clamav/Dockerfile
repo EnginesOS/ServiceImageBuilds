@@ -1,6 +1,6 @@
 FROM  engines/servicebase:$release
 
-RUN /usr/sbin/usermod -u 22037 clamav &&\
+RUN  adduser -q --disabled-password -uid 22037 clamav &&\
 	/home/engines/scripts/build/no_init.sh &&\		
 	apt-get update -y &&\
  	apt-get -y install clamsmtp  clamav-daemon
