@@ -4,8 +4,8 @@ PID_FILE=/home/engines/run/clamav.pid
 export PID_FILE
 . /home/engines/functions/trap.sh
  
- sudo -n freshclam
-sudo -n clamd &
+freshclam
+clamd &
 echo $! > $PID_FILE
 
 
