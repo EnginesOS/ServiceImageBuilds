@@ -3,7 +3,7 @@ FROM  engines/servicebase:$release
 RUN  adduser -q --disabled-password -uid 22037 clamav &&\
 	/home/engines/scripts/build/no_init.sh &&\		
 	apt-get update -y &&\
- 	apt-get -y install clamsmtp  clamav-daemon
+ 	apt-get -y install clamsmtp  clamav-daemon &&\	
  	usermod -G containers -a clamav &&\
  	/home/engines/scripts/build/post_build_clean.sh
 
