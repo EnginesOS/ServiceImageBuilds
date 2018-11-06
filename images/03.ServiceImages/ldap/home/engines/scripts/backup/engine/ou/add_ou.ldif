@@ -1,0 +1,4 @@
+dn: $ou_dn
+ou: $cn
+objectClass: organizationalUnit
+objectclass: top
