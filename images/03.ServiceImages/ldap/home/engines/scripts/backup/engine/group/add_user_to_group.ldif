@@ -1,0 +1,5 @@
+dn: $group_dn
+changetype: modify
+add: memberUid
+memberUid: $uid
+
