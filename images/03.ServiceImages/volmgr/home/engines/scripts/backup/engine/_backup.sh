@@ -1,5 +1,6 @@
 #!/bin/bash
-
+. /home/engines/functions/params_to_env.sh
+params_to_env
 if test -z $parent_engine
  then
   echo "parent_engine cannot be blank
