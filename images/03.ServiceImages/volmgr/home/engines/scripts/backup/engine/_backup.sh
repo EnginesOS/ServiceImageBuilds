@@ -3,13 +3,13 @@
 params_to_env
 if test -z $parent_engine
  then
-  echo "parent_engine cannot be blank
+  echo parent_engine cannot be blank
   exit -1
 fi
 
 if test -z $service_handle
  then
-  echo "service_handle cannot be blank
+  echo service_handle cannot be blank
   exit -1
 fi
   
