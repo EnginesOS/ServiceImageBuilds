@@ -13,7 +13,8 @@ if test -z $service_handle
   exit -1
 fi
   
-engine_path=/var/fs/local/$parent_engine/$service_handle
+cd /var/fs/local/$parent_engine/
+engine_path=$service_handle
 tar -cpf - $engine_path  2>  /tmp/tar.errors.txt |gzip -c
 
 if test $? -ne 0
