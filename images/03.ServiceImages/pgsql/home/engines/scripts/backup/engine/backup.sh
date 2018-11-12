@@ -11,7 +11,7 @@ export  PGPASSWORD=$dbpasswd
    echo dbname cant be nill
    exit -1
   fi 
-pg_dump  -h $dbhost -Fc -U $dbuser  $dbname |gzip -c 2>/tmp/pg_sqldump.errs
+pg_dump  -h $dbhost -Fc -U $dbuser  $dbname 2>/tmp/pg_sqldump.errs |gzip -c 
 export  PGPASSWORD=''
 if test $? -ne 0
  then 
