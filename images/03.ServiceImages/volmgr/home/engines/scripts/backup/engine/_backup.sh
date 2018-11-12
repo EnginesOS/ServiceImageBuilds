@@ -15,12 +15,6 @@ fi
   
 cd /var/fs/local/$parent_engine/
 engine_path=$service_handle
-tar -cpf - $engine_path  2>  /tmp/tar.errors.txt |gzip -c
+tar -cpf - $engine_path  |gzip -c
 
-if test $? -ne 0
- then
- cat /tmp/tar.errors.txt >&2
-exit -1
- fi
-exit 0
 
