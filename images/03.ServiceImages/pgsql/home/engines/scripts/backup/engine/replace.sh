@@ -1,6 +1,5 @@
-#!/bin/bash
-. /home/engines/functions/params_to_env.sh
-params_to_env
+#!/bin/sh
+
 dbhost=$database_host
 dbname=$database_name
 dbpasswd=$db_password
@@ -19,16 +18,16 @@ cat - > $Archive
 
 $Script_Dir/backup.sh > /tmp/big/backup.sql
   
-cat $Script_Dir/drop_tables.sql |  env  PGPASSWORD=$dbpasswd pgsql   -h $dbhost -U $dbuser  $dbname  2> /tmp/extract.err
+cat $Script_Dir/drop_tables.sql |  env  PGPASSWORD=$dbpasswd pgsql   -h $dbhost -U $dbuser  $dbname  
   
 	
 
 type=`file -i $Archive |grep application/gzip`
 if test $? -eq 0
  then
- cat $Archive| gzip -d| env  PGPASSWORD=$dbpasswd psql   -h $dbhost -U $dbuser  $dbname  2> /tmp/extract.err
+ cat $Archive| gzip -d| env  PGPASSWORD=$dbpasswd psql   -h $dbhost -U $dbuser  $dbname  
  else
- cat $Archive $extract | env  PGPASSWORD=$dbpasswd psql   -h $dbhost -U $dbuser  $dbname  2> /tmp/extract.err
+ cat $Archive $extract | env  PGPASSWORD=$dbpasswd psql   -h $dbhost -U $dbuser  $dbname  
   fi
  
 	if test $? -eq 0
@@ -38,8 +37,8 @@ if test $? -eq 0
 	   exit 0
 	   else
 	    cat /tmp/big/backup.sql|  env  PGPASSWORD=$dbpasswd pgsql   -h $dbhost -U $dbuser  $dbname  2> /tmp/roll_back.err
-	    cat  /tmp/extract.err
-	    cat /tmp/roll_back.err
+	
+	    cat /tmp/roll_back.err >&2
 	    echo  Rolled back >&2
 	    rm /tmp/big/backup.sql $Archive
 	 fi 

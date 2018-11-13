@@ -23,18 +23,14 @@ if ! test -z $section
  opts="$opts --one-database $section"
  fi
  
-cat - | mysqlimport -B $opts -h 127.0.0.1 -u rma  2> /tmp/mysqlimport.errs" >/tmp/restore.run
+cat - | mysqlimport -B $opts -h 127.0.0.1 -u rma  
 
 
-#cat /tmp/mysqld/backup.* | mysql -B $opts -h 127.0.0.1 -u rma 2> /tmp/mysqlimport.errs
 if test $? -ne 0
  then 
    cat  /tmp/restore.run
-   cat  /tmp/mysqlimport.errs >&2
    exit 127
 fi
-
-
 
 mysqladmin -u rma flush-privileges
  

@@ -3,12 +3,11 @@
 
 #export  PGPASSWORD=$dbpasswd
 
-pg_dumpall  2>/tmp/pg_sqldump.errs
+pg_dumpall  
 
 if test $? -ne 0
  then 
     export  PGPASSWORD=''
- 	cat  /tmp/pg_sqldump.errs  >&2
  	exit -1
 fi
 # export  PGPASSWORD=''
