@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 cd  /home/backup/.duply/
 backups=`find . -type d |grep / |sed "/\.\//s///"`
 

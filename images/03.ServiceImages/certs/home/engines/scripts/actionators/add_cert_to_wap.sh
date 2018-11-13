@@ -1,7 +1,4 @@
-#!/bin/bash
-. /home/engines/functions/params_to_env.sh
-params_to_env
-
+#!/bin/sh
 
 required_values="common_name cert_type fqdn"
 check_required_values

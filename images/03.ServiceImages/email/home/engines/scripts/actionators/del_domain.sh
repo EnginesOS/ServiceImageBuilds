@@ -1,7 +1,6 @@
-#!/bin/bash
+#!/bin/sh
 
-. /home/engines/functions/params_to_env.sh
-params_to_env
+
 . /home/engines/functions/ldap/support_functions.sh
 
 if test -z $domain_name

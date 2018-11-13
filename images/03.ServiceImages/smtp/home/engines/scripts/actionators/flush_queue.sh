@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 fq=`mktemp`
 postqueue -f &> $fq

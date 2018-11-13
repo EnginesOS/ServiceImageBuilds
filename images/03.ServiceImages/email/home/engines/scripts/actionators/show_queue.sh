@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 TMP_FILE=`mktemp`
 postqueue -j 2> $TMP_FILE.err 1> $TMP_FILE
 result=$?

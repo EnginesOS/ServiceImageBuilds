@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 
 truncate --size 0 /home/engines/scripts/configurators/saved/rbls.conf

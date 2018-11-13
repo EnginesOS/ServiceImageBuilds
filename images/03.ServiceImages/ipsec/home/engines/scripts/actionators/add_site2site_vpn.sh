@@ -2,16 +2,13 @@
 
 function add_site_vpn {
 
-. /home/engines/functions/params_to_env.sh
-PARAMS_FILE=`mktemp`
-params_to_file_and_env
+
 
 required_values="vpn_name remote_site remote_id remote_subnet psk ike_verion"
 check_required_values
 
 mkdir -p /home/ivpn/entries/sites/${vpn_name}
-cp $PARAMS_FILE /home/ivpn/entries/sites/${vpn_name}/params
-rm $PARAMS_FILE
+
 
 if ! test -z $pfs
  then

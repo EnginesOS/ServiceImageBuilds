@@ -13,9 +13,6 @@ if test -f /home/certs/store/private/ca/keys/system_CA.key
 fi
 
 
-. /home/engines/functions/params_to_env.sh
-PARAMS_FILE=/home/engines/scripts/configurators/saved/ca_setup
-params_to_file_and_env
 
 
 required_values="cert_name domain_name country state city organisation person"
@@ -30,6 +27,13 @@ echo person=\"$person\" >> $CERT_DEFAULTS_FILE
  
 cp /home/engines/scripts/configurators/saved/ca_setup /home/engines/scripts/configurators/saved/ca_params
 
+
+echo country=\"$country\" >/home/engines/scripts/configurators/saved/ca_saved
+echo  state=\"$state\" >>/home/engines/scripts/configurators/saved/ca_saved
+echo city=\"$city\" >>/home/engines/scripts/configurators/saved/ca_saved
+echo person=\"$person\" >>/home/engines/scripts/configurators/saved/ca_saved
+echo organisation=\"$organisation\" >>/home/engines/scripts/configurators/saved/ca_saved
+echo domain_name=$domain_name  >>/home/engines/scripts/configurators/saved/ca_saved
 
 echo $country >/home/engines/scripts/configurators/saved/ca_setup
 echo $state >>/home/engines/scripts/configurators/saved/ca_setup

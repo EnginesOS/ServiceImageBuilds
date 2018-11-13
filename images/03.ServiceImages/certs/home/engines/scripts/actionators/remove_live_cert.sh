@@ -1,6 +1,5 @@
-#!/bin/bash
-. /home/engines/functions/params_to_env.sh
-params_to_env
+#!/bin/sh
+
 
 required_values="common_name consumer_type consumer_name"
 check_required_values

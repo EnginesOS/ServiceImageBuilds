@@ -1,2 +1,2 @@
-!#/bin/bash
+!#/bin/sh
 chown -R backup /home/backup/.gnupg/

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 domains=`ldapsearch -x -b "ou=domains,ou=email,ou=Services,ou=Containers,ou=Engines,dc=engines,dc=internal" -H ldap://ldap// -LLL "(ObjectClass=dNSDomain)" dc |grep ^dc:|cut -f2 -d" "`
 echo -n '{"domains":['
