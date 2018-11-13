@@ -8,7 +8,8 @@
 #%containers ALL=(ALL) NOPASSWD: /home/engines/scripts/_update_ca.sh 
 %containers ALL=(ALL) NOPASSWD: /home/engines/scripts/make_persistent.sh
 %containers ALL=(ALL) NOPASSWD: /home/engines/scripts/_grant_and_gr_rw_access.sh
- 
+%containers ALL=(data-user) NOPASSWD: /home/engines/scripts/backup/*/restore.sh
+%containers ALL=(data-user) NOPASSWD: /home/engines/scripts/backup/*/replace.sh
 
 
 	
