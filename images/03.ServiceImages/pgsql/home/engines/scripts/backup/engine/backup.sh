@@ -1,6 +1,5 @@
-#!/bin/bash
-. /home/engines/functions/params_to_env.sh
-params_to_env
+#!/bin/sh
+
 dbhost=$database_host
 dbname=$database_name
 dbpasswd=$db_password
@@ -11,12 +10,5 @@ export  PGPASSWORD=$dbpasswd
    echo dbname cant be nill
    exit -1
   fi 
-pg_dump  -h $dbhost -Fc -U $dbuser  $dbname |gzip -c 2>/tmp/pg_sqldump.errs
+pg_dump  -h $dbhost -Fc -U $dbuser  $dbname  |gzip -c 
 export  PGPASSWORD=''
-if test $? -ne 0
- then 
- 	cat  /tmp/pg_sqldump.errs  >&2
- 	exit -1
- fi
- 
- exit 0

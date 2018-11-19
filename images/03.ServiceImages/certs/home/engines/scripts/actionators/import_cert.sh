@@ -1,7 +1,5 @@
-#!/bin/bash
+#!/bin/sh
 
-. /home/engines/functions/params_to_env.sh
-params_to_env
 
 required_values="certificate private_key"
 check_required_values

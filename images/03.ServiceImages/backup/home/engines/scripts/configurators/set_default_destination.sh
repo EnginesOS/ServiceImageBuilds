@@ -1,9 +1,4 @@
-#!/bin/bash
-
-. /home/engines/functions/params_to_env.sh
-PARAMS_FILE=/home/engines/scripts/configurators/saved/default_destination
-params_to_file_and_env
-
+#!/bin/sh
 
 
 if test -f /home/engines/scripts/configurators/saved/system_backup

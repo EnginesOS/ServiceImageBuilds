@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 if ! test -d /home/bind/domain_list/lan/
  then

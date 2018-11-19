@@ -1,7 +1,4 @@
-#!/bin/bash
-
-. /home/engines/functions/params_to_env.sh
-params_to_env
+#!/bin/sh
 
 required_values="update_id update_data"
 check_required_values

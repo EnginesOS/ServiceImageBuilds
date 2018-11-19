@@ -1,8 +1,10 @@
 #!/bin/bash
 
-. /home/engines/functions/params_to_env.sh
-PARAMS_FILE=/home/engines/scripts/configurators/saved/dyndns_settings
-params_to_file_and_env
+
+echo login=$login > /home/engines/scripts/configurators/saved/dyndns_settings
+echo provider=$provider >> /home/engines/scripts/configurators/saved/dyndns_settings
+echo provider=$domain_name >> /home/engines/scripts/configurators/saved/dyndns_settings
+echo provider=$password >> /home/engines/scripts/configurators/saved/dyndns_settings
 
 required_values="provider login domain_name password"
 check_required_values

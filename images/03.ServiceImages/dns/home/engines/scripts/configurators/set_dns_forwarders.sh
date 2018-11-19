@@ -1,8 +1,5 @@
-#!/bin/bash
+#!/bin/sh
 
-. /home/engines/functions/params_to_env.sh
-PARAMS_FILE=/home/engines/scripts/configurators/saved/dns_forwarders
-params_to_file_and_env
 
  if test -z $dns_server
   then
@@ -10,7 +7,9 @@ params_to_file_and_env
  fi 
  
 if test ${#dns_server} -ge 7
- then 
+ then
+  echo  dns_server=${#dns_server} >/home/engines/scripts/configurators/saved/dns_forwarders
+  echo  dns_server2=${#dns_server2} >> /home/engines/scripts/configurators/saved/dns_forwarders
    echo "forwarders {
 	$dns_server; " > /home/bind/engines/forwarders
 

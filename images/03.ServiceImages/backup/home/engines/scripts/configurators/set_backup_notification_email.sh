@@ -1,9 +1,4 @@
-#!/bin/bash
-
-. /home/engines/functions/params_to_env.sh
-PARAMS_FILE=/home/engines/scripts/configurators/saved/backup_email_hash
-params_to_file_and_env
-
+#!/bin/sh
 
 
 echo -n $backup_email >/home/engines/scripts/configurators/saved/backup_email

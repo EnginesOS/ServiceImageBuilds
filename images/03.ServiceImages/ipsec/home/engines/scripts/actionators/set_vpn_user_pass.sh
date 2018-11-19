@@ -10,10 +10,6 @@ password=`echo -n "${password}" | iconv -t utf16le | openssl md4|cut -f2 -d" "`
 
 }
 
-. /home/engines/functions/params_to_env.sh
-params_to_env
-
-
 required_values="vpn_name password"
 check_required_values
 

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 if test -f /home/backup/.gnupg/key_created
 then
