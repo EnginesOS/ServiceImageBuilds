@@ -23,8 +23,9 @@ RUN adduser -q --disabled-password --home /home/cron -uid 22016 cron &&\
 	cd /home/cron &&\
  	/home/engines/scripts/build/post_build_clean.sh
 
+ADD src/fcron.conf /home/cron/etc/
+	
 COPY home home
-
 
 USER cron
 	
