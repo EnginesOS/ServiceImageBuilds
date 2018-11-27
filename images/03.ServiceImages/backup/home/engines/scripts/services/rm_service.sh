@@ -1,9 +1,11 @@
-#!/bin/bash
+#!/bin/sh
 
-#FixMe
 
-. /home/engines/functions/params_to_env.sh
-params_to_env
+
+#. /home/engines/functions/params_to_env.sh
+#params_to_env
+ . /home/engines/functions/checks.sh
+
 
 required_values="backup_name src_type"
 check_required_values
@@ -14,7 +16,9 @@ Backup_ConfigDir=/home/backup/.duply/
 
 ts=`date`
 echo "$ts:rm $*" >>/var/log/backup/addbackup.log
-
+dirname=${parent}_${backup_name}_${src_type}
+dirname=${Backup_ConfigDir}/$dirname
+rm -r $dirname
 export Backup_ConfigDir
 export backup_name
 export dest

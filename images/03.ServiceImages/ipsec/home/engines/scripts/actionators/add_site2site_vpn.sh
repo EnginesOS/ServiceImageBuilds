@@ -1,8 +1,8 @@
-#!/bin/bash
+#!/bin/sh
 
-function add_site_vpn {
-
-
+ . /home/engines/functions/checks.sh
+add_site_vpn()
+ {
 
 required_values="vpn_name remote_site remote_id remote_subnet psk ike_verion"
 check_required_values
@@ -50,7 +50,8 @@ if test $dpd = true
 fi  
 }
 
-function set_encrypt_defaults {
+set_encrypt_defaults()
+{
 if test -z $phase1_enc
  then
   phase1_enc=aes128
@@ -131,7 +132,8 @@ fi
 
   
 }
-function set_local_default_values {
+set_local_default_values()
+ {
 if test -z $local_id
  then
 	local_id=domain=`cat /home/engines/etc/ssl/certs/ivpn.crt | openssl x509 -noout -subject  |sed "/^.*CN=/s///"`
@@ -142,7 +144,8 @@ if test -z $local_subnet
 fi
 
 }
-function set_defaults {
+set_defaults()
+ {
   set_local_default_values
   set_encrypt_defaults
 }

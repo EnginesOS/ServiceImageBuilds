@@ -1,5 +1,5 @@
-#!/bin/bash
-
+#!/bin/sh
+ . /home/engines/functions/checks.sh
 required_values="common_name cert_type install_target"
 check_required_values
 echo "set default" /_install_target.sh ${install_target} ${cert_type} ${common_name}

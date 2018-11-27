@@ -1,5 +1,8 @@
 #!/bin/sh
+ . /home/engines/functions/checks.sh
 
+required_values="vpn_name"
+check_required_values
 
 if ! test -d /home/ivpn/entries/sites/${vpn_name}
  then

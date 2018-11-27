@@ -1,11 +1,9 @@
-#!/bin/bash
+#!/bin/sh
 
 LDAP_FILE=`mktemp`
 
-
-
-
-function process_ldap_entry {
+process_ldap_entry()
+ {
 
  if test $start -eq 1
   then
@@ -42,7 +40,8 @@ function process_ldap_entry {
 last_value=$value
 }
 
-function ldap_to_json_array {
+ldap_to_json_array() 
+{
 
 echo '['
 array=0
@@ -89,7 +88,8 @@ rm $LDAP_FILE
 
 
 
-function ldap_to_json {
+ldap_to_json()
+ {
 start=1
 first=1 
 array=0
@@ -123,7 +123,8 @@ rm $LDAP_FILE
 
 
 
-function map_ldap_to_json_array {
+map_ldap_to_json_array()
+  {
 first=1
 echo '['
 if test -s $LDAP_FILE

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 . /home/engines/scripts/actionators/x400_to_json.sh
 

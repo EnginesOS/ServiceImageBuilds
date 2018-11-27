@@ -1,1 +1,4 @@
-#!/bin/bash
+#!/bin/sh
+
+
+ . /home/engines/functions/checks.sh

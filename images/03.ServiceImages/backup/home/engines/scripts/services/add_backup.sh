@@ -1,5 +1,7 @@
-#!/bin/bash 
+#!/bin/sh 
  
+
+check_required_values
 echo name $backup_name
 echo parent $parent
 echo src_type $src_type

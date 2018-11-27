@@ -1,10 +1,29 @@
 #!/bin/sh
 
-if test -f /home/engines/scripts/configurators/saved/dns_forwarders
-	then
-	. /home/engines/scripts/configurators/saved/dns_forwarders
-	echo '{"dns_server":"'$dns_server'","dns_server2":"'$dns_server2'"}'
+
+ echo '{"forwarders":'["'
+ 
+if test -f /home/engines/scripts/configurators/saved/dns_forwarder1
+ then 
+   dns_forwarder1=`cat home/engines/scripts/configurators/saved/dns_forwarder1`
+  if test -f /home/engines/scripts/configurators/saved/dns_forwarder2
+   then
+    dns_forwarder1=`cat home/engines/scripts/configurators/saved/dns_forwarder2`
+  fi
+  
+  if ! test -z $dns_forwarder1
+   then
+    echo $dns_forwarder1'"'
+  fi
+   
+  if ! test -z $dns_forwarder1
+   then
+    echo ',"'$dns_forwarder2'"'
+  fi
+ 
+ echo ']}'
+
 else
-	echo '{"dns_server":"Not Set"}'
+	echo '{"forwarders":[]}'
 fi
 exit 0

@@ -1,7 +1,7 @@
-#!/bin/bash
-. /home/engines/functions/params_to_env.sh
-params_to_env
+#!/bin/sh
 
+ . /home/engines/functions/checks.sh
+ 
 if test -z $group_name
  then
   echo '{"error":"No Group Name specified"}'
