@@ -1,8 +1,8 @@
-#!/bin/bash
+#!/bin/sh
 
-. /home/engines/functions/params_to_env.sh
-params_to_env
-
+#. /home/engines/functions/params_to_env.sh
+#params_to_env
+ . /home/engines/functions/checks.sh
 required_values="cron_job when title parent_engine container_type"
 check_required_values
 
