@@ -7,7 +7,7 @@
 #params_to_env
 
 
-  if test $type_path = "domains"
+  if test "$type_path" = "domains"
    then        
      if test $wan_or_lan = lan
         then
