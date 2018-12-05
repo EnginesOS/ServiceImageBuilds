@@ -1,6 +1,6 @@
 #!/bin/sh
 
-
+ . /home/engines/functions/checks.sh
 required_values="fqdn  cert_location"
 
 check_required_values

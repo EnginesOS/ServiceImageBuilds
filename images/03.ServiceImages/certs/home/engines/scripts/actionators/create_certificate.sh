@@ -1,6 +1,6 @@
 #!/bin/sh
 . /home/certs/store/default_cert_details
-
+ . /home/engines/functions/checks.sh
 
 set >/tmp/create_cert
 required_values="cert_name common_name country state city organisation person"

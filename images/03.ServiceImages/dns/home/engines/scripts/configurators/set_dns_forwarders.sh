@@ -8,8 +8,8 @@
  
 if test ${#dns_server} -ge 7
  then
-  echo  dns_server=${#dns_server} >/home/engines/scripts/configurators/saved/dns_forwarders
-  echo  dns_server2=${#dns_server2} >> /home/engines/scripts/configurators/saved/dns_forwarders
+  echo  -n ${#dns_server} >/home/engines/scripts/configurators/saved/dns_forwarder1
+  echo  -n ${#dns_server2} >> /home/engines/scripts/configurators/saved/dns_forwarder2
    echo "forwarders {
 	$dns_server; " > /home/bind/engines/forwarders
 

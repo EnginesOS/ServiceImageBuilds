@@ -9,8 +9,6 @@ fi
 
 . /home/engines/functions/ldap/support_functions.sh
 
-
-
 cat /home/engines/templates/ldap/add_domain.ldif | while read LINE
 do
  eval echo "$LINE" >> $LDIF_FILE

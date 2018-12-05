@@ -12,7 +12,10 @@ if  test -f /home/engines/scripts/configurators/saved/grey_listing_enabled
    enable_grey_listing=false
 fi    
 
-echo "{\"enable_grey_listing\":\"$enable_grey_listing\",\"grey_list_delay\":\"$grey_list_delay\",\"whitelist_clients\":\"$whitelist_clients\",\"whitelist_addresses\":\"$whitelist_addresses\"}"
+echo '"{"enable_grey_listing":"'$enable_grey_listing'",
+	"grey_list_delay":"'$grey_list_delay'",
+	"whitelist_clients":"'$whitelist_clients'",
+	"whitelist_addresses":"'$whitelist_addresses'"}"'
    	
  
 exit 0

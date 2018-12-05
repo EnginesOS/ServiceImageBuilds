@@ -1,19 +1,19 @@
-#!/bin/bash
+#!/bin/sh
 #wait for configurators
 sleep 10
-
-if test -f /home/engines/scripts/configurators/saved/credentials
- then
- 	 cat /home/engines/scripts/configurators/saved/credentials | /home/engines/bin/json_to_env >/tmp/.env
- 	. /tmp/.env
- 	rm -f /home/engines/run/missing_configuration
- 	echo Configured
- else
- 	touch /home/engines/run/missing_configuration
- 	echo "Not Configured"
- 	sleep 500
- 	exit
-fi
+. /home/engines/scripts/configurators/saved/credentials
+#if test -f /home/engines/scripts/configurators/saved/credentials
+# then
+# 	 cat /home/engines/scripts/configurators/saved/credentials | /home/engines/bin/json_to_env >/tmp/.env
+# 	. /tmp/.env
+# 	rm -f /home/engines/run/missing_configuration
+# 	echo Configured
+# else
+# 	touch /home/engines/run/missing_configuration
+# 	echo "Not Configured"
+# 	sleep 500
+# 	exit
+#fi
 
 PID_FILE=/home/engines/run/collector.pid
 

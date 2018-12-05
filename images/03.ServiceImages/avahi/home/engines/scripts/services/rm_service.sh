@@ -1,11 +1,12 @@
-#!/bin/bash
+#!/bin/sh
 
-. /home/engines/functions/params_to_env.sh
-params_to_env
- 
+#. /home/engines/functions/params_to_env.sh
+#params_to_env
+  
+. /home/engines/functions/checks.sh
 default_mdns_domain=`cat /home/engines/scripts/configurators/saved/default_mdns_domain  | cut -f2 -d: | sed "s/\"//" | cut -f1 -d\"`
 
-check_required_values hostname
+required_values=hostname
 check_required_values
 
 

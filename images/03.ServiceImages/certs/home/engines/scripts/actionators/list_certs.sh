@@ -1,6 +1,6 @@
-#!/bin/bash
-
-function get_alt_names 
+#!/bin/sh
+ . /home/engines/functions/checks.sh
+get_alt_names ()
 {
 names=`cat /home/certs/store/$cert_type/certs/$store/$cert.crt \
        | openssl x509 -text |grep DNS: | sed "s/DNS://g" | sed "s/,/ /g" `

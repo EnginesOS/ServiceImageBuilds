@@ -1,9 +1,7 @@
-#!/bin/bash
-
-. /home/engines/functions/params_to_env.sh
-params_to_env
+#!/bin/sh
 
 
+ . /home/engines/functions/checks.sh
 required_values="database_name dbusername dbpassword encoding"
 check_required_values
 

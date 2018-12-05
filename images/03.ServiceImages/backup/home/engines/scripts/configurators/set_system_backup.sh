@@ -24,21 +24,38 @@ cat /home/engines/scripts/configurators/saved/system_backup >>/var/log/backup/ad
 
 Backup_ConfigDir=/home/backup/.duply/
 
-if test -f /home/engines/scripts/configurators/saved/default_destination
-then
-  cat /home/engines/scripts/configurators/saved/default_destination | /home/engines/bin/json_to_env >/tmp/.env
-  . /tmp/.env
+if test -d /home/engines/scripts/configurators/saved/default_destination
+ then
+   dest_pass=cat`/home/engines/scripts/configurators/saved/default_destination/dest_pass`
+   dest_proto=cat`home/engines/scripts/configurators/saved/default_destination/dest_proto`
+   dest_address=cat`/home/engines/scripts/configurators/saved/default_destination/dest_address`
+   dest_user=cat`/home/engines/scripts/configurators/saved/default_destination/dest_user`
+   dest_folde=cat`/home/engines/scripts/configurators/saved/default_destination/dest_folder`
+    if test "$1" = rebuild
+     then
+      include_logs=`cat /home/engines/scripts/configurators/saved/system_backup/include_logs`
+      include_files=`cat /home/engines/scripts/configurators/saved/system_backup/include_files`
+      include_services=`cat /home/engines/scripts/configurators/saved/system_backup/include_services`
+      include_system=`cat /home/engines/scripts/configurators/saved/system_backup/include_system`
+      frequency=`cat /home/engines/scripts/configurators/saved/system_backup/frequency`
+     else
+      echo -c $include_logs > /home/engines/scripts/configurators/saved/system_backup/include_logs
+      echo -c $include_files > /home/engines/scripts/configurators/saved/system_backup/include_files
+      echo -c $include_services > /home/engines/scripts/configurators/saved/system_backup/include_services
+      echo -c $include_system > /home/engines/scripts/configurators/saved/system_backup/include_system
+      echo -c $frequency > /home/engines/scripts/configurators/saved/system_backup/frequency
+     fi
   
-  dest=$dest_proto://$dest_address/$dest_folder
-  user=$dest_user
-  pass=$dest_pass
-  if test $dest_proto = "s3"
-    then	
+   dest=$dest_proto://$dest_address/$dest_folder
+   user=$dest_user
+   pass=$dest_pass
+    if test $dest_proto = "s3"
+     then	
       dest_proto="s3+http://"
-  fi
+   fi
   
-  if test  $include_system = "true"
-   then					
+   if test  $include_system = "true"
+    then					
      mkdir -p $Backup_ConfigDir/system
      chmod og-rx $Backup_ConfigDir/system
      /home/engines/scripts/services/prep_conf.sh $Backup_ConfigDir/system/conf

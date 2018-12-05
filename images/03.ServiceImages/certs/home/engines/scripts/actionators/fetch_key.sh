@@ -1,6 +1,6 @@
 #!/bin/sh
 
-
+ . /home/engines/functions/checks.sh
 required_values="common_name store cert_type"
 check_required_values
  

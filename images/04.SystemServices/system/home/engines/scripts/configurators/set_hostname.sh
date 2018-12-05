@@ -1,10 +1,5 @@
-#!/bin/bash
-service_hash=`cat -`
-
-echo $service_hash >/home/engines/scripts/configurators/saved/hostname
-
- echo $service_hash | /home/engines/bin/json_to_env >/tmp/.env
- . /tmp/.env
+#!/bin/sh
+ . /home/engines/functions/checks.sh
 
 
 if test -z ${hostname} 

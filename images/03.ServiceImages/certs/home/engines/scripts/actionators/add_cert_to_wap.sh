@@ -1,5 +1,5 @@
 #!/bin/sh
-
+ . /home/engines/functions/checks.sh
 required_values="common_name cert_type fqdn"
 check_required_values
 

@@ -1,6 +1,5 @@
 #!/bin/sh
 
-
 . /home/engines/functions/ldap/support_functions.sh
 
 if test -z $domain_name

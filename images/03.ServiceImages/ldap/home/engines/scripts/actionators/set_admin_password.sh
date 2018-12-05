@@ -1,5 +1,6 @@
-#!/bin/bash
+#!/bin/sh
 
+ . /home/engines/functions/checks.sh
 
 required_values="new_password"
 check_required_values

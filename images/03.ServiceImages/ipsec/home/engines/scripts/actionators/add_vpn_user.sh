@@ -1,6 +1,8 @@
-#!/bin/bash
-
-function add_user_vpn {
+#!/bin/sh
+ . /home/engines/functions/checks.sh
+ 
+add_user_vpn()
+ {
 
 password=`echo -n "${password}" | iconv -t utf16le | openssl md4|cut -f2 -d" "`
 

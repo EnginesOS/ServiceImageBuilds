@@ -1,7 +1,6 @@
-#!/bin/bash
+#!/bin/sh
+echo access_id="$access_id">/home/engines/scripts/configurators/saved/credentials
+echo access_key="$access_key"  >>/home/engines/scripts/configurators/saved/credentials
 
-cat - >/home/engines/scripts/configurators/saved/credentials
-. /home/engines/functions/params_to_env.sh
-PARAMS_FILE=/home/engines/scripts/configurators/saved/credentials
-params_to_file_and_env
+ . /home/engines/functions/checks.sh
 exit 0

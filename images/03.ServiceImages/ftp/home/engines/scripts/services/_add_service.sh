@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 new_user_ldif=`mktemp`
 
 uid=`/home/engines/scripts/services/next_id.sh`

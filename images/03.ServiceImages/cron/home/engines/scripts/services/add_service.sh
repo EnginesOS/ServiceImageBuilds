@@ -1,18 +1,24 @@
-#!/bin/bash
+#!/bin/sh
 
-. /home/engines/functions/params_to_env.sh
-params_to_env
-
+#. /home/engines/functions/params_to_env.sh
+#params_to_env
+ . /home/engines/functions/checks.sh
 required_values="cron_job when title parent_engine container_type"
 check_required_values
 
 
-mkdir -p /home/cron/entries/${parent_engine}/
+mkdir -p /home/cron/entries/${parent_engine}/$title
+
 
 if test  ${container_type} = app
  then
  	container_type=engine
 fi
+
+echo -n $container_type > /home/cron/entries/${parent_engine}/$title/container_type
+echo -n $action_type > /home/cron/entries/${parent_engine}/$title/action_type
+echo -n $notification_address > /home/cron/entries/${parent_engine}/$title/notification_address
+echo -n $when > /home/cron/entries/${parent_engine}/$title/when
 
 if test $action_type = "web"
  then
@@ -28,7 +34,7 @@ elif test $action_type = "action"
     cmd="curl -k https://172.17.0.1:2380/v0/schedule/${container_type}/${parent_engine}/$title/run"
 fi
 
-echo "$when $cmd " > /home/cron/entries/${parent_engine}/$title
+echo "$cmd " > /home/cron/entries/${parent_engine}/$title/cmd
 
 /home/engines/scripts/engine/rebuild_crontab.sh
 
