@@ -1,5 +1,5 @@
 #!/bin/sh
-
+ . /home/engines/functions/checks.sh
 
 if ! test -z $disabled 
  then

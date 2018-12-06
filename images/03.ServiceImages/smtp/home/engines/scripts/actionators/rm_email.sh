@@ -1,6 +1,6 @@
 #!/bin/sh
 
-
+ . /home/engines/functions/checks.sh
 required_values="queue_id"
 check_required_values 
 

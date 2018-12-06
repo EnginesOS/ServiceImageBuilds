@@ -1,5 +1,5 @@
 #!/bin/sh
-
+ . /home/engines/functions/checks.sh
 
      echo $notifications_email > /home/engines/scripts/configurators/saved/notifications_email
      

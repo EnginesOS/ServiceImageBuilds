@@ -1,6 +1,6 @@
 #!/bin/sh 
  
-
+ . /home/engines/functions/checks.sh
 check_required_values
 echo name $backup_name
 echo parent $parent
