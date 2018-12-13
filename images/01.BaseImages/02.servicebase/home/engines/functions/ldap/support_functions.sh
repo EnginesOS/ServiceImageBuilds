@@ -2,7 +2,7 @@
 LDIF_FILE=`mktemp`
 LDAP_OUTF=`mktemp`
 
-function ldap_err_to_json_compat {
+ldap_err_to_json_compat() {
 string_for_json=`echo $string_for_json | tr -d "'\r\"\t\f\b\n\v"`
 #string_for_json=${string_for_json//\\/\\\\} # \
 #string_for_json=${string_for_json//\//\\\/} # /
