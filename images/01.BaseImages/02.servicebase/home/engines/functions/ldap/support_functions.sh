@@ -12,7 +12,8 @@ string_for_json=`echo $string_for_json | tr -d "'\r\"\t\f\b\n\v"`
 
 }
 
-function process_ldap_result {
+process_ldap_result()
+{
  if test $result -eq 0
   then
      echo  '{"Result":"OK","ReturnCode":"0"}'
