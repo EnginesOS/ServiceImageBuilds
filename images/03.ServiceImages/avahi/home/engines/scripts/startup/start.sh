@@ -13,8 +13,8 @@ ip=`cat /home/engines/system/net/ip`
 echo "$ip mgmt.local" >/etc/avahi/hosts
 ext_interface=`netstat -nr |grep ^0.0.0.0 | awk '{print $8}' |head -1`
 
-domain=`cat /home/engines/scripts/configurators/saved/default_mdns_domain | cut -f2 -d:`
-domain=`echo $domain |cut -f2 -d\"` 
+. /home/engines/scripts/configurators/saved/default_mdns_domain
+domain=$default_mdns_domain 
 
 interfaces="${ext_interface} , docker0"
 echo binding to $interfaces

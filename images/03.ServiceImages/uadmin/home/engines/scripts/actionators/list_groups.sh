@@ -1,5 +1,7 @@
-#!/bin/bash
+#!/bin/sh
 
+ . /home/engines/functions/checks.sh
+ 
 . /home/engines/scripts/actionators/x400_to_json.sh
 
 /home/engines/scripts/ldap/ldapsearch.sh "ou=Groups,dc=engines,dc=internal" objectClass=posixGroup cn gidNumber > $LDAP_FILE

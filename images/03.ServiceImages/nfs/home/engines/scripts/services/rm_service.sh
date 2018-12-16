@@ -1,5 +1,8 @@
-#!/bin/bash
 
+#!/bin/sh
+
+
+ . /home/engines/functions/checks.sh
 
 service_hash=$1
 

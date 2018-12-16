@@ -1,6 +1,6 @@
-#!/bin/bash
-. /home/engines/functions/params_to_env.sh
-params_to_env
+#!/bin/sh
+
+ . /home/engines/functions/checks.sh
 
 set > /tmp/full_env
 
@@ -22,7 +22,7 @@ check_required_values
   
 export top_ou parent_engine container_type cn auth read_access write_access
 
-function test_result()
+test_result()
 {
 res=$?
 if test $? -ne 0
@@ -30,6 +30,7 @@ if test $? -ne 0
   exit $res
 fi
 }
+
 if test $type = group
  then
 	/home/engines/scripts/services/group/add_group.sh

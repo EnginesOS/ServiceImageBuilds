@@ -69,7 +69,8 @@ echo $! > $PID_FILE
 #touch /home/engines/run/flags/startup_complete  done in code
 wait 
 exit_code=$?
-sleep 60
+TS=`date`
+echo System Shutdown $TS
 
 shutdown_complete
 

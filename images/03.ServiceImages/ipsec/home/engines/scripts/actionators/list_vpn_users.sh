@@ -1,5 +1,5 @@
 #!/bin/sh
-
+ . /home/engines/functions/checks.sh
 echo '{"Enabled":['
 users=`ls /home/ivpn/entries/users/`
 n=0

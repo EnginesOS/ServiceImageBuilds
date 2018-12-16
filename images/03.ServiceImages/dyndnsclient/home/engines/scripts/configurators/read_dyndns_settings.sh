@@ -1,9 +1,14 @@
-#!/bin/bash
+#!/bin/sh
 
-if test -f /home/engines/scripts/configurators/saved/dyndns_settings
-	then
-		cat /home/engines/scripts/configurators/saved/dyndns_settings
-	else
-		echo ""
+login=`cat/home/engines/scripts/configurators/saved/login`
+provide=`cat/home/engines/scripts/configurators/saved/provider`
+domain_name=`cat/home/engines/scripts/configurators/saved/domain_name`
+password=`cat/home/engines/scripts/configurators/saved/password`
+echo '{
+	"provider":"'$provider'",
+	"login":"'$login'",
+	"domain_name":"'$domain_name'",
+	"password":"'$password'"}'
+
 fi
 exit 0

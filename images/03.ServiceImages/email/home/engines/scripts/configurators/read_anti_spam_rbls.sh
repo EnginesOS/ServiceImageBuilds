@@ -32,12 +32,13 @@ if test -f ${config_dir}/dsn.rfc-ignorant.org
    dsn_rfc_ignorant_org=true
 fi
  
- echo "{\"zen_spamhaus_org\":\"${zen_spamhaus_org}\",\"bl_spamcop_net\":\"${bl_spamcop_net}\",\"cbl_abuseat_org\":\"${cbl_abuseat_org}\",\"dnsbl_njabl_org\":\"${dnsbl_njabl_org}\",\"dnsbl_sorbs_net\":\"${dnsbl_sorbs_net}\",\"dsn_rfc-ignorant_org\":\"${dsn_rfc_ignorant_org}\"}"
+ echo '
+ 	"{"zen_spamhaus_org":"'${zen_spamhaus_org}'",
+ 	"bl_spamcop_net":"'${bl_spamcop_net}'",
+ 	"cbl_abuseat_org":"'${cbl_abuseat_org}'",
+ 	"dnsbl_njabl_org":"'${dnsbl_njabl_org}'",
+ 	"dnsbl_sorbs_net":"'${dnsbl_sorbs_net}'",
+ 	"dsn_rfc-ignorant_org":"'${dsn_rfc_ignorant_org}'"}'
 
 
-
-   	
-	
-
- 
 exit 0

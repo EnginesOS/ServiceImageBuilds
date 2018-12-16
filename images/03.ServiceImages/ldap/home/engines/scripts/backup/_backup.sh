@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 if test -z $1
  then
     kill -TERM ` cat /home/engines/run/slapd.pid /home/engines/run/saslauthd.pid`

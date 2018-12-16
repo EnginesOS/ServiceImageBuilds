@@ -1,8 +1,8 @@
-#!/bin/bash
-. /home/engines/functions/params_to_env.sh
+#!/bin/sh
 
-PARAMS_FILE=/home/engines/scripts/configurators/saved/default_domain
-params_to_file_and_env
+
+echo ${#default_domain} > /home/engines/scripts/configurators/saved/default_domain
+
   
  if test  ${#default_domain} -gt 5
   then

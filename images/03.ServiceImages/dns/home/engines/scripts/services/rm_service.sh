@@ -1,7 +1,8 @@
-#!/bin/bash
+#!/bin/sh
+ . /home/engines/functions/checks.sh
+#. /home/engines/functions/params_to_env.sh
 
-. /home/engines/functions/params_to_env.sh
-params_to_env
+#params_to_env
 
   if test $type_path = "domains"
     then	

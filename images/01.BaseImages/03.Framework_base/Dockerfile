@@ -32,6 +32,7 @@ RUN	echo y y |sendmailconfig --no-reload &&\
 	mkdir $HOME &&\
 	chgrp containers $HOME &&\
 	chmod g+w $HOME &&\
+	chmod g+w /var/spool/mqueue &&\
 	chmod -R go-rw /etc/sudoers /etc/sudoers.d/ &&\
 	rm -rf /tmp/*
 

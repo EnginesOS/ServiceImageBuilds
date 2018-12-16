@@ -1,9 +1,7 @@
-#!/bin/bash
+#!/bin/sh
+ . /home/engines/functions/checks.sh
 
-. /home/engines/functions/params_to_env.sh
-PARAMS_FILE=/home/engines/scripts/configurators/saved/notifications_email
-params_to_file_and_env
-     
+     echo $notifications_email > /home/engines/scripts/configurators/saved/notifications_email
      
 required_values="notifications_email"
 check_required_values 

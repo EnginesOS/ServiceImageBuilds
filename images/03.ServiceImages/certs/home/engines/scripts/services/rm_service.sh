@@ -1,7 +1,7 @@
-#!/bin/bash
-. /home/engines/functions/params_to_env.sh
-params_to_env
-
+#!/bin/sh
+#. /home/engines/functions/params_to_env.sh
+#params_to_env
+ . /home/engines/functions/checks.sh
 required_values="container_type parent_engine common_name"
 check_required_values
 

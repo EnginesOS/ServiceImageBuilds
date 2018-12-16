@@ -1,6 +1,6 @@
 #!/bin/sh
 
-
+ . /home/engines/functions/checks.sh
 echo '{"Enabled":['
 sites=`ls /home/ivpn/entries/sites/`
 n=0

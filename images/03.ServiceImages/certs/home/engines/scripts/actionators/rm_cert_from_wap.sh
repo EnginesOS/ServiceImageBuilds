@@ -1,7 +1,5 @@
-#!/bin/bash
-. /home/engines/functions/params_to_env.sh
-params_to_env
-
+#!/bin/sh
+ . /home/engines/functions/checks.sh
 required_values="fqdn"
 check_required_values
 

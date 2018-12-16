@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/bin/sh
 
-function get_alt_names 
+get_alt_names()
 {
 names=`cat /home/certs/store/live/$consumer_type_path/$consumer/certs/$cert_name.crt \
        | openssl x509 -text |grep DNS: | sed "s/DNS://g" | sed "s/,/ /g" `
@@ -24,7 +24,7 @@ names=`cat /home/certs/store/live/$consumer_type_path/$consumer/certs/$cert_name
               alt_names='""'
          fi 
 }
-function find_certs 
+find_certs()
 {
 n=0
 if ! test -d /home/certs/store/live/$consumer_type_path/
@@ -66,14 +66,14 @@ else
   echo ']'
 fi
 }
-function apps_certs 
+apps_certs()
 {
 echo '"services":'
 consumer_type_path=services
 find_certs
 }
 
-function services_certs
+services_certs()
 {
 echo '"apps":'
 consumer_type_path=apps

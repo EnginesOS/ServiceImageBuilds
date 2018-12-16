@@ -1,9 +1,7 @@
-#!/bin/bash
-
-. /home/engines/functions/params_to_env.sh
-params_to_env
+#!/bin/sh
 
 
+ . /home/engines/functions/checks.sh
 if test -f /var/run/engines/redis-server.$parent_engine.pid
  then
 	kill -TERM `cat /var/run/engines/redis-server.$parent_engine.pid`

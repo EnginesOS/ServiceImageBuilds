@@ -1,4 +1,7 @@
-#!/bin/bash
+#!/bin/sh
+
+
+ . /home/engines/functions/checks.sh
 
 
 if test $# -eq 0 

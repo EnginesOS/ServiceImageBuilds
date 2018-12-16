@@ -1,8 +1,11 @@
-#!/bin/bash
+#!/bin/sh
 
-. /home/engines/functions/params_to_env.sh
-PARAMS_FILE=/home/engines/scripts/configurators/saved/smarthost
-params_to_file_and_env
+ . /home/engines/functions/checks.sh  
+     echo "smart_hostname=$smart_hostname
+           smart_host_port=$smart_host_port
+           smarthost_username=$smarthost_username
+           smarthost_password=$smarthost_password" >> /home/engines/scripts/configurators/saved/smarthost
+       
      
      
 required_values="smart_hostname"

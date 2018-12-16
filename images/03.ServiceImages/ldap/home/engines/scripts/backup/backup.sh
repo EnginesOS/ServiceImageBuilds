@@ -1,13 +1,12 @@
-#!/bin/bash
+#!/bin/sh
 exit_code=0
 
 touch /home/engines/run/flags/backup
 
-sudo -n /home/engines/scripts/backup/_backup.sh $* &2> /tmp/backup.errs
+sudo -n /home/engines/scripts/backup/_backup.sh $* 
 
 if test $? -ne 0
  then 
-   cat  /tmp/backup.errs  >&2
    exit_code=1
 fi
 

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 if ! test -d /home/bind/domain_list/lan/
  then
@@ -7,8 +7,13 @@ if ! test -d /home/bind/domain_list/lan/
  
 cd /home/bind/domain_list/lan/
 
-ip=$2
-
+ if test -f /home/engines/system/net/ip
+  then
+   echo Error:Missing IP Address file
+        exit 2
+ fi
+        
+ip=`cat /home/engines/system/net/ip`
 
   if test -z ${ip}
 	then
@@ -16,8 +21,9 @@ ip=$2
         exit 128
     fi
 
-for domain in `ls `
+
+for domain_name in `ls `
  do
-   echo '{"domain_name":"'$domain'","ip":"'$ip'","ip_type":"lan"}' | /home/add_service.sh 
-   #:domain_name=$domain:ip=$ip:ip_type=lan:
+  export domain_name ip ip_type
+  /home/add_service.sh 
  done

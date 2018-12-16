@@ -1,8 +1,8 @@
-#!/bin/bash
+#!/bin/sh
+ . /home/engines/functions/checks.sh
 
-
-cat - | /home/engines/bin/json_to_env >/tmp/.env
- . /tmp/.env
+#cat - | /home/engines/bin/json_to_env >/tmp/.env
+# . /tmp/.env
 #rm /tmp/.env
   
    	if test -n $console_password

@@ -1,6 +1,8 @@
-#!/bin/bash
+#!/bin/sh
 
-function build_templated_mapfile {
+ 
+build_templated_mapfile()
+ {
 if test -f /home/engines/templates/$map_file 
   then
    if test -f /home/postfix/$map_file
@@ -15,11 +17,7 @@ if test -f /home/engines/templates/$map_file
  sudo -n /home/engines/scripts/engine/_postmap.sh $map_file
 fi
 }
-
-. /home/engines/functions/params_to_env.sh
-PARAMS_FILE=/home/engines/scripts/configurators/saved/default_domain
-params_to_file_and_env
-
+ . /home/engines/functions/checks.sh
 required_values="domain_name"
 check_required_values 
 

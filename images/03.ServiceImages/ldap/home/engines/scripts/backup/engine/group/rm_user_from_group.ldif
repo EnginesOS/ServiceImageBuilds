@@ -1,0 +1,4 @@
+dn: $group_dn
+changetype: modify
+delete:  memberUid
+memberUid: $uid

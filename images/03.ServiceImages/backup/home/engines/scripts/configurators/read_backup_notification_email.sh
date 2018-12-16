@@ -1,10 +1,7 @@
-#!/bin/bash
+#!/bin/sh
+backup_email=`cat /home/engines/scripts/configurators/saved/backup_email`
 
-if test -f /home/engines/scripts/configurators/saved/backup_email_hash
- then
-  cat /home/engines/scripts/configurators/saved/backup_email_hash
-else
-  echo '{"email_notification":"Not Set"}'
-fi
+  echo '{"email_notification":"'$backup_email'"}'
+
 exit 0
 

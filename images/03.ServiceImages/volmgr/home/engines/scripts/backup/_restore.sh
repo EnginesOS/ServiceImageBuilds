@@ -1,7 +1,7 @@
 #!/bin/sh
 cd /
-tar -xpf - 2>/tmp/tar.errs
-tar -xpf /tmp/syslog/backup.*
+tar -xzpf - 
+tar -xzpf /tmp/syslog/backup.*
 
 r=$?
 

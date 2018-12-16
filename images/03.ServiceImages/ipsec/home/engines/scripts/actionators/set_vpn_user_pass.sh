@@ -1,6 +1,7 @@
 #!/bin/bash
-
-function add_user_vpn {
+ . /home/engines/functions/checks.sh
+add_user_vpn()
+ {
 
 password=`echo -n "${password}" | iconv -t utf16le | openssl md4|cut -f2 -d" "`
 
@@ -9,10 +10,6 @@ password=`echo -n "${password}" | iconv -t utf16le | openssl md4|cut -f2 -d" "`
  echo "" >> /home/ivpn/entries/users/${vpn_name}/secret
 
 }
-
-. /home/engines/functions/params_to_env.sh
-params_to_env
-
 
 required_values="vpn_name password"
 check_required_values

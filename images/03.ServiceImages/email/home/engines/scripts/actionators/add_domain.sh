@@ -1,7 +1,5 @@
-#!/bin/bash
+#!/bin/sh
 
-. /home/engines/functions/params_to_env.sh
-params_to_env
 
 if test -z $domain_name
  then
@@ -10,8 +8,6 @@ if test -z $domain_name
 fi
 
 . /home/engines/functions/ldap/support_functions.sh
-
-
 
 cat /home/engines/templates/ldap/add_domain.ldif | while read LINE
 do

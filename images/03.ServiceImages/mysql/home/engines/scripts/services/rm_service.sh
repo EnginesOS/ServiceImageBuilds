@@ -1,8 +1,7 @@
-#!/bin/bash
+#!/bin/sh
 
-. /home/engines/functions/params_to_env.sh
-params_to_env
 
+ . /home/engines/functions/checks.sh
 BTICK='`'
 
 E_BADARGS=65

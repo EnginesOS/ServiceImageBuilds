@@ -1,7 +1,7 @@
-#!/bin/bash
+#!/bin/sh
 
-. /home/engines/functions/params_to_env.sh
-params_to_env
+. /home/engines/functions/checks.sh
+#params_to_env
 
 required_values="parent_engine container_type owner"
 check_required_values

@@ -1,9 +1,9 @@
-#!/bin/bash
+#!/bin/sh
+ . /home/engines/functions/checks.sh
 
-. /home/engines/functions/params_to_env.sh
 
-params_to_env
-
+required_values="vpn_name"
+check_required_values
 if ! test -d /home/ivpn/entries/sites/${vpn_name}
  then
    echo "No Such VPN ${vpn_name}"
