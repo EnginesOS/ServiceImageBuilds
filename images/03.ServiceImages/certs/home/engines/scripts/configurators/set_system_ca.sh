@@ -15,7 +15,7 @@ fi
 
 
 
-required_values="cert_name domain_name country state city organisation person"
+required_values="domain_name country state city organisation person"
 check_required_values
 
 CERT_DEFAULTS_FILE=/home/certs/store/default_cert_details
