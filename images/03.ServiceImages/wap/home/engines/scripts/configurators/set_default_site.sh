@@ -2,7 +2,7 @@
 
 echo $default_site_url > /home/engines/scripts/configurators/saved/default_site_url
 
-
+ . /home/engines/functions/checks.sh
 required_values="default_site_url"
 check_required_values    
   

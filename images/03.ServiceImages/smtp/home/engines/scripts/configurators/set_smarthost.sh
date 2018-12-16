@@ -1,6 +1,6 @@
 #!/bin/sh
 
-     
+ . /home/engines/functions/checks.sh  
      echo "smart_hostname=$smart_hostname
            smart_host_port=$smart_host_port
            smarthost_username=$smarthost_username

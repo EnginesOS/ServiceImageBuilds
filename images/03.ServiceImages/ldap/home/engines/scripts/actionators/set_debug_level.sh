@@ -1,5 +1,5 @@
 #!/bin/sh
-
+ . /home/engines/functions/checks.sh
 required_values="debug_level"
 check_required_values
 

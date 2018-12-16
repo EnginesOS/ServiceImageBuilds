@@ -1,6 +1,6 @@
 #!/bin/sh
 
-
+ . /home/engines/functions/checks.sh
 required_values="release"
 check_required_values 
 
