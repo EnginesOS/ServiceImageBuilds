@@ -17,4 +17,6 @@ RUN echo '#!/bin/sh' > /usr/sbin/policy-rc.d &&\
  	sed -i 's/^#\s*\(deb.*universe\)$/\1/g' /etc/apt/sources.list &&\
 	rm -rf /var/cache/apt/archives &&\
 	apt-get -y update &&\
-	apt-get -y upgrade
+	apt-get -y upgrade &&\
+    apt-get -y dist-upgrade &&\
+    apt-get -y autoremove
