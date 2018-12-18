@@ -2,7 +2,7 @@
 
  . /home/engines/functions/checks.sh
 
-required_values="username password title folder"
+required_values="username password  folder"
 check_required_values
 
 if ! test -z $rw_access 
@@ -17,6 +17,6 @@ if ! test -z $rw_access
     access=ro
 fi   
 
-export ftp_gid access username password title folder service_handle service_container_name parent_engine
+export ftp_gid access username password  folder service_handle service_container_name parent_engine
 sudo -n /home/engines/scripts/services/_add_service.sh
 
