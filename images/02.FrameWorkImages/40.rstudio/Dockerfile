@@ -4,7 +4,7 @@ ENV ContUser rstudio
 ENV ContGrp rstudio
 
 RUN apt-get -y update &&\
-	echo "deb http://cran.rstudio.com/bin/linux/ubuntu xenial/" | tee -a /etc/apt/sources.list &&\
+	echo "deb http://cran.rstudio.com/bin/linux/ubuntu bionic/" | tee -a /etc/apt/sources.list &&\
 	gpg --keyserver keyserver.ubuntu.com --recv-key E084DAB9 &&\
 	gpg -a --export E084DAB9 | apt-key add - &&\
 	apt-get -y update &&\

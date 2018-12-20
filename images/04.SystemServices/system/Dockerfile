@@ -22,7 +22,7 @@ RUN /usr/sbin/addgroup --gid 21999 edocker &&\
 	apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 561F9B9CAC40B2F7 &&\
  	apt-get update -y &&\
 	apt-get install -y apt-transport-https  &&\
-	echo deb https://oss-binaries.phusionpassenger.com/apt/passenger xenial main >/etc/apt/sources.list.d/passenger.list &&\
+	echo deb https://oss-binaries.phusionpassenger.com/apt/passenger bionic main >/etc/apt/sources.list.d/passenger.list &&\
 	chmod 600 /etc/apt/sources.list.d/passenger.list &&\
 	apt-get update -y &&\
 	apt-get install -y passenger-dev &&\

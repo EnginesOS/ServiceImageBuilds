@@ -8,7 +8,8 @@ ENV ContGrp python
 RUN adduser -q --uid 22674 --home /home/python --disabled-password python &&\
 	apt-get update -y &&\
 	apt-get install -y python \
-					   python-dev \
+					   python-dev &&\
+					   python3-pip &&\
 					   python-lxml &&\
     usermod -G containers -a python &&\
     cd /tmp &&\
