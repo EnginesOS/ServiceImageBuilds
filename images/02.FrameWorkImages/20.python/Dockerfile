@@ -5,13 +5,12 @@ FROM engines/node6:$release
 ENV ContUser python
 ENV ContGrp python
 
-RUN adduser -q --uid 22674 --home /home/python --disabled-password python &&\
+RUN useradd -u 22674  -g python -d /home/python -m -G containers python&&\
 	apt-get update -y &&\
 	apt-get install -y python \
 					   python-dev &&\
 					   python3-pip &&\
 					   python-lxml &&\
-    usermod -G containers -a python &&\
     cd /tmp &&\
     wget --no-check-certificate https://bootstrap.pypa.io/get-pip.py &&\ 
 	python get-pip.py &&\

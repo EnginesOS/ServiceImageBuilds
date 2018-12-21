@@ -1,6 +1,6 @@
 FROM engines/servicebase:$release
 
-RUN adduser -q --disabled-password  dyndns -uid 22021 &&\
+RUN  useradd -u 22021  -g dyndns -d /home/dyndns -m -G containers dyndns&&\
 	/home/engines/scripts/build/no_init.sh &&\	
 	apt-get  update &&\
 	apt-get -y install ddclient &&\

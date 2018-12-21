@@ -1,7 +1,7 @@
 FROM engines/servicebase:$release
 
-RUN adduser -q --disabled-password -uid 22013 dovecot &&\
-	adduser -q --disabled-password -uid 22014 vmail &&\
+RUN useradd -u 22013  -g dovecot -d /home/dovecot -m -G containers dovecot&&\
+	useradd -u 22014 vmail &&\
 	/home/engines/scripts/build/no_init.sh &&\	
 	apt-get -y update &&\	
 	apt-get -y install dovecot-core \
@@ -17,7 +17,6 @@ RUN adduser -q --disabled-password -uid 22013 dovecot &&\
 	chown dovecot /var/mail &&\
 	mkdir -p /var/run/dovecot &&\
 	chown -R dovecot /var/run/dovecot/ &&\
-	usermod -G containers -a dovecot &&\
  	/home/engines/scripts/build/post_build_clean.sh
 	
 ADD src/dovecot/conf.d /etc/dovecot/conf.d

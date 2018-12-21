@@ -1,6 +1,6 @@
 FROM engines/servicebase:$release
 
-RUN adduser --uid 22010 -q --home /home/ftpd --disabled-password proftpd &&\
+RUN useradd -u 22010  -g proftpd -d /home/ftpd -m -G containers proftpd&&\
 	/home/engines/scripts/build/no_init.sh &&\	
 	apt-get -y update &&\
   	apt-get -y install proftpd \
@@ -8,7 +8,6 @@ RUN adduser --uid 22010 -q --home /home/ftpd --disabled-password proftpd &&\
 				       libsasl2-modules-gssapi-mit \
 				       libsasl2-modules-ldap \
   					   proftpd-mod-ldap &&\
-	usermod -G containers -a proftpd &&\
 	ln -s /home/ftpd /run/proftpd &&\
  	/home/engines/scripts/build/post_build_clean.sh
 

@@ -3,7 +3,7 @@ FROM engines/frameworkbuild:$release
 ENV ContUser lua
 ENV ContGrp lua
 
-RUN adduser -q --uid 22676 --home /home/lua --disabled-password lua &&\
+RUN useradd -u 22676  -g lua -d /home/lua -m -G containers lua&&\
 	apt-get update -y &&\
 	apt-get install -y lua5.3 \
 		               liblua5.3-dev \

@@ -1,6 +1,6 @@
 FROM  engines/servicebase:$release
 
-RUN adduser -q --disabled-password --home /var/cache/bind -uid 22009 bind &&\
+RUN useradd -u 22009  -g bind -d /var/cache/bind -m -G containers bind&&\
 	apt-get -y update &&\
 	apt-get -y install bind9 &&\
     mkdir -p /var/lib/bind/engines &&\

@@ -23,7 +23,7 @@ COPY sendmail.mc /etc/mail
 ENV HOME /home/home_dir
 
 RUN	echo y y |sendmailconfig --no-reload &&\
-	adduser -q --disabled-password -uid 11111 data-user &&\
+	useradd -u 11111 data-user &&\
 	chgrp containers /var/log/ &&\
 	chmod g+w /var/log/ &&\
 	mkdir -p /home/engines/scripts/actionators/saved/ &&\

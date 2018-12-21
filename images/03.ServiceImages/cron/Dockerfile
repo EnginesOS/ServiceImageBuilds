@@ -1,9 +1,8 @@
 FROM  engines/servicebase:$release
 
-RUN adduser -q --disabled-password --home /home/cron -uid 22016 cron &&\
-	groupadd -g 999 docker &&\
-	usermod -G docker -a cron &&\
-	usermod -G containers -a cron &&\
+RUN useradd -u 22016  -g cron -d /home/cron -m -G containers cron&&\
+	#groupadd -g 999 docker &&\
+	#usermod -G docker -a cron &&\
 	apt-get  update &&\
 	apt-get -y install build-essential \
 	                   gcc \
