@@ -13,8 +13,7 @@ RUN  /home/engines/scripts/build/no_init.sh &&\
 COPY src/etc /etc/
 
 RUN chmod 600 /etc/nss-mysql-root.conf &&\
-	adduser --uid 22019 -q --home /home/samba --disabled-password samba &&\
-	usermod -G containers -a samba
+	useradd -u 22019  -g samba -d /home/samba -m -G containers samba 
 	
 CMD ["/home/engines/scripts/system/start.sh"]
 #USER samba

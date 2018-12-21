@@ -1,7 +1,6 @@
 FROM engines/servicebase:$release
 
-RUN adduser -q --disabled-password --home /home/volmgr -uid 22007 volmgr &&\
-	usermod -G containers -a volmgr
+RUN useradd -u 22007  -g volmgr -d /home/volmgr -m -G containers volmgr 
 	
 VOLUME /var/fs/
 

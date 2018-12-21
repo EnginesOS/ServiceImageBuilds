@@ -15,7 +15,7 @@ RUN /usr/sbin/addgroup --gid 21999 edocker &&\
 						autoconf \
 						libltdl-dev \
 						zlib1g-dev &&\
-	adduser -q --uid 21000 --gid 21999 --home /home/engines --disabled-password engines &&\
+	useradd -u 21000  -g edocker -d /home/engines -M -G containers engines &&\
 	mkdir -p /opt/engines/run/system/ &&\
 	chown -R engines /opt/engines/run/system/ /home/engines /var/log/ &&\
 	usermod -G docker -a engines &&\
