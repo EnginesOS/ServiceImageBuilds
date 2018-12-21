@@ -9,7 +9,6 @@ VOLUME /client/fs
 VOLUME /dest/fs
 
 RUN /usr/sbin/usermod -u 22671 www-data &&\
-	groupadd -g 22672 ruby &&\
 	groupadd -g 22674 python &&\
 	groupadd -g 22672 node  &&\
 	useradd -u 22674  -g  python  -d /home/engines -G  www-data  python &&\
