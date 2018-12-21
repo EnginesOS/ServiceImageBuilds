@@ -2,8 +2,7 @@ FROM  engines/servicebase:$release
 
 RUN /usr/sbin/usermod -u  22012 syslog &&\
 	/home/engines/scripts/build/no_init.sh &&\
-	 adduser --uid 22028 -q --home /home/logrotate --disabled-password logrotate &&\
-	usermod -G containers -a logrotate
+	 useradd -u 22028  -g logrotate -d /home/logrotate -m -G containers logrotate
  
 ENV ContUser logrotate
 ENV ContGrp logrotate

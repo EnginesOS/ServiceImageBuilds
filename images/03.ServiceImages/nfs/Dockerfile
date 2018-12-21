@@ -7,7 +7,7 @@ RUN  /home/engines/scripts/build/no_init.sh &&\
 COPY src/etc /etc/
 
 RUN chmod 600 /etc/nss-mysql-root.conf &&\
-	adduser --uid 22018 -q --home /home/nfs --disabled-password nfs &&\
+	useradd -u 22018  -g nfs -d /home/nfs -m -G containers nfs&&\
 	apt-get install -y git-core \
 					   bison \
 	                   cmake \
@@ -31,7 +31,6 @@ RUN chmod 600 /etc/nss-mysql-root.conf &&\
 	rm -r /tmp/nfs-ganesha &&\
 	mkdir -p /home/nfs/.ssh &&\
 	chown nfs /home/nfs/.ssh &&\
-	usermod -G containers -a nfs &&\
  	/home/engines/scripts/build/post_build_clean.sh
 	 
 COPY	src/ganesha.conf /usr/local/etc/ganesha.conf

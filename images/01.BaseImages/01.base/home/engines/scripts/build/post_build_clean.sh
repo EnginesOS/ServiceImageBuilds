@@ -1,6 +1,6 @@
-#/bin/bash
+#/bin/sh
 
-apt-get clean 
-apt-get autoremove 
-apt-get autoclean 		
+apt-get -y clean 
+apt-get  -y autoremove 
+apt-get  -y autoclean 		
 rm -rf /tmp/*
