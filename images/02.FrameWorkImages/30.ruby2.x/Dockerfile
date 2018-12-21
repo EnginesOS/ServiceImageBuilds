@@ -6,7 +6,7 @@ ENV ContGrp ruby
 
 ADD src/gemrc  /home/.gemrc
 	
-RUN	groupadd ruby &&\
+RUN	groupadd  -g 22672 ruby &&\
 	useradd -u 22672  -g ruby -d /home/ruby -m -G containers ruby&&\
 	mkdir -p ~www-data &&\
 	apt-get -y update &&\
