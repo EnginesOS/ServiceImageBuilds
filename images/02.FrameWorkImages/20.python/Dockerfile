@@ -5,7 +5,8 @@ FROM engines/node6:$release
 ENV ContUser python
 ENV ContGrp python
 
-RUN useradd -u 22674  -g python -d /home/python -m -G containers python&&\
+RUN groupadd -g 22674 python &&\
+	useradd -u 22674  -g python -d /home/python -m -G containers python&&\
 	apt-get update -y &&\
 	apt-get install -y python \
 					   python-dev &&\
