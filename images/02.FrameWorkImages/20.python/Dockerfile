@@ -16,6 +16,6 @@ RUN groupadd -g 22674 python &&\
 	ln -s /usr/include/freetype2 /usr/include/freetype2/freetype &&\
  	/home/engines/scripts/build/post_build_clean.sh&&\
  	chgrp -R python /usr/local &&\
- 	chown -R g+w /usr/local
+ 	chmod -R g+w /usr/local
  	
 ADD home home
