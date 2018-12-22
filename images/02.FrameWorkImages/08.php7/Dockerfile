@@ -8,7 +8,6 @@ RUN /usr/sbin/usermod -u 22671 www-data &&\
 					   php-gettext \
 					   php-mbstring \
 					   php-mysql \
-					   php-mcrypt \
 					   php-gd \
 					   php-apcu \
 					   php-dev \
