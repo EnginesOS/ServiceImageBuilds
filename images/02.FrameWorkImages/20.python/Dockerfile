@@ -10,7 +10,6 @@ RUN groupadd -g 22674 python &&\
 	apt-get update -y &&\
 	apt-get install -y python \
 					   python-dev &&\
-					   python-lxml &&\
     cd /tmp &&\
 	chown python.python -R /usr/local/lib/python*/dist-packages/ &&\
 	usermod -G python -a www-data &&\
