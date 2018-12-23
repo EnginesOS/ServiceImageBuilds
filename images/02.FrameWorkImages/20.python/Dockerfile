@@ -16,7 +16,6 @@ RUN groupadd -g 22674 python &&\
     cd /tmp &&\
 	chown python.python -R /usr/local/lib/python*/dist-packages/ &&\
 	usermod -G python -a www-data &&\
-	ln -s /usr/include/freetype2 /usr/include/freetype2/freetype &&\
  	/home/engines/scripts/build/post_build_clean.sh&&\
  	chgrp -R python /usr/local &&\
  	chmod -R g+w /usr/local
