@@ -9,7 +9,11 @@ RUN groupadd -g 22674 python &&\
 	useradd -u 22674  -g python -d /home/python -m -G containers python&&\
 	apt-get update -y &&\
 	apt-get install -y python \
-					   python-dev &&\
+					   python-dev \
+					   python3.6 \
+					   python3-setuptools \
+					   python3-pip \
+					   
     cd /tmp &&\
 	chown python.python -R /usr/local/lib/python*/dist-packages/ &&\
 	usermod -G python -a www-data &&\
