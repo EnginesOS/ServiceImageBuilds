@@ -63,8 +63,13 @@ ADD src/gitconfig /home/app/.git/config
 RUN mkdir -p /home/engines/.ssh/system /home/app/tmp/ /home/app/public &&\	
 	touch /home/.env_vars &&\
 	chown 21000 /home/.env_vars &&\
- 	chown -R 21000 /home/app/public /home/engines/scripts/configurators/saved /home/app/tmp/ &&\
+ 	chown -R 21000 /home/app/ /home/engines/scripts/configurators/saved &&\
  	usermod -G containers -a engines
+ 	
+USER 21000
+RUN  cd /home/app &&\
+	 git pull
+	 
 
 ENV PATH /usr/local/bin:/usr/bin:/bin:/usr/sbin
 ENV HOME /home/engines/
