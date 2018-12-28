@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 PID_FILE=/home/engines/run/engines.pid	
 export PID_FILE
@@ -20,10 +20,12 @@ cp /home/ruby_env /home/.env_vars
   	done 
 
  nginx &
+ 
 echo $! >  $PID_FILE
 		
 startup_complete
 wait 
+
 exit_code=$?
 shutdown_complete
 exit $exit_code
