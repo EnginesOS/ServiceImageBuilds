@@ -56,9 +56,9 @@ RUN mkdir -p /home/app/db &&\
 
 WORKDIR /home/app/
 
-RUN	git init
+#RUN	git init
 
-ADD src/gitconfig /home/app/.git/config
+#ADD src/gitconfig /home/app/.git/config
 
 RUN mkdir -p /home/engines/.ssh/system /home/app/tmp/ /home/app/public &&\	
 	touch /home/.env_vars &&\
@@ -66,9 +66,9 @@ RUN mkdir -p /home/engines/.ssh/system /home/app/tmp/ /home/app/public &&\
  	chown -R 21000 /home/app/ /home/engines/scripts/configurators/saved &&\
  	usermod -G containers -a engines
  	
-USER 21000
-RUN  cd /home/app &&\
-	 git pull origin master
+#USER 21000
+#RUN  cd /home/app &&\
+	# git pull origin master
 	 
 
 ENV PATH /usr/local/bin:/usr/bin:/bin:/usr/sbin
