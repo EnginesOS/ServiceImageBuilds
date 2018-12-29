@@ -68,7 +68,7 @@ RUN mkdir -p /home/engines/.ssh/system /home/app/tmp/ /home/app/public &&\
  	
 USER 21000
 RUN  cd /home/app &&\
-	 git pull
+	 git pull master
 	 
 
 ENV PATH /usr/local/bin:/usr/bin:/bin:/usr/sbin
