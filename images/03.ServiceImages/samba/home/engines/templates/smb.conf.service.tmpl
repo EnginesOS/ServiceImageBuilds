@@ -1,0 +1,8 @@
+[{$service_name}]
+comment = {$service_name}
+path = /var/lib/engines/apps/$owner/$volume_service
+guest ok = no
+browseable = no
+create mask = 0660
+directory mask = 0770
+read only = $ro

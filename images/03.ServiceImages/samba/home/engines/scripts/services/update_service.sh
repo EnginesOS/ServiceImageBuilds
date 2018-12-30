@@ -2,7 +2,10 @@
 
  . /home/engines/functions/checks.sh
 required_values="service_name owner volume_service ro_access"
+
 check_required_values
+
+rm /home/engines/etc/samba/smd.d/${service_name}.cf
 
 cat /home/engines/templates/smb.conf.service.tmpl | while read LINE
 do
@@ -10,3 +13,4 @@ do
 done
 
 sudo -n /home/engines/scripts/engine/rebuild_config_file.sh
+
