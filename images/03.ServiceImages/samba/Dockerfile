@@ -9,7 +9,8 @@ RUN  /home/engines/scripts/build/no_init.sh &&\
 	
 COPY src/etc /etc/
 
-RUN useradd -u 22019  -g samba -d /home/samba -m -G containers samba 
+RUN groupadd -g 22019 samba &&\
+	useradd -u 22019  -g samba -d /home/samba -m -G containers samba 
 	
 CMD ["/home/engines/scripts/system/start.sh"]
 #
