@@ -1,6 +1,7 @@
 FROM  engines/servicebase:$release
 
-RUN  useradd -u 22002  -g postgres -d /home/postgres -m -G containers postgres &&\
+RUN groupadd -g  22002 postgres
+	useradd -u 22002  -g postgres -d /home/postgres -m -G containers postgres &&\
 	/home/engines/scripts/build/no_init.sh &&\			
 	apt-get update -y &&\
 	apt-get -y install postgresql \
