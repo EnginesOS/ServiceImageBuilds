@@ -3,6 +3,6 @@
 #deb http://security.ubuntu.com/ubuntu xenial-security main restricted universe
 #deb http://archive.canonical.com/ubuntu xenial partner
 deb http://archive.ubuntu.com/ubuntu/ bionic main restricted universe multiverse
-deb http://archive.ubuntu.com/ubuntu/ bionic-updates bionic-proposed restricted main multiverse universe
+deb http://archive.ubuntu.com/ubuntu/ bionic-updates  restricted main multiverse universe
 deb http://security.ubuntu.com/ubuntu bionic-security main restricted universe
 deb http://archive.canonical.com/ubuntu bionic partner
