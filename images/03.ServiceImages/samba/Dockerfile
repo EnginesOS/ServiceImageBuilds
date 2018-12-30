@@ -8,6 +8,7 @@ RUN  /home/engines/scripts/build/no_init.sh &&\
  	/home/engines/scripts/build/post_build_clean.sh
 	
 COPY src/etc /etc/
+COPY home home
 
 RUN groupadd -g 22019 samba &&\
 	useradd -u 22019  -g samba -d /home/samba -m -G containers samba 
