@@ -59,7 +59,7 @@ cd /home/engines/templates/ldap/first_run/
 wget https://raw.githubusercontent.com/zentyal/samba/master/examples/LDAP/samba.ldif
 cd $d
 
- ldapadd -Y EXTERNAL -H ldapi:/// -f samba.ldif
+ ldapadd -Y EXTERNAL -H ldapi:/// -f /home/engines/templates/ldap/first_run/samba.ldif
  
 echo Schema for postfix virtual accounts integration
 ldapadd -Y EXTERNAL -H ldapi:/// -f /home/engines/templates/ldap/first_run/postfix.ldif
