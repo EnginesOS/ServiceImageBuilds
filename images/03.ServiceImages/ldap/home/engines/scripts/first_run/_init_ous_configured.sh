@@ -51,6 +51,8 @@ if  test $exit_code -ne 0
   echo Failed /etc/ldap/schema/ppolicy.ldif
   exit $exit_code
 fi  
+
+echo Schema for samba accounts integration
 d=`pwd`
 cd /home/engines/templates/ldap/first_run/
 
