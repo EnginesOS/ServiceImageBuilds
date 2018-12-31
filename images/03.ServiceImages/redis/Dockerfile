@@ -1,6 +1,7 @@
 FROM  engines/servicebase:$release
 
-RUN useradd -u 22029  -g freerad -d /home/redis -m -G containers redis &&\
+RUN groupadd -g 22029 freerad &&\
+	useradd -u 22029  -g freerad -d /home/redis -m -G containers redis &&\
 	/home/engines/scripts/build/no_init.sh &&\			
 	apt-get update -y &&\
 	apt-get -y install redis-server &&\

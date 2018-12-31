@@ -1,6 +1,7 @@
 FROM  engines/servicebase:$release
 
-RUN  useradd -u 22032  -g openid -d /home/openid -m -G containers openid &&\
+RUN groupadd -g  22032 openid&&\
+	useradd -u 22032  -g openid -d /home/openid -m -G containers openid &&\
 	/home/engines/scripts/build/no_init.sh &&\			
 	apt-get update -y &&\
 	apt-get -y install apache2 \

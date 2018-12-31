@@ -1,6 +1,7 @@
 FROM engines/servicebase:$release
 
-RUN useradd -u 22007  -g volmgr -d /home/volmgr -m -G containers volmgr 
+RUN groupadd -g 22007 volmgr&&\
+	useradd -u 22007  -g volmgr -d /home/volmgr -m -G containers volmgr 
 	
 VOLUME /var/fs/
 

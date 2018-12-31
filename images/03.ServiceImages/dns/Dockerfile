@@ -1,6 +1,7 @@
 FROM  engines/servicebase:$release
 
-RUN useradd -u 22009  -g bind -d /var/cache/bind -m -G containers bind&&\
+RUN groupadd -g 22009 bind &&\
+	useradd -u 22009  -g bind -d /var/cache/bind -m -G containers bind&&\
 	apt-get -y update &&\
 	apt-get -y install bind9 &&\
     mkdir -p /var/lib/bind/engines &&\

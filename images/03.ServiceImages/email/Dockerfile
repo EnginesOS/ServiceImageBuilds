@@ -1,6 +1,7 @@
 FROM  engines/servicebase:$release
 
-RUN useradd -u 22003  -g postfix -d /var/spool/postfix -m -G containers postfix&&\
+RUN groupadd -g 22003 postfix&&\
+	useradd -u 22003  -g postfix -d /var/spool/postfix -m -G containers postfix&&\
 	/home/engines/scripts/build/no_init.sh &&\
 	apt-get -y update &&\	
 	apt-get -y install postfix \

@@ -1,6 +1,7 @@
 FROM engines/servicebase:$release
 
-RUN useradd -u 22010  -g proftpd -d /home/ftpd -m -G containers proftpd&&\
+RUN groupadd -g 22010 proftpd &&\
+	useradd -u 22010  -g proftpd -d /home/ftpd -m -G containers proftpd&&\
 	/home/engines/scripts/build/no_init.sh &&\	
 	apt-get -y update &&\
   	apt-get -y install proftpd \

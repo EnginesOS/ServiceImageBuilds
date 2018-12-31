@@ -1,6 +1,7 @@
 FROM  engines/servicebase:$release
 
-RUN useradd -u 22006  -g mysql -d /home/mysql -m -G containers mysql &&\
+RUN groupadd -g 22006 mysql &&\
+	useradd -u 22006  -g mysql -d /home/mysql -m -G containers mysql &&\
     /home/engines/scripts/build/no_init.sh &&\		
 	apt-get update -y &&\
 	apt-get -y install mysql-server &&\

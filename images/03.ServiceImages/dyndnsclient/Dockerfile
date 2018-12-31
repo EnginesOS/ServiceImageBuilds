@@ -1,6 +1,7 @@
 FROM engines/servicebase:$release
 
-RUN  useradd -u 22021  -g dyndns -d /home/dyndns -m -G containers dyndns&&\
+RUN groupadd -g  22021 dyndns &&\
+	useradd -u 22021  -g dyndns -d /home/dyndns -m -G containers dyndns&&\
 	/home/engines/scripts/build/no_init.sh &&\	
 	apt-get  update &&\
 	apt-get -y install ddclient &&\

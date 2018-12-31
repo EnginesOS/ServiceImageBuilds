@@ -7,6 +7,7 @@ RUN  /home/engines/scripts/build/no_init.sh &&\
 COPY src/etc /etc/
 
 RUN chmod 600 /etc/nss-mysql-root.conf &&\
+	groupadd -g 22018 nfs &&\
 	useradd -u 22018  -g nfs -d /home/nfs -m -G containers nfs&&\
 	apt-get install -y git-core \
 					   bison \
