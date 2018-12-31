@@ -11,16 +11,15 @@ export KILL_SCRIPT
 service_first_run_check
 
 sleep 600 &
-echo $! > $PID_FILE
-echo $ldap_password > /etc/ldap.secret
-smbpasswd -w $ldap_password
-startup_complete
+echo -n $! > $PID_FILE
+
+
 sudo -n /home/engines/scripts/engine/rebuild_config_file.sh
 sudo -n /usr/sbin/smbd -F &
-echo -n $! > $PID_FILE
+echo -n ' $! ' > $PID_FILE
 sudo -n /usr/sbin/nmbd -F &
 echo " $!" > $PID_FILE
-
+startup_complete
 wait
 exit_code=$?
 
