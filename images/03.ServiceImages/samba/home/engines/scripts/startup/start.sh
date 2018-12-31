@@ -12,6 +12,7 @@ service_first_run_check
 
 sleep 600 &
 echo $! > $PID_FILE
+echo $ldap_password > /etc/ldap.secret
 smbpasswd -w $ldap_password
 startup_complete
 sudo -n /home/engines/scripts/engine/rebuild_config_file.sh
