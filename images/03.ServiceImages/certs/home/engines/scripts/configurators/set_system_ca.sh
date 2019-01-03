@@ -44,6 +44,7 @@ cp /home/engines/scripts/configurators/saved/ca_setup /home/engines/scripts/conf
 echo $domain_name CA  >>/home/engines/scripts/configurators/saved/ca_setup
 echo "" >>/home/engines/scripts/configurators/saved/ca_setup
 echo "" >>/home/engines/scripts/configurators/saved/ca_setup
+cat /home/engines/scripts/configurators/saved/ca_setup
 mkdir -p /home/certs/store/public/ca/keys/
 mkdir -p /home/certs/store/public/ca/certs
 mkdir -p /home/certs/store/private/ca/keys/
