@@ -25,7 +25,7 @@ echo organisation=\"$organisation\" >> $CERT_DEFAULTS_FILE
 echo city=\"$city\" >> $CERT_DEFAULTS_FILE
 echo person=\"$person\" >> $CERT_DEFAULTS_FILE
  
-cp /home/engines/scripts/configurators/saved/ca_setup /home/engines/scripts/configurators/saved/ca_params
+cp /home/engines/scripts/configurators/saved/$CERT_DEFAULTS_FILE /home/engines/scripts/configurators/saved/ca_params
 
 
 echo country=\"$country\" >/home/engines/scripts/configurators/saved/ca_saved
