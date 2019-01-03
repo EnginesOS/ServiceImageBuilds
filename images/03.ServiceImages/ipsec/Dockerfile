@@ -2,8 +2,8 @@ FROM  engines/servicebase:$release
 
 COPY home home
 
-RUN adduser -q --disabled-password --home /home/ivpn -uid 22031 ivpn &&\
-	usermod -G containers -a ivpn &&\
+RUN groupadd -g 22031 ivpn &&\
+	useradd -u 22031  -g ivpn -d /home/ivpn -m -G containers ivpn&&\
 	apt-get -y update &&\
 	apt-get install -y strongswan libcharon-extra-plugins telnet strongswan-plugin-eap-mschapv2 strongswan-plugin-ldap strongswan-plugin-eap-radius moreutils 
 

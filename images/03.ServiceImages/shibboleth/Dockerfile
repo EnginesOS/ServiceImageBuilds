@@ -5,7 +5,7 @@ RUN apt-mark unhold tzdata &&\
 	apt-get install -y openjdk-9-jre-headless &&\
  	usermod -G containers -a www-data &&\
  	/home/engines/scripts/build/post_build_clean.sh&&\
-adduser -q --disabled-password -uid 22036 jetty &&\
+ 	 useradd -u 22036  -g jetty -d /home/.home_dir -m -G containers jetty &&\
 cd /tmp &&\
 wget -c http://repo1.maven.org/maven2/org/eclipse/jetty/jetty-distribution/9.3.9.v20160517/jetty-distribution-9.3.9.v20160517.tar.gz&&\
 tar xzf jetty-distribution-9.3.9.v20160517.tar.gz \

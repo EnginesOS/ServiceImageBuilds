@@ -1,14 +1,9 @@
 #!/bin/sh
 
-
  . /home/engines/functions/checks.sh
+required_values="service_name"
+check_required_values
 
+rm /home/engines/etc/samba/smd.d/${service_name}.cf
 
-if test $# -eq 0 
- then
- 	cat -  | ssh -p 2222  -o UserKnownHostsFile=/dev/null  -o StrictHostKeyChecking=no -i ~/.ssh/rm_rsa auth@auth.engines.internal /home/auth/scripts/nfs/rm_service.sh
- else
-	echo $1 | ssh -p 2222  -o UserKnownHostsFile=/dev/null  -o StrictHostKeyChecking=no -i ~/.ssh/rm_rsa auth@auth.engines.internal /home/auth/scripts/nfs/rm_service.sh
-fi
-
- 
+sudo -n /home/engines/scripts/engine/rebuild_config_file.sh

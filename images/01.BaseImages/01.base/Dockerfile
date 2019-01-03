@@ -1,4 +1,4 @@
-FROM engines/xenialbase:$release
+FROM engines/bionicbeaverbase:$release
 #FROM engines/base_image:alpha 
 
 ENV DEBIAN_FRONTEND noninteractive

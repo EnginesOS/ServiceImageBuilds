@@ -1,7 +1,7 @@
 FROM engines/servicebase:$release
 
-RUN adduser -q --disabled-password --home /home/.home_dir -uid 22033 uadmin &&\
-	usermod -G containers -a uadmin &&\	
+RUN groupadd -g  22033 uadmin &&\
+	useradd -u 22033  -g uadmin -d /home/.home_dir  -m -G containers uadmin &&\
 	/home/engines/scripts/build/no_init.sh &&\	
 	apt-get update -y &&\
 	apt-get -y install ruby-dev \

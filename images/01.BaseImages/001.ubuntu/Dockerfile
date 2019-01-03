@@ -1,6 +1,6 @@
 FROM scratch
 
-ADD ubuntu-14.04-server-cloudimg-amd64.tar.gz /
+ADD bionic-server-cloudimg-amd64.tar.gz /
 # a few minor docker-specific tweaks
 # see https://github.com/docker/docker/blob/master/contrib/mkimage/debootstrap
 RUN echo '#!/bin/sh' > /usr/sbin/policy-rc.d \

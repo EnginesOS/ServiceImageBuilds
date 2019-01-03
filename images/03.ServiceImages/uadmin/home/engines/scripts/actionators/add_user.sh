@@ -3,7 +3,7 @@
  . /home/engines/functions/checks.sh
  
 . /home/engines/functions/ldap/support_functions.sh
-required_values="uid password last_name given_name domain_name"
+required_values="uid password last_name given_name default_domain"
 check_required_values 
 echo  $password > /tmp/pas
 echo -n $password  | openssl dgst -sha1 -binary | openssl enc -base64 > /tmp/np_p

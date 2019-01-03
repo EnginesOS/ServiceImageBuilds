@@ -9,8 +9,7 @@ RUN /home/engines/scripts/build/no_init.sh &&\
 					   libssl-dev \
 					   libreadline-dev \
 					   zlib1g-dev &&\
-	adduser -q  --uid 22023 --home /home/registry --disabled-password registry &&\
-	usermod -G containers -a registry &&\
+	useradd -u 22023  -g registry -d /home/registry-m -G containers registry &&\
  	/home/engines/scripts/build/post_build_clean.sh ;\
 	gem install bundle gctools rest-client sinatra thin yajl-ruby rubytree ffi-yajl
 

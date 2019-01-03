@@ -1,8 +1,6 @@
 #!/bin/sh
  . /home/engines/functions/checks.sh
-#. /home/engines/functions/params_to_env.sh
 
-#params_to_env
 
   if test $type_path = "domains"
     then	
@@ -34,7 +32,7 @@ echo update delete $fqdn_str >> $dns_cmd_file
 echo send >> $dns_cmd_file
 	
 nsupdate -k /etc/bind/keys/ddns.private $dns_cmd_file
-	 cp  $dns_cmd_file /tmp/rm_ $fqdn_str
+cp  $dns_cmd_file /tmp/rm_$fqdn_str
 	
 if test $? -ge 0
  then
@@ -50,7 +48,7 @@ echo server 127.0.0.1 > $dns_cmd_file
 echo update delete ${ip_reversed}.in-addr.arpa. >> $dns_cmd_file
 echo send >> $dns_cmd_file
 nsupdate -k /etc/bind/keys/ddns.private $dns_cmd_file
- cp  $dns_cmd_file /tmp/rm_ inapra_$fqdn_str
+cp $dns_cmd_file /tmp/rm_inapra_$fqdn_str
 
 
 if test $? -ge 0

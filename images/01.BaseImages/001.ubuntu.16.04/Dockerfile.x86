@@ -1,8 +1,8 @@
-FROM engines/xenial:current
-
+#FROM engines/xenial:current
+FROM suet/core-bionic
 COPY dpkg.conf.d /etc/dpkg/dpkg.cfg.d
 ADD sources.list /etc/apt/
-ENV	base_build 20181122
+ENV	base_build 20181221
 RUN echo '#!/bin/sh' > /usr/sbin/policy-rc.d &&\
 	echo 'exit 101' >> /usr/sbin/policy-rc.d &&\
 	chmod +x /usr/sbin/policy-rc.d &&\
@@ -17,4 +17,5 @@ RUN echo '#!/bin/sh' > /usr/sbin/policy-rc.d &&\
  	sed -i 's/^#\s*\(deb.*universe\)$/\1/g' /etc/apt/sources.list &&\
 	rm -rf /var/cache/apt/archives &&\
 	apt-get -y update &&\
-	apt-get -y upgrade
+	apt-get -y upgrade &&\
+    apt-get -y autoremove

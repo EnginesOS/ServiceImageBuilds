@@ -13,7 +13,7 @@ check_required_values
 
 char_set=`echo $collation | cut -f1 -d_`
 
-if test -t "$char_set"
+if test -z "$char_set"
  then
  	char_set=utf8
 fi

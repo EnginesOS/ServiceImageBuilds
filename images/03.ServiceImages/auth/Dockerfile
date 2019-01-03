@@ -4,8 +4,8 @@ RUN /home/engines/scripts/build/no_init.sh &&\
 	apt-get -y update &&\
 	apt-get -y install krb5-kdc \
 				       krb5-admin-server &&\
-	adduser -q --disabled-password --home /home/auth -uid 22017 auth &&\
-	usermod -G containers -a auth &&\
+    greoupadd -g 22017 auth &&\
+	useradd -u 22017  -g auth -d /home/auth -m -G containers auth&&\
  	/home/engines/scripts/build/post_build_clean.sh
 
 COPY home home

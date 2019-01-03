@@ -1,10 +1,10 @@
 FROM engines/servicebase:$release
 Maintainer image.maintainer@engines.onl
-RUN adduser -q --disabled-password --home /var/spool/postfix -uid 22003 postfix &&\
+RUN groupadd -g 22003 postfix
+	useradd -u 22003  -g postfix -d /var/spool/postfix -m -G containers postfix &&\
 	apt-get -y update &&\
 	/home/engines/scripts/build/no_init.sh &&\	
 	apt-get -y install postfix &&\
-	usermod -G containers -a postfix &&\
 	cp /etc/resolv.conf /var/spool/postfix/etc/ &&\
 	cp /etc/services /var/spool/postfix/etc/ &&\
  	/home/engines/scripts/build/post_build_clean.sh
