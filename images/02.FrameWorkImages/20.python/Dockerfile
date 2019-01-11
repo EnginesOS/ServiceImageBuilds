@@ -12,7 +12,9 @@ RUN groupadd -g 22674 python &&\
 					   python-dev \
 					   python3.6 \
 					   python3-setuptools \
-					   python3-pip &&\
+					   python3-pip \
+					   apache2 \
+					   libapache2-mod-wsgi &&\
     cd /tmp &&\
 	chown python.python -R /usr/local/lib/python*/dist-packages/ &&\
 	usermod -G python -a www-data &&\
