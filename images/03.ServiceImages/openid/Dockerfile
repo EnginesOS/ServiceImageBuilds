@@ -1,6 +1,7 @@
 FROM  engines/servicebase:$release
 
-RUN adduser -q --disabled-password --home /home/auth -uid 22032 openid &&\
+RUN groupadd -g  22032 openid&&\
+	useradd -u 22032  -g openid -d /home/openid -m -G containers openid &&\
 	/home/engines/scripts/build/no_init.sh &&\			
 	apt-get update -y &&\
 	apt-get -y install apache2 \
@@ -15,7 +16,6 @@ RUN adduser -q --disabled-password --home /home/auth -uid 22032 openid &&\
 	                   php-dev  &&\
 	 phpenmod ldap &&\
 	 pear install Net_LDAP2 &&\
-	 usermod -G containers -a openid &&\
  	/home/engines/scripts/build/post_build_clean.sh
 
 COPY home home

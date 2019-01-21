@@ -2,7 +2,7 @@ FROM engines/frameworkbuild:$release
 
 ENV ContUser node
 ENV ContGrp node
-ENV NODE_VERSION 7.10.0
+ENV NODE_VERSION 7.10.1
 
 RUN mkdir ~/node_js_src &&\
 	cd ~/node_js_src &&\
@@ -13,7 +13,6 @@ RUN mkdir ~/node_js_src &&\
 	make &&\
 	make install &&\
 	groupadd node &&\
- 	adduser --uid 22673 -q --ingroup node --home /home/node --disabled-password node &&\
- 	usermod -G containers -a node &&\
+ 	useradd -u 22673  -g node -d /home/node -m -G containers node &&\
  	npm -g install npm@latest &&\
  	cd ~ ; rm -r ~/node_js_src

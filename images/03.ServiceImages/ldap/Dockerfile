@@ -2,8 +2,8 @@ FROM engines/servicebase:$release
 Maintainer image.maintainer@engines.onl
 
 RUN apt-get -y update &&\
-	adduser -q --disabled-password -uid 22030 openldap &&\
-	usermod -G containers -a openldap &&\
+	groupadd -g 22030 openldap &&\
+	useradd -u 22030  -g openldap -G containers openldap&&\
 	/home/engines/scripts/build/no_init.sh &&\	
 	echo slapd slapd/no_configuration boolean true | debconf-set-selections &&\	
 	apt-get -y install sasl2-bin \

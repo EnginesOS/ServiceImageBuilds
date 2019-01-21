@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 sudo -n /home/engines/scripts/engine/_fix_perms.sh
 StoreRoot=/home/certs/store
 isUserCert=0
@@ -104,15 +104,17 @@ if test $? -ne 0
  	exit 127
 fi
 
-if test -f $key_dir/${cert_name}.key.tmp -a -f $cert_dir/${cert_name}.crt.tmp
- then 
-   common_name=`cat  $cert_dir/${cert_name}.crt.tmp | openssl x509 -noout -subject  |sed "/^.*CN=/s///"| sed "/\*\./s///"`
-   mv $key_dir/${cert_name}.key.tmp $key_dir/${common_name}.key
-   mv $cert_dir/${cert_name}.crt.tmp $cert_dir/${common_name}.crt 
-else
-   echo "Cert and Key files not present"
-   exit 127
- fi
+#if test -f $key_dir/${cert_name}.key.tmp #-a -f $cert_dir/${cert_name}.crt.tmp
+# then 
+   commn_name=`cat  $cert_dir/${cert_name}.crt.tmp | openssl x509 -noout -subject  |sed "/^.*CN=/s///"| sed "/\*\./s///"`
+   echo  cp $key_dir/${cert_name}.key.tmp $key_dir/${common_name}.key
+   echo cp $cert_dir/${cert_name}.crt.tmp $cert_dir/${common_name}.crt 
+   cp $key_dir/${cert_name}.key.tmp $key_dir/${common_name}.key
+   cp $cert_dir/${cert_name}.crt.tmp $cert_dir/${common_name}.crt 
+#else
+ #  echo "Cert and Key files not present"
+  # exit 127
+ #fi
  
  if ! test $isUserCert -eq 1
  then

@@ -1,6 +1,7 @@
 FROM  engines/servicebase:$release
 
-RUN adduser -q --disabled-password --home /var/spool/postfix -uid 22003 postfix &&\
+RUN groupadd -g 22003 postfix&&\
+	useradd -u 22003  -g postfix -d /var/spool/postfix -m -G containers postfix&&\
 	/home/engines/scripts/build/no_init.sh &&\
 	apt-get -y update &&\	
 	apt-get -y install postfix \
@@ -12,7 +13,6 @@ RUN adduser -q --disabled-password --home /var/spool/postfix -uid 22003 postfix 
 ADD home home
 
 RUN cd /tmp/ &&\
-	 usermod -G containers -a postfix &&\
 	 touch /etc/postfix/smarthost_passwd &&\
 	 mkdir /usr/share/doc/postfix/html \
 	 	  	/usr/lib/postfix/libutil \

@@ -10,7 +10,7 @@ RUN /usr/sbin/usermod -u 22671 www-data &&\
 			           apache2 \
 			           libapr1-dev \
 			           libaprutil1-dev &&\
-	echo deb https://oss-binaries.phusionpassenger.com/apt/passenger xenial main >/etc/apt/sources.list.d/passenger.list &&\ 
+	echo deb https://oss-binaries.phusionpassenger.com/apt/passenger bionic main >/etc/apt/sources.list.d/passenger.list &&\ 
 	chmod 600 /etc/apt/sources.list.d/passenger.list &&\
     rm etc/apache2/sites-enabled/* &&\
 	gem install --no-rdoc --no-ri passenger &&\

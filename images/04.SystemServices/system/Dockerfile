@@ -15,14 +15,14 @@ RUN /usr/sbin/addgroup --gid 21999 edocker &&\
 						autoconf \
 						libltdl-dev \
 						zlib1g-dev &&\
-	adduser -q --uid 21000 --gid 21999 --home /home/engines --disabled-password engines &&\
+	useradd -u 21000  -g edocker -d /home/engines -M -G containers engines &&\
 	mkdir -p /opt/engines/run/system/ &&\
 	chown -R engines /opt/engines/run/system/ /home/engines /var/log/ &&\
 	usermod -G docker -a engines &&\
 	apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 561F9B9CAC40B2F7 &&\
  	apt-get update -y &&\
 	apt-get install -y apt-transport-https  &&\
-	echo deb https://oss-binaries.phusionpassenger.com/apt/passenger xenial main >/etc/apt/sources.list.d/passenger.list &&\
+	echo deb https://oss-binaries.phusionpassenger.com/apt/passenger bionic main >/etc/apt/sources.list.d/passenger.list &&\
 	chmod 600 /etc/apt/sources.list.d/passenger.list &&\
 	apt-get update -y &&\
 	apt-get install -y passenger-dev &&\
@@ -56,15 +56,20 @@ RUN mkdir -p /home/app/db &&\
 
 WORKDIR /home/app/
 
-RUN	git init
+#RUN	git init
 
-ADD src/gitconfig /home/app/.git/config
+#ADD src/gitconfig /home/app/.git/config
 
 RUN mkdir -p /home/engines/.ssh/system /home/app/tmp/ /home/app/public &&\	
 	touch /home/.env_vars &&\
 	chown 21000 /home/.env_vars &&\
- 	chown -R 21000 /home/app/public /home/engines/scripts/configurators/saved /home/app/tmp/ &&\
+ 	chown -R 21000 /home/app/ /home/engines/scripts/configurators/saved &&\
  	usermod -G containers -a engines
+ 	
+#USER 21000
+#RUN  cd /home/app &&\
+	# git pull origin master
+	 
 
 ENV PATH /usr/local/bin:/usr/bin:/bin:/usr/sbin
 ENV HOME /home/engines/

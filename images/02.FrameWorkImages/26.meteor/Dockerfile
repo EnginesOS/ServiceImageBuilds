@@ -1,5 +1,9 @@
 FROM engines/node6:$release
 
+Run chown -R g+w /usr/local/ &&\
+	chgrp -R containers /usr/local/
+
+
 USER node
 
 RUN	curl https://install.meteor.com | /bin/sh

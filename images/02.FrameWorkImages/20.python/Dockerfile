@@ -5,18 +5,21 @@ FROM engines/node6:$release
 ENV ContUser python
 ENV ContGrp python
 
-RUN adduser -q --uid 22674 --home /home/python --disabled-password python &&\
+RUN groupadd -g 22674 python &&\
+	useradd -u 22674  -g python -d /home/python -m -G containers python&&\
 	apt-get update -y &&\
 	apt-get install -y python \
 					   python-dev \
-					   python-lxml &&\
-    usermod -G containers -a python &&\
+					   python3.6 \
+					   python3-setuptools \
+					   python3-pip \
+					   apache2 \
+					   libapache2-mod-wsgi &&\
     cd /tmp &&\
-    wget --no-check-certificate https://bootstrap.pypa.io/get-pip.py &&\ 
-	python get-pip.py &&\
-	chown python.python -R /usr/local/lib/python2.7/dist-packages/ &&\
+	chown python.python -R /usr/local/lib/python*/dist-packages/ &&\
 	usermod -G python -a www-data &&\
-	ln -s /usr/include/freetype2 /usr/include/freetype2/freetype &&\
- 	/home/engines/scripts/build/post_build_clean.sh
+ 	/home/engines/scripts/build/post_build_clean.sh&&\
+ 	chgrp -R python /usr/local &&\
+ 	chmod -R g+w /usr/local
  	
 ADD home home

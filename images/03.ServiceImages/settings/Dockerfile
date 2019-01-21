@@ -1,7 +1,6 @@
 FROM engines/servicebase:$release
 
-RUN adduser -q --disabled-password --home /home/.home_dir -uid 22033 settings &&\
-	usermod -G containers -a settings &&\	
+RUN  useradd -u 22033  -g settings -d /home/.home_dir -m -G containers settings &&\
 	/home/engines/scripts/build/no_init.sh &&\	
 	apt-get update -y  &&\
 	apt-get install -y wireless-tools iw wpasupplicant 

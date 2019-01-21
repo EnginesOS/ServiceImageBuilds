@@ -8,7 +8,6 @@ RUN /usr/sbin/usermod -u 22671 www-data &&\
 					   php-gettext \
 					   php-mbstring \
 					   php-mysql \
-					   php-mcrypt \
 					   php-gd \
 					   php-apcu \
 					   php-dev \
@@ -22,4 +21,4 @@ RUN /usr/sbin/usermod -u 22671 www-data &&\
 #ADD 30-sendmail.ini /etc/php/7.0/apache2/conf.d/
 #ADD 000-default.conf /etc/apache2/sites-enabled/
 
-ENV PHP_VERSION	7.0
+ENV PHP_VERSION	7.x

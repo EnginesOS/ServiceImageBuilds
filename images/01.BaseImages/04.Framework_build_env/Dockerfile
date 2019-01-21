@@ -15,7 +15,7 @@ RUN apt-get update -y &&\
 	                   libxml2-dev \
 	                   libxslt1-dev \
 	                   libcurl4-openssl-dev \
-	                   python-software-properties \
+	                   python3-software-properties \
 	                   libpq-dev \
 	                   libmysqlclient-dev \
 	                   g++ \

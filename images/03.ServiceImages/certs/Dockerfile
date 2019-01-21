@@ -1,8 +1,8 @@
 FROM  engines/servicebase:$release
 
 RUN /home/engines/scripts/build/no_init.sh &&\
-	adduser -q --disabled-password --home /home/certs -uid 22022 certs &&\
-	usermod -G containers -a certs &&\
+	groupadd -g 22022 certs &&\
+	useradd -u 22022  -g certs -d /home/certs -m -G containers certs&&\
 	apt-get -y install openssl &&\
  	/home/engines/scripts/build/post_build_clean.sh
 

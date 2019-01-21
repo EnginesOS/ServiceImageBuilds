@@ -1,10 +1,12 @@
 #!/bin/sh
 
-
  . /home/engines/functions/checks.sh
-if test $# -eq 0 
- then
- 	cat -  | ssh -p 2222  -o UserKnownHostsFile=/dev/null  -o StrictHostKeyChecking=no -i /home/.ssh/add_rsa auth@auth.engines.internal /home/auth/scripts/nfs/add_service.sh
-else 
-	echo $1 | ssh -p 2222  -o UserKnownHostsFile=/dev/null  -o StrictHostKeyChecking=no -i /home/.ssh/add_rsa auth@auth.engines.internal /home/auth/scripts/nfs/add_service.sh 
-fi
+required_values="service_name owner volume_service ro_access"
+check_required_values
+
+cat /home/engines/templates/smb.conf.service.tmpl | while read LINE
+do
+ eval echo "$LINE" >> /home/engines/etc/samba/smd.d/${service_name}.cf
+done
+
+sudo -n /home/engines/scripts/engine/rebuild_config_file.sh

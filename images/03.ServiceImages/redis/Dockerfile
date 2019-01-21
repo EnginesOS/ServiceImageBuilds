@@ -1,11 +1,11 @@
 FROM  engines/servicebase:$release
 
-RUN adduser -q --disabled-password  redis -uid 22029 &&\
+RUN groupadd -g 22029 freerad &&\
+	useradd -u 22029  -g freerad -d /home/redis -m -G containers redis &&\
 	/home/engines/scripts/build/no_init.sh &&\			
 	apt-get update -y &&\
 	apt-get -y install redis-server &&\
-	mkdir -p /var/lib/redis /var/run/redis/ &&\ 
-	usermod -G containers -a redis 
+	mkdir -p /var/lib/redis /var/run/redis/ 
 	
 COPY src/redis.conf /etc/redis/
 COPY home home
