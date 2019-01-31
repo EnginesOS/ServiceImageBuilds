@@ -3,6 +3,7 @@ FROM engines/rails5:$release
 ENV RAILS_ENV production
 
 RUN /usr/sbin/usermod -u 22671 www-data &&\
+	apt-get install -y dirmngr gnupg &&\
  	apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 561F9B9CAC40B2F7 &&\
  	apt-get update -y &&\
 	apt-get install -y apt-transport-https  &&\
@@ -12,6 +13,7 @@ RUN /usr/sbin/usermod -u 22671 www-data &&\
 	apt-get install -y passenger-dev &&\
 	gem install passenger &&\   
 	apt-get install -y nginx-common \
+						 libnginx-mod-http-passenger \
 	                   nginx-extras \
 	                   nginx &&\
  	mkdir -p /var/www/.passenger &&\
