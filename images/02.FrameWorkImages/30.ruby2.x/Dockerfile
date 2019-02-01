@@ -1,6 +1,6 @@
 FROM engines/node6:$release
 
-ENV ruby_version 2.3.1
+ENV ruby_version 2.5.1
 ENV ContUser ruby
 ENV ContGrp ruby
 
@@ -15,5 +15,7 @@ RUN	groupadd  -g 22672 ruby &&\
 					   zlib1g \
 					   zlib1g-dev \
 					   gem &&\
-	gem install bundle
+  gem install bundler -v 1.17.3&&\  				   
+  gem install bundle &&\
+  gem update
 		
