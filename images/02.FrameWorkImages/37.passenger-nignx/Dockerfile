@@ -11,13 +11,14 @@ RUN /usr/sbin/usermod -u 22671 www-data &&\
 	chmod 600 /etc/apt/sources.list.d/passenger.list &&\
 	apt-get update -y
 	 
-RUN	apt-get install -y passenger-dev &&\
+RUN 	gem install passenger 
+#apt-get install -y passenger-dev &&\
 	gem install passenger 
 	   
 RUN	apt-get install -y nginx-common \						
 	                   nginx-extras \
 	                   nginx 
-#libnginx-mod-http-passenger \
+					   libnginx-mod-http-passenger \
 RUN 	mkdir -p /var/www/.passenger &&\
  	chown www-data /var/www/.passenger &&\
 	usermod -G containers -a www-data &&\
