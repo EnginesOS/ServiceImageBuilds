@@ -13,7 +13,7 @@ RUN /usr/sbin/usermod -u 22671 www-data &&\
 	 
 RUN 	gem install passenger 
 #apt-get install -y passenger-dev &&\
-	gem install passenger 
+#	gem install passenger 
 	   
 RUN	apt-get install -y nginx-common \						
 	                   nginx-extras \
