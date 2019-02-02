@@ -18,7 +18,7 @@ RUN 	gem install passenger
 RUN	apt-get install -y nginx-common \						
 	                   nginx-extras \
 	                   nginx \
-					   libnginx-mod-http-passenger \
+					   libnginx-mod-http-passenger 
 RUN 	mkdir -p /var/www/.passenger &&\
  	chown www-data /var/www/.passenger &&\
 	usermod -G containers -a www-data &&\
