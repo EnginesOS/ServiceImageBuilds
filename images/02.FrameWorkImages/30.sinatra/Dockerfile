@@ -3,7 +3,8 @@ FROM  engines/ruby2.x:$release
 
 ADD src/Gems /tmp
 
-RUN	gem  install bundle &&\
+RUN	 gem install bundler   -v 1.17.3 &&\
+	gem  install bundle &&\
     for gem in `cat /tmp/Gems` ;\
      do \
       gem install $gem ;\

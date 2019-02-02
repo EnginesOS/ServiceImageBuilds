@@ -4,7 +4,7 @@ RUN  /home/engines/scripts/build/no_init.sh &&\
 	apt-get update -y &&\
 	apt-get install -y  samba \
 						smbldap-tools \
-						libnss-ldap libpam-ldap ldap-auth-config\
+						libnss-ldap libnss-winbind libpam-ldap ldap-auth-config\
 	                    rpcbind && \
  	/home/engines/scripts/build/post_build_clean.sh
 	
