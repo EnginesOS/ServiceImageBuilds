@@ -6,8 +6,8 @@ check_required_values
 
 echo -n $login > /home/engines/scripts/configurators/saved/login
 echo -n $provider > /home/engines/scripts/configurators/saved/provider
-echo -n $domain_name > /home/engines/scripts/configurators/saved/domain_name
-echo -n $password > /home/engines/scripts/configurators/saved/password
+echo -n "$domain_name" > /home/engines/scripts/configurators/saved/domain_name
+echo -n "$password" > /home/engines/scripts/configurators/saved/password
 
 
 login=`echo $login | sed "/:/s//%23/"`
