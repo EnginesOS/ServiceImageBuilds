@@ -40,11 +40,15 @@ echo -n '{"certs":['
       		echo -n ,
       	fi
       	store=`dirname $cert |sed "/^\.\//s///"`
+     
+      owner=`basename $store`
+      owner_type=`dirname $store | sed "s/s$//"`     
+      	
       	cert=`basename $cert`
       	get_alt_names
       	 common_name=`cat /home/certs/store/$cert_type/certs/$store/$cert.crt \
        | openssl x509 -noout -subject |sed "/^.*CN=/s///" `
-        echo -n '{"cert_name":"'$cert'","CN":"'$common_name'","alt_names":'$alt_names',"store":"'$store'", "cert_type":"'$cert_type'"}'
+        echo -n '{"cert_name":"'$cert'","CN":"'$common_name'","alt_names":'$alt_names',"owner_type":"'${owner_type}'","owner":"'${owner}'","store":"'$store'", "cert_type":"'$cert_type'"}'
       done
   fi
   done
