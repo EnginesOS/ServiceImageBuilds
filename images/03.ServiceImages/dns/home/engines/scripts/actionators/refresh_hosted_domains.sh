@@ -7,7 +7,7 @@ if ! test -d /home/bind/domain_list/lan/
  
 cd /home/bind/domain_list/lan/
 
- if test -f /home/engines/system/net/ip
+ if ! test -f /home/engines/system/net/ip
   then
    echo Error:Missing IP Address file
         exit 2
