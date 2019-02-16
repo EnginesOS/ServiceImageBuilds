@@ -79,6 +79,11 @@ if test $exit_code -ne 0
   exit $exit_code
 fi  
 
+ldapadd -h ldap -f /home/engines/templates/ldap/first_run/initial_ous.ldif
+ldapadd -h ldap -f /home/engines/templates/ldap/first_run/group_ous.ldif
+ldapadd -h ldap -f /home/engines/templates/ldap/first_run/add_admin.ldif
+
+
 echo setup sasl params and user mapping to kererbos principles
 ldapmodify -Y EXTERNAL -H ldapi:/// -f /home/engines/templates/ldap/first_run/auth.ldif
 exit_code=$?
@@ -89,9 +94,6 @@ if test $exit_code -ne 0
 fi  
 
 
-ldapadd -h ldap -f /home/engines/templates/ldap/first_run/initial_ous.ldif
-ldapadd -h ldap -f /home/engines/templates/ldap/first_run/group_ous.ldif
-ldapadd -h ldap -f /home/engines/templates/ldap/first_run/add_admin.ldif
 
 mv /usr/lib/sasl2/sasl2_slapd.conf /usr/lib/sasl2/slapd.conf
 
