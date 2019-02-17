@@ -91,9 +91,11 @@ fi
 mv /usr/lib/sasl2/sasl2_slapd.conf /usr/lib/sasl2/slapd.conf
 
 kinit -kt /etc/krb5kdc/keys/ldap.keytab 
+
 ldapadd -h ldap -f /home/engines/templates/ldap/first_run/initial_ous.ldif
 ldapadd -h ldap -f /home/engines/templates/ldap/first_run/group_ous.ldif
 ldapadd -h ldap -f /home/engines/templates/ldap/first_run/add_admin.ldif
+
 exit_code=$?
 if test $exit_code -ne 0
  then
