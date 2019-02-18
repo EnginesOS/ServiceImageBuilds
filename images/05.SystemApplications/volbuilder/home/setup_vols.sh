@@ -31,18 +31,19 @@ chmod g+w  -R /client/state
 	
 	for dest_dir in `ls /dest/fs/`
 	 do	 
-	 if test -f /dest/fs/$dest_dir/.persistent_lock
+	  if test -f /dest/fs/$dest_dir/.persistent_lock
  		then
  		 chown -R $fw_user /dest/fs/$dest_dir
   		  chmod g+w -R  /dest/fs/$dest_dir
  		continue
- 		fi
-	   src_dir=`echo $dest_dir | sed "/_/s//\//g" | sed " /\/home\/fs/s//\/home\/fs_src/" `
-	   cp -rpn $src_dir/. /dest/fs/$dest_dir
-	   	   touch /dest/fs/$dest_dir/.persistent_lock
-	   chown -R ${fw_user}.${data_gid}  /dest/fs/$dest_dir
-	   chmod -R g+w /dest/fs/$dest_dir
-	 done
+       fi
+	 src_dir=`echo $dest_dir | sed "/_/s//\//g" | sed " /\/home\/fs/s//\/home\/fs_src/" `
+	 cp -rpn $src_dir/. /dest/fs/$dest_dir
+	 touch /dest/fs/$dest_dir/.persistent_lock
+	 chown -R ${fw_user}.${data_gid}  /dest/fs/$dest_dir
+	 echo CHMOD -R g+w /dest/fs/$dest_dir
+	 chmod -R g+w /dest/fs/$dest_dir
+	done
 
 	#if no presistance dirs/files need to set permission here
 	

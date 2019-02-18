@@ -52,6 +52,7 @@ if test `ls volumes |wc -l` -ne 0
   	 echo cp -nrp /home/fs_src/$dir /dest/fs/$dest_volume/$dir>> /client/log/fs_setup.log
    	 cp -nrp /home/fs_src/$dir /dest/fs/$dest_volume/$dir
    	 chown -R ${fw_user}.${data_gid}  /dest/fs/$dest_volume/$dir
+   	 echo chown -R ${fw_user}.${data_gid}  /dest/fs/$dest_volume/$dir>> /client/log/fs_setup.log
    fi
  done
 	 
@@ -88,6 +89,7 @@ if test `ls volumes |wc -l` -ne 0
     touch /dest/fs/$vol/.persistent_lock
     chown  ${fw_user}.${data_gid} /dest/fs/$vol/ /dest/fs/$vol/.persistent_lock
     chmod o-rxw /dest/fs/$vol/ 
+    chmod g+w =R /dest/fs/$vol/ 
    done
 	
  if test -d /home/app_src
