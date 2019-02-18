@@ -41,6 +41,7 @@ chmod g+w  -R /client/state
 	   cp -rpn $src_dir/. /dest/fs/$dest_dir
 	   	   touch /dest/fs/$dest_dir/.persistent_lock
 	   chown -R ${fw_user}.${data_gid}  /dest/fs/$dest_dir
+	   chmod -R g+w /dest/fs/$dest_dir
 	 done
 
 	#if no presistance dirs/files need to set permission here
@@ -54,6 +55,7 @@ chmod g+w  -R /client/state
 			cp -rp /home/app_src/.  /dest/fs/_home_app_/			
 			chown -R ${fw_user}.${data_gid}  /dest/fs/_home_app_/			
 			touch /dest/fs/_home_app_/.persistent
+	        chmod -R g+w /dest/fs/$dest_dir
     fi
 
 	#touch /dest/fs/.persistent_lock
