@@ -1,5 +1,5 @@
-FROM engines/base_image:alpha 
-
+FROM engines/base:$release
+#FROM engines/base_image:alpha 
 ADD home /home/
 
 VOLUME /client/var/log
