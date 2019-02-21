@@ -83,8 +83,8 @@ if test `ls volumes |wc -l` -ne 0
   fi
  done
 	 
- volumes=`echo $volumes |sort|uniq`
-  for vol in $volumes
+
+  for vol in `ls /home/fs_src/volumes`
    do  
     touch /dest/fs/$vol/.persistent_lock
     chown  ${fw_user}.${data_gid} /dest/fs/$vol/ /dest/fs/$vol/.persistent_lock
