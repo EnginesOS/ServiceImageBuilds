@@ -26,7 +26,8 @@ chmod g+w  -R /client/state
 cd /home/fs_src/
 if test `ls volumes |wc -l` -ne 0
  then
-
+echo vol_dir_maps
+cat /home/fs_src/vol_dir_maps
  for dir in `cat /home/fs_src/vol_dir_maps`
   do
    dest_volume=`grep "$dir " /home/fs_src/vol_dir_maps | awk '{print $2}'`
@@ -55,7 +56,8 @@ if test `ls volumes |wc -l` -ne 0
    	 echo chown -R ${fw_user}.${data_gid}  /dest/fs/$dest_volume/$dir>> /client/log/fs_setup.log
    fi
  done
-	 
+ echo volume maps
+ cat /home/fs_src/vol_file_maps
  for file in `cat /home/fs_src/vol_file_maps`
   do	 
    dest_volume=`grep "$file " /home/fs_src/vol_file_maps | awk '{print $2}'`	
@@ -83,9 +85,11 @@ if test `ls volumes |wc -l` -ne 0
   fi
  done
 	 
-
+echo volumes
+ls /home/fs_src/volumes
   for vol in `ls /home/fs_src/volumes`
    do  
+   echo /dest/fs/$vol/
     touch /dest/fs/$vol/.persistent_lock
     chown  ${fw_user}.${data_gid} /dest/fs/$vol/ /dest/fs/$vol/.persistent_lock
     chmod o-rxw /dest/fs/$vol/ 
