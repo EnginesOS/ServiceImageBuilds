@@ -1,7 +1,7 @@
 #!/bin/sh
  . /home/engines/functions/checks.sh
 
-required_values="common_name cert_type"
+required_values="common_name "
 check_required_values
 if test $cert_type = generated
 then
@@ -17,7 +17,7 @@ if test -f /home/certs/store/$cert_type/certs/${store}/${common_name}.crt
   then
  	cat /home/certs/store/$cert_type/certs/${store}/${common_name}.crt
   else
- 	echo "Not Such Cert $cert_type/${store}/${common_name}.crt"
+ 	echo "Not Such Cert /home/certs/store/$cert_type/certs/${store}/${common_name}.crt"
  	exit 1
 fi
 

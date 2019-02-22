@@ -26,11 +26,12 @@ chmod g+w  -R /client/state
 cd /home/fs_src/
 if test `ls volumes |wc -l` -ne 0
  then
-
+echo vol_dir_maps  >> /client/log/fs_setup.log
+cat /home/fs_src/vol_dir_maps  >> /client/log/fs_setup.log
  for dir in `cat /home/fs_src/vol_dir_maps`
   do
    dest_volume=`grep "$dir " /home/fs_src/vol_dir_maps | awk '{print $2}'`
-   echo move $dir to $dest_volume >> /client/log/fs_setup.log
+   echo move $dir to $dest_volume >> /client/log/fs_setup.log  >> /client/log/fs_setup.log
     if test -z $dest_volume
      then
       continue;
@@ -52,9 +53,11 @@ if test `ls volumes |wc -l` -ne 0
   	 echo cp -nrp /home/fs_src/$dir /dest/fs/$dest_volume/$dir>> /client/log/fs_setup.log
    	 cp -nrp /home/fs_src/$dir /dest/fs/$dest_volume/$dir
    	 chown -R ${fw_user}.${data_gid}  /dest/fs/$dest_volume/$dir
+   	 echo chown -R ${fw_user}.${data_gid}  /dest/fs/$dest_volume/$dir>> /client/log/fs_setup.log
    fi
  done
-	 
+ echo volume maps  >> /client/log/fs_setup.log
+ cat /home/fs_src/vol_file_maps  >> /client/log/fs_setup.log
  for file in `cat /home/fs_src/vol_file_maps`
   do	 
    dest_volume=`grep "$file " /home/fs_src/vol_file_maps | awk '{print $2}'`	
@@ -82,12 +85,15 @@ if test `ls volumes |wc -l` -ne 0
   fi
  done
 	 
- volumes=`echo $volumes |sort|uniq`
-  for vol in $volumes
+echo volumes  >> /client/log/fs_setup.log
+ls /home/fs_src/volumes
+  for vol in `ls /home/fs_src/volumes`
    do  
+   echo /dest/fs/$vol/  >> /client/log/fs_setup.log
     touch /dest/fs/$vol/.persistent_lock
     chown  ${fw_user}.${data_gid} /dest/fs/$vol/ /dest/fs/$vol/.persistent_lock
     chmod o-rxw /dest/fs/$vol/ 
+    chmod g+w -R /dest/fs/$vol/ 
    done
 	
  if test -d /home/app_src
