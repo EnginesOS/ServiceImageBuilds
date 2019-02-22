@@ -25,5 +25,5 @@ ip=`cat /home/engines/system/net/ip`
 for domain_name in `ls `
  do
   export domain_name ip ip_type
-  /home/add_service.sh 
+  /home/engines/scripts/services/add_service.sh 
  done

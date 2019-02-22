@@ -14,8 +14,7 @@ RUN	groupadd  -g 22672 ruby &&\
 	apt-get install -y ruby-dev \
 					   zlib1g \
 					   zlib1g-dev \
-					   gem &&\
-  gem install bundler -v 1.17.3&&\  				   
+  gem install bundler &&\  				   
   gem install bundle &&\
   gem update
 		

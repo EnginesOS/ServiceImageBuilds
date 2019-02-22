@@ -7,7 +7,7 @@ COPY invoke-rc.d /usr/sbin/
 
 ADD home /home/
 	
-ENV	build 20181127
+ENV	build 20190222
 RUN	echo '#!/bin/sh' >/usr/sbin/policy-rc.d &&\
 	echo exit 101 >> /usr/sbin/policy-rc.d &&\
 	chmod +x /usr/sbin/policy-rc.d &&\
@@ -20,6 +20,7 @@ RUN	echo '#!/bin/sh' >/usr/sbin/policy-rc.d &&\
 	echo 'Acquire::GzipIndexes "true";Acquire::CompressionTypes::Order:: "gz";' > /etc/apt/apt.conf.d/docker-gzip-indexes &&\
 	sed -i 's/^#\s*\(deb.*universe\)$/\1/g' /etc/apt/sources.list &&\
  	apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ED8E640A&&\
+ 	echo "deb http://security.ubuntu.com/ubuntu bionic-security main restricted universe" >  /etc/apt/sources.list.d/security.list &&\
 	apt-get -y update &&\
 	apt-get -y upgrade &&\
 	apt-get -y dist-upgrade &&\
