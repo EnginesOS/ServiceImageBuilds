@@ -15,6 +15,7 @@ RUN /usr/sbin/usermod -u 22671 www-data &&\
 					   re2c &&\
 	chown www-data /var/www/ &&\
 	usermod -G smmsp -a www-data &&\
+	pecl channel-update pecl.php.net &&\
  	/home/engines/scripts/build/post_build_clean.sh
 	
 
