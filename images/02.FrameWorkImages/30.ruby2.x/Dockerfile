@@ -13,7 +13,7 @@ RUN	groupadd  -g 22672 ruby &&\
 	chown www-data ~www-data &&\
 	apt-get install -y ruby-dev \
 					   zlib1g \
-					   zlib1g-dev \
+					   zlib1g-dev &&\
   gem install bundler &&\  				   
   gem install bundle &&\
   gem update
