@@ -32,3 +32,5 @@ for domain_name in `ls `
   export domain_name ip ip_type
   /home/engines/scripts/services/add_service.sh 
  done
+ 
+ 
