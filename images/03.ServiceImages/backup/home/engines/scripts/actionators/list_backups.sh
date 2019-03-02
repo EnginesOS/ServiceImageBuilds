@@ -2,9 +2,9 @@
 
 echo -n '{"backups":['
 
-if test -d /home/backup/.duply/
+if test -d $Backup_ConfigDir/
  then
-  cd  /home/backup/.duply/
+  cd  $Backup_ConfigDir/
   backups=`find . -type d |grep / |sed "/\.\//s///"`
   n=0
    if ! test -z "$backups"

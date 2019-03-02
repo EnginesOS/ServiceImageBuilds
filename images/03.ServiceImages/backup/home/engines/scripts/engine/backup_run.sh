@@ -1,7 +1,9 @@
 #!/bin/sh
+. /home/engines/scripts/engine/backup_dirs.sh
+
 echo backup_run > /home/engines/run/flags/backup_run
 default_email=`cat /home/engines/scripts/configurators/saved/backup_email`
-Backup_ConfigDir=/home/backup/.duply/
+
 
 for backup in `ls $Backup_ConfigDir |grep -v duply_conf`
  do         
@@ -24,8 +26,8 @@ for backup in `ls $Backup_ConfigDir |grep -v duply_conf`
 	   backup_type=full
 	fi
 
-	/home/engines/scripts/engine/run_duply.sh $backup backup   $backup_type --s3-use-new-style > /var/log/backup/$bfn           
-	result=`grep "Finished state FAILED"  /var/log/backup/$bfn`
+	/home/engines/scripts/engine/run_duply.sh $backup backup   $backup_type --s3-use-new-style > $Backup_LogDir/$bfn           
+	result=`grep "Finished state FAILED"  $Backup_LogDir/$bfn`
 	if test $? -ne 0
 	 then
 	  subject="Sucessfully backed up $backup" 
@@ -33,9 +35,9 @@ for backup in `ls $Backup_ConfigDir |grep -v duply_conf`
  	 subject="$backup: $result " 
 	fi     
          	
-	echo $email >> /var/log/backup/$bfn
+	echo $email >> $Backup_LogDir/$bfn
 	echo "Subject:$subject" > /tmp/email                 
-	cat /tmp/email /var/log/backup/$bfn | sendmail -t $email -f $email
+	cat /tmp/email $Backup_LogDir/$bfn | sendmail -t $email -f $email
 done 
 
 rm /home/engines/run/flags/backup_run
