@@ -1,5 +1,5 @@
 #!/bin/sh
-. /home/engines/scripts/engine/certs_dirs.sh
+. /home/engines/scripts/engine/cert_dirs.sh
 if test "$1" = live/service
  then
   if test $# -eq 2

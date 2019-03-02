@@ -3,7 +3,7 @@
 required_values="fqdn"
 check_required_values
 
-. /home/engines/scripts/engine/certs_dirs.sh
+. /home/engines/scripts/engine/cert_dirs.sh
  
 
 if test -f $InstalledRoot/services/wap/certs/${fqdn}.crt

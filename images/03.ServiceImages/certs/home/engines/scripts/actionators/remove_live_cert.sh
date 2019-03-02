@@ -4,7 +4,7 @@
 required_values="common_name consumer_type consumer_name"
 check_required_values
 
-. /home/engines/scripts/engine/certs_dirs.sh
+. /home/engines/scripts/engine/cert_dirs.sh
 
 
 if test ${fqdn} = $consumer_name

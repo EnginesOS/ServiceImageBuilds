@@ -2,7 +2,7 @@
 
  . /home/engines/functions/checks.sh
 required_values="fqdn  cert_location"
-. /home/engines/scripts/engine/certs_dirs.sh
+. /home/engines/scripts/engine/cert_dirs.sh
 
 check_required_values
 

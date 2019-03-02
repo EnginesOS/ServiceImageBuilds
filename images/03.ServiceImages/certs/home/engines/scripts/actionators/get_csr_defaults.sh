@@ -6,3 +6,4 @@ echo '{"person":"'$person'",\
 		"city":"'$city'",\
 		"state":"'$state'".\
 		"country":"'$country'"}'
+		

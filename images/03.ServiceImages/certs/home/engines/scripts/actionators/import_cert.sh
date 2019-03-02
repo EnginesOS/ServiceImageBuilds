@@ -4,7 +4,7 @@
 required_values="certificate private_key"
 check_required_values
 
-. /home/engines/scripts/engine/certs_dirs.sh
+. /home/engines/scripts/engine/cert_dirs.sh
 
 mkdir -p $ImportedRoot/certs/ $ImportedRoot/keys/
 echo $certificate > $ImportedRoot/certs/tmp.crt

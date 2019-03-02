@@ -1,6 +1,6 @@
 #!/bin/sh
 sudo -n /home/engines/scripts/engine/_fix_perms.sh
-. /home/engines/scripts/engine/certs_dirs.sh
+. /home/engines/scripts/engine/cert_dirs.sh
 isUserCert=0
 cert_name=`echo $common_name | sed "s/$.//"` 
 export cert_name

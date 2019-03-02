@@ -4,7 +4,7 @@
 required_values="common_name store cert_type"
 check_required_values
  
-. /home/engines/scripts/engine/certs_dirs.sh
+. /home/engines/scripts/engine/cert_dirs.sh
  
 
 if test $cert_type = imported -o $cert_type = generated

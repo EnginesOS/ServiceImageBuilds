@@ -1,5 +1,5 @@
 #!/bin/sh
-. /home/engines/scripts/engine/certs_dirs.sh
+. /home/engines/scripts/engine/cert_dirs.sh
 
  . /home/engines/functions/checks.sh
 
