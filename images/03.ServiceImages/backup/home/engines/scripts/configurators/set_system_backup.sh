@@ -1,5 +1,5 @@
 #!/bin/bash
-
+. /home/engines/scripts/engine/backup_dirs.sh
 function add_service {
 src=/tmp/backup_$service/
 
