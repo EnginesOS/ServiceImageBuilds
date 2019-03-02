@@ -1,5 +1,6 @@
 #!/bin/sh
  . /home/engines/functions/checks.sh
+. /home/engines/scripts/engines/certs_dirs.sh
 
 required_values="common_name "
 check_required_values
@@ -13,11 +14,11 @@ elif test $cert_type = user
 fi  
 
   
-if test -f /home/certs/store/$cert_type/certs/${store}/${common_name}.crt
+if test -f $StoreRoot/$cert_type/certs/${store}/${common_name}.crt
   then
- 	cat /home/certs/store/$cert_type/certs/${store}/${common_name}.crt
+ 	cat $StoreRoot/$cert_type/certs/${store}/${common_name}.crt
   else
- 	echo "Not Such Cert /home/certs/store/$cert_type/certs/${store}/${common_name}.crt"
+ 	echo "Not Such Cert $cert_type/certs/${store}/${common_name}.crt"
  	exit 1
 fi
 

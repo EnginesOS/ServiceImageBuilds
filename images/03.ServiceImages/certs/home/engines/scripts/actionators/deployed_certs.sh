@@ -1,8 +1,8 @@
 #!/bin/sh
-
+. /home/engines/scripts/engines/certs_dirs.sh
 get_alt_names()
 {
-names=`cat /home/certs/store/live/$consumer_type_path/$consumer/certs/$cert_name.crt \
+names=`cat $InstalledRoot/$consumer_type_path/$consumer/certs/$cert_name.crt \
        | openssl x509 -text |grep DNS: | sed "s/DNS://g" | sed "s/,/ /g" `
        an=0     
        for name in $names
@@ -27,18 +27,18 @@ names=`cat /home/certs/store/live/$consumer_type_path/$consumer/certs/$cert_name
 find_certs()
 {
 n=0
-if ! test -d /home/certs/store/live/$consumer_type_path/
+if ! test -d $InstalledRoot/$consumer_type_path/
  then
    echo '""' 
 else
   echo '['
-  for consumer in `ls /home/certs/store/live/$consumer_type_path/`
+  for consumer in `ls $InstalledRoot/$consumer_type_path/`
    do
-    certs=`find /home/certs/store/live/$consumer_type_path/$consumer/certs/ -name "*.crt" |sed "s/\.crt//"`
+    certs=`find $InstalledRoot/$consumer_type_path/$consumer/certs/ -name "*.crt" |sed "s/\.crt//"`
    for cert_name in $certs 
      do
        cert_name=`basename $cert_name`
-       common_name=`cat /home/certs/store/live/$consumer_type_path/$consumer/certs/$cert_name.crt \
+       common_name=`cat $InstalledRoot/$consumer_type_path/$consumer/certs/$cert_name.crt \
        | openssl x509 -noout -subject |sed "/^.*CN=/s///" `
        get_alt_names
        
@@ -46,9 +46,9 @@ else
         then
          echo -n ,
       fi
-     if test -f /home/certs/store/live/$consumer_type_path/${consumer}/certs/store.$cert_name
+     if test -f $InstalledRoot/$consumer_type_path/${consumer}/certs/store.$cert_name
       then
-      	store=`cat /home/certs/store/live/$consumer_type_path/${consumer}/certs/store.$cert_name`
+      	store=`cat $InstalledRoot/$consumer_type_path/${consumer}/certs/store.$cert_name`
       	else 
       	 store='""'
       fi

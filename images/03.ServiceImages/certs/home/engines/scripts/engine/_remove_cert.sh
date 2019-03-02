@@ -1,10 +1,11 @@
 #!/bin/sh
+. /home/engines/scripts/engines/certs_dirs.sh
 if test "$1" = live/service
  then
   if test $# -eq 2
    then
-     rm "/home/certs/store/${1}s/$2"
+     rm "$StoreRoot/${1}s/$2"
    fi
 else
-   rm "/home/certs/store/$1"
+   rm "$StoreRoot/store/$1"
 fi

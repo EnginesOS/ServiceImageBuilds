@@ -2,6 +2,7 @@
 
  . /home/engines/functions/checks.sh
 required_values="fqdn  cert_location"
+. /home/engines/scripts/engines/certs_dirs.sh
 
 check_required_values
 
@@ -24,9 +25,9 @@ if test $cert_location = user
 fi  
 
   
-if test -f /home/certs/store/$path.crt
+if test -f $StoreRoot/$path.crt
   then
- 	cat /home/certs/store/$path.crt | openssl x509 -text
+ 	cat $StoreRoot/$path.crt | openssl x509 -text
   else
  	echo "Not Such Cert $path.crt"
  	exit 127

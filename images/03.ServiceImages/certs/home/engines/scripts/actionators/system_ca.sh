@@ -1,3 +1,4 @@
 #!/bin/sh
+. /home/engines/scripts/engines/certs_dirs.sh
 
-cat /home/certs/store/public/ca/certs/system_CA.pem
+cat $StoreRoot/public/ca/certs/system_CA.pem
