@@ -12,6 +12,8 @@ ip=`cat /home/engines/system/net/public`
 hostname=publichost
 no_inarpra=1
 add_to_internal_domain
+
+/home/engines/scripts/actionators/refresh_hosted_domains.sh 
 }
 
 grep BLANK /var/lib/bind/engines/engines.dnsrecords >/dev/null
