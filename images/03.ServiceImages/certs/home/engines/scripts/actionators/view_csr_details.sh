@@ -3,7 +3,7 @@
 
 if test -f $pending_csr_dir/${csr_name}.csr
  then
-  cat $pending_csr_dir/${csr_name}.csr 
+  cat $pending_csr_dir/${csr_name}.csr | openssl req -noout -text
  else
   echo "No Such ${csr_name}"
    exit 1
