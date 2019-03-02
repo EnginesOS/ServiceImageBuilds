@@ -33,6 +33,7 @@ fi
 
 domain_name=engines.internal
 add_to_internal_domain
+
 echo Success
-exit 0
+exit $r
 
