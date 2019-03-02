@@ -1,7 +1,7 @@
-#!/bin/bash
+#!/bin/sh
 
 . /home/engines/scripts/services/dns_functions.sh
-function post_start
+post_start()
 {
 hostname=lanhost
 ip=`cat  /home/engines/system/net/ip`
