@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. /home/engines/scripts/engines/certs_dirs.sh
+. /home/engines/scripts/engine/certs_dirs.sh
 
 echo _install_target.sh $*  >>/tmp/install_called
 install_target=$1

@@ -1,6 +1,6 @@
 #!/bin/sh
  . /home/engines/functions/checks.sh
- . /home/engines/scripts/engines/certs_dirs.sh
+ . /home/engines/scripts/engine/certs_dirs.sh
  
 get_alt_names() 
 {

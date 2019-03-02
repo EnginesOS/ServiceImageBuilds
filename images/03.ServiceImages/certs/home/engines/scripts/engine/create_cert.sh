@@ -1,6 +1,6 @@
 #!/bin/sh
 sudo -n /home/engines/scripts/engine/_fix_perms.sh
-. /home/engines/scripts/engines/certs_dirs.sh
+. /home/engines/scripts/engine/certs_dirs.sh
 
 export StorePref key_dir cert_name common_name country state city organisation person cert_type container_type parent_engine  
 

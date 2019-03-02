@@ -1,5 +1,5 @@
 #!/bin/sh
-. /home/engines/scripts/engines/certs_dirs.sh
+. /home/engines/scripts/engine/certs_dirs.sh
 
 if test -f $pending_csr_dir/${csr_name}.csr
  then

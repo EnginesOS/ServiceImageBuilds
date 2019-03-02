@@ -1,5 +1,5 @@
 #!/bin/sh
-. /home/engines/scripts/engines/certs_dirs.sh
+. /home/engines/scripts/engine/certs_dirs.sh
 
 echo '{"pending_csr_list":['
 for csr in `ls $pending_csr_dir`
