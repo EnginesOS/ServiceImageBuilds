@@ -1,21 +1,5 @@
 #!/bin/sh
 
-. /home/engines/scripts/services/dns_functions.sh
-post_start()
-{
-hostname=lanhost
-ip=`cat  /home/engines/system/net/ip`
-no_inarpra=1
-add_to_internal_domain
-
-ip=`cat /home/engines/system/net/public`
-hostname=publichost
-no_inarpra=1
-add_to_internal_domain
-
-/home/engines/scripts/actionators/refresh_hosted_domains.sh 
-}
-
 grep BLANK /var/lib/bind/engines/engines.dnsrecords >/dev/null
 
 if test $? -eq 0
@@ -44,8 +28,6 @@ sudo -n /usr/sbin/named  -c /etc/bind/named.conf -f -u bind &
 startup_complete
 
 sleep 15
-
-post_start 
 
 wait  
 
