@@ -32,6 +32,7 @@ if test -d /home/engines/scripts/configurators/saved/default_destination
      then
  		. /home/engines/scripts/configurators/saved/system_backup/settings    
      else
+       mkdir -p /home/engines/scripts/configurators/saved/system_backup
        echo include_logs=$include_logs > /home/engines/scripts/configurators/saved/system_backup/settings
       echo include_files=$include_files >> /home/engines/scripts/configurators/saved/system_backup/settings
       echo include_services=$include_services >> /home/engines/scripts/configurators/saved/system_backup/settings
