@@ -2,7 +2,7 @@
 sudo -n /home/engines/scripts/engine/_fix_perms.sh
 . /home/engines/scripts/engine/cert_dirs.sh
 
-export StorePref key_dir cert_name common_name country state city organisation person cert_type container_type parent_engine  
+export StorePref key_dir common_name country state city organisation person cert_type container_type parent_engine  
 
 if test $cert_type = user
  then
@@ -17,7 +17,7 @@ cert_dir=$StoreRoot/$cert_type/certs/${StorePref}
 
 /home/engines/scripts/engine/create_csr.sh
 
-if ! test -f $pending_csr_dir/${cert_name}.csr 
+if ! test -f $pending_csr_dir/${common_name}.csr 
   then
  	echo "Failed to load CSR for ${common_name}"
  	exit 127
@@ -30,18 +30,13 @@ if test $? -ne 0
  	echo "Failed to sign CSR"
  	exit 127
 fi
-mv $pending_csr_dir/${cert_name}.csr $completed_csr_dir/
-#if test -f $key_dir/${cert_name}.key.tmp #-a -f $cert_dir/${cert_name}.crt.tmp
-# then 
-   common_name=`cat  $cert_dir/${cert_name}.crt.tmp | openssl x509 -noout -subject  |sed "/^.*CN=/s///"| sed "/\*\./s///"`
-  # echo cp $key_dir/${common_name}.key.tmp $key_dir/${common_name}.key
+mv $pending_csr_dir/${common_name}.csr $completed_csr_dir/
+
+   common_name=`cat  $cert_dir/${common_name}.crt.tmp | openssl x509 -noout -subject  |sed "/^.*CN=/s///"| sed "/\*\./s///"`
+ 
    echo cp $cert_dir/${common_name}.crt.tmp $cert_dir/${common_name}.crt 
- #  cp $key_dir/${common_name}.key.tmp $key_dir/${common_name}.key
+
    cp $cert_dir/${common_name}.crt.tmp $cert_dir/${common_name}.crt 
-#else
- #  echo "Cert and Key files not present"
-  # exit 127
- #fi
  
  if ! test $isUserCert -eq 1
  then
