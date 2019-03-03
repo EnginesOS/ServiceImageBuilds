@@ -1,5 +1,7 @@
 #!/bin/sh
 
+. /home/engines/scripts/engine/bacup_dirs.sh
+
 cp /home/engines/templates/backupduply_conf $1
 key=`cat /home/backup/.gnupg/key_id`
 dir=`dirname $1`

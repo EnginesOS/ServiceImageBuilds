@@ -1,4 +1,5 @@
 #!/bin/sh
+. /home/engines/scripts/engine/bacup_dirs.sh
 
 echo -n '{"backups":['
 

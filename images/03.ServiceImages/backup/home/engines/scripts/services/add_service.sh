@@ -4,6 +4,8 @@
 #. /tmp/.env
 
  . /home/engines/functions/checks.sh
+. /home/engines/scripts/engine/bacup_dirs.sh
+ 
 
 
 required_values="backup_name dest_folder dest_proto parent_engine backup_type src_type"
