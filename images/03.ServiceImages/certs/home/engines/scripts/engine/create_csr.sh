@@ -74,6 +74,7 @@ echo "" >>$setup_dir/${cert_name}_setup
 
 
 cat /home/engines/templates/certs/request.template | sed -e "s/COUNTRY/$country/"  \
+													-e "s/EMAIL/$email/"\
 													-e "s/STATE/$state/" -e "s/ORGANISATION/$organisation/" \
 													-e "s/PERSON/$person/" -e "s/COMMON_NAME/$CN/" \
 													-e "s/HOSTNAME/$hostname/" >  $setup_dir/${cert_name}_config

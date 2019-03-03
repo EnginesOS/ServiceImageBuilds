@@ -24,7 +24,8 @@ if ! test -f $pending_csr_dir/${common_name}.csr
 fi
 
 
-openssl x509 -req -in $pending_csr_dir/${common_name}.csr -sha256 -CA  $StoreRoot/public/ca/certs/system_CA.pem -CAkey $StoreRoot/private/ca/keys/system_CA.key -CAcreateserial -out $cert_dir/${common_name}.crt.tmp -days 500  -extensions req_ext -extfile  $setup_dir/${common_name}_config
+openssl x509 -req -in $pending_csr_dir/${common_name}.csr -sha256 -CA  $StoreRoot/public/ca/certs/system_CA.pem -CAkey $StoreRoot/private/ca/keys/system_CA.key -CAcreateserial -out $cert_dir/${common_name}.crt.tmp -days 500  -extensions req_ext
+# -extfile  $setup_dir/${common_name}_config
 if test $? -ne 0
  then
  	echo "Failed to sign CSR"
