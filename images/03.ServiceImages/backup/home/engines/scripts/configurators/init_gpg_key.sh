@@ -1,4 +1,6 @@
 #!/bin/sh
+sudo  /home/engines/scripts/actionators/_fix_perms.sh
+
 if ! test -f /home/backup/.gnupg/pass
  then 
  	mkdir /home/backup/.gnupg/
@@ -15,7 +17,7 @@ if ! test -f /home/backup/.gnupg/pass
  	gpg --gen-key --batch /tmp/key.tmpl
  	rm /tmp/key.tmpl
    
-	gpg --list-keys  |grep 1024D | tail -1 | cut -f2 -d/ |cut -f1 -d" " > /home/backup/.gnupg/key_id
+	gpg --list-keys  |grep -1 dsa1024 | tail -1 | cut -f2 -d/ |cut -f1 -d" " > /home/backup/.gnupg/key_id
 	key_id=`cat /home/backup/.gnupg/key_id`
     cp /home/backup/.gnupg/pass /home/backup/.gnupg/pass_${key_id}
     chmod og-wxr /home/backup/.gnupg/pass /home/backup/.gnupg/pass_${key_id}
