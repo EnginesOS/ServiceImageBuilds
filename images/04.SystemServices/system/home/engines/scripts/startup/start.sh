@@ -71,7 +71,7 @@ wait
 exit_code=$?
 TS=`date`
 echo System Shutdown $TS
-sleep 300
+
 shutdown_complete
 
 

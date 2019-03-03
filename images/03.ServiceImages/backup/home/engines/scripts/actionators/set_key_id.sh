@@ -1,6 +1,8 @@
 #!/bin/sh
  . /home/engines/functions/checks.sh
 
+. /home/engines/scripts/engine/bacup_dirs.sh
+
 if ! test -z $disabled 
  then
    if  test $disabled = yes

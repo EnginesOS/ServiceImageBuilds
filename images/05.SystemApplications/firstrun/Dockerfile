@@ -13,7 +13,7 @@ ADD home home
 RUN	mkdir -p /home/app &&\
  	mkdir -p /home/app/public/system &&\
  	chown -R www-data /home/app/ &&\ 	
- 	gem install bundle &&\ 	
+ 	gem install bundle bundler &&\ 	
  	usermod -G containers -a www-data 
 
 USER www-data
@@ -33,4 +33,3 @@ ADD src/config.ru /home/app
 ENV HOME /home/app
 
 CMD ["/home/engines/scripts/startup/start.sh"]
-

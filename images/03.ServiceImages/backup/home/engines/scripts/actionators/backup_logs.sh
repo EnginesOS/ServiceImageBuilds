@@ -1,8 +1,8 @@
 #!/bin/sh
 
+. /home/engines/scripts/engine/backup_dirs.sh
 
-
-cd /var/log/
+cd $Backup_LogDir
 n=0
 if test -z $backup_name  
  then

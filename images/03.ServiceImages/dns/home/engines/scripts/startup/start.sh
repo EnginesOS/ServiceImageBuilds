@@ -1,18 +1,4 @@
-#!/bin/bash
-
-. /home/engines/scripts/services/dns_functions.sh
-function post_start
-{
-hostname=lanhost
-ip=`cat  /home/engines/system/net/ip`
-no_inarpra=1
-add_to_internal_domain
-
-ip=`cat /home/engines/system/net/public`
-hostname=publichost
-no_inarpra=1
-add_to_internal_domain
-}
+#!/bin/sh
 
 grep BLANK /var/lib/bind/engines/engines.dnsrecords >/dev/null
 
@@ -37,13 +23,11 @@ export PID_FILE
 sudo -n /home/engines/scripts/engine/_setup.sh
 
 sudo -n /usr/sbin/named  -c /etc/bind/named.conf -f -u bind &
- 
 
 startup_complete
 
-sleep 15
-
-post_start 
+sleep 5
+/home/engines/scripts/engine/create_system_dns_records.sh
 
 wait  
 

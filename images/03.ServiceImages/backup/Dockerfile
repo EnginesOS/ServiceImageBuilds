@@ -23,9 +23,9 @@ RUN /usr/sbin/usermod -u 22015 -d /home/backup  backup &&\
 	usermod -G containers -a backup &&\ 
 	usermod -G root -a backup &&\	 	
 	cd /tmp &&\
-  	wget ftp://ftp.seul.org/pub/fcron/fcron-3.3.0.src.tar.gz &&\
-  	tar -xzpf fcron-3.3.0.src.tar.gz &&\
-  	cd fcron-3.3.0 &&\
+  	wget http://fcron.free.fr/archives/fcron-3.2.1.src.tar.gz &&\
+  	tar -xzpf fcron-3.2.1.src.tar.gz &&\
+  	cd fcron-3.2.1 &&\
   	./configure --with-run-non-privileged --with-rootname=backup\
 	--with-rootgroup=backup --with-username=backup --with-groupname=backup\
 	--with-etcdir=/home/backup/fcron --with-piddir=/home/engines/run/\
@@ -34,8 +34,8 @@ RUN /usr/sbin/usermod -u 22015 -d /home/backup  backup &&\
 	make install &&\
 	mkdir -p /home/backup/fcron/doc /home/backup/fcron/man /home/backup/fcron/spool &&\
 	cd /home/backup &&\
-	rm -r /tmp/fcron-3.3.0 &&\
-	rm /tmp/fcron-3.3.0.src.tar.gz &&\	
+	rm -r /tmp/fcron-3.2.1 &&\
+	rm /tmp/fcron-3.2.1.src.tar.gz &&\
 	mkdir -p /var/log/backup/ /home/backup/sql_dumps &&\
 	chown -R backup /home/backup/sql_dumps /var/log/backup/
  
@@ -53,8 +53,6 @@ RUN chown -R backup ~backup &&\
 	chmod -R go-rw /etc/sudoers /etc/sudoers.d/
 	
 	
-	
-
 VOLUME /backup_src/volumes
 VOLUME /backup_src/engines
 VOLUME /local_backup_dests

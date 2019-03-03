@@ -3,7 +3,10 @@
 required_values="fqdn"
 check_required_values
 
-if test -f /home/certs/store/live/services/wap/certs/${fqdn}.crt
+. /home/engines/scripts/engine/cert_dirs.sh
+ 
+
+if test -f $InstalledRoot/services/wap/certs/${fqdn}.crt
  then
   sudo -n /home/engines/scripts/engine/_remove_cert.sh live/service wap/certs/${fqdn}.crt
   sudo -n /home/engines/scripts/engine/_remove_cert.sh live/service wap/certs/store.${fqdn}

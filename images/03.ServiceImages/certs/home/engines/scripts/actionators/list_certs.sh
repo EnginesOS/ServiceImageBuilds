@@ -1,8 +1,10 @@
 #!/bin/sh
  . /home/engines/functions/checks.sh
+ . /home/engines/scripts/engine/cert_dirs.sh
+ 
 get_alt_names ()
 {
-names=`cat /home/certs/store/$cert_type/certs/$store/$cert.crt \
+names=`cat $StoreRoot/$cert_type/certs/$store/$cert.crt \
        | openssl x509 -text |grep DNS: | sed "s/DNS://g" | sed "s/,/ /g" `
        an=0
        for name in $names
@@ -25,11 +27,11 @@ names=`cat /home/certs/store/$cert_type/certs/$store/$cert.crt \
 }
 i=0
 echo -n '{"certs":['
- for cert_type in `ls /home/certs/store`
+ for cert_type in `ls $StoreRoot`
   do
-  if test -d /home/certs/store/$cert_type/certs/
+  if test -d $StoreRoot/$cert_type/certs/
    then
-    cd /home/certs/store/$cert_type/certs/
+    cd $StoreRoot/$cert_type/certs/
     certs=`find . -name "*.crt" |grep -v default | sed "/\.crt/s///g"`
       for cert in $certs
        do
@@ -46,7 +48,7 @@ echo -n '{"certs":['
       	
       	cert=`basename $cert`
       	get_alt_names
-      	 common_name=`cat /home/certs/store/$cert_type/certs/$store/$cert.crt \
+      	 common_name=`cat $StoreRoot/$cert_type/certs/$store/$cert.crt \
        | openssl x509 -noout -subject |sed "/^.*CN=/s///" `
         echo -n '{"cert_name":"'$cert'","CN":"'$common_name'","alt_names":'$alt_names',"owner_type":"'${owner_type}'","owner":"'${owner}'","store":"'$store'", "cert_type":"'$cert_type'"}'
       done

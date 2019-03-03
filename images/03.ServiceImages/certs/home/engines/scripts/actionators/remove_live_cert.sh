@@ -4,12 +4,15 @@
 required_values="common_name consumer_type consumer_name"
 check_required_values
 
+. /home/engines/scripts/engine/cert_dirs.sh
+
+
 if test ${fqdn} = $consumer_name
  then
   echo '{"Result":"Failed","ErrorMesg":"Cannot remove default","ExitCode":"127"}'
   exit
 fi 
-if test -f /home/certs/store/live/${consumer_type}s/${consumer_name}/certs/${common_name}.crt
+if test -f $InstalledRoot/${consumer_type}s/${consumer_name}/certs/${common_name}.crt
  then
   sudo -n /home/engines/scripts/engine/_remove_cert.sh live/${consumer_type} ${consumer_name}/certs/${common_name}.crt
   sudo -n /home/engines/scripts/engine/_remove_cert.sh live/${consumer_type} ${consumer_name}/certs/store.${common_name}

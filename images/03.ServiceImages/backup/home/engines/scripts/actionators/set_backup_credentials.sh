@@ -1,5 +1,7 @@
 #!/bin/sh
 
+. /home/engines/scripts/engine/bacup_dirs.sh
+
 
 sudo -n /home/engines/scripts/actionators/_fix_perms.sh
 

@@ -1,4 +1,6 @@
 #!/bin/sh
+. /home/engines/scripts/engine/bacup_dirs.sh
+
 
 if test -f /home/backup/.gnupg/key_created
 then
