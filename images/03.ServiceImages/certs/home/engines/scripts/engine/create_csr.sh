@@ -90,10 +90,13 @@ fi
 
 cat /etc/ssl/openssl.cnf $setup_dir/${cert_name}_config >$setup_dir/${cert_name}_config_full
 openssl genrsa -out  $key_dir/${cert_name}.key.tmp 2048
+
 openssl req -new  -key $key_dir/${cert_name}.key.tmp -out $pending_csr_dir/${cert_name}.csr -config $setup_dir/${cert_name}_config
 
 if ! test -f $pending_csr_dir/${cert_name}.csr 
   then
  	echo "Failed to Create CSR"
+ 	rm $key_dir/${common_name}.key.tmp
  	exit 127
 fi
+ cp $key_dir/${common_name}.key.tmp $key_dir/${common_name}.key

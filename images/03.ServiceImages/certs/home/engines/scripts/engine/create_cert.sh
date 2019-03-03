@@ -19,12 +19,12 @@ cert_dir=$StoreRoot/$cert_type/certs/${StorePref}
 
 if ! test -f $pending_csr_dir/${cert_name}.csr 
   then
- 	echo "Failed to load CSR for ${cert_name}"
+ 	echo "Failed to load CSR for ${common_name}"
  	exit 127
 fi
 
 
-openssl x509 -req -in $pending_csr_dir/${cert_name}.csr -sha256 -CA  $StoreRoot/public/ca/certs/system_CA.pem -CAkey $StoreRoot/private/ca/keys/system_CA.key -CAcreateserial -out $cert_dir/${cert_name}.crt.tmp -days 500  -extensions req_ext -extfile  $setup_dir/${cert_name}_config
+openssl x509 -req -in $pending_csr_dir/${common_name}.csr -sha256 -CA  $StoreRoot/public/ca/certs/system_CA.pem -CAkey $StoreRoot/private/ca/keys/system_CA.key -CAcreateserial -out $cert_dir/${common_name}.crt.tmp -days 500  -extensions req_ext -extfile  $setup_dir/${common_name}_config
 if test $? -ne 0
  then
  	echo "Failed to sign CSR"
@@ -33,11 +33,11 @@ fi
 mv $pending_csr_dir/${cert_name}.csr $completed_csr_dir/
 #if test -f $key_dir/${cert_name}.key.tmp #-a -f $cert_dir/${cert_name}.crt.tmp
 # then 
-   commn_name=`cat  $cert_dir/${cert_name}.crt.tmp | openssl x509 -noout -subject  |sed "/^.*CN=/s///"| sed "/\*\./s///"`
-   echo cp $key_dir/${cert_name}.key.tmp $key_dir/${common_name}.key
-   echo cp $cert_dir/${cert_name}.crt.tmp $cert_dir/${common_name}.crt 
-   cp $key_dir/${cert_name}.key.tmp $key_dir/${common_name}.key
-   cp $cert_dir/${cert_name}.crt.tmp $cert_dir/${common_name}.crt 
+   common_name=`cat  $cert_dir/${cert_name}.crt.tmp | openssl x509 -noout -subject  |sed "/^.*CN=/s///"| sed "/\*\./s///"`
+  # echo cp $key_dir/${common_name}.key.tmp $key_dir/${common_name}.key
+   echo cp $cert_dir/${common_name}.crt.tmp $cert_dir/${common_name}.crt 
+ #  cp $key_dir/${common_name}.key.tmp $key_dir/${common_name}.key
+   cp $cert_dir/${common_name}.crt.tmp $cert_dir/${common_name}.crt 
 #else
  #  echo "Cert and Key files not present"
   # exit 127
