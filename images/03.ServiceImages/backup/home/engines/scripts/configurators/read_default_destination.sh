@@ -1,6 +1,5 @@
 #!/bin/sh
- /home/engines/scripts/configurators/saved/default_destination/
-dest_address  dest_folder  dest_pass  dest_proto  dest_user
+
 
 if test -d /home/engines/scripts/configurators/saved/default_destination
 then
