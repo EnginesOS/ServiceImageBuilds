@@ -1,6 +1,12 @@
 #!/bin/bash
 
-if ! test -d /home/certs/store/imported/
- then 
-  mkdir -p /home/certs/store/imported/
-fi
+cd /home/certs/store/
+
+ for dir in 'pending_csr saved completed_csr imported'
+ do
+   if ! test -d $dir
+    then 
+     mkdir -p $dir
+   fi
+ done
+

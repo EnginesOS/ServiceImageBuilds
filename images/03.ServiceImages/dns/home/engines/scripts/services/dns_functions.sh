@@ -50,7 +50,8 @@ fi
  cp  $dns_cmd_file /tmp/add_inapra_$fqdn_str
 
 nsupdate -k /etc/bind/keys/ddns.private $dns_cmd_file
-if test $? -eq 0
+r=$?
+if test $r -eq 0
  then
    rm $dns_cmd_file
    echo Success
@@ -58,5 +59,6 @@ if test $? -eq 0
    file=`cat $dns_cmd_file`
    echo Error:With nsupdate $file
 fi
-
+export r
+exit $r
 }

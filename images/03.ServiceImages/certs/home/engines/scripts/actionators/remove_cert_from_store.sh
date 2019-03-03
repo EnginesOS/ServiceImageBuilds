@@ -1,4 +1,6 @@
 #!/bin/sh
+. /home/engines/scripts/engine/cert_dirs.sh
+
  . /home/engines/functions/checks.sh
 
 required_values="common_name cert_type"
@@ -16,7 +18,7 @@ if test $cert_type = user
   store=user
 fi 
 
-if ! test -f /home/certs/store/$cert_type/certs/$store/${common_name}.crt 
+if ! test -f $StoreRoot/$cert_type/certs/$store/${common_name}.crt 
  then
    echo "No such cert  $store/$fqdn"
    exit 

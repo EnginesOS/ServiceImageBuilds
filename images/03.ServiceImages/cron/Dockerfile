@@ -7,15 +7,17 @@ RUN groupadd -g 22016 cron &&\
 	                   gcc \
 	                   make &&\
 	cd /tmp &&\
-  	wget ftp://ftp.seul.org/pub/fcron/fcron-3.3.0.src.tar.gz &&\
-  	tar -xzpf fcron-3.3.0.src.tar.gz &&\
-  	cd fcron-3.3.0 &&\
+  		wget http://fcron.free.fr/archives/fcron-3.2.1.src.tar.gz &&\
+  	tar -xzpf fcron-3.2.1.src.tar.gz &&\
+  	cd fcron-3.2.1 &&\
   	./configure --with-run-non-privileged --with-rootname=cron\
 	--with-rootgroup=cron --with-username=cron --with-groupname=cron\
 	--with-piddir=/home/engines/run\
 	--with-fifodir=/home/cron --with-spooldir=/home/cron/spool\
 	--with-docdir=/home/cron/doc --prefix=/home/cron &&\
 	make install &&\
+	rm -r /tmp/fcron-3.2.1 &&\
+	rm /tmp/fcron-3.2.1.src.tar.gz &&\
 	mkdir -p /home/cron/doc /home/cron/man /home/cron/spool /home/cron/log/ &&\
 	chown -R cron /home/cron/ &&\
 	cd /home/cron &&\

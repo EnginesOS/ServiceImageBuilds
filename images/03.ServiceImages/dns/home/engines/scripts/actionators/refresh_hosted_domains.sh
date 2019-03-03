@@ -20,6 +20,11 @@ ip=`cat /home/engines/system/net/ip`
 		echo Error:Missing IP Address
         exit 128
     fi
+  if test  ${ip} = false
+	then
+		echo Error:Missing IP Address
+        exit 128
+    fi
 
 
 for domain_name in `ls `
@@ -27,3 +32,5 @@ for domain_name in `ls `
   export domain_name ip ip_type
   /home/engines/scripts/services/add_service.sh 
  done
+ 
+ 

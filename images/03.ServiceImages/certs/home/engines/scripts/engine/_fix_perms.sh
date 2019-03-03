@@ -1,2 +1,3 @@
-#/bin/bash
-chown certs  `find  /home/certs/store/ -type d `
+#/bin/sh
+. /home/engines/scripts/engine/cert_dirs.sh
+chown certs  `find  $StoreRoot -type d `

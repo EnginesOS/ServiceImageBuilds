@@ -10,6 +10,7 @@ RUN groupadd -g 22003 postfix
  	/home/engines/scripts/build/post_build_clean.sh
 
 RUN mkdir 	/home/postfix \
+			/home/postfix/maps/ \
 			/usr/share/doc/postfix/html \
 	 	  	/usr/lib/postfix/libutil \
 	 	  	/usr/lib/postfix/libmaster \

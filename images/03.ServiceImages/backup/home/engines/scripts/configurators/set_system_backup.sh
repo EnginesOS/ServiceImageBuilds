@@ -1,5 +1,5 @@
 #!/bin/bash
-
+. /home/engines/scripts/engine/backup_dirs.sh
 function add_service {
 src=/tmp/backup_$service/
 
@@ -26,24 +26,18 @@ Backup_ConfigDir=/home/backup/.duply/
 
 if test -d /home/engines/scripts/configurators/saved/default_destination
  then
-   dest_pass=cat`/home/engines/scripts/configurators/saved/default_destination/dest_pass`
-   dest_proto=cat`home/engines/scripts/configurators/saved/default_destination/dest_proto`
-   dest_address=cat`/home/engines/scripts/configurators/saved/default_destination/dest_address`
-   dest_user=cat`/home/engines/scripts/configurators/saved/default_destination/dest_user`
-   dest_folde=cat`/home/engines/scripts/configurators/saved/default_destination/dest_folder`
+  . /home/engines/scripts/configurators/saved/default_destination/settings
+
     if test "$1" = rebuild
      then
-      include_logs=`cat /home/engines/scripts/configurators/saved/system_backup/include_logs`
-      include_files=`cat /home/engines/scripts/configurators/saved/system_backup/include_files`
-      include_services=`cat /home/engines/scripts/configurators/saved/system_backup/include_services`
-      include_system=`cat /home/engines/scripts/configurators/saved/system_backup/include_system`
-      frequency=`cat /home/engines/scripts/configurators/saved/system_backup/frequency`
+ 		. /home/engines/scripts/configurators/saved/system_backup/settings    
      else
-      echo -c $include_logs > /home/engines/scripts/configurators/saved/system_backup/include_logs
-      echo -c $include_files > /home/engines/scripts/configurators/saved/system_backup/include_files
-      echo -c $include_services > /home/engines/scripts/configurators/saved/system_backup/include_services
-      echo -c $include_system > /home/engines/scripts/configurators/saved/system_backup/include_system
-      echo -c $frequency > /home/engines/scripts/configurators/saved/system_backup/frequency
+       mkdir -p /home/engines/scripts/configurators/saved/system_backup
+       echo include_logs=$include_logs > /home/engines/scripts/configurators/saved/system_backup/settings
+      echo include_files=$include_files >> /home/engines/scripts/configurators/saved/system_backup/settings
+      echo include_services=$include_services >> /home/engines/scripts/configurators/saved/system_backup/settings
+      echo include_system=$include_system >> /home/engines/scripts/configurators/saved/system_backup/settings
+      echo frequency=$frequency >> /home/engines/scripts/configurators/saved/system_backup/settings    
      fi
   
    dest=$dest_proto://$dest_address/$dest_folder

@@ -1,4 +1,7 @@
 #!/bin/bash
+
+. /home/engines/scripts/engine/cert_dirs.sh
+
 echo _install_target.sh $*  >>/tmp/install_called
 install_target=$1
 cert_type=$2
@@ -16,9 +19,6 @@ if test $destination_name = default
   /home/engines/scripts/engine/set_default.sh $install_target ${cert_type} ${cert_name} 
   exit
 fi
-
-StoreRoot=/home/certs/store
-InstalledRoot=/home/certs/store/live
 
 function set_uid {
 

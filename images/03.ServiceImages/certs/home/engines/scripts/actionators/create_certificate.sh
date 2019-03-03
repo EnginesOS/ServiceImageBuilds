@@ -3,7 +3,7 @@
  . /home/engines/functions/checks.sh
 
 set >/tmp/create_cert
-required_values="cert_name common_name country state city organisation person"
+required_values=" common_name country state city organisation person"
 check_required_values
 
 

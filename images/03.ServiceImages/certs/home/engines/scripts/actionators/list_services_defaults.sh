@@ -1,8 +1,10 @@
 #!/bin/sh
  . /home/engines/functions/checks.sh
+ . /home/engines/scripts/engine/cert_dirs.sh
+ 
 get_alt_names() 
 {
-names=`cat /home/certs/store/live/services/$service/certs/$service.crt \
+names=`cat $InstalledRoot/services/$service/certs/$service.crt \
        | openssl x509 -text |grep DNS: | sed "s/DNS://g" | sed "s/,/ /g" `
        an=0
        for name in $names
@@ -26,11 +28,11 @@ names=`cat /home/certs/store/live/services/$service/certs/$service.crt \
 echo -n '{"certs":['
 n=0
 
-for service in `ls /home/certs/store/live/services/`
+for service in `ls $InstalledRoot/services/`
  do
- if test -f /home/certs/store/live/services/$service/certs/$service.crt
+ if test -f $InstalledRoot/services/$service/certs/$service.crt
   then
-    common_name=`cat /home/certs/store/live/services/$service/certs/$service.crt \
+    common_name=`cat $InstalledRoot/services/$service/certs/$service.crt \
     | openssl x509 -noout -subject |sed "/^.*CN=/s///"  `
   
   
@@ -38,9 +40,9 @@ for service in `ls /home/certs/store/live/services/`
      then
       echo -n ,
    fi
-   if test -f /home/certs/store/live/services/${service}/certs/store.$service
+   if test -f $InstalledRoot/services/${service}/certs/store.$service
     then
-    	store=`cat /home/certs/store/live/services/${service}/certs/store.$service`
+    	store=`cat $InstalledRoot/services/${service}/certs/store.$service`
     	else 
     	 store='""'
     fi

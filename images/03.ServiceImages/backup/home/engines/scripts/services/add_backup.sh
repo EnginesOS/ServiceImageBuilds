@@ -1,4 +1,6 @@
 #!/bin/sh 
+. /home/engines/scripts/engine/bacup_dirs.sh
+
  
  . /home/engines/functions/checks.sh
 check_required_values

@@ -2,6 +2,7 @@
 # defined.
 HOME                    = /home/certs/store/
 RANDFILE                = $ENV::HOME/.rnd
+email_in_dn = no
 
 # Extra OBJECT IDENTIFIER info:
 #oid_file               = $ENV::HOME/.oid
