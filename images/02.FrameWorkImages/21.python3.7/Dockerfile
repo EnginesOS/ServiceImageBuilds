@@ -16,6 +16,8 @@ RUN groupadd -g 22674 python &&\
 					   libapache2-mod-wsgi &&\
     cd /tmp &&\
 	 python3.7 -m pip install pip --upgrade &&\
+	 python3.7 -m pip install setuptools --upgrade &&\
+	 python3.7 -m pip install virtualenv --upgrade &&\
 	chown python.python -R /usr/local/lib/python*/dist-packages/ &&\
 	usermod -G python -a www-data &&\
  	/home/engines/scripts/build/post_build_clean.sh&&\
