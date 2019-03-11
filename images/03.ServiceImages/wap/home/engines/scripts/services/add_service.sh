@@ -13,7 +13,7 @@ res=`nslookup ${parent_engine}.engines.internal|grep -e "Address: *[0-9]" |awk '
  if test $? -ne 0
   then
         echo Error:failed to find internal dns entry for ${parent_engine}.engines.internal
-        exit -1
+        exit 127
  fi
 	 
 
