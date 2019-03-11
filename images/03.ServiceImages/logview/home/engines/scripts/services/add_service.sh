@@ -14,6 +14,7 @@ config_file=/home/app/config.user.d/${container_type}s/$parent_engine/$log_name.
 if ! test -d /home/saved/$parent_engine/
  then
  	mkdir -p /home/saved/$parent_engine/
+ 	echo $log_type $log_file_path  $container_type $parent_engine $log_name > /home/saved/$parent_engine/lf.$log_name
  fi
  
  case $log_type in
@@ -69,7 +70,7 @@ if ! test -d /home/saved/$parent_engine/
  
 
  
-echo  '{'\"$parent_engine_$log_name\": { \"display\" : \"$parent_engine $log_name\", \"path\"    : \"/var/log/engines/$log_file_path\",  > /tmp/.conf
+echo  '{"'$parent_engine_$log_name'": { "display" : "'$parent_engine $log_name'", "path":"/var/log/engines/'$log_file_path'",'  > /tmp/.conf
 cat  /home/engines/templates/logview/$log_type >>  /tmp/.conf
 echo '}' >> /tmp/.conf
 
