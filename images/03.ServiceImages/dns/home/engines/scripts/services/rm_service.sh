@@ -61,6 +61,6 @@ if test $inr -eq 0
    echo Error:With nsupdate $file
 fi
 	
-return=`expr $r + $nr`
+return=`expr $r + $inr`
 exit $return
 
