@@ -4,7 +4,8 @@ RUN groupadd -g 22010 proftpd &&\
 	useradd -u 22010  -g proftpd -d /home/ftpd -m -G containers proftpd&&\
 	/home/engines/scripts/build/no_init.sh &&\	
 	apt-get -y update &&\
-  	apt-get -y install proftpd \
+  	apt-get -y install openssh-server \
+  					   proftpd \
 				       libsasl2-2  \
 				       libsasl2-modules-gssapi-mit \
 				       libsasl2-modules-ldap \
