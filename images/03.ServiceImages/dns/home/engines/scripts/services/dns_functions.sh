@@ -60,5 +60,5 @@ if test $r -eq 0
    echo Error:With nsupdate $file
 fi
 export r
-exit $r
+
 }

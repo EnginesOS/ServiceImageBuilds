@@ -1,6 +1,6 @@
 FROM engines/servicebase:$release
 Maintainer image.maintainer@engines.onl
-RUN groupadd -g 22003 postfix
+RUN groupadd -g 22003 postfix &&\
 	useradd -u 22003  -g postfix -d /var/spool/postfix -m -G containers postfix &&\
 	apt-get -y update &&\
 	/home/engines/scripts/build/no_init.sh &&\	
