@@ -14,7 +14,7 @@ if test $cert_type = user
   cert_name=user/$cert_name
 fi  
 
-if test $destination_name = default
+if test "$destination_name" = default
  then
   /home/engines/scripts/engine/set_default.sh $install_target ${cert_type} ${cert_name} 
   exit
