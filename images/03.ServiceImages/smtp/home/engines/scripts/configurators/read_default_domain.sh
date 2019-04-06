@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 if test -f /home/engines/scripts/configurators/saved/deliver_local
  then
