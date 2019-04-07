@@ -5,45 +5,35 @@ isUserCert=0
 cert_name=`echo $common_name | sed "s/$.//"` 
 export cert_name
 
-if test -z $cert_type 
- then
-  cert_type=generated
-fi
-
-if test $cert_type = user
- then
-    cert_type=generated
-	StorePref=user
-	isUserCert=1
-  elif test $cert_type = external_ca
-  then
-   StorePref=/
-  else
-   StorePref=${container_type}s/${parent_engine}
-fi
+#if test -z $cert_type 
+# then
+#  cert_type=generated
+#fi
+#
+#if test $cert_type = user
+# then
+#    cert_type=generated
+#	StorePref=user
+#	isUserCert=1
+#  elif test $cert_type = external_ca
+#  then
+#   StorePref=/
+#  else
+#   StorePref=${container_type}s/${parent_engine}
+#fi
  
 if test -z $hostname
  then
   hostname=$common_name
 fi
+#
+#key_dir=$StoreRoot/$cert_type/keys/${StorePref}
+#cert_dir=$StoreRoot/$cert_type/certs/${StorePref}
 
-key_dir=$StoreRoot/$cert_type/keys/${StorePref}
-cert_dir=$StoreRoot/$cert_type/certs/${StorePref}
 
-if ! test -d $StoreRoot/$cert_type/keys/${StorePref}
- then 
-  mkdir -p $StoreRoot/$cert_type/keys/${StorePref}
-fi
-
-if ! test -d $StoreRoot/$cert_type/certs/${StorePref}
- then 
-  mkdir -p $StoreRoot/$cert_type/certs/${StorePref}
-fi  
   
 setup_dir=/home/certs/saved
 
-mkdir -p $key_dir
-mkdir -p $cert_dir
  
 if test -z $wild
  then
@@ -107,7 +97,7 @@ cat /etc/ssl/openssl.cnf $setup_dir/${cert_name}_config >$setup_dir/${cert_name}
 openssl genrsa -out  $key_dir/${cert_name}.key.tmp 2048
 
 openssl req -new  -key $key_dir/${cert_name}.key.tmp -out $pending_csr_dir/${cert_name}.csr -config $setup_dir/${cert_name}_config
-
+cp $setup_dir/${cert_name}_config $cert_dir
 if ! test -f $pending_csr_dir/${cert_name}.csr 
   then
  	echo "Failed to Create CSR"

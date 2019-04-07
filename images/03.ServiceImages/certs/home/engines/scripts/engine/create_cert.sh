@@ -2,7 +2,7 @@
 sudo -n /home/engines/scripts/engine/_fix_perms.sh
 . /home/engines/scripts/engine/cert_dirs.sh
 
-export StorePref key_dir common_name country state city organisation person cert_type container_type parent_engine  
+export StorePref key_dir cert_dir common_name country state city organisation person cert_type container_type parent_engine  
 isUserCert=0
 if test -z $cert_type
  then
@@ -10,7 +10,6 @@ if test -z $cert_type
   StorePref=${container_type}s/${parent_engine}
 elif test $cert_type = user
  then
-    cert_type=generated
 	StorePref=user
 	isUserCert=1
 else
