@@ -17,7 +17,7 @@ if test $cert_type = user
 	isUserCert=1
   elif test $cert_type = external_ca
   then
-   StorePref=external_ca
+   StorePref=/
   else
    StorePref=${container_type}s/${parent_engine}
 fi
