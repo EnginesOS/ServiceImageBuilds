@@ -15,6 +15,8 @@ if test $cert_type = user
     cert_type=generated
 	StorePref=user
 	isUserCert=1
+  elif test $cert_type = external_ca
+   StorePref=external_ca/
   else
    StorePref=${container_type}s/${parent_engine}
 fi
@@ -26,6 +28,17 @@ fi
 
 key_dir=$StoreRoot/$cert_type/keys/${StorePref}
 cert_dir=$StoreRoot/$cert_type/certs/${StorePref}
+
+if ! test -d $StoreRoot/$cert_type/keys/${StorePref}
+ then 
+  mkdir -p $StoreRoot/$cert_type/keys/${StorePref}
+fi
+
+if ! test -d $StoreRoot/$cert_type/certs/${StorePref}
+ then 
+  mkdir -p $StoreRoot/$cert_type/certs/${StorePref}
+fi  
+  
 setup_dir=/home/certs/saved
 
 mkdir -p $key_dir
