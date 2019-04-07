@@ -10,7 +10,7 @@ mkdir -p $StoreRoot/external_ca/certs/
 echo "$certificate" > $StoreRoot/external_ca/certs/tmp.crt
 
 
-common_name=`cat $StoreRoot/external_ca/certs/tmp.crt | openssl x509 -noout -subject  |sed "/^.*CN.*=/s///"| sed "/\*\./s///" | sed s"/[ ]//`
+common_name=`cat $StoreRoot/external_ca/certs/tmp.crt | openssl x509 -noout -subject  |sed "/^.*CN.*=/s///"| sed "/\*\./s///" | sed s"/[ ]//"`
 
 if test -z ${common_name}
  then
@@ -28,7 +28,7 @@ if ! test -f $pending_csr_dir/${common_name}.csr
 
 
 cp $pending_csr_dir/${common_name}.csr $StoreRoot/external_ca/certs/
-cp $pending_csr_dir/${common_name}.csr /home/certs/store/completed_csr
+mv $pending_csr_dir/${common_name}.csr /home/certs/store/completed_csr
 mv $StoreRoot/external_ca/certs/tmp.crt $StoreRoot/external_ca/certs/${common_name}.crt
 
 store=external_ca

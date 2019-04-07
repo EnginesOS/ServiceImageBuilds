@@ -114,4 +114,4 @@ if ! test -f $pending_csr_dir/${cert_name}.csr
  	rm $key_dir/${common_name}.key.tmp
  	exit 127
 fi
- cp $key_dir/${common_name}.key.tmp $key_dir/${common_name}.key
+ mv $key_dir/${common_name}.key.tmp $key_dir/${common_name}.key
