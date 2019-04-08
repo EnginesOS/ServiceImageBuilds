@@ -1,11 +1,11 @@
 #!/bin/bash
 
-if test -f /home/engines/scripts/configurators/saved/default_site_url
+if test -f /home/engines/scripts/configurators/saved/default_site
 	then
-		default_site_url=`cat /home/engines/scripts/configurators/saved/default_site_url`
-		echo '{"default_site_url":"'$default_site_url'"}'
+		default_site=`cat /home/engines/scripts/configurators/saved/default_site_url`
+		echo '{"default_site":"'$default_site'"}'
 	else
-	echo '{"default_site_url":"Not Saved"}'
+	echo '{"default_site":"Not Saved"}'
 
 fi
 

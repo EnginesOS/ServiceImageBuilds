@@ -4,7 +4,7 @@
 #. /home/engines/functions/params_to_env.sh
 #params_to_env
 
-required_values="wild install_target container_type parent_engine common_name country state city organisation person"
+required_values="install_target container_type parent_engine common_name country state city organisation person"
 check_required_values
 
 export wild container_type install_target parent_engine common_name country state city organisation person 
