@@ -32,7 +32,7 @@ cat $LDIF_FILE | /home/engines/scripts/ldap/ldapadd.sh
 
 r=$?
 cp $LDIF_FILE /tmp/addou
-if $r -ne 0
+if test $r -ne 0
  then 
   mv $LDIF_FILE $LDIF_FILE.failed
   exit $r
