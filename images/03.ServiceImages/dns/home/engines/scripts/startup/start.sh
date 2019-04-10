@@ -26,9 +26,9 @@ sudo -n /usr/sbin/named  -c /etc/bind/named.conf -f -u bind &
 
 startup_complete
 
-sleep 5
-/home/engines/scripts/engine/create_system_dns_records.sh
-
+sleep 10
+/home/engines/scripts/engine/create_int_ip_dns_records.sh
+/home/engines/scripts/engine/create_ext_ip_dns_records.sh
 wait  
 
 exit_code=$?
