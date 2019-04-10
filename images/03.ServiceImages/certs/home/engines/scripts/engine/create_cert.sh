@@ -2,6 +2,11 @@
 sudo -n /home/engines/scripts/engine/_fix_perms.sh
 . /home/engines/scripts/engine/cert_dirs.sh
 
+if ! test -d /home/certs/store/pending_csr/
+ then 
+  mkdir /home/certs/store/pending_csr/
+fi
+
 export StorePref key_dir cert_dir common_name country state city organisation person cert_type container_type parent_engine  
 isUserCert=0
 if test -z $cert_type
