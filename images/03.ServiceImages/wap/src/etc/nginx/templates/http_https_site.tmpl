@@ -9,6 +9,7 @@ server {
         listen 8000;
         server_name FQDN;
 		proxy_read_timeout 300s;
+		port_in_redirect off;
 		
  location / {
             FOLDER            		
@@ -34,6 +35,8 @@ server {
 }
  
 server {
+port_in_redirect off;
+
     access_log /var/log/nginx/FQDN/https/access.log;
     error_log /var/log/nginx/FQDN/https/error.log;
     error_page 502 /502.html;

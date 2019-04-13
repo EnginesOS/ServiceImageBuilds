@@ -5,6 +5,8 @@ upstream FQDN_app {
 }
 
 server {
+port_in_redirect off;
+
         listen 8000;
         server_name FQDN;
        # resolver RESOLV_IP;

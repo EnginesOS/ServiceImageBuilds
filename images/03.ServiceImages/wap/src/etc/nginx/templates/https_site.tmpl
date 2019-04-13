@@ -7,6 +7,8 @@ upstream FQDN_app {
  	
 server {
     listen 4430;
+    port_in_redirect off;
+    
     server_name FQDN;
     add_header Accept-Ranges bytes;
      #FIX ME Make HST settable on by default
