@@ -26,11 +26,25 @@ if test -z $hostname
  then
   hostname=$common_name
 fi
-#
-#key_dir=$StoreRoot/$cert_type/keys/${StorePref}
-#cert_dir=$StoreRoot/$cert_type/certs/${StorePref}
+
+if test -z $key_dir
+ then
+    key_dir=$StoreRoot/$cert_type/keys/${StorePref}
+fi
+if test -z $cert_dir
+ then
+cert_dir=$StoreRoot/$cert_type/certs/${StorePref}
+fi
 
 
+if ! test -d $key_dir
+ then
+  mkdir  $key_dir
+fi
+if ! test -d $cert_dir
+then
+ mkdir $cert_dir
+fi
   
 setup_dir=/home/certs/saved
 
