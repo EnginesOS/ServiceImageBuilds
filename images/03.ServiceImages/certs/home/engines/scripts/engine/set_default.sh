@@ -5,6 +5,11 @@ install_target=$1
 cert_type=$2
 cert_name=$3
 
+if test install_target = default
+ then
+  install_target = all
+fi
+
 echo install target $install_target
  
 function install_service {
