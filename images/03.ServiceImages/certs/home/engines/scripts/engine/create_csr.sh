@@ -39,11 +39,11 @@ fi
 
 if ! test -d $key_dir
  then
-  mkdir  $key_dir
+  mkdir  -p $key_dir
 fi
 if ! test -d $cert_dir
 then
- mkdir $cert_dir
+ mkdir -p $cert_dir
 fi
   
 setup_dir=/home/certs/saved
