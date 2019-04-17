@@ -1,7 +1,7 @@
 FROM engines/bionicbeaverbase:$release
 #FROM engines/base_image:alpha 
 
-ENV DEBIAN_FRONTEND noninteractive
+
 
 COPY invoke-rc.d /usr/sbin/
 
