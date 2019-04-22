@@ -3,7 +3,7 @@ FROM suet/core-bionic
 ENV DEBIAN_FRONTEND noninteractive
 COPY dpkg.conf.d /etc/dpkg/dpkg.cfg.d
 ADD sources.list /etc/apt/
-ENV	base_build 20181221
+ENV	base_build 20190422
 RUN echo '#!/bin/sh' > /usr/sbin/policy-rc.d &&\
 	echo 'exit 101' >> /usr/sbin/policy-rc.d &&\           
 	chmod +x /usr/sbin/policy-rc.d &&\
