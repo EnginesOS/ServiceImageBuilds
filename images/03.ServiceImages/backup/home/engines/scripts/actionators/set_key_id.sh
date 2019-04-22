@@ -1,7 +1,7 @@
 #!/bin/sh
  . /home/engines/functions/checks.sh
 
-. /home/engines/scripts/engine/bacup_dirs.sh
+. /home/engines/scripts/engine/backup_dirs.sh
 
 if ! test -z $disabled 
  then
