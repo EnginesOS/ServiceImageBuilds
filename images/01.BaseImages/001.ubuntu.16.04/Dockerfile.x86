@@ -1,10 +1,11 @@
 #FROM engines/xenial:current
 FROM suet/core-bionic
+ENV DEBIAN_FRONTEND noninteractive
 COPY dpkg.conf.d /etc/dpkg/dpkg.cfg.d
 ADD sources.list /etc/apt/
 ENV	base_build 20181221
 RUN echo '#!/bin/sh' > /usr/sbin/policy-rc.d &&\
-	echo 'exit 101' >> /usr/sbin/policy-rc.d &&\
+	echo 'exit 101' >> /usr/sbin/policy-rc.d &&\           
 	chmod +x /usr/sbin/policy-rc.d &&\
 	dpkg-divert --local --rename --add /sbin/initctl &&\
 	cp -a /usr/sbin/policy-rc.d /sbin/initctl &&\
@@ -16,6 +17,9 @@ RUN echo '#!/bin/sh' > /usr/sbin/policy-rc.d &&\
 	echo 'Acquire::GzipIndexes "true"; Acquire::CompressionTypes::Order:: "gz";' > /etc/apt/apt.conf.d/docker-gzip-indexes &&\
  	sed -i 's/^#\s*\(deb.*universe\)$/\1/g' /etc/apt/sources.list &&\
 	rm -rf /var/cache/apt/archives &&\
+	echo "console-setup   console-setup/charmap47 select  UTF-8" > encoding.conf &&\
+	debconf-set-selections encoding.conf &&\
+	rm encoding.conf &&\
 	apt-get -y update &&\
 	apt-get -y upgrade &&\
     apt-get -y autoremove
