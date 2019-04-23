@@ -51,4 +51,4 @@ smtp_generic_maps = hash:/etc/postfix/maps/generic
 smtpd_client_restrictions=permit_mynetworks,permit_sasl_authenticated,check_relay_domains,reject
 smtpd_data_restrictions = reject_unauth_pipelining,reject_multi_recipient_bounce ,permit
 
-smtpd_relay_restrictions=premit_mynetworks,reject
+smtpd_relay_restrictions=permit_mynetworks,,permit_sasl_authenticated,check_relay_domains,reject
