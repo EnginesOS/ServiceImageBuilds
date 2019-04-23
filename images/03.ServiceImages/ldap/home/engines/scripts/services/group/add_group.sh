@@ -4,7 +4,7 @@
 #create engine group ou
 . /home/engines/functions/ldap/support_functions.sh
 
- /home/engines/scripts/ldap/ldapsearch.sh ou=${top_ou},ou=Groups,dc=engines,dc=internal ou=$parent_engine
+ /home/engines/scripts/ldap/ldapsearch.sh ou=${top_ou},ou=Groups,dc=engines,dc=internal ou=$parent_engine |grep $parent_engine 
  
 if ! test $? -eq 0
  then
