@@ -9,7 +9,7 @@
 
 required_values="backup_name src_type"
 check_required_values
-. /home/engines/scripts/engine/bacup_dirs.sh
+. /home/engines/scripts/engine/backup_dirs.sh
 
 
 echo "$*" >>/var/log/backup/rmbackup.log

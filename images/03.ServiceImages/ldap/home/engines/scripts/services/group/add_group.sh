@@ -4,9 +4,9 @@
 #create engine group ou
 . /home/engines/functions/ldap/support_functions.sh
 
-c=`/home/engines/scripts/ldap/ldapsearch.sh ou=$parent_engine,ou=${top_ou},ou=Groups,dc=engines,dc=internal ou=$parent_engine  |wc -l`
+ /home/engines/scripts/ldap/ldapsearch ou=${top_ou},ou=Groups,dc=engines,dc=internal ou=$parent_engine
  
-if test $c -eq 0
+if ! test $? -eq 0
  then
   cat /home/engines/templates/ldap/services/add_group_ou.ldif | while read LINE
    do
@@ -17,7 +17,7 @@ if test $c -eq 0
 
 r=$?
 
-if $r -ne 0
+if test $r -ne 0
  then 
   mv $LDIF_FILE $LDIF_FILE.failed
   exit $r
@@ -44,7 +44,7 @@ done
 cat $LDIF_FILE | /home/engines/scripts/ldap/ldapadd.sh 
 r=$?
 
-if $r -ne 0
+if test $r -ne 0
  then 
   mv $LDIF_FILE $LDIF_FILE.failed
   exit $r

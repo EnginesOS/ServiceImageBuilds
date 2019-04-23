@@ -65,11 +65,11 @@ LDAP_OUTF=`mktemp`
    done
 
 
-if ! test -z $write_acl
+if ! test -z "$write_acl"
  then
 	echo  "$write_acl" >> $LDIF_FILE
 fi
-if ! test -z $read_acl
+if ! test -z "$read_acl"
  then
 	echo  "$read_acl" >> $LDIF_FILE
 fi
