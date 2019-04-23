@@ -8,5 +8,6 @@ required_values="host"
 check_required_values
 
 
+ssh-keygen -f $keys_dir/$host
 
 cat $keys_dir/$host.pub

@@ -1,4 +1,11 @@
 #!/bin/bash
+
+if test -f /home/engines/scripts/configurators/saved/default_destination/settings
+ then
+  echo please set default_destination
+  exit 0
+fi
+  
 . /home/engines/scripts/engine/backup_dirs.sh
 function add_service {
 src=/tmp/backup_$service/

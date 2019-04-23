@@ -1,6 +1,6 @@
 #!/bin/sh
 
-. /home/engines/scripts/engine/bacup_dirs.sh
+. /home/engines/scripts/engine/backup_dirs.sh
 
 
 
