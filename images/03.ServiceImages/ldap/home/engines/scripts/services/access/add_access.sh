@@ -33,7 +33,7 @@ if ! test -z $read_access
    then  
     unset read_acl
   else
-     	read_acl="  by dn="$read_access"
+     	read_acl="  by dn=$read_access"
   fi
 fi
 
