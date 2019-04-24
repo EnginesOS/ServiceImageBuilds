@@ -52,7 +52,7 @@ if ! test -z $write_access
    then  
     unset write_acl
   else
-     	write_acl="  by dn="$write_access"
+     	write_acl=  by dn="$write_access"
   fi
 fi
 
