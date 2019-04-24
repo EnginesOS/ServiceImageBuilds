@@ -69,7 +69,14 @@ if  test $exit_code -ne 0
   echo Failed postfix.ldif
   exit $exit_code
 fi  
-
+echo Schema for sshkey
+ldapadd -Y EXTERNAL -H ldapi:/// -f /home/engines/templates/ldap/first_run/sshkey.ldif
+exit_code=$?
+if  test $exit_code -ne 0
+ then
+  echo Failed sshkey.ldif
+  exit $exit_code
+fi  
 echo tree root ou 
 ldapadd -Y EXTERNAL -H ldapi:/// -f /home/engines/templates/ldap/first_run/root_ou.ldif
 exit_code=$?
