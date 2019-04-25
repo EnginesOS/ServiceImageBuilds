@@ -1,8 +1,8 @@
 # The backend Config
-dn: olcDatabase={2}mdb,cn=config
+dn: olcDatabase={1}mdb,cn=config
 objectClass: olcDatabaseConfig
 objectClass: olcMdbConfig
-olcDatabase: {2}mdb
+olcDatabase: {1}mdb
 olcDbCheckpoint: 512 30
 olcDbMaxSize: 1073741824
 olcLastMod: TRUE
