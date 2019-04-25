@@ -1,3 +1,22 @@
+# The backend Config
+dn: olcDatabase={2}mdb,cn=config
+objectClass: olcDatabaseConfig
+objectClass: olcMdbConfig
+olcDatabase: {2}mdb
+olcDbCheckpoint: 512 30
+olcDbMaxSize: 1073741824
+olcLastMod: TRUE
+olcReadOnly: FALSE
+olcSuffix: dc=engines,dc=internal
+olcDbDirectory: /var/lib/ldap
+olcRootDN: cn=admin,dc=engines,dc=internal
+olcRootPW: test
+olcDbIndex: objectClass eq
+olcDbIndex: uid pres,eq
+olcDbIndex: uidNumber,gidNumber eq
+olcDbIndex: member,memberUid eq
+olcDbIndex: cn,sn,mail pres,eq,approx,sub
+
 dn: dc=engines,dc=internal
 objectClass: top
 objectClass: dcObject
