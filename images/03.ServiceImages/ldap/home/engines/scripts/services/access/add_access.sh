@@ -33,7 +33,7 @@ if ! test -z $read_access
    then  
     unset read_acl
   else
-     	read_acl="  by dn="$read_access"
+     	read_acl="  by dn=$read_access"
   fi
 fi
 
@@ -52,7 +52,7 @@ if ! test -z $write_access
    then  
     unset write_acl
   else
-     	write_acl="  by dn="$write_access"
+     	write_acl=  by dn="$write_access"
   fi
 fi
 
