@@ -1,3 +1,90 @@
+# The backend Config
+dn: olcDatabase={1}mdb,cn=config
+objectClass: olcDatabaseConfig
+objectClass: olcMdbConfig
+olcDatabase: {1}mdb
+olcDbCheckpoint: 512 30
+olcDbMaxSize: 1073741824
+olcLastMod: TRUE
+olcReadOnly: FALSE
+olcSuffix: dc=engines,dc=internal
+olcDbDirectory: /var/lib/ldap
+olcRootDN: cn=admin,dc=engines,dc=internal
+olcRootPW: test
+olcDbIndex: objectClass eq
+olcDbIndex: uid pres,eq
+olcDbIndex: uidNumber,gidNumber eq
+olcDbIndex: member,memberUid eq
+olcDbIndex: cn,sn,mail pres,eq,approx,sub
+olcAccess: {1} to attrs=userPassword
+    by self write
+    by dn="uid=uadmin,ou=hosts,ou=Engines,dc=engines,dc=internal" write
+    by dn="cn=Administrator,ou=People,dc=engines,dc=internal" write
+    by dn="uid=ldap,ou=hosts,ou=Engines,dc=engines,dc=internal"  write
+    by group.exact="cn=Administrators,ou=Groups,dc=engines,dc=internal" write
+    by anonymous auth
+    by * none
+olcAccess: {1} to attrs=shadowLastChange
+    by self write  
+    by dn.exact="uid=uadmin,ou=hosts,ou=Engines,dc=engines,dc=internal" write
+    by dn.exact="cn=Administrator,ou=People,dc=engines,dc=internal" manage
+    by group.exact="cn=Administrators,ou=Groups,dc=engines,dc=internal" manage
+    by dn.exact="uid=ldap,ou=hosts,ou=Engines,dc=engines,dc=internal"  write
+    by dn.exact="gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth" manage
+olcAccess: {2} to dn.base="cn=uidNext,ou=System,ou=Engines,dc=engines,dc=internal"
+        by dn.exact="uid=uadmin,ou=hosts,ou=Engines,dc=engines,dc=internal" write
+        by dn.exact="cn=Administrator,ou=People,dc=engines,dc=internal" manage
+        by dn.exact="uid=ldap,ou=hosts,ou=Engines,dc=engines,dc=internal" manage
+        by group.exact="cn=Administrators,ou=Groups,dc=engines,dc=internal" manage
+        by dn.exact="gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth" manage
+olcAccess: {3} to dn.base="cn=gidNext,ou=System,ou=Engines,dc=engines,dc=internal"
+        by dn.exact="uid=uadmin,ou=hosts,ou=Engines,dc=engines,dc=internal" write
+        by dn.exact="cn=Administrator,ou=People,dc=engines,dc=internal" manage
+        by group.exact="cn=Administrators,ou=Groups,dc=engines,dc=internal" write
+        by dn.exact="uid=ldap,ou=hosts,ou=Engines,dc=engines,dc=internal" manage
+        by dn.exact="gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth" manage
+olcAccess: {5} to dn.subtree="ou=People,dc=engines,dc=internal"
+        by dn.exact="uid=ldap,ou=hosts,ou=Engines,dc=engines,dc=internal" manage
+        by dn.exact="uid=uadmin,ou=hosts,ou=Engines,dc=engines,dc=internal" write
+        by group.exact="cn=Administrators,ou=Groups,dc=engines,dc=internal" manage
+        by dn.exact="cn=Administrator,ou=People,dc=engines,dc=internal" manage
+        by * read
+olcAccess: {6} to dn.subtree="ou=Groups,dc=engines,dc=internal"
+        by dn.exact="uid=ldap,ou=hosts,ou=Engines,dc=engines,dc=internal" manage
+        by dn.exact="uid=system,ou=hosts,ou=Engines,dc=engines,dc=internal" write
+        by dn.exact="uid=uadmin,ou=hosts,ou=Engines,dc=engines,dc=internal" write
+        by dn.exact="cn=Administrator,ou=People,dc=engines,dc=internal" manage
+        by group.exact="cn=Administrators,ou=Groups,dc=engines,dc=internal" manage
+        by dn.exact="gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth" manage
+        by * read
+olcAccess: {7} to dn.subtree="ou=Distribution Groups,dc=engines,dc=internal"
+        by dn.exact="uid=ldap,ou=hosts,ou=Engines,dc=engines,dc=internal" manage
+        by dn.exact="uid=uadmin,ou=hosts,ou=Engines,dc=engines,dc=internal" write
+        by group.exact="cn=Administrators,ou=Groups,dc=engines,dc=internal" manage
+        by dn.exact="cn=Administrator,ou=People,dc=engines,dc=internal" manage
+        by dn.exact="gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth" manage
+        by * read
+olcAccess: {10} to dn.subtree="ou=containers,ou=Engines,dc=engines,dc=internal"
+        by dn.exact="uid=ldap,ou=hosts,ou=Engines,dc=engines,dc=internal" manage
+        by dn.exact="uid=system,ou=hosts,ou=Engines,dc=engines,dc=internal" write
+        by dn.exact="uid=uadmin,ou=hosts,ou=Engines,dc=engines,dc=internal" write
+        by dn.exact="cn=Administrator,ou=People,dc=engines,dc=internal" manage
+        by dn.exact="gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth" manage
+        by * read
+olcAccess: {10} to dn.subtree="ou=Engines,dc=engines,dc=internal"
+        by dn.exact="uid=uadmin,ou=hosts,ou=Engines,dc=engines,dc=internal" write
+        by dn.exact="uid=ldap,ou=hosts,ou=Engines,dc=engines,dc=internal" manage
+        by dn.exact="cn=Administrator,ou=People,dc=engines,dc=internal" manage
+        by dn.exact="gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth" manage
+        by * read       
+olcAccess: {999} to *
+        by dn.exact="cn=Administrator,ou=People,dc=engines,dc=internal" manage
+        by dn.exact="uid=ldap,ou=hosts,ou=Engines,dc=engines,dc=internal" manage
+        by dn.exact="gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth" manage
+        by "dn.exact=cn=admin,cn=config" manage
+        by * read
+   
+
 dn: dc=engines,dc=internal
 objectClass: top
 objectClass: dcObject
