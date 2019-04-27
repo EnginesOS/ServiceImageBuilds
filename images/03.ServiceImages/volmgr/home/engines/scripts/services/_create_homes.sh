@@ -1,13 +1,13 @@
 #!/bin/sh
 for user in `cat -` 
 do
- if ! test -d  /var/lib/engines/home/$user
+ if ! test -d  /var/fs/homes/$user
   then 
   continue
  fi 
- mkdir /var/lib/engines/home/$user/$parent_engine
- chmod g+rwx /var/lib/engines/home/$user/$parent_engine
- chgrp containers /var/lib/engines/home/$user/$parent_engine
+ mkdir /var/fs/homes/$user/$parent_engine
+ chmod g+rwx /var/fs/homes/$user/$parent_engine
+ chgrp containers /var/fs/homes/$user/$parent_engine
 done 
 #mkdir -p /var/fs/local/${parent_engine}/${service_name}
 #chown -R ${user}.${group} /var/fs/local/${parent_engine}/${service_name}
