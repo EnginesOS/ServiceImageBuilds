@@ -1,5 +1,6 @@
 #!/bin/sh
-for user in `cat -` do
+for user in `cat -` 
+do
  if ! test -d  /var/lib/engines/home/$user
   then 
   continue
