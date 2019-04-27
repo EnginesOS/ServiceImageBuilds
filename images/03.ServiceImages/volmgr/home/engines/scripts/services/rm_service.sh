@@ -21,14 +21,14 @@ fi
 required_values="parent_engine "
   check_required_values
 
-if ! test $voltype = dir
+if  ! test -z $home_type 
   then
-   if test $voltype = homes
+   if test $home_type = all
     then
      sudo -n /home/engines/scripts/services/_remove_homes.sh
-   elif test $voltype = homes
+   elif test $home_type = seperate
       then
-       sudo -n /home/engines/scripts/services/_remove_all_homes.sh
+      echo $homes |  sudo -n /home/engines/scripts/services/_remove_all_homes.sh
    else
      echo "Unknown type"  
      exit 127
