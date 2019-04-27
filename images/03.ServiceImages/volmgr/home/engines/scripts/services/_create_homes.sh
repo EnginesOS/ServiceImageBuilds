@@ -6,7 +6,7 @@ for user in `cat -` do
  fi 
  mkdir /var/lib/engines/home/$user/$parent_engine
  chown g+rwx /var/lib/engines/home/$user/$parent_engine
- chown containers /var/lib/engines/home/$user/$parent_engine
+ chgrp containers /var/lib/engines/home/$user/$parent_engine
 done 
 #mkdir -p /var/fs/local/${parent_engine}/${service_name}
 #chown -R ${user}.${group} /var/fs/local/${parent_engine}/${service_name}
