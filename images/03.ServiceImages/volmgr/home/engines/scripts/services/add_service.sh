@@ -11,8 +11,28 @@ export service_handle
 export user
 export group
 
+if test -z $voltype
+ then
+  voltype=dir
+fi
 
-if test -z $is_secret
+#FIX ME add more values to required
+required_values="parent_engine "
+  check_required_values
+
+if  ! test -z $home_type 
+  then
+   if test $home_type = seperate
+    then
+     echo $homes | sudo -n /home/engines/scripts/services/_create_homes.sh
+   elif test $home_type = all
+    then
+     sudo -n /home/engines/scripts/services/_create_all_homes.sh
+   else
+    echo "Unknown type"  
+    exit 127
+   fi  
+elif test -z $is_secret
  then
   required_values="parent_engine service_name user group"
   check_required_values
