@@ -1,6 +1,6 @@
 #!/bin/sh
 for user in `cat -` do
- if ! test -d  /var/lib/engines/home/
+ if ! test -d  /var/lib/engines/home/$user
   then 
   continue
  fi 
