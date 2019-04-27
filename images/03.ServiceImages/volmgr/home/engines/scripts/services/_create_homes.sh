@@ -5,7 +5,7 @@ for user in `cat -` do
   continue
  fi 
  mkdir /var/lib/engines/home/$user/$parent_engine
- chown g+rwx /var/lib/engines/home/$user/$parent_engine
+ chmod g+rwx /var/lib/engines/home/$user/$parent_engine
  chgrp containers /var/lib/engines/home/$user/$parent_engine
 done 
 #mkdir -p /var/fs/local/${parent_engine}/${service_name}
