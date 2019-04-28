@@ -1,5 +1,6 @@
 FROM engines/apache:$release
 #FROM engines/frameworkbase:$release
+ADD home home
 
 ENV LC_ALL en_US.UTF-8
 ENV LANG en_US.UTF-8

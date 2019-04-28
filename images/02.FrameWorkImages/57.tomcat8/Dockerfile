@@ -1,5 +1,6 @@
 FROM engines/openjdk7:$release
 
+ADD home home
 RUN  apt-mark unhold tzdata  &&\
 	/usr/sbin/usermod -u 22671 www-data &&\
 	apt-get update -y &&\

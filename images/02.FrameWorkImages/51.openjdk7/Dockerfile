@@ -1,5 +1,6 @@
 FROM engines/frameworkbase:$release
 
+ADD home home
 RUN apt-mark unhold tzdata &&\
 	/usr/sbin/usermod -u 22671 www-data &&\
 	add-apt-repository -y ppa:openjdk-r/ppa &&\
