@@ -17,7 +17,7 @@ uidnumber=`/home/engines/scripts/ldap/next_uid.sh`
 
 echo uidnumber:$uidnumber >> $LDIF_FILE
 err_file=`mktemp`
-r=`cat $LDIF_FILE | /home/engines/scripts/ldap/ldapadd.sh` 
+r=`/home/engines/scripts/ldap/ldapadd.sh -f $LDIF_FILE  ` 
 #if test $? -eq 0
 # then
 #  echo "addprinc -pw $password  $uid" | sudo -n /home/engines/scripts/actionators/sudo/_add_kerberos_princ.sh &> $err_file

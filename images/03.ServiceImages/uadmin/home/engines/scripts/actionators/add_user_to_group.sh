@@ -13,4 +13,4 @@ do
 done
 
 
-cat $LDIF_FILE | /home/engines/scripts/ldap/ldapmodify.sh  
+/home/engines/scripts/ldap/ldapmodify.sh -f $LDIF_FILE 
