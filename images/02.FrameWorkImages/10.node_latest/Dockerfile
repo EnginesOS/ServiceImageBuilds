@@ -3,7 +3,7 @@ FROM engines/frameworkbuild:$release
 ADD home home
 ENV ContUser node
 ENV ContGrp node
-ENV NODE_VERSION 7.10.1
+ENV NODE_VERSION 12.1.0
 
 RUN mkdir ~/node_js_src &&\
 	cd ~/node_js_src &&\
