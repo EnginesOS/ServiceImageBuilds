@@ -7,7 +7,7 @@ do
  fi 
  mkdir /var/fs/homes/$user/$parent_engine
  chmod g+rwx /var/fs/homes/$user/$parent_engine
- chgrp containers /var/fs/homes/$user/$parent_engine
+ chgrp 11111 /var/fs/homes/$user/$parent_engine
 done 
 #mkdir -p /var/fs/local/${parent_engine}/${service_name}
 #chown -R ${user}.${group} /var/fs/local/${parent_engine}/${service_name}
