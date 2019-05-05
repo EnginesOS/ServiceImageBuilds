@@ -13,6 +13,9 @@ elif test $cert_type = user
   store=user
 elif test   $cert_type = imported
  then
+   store=imported
+elif test   $cert_type = external_ca
+ then
    store=external_ca
 fi  
 
