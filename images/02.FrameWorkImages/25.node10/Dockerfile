@@ -1,5 +1,6 @@
 FROM engines/frameworkbuild:$release
 
+ADD home home
 ENV ContUser node
 ENV ContGrp node
 ENV NODE_VERSION 10.46

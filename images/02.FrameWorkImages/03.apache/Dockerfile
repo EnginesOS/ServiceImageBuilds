@@ -1,4 +1,5 @@
 FROM engines/frameworkbase:$release
+ADD home home
 
 RUN /usr/sbin/usermod -u 22671 www-data &&\
 	apt-get install -y apache2 &&\
@@ -23,7 +24,6 @@ ENV APACHE_LOG_DIR /var/log/
 ADD src/000-default.conf /etc/apache2/sites-enabled/
 ADD src/ports.conf /etc/apache2/
 ADD src/envvars /etc/apache2/envvars
-ADD home home
 
 ENV ContUser www-data
 ENV ContGrp www-data

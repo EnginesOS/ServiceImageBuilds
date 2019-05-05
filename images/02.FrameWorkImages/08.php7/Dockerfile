@@ -2,6 +2,8 @@ FROM engines/apache:$release
 #FROM engines/frameworkbase:$release
 ADD src/sources.list /etc/apt/
 
+ADD home home
+
 RUN /usr/sbin/usermod -u 22671 www-data &&\
 	apt-get update -y &&\
 	apt-get install -y libapache2-mod-php \

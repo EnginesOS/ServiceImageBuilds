@@ -8,9 +8,7 @@ ADD src/gemrc  /home/.gemrc
 	
 RUN	groupadd  -g 22672 ruby &&\
 	useradd -u 22672  -g ruby -d /home/ruby -m -G containers ruby&&\
-	mkdir -p ~www-data &&\
 	apt-get -y update &&\
-	chown www-data ~www-data &&\
 	apt-get install -y ruby-dev \
 					   zlib1g \
 					   zlib1g-dev &&\
