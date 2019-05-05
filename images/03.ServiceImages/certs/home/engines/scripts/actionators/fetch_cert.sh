@@ -20,6 +20,7 @@ elif test $cert_type = live
  then
    store=${owner_type}s/$owner/certs/
 elif test $cert_type = external_ca
+then
 store=/certs/
 fi  
 
