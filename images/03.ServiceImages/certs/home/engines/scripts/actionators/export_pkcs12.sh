@@ -2,7 +2,7 @@
  . /home/engines/functions/checks.sh
 . /home/engines/scripts/engine/cert_dirs.sh
 
-required_values="common_name "
+required_values="common_name cert_type export_password"
 check_required_values
 if test $cert_type = generated
 then
@@ -14,7 +14,7 @@ elif test $cert_type = user
 elif test   $cert_type = imported
  then
    store=imported
-elif test   $cert_type = external_ca
+elif test $cert_type = external_ca
  then
    store=external_ca
 fi  
@@ -22,9 +22,9 @@ fi
   
 if test -f $StoreRoot/${store}/certs/${common_name}.crt
   then
-  openssl pkcs12 -export - -passout pass:$export_password -inkey $StoreRoot/${store}/keys/${common_name}.key -in $StoreRoot/${store}/certs/${common_name}.crt
+  openssl pkcs12 -export  -passout pass:$export_password -inkey $StoreRoot/${store}/keys/${common_name}.key -in $StoreRoot/${store}/certs/${common_name}.crt
   else
- 	echo "Not Such Cert $StoreRoot/$cert_type/${store}/${common_name}.crt"
+ 	echo "Not Such Cert $StoreRoot/${store}/certs/${common_name}.crt"
  	exit 1
 fi
 

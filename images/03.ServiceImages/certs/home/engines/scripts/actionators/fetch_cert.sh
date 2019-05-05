@@ -16,9 +16,11 @@ elif test $cert_type = user
  then
   cert_type=generated 
   store=user
-elif test   $cert_type = live
+elif test $cert_type = live
  then
    store=${owner_type}s/$owner/certs/
+elif test $cert_type = external_ca
+store=/certs/
 fi  
 
   
