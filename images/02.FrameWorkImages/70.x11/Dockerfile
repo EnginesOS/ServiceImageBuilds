@@ -1,5 +1,6 @@
 FROM engines/frameworkbuild:$release
 
+ADD home home
 ENV ContUser xuser
 ENV ContGrp xuser
 

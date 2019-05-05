@@ -2,6 +2,7 @@ FROM engines/node6:$release
 
 #engines/frameworkbuild:$release
 
+ADD home home
 ENV ContUser python
 ENV ContGrp python
 ENV python_version 3.6

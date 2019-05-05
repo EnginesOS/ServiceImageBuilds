@@ -4,6 +4,7 @@ Run chown -R g+w /usr/local/ &&\
 	chgrp -R containers /usr/local/
 
 
+ADD home home
 USER node
 
 RUN	curl https://install.meteor.com | /bin/sh

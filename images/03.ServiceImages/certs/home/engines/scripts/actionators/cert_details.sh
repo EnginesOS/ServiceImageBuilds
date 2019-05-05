@@ -22,6 +22,9 @@ if test $cert_location = user
    required_values="common_name cert_location consumer_type consumer_name"
    check_required_values
    path=/generated/certs/${consumer_type}s/$consumer_name/$common_name
+ elif test $cert_location = external_ca
+  then 
+   path=/external_ca/certs/$common_name
 fi  
 
   

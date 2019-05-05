@@ -1,5 +1,6 @@
 FROM engines/rails4:$release
 
+ADD home home
 ENV RAILS_ENV production
 
 RUN /usr/sbin/usermod -u 22671 www-data &&\

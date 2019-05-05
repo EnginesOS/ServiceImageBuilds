@@ -9,5 +9,9 @@ volmgr ALL = (root) NOPASSWD: /home/engines/scripts/services/_create_secret.sh
 volmgr ALL = (root) NOPASSWD: /home/engines/scripts/services/_delete_secret.sh
 volmgr ALL = (root) NOPASSWD: /home/engines/scripts/backup/engine/_backup.sh
 volmgr ALL = (root) NOPASSWD: /home/engines/scripts/backup/engine/_restore.sh
+volmgr ALL = (root) NOPASSWD: /home/engines/scripts/services/_create_homes.sh
+volmgr ALL = (root) NOPASSWD: /home/engines/scripts/services/_create_all_homes.sh
+volmgr ALL = (root) NOPASSWD: /home/engines/scripts/services/_remove_homes.sh
+volmgr ALL = (root) NOPASSWD: /home/engines/scripts/services/_remove_all_homes.sh
 #must have blank after last sudoers line
 

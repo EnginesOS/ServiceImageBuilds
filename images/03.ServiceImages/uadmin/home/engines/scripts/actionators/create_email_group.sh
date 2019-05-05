@@ -13,7 +13,4 @@ do
  eval echo "$LINE" >> $LDIF_FILE
 done
 
-
-
-
-cat $LDIF_FILE | /home/engines/scripts/ldap/ldapadd.sh 
+/home/engines/scripts/ldap/ldapadd.sh -f $LDIF_FILE

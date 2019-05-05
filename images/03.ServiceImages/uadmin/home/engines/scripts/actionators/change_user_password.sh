@@ -14,7 +14,7 @@ cat /home/engines/templates/chg_user_pass.ldif | while read LINE
 do
  eval echo "$LINE" >> $LDIF_FILE
 done
-err=`cat $LDIF_FILE | /home/engines/scripts/ldap/ldapmodify.sh` 
+err=`/home/engines/scripts/ldap/ldapmodify.sh -f $LDIF_FILE ` 
 rm $LDIF_FILE 
 e=$?
  if test $e -eq 0
