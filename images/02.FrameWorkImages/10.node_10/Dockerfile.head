@@ -4,6 +4,7 @@ ADD home home
 ENV ContUser node
 ENV ContGrp node
 ENV NODE_VERSION 10.15.3
+ENV SRC_URL=https://nodejs.org/dist/latest-v10.x/node-v$NODE_VERSION-linux-x64.tar.gz
 
 #RUN mkdir ~/node_js_src &&\
 #	cd ~/node_js_src &&\

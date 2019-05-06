@@ -4,6 +4,7 @@ ADD home home
 ENV ContUser node
 ENV ContGrp node
 ENV NODE_VERSION latest
+ENV SRC_URL=http://nodejs.org/dist/node-latest.tar.gz 
 
 #RUN mkdir node_js_src &&\
 #	cd node_js_src &&\
