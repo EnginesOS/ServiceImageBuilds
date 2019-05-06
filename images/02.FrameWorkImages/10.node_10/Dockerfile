@@ -7,8 +7,8 @@ ENV NODE_VERSION 10.15.3
 
 RUN mkdir ~/node_js_src &&\
 	cd ~/node_js_src &&\
-	wget -N https://nodejs.org/dist/v8.9.4/node-v$NODE_VERSION-linux-x64.tar.gz  &&\
-	tar node-v$NODE_VERSION-linux-x64.tar.gz &&\
+	wget -N https://nodejs.org/dist/v${NODE_VERSION}/node-v$NODE_VERSION-linux-x64.tar.gz  &&\
+	tar node-v${NODE_VERSION}-linux-x64.tar.gz &&\
 	cd node-v* &&\
 	./configure &&\
 	make &&\
@@ -16,4 +16,4 @@ RUN mkdir ~/node_js_src &&\
 	groupadd node &&\
  	useradd -u 22673  -g node -d /home/node -m -G containers node &&\
  	npm -g install npm@latest &&\
- 	cd ~ ; rm -r ~/node_js_src 
+ 	cd .. ; rm -r ~/node_js_src 
