@@ -1,4 +1,4 @@
-FROM engines/node6:$release
+FROM engines/node10:$release
 
 ENV ruby_version 2.5.1
 ENV ContUser ruby
