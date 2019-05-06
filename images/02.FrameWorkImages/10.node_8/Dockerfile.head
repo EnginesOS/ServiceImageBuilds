@@ -14,8 +14,8 @@ ENV SRC_URL=https://nodejs.org/dist/latest-v8.x/node-v${NODE_VERSION}.tar.xz
 #	./configure &&\
 #	make &&\
 #	make install &&\
-#	groupadd node &&\
-# 	useradd -u 22673  -g node -d /home/node -m -G containers node &&\
+#	groupadd node ;\
+# 	useradd -u 22673  -g node -d /home/node -m -G containers node ;\
 # 	npm -g install npm@latest &&\
 # 	cd ~ ; rm -r ~/node_js_src
 #
