@@ -8,5 +8,4 @@ RUN mkdir ~/node_js_src && cd $_;wget -N http://nodejs.org/dist/latest-v0.10.x/n
 	groupadd node;\
  	useradd -u 22673  -g node -d /home/node -m -G containers node&&\
  	npm -g install npm@latest;\
- 	cd ~ ; rm -r ~/node_js_src  node-v0.10.48.tar.xz node-v0.10.48;\
- 	chown node -R $HOME
+ 	cd ~ ; rm -r ~/node_js_src  

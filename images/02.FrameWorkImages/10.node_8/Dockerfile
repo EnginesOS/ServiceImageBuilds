@@ -7,8 +7,8 @@ ENV NODE_VERSION 8.9.4
 
 RUN mkdir ~/node_js_src &&\
 	cd ~/node_js_src &&\
-	wget -N https://nodejs.org/dist/v8.9.4/node-v$NODE_VERSION-linux-x64.tar.gz  &&\
-	tar node-v$NODE_VERSION-linux-x64.tar.gz &&\
+	wget -N https://nodejs.org/dist/v${NODE_VERSION}/node-v$NODE_VERSION-linux-x64.tar.gz  &&\
+	tar node-v${NODE_VERSION}-linux-x64.tar.gz &&\
 	cd node-v* &&\
 	./configure &&\
 	make &&\

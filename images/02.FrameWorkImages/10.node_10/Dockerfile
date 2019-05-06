@@ -16,4 +16,4 @@ RUN mkdir ~/node_js_src &&\
 	groupadd node &&\
  	useradd -u 22673  -g node -d /home/node -m -G containers node &&\
  	npm -g install npm@latest &&\
- 	cd ~ ; rm -r ~/node_js_src
+ 	cd ~ ; rm -r ~/node_js_src 
