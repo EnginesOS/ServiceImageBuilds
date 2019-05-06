@@ -7,9 +7,8 @@ RUN mkdir node_js_src &&\
 	./configure &&\
 	make &&\
 	make install &&\
-	groupadd node &&\
- 	useradd -g node -d /home/node -m -G containers node &&\
+	groupadd node ;\
+ 	useradd -g node -d /home/node -m -G containers node ;\
  	npm -g install npm@latest &&\
-	mkdir -p /home/home_dir/.config /home/home_dir/.npm &&\
  	cd .. ; rm -r ~/node_js_src
  	 
