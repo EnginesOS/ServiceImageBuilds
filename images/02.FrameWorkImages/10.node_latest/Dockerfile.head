@@ -11,7 +11,7 @@ ENV SRC_URL=http://nodejs.org/dist/node-latest.tar.gz
 #	cd node_js_src &&\
 #	wget -N http://nodejs.org/dist/node-latest.tar.gz  &&\
 #	tar xzvf node-latest.tar.gz &&\
-#	cd node-v* &&\
+#	cd node-* &&\
 #	./configure &&\
 #	make &&\
 #	make install &&\
