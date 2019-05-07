@@ -1,6 +1,6 @@
 
-RUN mkdir node_js_src &&\
-	cd node_js_src &&\
+RUN mkdir /node_js_src &&\
+	cd /node_js_src &&\
 	wget -N ${SRC_URL}  &&\
 	tar -xvf node-v${NODE_VERSION}.tar.gz &&\
 	cd node-v${NODE_VERSION} &&\
@@ -10,5 +10,5 @@ RUN mkdir node_js_src &&\
 	groupadd node ;\
  	useradd -g node -d /home/node -m -G containers node ;\
  	npm -g install npm@latest &&\
- 	cd .. ; rm -r node_js_src
+ 	cd / ; rm -r /node_js_src
  	 
