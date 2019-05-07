@@ -3,7 +3,8 @@ RUN mkdir /node_js_src &&\
 	cd /node_js_src &&\
 	wget -N ${SRC_URL}  &&\
 	tar -xvf node-${NODE_VERSION}.tar.gz &&\
-	cd node-${NODE_VERSION} &&\
+	rm -xvf node-${NODE_VERSION}.tar.gz &&\
+	cd node-* &&\
 	./configure &&\
 	make &&\
 	make install &&\
