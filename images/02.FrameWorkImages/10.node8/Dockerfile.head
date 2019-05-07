@@ -3,7 +3,7 @@ FROM engines/frameworkbuild:$release
 ADD home home
 ENV ContUser node
 ENV ContGrp node
-ENV NODE_VERSION v8.14.1
+ENV NODE_VERSION v8.16.0
 ENV SRC_URL=http://nodejs.org/dist/latest-v8.x/node-${NODE_VERSION}.tar.xz
 
 #RUN mkdir node_js_src &&\
