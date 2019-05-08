@@ -58,7 +58,7 @@ images=`docker images |grep none | awk '{print $3}'`
 
 if ! test ${#images} -gt 1
  then
-  docker rm $images &> /dev/null
+  docker rmi $images &> /dev/null
 fi
 }
 
