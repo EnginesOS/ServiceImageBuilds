@@ -6,6 +6,11 @@ if test -f setup.sh
   ./setup.sh
 fi
 
+if test -f .env
+ then
+  . .env
+fi
+  
 cat Dockerfile | sed "/\$release/s//$release/" \
 			   | sed "/\$edition/s//$edition/" > Dockerfile.$release
 
