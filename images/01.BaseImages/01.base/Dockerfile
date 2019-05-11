@@ -7,7 +7,7 @@ COPY invoke-rc.d /usr/sbin/
 
 ADD home /home/
 	
-ENV	build 20190422
+ENV	build ${BuildDate}
 RUN	echo '#!/bin/sh' >/usr/sbin/policy-rc.d &&\
 	echo exit 101 >> /usr/sbin/policy-rc.d &&\
 	chmod +x /usr/sbin/policy-rc.d &&\
@@ -37,7 +37,6 @@ RUN	echo '#!/bin/sh' >/usr/sbin/policy-rc.d &&\
 	 								 language-pack-en-base \
 	 								 apt-file \
 	 								 software-properties-common \
-	 								 build-essential \
 	 								 unzip \
 	 								 curl \
 	 								 dnsutils \
@@ -51,16 +50,6 @@ RUN	echo '#!/bin/sh' >/usr/sbin/policy-rc.d &&\
 	rm /sbin/initctl &&\
 	ln -s /bin/true /sbin/initctl &&\
 	groupadd -g 22020 containers &&\ 
-	cd  /tmp &&\
-	git clone https://github.com/zserge/jsmn &&\
-	cd jsmn &&\
-	make &&\
-	cp -r /home/src . &&\
-	cd src &&\
-	make json_to_env &&\
-	mkdir -p /home/engines/bin&&\
-	cp json_to_env /home/engines/bin &&\
-	rm -r /home/src &&\
 	apt-get -y remove  build-essential &&\
 	/home/engines/scripts/build/install_utf8_langauges.sh &&\
 	rm -r /tmp/* /home/engines/scripts/build/install_utf8_langauges.sh &&\
@@ -76,3 +65,19 @@ RUN	echo '#!/bin/sh' >/usr/sbin/policy-rc.d &&\
 ADD sudoers /etc/sudoers.d/system
 ADD krb5.conf /etc/
 ADD rsyslog.conf /etc/		
+
+
+#
+# 
+# drop build-essential \
+#cd  /tmp &&\
+#	git clone https://github.com/zserge/jsmn &&\
+#	cd jsmn &&\
+#	make &&\
+#	cp -r /home/src . &&\
+#	cd src &&\
+#	make json_to_env &&\
+#	mkdir -p /home/engines/bin&&\
+#	cp json_to_env /home/engines/bin &&\
+#	rm -r /home/src &&\
+

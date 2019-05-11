@@ -1,0 +1,6 @@
+/home/.env_vars
+/var/run/
+/var/lib/nginx/
+/var/www/.passenger
+~www-data
+/home/home_dir/.bundle

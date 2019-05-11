@@ -1,4 +1,4 @@
-FROM engines/node6:$release
+FROM engines/node10:$release
 
 #engines/frameworkbuild:$release
 

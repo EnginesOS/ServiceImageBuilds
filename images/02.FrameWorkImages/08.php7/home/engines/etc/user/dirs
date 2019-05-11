@@ -1,0 +1,3 @@
+/var/www-data
+/var/run/apache2
+/var/lib/php/sessions

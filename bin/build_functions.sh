@@ -6,6 +6,11 @@ if test -f setup.sh
   ./setup.sh
 fi
 
+if test -f .env
+ then
+  . .env
+fi
+  
 cat Dockerfile | sed "/\$release/s//$release/" \
 			   | sed "/\$edition/s//$edition/" > Dockerfile.$release
 
@@ -58,7 +63,7 @@ images=`docker images |grep none | awk '{print $3}'`
 
 if ! test ${#images} -gt 1
  then
-  docker rm $images &> /dev/null
+  docker rmi $images &> /dev/null
 fi
 }
 
