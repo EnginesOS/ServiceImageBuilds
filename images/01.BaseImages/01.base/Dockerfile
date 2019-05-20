@@ -6,6 +6,8 @@ FROM engines/bionicbeaverbase:$release
 COPY invoke-rc.d /usr/sbin/
 
 ADD home /home/
+COPY submit.mc /etc/mail
+COPY sendmail.mc /etc/mail
 	
 ENV	build ${BuildDate}
 RUN	echo '#!/bin/sh' >/usr/sbin/policy-rc.d &&\
@@ -69,8 +71,7 @@ RUN	echo '#!/bin/sh' >/usr/sbin/policy-rc.d &&\
 ADD sudoers /etc/sudoers.d/system
 ADD krb5.conf /etc/
 ADD rsyslog.conf /etc/		
-COPY submit.mc /etc/mail
-COPY sendmail.mc /etc/mail
+
 
 
 #
