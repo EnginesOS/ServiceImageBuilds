@@ -12,7 +12,7 @@ service_first_run_check
 sudo -n /home/engines/scripts/engine/_transport_over_ride.sh
 /home/engines/scripts/startup/init_dbs.sh
 
-sudo -n /usr/sbin/opendkim -p /jome/engines/run/opendkim.pid
+sudo -n /usr/sbin/opendkim -p /home/engines/run/opendkim.pid &
 
 sudo -n /home/engines/scripts/startup/_start_postfix.sh 
 r=$?
