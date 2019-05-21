@@ -13,8 +13,7 @@ RUN apt-get update -y &&\
 	 				   sqlite3 \
 	 				   bison \
 	 				   sudo &&\
-	mkdir -p /home/fs &\\
-	usermod -d /home/home_dir www-data
+	mkdir -p /home/fs 
 	
 
 ENV HOME /home/home_dir
