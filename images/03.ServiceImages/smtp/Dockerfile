@@ -39,7 +39,9 @@ RUN	chmod -R go-rw /etc/sudoers /etc/sudoers.d/
 ADD src/postfix/master.cf /etc/postfix/
 ADD src/postfix/main.cf /etc/postfix/
 ADD src/postfix/mailname /etc/postfix/mailname
+ADD src/opendkim etc/
 ADD src/opendkim.conf etc/
+
 
 ADD home home
 RUN	mkdir -p /home/engines/scripts/configurators/saved &&\
@@ -49,7 +51,9 @@ RUN	mkdir -p /home/engines/scripts/configurators/saved &&\
 	chown -R postfix /home/postfix/ &&\
 	chown postfix /home/engines/scripts/configurators/saved /home/postfix &&\
 	chgrp postfix /home/engines/scripts/configurators/*.sh &&\
-	cp -rp /var/spool/postfix /tmp/spool_postfix
+	cp -rp /var/spool/postfix /tmp/spool_postfix &&\
+	touch /etc/opendkim/signing.table /etc/opendkim/key.table &&\
+	chown opendkim /etc/opendkim/signing.table /etc/opendkim/key.table 
 
 ENV ContUser postfix
 ENV ContGrp postfix
