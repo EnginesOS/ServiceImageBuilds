@@ -6,5 +6,5 @@ touch /etc/dkim/dkim.key
 
 for domain in `ls `
  do 
- 	echo '*@'$domain:$domain:/etc/mail/dkim-keys/$domain/dt.private >>  /etc/dkim/dkim.key
+ 	echo '*@'$domain:$domain:/etc/mail/dkim-keys/$domain/mail.private >>  /etc/dkim/dkim.key
  done

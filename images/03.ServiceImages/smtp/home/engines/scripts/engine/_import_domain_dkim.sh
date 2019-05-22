@@ -7,6 +7,6 @@ required_values="domain_name"
 check_required_values
 
 mkdir -p /etc/dkim/keys/$domain_name
-cat - > /etc/dkim/keys/$domain_name/default.private
-mv /tmp/public > /etc/dkim/keys/$domain_name/default.txt
+cat - > /etc/dkim/keys/$domain_name/mail.private
+mv /tmp/public > /etc/dkim/keys/$domain_name/mail.txt
 
