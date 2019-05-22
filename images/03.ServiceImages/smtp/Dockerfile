@@ -46,7 +46,6 @@ ADD src/opendkim.conf etc/
 ADD home home
 RUN	mkdir -p /home/engines/scripts/configurators/saved &&\
 	mkdir -p /etc/dkim/keys &&\
-	touch /etc/dkim/dkim.key  &&\
 	chown -R opendkim /etc/dkim &&\
 	chown -R postfix /home/postfix/ &&\
 	chown postfix /home/engines/scripts/configurators/saved /home/postfix &&\
