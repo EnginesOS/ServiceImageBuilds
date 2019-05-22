@@ -10,7 +10,7 @@ postfix ALL=(root) NOPASSWD: /home/engines/scripts/signal/_kill_postfix.sh
 postfix ALL = (root) NOPASSWD: /home/engines/scripts/signal/_kill_sleep.sh
 postfix ALL=(root) NOPASSWD: /home/engines/scripts/signal/_signal.sh
 root ALL=(root) NOPASSWD: /usr/sbin/opendkim
-postfix ALL = (opendkim) NOPASSWD: ALL /home/engines/scripts/engine/_create_domain_dkim.sh
-postfix ALL = (opendkim) NOPASSWD: ALL /home/engines/scripts/engine/_rm_domain_dkim.sh
-postfix ALL = (opendkim) NOPASSWD: ALL /home/engines/scripts/engine/_import_domain_dkim.sh
+postfix ALL = (opendkim) NOPASSWD: /home/engines/scripts/engine/_create_domain_dkim.sh
+postfix ALL = (opendkim) NOPASSWD: /home/engines/scripts/engine/_rm_domain_dkim.sh
+postfix ALL = (opendkim) NOPASSWD: /home/engines/scripts/engine/_import_domain_dkim.sh
 
