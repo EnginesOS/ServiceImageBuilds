@@ -1,5 +1,5 @@
 FROM engines/servicebase:$release
-Maintainer image.maintainer@engines.onl
+MAINTAINER image.maintainer@engines.onl
 RUN groupadd -g 22003 postfix &&\
 	useradd -u 22003  -g postfix -d /var/spool/postfix -m -G containers postfix &&\
 	apt-get -y update &&\
@@ -39,8 +39,8 @@ RUN	chmod -R go-rw /etc/sudoers /etc/sudoers.d/
 ADD src/postfix/master.cf /etc/postfix/
 ADD src/postfix/main.cf /etc/postfix/
 ADD src/postfix/mailname /etc/postfix/mailname
-ADD src/opendkim etc/
-ADD src/opendkim.conf etc/
+ADD src/opendkim /etc/
+ADD src/opendkim.conf /etc/
 
 
 ADD home home
