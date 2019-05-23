@@ -8,6 +8,7 @@ check_required_values
 mkdir -p /etc/dkim/keys/$domain_name
 cd /etc/dkim/keys/$domain_name
 opendkim-genkey -t -s mail -d $domain_name
+chmod ugo+r /etc/dkim/keys/$domain_name/mail.txt
 
 /home/engines/scripts/engine/rebuild_dkim.key.sh
 

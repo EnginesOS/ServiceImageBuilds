@@ -5,4 +5,4 @@ required_values="domain_name"
 check_required_values
 
 
-cat /etc/dkim/keys/$domain_name/mail.txt
+cat /etc/dkim/keys/${domain_name}/mail.txt
