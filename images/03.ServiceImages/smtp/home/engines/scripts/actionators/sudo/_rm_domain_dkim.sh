@@ -4,7 +4,7 @@
 required_values="domain_name"
 check_required_values
 
-rm -r  /etc/dkim/keys/$domain_name
+rm -r  /etc/dkim/keys/$domain_name /etc/opendkim/keys/$domain_name
 
 /home/engines/scripts/engine/rebuild_dkim.key.sh
 

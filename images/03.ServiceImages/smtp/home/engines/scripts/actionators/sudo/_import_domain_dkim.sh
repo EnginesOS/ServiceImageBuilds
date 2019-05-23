@@ -5,7 +5,7 @@ domain_name=$1
 
 required_values="domain_name"
 check_required_values
-domain_dir=/home/engines/scripts/configurators/saved/dkim/keys/$domain_name
+domain_dir=/etc/opendkim/keys/$domain_name
 mkdir -p $domain_dir
 cat - > $domain_dir/mail.private
 chmod go-rw $domain_dir/mail.private
