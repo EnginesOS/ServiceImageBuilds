@@ -39,7 +39,7 @@ RUN	chmod -R go-rw /etc/sudoers /etc/sudoers.d/
 ADD src/postfix/master.cf /etc/postfix/
 ADD src/postfix/main.cf /etc/postfix/
 ADD src/postfix/mailname /etc/postfix/mailname
-ADD src/opendkim /etc/
+COPY src/opendkim /etc/
 ADD src/opendkim.conf /etc/
 
 
@@ -51,6 +51,9 @@ RUN	mkdir -p /home/engines/scripts/configurators/saved &&\
 	chown postfix /home/engines/scripts/configurators/saved /home/postfix &&\
 	chgrp postfix /home/engines/scripts/configurators/*.sh &&\
 	cp -rp /var/spool/postfix /tmp/spool_postfix &&\
+	mkdir -p /etc/opendkim &&\
+	echo 127.0.0.1 >>/etc/opendkim/trusted.hosts &&\
+	echo smtp.engines.internal >>/etc/opendkim/trusted.hosts &&\
 	touch /etc/opendkim/signing.table /etc/opendkim/key.table &&\
 	chown opendkim /etc/opendkim/signing.table /etc/opendkim/key.table 
 
