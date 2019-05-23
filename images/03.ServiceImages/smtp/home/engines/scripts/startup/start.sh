@@ -9,12 +9,12 @@ export KILL_SCRIPT
 . /home/engines/functions/trap.sh
 
 service_first_run_check
-sudo -n /home/engines/scripts/engine/_transport_over_ride.sh
+sudo -n /home/engines/scripts/engine/sudo/_transport_over_ride.sh
 /home/engines/scripts/startup/init_dbs.sh
 
-sudo -n -u opendkim /usr/sbin/opendkim  &
+sudo -n -u opendkim /usr/sbin/opendkim  
 echo $! > /home/engines/run/opendkim.pid 
-sudo -n /home/engines/scripts/startup/_start_postfix.sh 
+sudo -n /home/engines/scripts/startup/sudo/_start_postfix.sh 
 r=$?
 
 if test $r -eq 0

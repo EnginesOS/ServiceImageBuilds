@@ -27,5 +27,5 @@ do
  eval echo "$LINE" >> $ALIAS_FILE
 done
 
-sudo -n /home/engines/scripts/configurators/_set_notifications_email.sh
+sudo -n /home/engines/scripts/configurators/sudo/_set_notifications_email.sh
 echo $0

@@ -5,7 +5,7 @@ required_values="queue_id"
 check_required_values 
 
 rf=`mktemp`
-sudo -n /home/engines/scripts/actionators/_rm_email.sh   $queue_id &> $rf
+sudo -n /home/engines/scripts/engine/sudo/_rm_email.sh   $queue_id &> $rf
 result=$?
 string_for_json=`cat $rf`
 rm $rf

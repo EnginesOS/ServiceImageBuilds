@@ -5,10 +5,12 @@
 required_values="domain_name"
 check_required_values
 
-mkdir -p /etc/dkim/keys/$domain_name
-cd /etc/dkim/keys/$domain_name
+domain_dir=/home/engines/scripts/configurators/saved/dkim/keys/$domain_name
+mkdir -p $domain_dir
+
+cd $domain_dir
 opendkim-genkey -t -s mail -d $domain_name
-chmod ugo+r /etc/dkim/keys/$domain_name/mail.txt
+chmod ugo+r $domain_dir/mail.txt
 
 /home/engines/scripts/engine/rebuild_dkim.key.sh
 
