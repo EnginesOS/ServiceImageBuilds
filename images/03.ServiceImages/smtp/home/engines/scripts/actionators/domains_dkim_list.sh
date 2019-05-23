@@ -1,5 +1,5 @@
 #!/bin/sh
-cd /etc/dkim/keys/
+cd /etc/opendkim/keys/
 echo -n '{"dkim_domains":['
 n=0
 for domain in `ls`
