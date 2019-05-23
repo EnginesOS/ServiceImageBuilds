@@ -54,8 +54,8 @@ RUN	mkdir -p /home/engines/scripts/configurators/saved &&\
 	mkdir -p /etc/opendkim &&\
 	echo 127.0.0.1 >>/etc/opendkim/trusted.hosts &&\
 	echo smtp.engines.internal >>/etc/opendkim/trusted.hosts &&\
-	touch /etc/opendkim/signing.table /etc/opendkim/key.table &&\
-	chown opendkim /etc/opendkim/signing.table /etc/opendkim/key.table 
+	touch /etc/opendkim/SigningTable /etc/opendkim/KeyTable &&\
+	chown opendkim /etc/opendkim/KeyTable /etc/opendkim/SigningTable
 
 ENV ContUser postfix
 ENV ContGrp postfix
