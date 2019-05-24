@@ -11,16 +11,15 @@ postfix ALL=(root) NOPASSWD: /home/engines/scripts/engine/sudo/_set_mailname.sh
 
 postfix ALL = (root) NOPASSWD: /home/engines/scripts/configurators/sudo/rebuild_main.sh
 
-postfix ALL = (root) NOPASSWD: /home/engines/scripts/signal/_kill_postfix.sh
-postfix ALL = (root) NOPASSWD: /home/engines/scripts/signal/_kill_sleep.sh
-postfix ALL = (root) NOPASSWD: /home/engines/scripts/signal/_signal.sh
+postfix ALL = (root) NOPASSWD: /home/engines/scripts/signal/sudo/_kill_postfix.sh
+postfix ALL = (root) NOPASSWD: /home/engines/scripts/signal/sudo/_kill_sleep.sh
+postfix ALL = (root) NOPASSWD: /home/engines/scripts/signal/sudo/_signal.sh
 
 postfix ALL = (root) NOPASSWD: /home/engines/scripts/engine/sudo/_init_ldap_config.sh
 
 postfix ALL=(root) NOPASSWD: /home/engines/scripts/actionators/sudo/_rm_email.sh
 postfix ALL=(root) NOPASSWD: /home/engines/scripts/actionators/sudo/_clear_deffered_queue.sh
 postfix ALL=(root) NOPASSWD: /home/engines/scripts/actionators/sudo/_clear_complete_queue.sh
-
 
 
 #must have blank after last sudoers line
