@@ -3,11 +3,11 @@ FROM engines/bionicbeaverbase:$release
 
 
 
-COPY invoke-rc.d /usr/sbin/
+COPY src/usr/sbin/invoke-rc.d /usr/sbin/
 
 ADD home /home/
-COPY submit.mc /etc/mail
-COPY sendmail.mc /etc/mail
+COPY src/etc/mail/submit.mc /etc/mail
+COPY src/etc/mail/sendmail.mc /etc/mail
 	
 ENV	build ${BuildDate}
 RUN	echo '#!/bin/sh' >/usr/sbin/policy-rc.d &&\
@@ -69,22 +69,9 @@ RUN	echo '#!/bin/sh' >/usr/sbin/policy-rc.d &&\
  	
  	
 ADD sudoers /etc/sudoers.d/system
-ADD krb5.conf /etc/
-ADD rsyslog.conf /etc/		
+ADD src/etc/krb5.conf /etc/
+ADD src/etc/rsyslog.conf /etc/		
 
 
 
-#
-# 
-# drop build-essential \
-#cd  /tmp &&\
-#	git clone https://github.com/zserge/jsmn &&\
-#	cd jsmn &&\
-#	make &&\
-#	cp -r /home/src . &&\
-#	cd src &&\
-#	make json_to_env &&\
-#	mkdir -p /home/engines/bin&&\
-#	cp json_to_env /home/engines/bin &&\
-#	rm -r /home/src &&\
 

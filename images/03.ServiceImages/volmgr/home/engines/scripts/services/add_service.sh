@@ -24,10 +24,10 @@ if  ! test -z $home_type
   then
    if test $home_type = seperate
     then
-     echo $homes | sudo -n /home/engines/scripts/services/_create_homes.sh
+     echo $homes | sudo -n /home/engines/scripts/services/sudo/_create_homes.sh
    elif test $home_type = all
     then
-     sudo -n /home/engines/scripts/services/_create_all_homes.sh
+     sudo -n /home/engines/scripts/services/sudo/_create_all_homes.sh
    else
     echo "Unknown type"  
     exit 127
@@ -43,9 +43,9 @@ elif test -z $is_secret
       #echo "Invalid volume:$volume_src"
       #exit 2
     #fi      
-  sudo -n /home/engines/scripts/services/_create_volume.sh
+  sudo -n /home/engines/scripts/services/sudo/_create_volume.sh
 else
-   sudo -n /home/engines/scripts/services/_create_secret.sh
+   sudo -n /home/engines/scripts/services/sudo/_create_secret.sh
 fi
 
 if test $? -eq 0

@@ -25,17 +25,17 @@ if  ! test -z $home_type
   then
    if test $home_type = all
     then
-     sudo -n /home/engines/scripts/services/_remove_homes.sh
+     sudo -n /home/engines/scripts/services/sudo/_remove_homes.sh
    elif test $home_type = seperate
       then
-      echo $homes |  sudo -n /home/engines/scripts/services/_remove_all_homes.sh
+      echo $homes |  sudo -n /home/engines/scripts/services/sudo/_remove_all_homes.sh
    else
      echo "Unknown type"  
      exit 127
    fi  
 elif test -z $is_secret
  then
-   sudo -n /home/engines/scripts/services/_delete_volume.sh
+   sudo -n /home/engines/scripts/services/sudo/_delete_volume.sh
  else 
    echo $volume_src | grep "^/var/lib/engines/secrets/$container_type" >/dev/null
     if test $? -ne 0
@@ -43,7 +43,7 @@ elif test -z $is_secret
       echo "invalid volume $volume_src"
       exit 1
     fi
-   sudo -n /home/engines/scripts/services/_delete_secret.sh
+   sudo -n /home/engines/scripts/services/sudo/_delete_secret.sh
 fi  
  
 if test $? -eq 0
