@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cd /etc/dkim/keys/
+cd /etc/opendkim/keys/
 rm /etc/opendkim/KeyTable /etc/opendkim/SigningTable 
 touch /etc/opendkim/KeyTable /etc/opendkim/SigningTable 
 
