@@ -16,7 +16,10 @@ postfix ALL=(opendkim) NOPASSWD: /usr/sbin/opendkim
 postfix ALL=(root) NOPASSWD: /home/engines/scripts/actionators/sudo/_rm_email.sh
 postfix ALL=(root) NOPASSWD: /home/engines/scripts/actionators/sudo/_clear_deffered_queue.sh
 postfix ALL=(root) NOPASSWD: /home/engines/scripts/actionators/sudo/_clear_complete_queue.sh
+
 postfix ALL = (opendkim) NOPASSWD: /home/engines/scripts/actionators/sudo/_create_domain_dkim.sh
 postfix ALL = (opendkim) NOPASSWD: /home/engines/scripts/actionators/sudo/_rm_domain_dkim.sh
 postfix ALL = (opendkim) NOPASSWD: /home/engines/scripts/actionators/sudo/_import_domain_dkim.sh
 
+postfix ALL = (opendkim) NOPASSWD: /home/engines/scripts/engine/sudo/rebuild_dkim.key.sh
+ 
