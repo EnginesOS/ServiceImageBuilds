@@ -1,5 +1,5 @@
 #!/bin/sh
-sudo  /home/engines/scripts/actionators/_fix_perms.sh
+sudo  /home/engines/scripts/actionators/sudo/_fix_perms.sh
 
 if ! test -f /home/backup/.gnupg/pass
  then 

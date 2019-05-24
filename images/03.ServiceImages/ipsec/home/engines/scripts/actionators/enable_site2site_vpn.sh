@@ -17,7 +17,7 @@ fi
 
 
 mv  /home/ivpn/entries/disabled_sites/${vpn_name} /home/ivpn/entries/sites/
-sudo -n /home/engines/scripts/actionators/_enable_site2site_vpn.sh ${vpn_name}
+sudo -n /home/engines/scripts/actionators/sudo/_enable_site2site_vpn.sh ${vpn_name}
 
 if test $? -eq 0
  then

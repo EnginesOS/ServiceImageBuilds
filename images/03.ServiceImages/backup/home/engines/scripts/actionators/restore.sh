@@ -25,7 +25,7 @@ function restore_system {
 echo "Restoring system $replace $source $section $from_date"
 /home/engines/scripts/engine/run_duply.sh system restore /tmp/system/ $from_date
 
-sudo -n -E /home/engines/scripts/restore/_restore_system.sh
+sudo -n -E /home/engines/scripts/restore/sudo/_restore_system.sh
 
 #cat /tmp/system/db*gz |curl $CURL_OPTS https://172.17.0.1:2380/v0/restore/system/db
 #sudo -n /home/engines/scripts/restore/_clr_restore.sh system
@@ -33,7 +33,7 @@ sudo -n -E /home/engines/scripts/restore/_restore_system.sh
 
 function restore_registry {
 /home/engines/scripts/engine/run_duply.sh registry restore /tmp/registry $from_date
-sudo -n -E /home/engines/scripts/restore/_restore_registry.sh
+sudo -n -E /home/engines/scripts/restore/sudo/_restore_registry.sh
 }
 
 function restore_logs {
@@ -47,13 +47,13 @@ if test -z $path
  then
   /home/engines/scripts/engine/run_duply.sh logs restore /tmp/logs $from_date
    echo "Restoring full logs $replace"
-  sudo -n -E /home/engines/scripts/restore/_restore.sh $replace logs
-  sudo -n /home/engines/scripts/restore/_clr_restore.sh logs
+  sudo -n -E /home/engines/scripts/restoresudo//_restore.sh $replace logs
+  sudo -n /home/engines/scripts/restore/sudo/_clr_restore.sh logs
 else
  /home/engines/scripts/engine/run_duply.sh logs fetch $path /tmp/logs 
   echo "Restoring logs $path $replace"
-  sudo -n -E /home/engines/scripts/restore/_restore.sh $replace logs
-  sudo -n /home/engines/scripts/restore/_clr_restore.sh logs
+  sudo -n -E /home/engines/scripts/restore/sudo/_restore.sh $replace logs
+  sudo -n /home/engines/scripts/restore/sudo/_clr_restore.sh logs
 fi
 }
 
@@ -75,8 +75,8 @@ else
  /home/engines/scripts/engine/run_duply.sh engines_fs fetch $path /tmp/volumes/fs/$path $from_date
 fi
   
- sudo -n -E /home/engines/scripts/restore/_restore.sh $replace volumes/fs
- sudo -n /home/engines/scripts/restore/_clr_restore.sh volumes
+ sudo -n -E /home/engines/scripts/restore/sudo/_restore.sh $replace volumes/fs
+ sudo -n /home/engines/scripts/restore/sudo/_clr_restore.sh volumes
   
 }
 
@@ -85,8 +85,8 @@ echo "Restoring $service $replace $section"
 /home/engines/scripts/engine/run_duply.sh $service restore /tmp/$service $from_date
  
 
-sudo -n /home/engines/scripts/restore/_bundle_restore.sh $service |curl $CURL_OPTS https://172.17.0.1:2380/v0/restore/service/$service/$replace/$section 
-sudo -n /home/engines/scripts/restore/_clr_restore.sh $service
+sudo -n /home/engines/scripts/restore/sudo/_bundle_restore.sh $service |curl $CURL_OPTS https://172.17.0.1:2380/v0/restore/service/$service/$replace/$section 
+sudo -n /home/engines/scripts/restore/sudo/_clr_restore.sh $service
 }
 
 function restore_engines {

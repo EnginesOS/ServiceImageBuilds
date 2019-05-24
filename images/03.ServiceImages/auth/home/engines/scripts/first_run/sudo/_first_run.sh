@@ -10,6 +10,6 @@ else
 fi
 
 export pass 
-expect /home/engines/scripts/first_run/kerobos_init.expect
+expect /home/engines/scripts/first_run/sudo/kerobos_init.expect
 unset pass
 

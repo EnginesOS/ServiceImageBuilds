@@ -1,11 +1,11 @@
 #Defaults  env_keep += "SIGNAL CONTAINER_NAME PID_FILE PID_FILES exit_code"
 backup ALL = (root) NOPASSWD: /usr/bin/duply
-backup ALL = (root) NOPASSWD: SETENV: /home/engines/scripts/restore/_restore_registry.sh
-backup ALL = (root) NOPASSWD: /home/engines/scripts/restore/_clr_restore.sh
-backup ALL = (root) NOPASSWD: SETENV: /home/engines/scripts/restore/_restore.sh
-backup ALL = (root) NOPASSWD: /home/engines/scripts/restore/_bundle_restore.sh
-backup ALL = (root) NOPASSWD: SETENV: /home/engines/scripts/restore/_restore_system.sh
-backup ALL = (root) NOPASSWD: /home/engines/scripts/actionators/_fix_perms.sh
+backup ALL = (root) NOPASSWD: SETENV: /home/engines/scripts/restore/sudo/_restore_registry.sh
+backup ALL = (root) NOPASSWD: /home/engines/scripts/restore/sudo/_clr_restore.sh
+backup ALL = (root) NOPASSWD: SETENV: /home/engines/scripts/restore/sudo/_restore.sh
+backup ALL = (root) NOPASSWD: /home/engines/scripts/restore/sudo/_bundle_restore.sh
+backup ALL = (root) NOPASSWD: SETENV: /home/engines/scripts/restore/sudo/_restore_system.sh
+backup ALL = (root) NOPASSWD: /home/engines/scripts/actionators/sudo/_fix_perms.sh
 #must have blank after last sudoers line
 
 

@@ -40,7 +40,7 @@ if ! test -z ${install_target}
     then
      /home/engines/scripts/engine/set_default.sh all external_ca ${common_name}
     else      
-     sudo -n /home/engines/scripts/engine/_install_target.sh ${install_target} external_ca ${common_name} ${common_name}
+     sudo -n /home/engines/scripts/engine/sudo/_install_target.sh ${install_target} external_ca ${common_name} ${common_name}
    fi  
 fi
  

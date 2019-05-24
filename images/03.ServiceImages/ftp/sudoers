@@ -2,13 +2,13 @@
 Defaults env_keep += "SIGNAL CONTAINER_NAME PID_FILE PID_FILES exit_code ftp_gid access username password title folder service_handle service_container_name parent_engine"
 Defaults  env_keep += "ldap_dn ldap_password"
 proftpd ALL = (root) NOPASSWD: /usr/sbin/proftpd
-proftpd ALL = (root) NOPASSWD: /home/engines/scripts/actionators/_remove_user_key.sh
-proftpd ALL = (root) NOPASSWD: /home/engines/scripts/actionators/_set_user_key.sh
+proftpd ALL = (root) NOPASSWD: /home/engines/scripts/actionators/sudo/_remove_user_key.sh
+proftpd ALL = (root) NOPASSWD: /home/engines/scripts/actionators/sudo/_set_user_key.sh
 proftpd ALL = (root) NOPASSWD: /home/engines/scripts/signal/_signal.sh
-proftpd ALL = (root) NOPASSWD: /home/engines/scripts/services/_add_service.sh
-proftpd ALL = (root) NOPASSWD: /home/engines/scripts/services/_rm_service.sh
-proftpd ALL = (root) NOPASSWD: /home/engines/scripts/first_run/_first_run.sh
-proftpd ALL = (root) NOPASSWD: /home/engines/scripts/startup/_startup.sh
-proftpd ALL = (root) NOPASSWD: /home/engines/scripts/engine/_init_ldap_config.sh
+proftpd ALL = (root) NOPASSWD: /home/engines/scripts/services/sudo/_add_service.sh
+proftpd ALL = (root) NOPASSWD: /home/engines/scripts/services/sudo/_rm_service.sh
+proftpd ALL = (root) NOPASSWD: /home/engines/scripts/first_run/sudo/_first_run.sh
+proftpd ALL = (root) NOPASSWD: /home/engines/scripts/startup/sudo/_startup.sh
+proftpd ALL = (root) NOPASSWD: /home/engines/scripts/engine/sudo/_init_ldap_config.sh
 #must have blank after last sudoers line
 

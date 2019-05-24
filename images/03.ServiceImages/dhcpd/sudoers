@@ -1,6 +1,6 @@
 #Defaults  env_keep += "SIGNAL CONTAINER_NAME PID_FILE PID_FILES exit_code"
-dhcpd ALL = (root) NOPASSWD: /home/engines/scripts/engine/_clear_dhcpd_conf.sh
-dhcpd ALL = (root) NOPASSWD: /home/engines/scripts/engine/_install_dhcpd_conf.sh 						     
+dhcpd ALL = (root) NOPASSWD: /home/engines/scripts/engine/sudo/_clear_dhcpd_conf.sh
+dhcpd ALL = (root) NOPASSWD: /home/engines/scripts/engine/sudo/_install_dhcpd_conf.sh 						     
 dhcpd ALL = (root) NOPASSWD: /usr/sbin/dhcpd
 dhcpd ALL = (root) NOPASSWD:/home/engines/scripts/signal/_signal.sh
 #must have blank after last sudoers line
