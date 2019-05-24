@@ -1,7 +1,7 @@
 #!/bin/sh
 
 
-echo ${#default_domain} > /home/engines/scripts/configurators/saved/default_domain
+echo -n ${default_domain} > /home/engines/scripts/configurators/saved/default_domain
 
   
  if test  ${#default_domain} -gt 5

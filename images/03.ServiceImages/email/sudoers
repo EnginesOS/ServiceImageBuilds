@@ -16,7 +16,8 @@ postfix ALL = (root) NOPASSWD: /home/engines/scripts/signal/sudo/_kill_sleep.sh
 postfix ALL = (root) NOPASSWD: /home/engines/scripts/signal/sudo/_signal.sh
 
 postfix ALL = (root) NOPASSWD: /home/engines/scripts/engine/sudo/_init_ldap_config.sh
-
+postfix ALL = (root) NOPASSWD: /home/engines/scripts/engine/sudo/kill_grey
+.sh
 postfix ALL=(root) NOPASSWD: /home/engines/scripts/actionators/sudo/_rm_email.sh
 postfix ALL=(root) NOPASSWD: /home/engines/scripts/actionators/sudo/_clear_deffered_queue.sh
 postfix ALL=(root) NOPASSWD: /home/engines/scripts/actionators/sudo/_clear_complete_queue.sh

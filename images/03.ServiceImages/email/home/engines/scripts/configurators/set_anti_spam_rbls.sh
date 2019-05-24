@@ -10,7 +10,7 @@
 /home/engines/scripts/configurators/check_anti_spam_setting.sh cbl.abuseat.org ${cbl_abuseat_org}
 /home/engines/scripts/configurators/check_anti_spam_setting.sh dnsbl.njabl.org ${dnsbl_njabl_org}
 /home/engines/scripts/configurators/check_anti_spam_setting.sh dnsbl.sorbs.net ${dnsbl_sorbs_net}
-/home/engines/scripts/configurators/check_anti_spam_setting.sh dsn.rfc-ignorant.org ${dsn_rfc_ignorant_org}
+/home/engines/scripts/configurators/check_anti_spam_setting.sh dsn.rfc-ignorant.org ${dsn_rfc-ignorant_org}
 
 sudo /home/engines/scripts/configurators/sudo/rebuild_main.sh
  
