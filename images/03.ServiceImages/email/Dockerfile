@@ -27,6 +27,7 @@ RUN cd /tmp/ &&\
 	 	  	/usr/lib/postfix/pgsql \
 	 	  	/usr/lib/postfix/sdbm \
 	 	  	/usr/lib/postfix/sqlite \
+	 	  	postfix-policyd-spf-python \
 	 	  	/etc/postfix/dynamicmaps.cf.d \
 	 	  	/etc/postfix/makedefs.out \
 	 	  	/etc/postfix/postfix-files.d \
