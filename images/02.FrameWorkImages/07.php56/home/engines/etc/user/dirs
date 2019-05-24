@@ -1,0 +1,4 @@
+/var/run/
+/var/lib/nginx/
+/var/www/.passenger
+~www-data
