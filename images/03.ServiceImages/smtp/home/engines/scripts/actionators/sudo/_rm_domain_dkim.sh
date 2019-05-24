@@ -6,5 +6,5 @@ check_required_values
 
 rm -r  /etc/dkim/keys/$domain_name /etc/opendkim/keys/$domain_name
 
-/home/engines/scripts/engine/rebuild_dkim.key.sh
+/home/engines/scripts/engine/sudo/rebuild_dkim.key.sh
 
