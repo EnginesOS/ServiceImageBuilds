@@ -12,8 +12,10 @@ service_first_run_check
 sudo -n /home/engines/scripts/engine/sudo/_transport_over_ride.sh
 /home/engines/scripts/startup/init_dbs.sh
 
+sudo -nu opendkim /home/engines/scripts/engine/sudo/rebuild_dkim.key.sh
 sudo -n -u opendkim /usr/sbin/opendkim  -l -W -v
 echo $! > /home/engines/run/opendkim.pid 
+
 sudo -n /home/engines/scripts/startup/sudo/_start_postfix.sh 
 r=$?
 
