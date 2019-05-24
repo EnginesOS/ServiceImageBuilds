@@ -14,7 +14,7 @@ if test -f /home/engines/templates/$map_file
   do
    eval echo "$LINE" >> /home/postfix/$map_file
   done
- sudo -n /home/engines/scripts/engine/_postmap.sh $map_file
+ sudo -n /home/engines/scripts/engine/sudo/_postmap.sh $map_file
 fi
 }
  . /home/engines/functions/checks.sh
@@ -23,7 +23,7 @@ check_required_values
 
 echo -n ${domain_name} >/home/engines/scripts/configurators/saved/domain
 echo -n $deliver_local > /home/engines/scripts/configurators/saved/deliver_local
-sudo -n /home/engines/scripts/engine/_set_mailname.sh smtp.${domain_name}
+sudo -n /home/engines/scripts/engine/sudo/_set_mailname.sh smtp.${domain_name}
 
 for map_file in generic sender_canonical aliases/aliases
 do
@@ -60,7 +60,7 @@ if test -f /etc/postfix/maps/transport.over_ride
     fi
   fi
 fi 
-sudo -n /home/engines/scripts/engine/_transport_over_ride.sh
-sudo -n /home/engines/scripts/engine/_postmap.sh transport
+sudo -n /home/engines/scripts/engine/sudo/_transport_over_ride.sh
+sudo -n /home/engines/scripts/engine/sudo/_postmap.sh transport
 
 exit $?

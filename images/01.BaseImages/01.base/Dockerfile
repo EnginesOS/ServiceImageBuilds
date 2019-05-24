@@ -6,6 +6,8 @@ FROM engines/bionicbeaverbase:$release
 COPY invoke-rc.d /usr/sbin/
 
 ADD home /home/
+COPY submit.mc /etc/mail
+COPY sendmail.mc /etc/mail
 	
 ENV	build ${BuildDate}
 RUN	echo '#!/bin/sh' >/usr/sbin/policy-rc.d &&\
@@ -27,6 +29,7 @@ RUN	echo '#!/bin/sh' >/usr/sbin/policy-rc.d &&\
 	apt-get -y update &&\
 	/home/engines/scripts/build/no_init.sh &&\
 	apt-get -y --fix-missing install ldap-utils \
+									 sendmail-bin \
 			           			     ca-certificates \
 		 						     krb5-user \
 	 								 krb5-config \
@@ -59,12 +62,16 @@ RUN	echo '#!/bin/sh' >/usr/sbin/policy-rc.d &&\
  	mkdir /var/run/engines &&\
  	chgrp containers /var/run/engines && chmod g+w /var/run/engines  &&\
  	mkdir /usr/share/ca-certificates/engines &&\
- 	echo engines/engines_internal_ca.crt >> /etc/ca-certificates.conf
+ 	echo engines/engines_internal_ca.crt >> /etc/ca-certificates.conf&&\ 
+ 	echo y y |sendmailconfig --no-reload &&\ 	
+	chmod g+w /var/spool/mqueue 
+	
  	
  	
 ADD sudoers /etc/sudoers.d/system
 ADD krb5.conf /etc/
 ADD rsyslog.conf /etc/		
+
 
 
 #

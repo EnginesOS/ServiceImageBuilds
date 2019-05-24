@@ -1,14 +1,16 @@
 #Defaults  env_keep += "SIGNAL CONTAINER_NAME PID_FILE PID_FILES exit_code"
-postfix ALL=(root) NOPASSWD: /home/engines/scripts/startup/_start_postfix.sh
-postfix ALL=(root) NOPASSWD: /home/engines/scripts/startup/_setup_dirs.sh
-postfix ALL=(root) NOPASSWD: /home/engines/scripts/engine/_postmap.sh
-postfix ALL=(root) NOPASSWD: /home/engines/scripts/engine/_transport_over_ride.sh
-postfix ALL=(root) NOPASSWD: /home/engines/scripts/engine/_set_mailname.sh
-postfix ALL=(root) NOPASSWD: /home/engines/scripts/actionators/_rm_email.sh
-postfix ALL=(root) NOPASSWD: /home/engines/scripts/configurators/_set_notifications_email.sh
+postfix ALL=(root) NOPASSWD: /home/engines/scripts/startup/sudo/_start_postfix.sh
+postfix ALL=(root) NOPASSWD: /home/engines/scripts/startup/sudo/_setup_dirs.sh
+postfix ALL=(root) NOPASSWD: /home/engines/scripts/engine/sudo/_postmap.sh
+postfix ALL=(root) NOPASSWD: /home/engines/scripts/engine/sudo/_transport_over_ride.sh
+postfix ALL=(root) NOPASSWD: /home/engines/scripts/engine/sudo/_set_mailname.sh
+postfix ALL=(root) NOPASSWD: /home/engines/scripts/engine/sudo/_rm_email.sh
+postfix ALL=(root) NOPASSWD: /home/engines/scripts/configurators/sudo/_set_notifications_email.sh
 postfix ALL=(root) NOPASSWD: /home/engines/scripts/signal/_kill_postfix.sh
 postfix ALL = (root) NOPASSWD: /home/engines/scripts/signal/_kill_sleep.sh
 postfix ALL=(root) NOPASSWD: /home/engines/scripts/signal/_signal.sh
-#for debugging only
-#ALL ALL = (root) NOPASSWD: ALL
+root ALL=(opendkim) NOPASSWD: /usr/sbin/opendkim
+postfix ALL = (opendkim) NOPASSWD: /home/engines/scripts/actionators/sudo/_create_domain_dkim.sh
+postfix ALL = (opendkim) NOPASSWD: /home/engines/scripts/actionators/sudo/_rm_domain_dkim.sh
+postfix ALL = (opendkim) NOPASSWD: /home/engines/scripts/actionators/sudo/_import_domain_dkim.sh
 

@@ -43,7 +43,7 @@ fi
     fi
   fi
 fi 
-sudo -n /home/engines/scripts/engine/_postmap.sh transport
+sudo -n /home/engines/scripts/engine/sudo/_postmap.sh transport
 
  
 if ! test -z $mail_name
@@ -51,7 +51,7 @@ if ! test -z $mail_name
   echo $mail_name > /etc/postfix/mailname
 fi
 
-sudo -n /home/engines/scripts/engine/_set_mailname.sh $mail_name
+sudo -n /home/engines/scripts/engine/sudo/_set_mailname.sh $mail_name
  
 
 if test -z $smarthost_password
@@ -60,7 +60,7 @@ if test -z $smarthost_password
 else
  echo "$smarthost_hostname $smarthost_username:$smarthost_password" > /home/postfix/smarthost_passwd
 fi
-sudo -n /home/engines/scripts/engine/_transport_over_ride.sh
-sudo -n /home/engines/scripts/engine/_postmap.sh smarthost_passwd     
+sudo -n /home/engines/scripts/engine/sudo/_transport_over_ride.sh
+sudo -n /home/engines/scripts/engine/sudo/_postmap.sh smarthost_passwd     
 
 exit 0

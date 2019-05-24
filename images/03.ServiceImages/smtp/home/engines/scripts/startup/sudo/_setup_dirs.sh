@@ -21,4 +21,6 @@ create_dirs
 
 postfix set-permissions
 
-chown postfix /home/engines/scripts/configurators/saved/ 
+chown postfix /home/engines/scripts/configurators/saved/
+chown opendkim /etc/opendkim/keys 
+
