@@ -7,9 +7,9 @@ postfix ALL=(root) NOPASSWD: /home/engines/scripts/engine/sudo/_set_mailname.sh
 
 postfix ALL=(root) NOPASSWD: /home/engines/scripts/configurators/sudo/_set_notifications_email.sh
 
-postfix ALL=(root) NOPASSWD: /home/engines/scripts/signal/_kill_postfix.sh
-postfix ALL = (root) NOPASSWD: /home/engines/scripts/signal/_kill_sleep.sh
-postfix ALL=(root) NOPASSWD: /home/engines/scripts/signal/_signal.sh
+postfix ALL=(root) NOPASSWD: /home/engines/scripts/signal/sudo/_kill_postfix.sh
+postfix ALL = (root) NOPASSWD: /home/engines/scripts/signal/sudo/_kill_sleep.sh
+postfix ALL=(root) NOPASSWD: /home/engines/scripts/signal/sudo/_signal.sh
 
 postfix ALL=(opendkim) NOPASSWD: /usr/sbin/opendkim
 
