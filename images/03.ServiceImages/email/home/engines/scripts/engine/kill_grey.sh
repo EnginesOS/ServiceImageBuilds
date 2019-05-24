@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 if  test -f /home/engines/run/grey.pid
   then

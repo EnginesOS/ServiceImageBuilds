@@ -15,7 +15,7 @@ if ! test -f /home/engines/scripts/configurators/saved/default_domain
 	echo '{}' > /home/engines/scripts/configurators/saved/default_domain
 fi 
 
-sudo -n /home/engines/scripts/configurators/rebuild_main.sh
+sudo -n /home/engines/scripts/configurators/sudo/rebuild_main.sh
 
 if test -f /home/engines/scripts/configurators/saved/grey_listing_enabled
   then
