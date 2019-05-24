@@ -11,9 +11,9 @@ fi
 if test -f /home/engines/scripts/configurators/saved/domain
  then
     domain_name=`cat /home/engines/scripts/configurators/saved/domain`   
-	echo '{"domain_name":"'$domain_name'","delivery_local":"'$deliver_local'"}'
+	echo '{"domain_name":"'$domain_name'","deliver_local":"'$deliver_local'"}'
 else
-	echo '{"domain_name":"Not Set","delivery_local":"false"}'
+	echo '{"domain_name":"Not Set","deliver_local":"false"}'
 fi
 exit 0
 
