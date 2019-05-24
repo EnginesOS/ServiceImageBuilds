@@ -8,7 +8,7 @@ ENV LANG en_US.UTF-8
 RUN /usr/sbin/usermod -u 22671 www-data &&\
 	apt-get update -y &&\
 	apt-get install -y  software-properties-common apt-file &&\
-	LC_ALL=en_US.UTF-8 add-apt-repository ppa:ondrej/php &&\
+	echo " " | LC_ALL=en_US.UTF-8 add-apt-repository ppa:ondrej/php &&\
 	apt-get update -y &&\
 	apt-get install -y  libapache2-mod-php5.6 \
 			            php5.6-gettext \
