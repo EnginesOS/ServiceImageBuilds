@@ -1,6 +1,6 @@
 FROM  engines/servicebase:$release
-
-RUN sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 9DA31620334BD75D9DCB49F368818C72E52529D4; echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' |  tee /etc/apt/sources.list.d/mongodb.list &&\
+RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2930ADAE8CAF5059EE73BB4B58712A2291FA4AD5 &&\
+    echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' |  tee /etc/apt/sources.list.d/mongodb.list &&\
 	groupadd -g 22008 mongo&&\	
     useradd -u 22008  -g mongo -d /home/mongo -m -G containers mongo&&\	
     apt-get -y update &&\
