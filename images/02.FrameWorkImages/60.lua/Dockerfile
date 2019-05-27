@@ -3,19 +3,20 @@ FROM engines/frameworkbuild:$release
 ADD home home
 ENV ContUser lua
 ENV ContGrp lua
-
+ENV LUA_ROCKS_VERSION 3.1.2
+ENV LUA_VERSION 5.3
 RUN useradd -u 22676  -g lua -d /home/lua -m -G containers lua&&\
 	apt-get update -y &&\
-	apt-get install -y lua5.3 \
-		               liblua5.3-dev \
+	apt-get install -y lua${LUA_VERSION} \
+		               liblua${LUA_VERSION}-dev \
 		               libidn11-dev \
 		               libssl-dev &&\
 	apt-get clean &&\    
     usermod -G containers -a lua &&\
     cd /tmp &&\
-    wget http://luarocks.org/releases/luarocks-2.4.4.tar.gz &&\
-    tar zxpf luarocks-2.4.4.tar.gz &&\
-	cd luarocks-2.4.4 &&\
+    wget http://luarocks.org/releases/luarocks-${LUA_ROCKS_VERSION}.tar.gz &&\
+    tar zxpf luarocks-${LUA_ROCKS_VERSION}.tar.gz &&\
+	cd luarocks-${LUA_ROCKS_VERSION} &&\
 	./configure &&\
  	make build  &&\
  	make install &&\
