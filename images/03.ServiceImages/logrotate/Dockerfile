@@ -2,6 +2,7 @@ FROM  engines/servicebase:$release
 
 RUN /usr/sbin/usermod -u  22012 syslog &&\
 	/home/engines/scripts/build/no_init.sh &&\
+	 groupadd -g 22028 logrotate &&\
 	 useradd -u 22028  -g logrotate -d /home/logrotate -m -G containers logrotate
  
 ENV ContUser logrotate
