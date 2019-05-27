@@ -5,7 +5,8 @@ ENV ContUser lua
 ENV ContGrp lua
 ENV LUA_ROCKS_VERSION 3.1.2
 ENV LUA_VERSION 5.3
-RUN useradd -u 22676  -g lua -d /home/lua -m -G containers lua&&\
+RUN groupadd -g 22676 lua &&\
+	useradd -u 22676  -g lua -d /home/lua -m -G containers lua&&\
 	apt-get update -y &&\
 	apt-get install -y lua${LUA_VERSION} \
 		               liblua${LUA_VERSION}-dev \
