@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 if ! test -f "/home/email/$1" 
  then
   touch "/home/email/$1" 

@@ -3,7 +3,7 @@
 . /home/engines/scripts/engine/backup_dirs.sh
 
 
-sudo -n /home/engines/scripts/actionators/_fix_perms.sh
+sudo -n /home/engines/scripts/actionators/sudo/_fix_perms.sh
 
 required_values="pub_key priv_key backup_password"
 check_required_values

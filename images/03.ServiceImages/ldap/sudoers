@@ -1,13 +1,12 @@
 #Defaults  env_keep += "SIGNAL CONTAINER_NAME PID_FILE PID_FILES exit_code KRB5_KTNAME"
-openldap ALL=(root) NOPASSWD: /home/engines/scripts/actionators/_set_admin_password.sh
-openldap ALL=(root) NOPASSWD: /home/engines/scripts/actionators/_schema_update.sh
-openldap ALL=(root) NOPASSWD: /home/engines/scripts/startup/_start.sh
+openldap ALL=(root) NOPASSWD: /home/engines/scripts/actionators/sudo/_set_admin_password.sh
+openldap ALL=(root) NOPASSWD: /home/engines/scripts/actionators/sudo/_schema_update.sh
+openldap ALL=(root) NOPASSWD: /home/engines/scripts/startup/sudo/_start.sh
 
-openldap ALL=(root) NOPASSWD: /home/engines/scripts/signal/_signal.sh
-openldap ALL=(root) NOPASSWD: /home/engines/scripts/first_run/_first_run.sh
-openldap ALL=(root) NOPASSWD: /home/engines/scripts/first_run/_init_ous_configured.sh
-openldap ALL=(root) NOPASSWD: /home/engines/scripts/backup/_backup.sh
-openldap ALL=(root) NOPASSWD: /home/engines/scripts/backup/_restore.sh
-#for debugging only
-#ALL ALL = (root) NOPASSWD: ALL
+openldap ALL=(root) NOPASSWD: /home/engines/scripts/signal/sudo/_signal.sh
+openldap ALL=(root) NOPASSWD: /home/engines/scripts/first_run/sudo/_first_run.sh
+openldap ALL=(root) NOPASSWD: /home/engines/scripts/first_run/sudo/_init_ous_configured.sh
+openldap ALL=(root) NOPASSWD: /home/engines/scripts/backup/sudo/_backup.sh
+openldap ALL=(root) NOPASSWD: /home/engines/scripts/backup/sudo/_restore.sh
+
 

@@ -5,7 +5,7 @@ COPY home home
 RUN groupadd -g 22031 ivpn &&\
 	useradd -u 22031  -g ivpn -d /home/ivpn -m -G containers ivpn&&\
 	apt-get -y update &&\
-	apt-get install -y strongswan libcharon-extra-plugins telnet strongswan-plugin-eap-mschapv2 strongswan-plugin-ldap strongswan-plugin-eap-radius moreutils 
+	apt-get install -y strongswan libcharon-extra-plugins telnet libstrongswan-extra-plugins moreutils 
 
 COPY sudoers /etc/sudoers.d/ipsec
 

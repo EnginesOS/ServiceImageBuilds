@@ -32,7 +32,7 @@ if test $? -ne 0
    exit 127
 fi
     
-sudo -n /home/engines/scripts/engine/_remove_cert.sh $cert_type/keys/$store/${common_name}.key
+sudo -n /home/engines/scripts/engine/sudo/sudo/_remove_cert.sh $cert_type/keys/$store/${common_name}.key
 if test $? -ne 0
  then
   echo "Failed to Delete Key $common_name"

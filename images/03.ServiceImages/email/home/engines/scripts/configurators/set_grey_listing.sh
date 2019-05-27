@@ -31,14 +31,14 @@ if  test $enable_grey_listing -eq 1
  	/home/engines/scripts/engine/start_grey.sh
  else
     rm /home/engines/scripts/configurators/saved/grey_listing_enabled
-    /home/engines/scripts/engine/kill_grey.sh  
+    /home/engines/scripts/engine/sudo/kill_grey.sh  
   fi 
 else
     rm /home/engines/scripts/configurators/saved/grey_listing_enabled
-     /home/engines/scripts/engine/kill_grey.sh  
+     /home/engines/scripts/engine/sudo/kill_grey.sh  
 fi
 
-sudo /home/engines/scripts/configurators/rebuild_main.sh
+sudo /home/engines/scripts/configurators/sudo/rebuild_main.sh
    	 
 exit 0
 

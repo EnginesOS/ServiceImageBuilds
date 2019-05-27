@@ -8,6 +8,7 @@ RUN groupadd -g 22003 postfix&&\
 	                   postfix-pcre \
 	                   postfix-ldap \
 	                   postgrey \
+	                   postfix-policyd-spf-python \
 				       libsasl2-modules-gssapi-mit 
 	
 ADD home home

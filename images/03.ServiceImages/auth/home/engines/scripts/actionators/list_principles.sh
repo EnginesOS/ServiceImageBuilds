@@ -1,2 +1,2 @@
 #!/bin/sh
-sudo -n /home/engines/scripts/actionators/_list_principles.sh
+sudo -n /home/engines/scripts/actionators/sudo/_list_principles.sh

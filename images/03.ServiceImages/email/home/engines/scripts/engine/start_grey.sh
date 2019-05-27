@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 
 if test -f /home/engines/scripts/configurators/grey/grey_list_delay
@@ -23,9 +23,13 @@ if ! test -f /home/engines/scripts/configurators/grey/white_adresses
    touch /home/engines/scripts/configurators/grey/white_adresses
 fi
  
-sudo /usr/sbin/postgrey -d \
+#sudo 
+/usr/sbin/postgrey -d \
  --inet 127.0.0.1:60000 \
  --pidfile=/home/engines/run/grey.pid \
  --delay=${grey_list_delay} \
  --whitelist-clients=/home/engines/scripts/configurators/grey/white_clients \
  --whitelist-recipients=/home/engines/scripts/configurators/grey/white_adresses
+ 
+ 
+ 

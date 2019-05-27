@@ -9,7 +9,7 @@ KILL_SCRIPT=/home/engines/scripts/signal/signal.sh
 service_first_run_check
 
 
-sudo -n /home/engines/scripts/startup/_start.sh &
+sudo -n /home/engines/scripts/startup/sudo/_start.sh &
 
 startup_complete
 

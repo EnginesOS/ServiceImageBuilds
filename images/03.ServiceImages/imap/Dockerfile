@@ -2,7 +2,7 @@ FROM engines/servicebase:$release
 
 RUN groupadd -g 22013 dovecot &&\
 	useradd -u 22013  -g dovecot -d /home/dovecot -m -G containers dovecot&&\
-	useradd -u 22014 vmail &&\
+	useradd -u 5000 vmail &&\
 	/home/engines/scripts/build/no_init.sh &&\	
 	apt-get -y update &&\	
 	apt-get -y install dovecot-core \

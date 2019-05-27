@@ -32,7 +32,7 @@ cat $PARAMS_FILE | sed "s/,\"password\":\".*\",/,/" > /home/ivpn/entries/users/$
 rm  $PARAMS_FILE 
 add_user_vpn
 
-err=`sudo -n /home/engines/scripts/actionators/_add_vpn_user.sh`
+err=`sudo -n /home/engines/scripts/actionators/sudo/_add_vpn_user.sh`
 if test $? -eq 0
  then
 	echo '{"result":"Success"}'

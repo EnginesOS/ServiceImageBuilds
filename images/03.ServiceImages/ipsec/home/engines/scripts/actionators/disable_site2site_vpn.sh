@@ -19,7 +19,7 @@ if ! test -d  /home/ivpn/entries/disabled_sites/
 fi  
 
 mv  /home/ivpn/entries/sites/${vpn_name} /home/ivpn/entries/disabled_sites/
-sudo -n /home/engines/scripts/actionators/_disable_site2site_vpn.sh ${vpn_name}
+sudo -n /home/engines/scripts/actionators/sudo/_disable_site2site_vpn.sh ${vpn_name}
 
 if test $? -eq 0
  then

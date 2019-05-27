@@ -4,13 +4,22 @@ postfix ALL=(root) NOPASSWD: /home/engines/scripts/startup/sudo/_setup_dirs.sh
 postfix ALL=(root) NOPASSWD: /home/engines/scripts/engine/sudo/_postmap.sh
 postfix ALL=(root) NOPASSWD: /home/engines/scripts/engine/sudo/_transport_over_ride.sh
 postfix ALL=(root) NOPASSWD: /home/engines/scripts/engine/sudo/_set_mailname.sh
-postfix ALL=(root) NOPASSWD: /home/engines/scripts/engine/sudo/_rm_email.sh
+
 postfix ALL=(root) NOPASSWD: /home/engines/scripts/configurators/sudo/_set_notifications_email.sh
-postfix ALL=(root) NOPASSWD: /home/engines/scripts/signal/_kill_postfix.sh
-postfix ALL = (root) NOPASSWD: /home/engines/scripts/signal/_kill_sleep.sh
-postfix ALL=(root) NOPASSWD: /home/engines/scripts/signal/_signal.sh
+
+postfix ALL=(root) NOPASSWD: /home/engines/scripts/signal/sudo/_kill_postfix.sh
+postfix ALL = (root) NOPASSWD: /home/engines/scripts/signal/sudo/_kill_sleep.sh
+postfix ALL=(root) NOPASSWD: /home/engines/scripts/signal/sudo/_signal.sh
+
 postfix ALL=(opendkim) NOPASSWD: /usr/sbin/opendkim
+
+postfix ALL=(root) NOPASSWD: /home/engines/scripts/actionators/sudo/_rm_email.sh
+postfix ALL=(root) NOPASSWD: /home/engines/scripts/actionators/sudo/_clear_deffered_queue.sh
+postfix ALL=(root) NOPASSWD: /home/engines/scripts/actionators/sudo/_clear_complete_queue.sh
+
 postfix ALL = (opendkim) NOPASSWD: /home/engines/scripts/actionators/sudo/_create_domain_dkim.sh
 postfix ALL = (opendkim) NOPASSWD: /home/engines/scripts/actionators/sudo/_rm_domain_dkim.sh
 postfix ALL = (opendkim) NOPASSWD: /home/engines/scripts/actionators/sudo/_import_domain_dkim.sh
 
+postfix ALL = (opendkim) NOPASSWD: /home/engines/scripts/engine/sudo/rebuild_dkim.key.sh
+ 

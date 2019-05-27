@@ -14,9 +14,9 @@ if test ${fqdn} = $consumer_name
 fi 
 if test -f $InstalledRoot/${consumer_type}s/${consumer_name}/certs/${common_name}.crt
  then
-  sudo -n /home/engines/scripts/engine/_remove_cert.sh live/${consumer_type} ${consumer_name}/certs/${common_name}.crt
-  sudo -n /home/engines/scripts/engine/_remove_cert.sh live/${consumer_type} ${consumer_name}/certs/store.${common_name}
-  sudo -n /home/engines/scripts/engine/_remove_cert.sh live/${consumer_type} ${consumer_name}/keys/${common_name}.key
+  sudo -n /home/engines/scripts/engine/sudo/sudo/_remove_cert.sh live/${consumer_type} ${consumer_name}/certs/${common_name}.crt
+  sudo -n /home/engines/scripts/engine/sudo/sudo/_remove_cert.sh live/${consumer_type} ${consumer_name}/certs/store.${common_name}
+  sudo -n /home/engines/scripts/engine/sudo/sudo/_remove_cert.sh live/${consumer_type} ${consumer_name}/keys/${common_name}.key
  else
    	echo '{"Result":"Failed","ErrorMesg":"No Such Cert '${fqdn}'","ExitCode":"127"}'
    	exit 0	

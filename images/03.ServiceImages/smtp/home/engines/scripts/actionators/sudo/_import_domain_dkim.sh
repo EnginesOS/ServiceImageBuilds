@@ -20,6 +20,7 @@ chmod go-rw $domain_dir/mail.private
 chown opendkim -R $domain_dir
 mv /tmp/public > $domain_dir/mail.txt
 chmod g+r $domain_dir/mail.txt
+/home/engines/scripts/engine/sudo/rebuild_dkim.key.sh
 
  echo '{"Success":"Domain key for '$domain_name' Imported"}'
 exit 0

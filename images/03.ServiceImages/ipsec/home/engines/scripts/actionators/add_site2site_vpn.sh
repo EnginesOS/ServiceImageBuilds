@@ -156,7 +156,7 @@ get_local_values
 
 add_site_vpn
 
-sudo -n /home/engines/scripts/actionators/_add_site2site_vpn.sh "$vpn_name"
+sudo -n /home/engines/scripts/actionators/sudo/_add_site2site_vpn.sh "$vpn_name"
 if test $? -eq 0
  then
 	echo '{"result":"Success"}'

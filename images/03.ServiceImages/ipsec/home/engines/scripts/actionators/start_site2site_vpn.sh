@@ -10,4 +10,4 @@ if ! test -d /home/ivpn/entries/sites/${vpn_name}
    exit 1
 fi
 
-sudo -n /home/engines/scripts/actionators/_start_site2site_vpn.sh ${vpn_name}
+sudo -n /home/engines/scripts/actionators/sudo/_start_site2site_vpn.sh ${vpn_name}

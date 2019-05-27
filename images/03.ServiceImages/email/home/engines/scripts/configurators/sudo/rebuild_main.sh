@@ -15,6 +15,19 @@ if test -f /home/engines/scripts/configurators/saved/grey_listing_enabled
 fi
 echo  ",permit"  >>  /home/engines/scripts/configurators/saved/rbls.conf
 
+if test -f /home/engines/scripts/configurators/saved/hostname_checks
+ then
+   hostname_checking=',reject_unknown_hostname,reject_invalid_hostname'
+fi   
+
+if test -f /home/engines/scripts/configurators/saved/enforce_spf
+ then
+  spf_conf=',check_policy_service unix:private/policyd-spf'
+fi  
+
 rbl_conf=`cat /home/engines/scripts/configurators/saved/rbls.conf`
-cat /home/engines/templates/email/main.cf | sed "/RBL_CONF/s//$rbl_conf/" > /etc/postfix/main.cf
+cat /home/engines/templates/email/main.cf | sed "/RBL_CONF/s//$rbl_conf/" \
+									      |	sed "/SPF/s//$spf_conf/"  \
+									      |	sed "/HOSTNAME_CHECKS/s//$hostname_checking/"  \
+											> /etc/postfix/main.cf
 /home/engines/scripts/signal/kill_postfix.sh -HUP

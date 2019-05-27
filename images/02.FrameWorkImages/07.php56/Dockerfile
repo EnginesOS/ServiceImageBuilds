@@ -29,4 +29,4 @@ RUN /usr/sbin/usermod -u 22671 www-data &&\
 ADD src/30-sendmail.ini /etc/php/5.6/apache2/conf.d/
 
 
-ENv PHP_VERSION	5.6
+ENV PHP_VERSION	5.6

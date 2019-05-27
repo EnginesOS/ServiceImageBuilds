@@ -11,7 +11,7 @@ if ! test -d /home/ivpn/entries/sites/${vpn_name}
 fi
 
 
-sudo -n /home/engines/scripts/actionators/_rm_site_vpn.sh "$vpn_name" 
+sudo -n /home/engines/scripts/actionators/sudo/_rm_site_vpn.sh "$vpn_name" 
 if test $? -eq 0
  then
 	echo "Success"

@@ -2,7 +2,7 @@
 pass=`dd if=/dev/urandom count=6 bs=1  | od -h | awk '{ print $2$3$4}'`
 echo -n $pass > /var/lib/mysql/.pass
 
-sudo -n /home/engines/scripts/first_run/_mkdir_rundir.sh
+sudo -n /home/engines/scripts/first_run/sudo/_mkdir_rundir.sh
 
 if ! test -d /var/lib/mysql/mysql
  then
