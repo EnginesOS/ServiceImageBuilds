@@ -1,6 +1,6 @@
-FROM engines/node6:$release
+FROM engines/node_latest:$release
 
-Run chown -R g+w /usr/local/ &&\
+RUN chown -R g+w /usr/local/ &&\
 	chgrp -R containers /usr/local/
 
 
