@@ -23,7 +23,7 @@ RUN groupadd -g 22016 cron &&\
 	cd /home/cron &&\
  	/home/engines/scripts/build/post_build_clean.sh
 
-ADD src/fcron.conf /home/cron/etc/
+COPY src/fcron.conf /home/cron/etc/
 	
 COPY home home
 
