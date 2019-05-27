@@ -1,7 +1,5 @@
 FROM  engines/servicebase:$release
 
-ENV  RBENV_ROOT /usr/local/rbenv
-
 RUN /home/engines/scripts/build/no_init.sh &&\			
 	apt-get update -y &&\
 	apt-get -y install build-essential \
@@ -25,8 +23,8 @@ USER registry
 	
 RUN cd /home/registry &&\
 	git clone https://github.com/EnginesOS/EnginesSystemRegistry &&\
-	git  config --global user.email "registry@engines.org" &&\
-	git  config --global  user.name "Engines System Registry" &&\
+	git config --global user.email "registry@engines.org" &&\
+	git config --global user.name "Engines System Registry" &&\
 	cd EnginesSystemRegistry &&\
 	git checkout $release
 
