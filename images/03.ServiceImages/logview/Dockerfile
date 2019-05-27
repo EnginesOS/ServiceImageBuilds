@@ -9,7 +9,6 @@ RUN usermod -u 22027 www-data &&\
 					   php-gettext \
 					   php-mbstring \
 					   php-mysql \
-					   php-mcrypt \
 					   php-gd \
 					   php-apcu \
 					   php-dev &&\
