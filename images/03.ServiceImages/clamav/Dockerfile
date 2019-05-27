@@ -1,6 +1,6 @@
 FROM  engines/servicebase:$release
 
-RUN groupadd -m 22037 clamav &&\
+RUN groupadd -g 22037 clamav &&\
 	useradd -u 22037  -g clamav -d /home/clamav -m -G containers clamav &&\
 	/home/engines/scripts/build/no_init.sh &&\		
 	apt-get update -y &&\
