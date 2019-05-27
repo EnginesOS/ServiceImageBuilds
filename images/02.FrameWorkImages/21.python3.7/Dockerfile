@@ -12,6 +12,7 @@ RUN groupadd -g 22674 python &&\
 	apt-get install -y python \
 					   python-dev \
 					   python3.7 \
+					   python3-pip \
 					   apache2 \
 					   libapache2-mod-wsgi &&\
     cd /tmp &&\
