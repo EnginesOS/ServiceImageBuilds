@@ -35,3 +35,8 @@ cn: administrators
 member: cn=administrator,ou=People,dc=engines,dc=internal
 objectclass: groupOfNames
 objectclass: top
+
+dn: cn=Authenticators,ou=SecurityGroups,ou=Engines,dc=engines,dc=internal
+cn: Authenticators
+objectclass: groupOfNames
+objectclass: top
