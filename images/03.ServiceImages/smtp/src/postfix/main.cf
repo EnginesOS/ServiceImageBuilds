@@ -55,6 +55,7 @@ smtpd_relay_restrictions=permit_mynetworks,permit_sasl_authenticated,check_relay
 
 milter_default_action = accept
 milter_protocol = 2
+#DKIM
 smtpd_milters = inet:localhost:8892
 non_smtpd_milters = inet:localhost:8892
 
