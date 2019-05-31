@@ -21,6 +21,7 @@ postfix ALL=(root) NOPASSWD: /home/engines/scripts/actionators/sudo/_rm_email.sh
 postfix ALL=(root) NOPASSWD: /home/engines/scripts/actionators/sudo/_clear_deffered_queue.sh
 postfix ALL=(root) NOPASSWD: /home/engines/scripts/actionators/sudo/_clear_complete_queue.sh
 
+postfix ALL=(opendkim) NOPASSWD: /usr/sbin/opendkim
 
 #must have blank after last sudoers line
 
