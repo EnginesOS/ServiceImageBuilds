@@ -30,4 +30,14 @@ cat /home/engines/templates/email/main.cf | sed "/RBL_CONF/s//$rbl_conf/" \
 									      |	sed "/SPF/s//$spf_conf/"  \
 									      |	sed "/HOSTNAME_CHECKS/s//$hostname_checking/"  \
 											> /etc/postfix/main.cf
-/home/engines/scripts/signal/kill_postfix.sh -HUP
+
+spf_action=`cat /home/engines/scripts/configurators/saved/enforce_spf_action`
+ if test $spf_action = 'reject'
+  then
+   cp /home/engines/template/spf/reject_spf_policy.conf /etc/postfix-policyd-spf-python/policyd-spf.conf
+ else
+   cp /home/engines/template/spf/tag_spf_policy.conf /etc/postfix-policyd-spf-python/policyd-spf.conf
+fi
+
+/etc/init.d/postfix reload
+
