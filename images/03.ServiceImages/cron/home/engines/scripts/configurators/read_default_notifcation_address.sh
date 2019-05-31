@@ -8,5 +8,4 @@ fi
 
 echo '{"notification_address":"'$addr'"}'
 
-
 exit 0
