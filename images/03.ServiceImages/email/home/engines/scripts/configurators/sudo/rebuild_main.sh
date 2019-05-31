@@ -22,7 +22,7 @@ fi
 
 if test -f /home/engines/scripts/configurators/saved/enforce_spf
  then
-  spf_conf=',check_policy_service unix:private/policyd-spf'
+  spf_conf=',check_policy_service unix:private\/policyd-spf'
 fi  
 
 rbl_conf=`cat /home/engines/scripts/configurators/saved/rbls.conf`
