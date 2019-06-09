@@ -10,7 +10,7 @@ export KILL_SCRIPT
 service_first_run_check
 
 
-sudo -n /home/engines/scripts/startup/_start.sh & 
+sudo -n /home/engines/scripts/startup/sudo/_start.sh & 
 
 
 
