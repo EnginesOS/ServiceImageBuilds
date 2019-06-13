@@ -38,7 +38,7 @@ else
      /home/engines/scripts/engine/sudo/kill_grey.sh  
 fi
 
-sudo /home/engines/scripts/configurators/sudo/rebuild_main.sh
+sudo -n /home/engines/scripts/configurators/sudo/rebuild_main.sh
    	 
 exit 0
 
