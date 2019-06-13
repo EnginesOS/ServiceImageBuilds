@@ -44,7 +44,7 @@ if test -f ${config_dir}/dsn.rfc-ignorant.org
     dsn_rfc-ignorant_org=false
 fi
  
- echo '"{"zen_spamhaus_org":"'${zen_spamhaus_org}'",
+ echo '{"zen_spamhaus_org":"'${zen_spamhaus_org}'",
  	"bl_spamcop_net":"'${bl_spamcop_net}'",
  	"cbl_abuseat_org":"'${cbl_abuseat_org}'",
  	"dnsbl_njabl_org":"'${dnsbl_njabl_org}'",
