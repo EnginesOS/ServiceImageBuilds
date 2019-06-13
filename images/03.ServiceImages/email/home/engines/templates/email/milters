@@ -1,0 +1,6 @@
+milter_default_action = accept
+milter_protocol = 6
+
+#DKIM
+smtpd_milters = DKIM_MILTER
+non_smtpd_milters = DKIM_MILTER

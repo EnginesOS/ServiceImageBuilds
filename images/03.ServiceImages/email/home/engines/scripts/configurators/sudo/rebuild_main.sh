@@ -1,5 +1,5 @@
 #!/bin/sh
-
+ spf_conf=""
 
 truncate --size 0 /home/engines/scripts/configurators/saved/rbls.conf
 
@@ -22,12 +22,31 @@ fi
 
 if test -f /home/engines/scripts/configurators/saved/enforce_spf
  then
-  spf_conf=',check_policy_service unix:private/policyd-spf'
+  spf_conf=',check_policy_service unix:private\/policyd-spf'
+  spf_action=`cat /home/engines/scripts/configurators/saved/enforce_spf_action`
+   if test $spf_action = 'reject'
+    then
+     cp /home/engines/template/spf/reject_spf_policy.conf /etc/postfix-policyd-spf-python/policyd-spf.conf
+   else
+    cp /home/engines/template/spf/tag_spf_policy.conf /etc/postfix-policyd-spf-python/policyd-spf.conf
+   fi
 fi  
+
 
 rbl_conf=`cat /home/engines/scripts/configurators/saved/rbls.conf`
 cat /home/engines/templates/email/main.cf | sed "/RBL_CONF/s//$rbl_conf/" \
 									      |	sed "/SPF/s//$spf_conf/"  \
 									      |	sed "/HOSTNAME_CHECKS/s//$hostname_checking/"  \
 											> /etc/postfix/main.cf
-/home/engines/scripts/signal/kill_postfix.sh -HUP
+
+if test -f /home/engines/scripts/configurators/saved/enforce_dkim
+  then
+  Milter_Frag=`cat /home/engines/templates/main/milters |sed "/DKIM_MILTER/s//inet:localhost:8892/"`
+fi  
+echo $Milter_Frag >> /etc/postfix/main.cf
+
+
+
+
+/etc/init.d/postfix reload
+

@@ -65,7 +65,7 @@ chmod g+w  -R /client/state
 #fi
 
 
-chown -R ${fw_user}.${data_gid}    /home/home_dir/.ssh
+chown -R ${fw_user}.${data_gid} /home/home_dir/.ssh
 touch /client/state/flags/volume_setup_complete
 
  exit 0

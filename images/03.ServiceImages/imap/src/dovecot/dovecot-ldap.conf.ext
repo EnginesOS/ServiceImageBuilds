@@ -3,11 +3,7 @@ base = ou=People,dc=engines,dc=internal
 ldap_version = 3
 auth_bind = yes
 pass_attrs = uid=user
-pass_filter = (&(objectClass=posixAccount)(uid=%u))
-#auth_bind_userdn = uid=%u,ou=People,dc=engines,dc=internal
-deref = never
-scope = subtree
+pass_filter = (&(objectClass=posixAccount)(uid=%n))
 user_attrs = uidNumber=uid,gidNumber=gid,mailHomeDirectory=home
-user_filter = (&(objectclass=postfixUser)(uid=%n))
-
+user_filter = (&(objectClass=postfixUser)(uid=%n))
 

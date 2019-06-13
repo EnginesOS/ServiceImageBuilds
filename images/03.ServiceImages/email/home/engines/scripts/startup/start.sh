@@ -14,6 +14,7 @@ if ! test -f /home/engines/scripts/configurators/saved/default_domain
  then
 	echo '{}' > /home/engines/scripts/configurators/saved/default_domain
 fi 
+sudo -n -u opendkim /usr/sbin/opendkim  -l -W -v
 
 sudo -n /home/engines/scripts/configurators/sudo/rebuild_main.sh
 

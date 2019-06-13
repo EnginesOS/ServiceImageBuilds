@@ -8,6 +8,8 @@ RUN groupadd -g 22003 postfix&&\
 	                   postfix-pcre \
 	                   postfix-ldap \
 	                   postgrey \
+	                   opendkim \
+	                   opendkim-tools \
 	                   postfix-policyd-spf-python \
 				       libsasl2-modules-gssapi-mit 
 	

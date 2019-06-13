@@ -1,5 +1,9 @@
 FROM  engines/servicebase:$release
 
+COPY home home
+
+COPY src/fcron.conf /home/cron/etc/
+
 RUN groupadd -g 22016 cron &&\
 	useradd -u 22016  -g cron -d /home/cron -m -G containers cron&&\
 	apt-get  update &&\
@@ -21,11 +25,10 @@ RUN groupadd -g 22016 cron &&\
 	mkdir -p /home/cron/doc /home/cron/man /home/cron/spool /home/cron/log/ &&\
 	chown -R cron /home/cron/ &&\
 	cd /home/cron &&\
+	chown root /home/cron/etc/fcron.conf &&\
+	chmod og-w /home/cron/etc/fcron.conf &&\
  	/home/engines/scripts/build/post_build_clean.sh
 
-COPY src/fcron.conf /home/cron/etc/
-	
-COPY home home
 
 USER cron
 	
