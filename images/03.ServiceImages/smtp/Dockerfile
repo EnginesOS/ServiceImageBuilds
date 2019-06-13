@@ -53,6 +53,7 @@ RUN	mkdir -p /home/engines/scripts/configurators/saved &&\
 	cp -rp /var/spool/postfix /tmp/spool_postfix &&\
 	mkdir -p /etc/opendkim &&\
 	echo 127.0.0.1 >>/etc/opendkim/trusted.hosts &&\
+	echo  172.17.0.0/24 >>/etc/opendkim/trusted.hosts &&\
 	echo smtp.engines.internal >>/etc/opendkim/trusted.hosts &&\
 	touch /etc/opendkim/SigningTable /etc/opendkim/KeyTable &&\
 	chown opendkim -R /etc/opendkim/

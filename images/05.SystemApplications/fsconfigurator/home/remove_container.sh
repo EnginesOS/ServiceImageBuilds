@@ -8,7 +8,7 @@ for cmd in $*
  	state)
  	     dir="/client/state/"
  		/home/remove_dir_contents.sh $dir
- 		chown 21000.22020 /client/state/
+ 		chown 21000.22020 -R /client/state/
  		;;
  	logs)
  		dir="/client/log/"
@@ -21,8 +21,8 @@ for cmd in $*
  	all)
  		dir="/client/log/"
  		/home/remove_dir_contents.sh $dir
- 		chown 21000.22020 /client/state/ 		
- 		dir="//client/state/"
+ 		chown 21000.22020 -R /client/state/ 		
+ 		dir="/client/state/"
  		/home/remove_dir_contents.sh $dir
  		;;
   esac

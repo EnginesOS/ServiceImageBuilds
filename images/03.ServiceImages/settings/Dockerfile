@@ -1,6 +1,7 @@
 FROM engines/servicebase:$release
 
-RUN  useradd -u 22033  -g settings -d /home/.home_dir -m -G containers settings &&\
+RUN groupadd -g  22033 settings &&\
+	useradd -u 22033  -g settings -d /home/.home_dir -m -G containers settings &&\
 	/home/engines/scripts/build/no_init.sh &&\	
 	apt-get update -y  &&\
 	apt-get install -y wireless-tools iw wpasupplicant 

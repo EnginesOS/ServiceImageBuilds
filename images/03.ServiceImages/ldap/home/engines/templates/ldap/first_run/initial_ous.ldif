@@ -28,6 +28,10 @@ objectClass: gidNext
 gidNumber: 25000
 cn: gidNext
 
+dn: ou=SecurityGroups,ou=Engines,dc=engines,dc=internal
+objectClass: organizationalUnit
+ou: SecurityGroups
+
 dn: ou=Containers,ou=Engines,dc=engines,dc=internal
 objectClass: organizationalUnit
 ou: Containers

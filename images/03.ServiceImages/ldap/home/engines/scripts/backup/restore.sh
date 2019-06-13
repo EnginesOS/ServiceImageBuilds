@@ -3,7 +3,7 @@
 touch /home/engines/run/flags/backup
 exit_code=0
 
-cat - | sudo -n /home/engines/scripts/backup/_restore.sh 
+cat - | sudo -n /home/engines/scripts/backup/sudo/_restore.sh 
 
 if test $? -ne 0
  then 

@@ -12,4 +12,4 @@ export user
 export group
 export grp_write
 
-sudo -n /home/engines/scripts/services/_update_service.sh
+sudo -n /home/engines/scripts/services/sudo/_update_service.sh

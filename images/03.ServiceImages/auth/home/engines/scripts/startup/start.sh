@@ -9,7 +9,7 @@ export KILL_SCRIPT
 
 . /home/engines/functions/trap.sh
 
-sudo -n /home/engines/scripts/startup/_start.sh &
+sudo -n /home/engines/scripts/startup/sudo/_start.sh &
 
 wait
 

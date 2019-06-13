@@ -2,7 +2,7 @@
  . /home/engines/functions/checks.sh
 
  . /home/engines/scripts/engine/cert_dirs.sh
-sudo -n /home/engines/scripts/engine/_fix_perms.sh
+sudo -n /home/engines/scripts/engine/sudo/_fix_perms.sh
 
 if test -f $StoreRoot/private/ca/keys/system_CA.key
 	then	

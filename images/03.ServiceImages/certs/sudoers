@@ -1,10 +1,10 @@
 Defaults  env_keep += "KRB5_KTNAME SIGNAL CONTAINER_NAME PID_FILE PID_FILES exit_code"
-certs ALL = (root) NOPASSWD: /home/engines/scripts/engine/_install_target.sh 
-certs ALL = (root) NOPASSWD: /home/engines/scripts/engine/_remove_cert.sh
-certs ALL = (root) NOPASSWD: /home/engines/scripts/engine/_fix_perms.sh
-certs ALL = (root) NOPASSWD: /home/engines/scripts/backup/_backup.sh
-certs ALL = (root) NOPASSWD: /home/engines/scripts/backup/_restore.sh
-certs ALL = (root) NOPASSWD: /home/engines/scripts/engine/set_default.sh
+certs ALL = (root) NOPASSWD: /home/engines/scripts/engine/sudo/_install_target.sh 
+certs ALL = (root) NOPASSWD: /home/engines/scripts/engine/sudo/_remove_cert.sh
+certs ALL = (root) NOPASSWD: /home/engines/scripts/engine/sudo/_fix_perms.sh
+certs ALL = (root) NOPASSWD: /home/engines/scripts/backup/sudo/_backup.sh
+certs ALL = (root) NOPASSWD: /home/engines/scripts/backup/sudo/_restore.sh
+certs ALL = (root) NOPASSWD: /home/engines/scripts/engine/sudo/set_default.sh
 #must have blank after last sudoers line
 
 

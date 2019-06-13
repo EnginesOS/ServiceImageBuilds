@@ -1,22 +1,22 @@
 #Defaults  env_keep += "SIGNAL CONTAINER_NAME PID_FILE PID_FILES exit_code"
 ivpn ALL = (root) NOPASSWD: /usr/sbin/ipsec
-ivpn ALL = (root) NOPASSWD: /home/engines/scripts/first_run/_first_run.sh
-ivpn ALL = (root) NOPASSWD: /home/engines/scripts/startup/_start.sh
-ivpn ALL = (root) NOPASSWD: /home/engines/scripts/signal/_shutdown.sh
+ivpn ALL = (root) NOPASSWD: /home/engines/scripts/first_run/sudo/_first_run.sh
+ivpn ALL = (root) NOPASSWD: /home/engines/scripts/startup/sudo/_start.sh
+ivpn ALL = (root) NOPASSWD: /home/engines/scripts/signal/sudo/_shutdown.sh
 
-ivpn ALL = (root) NOPASSWD: /home/engines/scripts/actionators/_add_site2site_vpn.sh 
+ivpn ALL = (root) NOPASSWD: /home/engines/scripts/actionators/sudo/_add_site2site_vpn.sh 
 
-ivpn ALL = (root) NOPASSWD: /home/engines/scripts/actionators/_rm_site2site_vpn.sh
-ivpn ALL = (root) NOPASSWD: /home/engines/scripts/actionators/_stop_site2site_vpn.sh 
-ivpn ALL = (root) NOPASSWD: /home/engines/scripts/actionators/_start_site2site_vpn.sh 
-ivpn ALL = (root) NOPASSWD: /home/engines/scripts/actionators/_restart_site2site_vpn.sh 
-ivpn ALL = (root) NOPASSWD: /home/engines/scripts/actionators/_enable_site2site_vpn.sh 
-ivpn ALL = (root) NOPASSWD: /home/engines/scripts/actionators/_disable_site2site_vpn.sh 
+ivpn ALL = (root) NOPASSWD: /home/engines/scripts/actionators/sudo/_rm_site2site_vpn.sh
+ivpn ALL = (root) NOPASSWD: /home/engines/scripts/actionators/sudo/_stop_site2site_vpn.sh 
+ivpn ALL = (root) NOPASSWD: /home/engines/scripts/actionators/sudo/_start_site2site_vpn.sh 
+ivpn ALL = (root) NOPASSWD: /home/engines/scripts/actionators/sudo/_restart_site2site_vpn.sh 
+ivpn ALL = (root) NOPASSWD: /home/engines/scripts/actionators/sudo/_enable_site2site_vpn.sh 
+ivpn ALL = (root) NOPASSWD: /home/engines/scripts/actionators/sudo/_disable_site2site_vpn.sh 
 
-ivpn ALL = (root) NOPASSWD: /home/engines/scripts/actionators/_add_vpn_user.sh
-ivpn ALL = (root) NOPASSWD: /home/engines/scripts/actionators/_disable_vpn_user.sh
-ivpn ALL = (root) NOPASSWD: /home/engines/scripts/actionators/_enable_vpn_user.sh
-ivpn ALL = (root) NOPASSWD: /home/engines/scripts/actionators/_rm_vpn_user.sh
-ivpn ALL = (root) NOPASSWD: /home/engines/scripts/actionators/_set_vpn_user_pass.sh
+ivpn ALL = (root) NOPASSWD: /home/engines/scripts/actionators/sudo/_add_vpn_user.sh
+ivpn ALL = (root) NOPASSWD: /home/engines/scripts/actionators/sudo/_disable_vpn_user.sh
+ivpn ALL = (root) NOPASSWD: /home/engines/scripts/actionators/sudo/_enable_vpn_user.sh
+ivpn ALL = (root) NOPASSWD: /home/engines/scripts/actionators/sudo/_rm_vpn_user.sh
+ivpn ALL = (root) NOPASSWD: /home/engines/scripts/actionators/sudo/_set_vpn_user_pass.sh
 
 #must have blank after last sudoers line

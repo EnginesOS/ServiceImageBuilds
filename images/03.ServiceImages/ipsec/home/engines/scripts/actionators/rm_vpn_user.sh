@@ -25,7 +25,7 @@ if  test -d /home/ivpn/entries/users/${vpn_name}
 fi
 
 
-sudo -n /home/engines/scripts/actionators/_rm_vpn_user.sh
+sudo -n /home/engines/scripts/actionators/sudo/_rm_vpn_user.sh
 if test $? -eq 0
  then
 	echo '{"result":"Success"}'

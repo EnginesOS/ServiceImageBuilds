@@ -8,5 +8,5 @@ required_values="service_handle"
 check_required_values
 
 export service_handle
-sudo -n /home/engines/scripts/services/_rm_service.sh
+sudo -n /home/engines/scripts/services/sudo/_rm_service.sh
 

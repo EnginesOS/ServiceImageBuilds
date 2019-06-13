@@ -2,7 +2,7 @@ FROM engines/servicebase:$release
 
 RUN  /home/engines/scripts/build/no_init.sh &&\	
 	apt-get -y update &&\	
-	apt-get install -y libnss-mysql-bg libpam-mysql mysql-client rpcbind 
+	apt-get install -y rpcbind 
 	
 COPY src/etc /etc/
 

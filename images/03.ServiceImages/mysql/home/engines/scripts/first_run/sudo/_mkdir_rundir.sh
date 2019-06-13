@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 if ! test -d  /var/run/mysqld/
  then

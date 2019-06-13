@@ -22,7 +22,7 @@ fi
 
 #domain_name=`cat /home/certs/store/generated/certs/$store/${common_name}.crt  | openssl x509 -noout -subject  |sed "/^.*CN=/s///"| sed "/\*\./s///"`
 
-sudo -n /home/engines/scripts/engine/_remove_cert.sh certs/$store/${common_name}.crt 
+sudo -n /home/engines/scripts/engine/sudo/_remove_cert.sh certs/$store/${common_name}.crt 
    
 if test $? -ne 0
  then
@@ -30,7 +30,7 @@ if test $? -ne 0
   exit 127
 fi
     
- sudo -n /home/engines/scripts/engine/_remove_cert.sh keys/$store/${common_name}.key
+ sudo -n /home/engines/scripts/engine/sudo/_remove_cert.sh keys/$store/${common_name}.key
 if test $? -ne 0
  then
   echo "Failed to Delete Key keys/$store/${common_name}.key"
@@ -39,8 +39,8 @@ fi
     
 if test -f /home/certs/store/services/wap/certs/${common_name}.crt
  then
-  sudo -n /home/engines/scripts/engine/_remove_cert.sh service wap/certs/${common_name}.crt
-  sudo -n /home/engines/scripts/engine/_remove_cert.sh service wap/keys/${common_name}.key
+  sudo -n /home/engines/scripts/engine/sudo/_remove_cert.sh service wap/certs/${common_name}.crt
+  sudo -n /home/engines/scripts/engine/sudo/_remove_cert.sh service wap/keys/${common_name}.key
 fi
 
  	

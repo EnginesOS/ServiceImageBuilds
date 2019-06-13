@@ -20,7 +20,7 @@ PID_FILE=/home/engines/run/named.pid
 export PID_FILE
 . /home/engines/functions/trap.sh
 
-sudo -n /home/engines/scripts/engine/_setup.sh
+sudo -n /home/engines/scripts/engine/sudo/_setup.sh
 
 sudo -n /usr/sbin/named  -c /etc/bind/named.conf -f -u bind &
 

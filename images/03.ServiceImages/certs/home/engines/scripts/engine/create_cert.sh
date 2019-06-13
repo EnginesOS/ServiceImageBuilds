@@ -1,5 +1,5 @@
 #!/bin/sh
-sudo -n /home/engines/scripts/engine/_fix_perms.sh
+sudo -n /home/engines/scripts/engine/sudo/_fix_perms.sh
 . /home/engines/scripts/engine/cert_dirs.sh
 
 if ! test -d /home/certs/store/pending_csr/
@@ -71,7 +71,7 @@ mv $pending_csr_dir/${common_name}.csr $completed_csr_dir/
    
  echo /home/engines/scripts/engine/_install_target.sh ${cert_path} $cert_type ${StorePref}/${common_name} ${dest_name}
  echo /home/engines/scripts/engine/_install_target.sh ${cert_path} $cert_type ${StorePref}/${common_name} ${dest_name} >>/tmp/callinstall
- sudo -n /home/engines/scripts/engine/_install_target.sh ${cert_path} $cert_type ${StorePref}/${common_name} ${dest_name}
+ sudo -n /home/engines/scripts/engine/sudo/_install_target.sh ${cert_path} $cert_type ${StorePref}/${common_name} ${dest_name}
   
   exit $?
 fi
