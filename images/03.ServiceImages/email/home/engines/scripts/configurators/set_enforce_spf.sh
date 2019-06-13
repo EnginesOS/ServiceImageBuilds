@@ -11,5 +11,6 @@ elif test -f /home/engines/scripts/configurators/saved/enforce_spf
    rm /home/engines/scripts/configurators/saved/enforce_spf
 fi
 
+sudo -n /home/engines/scripts/configurators/sudo/rebuild_main.sh
   
 exit 0

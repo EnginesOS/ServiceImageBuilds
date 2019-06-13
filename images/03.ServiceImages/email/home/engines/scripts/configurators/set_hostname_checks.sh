@@ -10,4 +10,6 @@ elif test -f /home/engines/scripts/configurators/saved/hostname_checks
    rm /home/engines/scripts/configurators/saved/hostname_checks
 fi
 
+sudo -n /home/engines/scripts/configurators/sudo/rebuild_main.sh
+
 exit 0
