@@ -40,7 +40,7 @@ if ! test -z $engine_count
  	fi
  fi
  
-if test $client_ssl = true
+if test $require_client_ssl = true
  then
   ssl_clientCA="ssl_client_certificate /home/engines/etc/ssl/engines_internal_ca.crt;"
   ssl_verfify=on

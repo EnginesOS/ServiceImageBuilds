@@ -18,7 +18,7 @@ if test $cert_type = user
   cert_type=user 
 fi 
 
-if test -f $StoreRoot/$cert_type/${store}/${common_name}.key
+if test -f $StoreRoot/$cert_type/${store}/keys/${common_name}.key
   then
  	cat /$StoreRoot/$cert_type/${store}/keys/${common_name}.key
   else
