@@ -1,5 +1,5 @@
 #!/bin/sh
-
+cert_type=user
 /home/engines/scripts/actionators/email_pkcs12.sh >/tmp/tt
 smtp="smtp=smtp.engines.internal:25"
 export smtp
