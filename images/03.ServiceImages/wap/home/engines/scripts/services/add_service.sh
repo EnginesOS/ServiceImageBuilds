@@ -40,12 +40,23 @@ if ! test -z $engine_count
  	fi
  fi
  
+if test $client_ssl = true
+ then
+  ssl_clientCA="ssl_client_certificate /home/engines/etc/ssl/engines_internal_ca.crt;"
+  ssl_verfify=on
+ else
+  ssl_verify=off
+  ssl_clientCA=""
+fi
+  
 cat $template | sed "/SERVERS/s//$servers/" > /tmp/servers.tmpl
 
 cat /tmp/servers.tmpl | sed "/FQDN/s//$fqdn/g" > /tmp/site.fqdn
 cat /tmp/site.fqdn  | sed "/PORT/s//$port/g" > /tmp/site.port
 cat /tmp/site.port  | sed "/SERVER/s//$parent_engine/g" > /tmp/site.engine_name
-cat /tmp/site.engine_name | sed "/RESOLV_IP/s//$resolv_ip/" > /tmp/site.res
+cat /tmp/site.engine_name | sed "/SERVER/s//$parent_engine/g" > /tmp/site.sslca
+cat /tmp/site.sslca | sed "/SSLCA/s//$ssl_clientCA/g" > /tmp/site.sslverify
+cat /tmp/site.sslverify | sed "/SSLVERIFY/s//$ssl_verify/" > /tmp/site.res
 
 www_path=`echo $internal_dir  |sed "s/^\///" |sed "s/\/$//"`
 
