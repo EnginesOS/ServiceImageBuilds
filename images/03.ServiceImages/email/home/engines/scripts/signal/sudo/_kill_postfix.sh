@@ -11,3 +11,8 @@
      fi
  fi
  
+   if test -f /home/engines/run/opendkim.pid
+   then
+ 	kill -TERM `cat /home/engines/run/opendkim.pid`
+  fi	
+ 

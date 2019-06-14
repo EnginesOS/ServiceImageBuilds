@@ -7,8 +7,8 @@ check_required_values
 . /home/engines/scripts/engine/cert_dirs.sh
 
 mkdir -p $ImportedRoot/certs/ $ImportedRoot/keys/
-echo $certificate > $ImportedRoot/certs/tmp.crt
-echo $private_key > $ImportedRoot/keys/tmp.key
+echo $certificate | tr '\r' '\n' | sed "/^ /s///" > $ImportedRoot/certs/tmp.crt
+echo $private_key | tr '\r' '\n' | sed "/^ /s///" > $ImportedRoot/keys/tmp.key
 
 
 if ! test -z $password

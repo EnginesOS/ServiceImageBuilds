@@ -46,7 +46,5 @@ fi
 echo $Milter_Frag >> /etc/postfix/main.cf
 
 
-
-
 /etc/init.d/postfix reload
 
