@@ -21,9 +21,14 @@ common_name=`cat $ImportedRoot/certs/tmp.crt | openssl x509 -noout -subject  |se
 
 if test -z ${common_name}
  then
-  echo Missing common_name
-  rm $ImportedRoot/keys/tmp.key $ImportedRoot/certs/tmp.crt
-  exit 127
+  if test -z ${optional_cn}
+   then
+     echo Missing common_name
+     rm $ImportedRoot/keys/tmp.key $ImportedRoot/certs/tmp.crt
+     exit 127
+  else
+     common_name=${optional_cn}
+  fi
 fi
 
 mv $ImportedRoot/keys/tmp.key $ImportedRoot/keys/${common_name}.key
