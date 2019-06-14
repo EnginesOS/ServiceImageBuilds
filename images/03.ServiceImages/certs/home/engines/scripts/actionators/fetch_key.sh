@@ -15,15 +15,14 @@ fi
 
 if test $cert_type = user
  then
-  cert_type=generated 
-  store=user
+  cert_type=user 
 fi 
 
-if test -f $StoreRoot/$cert_type/keys/${store}/${common_name}.key
+if test -f $StoreRoot/$cert_type/${store}/${common_name}.key
   then
- 	cat /$StoreRoot/$cert_type/keys/${store}/${common_name}.key
+ 	cat /$StoreRoot/$cert_type/${store}/keys/${common_name}.key
   else
- 	echo "Not Such key $StoreRoot/$cert_type/keys/${store}/${common_name}.key"
+ 	echo "Not Such key $StoreRoot/$cert_type/${store}/keys/${common_name}.key"
  	exit 1
 fi
 

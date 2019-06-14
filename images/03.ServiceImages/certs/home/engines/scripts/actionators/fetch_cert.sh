@@ -14,8 +14,7 @@ then
   fi   
 elif test $cert_type = user
  then
-  cert_type=generated 
-  store=user
+  cert_type=user
 elif test $cert_type = live
  then
    store=${owner_type}s/$owner/certs/
@@ -25,11 +24,11 @@ store=/certs/
 fi  
 
   
-if test -f $StoreRoot/$cert_type/${store}/${common_name}.crt
+if test -f $StoreRoot/$cert_type/${store}/certs/${common_name}.crt
   then
- 	cat $StoreRoot/$cert_type/${store}/${common_name}.crt
+ 	cat $StoreRoot/$cert_type/${store}/certs/${common_name}.crt
   else
- 	echo "Not Such Cert $StoreRoot/$cert_type/${store}/${common_name}.crt"
+ 	echo "Not Such Cert $StoreRoot/$cert_type/${store}/certs/${common_name}.crt"
  	exit 1
 fi
 

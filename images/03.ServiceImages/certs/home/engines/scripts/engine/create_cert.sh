@@ -15,7 +15,7 @@ if test -z $cert_type
   StorePref=${container_type}s/${parent_engine}
 elif test $cert_type = user
  then
-	StorePref=user
+	StorePref=
 	isUserCert=1
 else
    StorePref=${container_type}s/${parent_engine}
