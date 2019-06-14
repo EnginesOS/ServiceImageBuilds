@@ -9,6 +9,9 @@ server {
     listen 4430;
     port_in_redirect off;
     
+    ssl_verify_client SSLVERIFY;
+    SSLCA
+    
     server_name FQDN;
     add_header Accept-Ranges bytes;
      #FIX ME Make HST settable on by default
