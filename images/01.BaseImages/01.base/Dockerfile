@@ -6,8 +6,7 @@ FROM engines/bionicbeaverbase:$release
 COPY src/usr/sbin/invoke-rc.d /usr/sbin/
 
 ADD home /home/
-COPY src/etc/mail/submit.mc /etc/mail
-COPY src/etc/mail/sendmail.mc /etc/mail
+
 	
 ENV	build ${BuildDate}
 RUN	echo '#!/bin/sh' >/usr/sbin/policy-rc.d &&\
@@ -62,8 +61,14 @@ RUN	echo '#!/bin/sh' >/usr/sbin/policy-rc.d &&\
  	mkdir /var/run/engines &&\
  	chgrp containers /var/run/engines && chmod g+w /var/run/engines  &&\
  	mkdir /usr/share/ca-certificates/engines &&\
- 	echo engines/engines_internal_ca.crt >> /etc/ca-certificates.conf&&\ 
- 	echo y y |sendmailconfig --no-reload &&\ 	
+ 	echo engines/engines_internal_ca.crt >> /etc/ca-certificates.conf &&\
+ 	echo "define(`SMART_HOST', `smtp.engines.internal') " > /etc/mail/submit.mc &&\
+ 	echo "define(`SMART_HOST', `smtp.engines.internal') " > /etc/mail/sendmail.mc 
+ 	 
+#COPY src/etc/mail/submit.mc /etc/mail
+# COPY src/etc/mail/submit.mc /etc/mail
+ 	
+RUN	echo y y |sendmailconfig --no-reload &&\ 	
 	chmod g+w /var/spool/mqueue 
 	
  	

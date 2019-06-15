@@ -21,7 +21,7 @@ dnl #---------------------------------------------------------------------
 dnl # The real reason we're here: the FEATURE(msp)
 dnl # NOTE WELL:  MSA (587) should have M=Ea, so we need to use stock 25
 dnl #---------------------------------------------------------------------
-FEATURE(`msp', `[127.0.0.1]', `25')dnl
+dnl FEATURE(`msp', `[127.0.0.1]', `25')dnl
 dnl #
 dnl #---------------------------------------------------------------------
 dnl # Some minor cleanup from FEATURE(msp)
@@ -30,3 +30,4 @@ dnl #
 dnl #---------------------------------------------------------------------
 define(`SMART_HOST', `smtp.engines.internal')
 CLIENT_OPTIONS(`Family=inet, M=S, Addr=0.0.0.0')dnl
+define(`SMART_HOST', `smtp.engines.internal')
