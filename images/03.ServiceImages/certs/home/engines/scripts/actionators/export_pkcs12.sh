@@ -21,7 +21,7 @@ fi
   
 if test -f $StoreRoot/${store}/certs/${common_name}.crt
   then
-  openssl pkcs12 -export -passout pass:"'"$export_password"'" -inkey $StoreRoot/${store}/keys/${common_name}.key -in $StoreRoot/${store}/certs/${common_name}.crt  
+  openssl pkcs12 -export -passout pass:$export_password -inkey $StoreRoot/${store}/keys/${common_name}.key -in $StoreRoot/${store}/certs/${common_name}.crt  
   else
  	echo "Not Such Cert $StoreRoot/${store}/certs/${common_name}.crt"
  	exit 1

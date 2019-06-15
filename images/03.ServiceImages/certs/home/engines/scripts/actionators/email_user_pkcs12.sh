@@ -1,6 +1,9 @@
 #!/bin/sh
-cert_type=user
-/home/engines/scripts/actionators/email_pkcs12.sh >/tmp/tt
+fn=/tmp/${common_name}.pkcs12
+
+cert_type=user /home/engines/scripts/actionators/export_pkcs12.sh > $fn
+
 smtp="smtp.engines.internal:25"
 export smtp
-echo "Here is your cert" | mailx -s "PKCS12 Cert" -r certs@$external_domain_name -A /tmp/tt $email_address 
+
+echo "Here is your cert $common_name" | mailx -s "PKCS12 Cert" -r certs@$external_domain_name -A $fn $email_address 
