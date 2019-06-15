@@ -62,8 +62,8 @@ RUN	echo '#!/bin/sh' >/usr/sbin/policy-rc.d &&\
  	chgrp containers /var/run/engines && chmod g+w /var/run/engines  &&\
  	mkdir /usr/share/ca-certificates/engines &&\
  	echo engines/engines_internal_ca.crt >> /etc/ca-certificates.conf &&\
- 	echo "define(`SMART_HOST', `smtp.engines.internal') " > /etc/mail/submit.mc &&\
- 	echo "define(`SMART_HOST', `smtp.engines.internal') " > /etc/mail/sendmail.mc 
+ 	echo "define(`SMART_HOST', `smtp.engines.internal') " >> /etc/mail/submit.mc &&\
+ 	echo "define(`SMART_HOST', `smtp.engines.internal') " >> /etc/mail/sendmail.mc 
  	 
 #COPY src/etc/mail/submit.mc /etc/mail
 # COPY src/etc/mail/submit.mc /etc/mail
