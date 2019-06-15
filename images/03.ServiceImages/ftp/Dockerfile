@@ -19,7 +19,9 @@ ADD sudoers /etc/sudoers.d/ftp
 RUN mkdir /ftp/ &&\
 	mkdir -p /home/home_dir/.ssh &&\
 	ln -s /home/home_dir/.ssh /home/ftpd/ &&\
-	chmod -R go-rw /etc/sudoers /etc/sudoers.d/
+	chmod -R go-rw /etc/sudoers /etc/sudoers.d/ &&\
+	rm -r /usr/share/ca-certificates/engines/ &&\
+	ln -s  /home/engines/etc/ssl/CA /usr/share/ca-certificates/engines/
 	
 ADD home home
 
