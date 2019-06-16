@@ -52,6 +52,12 @@ if ! test -d $setup_dir
  then
   mkdir -p $setup_dir
 fi
+
+if ! test -d $pending_csr_dir 
+ then
+  mkdir -p $pending_csr_dir
+fi
+ 
  
 if test -z $wild
  then

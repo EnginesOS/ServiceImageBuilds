@@ -51,6 +51,12 @@ if test $? -ne 0
  	echo '{"status":"error","Message":"Failed to load Sign CSR for '${common_name}'"}'
  	exit 2
 fi
+
+if ! test -d $completed_csr_dir 
+ then
+  mkdir -p $completed_csr_dir
+fi
+
 mv $pending_csr_dir/${common_name}.csr $completed_csr_dir/
 
    common_name=`cat  $cert_dir/${common_name}.crt.tmp | openssl x509 -noout -subject  |sed "/.*CN.*= /s///"| sed "/\*\./s///"`
