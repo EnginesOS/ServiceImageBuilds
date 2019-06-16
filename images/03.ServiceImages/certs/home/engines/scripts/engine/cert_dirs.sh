@@ -1,8 +1,8 @@
 
 StoreRoot=/home/certs/store
-setup_dir=$StoreRoot/saved/$ca_name
-pending_csr_dir=$StoreRoot/pending_csr/$ca_name
-completed_csr_dir=$StoreRoot/completed_csr/$ca_name
+setup_dir=$StoreRoot/saved/$ca_path
+pending_csr_dir=$StoreRoot/pending_csr/$ca_path
+completed_csr_dir=$StoreRoot/completed_csr/$ca_path
 InstalledRoot=/home/certs/store/live
 ImportedRoot=/home/certs/store/imported
 CERT_DEFAULTS_FILE=$StoreRoot/default_cert_details

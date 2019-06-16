@@ -3,25 +3,25 @@
  . /home/engines/functions/checks.sh
 . /home/engines/scripts/engine/cert_dirs.sh
 . $CERT_DEFAULTS_FILE
-if test -z $country
+if test -z "$country"
  then
-  $country=$_country
+  country="$_country"
 fi
-if test -z $state
+if test -z "$state"
  then
-  $state=$_state
+  state="$_state"
 fi  
-if test -z $city
+if test -z "$city"
  then
-  $city=$_city
+  city="$_city"
 fi
-if test -z $person
+if test -z "$person"
  then
-  $person=$_person
+  person="$_person"
 fi
-if test -z $organisation
+if test -z "$organisation"
  then
-  $organisation=$_organisation
+  organisation="$_organisation"
 fi
 
 

@@ -28,8 +28,8 @@ resolve_key_dir
 #   StorePref=${container_type}s/${parent_engine}
 #fi
 
-key_dir=$StoreRoot/$cert_type/keys/${StorePref}
-cert_dir=$StoreRoot/$cert_type/certs/${StorePref}
+#key_dir=$StoreRoot/$cert_type/keys/${StorePref}
+#cert_dir=$StoreRoot/$cert_type/certs/${StorePref}
 
 
 mkdir -p $key_dir $cert_dir
