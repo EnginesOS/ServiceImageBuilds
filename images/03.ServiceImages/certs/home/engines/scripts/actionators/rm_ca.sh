@@ -18,4 +18,4 @@ check_required_values
     exit 2
   fi
 rm $StoreRoot/private/ca/keys/${ca_name}_CA.key
-rm $StoreRoot/private/ca/certs/${ca_name}_CA.crt
+rm $StoreRoot/public/ca/certs/${ca_name}_CA.pem
