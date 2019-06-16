@@ -11,5 +11,5 @@ do
    first=0
   fi 
 	echo -n '"'$ca'"'
- echo ']}'
  done
+ echo ']}'
