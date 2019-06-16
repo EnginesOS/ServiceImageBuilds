@@ -7,6 +7,11 @@ if ! test -d /home/certs/store/pending_csr/
   mkdir /home/certs/store/pending_csr/
 fi
 
+if test -z ca_name 
+ then
+  ca_name=system
+fi
+  
 export StorePref key_dir cert_dir common_name country state city organisation person cert_type container_type parent_engine  
 isUserCert=0
 if test -z $cert_type
@@ -33,7 +38,7 @@ if ! test -f $pending_csr_dir/${common_name}.csr
 fi
 
 
-openssl x509 -req -in $pending_csr_dir/${common_name}.csr -sha256 -CA  $StoreRoot/public/ca/certs/system_CA.pem -CAkey $StoreRoot/private/ca/keys/system_CA.key -CAcreateserial -out $cert_dir/${common_name}.crt.tmp -days 500  -extensions req_ext
+openssl x509 -req -in $pending_csr_dir/${common_name}.csr -sha256 -CA  $StoreRoot/public/ca/certs/${ca_name}_CA.pem -CAkey $StoreRoot/private/ca/keys/${ca_name}_CA.key -CAcreateserial -out $cert_dir/${common_name}.crt.tmp -days 500  -extensions req_ext
 # -extfile  $setup_dir/${common_name}_config
 if test $? -ne 0
  then
