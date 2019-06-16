@@ -2,7 +2,7 @@
 . /home/engines/scripts/engine/cert_dirs.sh
 first=1
 echo -n '{"CA":['
-for ca in `ls $StoreRoot/private/ca/keys/ |sed "/_CA\.key.*/s///"`
+for ca in `ls $StoreRoot/private/ca/keys/ |sed "/_CA\.key.*/s///g"`
 do
   if test $first -eq 0
    then

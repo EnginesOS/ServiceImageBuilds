@@ -7,10 +7,6 @@ if ! test -d /home/certs/store/pending_csr/
   mkdir /home/certs/store/pending_csr/
 fi
 
-if test -z ca_name 
- then
-  ca_name=system
-fi
   
 export StorePref key_dir cert_dir common_name country state city organisation person cert_type container_type parent_engine  
 isUserCert=0
@@ -28,6 +24,7 @@ fi
 
 key_dir=$StoreRoot/$cert_type/keys/${StorePref}
 cert_dir=$StoreRoot/$cert_type/certs/${StorePref}
+
 mkdir -p $key_dir $cert_dir
 /home/engines/scripts/engine/create_csr.sh
 

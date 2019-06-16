@@ -1,4 +1,4 @@
-#/bin/sh
+#!/bin/sh
 
  . /home/engines/functions/checks.sh
 if test ca_name = system

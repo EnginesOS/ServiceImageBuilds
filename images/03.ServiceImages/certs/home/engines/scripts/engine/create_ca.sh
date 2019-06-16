@@ -2,7 +2,7 @@
 
  . /home/engines/scripts/engine/cert_dirs.sh
 
-if test -f $StoreRoot/private/ca/keys/$ca_name.key
+if test -f $StoreRoot/private/ca/keys/${ca_name}_CA.key
 	then	
 		echo '{"status":"Error","message":"CA '$ca_name' Exists"}'
 		exit 127
@@ -47,10 +47,10 @@ echo "" >>/home/engines/scripts/configurators/saved/$ca_name.ca_setup
 cat /home/engines/scripts/configurators/saved/$ca_name.ca_setup
 
  
-openssl genrsa -out $StoreRoot/private/ca/keys/$ca_name.key 2048
-openssl req -x509 -new -nodes -key $StoreRoot/private/ca/keys/$ca_name.key -days 1024 -sha256 -out $StoreRoot/public/ca/certs/$ca_name.pem < /home/engines/scripts/configurators/saved/$ca_name.ca_setup
+openssl genrsa -out $StoreRoot/private/ca/keys/${ca_name}_CA.key 2048
+openssl req -x509 -new -nodes -key $StoreRoot/private/ca/keys/${ca_name}_CA.key -days 1024 -sha256 -out $StoreRoot/public/ca/certs/${ca_name}_CA.pem < /home/engines/scripts/configurators/saved/$ca_name.ca_setup
         
-chmod og-r $StoreRoot/private/ca/keys/$ca_name.key     
+chmod og-r $StoreRoot/private/ca/keys/${ca_name}_CA.key     
 echo '{"status":"success"}'
 exit 0
         
