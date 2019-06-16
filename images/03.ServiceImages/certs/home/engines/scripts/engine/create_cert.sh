@@ -8,7 +8,7 @@ if ! test -d /home/certs/store/pending_csr/
 fi
 
   
-export StorePref key_dir cert_dir common_name country state city organisation person cert_type container_type parent_engine  
+export StorePref key_dir cert_dir common_name country state city organisation person cert_type container_type parent_engine  ca_name
 
 owner_type=$container_type
 owner=$parent_engine
