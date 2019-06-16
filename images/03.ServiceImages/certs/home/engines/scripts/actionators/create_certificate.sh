@@ -1,6 +1,29 @@
 #!/bin/sh
-. /home/certs/store/default_cert_details
+
  . /home/engines/functions/checks.sh
+. /home/engines/scripts/engine/cert_dirs.sh
+. $CERT_DEFAULTS_FILE
+if test -z $country
+ then
+  $country=$_country
+fi
+if test -z $state
+ then
+  $country=$_state
+fi  
+if test -z $city
+ then
+  $country=$_city
+fi
+if test -z $person
+ then
+  $country=$_person
+fi
+if test -z $organisation
+ then
+  $organisation=$_organisation
+fi
+
 
 set >/tmp/create_cert
 required_values=" common_name country state city organisation person"
