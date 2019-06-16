@@ -2,7 +2,7 @@
 
 ln -s /home/engines/etc/ssl/keys/ivpn.key /etc/ipsec.d/private/
 ln -s /home/engines/etc/ssl/certs/ivpn.crt /etc/ipsec.d/certs/  
-ln -s /home/engines/etc/ssl/engines_internal_ca.crt  /etc/ipsec.d/cacerts/     
+ln -s /home/engines/etc/ssl/CA/engines_internal_ca.crt  /etc/ipsec.d/cacerts/     
 
 domain=`cat /home/engines/etc/ssl/certs/ivpn.crt | openssl x509 -noout -subject  |sed "/^.*CN=/s///"`
 
