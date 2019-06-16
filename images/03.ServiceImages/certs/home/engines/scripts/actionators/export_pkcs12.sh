@@ -20,7 +20,7 @@ check_required_values
 resolve_cert_dir
 resolve_key_dir
   
-if test -f $cert_dir$/{common_name}.crt
+if test -f $cert_dir/${common_name}.crt
   then
   openssl pkcs12 -export -passout pass:$export_password -inkey $key_dir/${common_name}.key -in $cert_dir/${common_name}.crt  
   else

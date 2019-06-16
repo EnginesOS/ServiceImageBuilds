@@ -7,5 +7,6 @@ if test "$1" = live/service
      rm "$StoreRoot/${1}s/$2"
    fi
 else
-   rm "$StoreRoot/store/$1"
+    c=`echo $1 | sed "/.*store\//s///"`
+   rm "$StoreRoot/store/$c"
 fi

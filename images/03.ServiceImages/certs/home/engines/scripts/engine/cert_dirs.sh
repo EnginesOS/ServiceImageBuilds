@@ -4,19 +4,13 @@ if test -z $ca_name
  then
   ca_name=system
 fi
-if test $ca_name = system
- then
-  ca_path=""
- else
-  ca_path=$ca_name
-fi
 
 StoreRoot=/home/certs/store
-setup_dir=$StoreRoot/saved/$ca_path
-pending_csr_dir=$StoreRoot/pending_csr/$ca_path
-completed_csr_dir=$StoreRoot/completed_csr/$ca_path
-InstalledRoot=/home/certs/store/live
-ImportedRoot=/home/certs/store/imported
+setup_dir=$StoreRoot/$ca_name/saved
+pending_csr_dir=$StoreRoot/$ca_name/pending_csr
+completed_csr_dir=$StoreRoot/$ca_name/completed_csr
+InstalledRoot=$StoreRoot/live
+ImportedRoot=$StoreRoot/imported
 CERT_DEFAULTS_FILE=$StoreRoot/default_cert_details
 
 
@@ -52,12 +46,13 @@ elif test $cert_type = user
    cert_type=user
 elif test $cert_type = live
  then
+   ca_name=""
    store=${owner_type}s/$owner/${item_type}s/
 elif test $cert_type = external_ca
  then
-   store=/${item_type}s/
+   ca_name=""
 fi  
 
-item_dir=$StoreRoot/$cert_type/${store}/${item_type}s/
+item_dir=$StoreRoot/$ca_name/$cert_type/${store}/${item_type}s/
 
 }   

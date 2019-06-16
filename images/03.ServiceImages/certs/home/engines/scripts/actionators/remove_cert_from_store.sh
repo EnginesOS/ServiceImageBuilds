@@ -12,30 +12,37 @@ if test $cert_type = generated
  exit   
  fi
 
-if test $cert_type = user
+resolve_cert_dir
+resolve_key_dir
+if ! test -f $cert_path/${common_name}.crt 
  then
-  cert_type=generated 
-  store=user
-fi 
-
-if ! test -f $StoreRoot/$cert_type/certs/$store/${common_name}.crt 
- then
-   echo "No such cert  $store/$fqdn"
+   echo "No such cert  $cert_path/${common_name}.crt "
    exit 
 fi
 
-
-sudo -n /home/engines/scripts/engine/_remove_cert.sh $cert_type/certs/$store/${common_name}.crt 
-if test $? -ne 0
+if test -f $cert_dir/${common_name}.key
  then
-   echo "Failed to Delete Cert $common_name"
-   exit 127
+   sudo -n /home/engines/scripts/engine/sudo/_remove_cert.sh $cert_dir/${common_name}.crt 
+     if test $? -ne 0
+       then
+         echo "Failed to Delete Cert $common_name"
+          exit 127
+     fi
+ else
+     echo "no such file $cert_dir/${common_name}.key"
+      exit 127      
 fi
-    
-sudo -n /home/engines/scripts/engine/sudo/sudo/_remove_cert.sh $cert_type/keys/$store/${common_name}.key
-if test $? -ne 0
- then
-  echo "Failed to Delete Key $common_name"
+
+if test -f $key_dir/${common_name}.key
+  then
+  sudo -n /home/engines/scripts/engine/sudo/_remove_cert.sh $key_dir/${common_name}.key
+     if test $? -ne 0
+      then
+        echo "Failed to Delete Key $common_name"
+        exit 127
+     fi
+ else
+  echo "no such file $key_dir/${common_name}.key"
   exit 127
 fi
     

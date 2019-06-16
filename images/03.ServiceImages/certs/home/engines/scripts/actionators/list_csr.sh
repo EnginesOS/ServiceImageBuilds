@@ -1,4 +1,5 @@
 #!/bin/sh
+ca_name=external_ca
 . /home/engines/scripts/engine/cert_dirs.sh
 n=0
 echo '{"pending_csr_list":['

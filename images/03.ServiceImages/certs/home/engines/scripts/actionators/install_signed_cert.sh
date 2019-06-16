@@ -4,18 +4,21 @@
 required_values="certificate"
 check_required_values
 
+ca_name=external_ca
 . /home/engines/scripts/engine/cert_dirs.sh
 
-mkdir -p $StoreRoot/external_ca/certs/
-echo "$certificate" > $StoreRoot/external_ca/certs/tmp.crt
+resolve_cert_dir
+
+mkdir -p $cert_dir
+echo "$certificate" > $cert_dir/tmp.crt
 
 
-common_name=`cat $StoreRoot/external_ca/certs/tmp.crt | openssl x509 -noout -subject  |sed "/^.*CN.*=/s///"| sed "/\*\./s///" | sed s"/[ ]//"`
+common_name=`cat $cert_dir/tmp.crt | openssl x509 -noout -subject  |sed "/^.*CN.*=/s///"| sed "/\*\./s///" | sed s"/[ ]//"`
 
 if test -z ${common_name}
  then
   echo Missing common_name
-  rm $StoreRoot/external_ca/certs/tmp.crt
+  rm $cert_dir/tmp.crt
   exit 127
 fi
 
@@ -27,12 +30,13 @@ if ! test -f $pending_csr_dir/${common_name}.csr
  fi 
 
 
-cp $pending_csr_dir/${common_name}.csr $StoreRoot/external_ca/certs/
-mv $pending_csr_dir/${common_name}.csr /home/certs/store/completed_csr
-mv $StoreRoot/external_ca/certs/tmp.crt $StoreRoot/external_ca/certs/${common_name}.crt
+cp $pending_csr_dir/${common_name}.csr $cert_dir
+mkdir $cert_dir/completed_csr
+mv $pending_csr_dir/${common_name}.csr $cert_dir/completed_csr
+mv $cert_dir/tmp.crt $cert_dir/${common_name}.crt
 
-store=external_ca
-export cert_name store install_target
+
+export cert_name store install_target ca_name
 
 if ! test -z ${install_target}
  then
