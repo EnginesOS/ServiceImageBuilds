@@ -55,6 +55,6 @@ elif test $cert_type = external_ca
    store=/${item_type}s/
 fi  
 
-cert_dir=$StoreRoot/$cert_type/${store}/${item_type}s/
+item_dir=$StoreRoot/$cert_type/${store}/${item_type}s/
 
 }   
