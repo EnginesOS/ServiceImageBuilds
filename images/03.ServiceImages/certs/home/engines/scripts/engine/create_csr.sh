@@ -111,6 +111,9 @@ if ! test -z "$alt_names"
  	done
 fi
 
+resolve_cert_dir
+resolve_key_dir
+
 cat /etc/ssl/openssl.cnf $setup_dir/${cert_name}_config >$setup_dir/${cert_name}_config_full
 openssl genrsa -out  $key_dir/${cert_name}.key.tmp 2048
 
