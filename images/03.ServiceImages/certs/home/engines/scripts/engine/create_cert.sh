@@ -12,8 +12,8 @@ export StorePref key_dir cert_dir common_name country state city organisation pe
 
 owner_type=$container_type
 owner=$parent_engine
-resolve_cert_path
-resolve_key_path
+resolve_cert_dir
+resolve_key_dir
 
 #isUserCert=0
 #if test -z $cert_type
@@ -55,9 +55,9 @@ mv $pending_csr_dir/${common_name}.csr $completed_csr_dir/
 
    common_name=`cat  $cert_dir/${common_name}.crt.tmp | openssl x509 -noout -subject  |sed "/.*CN.*= /s///"| sed "/\*\./s///"`
  
-   echo cp $cert_dir/${common_name}.crt.tmp $cert_dir/${common_name}.crt  >/tmp/certscp
+   echo mv $cert_dir/${common_name}.crt.tmp $cert_dir/${common_name}.crt  >/tmp/certscp
 
-   cp $cert_dir/${common_name}.crt.tmp $cert_dir/${common_name}.crt 
+  mv $cert_dir/${common_name}.crt.tmp $cert_dir/${common_name}.crt 
  
  if test $isUserCert -eq 1
  then

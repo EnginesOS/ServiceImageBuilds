@@ -45,11 +45,11 @@ resolve_cert_dir
 #fi  
 #
   
-if test -f $cert_path/$common_name.crt
+if test -f $cert_dir/$common_name.crt
   then
- 	cat $cert_path/$common_name.crt | openssl x509 -text
+ 	cat $cert_dir/$common_name.crt | openssl x509 -text
   else
- 	echo "Not Such Cert $cert_path/$common_name.crt"
+ 	echo "Not Such Cert $cert_dir/$common_name.crt"
  	exit 1
 fi
 

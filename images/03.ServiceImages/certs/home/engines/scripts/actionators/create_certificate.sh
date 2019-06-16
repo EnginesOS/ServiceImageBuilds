@@ -9,15 +9,15 @@ if test -z $country
 fi
 if test -z $state
  then
-  $country=$_state
+  $state=$_state
 fi  
 if test -z $city
  then
-  $country=$_city
+  $city=$_city
 fi
 if test -z $person
  then
-  $country=$_person
+  $person=$_person
 fi
 if test -z $organisation
  then

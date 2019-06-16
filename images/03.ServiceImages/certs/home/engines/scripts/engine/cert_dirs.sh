@@ -15,7 +15,7 @@ if test $ca_name = system
  then
   ca_path=""
  else
-  ca_path = $ca_name
+  ca_path=$ca_name
 fi
 
 resolve_key_dir()
