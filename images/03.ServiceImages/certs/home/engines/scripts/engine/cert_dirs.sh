@@ -9,7 +9,7 @@ CERT_DEFAULTS_FILE=$StoreRoot/default_cert_details
 
 if test -z $ca_name
  then
-  $ca_name=system
+  ca_name=system
 fi
 if test $ca_name = system
  then
