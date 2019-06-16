@@ -3,6 +3,7 @@
 
 required_values="certificate private_key"
 check_required_values
+cert_type=import
 
 . /home/engines/scripts/engine/cert_dirs.sh
 
@@ -23,9 +24,9 @@ if test -z ${common_name}
  then
   if test -z ${optional_cn}
    then
-     echo Missing common_name
+     echo '{"status":"error","message":"Missing common_name"}'
      rm $ImportedRoot/keys/tmp.key $ImportedRoot/certs/tmp.crt
-     exit 127
+     exit 2
   else
      common_name=${optional_cn}
   fi

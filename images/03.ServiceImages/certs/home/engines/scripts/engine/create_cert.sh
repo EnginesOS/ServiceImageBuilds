@@ -9,29 +9,38 @@ fi
 
   
 export StorePref key_dir cert_dir common_name country state city organisation person cert_type container_type parent_engine  
-isUserCert=0
-if test -z $cert_type
- then
-  cert_type=generated
-  StorePref=${container_type}s/${parent_engine}
-elif test $cert_type = user
- then
-	StorePref=
-	isUserCert=1
-else
-   StorePref=${container_type}s/${parent_engine}
-fi
+
+owner_type=$container_type
+owner=$parent_engine
+resolve_cert_path
+resolve_key_path
+
+#isUserCert=0
+#if test -z $cert_type
+# then
+#  cert_type=generated
+#  StorePref=${container_type}s/${parent_engine}
+#elif test $cert_type = user
+# then
+#	StorePref=
+#	isUserCert=1
+#else
+#   StorePref=${container_type}s/${parent_engine}
+#fi
 
 key_dir=$StoreRoot/$cert_type/keys/${StorePref}
 cert_dir=$StoreRoot/$cert_type/certs/${StorePref}
 
+
 mkdir -p $key_dir $cert_dir
 /home/engines/scripts/engine/create_csr.sh
 
+
+
 if ! test -f $pending_csr_dir/${common_name}.csr 
   then
- 	echo "Failed to load CSR for ${common_name}"
- 	exit 127
+ 	echo '{"status":"error","Message":"Failed to load CSR for '${common_name}'"}'
+ 	exit 2
 fi
 
 
@@ -39,8 +48,8 @@ openssl x509 -req -in $pending_csr_dir/${common_name}.csr -sha256 -CA  $StoreRoo
 # -extfile  $setup_dir/${common_name}_config
 if test $? -ne 0
  then
- 	echo "Failed to sign CSR"
- 	exit 127
+ 	echo '{"status":"error","Message":"Failed to load Sign CSR for '${common_name}'"}'
+ 	exit 2
 fi
 mv $pending_csr_dir/${common_name}.csr $completed_csr_dir/
 

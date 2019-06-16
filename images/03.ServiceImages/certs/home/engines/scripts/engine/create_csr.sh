@@ -1,10 +1,11 @@
 #!/bin/sh
 sudo -n /home/engines/scripts/engine/sudo/_fix_perms.sh
 . /home/engines/scripts/engine/cert_dirs.sh
-isUserCert=0
+
 cert_name=`echo $common_name | sed "s/$.//"` 
 export cert_name
 
+#isUserCert=0
 #if test -z $cert_type 
 # then
 #  cert_type=generated
@@ -21,20 +22,21 @@ export cert_name
 #  else
 #   StorePref=${container_type}s/${parent_engine}
 #fi
+
  
 if test -z $hostname
  then
   hostname=$common_name
 fi
 
-if test -z $key_dir
- then
-    key_dir=$StoreRoot/$cert_type/keys/${StorePref}
-fi
-if test -z $cert_dir
- then
-cert_dir=$StoreRoot/$cert_type/certs/${StorePref}
-fi
+#if test -z $key_dir
+# then
+#    key_dir=$StoreRoot/$cert_type/keys/${StorePref}
+#fi
+#if test -z $cert_dir
+# then
+#    cert_dir=$StoreRoot/$cert_type/certs/${StorePref}
+#fi
 
 
 if ! test -d $key_dir
@@ -46,8 +48,10 @@ then
  mkdir -p $cert_dir
 fi
   
-setup_dir=/home/certs/saved
-
+if ! test -d $setup_dir
+ then
+  mkdir -p $setup_dir
+fi
  
 if test -z $wild
  then
