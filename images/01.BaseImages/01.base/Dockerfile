@@ -67,12 +67,8 @@ COPY src/etc/mail/sendmail.mc /etc/mail
 RUN	echo y y |sendmailconfig --no-reload &&\ 	
 	chmod g+w /var/spool/mqueue 
 	
- 	
- 	
 ADD sudoers /etc/sudoers.d/system
 ADD src/etc/krb5.conf /etc/
 ADD src/etc/rsyslog.conf /etc/		
-
-
 
 
