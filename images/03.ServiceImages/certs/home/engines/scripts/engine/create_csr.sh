@@ -28,7 +28,7 @@ if ! test -d $pending_csr_dir
  then
   mkdir -p $pending_csr_dir
 fi
- 
+
  
 if test -z $wild
  then
@@ -37,7 +37,7 @@ fi
 
 if test -z "$country" -a -z "$state" -a -z "$organisation"
  then
- . $StoreRoot/default_cert_details
+  load_cert_defaults
 fi
 
 echo $country >$setup_dir/${cert_name}_setup
