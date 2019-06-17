@@ -1,7 +1,7 @@
 # This definition stops the following lines choking if HOME isn't
 # defined.
 HOME                    = /home/certs/store/
-RANDFILE                = $ENV::HOME/.rnd
+#RANDFILE                = $ENV::HOME/.rnd
 email_in_dn = no
 
 # Extra OBJECT IDENTIFIER info:
@@ -49,7 +49,7 @@ crlnumber       = $dir/CA_NAME/crlnumber        # the current crl number
                                         # must be commented out to leave a V1 CRL
 crl             = $dir/public/ca/certs/CA_NAME_crl.pem    # The current CRL
 private_key     = $dir/private/private/CA_NAME/CA_NAME_CA.key # The private key
-RANDFILE        = $dir/private/CA_NAME/.rand    # private random number file
+#RANDFILE        = $dir/private/CA_NAME/.rand    # private random number file
 
 x509_extensions = usr_cert              # The extentions to add to the cert
 

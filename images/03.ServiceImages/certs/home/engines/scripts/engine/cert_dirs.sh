@@ -65,4 +65,31 @@ fi
 
 item_dir=$StoreRoot/$ca_name/$cert_type/${store}/${item_type}s/
 
-}   
+}
+
+load_cert_defaults()
+{
+. $CERT_DEFAULTS_FILE
+if test -z "$country"
+ then
+  country="$_country"
+fi
+if test -z "$state"
+ then
+  state="$_state"
+fi  
+if test -z "$city"
+ then
+  city="$_city"
+fi
+if test -z "$person"
+ then
+  person="$_person"
+fi
+if test -z "$organisation"
+ then
+  organisation="$_organisation"
+fi
+}
+
+   

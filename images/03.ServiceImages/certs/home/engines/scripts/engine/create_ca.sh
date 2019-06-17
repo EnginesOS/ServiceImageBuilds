@@ -12,27 +12,7 @@ if test -f $StoreRoot/private/ca/keys/${ca_name}_CA.key
 
 fi
 
-. $CERT_DEFAULTS_FILE
-if test -z $country
- then
-  $country=$_country
-fi
-if test -z $state
- then
-  $country=$_state
-fi  
-if test -z $city
- then
-  $country=$_city
-fi
-if test -z $person
- then
-  $country=$_person
-fi
-if test -z $organisation
- then
-  $organisation=$_organisation
-fi
+load_cert_defaults
 
 echo $country >/home/engines/scripts/configurators/saved/$ca_name.ca_setup
 echo $state >>/home/engines/scripts/configurators/saved/$ca_name.ca_setup
@@ -46,14 +26,11 @@ echo "" >>/home/engines/scripts/configurators/saved/$ca_name.ca_setup
 echo "" >>/home/engines/scripts/configurators/saved/$ca_name.ca_setup
 cat /home/engines/scripts/configurators/saved/$ca_name.ca_setup
 
-mkdir -p $StoreRoot/private/$ca_name
+mkdir -p $StoreRoot/private/$ca_name $StoreRoot/$ca_name
  
 cat /home/engines/templates/openssl.cnf | sed "/CA_NAME/s//$ca_name/g" > /$StoreRoot/private/$ca_name/open_ssl.cnf
  
-openssl genrsa \
-		-out $StoreRoot/private/$ca_name/${ca_name}_CA.key\
-		2048 \
-		-config $StoreRoot/private/$ca_name/open_ssl.cnf
+openssl genrsa -out $StoreRoot/private/$ca_name/${ca_name}_CA.key 2048 
 if ! test -f $StoreRoot/private/$ca_name/${ca_name}_CA.key
  then
   echo '{"status":"error","message":"Failed to create key '$StoreRoot/private/$ca_name/${ca_name}_CA.key'" }'
@@ -63,7 +40,7 @@ openssl req \
 		-x509 \
 		-new \
 		-nodes \
-		-key $StoreRoot/private/$ca_name/${ca_name}_CA.key\  
+		-key $StoreRoot/private/$ca_name/${ca_name}_CA.key\
 		-days 1024 \
 		-sha256 \
 		-out $StoreRoot/public/ca/certs/${ca_name}_CA.pem \
