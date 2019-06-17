@@ -8,6 +8,6 @@ if test "$1" = live/service
    fi
 else
     c=`echo $1 | sed "/.*store\//s///"`
-    echo RM "$StoreRoot/store/$c"
-   rm "$StoreRoot/store/$c"
+    echo RM "$StoreRoot/$c"
+   rm "$StoreRoot/$c"
 fi

@@ -14,13 +14,14 @@ if test $cert_type = generated
 
 resolve_cert_dir
 resolve_key_dir
-if ! test -f $cert_path/${common_name}.crt 
+
+if ! test -f $cert_dir/${common_name}.crt 
  then
-   echo "No such cert  $cert_path/${common_name}.crt "
+   echo "No such cert  $cert_dir/${common_name}.crt "
    exit 2
 fi
 
-if test -f $cert_dir/${common_name}.key
+if test -f $cert_dir/${common_name}.crt 
  then
    sudo -n /home/engines/scripts/engine/sudo/_remove_cert.sh $cert_dir/${common_name}.crt 
      if test $? -ne 0
