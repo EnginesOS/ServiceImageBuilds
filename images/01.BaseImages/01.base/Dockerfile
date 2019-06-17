@@ -58,7 +58,7 @@ RUN	echo '#!/bin/sh' >/usr/sbin/policy-rc.d &&\
  	mkdir /var/run/engines &&\
  	chgrp containers /var/run/engines && chmod g+w /var/run/engines  &&\
 	mkdir -p  /home/engines/etc/ssl/CA &&\
-	ln -s  /home/engines/etc/ssl/CA /usr/share/ca-certificates/engines/ &&\
+	ln -s /home/engines/etc/ssl/CA /usr/share/ca-certificates/engines &&\
  	echo engines/engines_internal_ca.crt >> /etc/ca-certificates.conf
  	 
 COPY src/etc/mail/submit.mc /etc/mail
