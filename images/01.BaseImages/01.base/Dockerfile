@@ -59,12 +59,10 @@ RUN	echo '#!/bin/sh' >/usr/sbin/policy-rc.d &&\
  	chgrp containers /var/run/engines && chmod g+w /var/run/engines  &&\&&\
 	mkdir -p  /home/engines/etc/ssl/CA &&\
 	ln -s  /home/engines/etc/ssl/CA /usr/share/ca-certificates/engines/ &&\
- 	echo engines/engines_internal_ca.crt >> /etc/ca-certificates.conf &&\
- 	echo "define(\`SMART_HOST', \`smtp.engines.internal') " >> /etc/mail/submit.mc &&\
- 	echo "define(\`SMART_HOST', \`smtp.engines.internal') " >> /etc/mail/sendmail.mc 
+ 	echo engines/engines_internal_ca.crt >> /etc/ca-certificates.conf
  	 
-#COPY src/etc/mail/submit.mc /etc/mail
-# COPY src/etc/mail/submit.mc /etc/mail
+COPY src/etc/mail/submit.mc /etc/mail
+COPY src/etc/mail/sendmail.mc /etc/mail
  	
 RUN	echo y y |sendmailconfig --no-reload &&\ 	
 	chmod g+w /var/spool/mqueue 

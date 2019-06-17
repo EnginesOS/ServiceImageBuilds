@@ -28,6 +28,7 @@ dnl # Some minor cleanup from FEATURE(msp)
 dnl #---------------------------------------------------------------------
 dnl #
 dnl #---------------------------------------------------------------------
-define(`SMART_HOST', `smtp.engines.internal')
-CLIENT_OPTIONS(`Family=inet, M=S, Addr=0.0.0.0')dnl
+
+FEATURE(`msp', `[127.0.0.1]', `25')dnl
+
 define(`SMART_HOST', `smtp.engines.internal')
