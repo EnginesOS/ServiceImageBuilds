@@ -97,9 +97,9 @@ mv $cert_dir/${common_name}.crt.tmp $cert_dir/${common_name}.crt
      dest_name=${common_name} 
    fi
    
- echo /home/engines/scripts/engine/_install_target.sh ${cert_path} $cert_type ${StorePref}/${common_name} ${dest_name}
- echo /home/engines/scripts/engine/_install_target.sh ${cert_path} $cert_type ${StorePref}/${common_name} ${dest_name} >>/tmp/callinstall
- sudo -n /home/engines/scripts/engine/sudo/_install_target.sh ${cert_path} $cert_type ${StorePref}/${common_name} ${dest_name}
+ echo /home/engines/scripts/engine/_install_target.sh ${cert_path} $ca_name ${StorePref}/${common_name} ${dest_name}
+ echo /home/engines/scripts/engine/_install_target.sh ${cert_path} $ca_name ${StorePref}/${common_name} ${dest_name} >>/tmp/callinstall
+ sudo -n /home/engines/scripts/engine/sudo/_install_target.sh ${cert_path} $ca_name ${StorePref}/${common_name} ${dest_name}
   
   exit $?
 fi

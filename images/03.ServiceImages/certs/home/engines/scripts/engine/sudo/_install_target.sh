@@ -4,9 +4,12 @@
 
 echo _install_target.sh $*  >>/tmp/install_called
 install_target=$1
-cert_type=$2
+ca_name=$2
 cert_name=$3
 destination_name=$4
+
+resolve_cert_dir
+resolve_key_dir
 
 if test $cert_type = user
  then
