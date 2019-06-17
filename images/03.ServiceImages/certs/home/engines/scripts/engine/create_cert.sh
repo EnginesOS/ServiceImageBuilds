@@ -7,7 +7,6 @@ if ! test -d /home/certs/store/pending_csr/
   mkdir /home/certs/store/pending_csr/
 fi
 
-  
 export StorePref key_dir cert_dir common_name country state city organisation person cert_type container_type parent_engine  ca_name
 
 owner_type=$container_type
@@ -35,16 +34,23 @@ resolve_key_dir
 mkdir -p $key_dir $cert_dir
 /home/engines/scripts/engine/create_csr.sh
 
-
-
 if ! test -f $pending_csr_dir/${common_name}.csr 
   then
  	echo '{"status":"error","Message":"Failed to load CSR for '${common_name}'"}'
  	exit 2
 fi
 
-
-openssl x509 -req -in $pending_csr_dir/${common_name}.csr -sha256 -CA  $StoreRoot/public/ca/certs/${ca_name}_CA.pem -CAkey $StoreRoot/private/ca/keys/${ca_name}_CA.key -CAcreateserial -out $cert_dir/${common_name}.crt.tmp -days 500  -extensions req_ext
+openssl x509 -req \
+	-in $pending_csr_dir/${common_name}.csr \
+	-sha256 \
+	-CA  $StoreRoot/public/ca/certs/${ca_name}_CA.pem \
+	-CAkey $StoreRoot/private/$ca_name/${ca_name}_CA.key \
+	-CAcreateserial \
+	-out $cert_dir/${common_name}.crt.tmp \
+	-days 500  \
+	-extensions req_ext \
+	-config $StoreRoot/private/$ca_name/open_ssl.cnf
+	
 # -extfile  $setup_dir/${common_name}_config
 if test $? -ne 0
  then
