@@ -34,27 +34,31 @@ export cert_dir
 resolve_item_dir()
 {
 
+type_path=""
+
 if ! test -z $cert_type
  then
   if test $cert_type = live
    then
     ca_name=""
+    type_path=live
     store=${owner_type}s/$owner/${item_type}s/
   elif test $cert_type = external_ca
    then
+    type_path=external_ca
     ca_name=""
-  elif test $ca_name = external_ca
+  elif test $cert_type = imported
    then
-    cert_type=""
-  elif $cert_type = user
-   then
-    cert_type=""
-  elif $cert_type = generated
-   then
-     cert_type=""
+    type_path=imported
+    ca_name=""
   fi  
 fi
-item_dir=$StoreRoot/$ca_name/$cert_type/${store}/${item_type}s/
+if test -z $ca_name
+ then
+   item_dir=$StoreRoot/$type_path/${store}/${item_type}s/
+ else
+  item_dir=$StoreRoot/$ca_name/${store}/${item_type}s/
+fi   
 
 }
 
