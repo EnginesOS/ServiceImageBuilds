@@ -123,12 +123,19 @@ resolve_key_dir
 cat /etc/ssl/openssl.cnf $setup_dir/${cert_name}_config >$setup_dir/${cert_name}_config_full
 openssl genrsa -out  $key_dir/${cert_name}.key.tmp 2048
 
+if ! test -f  $key_dir/${cert_name}.key.tmp
+ then
+  echo '{"status":"error","message":"Failed to create key ' $key_dir/${cert_name}.key'" }'
+  exit 3
+fi  
+
+
 openssl req -new  -key $key_dir/${cert_name}.key.tmp -out $pending_csr_dir/${cert_name}.csr -config $setup_dir/${cert_name}_config
-cp $setup_dir/${cert_name}_config $cert_dir
+
 if ! test -f $pending_csr_dir/${cert_name}.csr 
   then
- 	echo "Failed to Create CSR"
- 	rm $key_dir/${common_name}.key.tmp
- 	exit 127
+ 	echo '{"status":"error","message":"Failed to Create CSR '$pending_csr_dir/${cert_name}.csr'"}'
+ 	rm  $key_dir/${cert_name}.key.tmp
+ 	exit 3
 fi
  mv $key_dir/${common_name}.key.tmp $key_dir/${common_name}.key

@@ -31,7 +31,7 @@ check_required_values
 
 
 cert_type=user
-export cert_name common_name country state city organisation person wild alt_names hostname cert_type ca_name
+export cert_name common_name country state city organisation person wild alt_names hostname cert_type ca_name cert_usage
 
 err=`/home/engines/scripts/engine/create_cert.sh`
 

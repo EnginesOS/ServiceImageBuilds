@@ -7,7 +7,7 @@ if ! test -d /home/certs/store/pending_csr/
   mkdir /home/certs/store/pending_csr/
 fi
 
-export StorePref key_dir cert_dir common_name country state city organisation person cert_type container_type parent_engine  ca_name
+export StorePref key_dir cert_dir common_name country state city organisation person cert_type container_type parent_engine ca_name
 
 owner_type=$container_type
 owner=$parent_engine
@@ -36,7 +36,7 @@ mkdir -p $key_dir $cert_dir
 
 if ! test -f $pending_csr_dir/${common_name}.csr 
   then
- 	echo '{"status":"error","Message":"Failed to load CSR for '${common_name}'"}'
+ 	echo '{"status":"error","message":"Failed to load CSR for '${common_name}'"}'
  	exit 2
 fi
 
@@ -54,7 +54,7 @@ openssl x509 -req \
 # -extfile  $setup_dir/${common_name}_config
 if test $? -ne 0
  then
- 	echo '{"status":"error","Message":"Failed to load Sign CSR for '${common_name}'"}'
+ 	echo '{"status":"error","message":"Failed to load Sign CSR for '${common_name}'"}'
  	exit 2
 fi
 
@@ -65,11 +65,16 @@ fi
 
 mv $pending_csr_dir/${common_name}.csr $completed_csr_dir/
 
-   common_name=`cat  $cert_dir/${common_name}.crt.tmp | openssl x509 -noout -subject  |sed "/.*CN.*= /s///"| sed "/\*\./s///"`
+common_name=`cat  $cert_dir/${common_name}.crt.tmp | \
+   			openssl x509 \
+   			-noout \
+   			-subject \
+   			|sed "/.*CN.*= /s///"| \
+   			sed "/\*\./s///"`
  
-   echo mv $cert_dir/${common_name}.crt.tmp $cert_dir/${common_name}.crt  >/tmp/certscp
+echo mv $cert_dir/${common_name}.crt.tmp $cert_dir/${common_name}.crt  >/tmp/certscp
 
-  mv $cert_dir/${common_name}.crt.tmp $cert_dir/${common_name}.crt 
+mv $cert_dir/${common_name}.crt.tmp $cert_dir/${common_name}.crt 
  
  if test $isUserCert -eq 1
  then
