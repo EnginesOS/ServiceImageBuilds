@@ -1,24 +1,19 @@
 #!/bin/sh
 
-#. /home/engines/functions/params_to_env.sh
-#params_to_env
  . /home/engines/functions/checks.sh
 
 required_values="fqdn port proto parent_engine"
 check_required_values
 
 res=`nslookup ${parent_engine}.engines.internal|grep -e "Address: *[0-9]" |awk '{print $2}'`
-
  `echo $res | grep -e "[0-9].*\.[0-9].*\.[0-9].*" >/dev/null`
  if test $? -ne 0
-  then
-        echo Error:failed to find internal dns entry for ${parent_engine}.engines.internal
-        exit 127
+  then  	 
+	echo '{"status":"Error","message":"failed to find internal dns entry for '${parent_engine}'.engines.internal"}'
+	exit 127
  fi
 	 
-
 template="/etc/nginx/templates/${proto}_site.tmpl"
-
 
 resolv_ip=`nslookup control |grep -e "Address: *[0-9]" |awk '{print $2}'`
 
@@ -40,12 +35,29 @@ if ! test -z $engine_count
  	fi
  fi
  
-cat $template | sed "/SERVERS/s//$servers/" > /tmp/servers.tmpl
+if test $require_client_ssl = true
+ then
+  ENABLE_SSLCA=""
+  ssl_verify=on
+ else
+  ssl_verify=off
+  ENABLE_SSLCA='#'
+fi
 
-cat /tmp/servers.tmpl | sed "/FQDN/s//$fqdn/g" > /tmp/site.fqdn
-cat /tmp/site.fqdn  | sed "/PORT/s//$port/g" > /tmp/site.port
-cat /tmp/site.port  | sed "/SERVER/s//$parent_engine/g" > /tmp/site.engine_name
-cat /tmp/site.engine_name | sed "/RESOLV_IP/s//$resolv_ip/" > /tmp/site.res
+if test -z $ca
+ then
+  ca_file=engines_internal_ca.crt
+ else
+   ca_file=${ca}.crt
+fi   
+  
+cat $template | sed "/SERVERS/s//$servers/" \
+| sed "/FQDN/s//$fqdn/g" \
+| sed "/PORT/s//$port/g"\
+| sed "/SERVER/s//$parent_engine/g" \
+| sed "/ENABLE_SSLCA/s//$ENABLE_SSLCA/" \
+| sed "/CA_FILE/s//$ca_file/" \
+| sed "/SSLVERIFY/s//$ssl_verify/" > /tmp/site.res
 
 www_path=`echo $internal_dir  |sed "s/^\///" |sed "s/\/$//"`
 
@@ -119,6 +131,6 @@ rm /tmp/site.*
  		mkdir -p /var/log/nginx/$fqdn/http/
  	fi
  nginx -s reload	
-
 	 
-	 echo Success
+echo '{"status":"Sucess"}'
+exit 0

@@ -13,17 +13,18 @@ if test $cert_type = imported -o $cert_type = generated
   exit 1
 fi  
 
+resolve_key_dir
+
 if test $cert_type = user
  then
-  cert_type=generated 
-  store=user
+  cert_type=user 
 fi 
 
-if test -f $StoreRoot/$cert_type/keys/${store}/${common_name}.key
+if test -f $key_dir/${common_name}.key
   then
- 	cat /$StoreRoot/$cert_type/keys/${store}/${common_name}.key
+ 	cat $key_dir/${common_name}.key
   else
- 	echo "Not Such key $StoreRoot/$cert_type/keys/${store}/${common_name}.key"
+ 	echo "Not Such key $key_dir/${common_name}.key"
  	exit 1
 fi
 

@@ -2,7 +2,7 @@
 
 echo set_default.sh $*
 install_target=$1
-cert_type=$2
+ca_name=$2
 cert_name=$3
 
 if test install_target = default
@@ -16,7 +16,7 @@ function install_service {
  echo Install Service install_target=$target
 dest_name=`basename $install_target`
 
-err=`sudo -n  /home/engines/scripts/engine/sudo/_install_target.sh ${install_target} ${cert_type} ${cert_name} ${dest_name}`
+err=`sudo -n  /home/engines/scripts/engine/sudo/_install_target.sh ${install_target} ${ca_name} ${cert_name} ${dest_name}`
 r=$?
  if test $r -ne 0
   then
