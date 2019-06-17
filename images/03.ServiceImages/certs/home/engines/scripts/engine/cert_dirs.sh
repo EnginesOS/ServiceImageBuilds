@@ -33,37 +33,26 @@ export cert_dir
 
 resolve_item_dir()
 {
-#if test $cert_type = generated
-# then
-#   store=/${item_type}s/${owner_type}s/$owner/
-#    if test $owner_type = service
-#     then
-#      cert_type=live
-#      store=${owner_type}s/$owner/${item_type}s/
-#    fi   
-#elif test $cert_type = user
-# then
-#   cert_type=user
-#el
+
 if ! test -z $cert_type
  then
-if test $cert_type = live
- then
-   ca_name=""
-   store=${owner_type}s/$owner/${item_type}s/
-elif test $cert_type = external_ca
- then
-   ca_name=""
-elif test $ca_name = external_ca
- then
-   cert_type=""
-elif $cert_type = user
-then
-  cert_type=""
-elif $cert_type = generated
-then
-  cert_type=""
-fi  
+  if test $cert_type = live
+   then
+    ca_name=""
+    store=${owner_type}s/$owner/${item_type}s/
+  elif test $cert_type = external_ca
+   then
+    ca_name=""
+  elif test $ca_name = external_ca
+   then
+    cert_type=""
+  elif $cert_type = user
+   then
+    cert_type=""
+  elif $cert_type = generated
+   then
+     cert_type=""
+  fi  
 fi
 item_dir=$StoreRoot/$ca_name/$cert_type/${store}/${item_type}s/
 
