@@ -15,23 +15,6 @@ owner=$parent_engine
 resolve_cert_dir
 resolve_key_dir
 
-#isUserCert=0
-#if test -z $cert_type
-# then
-#  cert_type=generated
-#  StorePref=${container_type}s/${parent_engine}
-#elif test $cert_type = user
-# then
-#	StorePref=
-#	isUserCert=1
-#else
-#   StorePref=${container_type}s/${parent_engine}
-#fi
-
-#key_dir=$StoreRoot/$cert_type/keys/${StorePref}
-#cert_dir=$StoreRoot/$cert_type/certs/${StorePref}
-
-
 mkdir -p $key_dir $cert_dir
 /home/engines/scripts/engine/create_csr.sh
 
@@ -49,8 +32,7 @@ openssl x509 -req \
 	-CAcreateserial \
 	-out $cert_dir/${common_name}.crt.tmp \
 	-days 500  \
-	-extensions req_ext \
-	-config $StoreRoot/private/$ca_name/open_ssl.cnf
+	-extensions req_ext
 	
 # -extfile  $setup_dir/${common_name}_config
 if test $? -ne 0
@@ -66,12 +48,7 @@ fi
 
 mv $pending_csr_dir/${common_name}.csr $completed_csr_dir/
 
-common_name=`cat  $cert_dir/${common_name}.crt.tmp | \
-   			openssl x509 \
-   			-noout \
-   			-subject \
-   			|sed "/.*CN.*= /s///"| \
-   			sed "/\*\./s///"`
+common_name=`cat  $cert_dir/${common_name}.crt.tmp | openssl x509 -noout -subject |sed "/.*CN.*= /s///"| sed "/\*\./s///"`
  
 echo mv $cert_dir/${common_name}.crt.tmp $cert_dir/${common_name}.crt  >/tmp/certscp
 

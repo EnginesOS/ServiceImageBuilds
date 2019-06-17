@@ -50,10 +50,15 @@ if ! test -f $StoreRoot/public/ca/certs/${ca_name}_CA.pem
   echo '{"status":"error","message":"Failed to create CA certificate '$StoreRoot/public/ca/certs/${ca_name}_CA.pem'" }'
   exit 3
 fi  
+if ! test -f $StoreRoot/$ca_name/index.txt
+ then
+  touch StoreRoot/$ca_name/index.txt
+  echo 9999 > $StoreRoot/$ca_name/crlnumber
+fi  
 openssl ca -gencrl\
 		   -keyfile $StoreRoot/private/$ca_name/${ca_name}_CA.key  \
 		   -cert /$StoreRoot/public/ca/certs/${ca_name}_CA.pem\
-		    -config $StoreRoot/private/$ca_name/open_ssl.cnf
+		    -config $StoreRoot/private/$ca_name/open_ssl.cnf > $StoreRoot/public/ca/certs/${ca_name}_CRL.pem
  if ! test -$? -eq 0
  then
   echo '{"status":"error","message":"Failed to create CA CRL '$StoreRoot/public/ca/certs/${ca_name}_CA.pem'" }'

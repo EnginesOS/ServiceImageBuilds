@@ -45,6 +45,8 @@ resolve_item_dir()
 # then
 #   cert_type=user
 #el
+if ! test -z $cert_type
+ then
 if test $cert_type = live
  then
    ca_name=""
@@ -62,7 +64,7 @@ elif $cert_type = generated
 then
   cert_type=""
 fi  
-
+fi
 item_dir=$StoreRoot/$ca_name/$cert_type/${store}/${item_type}s/
 
 }

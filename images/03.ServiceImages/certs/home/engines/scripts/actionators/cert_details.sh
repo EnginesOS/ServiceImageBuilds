@@ -3,7 +3,7 @@
  . /home/engines/functions/checks.sh
 . /home/engines/scripts/engine/cert_dirs.sh
 
-if test $cert_location = live
+if test "$cert_type" = live
   then 
    required_values="common_name ca_name cert_type consumer_type consumer_name"
 else
@@ -14,13 +14,10 @@ check_required_values
 
 . /home/engines/scripts/engine/cert_dirs.sh
 
-
-
 consumer_type=$owner_type
 consumer_name=$owner
 resolve_cert_dir
 
- 
   
 if test -f $cert_dir/$common_name.crt
   then
