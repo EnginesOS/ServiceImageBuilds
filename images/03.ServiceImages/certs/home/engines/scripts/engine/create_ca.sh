@@ -12,6 +12,12 @@ if test -f $StoreRoot/private/ca/keys/${ca_name}_CA.key
 
 fi
 
+if ! test -f $StoreRoot/$ca_name/index.txt
+ then
+  touch StoreRoot/$ca_name/index.txt
+  echo 9999 > $StoreRoot/$ca_name/crlnumber
+fi  
+
 load_cert_defaults
 
 echo $country >/home/engines/scripts/configurators/saved/$ca_name.ca_setup
@@ -50,11 +56,7 @@ if ! test -f $StoreRoot/public/ca/certs/${ca_name}_CA.pem
   echo '{"status":"error","message":"Failed to create CA certificate '$StoreRoot/public/ca/certs/${ca_name}_CA.pem'" }'
   exit 3
 fi  
-if ! test -f $StoreRoot/$ca_name/index.txt
- then
-  touch StoreRoot/$ca_name/index.txt
-  echo 9999 > $StoreRoot/$ca_name/crlnumber
-fi  
+
 openssl ca -gencrl\
 		   -keyfile $StoreRoot/private/$ca_name/${ca_name}_CA.key  \
 		   -cert /$StoreRoot/public/ca/certs/${ca_name}_CA.pem\
