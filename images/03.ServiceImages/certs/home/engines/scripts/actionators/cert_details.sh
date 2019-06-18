@@ -14,9 +14,11 @@ check_required_values
 
 . /home/engines/scripts/engine/cert_dirs.sh
 
-consumer_type=$owner_type
-consumer_name=$owner
+owner_type=$consumer_type
+owner=$consumer_name
 resolve_cert_dir
+
+. $cert_dir/${common_name}.meta
 
   
 if test -f $cert_dir/$common_name.crt
