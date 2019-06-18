@@ -2,10 +2,15 @@
 #. /home/engines/functions/params_to_env.sh
 #params_to_env
  . /home/engines/functions/checks.sh
-required_values="container_type parent_engine common_name"
+ 
+required_values="container_type parent_engine common_name ca_name"
 check_required_values
 
-store=${container_type}s/${parent_engine}/
+cert_type=generated
+ . /home/engines/scripts/engine/cert_dirs.sh
+ resolve_key_dir
+ resolve_cert_dir
+
 
 if ! test -z $install_target
  then
@@ -14,26 +19,26 @@ else
     deploy_name=${common_name}
 fi    
 
-if ! test -f /home/certs/store/generated/certs/$store/${common_name}.crt 
+if ! test -f $cert_dir/${common_name}.crt 
  then
- 	 echo "Missing Cert  /home/certs/store/generated/certs/$store/${common_name}.crt"
+ 	 echo "Missing Cert $cert_dir/${common_name}.crt"
      exit 126
 fi
 
-#domain_name=`cat /home/certs/store/generated/certs/$store/${common_name}.crt  | openssl x509 -noout -subject  |sed "/^.*CN=/s///"| sed "/\*\./s///"`
+#domain_name=`cat $cert_dir/${common_name}.crt  | openssl x509 -noout -subject  |sed "/^.*CN=/s///"| sed "/\*\./s///"`
 
-sudo -n /home/engines/scripts/engine/sudo/_remove_cert.sh certs/$store/${common_name}.crt 
+sudo -n /home/engines/scripts/engine/sudo/_remove_cert.sh $cert_dir/${common_name}.crt 
    
 if test $? -ne 0
  then
-  echo "Failed to Delete Cert certs/$store/${common_name}.crt"
+  echo "Failed to Delete Cert $cert_dir/${common_name}.crt"
   exit 127
 fi
     
- sudo -n /home/engines/scripts/engine/sudo/_remove_cert.sh keys/$store/${common_name}.key
+ sudo -n /home/engines/scripts/engine/sudo/_remove_cert.sh $key_dir/${common_name}.key
 if test $? -ne 0
  then
-  echo "Failed to Delete Key keys/$store/${common_name}.key"
+  echo "Failed to Delete Key $key_dir/${common_name}.key"
   exit 125
 fi
     

@@ -1,15 +1,11 @@
 FROM engines/bionicbeaverbase:$release
-#FROM engines/base_image:alpha 
-
-
 
 COPY src/usr/sbin/invoke-rc.d /usr/sbin/
 
 ADD home /home/
-COPY src/etc/mail/submit.mc /etc/mail
-COPY src/etc/mail/sendmail.mc /etc/mail
 	
 ENV	build ${BuildDate}
+
 RUN	echo '#!/bin/sh' >/usr/sbin/policy-rc.d &&\
 	echo exit 101 >> /usr/sbin/policy-rc.d &&\
 	chmod +x /usr/sbin/policy-rc.d &&\
@@ -61,17 +57,18 @@ RUN	echo '#!/bin/sh' >/usr/sbin/policy-rc.d &&\
 	rm -rf /tmp/* &&\
  	mkdir /var/run/engines &&\
  	chgrp containers /var/run/engines && chmod g+w /var/run/engines  &&\
- 	mkdir /usr/share/ca-certificates/engines &&\
- 	echo engines/engines_internal_ca.crt >> /etc/ca-certificates.conf&&\ 
- 	echo y y |sendmailconfig --no-reload &&\ 	
+	mkdir -p  /home/engines/etc/ssl/CA &&\
+	ln -s /home/engines/etc/ssl/CA /usr/share/ca-certificates/engines &&\
+ 	echo engines/engines_internal_ca.crt >> /etc/ca-certificates.conf
+ 	 
+COPY src/etc/mail/submit.mc /etc/mail
+COPY src/etc/mail/sendmail.mc /etc/mail
+ 	
+RUN	echo y y |sendmailconfig --no-reload &&\ 	
 	chmod g+w /var/spool/mqueue 
 	
- 	
- 	
 ADD sudoers /etc/sudoers.d/system
 ADD src/etc/krb5.conf /etc/
 ADD src/etc/rsyslog.conf /etc/		
-
-
 
 

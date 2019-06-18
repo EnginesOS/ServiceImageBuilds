@@ -8,6 +8,9 @@ upstream FQDN_app {
 server {
     listen 4430;
     port_in_redirect off;
+    ENABLE_SSLCA   ssl_client_certificate /home/engines/etc/ssl/CA/CA_FILE;
+    ssl_verify_client SSLVERIFY;
+  
     
     server_name FQDN;
     add_header Accept-Ranges bytes;

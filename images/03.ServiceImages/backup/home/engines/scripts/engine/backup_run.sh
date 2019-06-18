@@ -2,8 +2,8 @@
 . /home/engines/scripts/engine/backup_dirs.sh
 
 echo backup_run > /home/engines/run/flags/backup_run
-default_email=`cat /home/engines/scripts/configurators/saved/backup_email`
 
+. /home/engines/scripts/configurators/saved/backup_email
 
 for backup in `ls $Backup_ConfigDir |grep -v duply_conf`
  do         
@@ -16,7 +16,7 @@ for backup in `ls $Backup_ConfigDir |grep -v duply_conf`
 	 then 
 	  email=`cat $Backup_ConfigDir/$backup/email`
 	else
-	  email=$default_email
+	  email=$backup_email
 	fi
      
 	if test -f $Backup_ConfigDir/$backup/backup_type

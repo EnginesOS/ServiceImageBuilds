@@ -19,7 +19,7 @@ ADD sudoers /etc/sudoers.d/ftp
 RUN mkdir /ftp/ &&\
 	mkdir -p /home/home_dir/.ssh &&\
 	ln -s /home/home_dir/.ssh /home/ftpd/ &&\
-	chmod -R go-rw /etc/sudoers /etc/sudoers.d/
+	chmod -R go-rw /etc/sudoers /etc/sudoers.d/ 
 	
 ADD home home
 

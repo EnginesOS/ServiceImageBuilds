@@ -1,4 +1,6 @@
 #!/bin/sh
+
+ca_name=external_ca
 . /home/engines/scripts/engine/cert_dirs.sh
 
 if test -f $pending_csr_dir/${csr_name}.csr

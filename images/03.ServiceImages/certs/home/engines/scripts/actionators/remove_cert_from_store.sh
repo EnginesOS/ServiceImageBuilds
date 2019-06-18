@@ -3,40 +3,48 @@
 
  . /home/engines/functions/checks.sh
 
-required_values="common_name cert_type"
+required_values="common_name cert_type ca_name"
 check_required_values
 
 if test $cert_type = generated
  then
  echo "Cant remove system generated certificate"
- exit   
+ exit 2  
  fi
 
-if test $cert_type = user
- then
-  cert_type=generated 
-  store=user
-fi 
+resolve_cert_dir
+resolve_key_dir
 
-if ! test -f $StoreRoot/$cert_type/certs/$store/${common_name}.crt 
+if ! test -f $cert_dir/${common_name}.crt 
  then
-   echo "No such cert  $store/$fqdn"
-   exit 
+   echo "No such cert  $cert_dir/${common_name}.crt "
+   exit 2
 fi
 
-
-sudo -n /home/engines/scripts/engine/_remove_cert.sh $cert_type/certs/$store/${common_name}.crt 
-if test $? -ne 0
+if test -f $cert_dir/${common_name}.crt 
  then
-   echo "Failed to Delete Cert $common_name"
-   exit 127
+   sudo -n /home/engines/scripts/engine/sudo/_remove_cert.sh $cert_dir/${common_name}.crt 
+     if test $? -ne 0
+       then
+         echo "Failed to Delete Cert $common_name"
+          exit 127
+     fi
+ else
+     echo "no such file $cert_dir/${common_name}.key"
+      exit 2      
 fi
-    
-sudo -n /home/engines/scripts/engine/sudo/sudo/_remove_cert.sh $cert_type/keys/$store/${common_name}.key
-if test $? -ne 0
- then
-  echo "Failed to Delete Key $common_name"
-  exit 127
+
+if test -f $key_dir/${common_name}.key
+  then
+  sudo -n /home/engines/scripts/engine/sudo/_remove_cert.sh $key_dir/${common_name}.key
+     if test $? -ne 0
+      then
+        echo "Failed to Delete Key $common_name"
+        exit 2
+     fi
+ else
+  echo "no such file $key_dir/${common_name}.key"
+  exit 2
 fi
     
 

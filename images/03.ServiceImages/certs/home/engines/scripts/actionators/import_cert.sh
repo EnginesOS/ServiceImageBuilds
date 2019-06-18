@@ -3,6 +3,7 @@
 
 required_values="certificate private_key"
 check_required_values
+cert_type=import
 
 . /home/engines/scripts/engine/cert_dirs.sh
 
@@ -21,9 +22,14 @@ common_name=`cat $ImportedRoot/certs/tmp.crt | openssl x509 -noout -subject  |se
 
 if test -z ${common_name}
  then
-  echo Missing common_name
-  rm $ImportedRoot/keys/tmp.key $ImportedRoot/certs/tmp.crt
-  exit 127
+  if test -z ${optional_cn}
+   then
+     echo '{"status":"error","message":"Missing common_name"}'
+     rm $ImportedRoot/keys/tmp.key $ImportedRoot/certs/tmp.crt
+     exit 2
+  else
+     common_name=${optional_cn}
+  fi
 fi
 
 mv $ImportedRoot/keys/tmp.key $ImportedRoot/keys/${common_name}.key

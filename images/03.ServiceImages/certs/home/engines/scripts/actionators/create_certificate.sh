@@ -1,14 +1,14 @@
 #!/bin/sh
-. /home/certs/store/default_cert_details
- . /home/engines/functions/checks.sh
+. /home/engines/functions/checks.sh
+. /home/engines/scripts/engine/cert_dirs.sh
 
 set >/tmp/create_cert
 required_values=" common_name country state city organisation person"
+load_cert_defaults
 check_required_values
 
 
-cert_type=user
-export cert_name common_name country state city organisation person wild alt_names hostname cert_type
+export cert_name common_name country state city organisation person wild alt_names hostname cert_type ca_name cert_usage
 
 err=`/home/engines/scripts/engine/create_cert.sh`
 
