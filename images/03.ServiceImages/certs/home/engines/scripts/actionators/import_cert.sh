@@ -3,9 +3,10 @@
 
 required_values="certificate private_key"
 check_required_values
-cert_type=import
+ca_name=imported
 
 . /home/engines/scripts/engine/cert_dirs.sh
+echo 	"ca_name=$ca_name " > $cert_dir/${common_name}.meta
 
 mkdir -p $ImportedRoot/certs/ $ImportedRoot/keys/
 echo $certificate | tr '\r' '\n' | sed "/^ /s///" > $ImportedRoot/certs/tmp.crt

@@ -6,6 +6,13 @@ check_required_values
  
 . /home/engines/scripts/engine/cert_dirs.sh
  
+. $cert_dir/${common_name}.meta
+ 
+if test $ca_name = imported -o $ca_name = generated
+ then
+  echo "Cannot export key from ca_name $ca_name"
+  exit 1
+fi  
 
 if test $cert_type = imported -o $cert_type = generated
  then
