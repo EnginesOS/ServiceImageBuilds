@@ -53,7 +53,7 @@ else
   dest="$dest_proto://$dest_address/$dest_folder"
 fi
 
-/home/engines/scripts/services/prep_conf.sh  $dirname/conf
+/home/engines/scripts/engine/prep_conf.sh  $dirname/conf
 
 echo "SOURCE='$src'" >> $dirname/conf
 echo "TARGET='$dest'" >> $dirname/conf
