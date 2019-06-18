@@ -1,16 +1,12 @@
 #!/bin/sh
 
-
-
-#. /home/engines/functions/params_to_env.sh
-#params_to_env
- . /home/engines/functions/checks.sh
+. /home/engines/functions/checks.sh
 
 
 required_values="backup_name src_type"
 check_required_values
-. /home/engines/scripts/engine/backup_dirs.sh
 
+. /home/engines/scripts/engine/backup_dirs.sh
 
 echo "$*" >>/var/log/backup/rmbackup.log
 
@@ -30,13 +26,3 @@ export parent_engine
 
  shift
  
-#while ! test -z $1
-# do  
-#   service_hash=$1
-#   load_service_hash_to_environment
-#   echo calling /home/backup_scripts/$publisher_namespace/$type_path/rm_backup.sh $1
-#   /home/backup_scripts/$publisher_namespace/$type_path/rm_backup.sh $1
-#   shift
-# done
-# 
-# exit 0

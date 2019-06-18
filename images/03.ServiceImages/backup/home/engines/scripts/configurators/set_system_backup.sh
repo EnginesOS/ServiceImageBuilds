@@ -1,35 +1,28 @@
-#!/bin/bash
+#!/bin/sh
 
-if test -f /home/engines/scripts/configurators/saved/default_destination/settings
- then
-  echo please set default_destination
-  exit 0
-fi
-  
+. /home/engines/scripts/engine/backup_functions.sh
 . /home/engines/scripts/engine/backup_dirs.sh
-function add_service {
-src=/tmp/backup_$service/
 
-mkdir -p ${Backup_ConfigDir}/${service}
-chmod og-rx $Backup_ConfigDir/$service
-echo -n $service >$Backup_ConfigDir/$service/service
-cp /home/engines/templates/backupservice_pre.sh $Backup_ConfigDir/$service/pre
-cp /home/engines/templates/backupservice_post.sh  $Backup_ConfigDir/$service/post
-chmod u+x $Backup_ConfigDir/$service/pre
-chmod u+x $Backup_ConfigDir/$service/post
-/home/engines/scripts/services/prep_conf.sh $Backup_ConfigDir/$service/conf
+if ! test -f /home/engines/scripts/configurators/saved/default_destination/settings
+ then
+  save_system_settings
+  echo '{"status:"warning","message":"please set backup default destination"}'
+  exit 1 
+fi
 
-echo "SOURCE='$src'" >>$Backup_ConfigDir/$service/conf
-_dest=$dest/$service
-echo "TARGET='$_dest'" >>$Backup_ConfigDir/$service/conf
-echo "TARGET_USER='$user'"  >>$Backup_ConfigDir/$service/conf
-echo "TARGET_PASS='$pass'"  >>$Backup_ConfigDir/$service/conf
-}
+. /home/engines/scripts/configurators/saved/default_destination/settings
 
+ if test -f /home/engines/scripts/configurators/saved/backup_email
+  then
+    . /home/engines/scripts/configurators/saved/backup_email
+  else
+    echo '{"status:"warning","message":"please set backup notification email"}'
+    exit 1
+fi
+. /home/engines/scripts/engine/backup_dirs.sh
 
-cat /home/engines/scripts/configurators/saved/system_backup >>/var/log/backup/addbackup.log
+cat /home/engines/scripts/configurators/saved/system_backup  >>/var/log/backup/addbackup.log
 
-Backup_ConfigDir=/home/backup/.duply/
 
 if test -d /home/engines/scripts/configurators/saved/default_destination
  then
@@ -39,12 +32,7 @@ if test -d /home/engines/scripts/configurators/saved/default_destination
      then
  		. /home/engines/scripts/configurators/saved/system_backup/settings    
      else
-       mkdir -p /home/engines/scripts/configurators/saved/system_backup
-       echo include_logs=$include_logs > /home/engines/scripts/configurators/saved/system_backup/settings
-      echo include_files=$include_files >> /home/engines/scripts/configurators/saved/system_backup/settings
-      echo include_services=$include_services >> /home/engines/scripts/configurators/saved/system_backup/settings
-      echo include_system=$include_system >> /home/engines/scripts/configurators/saved/system_backup/settings
-      echo frequency=$frequency >> /home/engines/scripts/configurators/saved/system_backup/settings    
+       save_system_settings
      fi
   
    dest=$dest_proto://$dest_address/$dest_folder
@@ -60,8 +48,8 @@ if test -d /home/engines/scripts/configurators/saved/default_destination
      mkdir -p $Backup_ConfigDir/system
      chmod og-rx $Backup_ConfigDir/system
      /home/engines/scripts/services/prep_conf.sh $Backup_ConfigDir/system/conf
-     cp /home/engines/templates/backupsystem_pre.sh $Backup_ConfigDir/system/pre
-     cp /home/engines/templates/backupsystem_post.sh $Backup_ConfigDir/system/post
+     cp /home/engines/templates/backup/system_pre.sh $Backup_ConfigDir/system/pre
+     cp /home/engines/templates/backup/system_post.sh $Backup_ConfigDir/system/post
      mkdir -p /tmp/system_backup
      src=/tmp/system_backup
      echo "SOURCE='$src'" >> $Backup_ConfigDir/system/conf           	
@@ -74,7 +62,7 @@ if test -d /home/engines/scripts/configurators/saved/default_destination
   	add_service
   fi
   
-  if test  $include_services = "true"
+  if test $include_services = "true"
     then
       services=`grep -lr backup_support /opt/engines/etc/services/providers/ |uniq`
         for service_path in $services						

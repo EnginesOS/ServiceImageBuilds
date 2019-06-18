@@ -10,7 +10,7 @@ cert_type=generated
  . /home/engines/scripts/engine/cert_dirs.sh
  resolve_key_dir
  resolve_cert_dir
-
+. $cert_dir/${common_name}.meta
 
 if ! test -z $install_target
  then
