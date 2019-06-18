@@ -9,6 +9,8 @@ ca_name=external_ca
 
 resolve_cert_dir
 
+echo "ca_name=$ca_name " > $cert_dir/${common_name}.meta
+
 mkdir -p $cert_dir
 echo "$certificate" > $cert_dir/tmp.crt
 
