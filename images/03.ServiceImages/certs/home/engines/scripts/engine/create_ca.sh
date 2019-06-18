@@ -14,7 +14,7 @@ fi
 
 if ! test -f $StoreRoot/$ca_name/index.txt
  then
-  touch StoreRoot/$ca_name/index.txt
+  touch $StoreRoot/$ca_name/index.txt
   echo 9999 > $StoreRoot/$ca_name/crlnumber
 fi  
 
