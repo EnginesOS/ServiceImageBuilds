@@ -1,6 +1,7 @@
 #!/bin/bash
 echo "started" > /home/engines/run/flags/state
 
+ulimit
 start_thin()
 {
 if test -z $THREADED
