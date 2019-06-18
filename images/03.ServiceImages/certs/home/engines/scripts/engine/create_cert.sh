@@ -7,21 +7,27 @@ if ! test -d /home/certs/store/pending_csr/
   mkdir /home/certs/store/pending_csr/
 fi
 
+if ! test $StoreRoot/private/$ca_name/${ca_name}_CA.key
+ then
+  echo'{"status":"error","message":"no such CA '$ca_name'"}'
+  exit 2
+fi
+
 export StorePref key_dir cert_dir common_name country state city organisation person cert_type container_type parent_engine ca_name
 
 owner_type=$container_type
 owner=$parent_engine
+
+resolve_cert_dir
+resolve_key_dir
+
+mkdir -p $key_dir $cert_dir
 
 echo "cert_type=$cert_type 
 	owner_type=$container_type
 	owner=$parent_engine
 	ca_name=$ca_name " > $cert_dir/${common_name}.meta
 	
-
-resolve_cert_dir
-resolve_key_dir
-
-mkdir -p $key_dir $cert_dir
 /home/engines/scripts/engine/create_csr.sh
 
 if ! test -f $pending_csr_dir/${common_name}.csr 
