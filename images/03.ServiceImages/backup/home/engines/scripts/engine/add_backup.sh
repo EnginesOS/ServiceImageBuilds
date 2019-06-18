@@ -4,15 +4,17 @@
  
  . /home/engines/functions/checks.sh
 check_required_values
+
 echo name $backup_name
 echo parent $parent
 echo src_type $src_type
+
 dirname=${parent}_${backup_name}_${src_type}
 dirname=${Backup_ConfigDir}/$dirname
 
 echo -n $backup_type > $dirname/backup_type
-echo dirname $dirname
 
+echo dirname $dirname
 
 if test -d $dirname
 then 
@@ -36,8 +38,8 @@ else
  mkdir -p /tmp/backup
  src=/tmp/backup
  echo $1 >   $dirname/pre_cmd_path
- cat /home/engines/templates/backupduply_pre > $dirname/pre
- cat /home/engines/templates/backupduply_post > $dirname/post   
+ cat /home/engines/templates/backup/duply_pre > $dirname/pre
+ cat /home/engines/templates/backup/duply_post > $dirname/post   
 fi
 
 if test $dest_proto = "file"

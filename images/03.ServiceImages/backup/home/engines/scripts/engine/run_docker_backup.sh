@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 echo $1 |\
  ssh -o UserKnownHostsFile=/dev/null \

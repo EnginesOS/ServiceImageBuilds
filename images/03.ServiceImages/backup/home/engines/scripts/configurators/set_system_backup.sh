@@ -48,8 +48,8 @@ if test -d /home/engines/scripts/configurators/saved/default_destination
      mkdir -p $Backup_ConfigDir/system
      chmod og-rx $Backup_ConfigDir/system
      /home/engines/scripts/services/prep_conf.sh $Backup_ConfigDir/system/conf
-     cp /home/engines/templates/backupsystem_pre.sh $Backup_ConfigDir/system/pre
-     cp /home/engines/templates/backupsystem_post.sh $Backup_ConfigDir/system/post
+     cp /home/engines/templates/backup/system_pre.sh $Backup_ConfigDir/system/pre
+     cp /home/engines/templates/backup/system_post.sh $Backup_ConfigDir/system/post
      mkdir -p /tmp/system_backup
      src=/tmp/system_backup
      echo "SOURCE='$src'" >> $Backup_ConfigDir/system/conf           	

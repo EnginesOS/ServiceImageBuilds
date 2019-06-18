@@ -1,8 +1,8 @@
 #!/bin/sh
 
-. /home/engines/scripts/engine/bacup_dirs.sh
+. /home/engines/scripts/engine/backup_dirs.sh
 
-cp /home/engines/templates/backupduply_conf $1
+cp /home/engines/templates/backup/duply_conf $1
 key=`cat /home/backup/.gnupg/key_id`
 dir=`dirname $1`
 if test -f $dir/MAX_FULL_BACKUPS

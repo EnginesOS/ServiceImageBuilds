@@ -6,11 +6,11 @@ src=/tmp/backup_$service/
 mkdir -p ${Backup_ConfigDir}/${service}
 chmod og-rx $Backup_ConfigDir/$service
 echo -n $service >$Backup_ConfigDir/$service/service
-cp /home/engines/templates/backupservice_pre.sh $Backup_ConfigDir/$service/pre
-cp /home/engines/templates/backupservice_post.sh  $Backup_ConfigDir/$service/post
+cp /home/engines/templates/backup/service_pre.sh $Backup_ConfigDir/$service/pre
+cp /home/engines/templates/backup/service_post.sh  $Backup_ConfigDir/$service/post
 chmod u+x $Backup_ConfigDir/$service/pre
 chmod u+x $Backup_ConfigDir/$service/post
-/home/engines/scripts/services/prep_conf.sh $Backup_ConfigDir/$service/conf
+/home/engines/scripts/engine/prep_conf.sh $Backup_ConfigDir/$service/conf
 
 echo "SOURCE='$src'" >>$Backup_ConfigDir/$service/conf
 _dest=$dest/$service
