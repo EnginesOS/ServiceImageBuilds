@@ -1,7 +1,7 @@
 #!/bin/sh
 sudo -n /home/engines/scripts/engine/sudo/_fix_perms.sh
 . /home/engines/scripts/engine/cert_dirs.sh
-
+set >/tmp/.create_csr
 cert_name=`echo $common_name | sed "s/$.//"` 
 export cert_name
  
@@ -40,6 +40,8 @@ if test -z "$country" -a -z "$state" -a -z "$organisation"
   load_cert_defaults
 fi
 
+set >/tmp/create_csr
+
 echo $country >$setup_dir/${cert_name}_setup
 echo $state >>$setup_dir/${cert_name}_setup
 echo $city >>$setup_dir/${cert_name}_setup
@@ -70,8 +72,6 @@ echo "" >>$setup_dir/${cert_name}_setup
 echo "" >>$setup_dir/${cert_name}_setup
 
 
-
-
 cat /home/engines/templates/certs/request.template | sed -e "s/COUNTRY/$country/"  \
 													-e "s/EMAIL/$email/"\
 													-e "s/STATE/$state/" -e "s/ORGANISATION/$organisation/" \
@@ -99,7 +99,6 @@ if ! test -f  $key_dir/${cert_name}.key.tmp
   echo '{"status":"error","message":"Failed to create key ' $key_dir/${cert_name}.key'" }'
   exit 3
 fi  
-
 
 openssl req -new  -key $key_dir/${cert_name}.key.tmp -out $pending_csr_dir/${cert_name}.csr -config $setup_dir/${cert_name}_config
 
