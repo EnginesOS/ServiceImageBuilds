@@ -10,6 +10,7 @@ fi
 if ! test $StoreRoot/private/$ca_name/${ca_name}_CA.key
  then
   echo'{"status":"error","message":"no such CA '$ca_name'"}'
+  echo'{"status":"error","message":"no such CA '$ca_name'"}' >/tmp/ere
   exit 2
 fi
 
@@ -34,8 +35,9 @@ echo "cert_type=$cert_type
 
 if ! test -f $pending_csr_dir/${common_name}.csr 
   then
+  	echo '{"status":"error","message":"Failed to load CSR for '${common_name}'"}' >>/tmp/ere
  	echo '{"status":"error","message":"Failed to load CSR for '${common_name}'"}'
- 	exit 2
+ 	exit 3
 fi
 
 openssl x509 -req \
@@ -51,8 +53,9 @@ openssl x509 -req \
 # -extfile  $setup_dir/${common_name}_config
 if test $? -ne 0
  then
- 	echo '{"status":"error","message":"Failed to load Sign CSR for '${common_name}'"}'
- 	exit 2
+ 	echo '{"status":"error","message":"Failed to load Sign CSR for '${common_name}'"}'>>/tmp/ere
+ 	echo '{"status":"error","message":"Failed to load Sign CSR for '${common_name}'"}' 
+ 	exit 4
 fi
 
 if ! test -d $completed_csr_dir 
