@@ -1,7 +1,9 @@
 #!/bin/sh
-. /home/certs/store/default_cert_details
+ . /home/engines/scripts/engine/cert_dirs.sh
+ load_cert_defaults
  . /home/engines/functions/checks.sh
-
+common_name=$cert_name
+install_target=$container_type/$parent_engine
 required_values="install_target container_type parent_engine common_name country state city organisation person"
 check_required_values
 cert_type=generated
