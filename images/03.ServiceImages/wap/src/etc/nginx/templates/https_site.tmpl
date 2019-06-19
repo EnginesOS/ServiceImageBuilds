@@ -9,6 +9,8 @@ server {
     listen 4430;
     port_in_redirect off;
     ENABLE_SSLCA   ssl_client_certificate /home/engines/etc/ssl/CA/CA_FILE;
+    ENABLE_SSLCA   ssl_crl /home/engines/etc/ssl/CA/CRL_FILE;
+    ENABLE_SSLCA   ssl_verify_depth 2;
     ssl_verify_client SSLVERIFY;
   
     
