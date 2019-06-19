@@ -85,6 +85,8 @@ if test -z "$organisation"
  then
   organisation="$_organisation"
 fi
+
+export country state city organisation person
 }
 
    
