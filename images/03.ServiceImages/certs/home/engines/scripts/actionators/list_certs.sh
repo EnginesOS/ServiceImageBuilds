@@ -25,8 +25,8 @@ names=`cat $StoreRoot/$ca_name/certs/$cert.crt \
               alt_names='""'
          fi 
 }
-i=0l
-ca_names=`s $StoreRoot/public/ca/certs/ |grep CA\.pem | sed "/_CA.pem/s///"`
+i=0
+ca_names=`ls $StoreRoot/public/ca/certs/ |grep CA\.pem | sed "/_CA.pem/s///"`
 ca_names="$ca_names external_ca imported"
 
 echo -n '{"certs":['
@@ -35,7 +35,7 @@ echo -n '{"certs":['
   if test -d $StoreRoot/$ca_name/certs/
    then
     cd $StoreRoot/$ca_name/certs/
-    certs=`find . -name "*.crt" |grep -v default | sed "/\.crt/s///g"`
+    certs=`find . -name "*.crt" | sed "/\.crt/s///g"`
       for cert in $certs
        do
       	if test $i -eq 0
@@ -48,7 +48,7 @@ echo -n '{"certs":['
    			then
    			 . $StoreRoot/$ca_name/certs/$cert.meta
  		  fi         
-                 
+        cert_name=`basename $cert_name` # get rid of ./
       	get_alt_names
       	 common_name=`cat $StoreRoot/$ca_name/certs/$cert.crt \
        | openssl x509 -noout -subject |sed "/^.*CN=/s///" `
