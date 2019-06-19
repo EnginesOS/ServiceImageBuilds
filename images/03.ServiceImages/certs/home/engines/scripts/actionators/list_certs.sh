@@ -4,7 +4,7 @@
  
 get_alt_names ()
 {
-names=`cat $StoreRoot/$cert_type/certs/$store/$cert.crt \
+names=`cat $StoreRoot/$ca_name/certs/$cert.crt \
        | openssl x509 -text |grep DNS: | sed "s/DNS://g" | sed "s/,/ /g" `
        an=0
        for name in $names
@@ -44,16 +44,13 @@ echo -n '{"certs":['
       	else
       		echo -n ,
       	fi
-      	   if ! test -f $StoreRoot/$ca_name/certs/$cert.meta
+      	   if test -f $StoreRoot/$ca_name/certs/$cert.meta
    			then
-   			  echo '{"status":"error","message":"Missing meta data for '$ca_name $cert'"}'
-   			  exit 2
- 		  fi  
-        . $StoreRoot/$ca_name/certs/$cert.meta
-            	
-      	cert=`basename $cert`
+   			 . $StoreRoot/$ca_name/certs/$cert.meta
+ 		  fi         
+                 
       	get_alt_names
-      	 common_name=`cat $StoreRoot/$cert_type/certs/$store/$cert.crt \
+      	 common_name=`cat $StoreRoot/$ca_name/certs/$cert.crt \
        | openssl x509 -noout -subject |sed "/^.*CN=/s///" `
         echo -n '{"cert_name":"'$cert'","CN":"'$common_name'","alt_names":'$alt_names',"owner_type":"'${owner_type}'","owner":"'${owner}'","ca_name":"'$ca_name'", "cert_type":"'$cert_type'"}'
       done
