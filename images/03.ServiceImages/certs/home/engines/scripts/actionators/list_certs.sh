@@ -26,12 +26,15 @@ names=`cat $StoreRoot/$cert_type/certs/$store/$cert.crt \
          fi 
 }
 i=0
+ca_names=`ls $StoreRoot/ca/certs/ |grep CA\.pem`
+ca_names="$ca_names external_ca imported"
+
 echo -n '{"certs":['
- for cert_type in `ls $StoreRoot`
+ for ca_name in $ca_names
   do
-  if test -d $StoreRoot/$cert_type/certs/
+  if test -d $StoreRoot/$ca_name/certs/
    then
-    cd $StoreRoot/$cert_type/certs/
+    cd $StoreRoot/$ca_name/certs/
     certs=`find . -name "*.crt" |grep -v default | sed "/\.crt/s///g"`
       for cert in $certs
        do
@@ -41,16 +44,19 @@ echo -n '{"certs":['
       	else
       		echo -n ,
       	fi
-      	store=`dirname $cert |sed "/^\.\//s///"`
-     
-      owner=`basename $store`
-      owner_type=`dirname $store | sed "s/s$//"`     
+      	   if ! test -f $StoreRoot/$ca_name/certs/$cert.meta
+   			then
+   			  echo '{"status":"error","message":"Missing meta data for '$ca_name $cert'"}'
+   			  exit 2
+ 		  fi  
+        . $StoreRoot/$ca_name/certs/$cert.meta
+      
       	
       	cert=`basename $cert`
       	get_alt_names
       	 common_name=`cat $StoreRoot/$cert_type/certs/$store/$cert.crt \
        | openssl x509 -noout -subject |sed "/^.*CN=/s///" `
-        echo -n '{"cert_name":"'$cert'","CN":"'$common_name'","alt_names":'$alt_names',"owner_type":"'${owner_type}'","owner":"'${owner}'","store":"'$store'", "cert_type":"'$cert_type'"}'
+        echo -n '{"cert_name":"'$cert'","CN":"'$common_name'","alt_names":'$alt_names',"owner_type":"'${owner_type}'","owner":"'${owner}'","ca_name":"'$ca_name'", "cert_type":"'$cert_type'"}'
       done
   fi
   done
