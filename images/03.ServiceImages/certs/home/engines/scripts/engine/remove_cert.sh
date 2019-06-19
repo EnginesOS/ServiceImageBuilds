@@ -6,9 +6,9 @@ if ! test -f $cert_dir/${common_name}.crt
    exit 2
 fi
 
-if ! test $cert_type = external_ca -o $cert_type = imported
+if ! test $ca_name = external_ca -o $ca_name = imported
  then
-   openssl -revoke $cert_dir/${common_name}.crt 
+   openssl ca -revoke $cert_dir/${common_name}.crt -config $StoreRoot/private/$ca_name/open_ssl.cnf
    openssl ca -gencrl  \
 			-config $StoreRoot/private/$ca_name/open_ssl.cnf \
 		 	-out $StoreRoot/public/ca/certs/${ca_name}_CRL.pem
