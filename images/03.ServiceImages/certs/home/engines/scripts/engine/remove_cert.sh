@@ -1,7 +1,5 @@
 #!/bin/sh
 
-
-
 if ! test -f $cert_dir/${common_name}.crt 
  then
    echo '{"status":"error","message":"No Such Cert '$cert_dir/${common_name}.crt'"}'
@@ -19,14 +17,12 @@ if ! test $cert_type = external_ca -o $cert_type = imported
 		 		> $StoreRoot/public/ca/certs/${ca_name}_CA_CRL.pem 
 fi		 	
 
-
 #sudo -n /home/engines/scripts/engine/sudo/_remove_cert.sh $cert_dir/${common_name}.crt 
 #  if test $? -ne 0
 #    then
 #      echo '{"status":"error","message":"Failed to Delete Cert '$common_name'"}'
 #       exit 2
 #  fi
-
 
 if test -f $key_dir/${common_name}.key
   then
@@ -40,7 +36,6 @@ if test -f $key_dir/${common_name}.key
   echo '{"status":"error","message":"No Such Key '$key_dir/${common_name}.key'"}'
   exit 2
 fi
-    
 
 exit 0
  	

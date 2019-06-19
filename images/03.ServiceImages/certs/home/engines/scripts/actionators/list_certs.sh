@@ -25,8 +25,8 @@ names=`cat $StoreRoot/$ca_name/certs/$cert.crt \
               alt_names='""'
          fi 
 }
-i=0
-ca_names=`ls $StoreRoot/ca/certs/ |grep CA\.pem`
+i=0l
+ca_names=`s $StoreRoot/public/ca/certs/ |grep CA\.pem | sed "/_CA.pem/s///"`
 ca_names="$ca_names external_ca imported"
 
 echo -n '{"certs":['
