@@ -12,10 +12,13 @@ if test -f $StoreRoot/private/ca/keys/${ca_name}_CA.key
 
 fi
 
+mkdir -p $StoreRoot/$ca_name/
+
 if ! test -f $StoreRoot/$ca_name/index.txt
  then
   touch $StoreRoot/$ca_name/index.txt
   echo 9999 > $StoreRoot/$ca_name/crlnumber
+  touch $StoreRoot/$ca_name/index.txt.attr
 fi  
 echo "cert_type=$cert_type 
 	owner_type=$container_type
