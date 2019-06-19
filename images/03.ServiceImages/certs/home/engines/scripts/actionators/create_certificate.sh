@@ -6,7 +6,7 @@ set >/tmp/create_cert
 required_values=" common_name country state city organisation person"
 load_cert_defaults
 check_required_values
-
+cert_type=user
 
 export cert_name common_name country state city organisation person wild alt_names hostname cert_type ca_name cert_usage
 
