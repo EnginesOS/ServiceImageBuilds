@@ -21,6 +21,8 @@ owner=$parent_engine
 resolve_cert_dir
 resolve_key_dir
 
+set >/tmp/.create_cert
+
 mkdir -p $key_dir $cert_dir
 
 echo "cert_type=$cert_type 

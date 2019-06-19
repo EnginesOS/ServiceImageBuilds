@@ -26,7 +26,7 @@ echo "cert_type=$cert_type
 	ca_name=$ca_name " > $StoreRoot/$ca_name/${ca_name}.meta
 	
 load_cert_defaults
-
+set >/tmp/.create_ca
 echo $country >/home/engines/scripts/configurators/saved/$ca_name.ca_setup
 echo $state >>/home/engines/scripts/configurators/saved/$ca_name.ca_setup
 echo $city >>/home/engines/scripts/configurators/saved/$ca_name.ca_setup
