@@ -17,7 +17,11 @@ if ! test -f $StoreRoot/$ca_name/index.txt
   touch $StoreRoot/$ca_name/index.txt
   echo 9999 > $StoreRoot/$ca_name/crlnumber
 fi  
-
+echo "cert_type=$cert_type 
+	owner_type=$container_type
+	owner=$parent_engine
+	ca_name=$ca_name " > $StoreRoot/$ca_name/${ca_name}.meta
+	
 load_cert_defaults
 
 echo $country >/home/engines/scripts/configurators/saved/$ca_name.ca_setup
