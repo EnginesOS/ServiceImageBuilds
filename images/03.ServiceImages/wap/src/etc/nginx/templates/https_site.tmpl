@@ -47,6 +47,7 @@ server {
     proxy_set_header Host $host;
     proxy_set_header X-Forwarded-Proto https;
     proxy_set_header X-Forwarded-For $remote_addr;
+    ENABLE_SSLCA proxy_set_header Certificate-Subject $ssl_client_s_dn
   }
   location /502.html{
 	 }
