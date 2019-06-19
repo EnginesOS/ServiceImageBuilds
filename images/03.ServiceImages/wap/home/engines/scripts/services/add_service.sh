@@ -44,11 +44,11 @@ if test $require_client_ssl = true
   ENABLE_SSLCA='#'
 fi
 
-if test -z $ca
+if test -z $ca_name
  then
-  ca_file=engines_internal_ca.crt
+   ca_file=system_CA.pem
  else
-   ca_file=${ca}.crt
+   ca_file=${ca_name}_CA.pem
 fi   
   
 cat $template | sed "/SERVERS/s//$servers/" \
