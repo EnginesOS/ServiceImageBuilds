@@ -62,7 +62,6 @@ mv $pending_csr_dir/${common_name}.csr $completed_csr_dir/
 
 common_name=`cat  $cert_dir/${common_name}.crt.tmp | openssl x509 -noout -subject |sed "/.*CN.*= /s///"| sed "/\*\./s///"`
  
-echo mv $cert_dir/${common_name}.crt.tmp $cert_dir/${common_name}.crt  >/tmp/certscp
 
 mv $cert_dir/${common_name}.crt.tmp $cert_dir/${common_name}.crt 
  

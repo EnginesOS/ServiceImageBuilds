@@ -1,5 +1,6 @@
 #!/bin/sh
 #exported common_name cert_dir cert_type ca_name key_dir
+. /home/engines/scripts/engine/cert_dirs.sh
 
 if ! test -f $cert_dir/${common_name}.crt 
  then
@@ -41,6 +42,8 @@ if test -f $key_dir/${common_name}.key
 fi
 
 rm $cert_dir/${common_name}.meta
+rm $setup_dir/${common_name}_setup
+rm $pending_csr_dir/${common_name}.csr
 
 exit 0
  	
