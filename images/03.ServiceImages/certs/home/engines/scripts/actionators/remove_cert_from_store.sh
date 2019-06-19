@@ -23,6 +23,11 @@ if ! test -f $cert_dir/${common_name}.crt
    exit 2
 fi
 
+openssl -revoke $cert_dir/${common_name}.crt 
+openssl ca -gencrl  \
+			-config $StoreRoot/private/$ca_name/open_ssl.cnf \
+		 	-out $StoreRoot/public/ca/certs/${ca_name}_CRL.pem
+
 if test -f $cert_dir/${common_name}.crt 
  then
    sudo -n /home/engines/scripts/engine/sudo/_remove_cert.sh $cert_dir/${common_name}.crt 
@@ -32,7 +37,7 @@ if test -f $cert_dir/${common_name}.crt
           exit 127
      fi
  else
-     echo "no such file $cert_dir/${common_name}.key"
+     echo "no such file $cert_dir/${common_name}.crt"
       exit 2      
 fi
 
