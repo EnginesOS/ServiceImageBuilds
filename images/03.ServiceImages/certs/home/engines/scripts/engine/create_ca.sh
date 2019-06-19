@@ -70,6 +70,11 @@ openssl ca -gencrl\
   echo '{"status":"error","message":"Failed to create CA CRL '$StoreRoot/public/ca/certs/${ca_name}_CA.pem'" }'
   exit 3
 fi 
+
+cat $StoreRoot/public/ca/certs/${ca_name}_CA.pem \
+		 		$StoreRoot/public/ca/certs/${ca_name}_CRL.pem \
+		 		> $StoreRoot/public/ca/certs/${ca_name}_CA_CRL.pem 
+
 chmod og-r $StoreRoot/private/$ca_name/${ca_name}_CA.key     
 echo '{"status":"success"}'
 exit 0
