@@ -50,8 +50,7 @@ echo -n '{"certs":['
    			  exit 2
  		  fi  
         . $StoreRoot/$ca_name/certs/$cert.meta
-      
-      	
+            	
       	cert=`basename $cert`
       	get_alt_names
       	 common_name=`cat $StoreRoot/$cert_type/certs/$store/$cert.crt \
