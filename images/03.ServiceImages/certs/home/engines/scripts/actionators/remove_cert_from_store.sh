@@ -6,6 +6,10 @@
 required_values="common_name cert_type ca_name"
 check_required_values
 
+
+resolve_cert_dir
+resolve_key_dir
+
 . $cert_dir/${common_name}.meta
 
 if test $cert_type = generated

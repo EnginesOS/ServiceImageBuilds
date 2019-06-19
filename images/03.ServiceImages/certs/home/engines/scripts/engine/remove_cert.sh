@@ -1,8 +1,6 @@
 #!/bin/sh
 
 
-resolve_cert_dir
-resolve_key_dir
 
 if ! test -f $cert_dir/${common_name}.crt 
  then
