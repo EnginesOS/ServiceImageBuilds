@@ -14,15 +14,18 @@ if ! test $cert_type = external_ca -o $cert_type = imported
    openssl ca -gencrl  \
 			-config $StoreRoot/private/$ca_name/open_ssl.cnf \
 		 	-out $StoreRoot/public/ca/certs/${ca_name}_CRL.pem
+		 	cat $StoreRoot/public/ca/certs/${ca_name}_CA.pem \
+		 		$StoreRoot/public/ca/certs/${ca_name}_CRL.pem \
+		 		> $StoreRoot/public/ca/certs/${ca_name}_CA_CRL.pem 
 fi		 	
 
 
-sudo -n /home/engines/scripts/engine/sudo/_remove_cert.sh $cert_dir/${common_name}.crt 
-  if test $? -ne 0
-    then
-      echo '{"status":"error","message":"Failed to Delete Cert '$common_name'"}'
-       exit 2
-  fi
+#sudo -n /home/engines/scripts/engine/sudo/_remove_cert.sh $cert_dir/${common_name}.crt 
+#  if test $? -ne 0
+#    then
+#      echo '{"status":"error","message":"Failed to Delete Cert '$common_name'"}'
+#       exit 2
+#  fi
 
 
 if test -f $key_dir/${common_name}.key
