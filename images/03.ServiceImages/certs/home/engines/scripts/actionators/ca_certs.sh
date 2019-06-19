@@ -4,7 +4,7 @@
 required_values=" ca_name"
 check_required_values
 
-for type in `ls $StoreRoot/$ca_name/ |egrep "csr"|setup`
+for type in `ls $StoreRoot/$ca_name/ |egrep -v "csr|setup"`
 do
 	echo Cert $type
 	  for cert in `ls  $StoreRoot/$ca_name/$type | sed "/.pem/s///"`

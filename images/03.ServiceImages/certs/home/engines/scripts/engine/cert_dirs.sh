@@ -35,7 +35,7 @@ resolve_item_dir()
 {
 
 type_path=""
-ca_path=ca_name
+ca_path=$ca_name
 if ! test -z $cert_type
  then
   if test $cert_type = live
