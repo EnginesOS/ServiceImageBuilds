@@ -1,10 +1,6 @@
 #!/bin/sh
 
-if ! test -f /home/backup/.gnupg/key_created
- then
-  echo "Please set backup notification first"
-  exit 0
-fi
+
   
 mkdir -p /home/engines/scripts/configurators/saved/default_destination
 
@@ -13,6 +9,12 @@ mkdir -p /home/engines/scripts/configurators/saved/default_destination
         dest_pass=\'$dest_pass\' 
         dest_proto=$dest_proto 
         dest_user=$dest_user" > /home/engines/scripts/configurators/saved/default_destination/settings
+        
+if ! test -f /home/backup/.gnupg/key_created
+ then
+  echo "Please set backup notification "
+  exit 0
+fi
 if test -f /home/engines/scripts/configurators/saved/system_backup
  then
     . /home/engines/scripts/configurators/saved/system_backup/settings

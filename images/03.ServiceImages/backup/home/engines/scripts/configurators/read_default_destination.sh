@@ -1,7 +1,7 @@
 #!/bin/sh
 
 
-if test -d /home/engines/scripts/configurators/saved/default_destination
+if test -f /home/engines/scripts/configurators/saved/default_destination/settings
 then
 . /home/engines/scripts/configurators/saved/default_destination/settings
  echo '{"default_destination":
