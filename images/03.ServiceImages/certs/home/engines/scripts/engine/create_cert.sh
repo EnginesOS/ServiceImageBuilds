@@ -70,11 +70,8 @@ common_name=`cat  $cert_dir/${common_name}.crt.tmp | openssl x509 -noout -subjec
 
 mv $cert_dir/${common_name}.crt.tmp $cert_dir/${common_name}.crt 
  
- if test $isUserCert -eq 1
- then
- 	cert_path=user     
- else
-  cert_path=${container_type}s/${parent_engine}
+ 
+
    if ! test -z ${install_target}
     then
      if test ${install_target} = default
@@ -83,7 +80,6 @@ mv $cert_dir/${common_name}.crt.tmp $cert_dir/${common_name}.crt
      elif test ${install_target} = wap
       then
      	 dest_name=${common_name}
-     	 cert_path=services/wap
      else
        dest_name=${common_name}    
      fi
@@ -91,12 +87,15 @@ mv $cert_dir/${common_name}.crt.tmp $cert_dir/${common_name}.crt
      dest_name=${common_name} 
    fi
    
- echo /home/engines/scripts/engine/_install_target.sh ${cert_path} $ca_name ${StorePref}/${common_name} ${dest_name}
- echo /home/engines/scripts/engine/_install_target.sh ${cert_path} $ca_name ${StorePref}/${common_name} ${dest_name} >>/tmp/callinstall
- sudo -n /home/engines/scripts/engine/sudo/_install_target.sh ${cert_path} $ca_name ${StorePref}/${common_name} ${dest_name}
+   
+  if test -z $container_type -o -z $parent_engine
+    then 
+ 		echo /home/engines/scripts/engine/_assign_certificate.sh ${cert_path} $ca_name ${common_name} ${dest_name}
+ 		echo /home/engines/scripts/engine/_install_target.sh ${cert_path} $ca_name ${StorePref}/${common_name} ${dest_name} >>/tmp/callinstall
+ 		sudo -n /home/engines/scripts/engine/_assign_certificate.sh ${cert_path} ${common_name} ${dest_name}
+ 		exit $?
+  fi		
   
-  exit $?
-fi
-
 
 exit 0
+
