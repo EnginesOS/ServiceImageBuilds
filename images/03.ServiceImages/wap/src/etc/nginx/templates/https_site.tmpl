@@ -30,7 +30,7 @@ server {
     access_log /var/log/nginx/FQDN/https/access.log;
     error_log /var/log/nginx/FQDN/https/error.log;
     error_page 502 /502.html;
-    
+    error_page 400 /400ssl.html
  location / {
         FOLDER
 	proxy_pass http://FQDN_app/;
@@ -49,6 +49,8 @@ server {
     ENABLE_SSLCA proxy_set_header Certificate-Subject $ssl_client_s_dn ;
   }
   location /502.html{
+	 }
+  location /400ssl.html{
 	 }
 }
 
