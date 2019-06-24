@@ -64,7 +64,7 @@ if ! test -f $StoreRoot/public/ca/certs/${ca_name}_CA.pem
   exit 3
 fi  
 
-/home/engines/scripts/engine/build_csr.sh ${ca_name}
+/home/engines/scripts/engine/build_crl.sh ${ca_name}
 
 chmod og-r $StoreRoot/private/$ca_name/${ca_name}_CA.key     
 echo '{"status":"success"}'

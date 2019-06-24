@@ -11,7 +11,7 @@ fi
 if ! test $ca_name = external_ca -o $ca_name = imported
  then
    openssl ca -revoke $cert_dir/${common_name}.crt -config $StoreRoot/private/$ca_name/open_ssl.cnf
-   /home/engines/scripts/engine/create_csr.sh
+   /home/engines/scripts/engine/create_crl.sh
 fi		 	
 
 sudo -n /home/engines/scripts/engine/sudo/_remove_cert.sh $cert_dir/${common_name}.crt 
