@@ -29,7 +29,9 @@ mkdir -p $key_dir $cert_dir
 echo "cert_type=$cert_type 
 	owner_type=$container_type
 	owner=$parent_engine
-	ca_name=$ca_name " > $cert_dir/${common_name}.meta
+	ca_name=$ca_name 
+	common_name=${common_name}" 
+	> $cert_dir/${common_name}.meta
 	
 /home/engines/scripts/engine/create_csr.sh
 
@@ -65,34 +67,32 @@ fi
 
 mv $pending_csr_dir/${common_name}.csr $completed_csr_dir/
 
-common_name=`cat  $cert_dir/${common_name}.crt.tmp | openssl x509 -noout -subject |sed "/.*CN.*= /s///"| sed "/\*\./s///"`
+common_name=`cat $cert_dir/${common_name}.crt.tmp | openssl x509 -noout -subject |sed "/.*CN.*= /s///"| sed "/\*\./s///"`
  
 
 mv $cert_dir/${common_name}.crt.tmp $cert_dir/${common_name}.crt 
  
  
 
-   if ! test -z ${install_target}
-    then
-     if test ${install_target} = default
-      then
-       dest_name=${parent_engine}
-     elif test ${install_target} = wap
-      then
-     	 dest_name=${common_name}
-     else
-       dest_name=${common_name}    
-     fi
-   else
-     dest_name=${common_name} 
-   fi
+#  if ! test -z ${parent_engine}
+#   then
+#    if test ${install_target} = default
+#     then
+#      dest_name=${parent_engine}
+#    elif test ${parent_engine} = wap
+#     then
+#    	 dest_name=${common_name}
+#    else
+#      dest_name=${common_name}    
+#    fi
+#  else
+#    dest_name=${common_name} 
+#  fi
    
    
   if test -z $container_type -o -z $parent_engine
-    then 
- 		echo /home/engines/scripts/engine/_assign_certificate.sh ${cert_path} $ca_name ${common_name} ${dest_name}
- 		echo /home/engines/scripts/engine/_install_target.sh ${cert_path} $ca_name ${StorePref}/${common_name} ${dest_name} >>/tmp/callinstall
- 		sudo -n /home/engines/scripts/engine/_assign_certificate.sh ${cert_path} ${common_name} ${dest_name}
+    then  		
+ 		sudo -n /home/engines/scripts/engine/_assign_certificate.sh ${ca_name} ${common_name} $container_type/$parent_engine ${dest_name}
  		exit $?
   fi		
   
