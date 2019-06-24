@@ -89,9 +89,7 @@ mv $cert_dir/${common_name}.crt.tmp $cert_dir/${common_name}.crt
    
    
   if test -z $container_type -o -z $parent_engine
-    then 
- 		echo /home/engines/scripts/engine/_assign_certificate.sh ${cert_path} $ca_name ${common_name} ${dest_name}
- 		echo /home/engines/scripts/engine/_install_target.sh ${cert_path} $ca_name ${StorePref}/${common_name} ${dest_name} >>/tmp/callinstall
+    then  		
  		sudo -n /home/engines/scripts/engine/_assign_certificate.sh ${ca_name} ${common_name} $container_type/$parent_engine ${dest_name}
  		exit $?
   fi		

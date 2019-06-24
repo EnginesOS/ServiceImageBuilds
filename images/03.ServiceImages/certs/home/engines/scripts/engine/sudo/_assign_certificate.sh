@@ -13,6 +13,9 @@ ca_name=$1
 cert_name=$2
 install_target=$3
 destination_name=$4
+
+
+
 . /home/engines/scripts/engine/cert_dirs.sh
 resolve_cert_dir
 resolve_key_dir
@@ -61,8 +64,8 @@ function install_cert {
  mkdir -p `dirname $InstalledRoot/${install_target}/certs/${destination_name}`
  mkdir -p `dirname $InstalledRoot/${install_target}/keys/${destination_name}`
 
- cp $cert_path/${cert_name}.crt $InstalledRoot/${install_target}/certs/${destination_name}.crt 
- cp $key_path/${cert_name}.key $InstalledRoot/${install_target}/keys/${destination_name}.key
+ cp $cert_dir/${cert_name}.crt $InstalledRoot/${install_target}/certs/${destination_name}.crt 
+ cp $key_dir/${cert_name}.key $InstalledRoot/${install_target}/keys/${destination_name}.key
  cp $cert_dir/${common_name}.meta $InstalledRoot/${install_target}/certs/
  chown $id $InstalledRoot/${install_target}/keys/${destination_name}.key $InstalledRoot/${install_target}/certs/${destination_name}.crt 
  chmod og-rw $InstalledRoot/${install_target}/keys/${destination_name}.key 
