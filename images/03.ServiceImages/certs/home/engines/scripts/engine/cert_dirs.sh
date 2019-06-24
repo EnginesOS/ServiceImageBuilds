@@ -35,29 +35,29 @@ resolve_item_dir()
 {
 
 type_path=""
-
+ca_path=$ca_name
 if ! test -z $cert_type
  then
   if test $cert_type = live
    then
-    ca_name=""
+    ca_path=""
     type_path=live
     store=${owner_type}s/$owner/${item_type}s/
   elif test $cert_type = external_ca
    then
     type_path=external_ca
-    ca_name=""
+    ca_path=""
   elif test $cert_type = imported
    then
     type_path=imported
-    ca_name=""
-  fi  
+    ca_path=""
+  fi   
 fi
-if test -z $ca_name
+if test -z $ca_path
  then
    item_dir=$StoreRoot/$type_path/${store}/${item_type}s/
  else
-  item_dir=$StoreRoot/$ca_name/${store}/${item_type}s/
+  item_dir=$StoreRoot/$ca_path/${store}/${item_type}s/
 fi   
 
 }
@@ -85,6 +85,8 @@ if test -z "$organisation"
  then
   organisation="$_organisation"
 fi
+
+export country state city organisation person
 }
 
    

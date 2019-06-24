@@ -16,7 +16,7 @@ function install_service {
  echo Install Service install_target=$target
 dest_name=`basename $install_target`
 
-err=`sudo -n  /home/engines/scripts/engine/sudo/_install_target.sh ${install_target} ${ca_name} ${cert_name} ${dest_name}`
+err=`sudo -n  /home/engines/scripts/engine/sudo/_assign_certificate.sh ${install_target} ${ca_name} ${cert_name} ${dest_name}`
 r=$?
  if test $r -ne 0
   then

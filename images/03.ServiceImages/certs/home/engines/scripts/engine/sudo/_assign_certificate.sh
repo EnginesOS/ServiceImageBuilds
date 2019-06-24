@@ -1,6 +1,8 @@
 #!/bin/bash
 
-. /home/engines/scripts/engine/cert_dirs.sh
+#${cert_path} ${common_name} ${dest_name}
+
+#. /home/engines/scripts/engine/cert_dirs.sh
 
 echo _install_target.sh $*  >>/tmp/install_called
 install_target=$1

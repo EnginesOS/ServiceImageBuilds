@@ -44,11 +44,13 @@ if test $require_client_ssl = true
   ENABLE_SSLCA='#'
 fi
 
-if test -z $ca
+if test -z $ca_name
  then
-  ca_file=engines_internal_ca.crt
+   ca_file=system_CA.pem
+   crl_file=system_CA_CRL.pem
  else
-   ca_file=${ca}.crt
+   ca_file=${ca_name}_CA.pem
+   crl_file=${ca_name}_CA_CRL.pem
 fi   
   
 cat $template | sed "/SERVERS/s//$servers/" \
@@ -57,8 +59,8 @@ cat $template | sed "/SERVERS/s//$servers/" \
 | sed "/SERVER/s//$parent_engine/g" \
 | sed "/ENABLE_SSLCA/s//$ENABLE_SSLCA/" \
 | sed "/CA_FILE/s//$ca_file/" \
-| sed "/SSLVERIFY/s//$ssl_verify/" > /tmp/site.res
-
+| sed "/SSLVERIFY/s//$ssl_verify/"\
+| sed "/CRL_FILE/s//$crl_file/" > /tmp/site.res
 www_path=`echo $internal_dir  |sed "s/^\///" |sed "s/\/$//"`
 
 

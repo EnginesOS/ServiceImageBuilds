@@ -9,9 +9,10 @@ server {
     listen 4430;
     port_in_redirect off;
     ENABLE_SSLCA   ssl_client_certificate /home/engines/etc/ssl/CA/CA_FILE;
+    ENABLE_SSLCA   ssl_crl /home/engines/etc/ssl/CA/CRL_FILE;
+    ENABLE_SSLCA   ssl_verify_depth 2;
     ssl_verify_client SSLVERIFY;
   
-    
     server_name FQDN;
     add_header Accept-Ranges bytes;
      #FIX ME Make HST settable on by default
@@ -23,14 +24,13 @@ server {
     ssl_certificate /home/engines/etc/ssl//certs/CERTNAME.crt;
     ssl_certificate_key /home/engines/etc/ssl//keys/CERTNAME.key;
     proxy_ssl_session_reuse off;
-    ssl_verify_client off;
     ssl_protocols        SSLv3 TLSv1 TLSv1.1 TLSv1.2;
     ssl_ciphers RC4:HIGH:!aNULL:!MD5;
     ssl_prefer_server_ciphers on;
     access_log /var/log/nginx/FQDN/https/access.log;
     error_log /var/log/nginx/FQDN/https/error.log;
     error_page 502 /502.html;
-    
+    error_page 400 /400ssl.html;
  location / {
         FOLDER
 	proxy_pass http://FQDN_app/;
@@ -46,8 +46,11 @@ server {
     proxy_set_header Host $host;
     proxy_set_header X-Forwarded-Proto https;
     proxy_set_header X-Forwarded-For $remote_addr;
+    ENABLE_SSLCA proxy_set_header Certificate-Subject $ssl_client_s_dn ;
   }
   location /502.html{
+	 }
+  location /400ssl.html{
 	 }
 }
 

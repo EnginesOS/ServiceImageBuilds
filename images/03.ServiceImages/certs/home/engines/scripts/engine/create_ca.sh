@@ -12,8 +12,21 @@ if test -f $StoreRoot/private/ca/keys/${ca_name}_CA.key
 
 fi
 
-load_cert_defaults
+mkdir -p $StoreRoot/$ca_name/
 
+if ! test -f $StoreRoot/$ca_name/index.txt
+ then
+  touch $StoreRoot/$ca_name/index.txt
+  echo 9999 > $StoreRoot/$ca_name/crlnumber
+  touch $StoreRoot/$ca_name/index.txt.attr
+fi  
+echo "cert_type=$cert_type 
+	owner_type=$container_type
+	owner=$parent_engine
+	ca_name=$ca_name " > $StoreRoot/$ca_name/${ca_name}.meta
+	
+load_cert_defaults
+set >/tmp/.create_ca
 echo $country >/home/engines/scripts/configurators/saved/$ca_name.ca_setup
 echo $state >>/home/engines/scripts/configurators/saved/$ca_name.ca_setup
 echo $city >>/home/engines/scripts/configurators/saved/$ca_name.ca_setup
@@ -50,20 +63,9 @@ if ! test -f $StoreRoot/public/ca/certs/${ca_name}_CA.pem
   echo '{"status":"error","message":"Failed to create CA certificate '$StoreRoot/public/ca/certs/${ca_name}_CA.pem'" }'
   exit 3
 fi  
-if ! test -f $StoreRoot/$ca_name/index.txt
- then
-  touch StoreRoot/$ca_name/index.txt
-  echo 9999 > $StoreRoot/$ca_name/crlnumber
-fi  
-openssl ca -gencrl\
-		   -keyfile $StoreRoot/private/$ca_name/${ca_name}_CA.key  \
-		   -cert /$StoreRoot/public/ca/certs/${ca_name}_CA.pem\
-		    -config $StoreRoot/private/$ca_name/open_ssl.cnf > $StoreRoot/public/ca/certs/${ca_name}_CRL.pem
- if ! test -$? -eq 0
- then
-  echo '{"status":"error","message":"Failed to create CA CRL '$StoreRoot/public/ca/certs/${ca_name}_CA.pem'" }'
-  exit 3
-fi 
+
+/home/engines/scripts/engine/build_crl.sh ${ca_name}
+
 chmod og-r $StoreRoot/private/$ca_name/${ca_name}_CA.key     
 echo '{"status":"success"}'
 exit 0
