@@ -7,6 +7,8 @@ ca_name=$1
 cert_name=$2
 install_target=$3
 
+. /home/engines/scripts/engine/cert_dirs.sh
+
 if test install_target = default
  then
   install_target = all
