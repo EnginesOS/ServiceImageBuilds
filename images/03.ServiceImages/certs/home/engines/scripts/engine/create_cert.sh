@@ -29,7 +29,9 @@ mkdir -p $key_dir $cert_dir
 echo "cert_type=$cert_type 
 	owner_type=$container_type
 	owner=$parent_engine
-	ca_name=$ca_name " > $cert_dir/${common_name}.meta
+	ca_name=$ca_name 
+	common_name=${common_name}" 
+	> $cert_dir/${common_name}.meta
 	
 /home/engines/scripts/engine/create_csr.sh
 
@@ -65,7 +67,7 @@ fi
 
 mv $pending_csr_dir/${common_name}.csr $completed_csr_dir/
 
-common_name=`cat  $cert_dir/${common_name}.crt.tmp | openssl x509 -noout -subject |sed "/.*CN.*= /s///"| sed "/\*\./s///"`
+common_name=`cat $cert_dir/${common_name}.crt.tmp | openssl x509 -noout -subject |sed "/.*CN.*= /s///"| sed "/\*\./s///"`
  
 
 mv $cert_dir/${common_name}.crt.tmp $cert_dir/${common_name}.crt 
