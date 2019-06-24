@@ -13,7 +13,7 @@ ca_name=$1
 cert_name=$2
 install_target=$3
 destination_name=$4
-
+. /home/engines/scripts/engine/cert_dirs.sh
 resolve_cert_dir
 resolve_key_dir
 
