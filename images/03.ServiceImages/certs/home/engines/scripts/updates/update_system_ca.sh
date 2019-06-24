@@ -14,11 +14,13 @@ fi
 cd /home/certs/store/private
 mkdir -p system/keys
 
-cp ca/keys/system_CA.key system/keys/
-cat /home/engines/templates/openssl.cnf | sed "/CA_NAME/s//system/g" >  system/openssl.cnf
+cp ca/keys/system_CA.key system/
+
+cat /home/engines/templates/openssl.cnf | sed "/CA_NAME/s//system/g" >  system/open_ssl.cnf
  touch /home/certs/store/system/index.txt
  echo 9992 > /home/certs/store/system/crlnumber
  touch /home/certs/store/system/index.txt.attr
+ touch /home/certs/home/.rnd
  
 /home/engines/scripts/engine/build_crl.sh system
  if test $? -eq 0
