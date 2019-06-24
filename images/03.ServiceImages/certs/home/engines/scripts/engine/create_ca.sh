@@ -64,19 +64,7 @@ if ! test -f $StoreRoot/public/ca/certs/${ca_name}_CA.pem
   exit 3
 fi  
 
-openssl ca -gencrl\
-		   -keyfile $StoreRoot/private/$ca_name/${ca_name}_CA.key  \
-		   -cert /$StoreRoot/public/ca/certs/${ca_name}_CA.pem\
-		    -config $StoreRoot/private/$ca_name/open_ssl.cnf > $StoreRoot/public/ca/certs/${ca_name}_CRL.pem
- if ! test -$? -eq 0
- then
-  echo '{"status":"error","message":"Failed to create CA CRL '$StoreRoot/public/ca/certs/${ca_name}_CA.pem'" }'
-  exit 3
-fi 
-
-cat $StoreRoot/public/ca/certs/${ca_name}_CA.pem \
-		 		$StoreRoot/public/ca/certs/${ca_name}_CRL.pem \
-		 		> $StoreRoot/public/ca/certs/${ca_name}_CA_CRL.pem 
+/home/engines/scripts/engine/build_csr.sh ${ca_name}
 
 chmod og-r $StoreRoot/private/$ca_name/${ca_name}_CA.key     
 echo '{"status":"success"}'

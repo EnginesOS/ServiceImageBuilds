@@ -11,14 +11,7 @@ fi
 if ! test $ca_name = external_ca -o $ca_name = imported
  then
    openssl ca -revoke $cert_dir/${common_name}.crt -config $StoreRoot/private/$ca_name/open_ssl.cnf
-   #echo openssl ca -revoke $cert_dir/${common_name}.crt -config $StoreRoot/private/$ca_name/open_ssl.cnf >/tmp/revoke
- #  echo openssl ca -gencrl -config $StoreRoot/private/$ca_name/open_ssl.cnf -out $StoreRoot/public/ca/certs/${ca_name}_CRL.pem >/tmp/gencrl
-   openssl ca -gencrl  \
-			-config $StoreRoot/private/$ca_name/open_ssl.cnf \
-		 	-out $StoreRoot/public/ca/certs/${ca_name}_CRL.pem
-		 	cat $StoreRoot/public/ca/certs/${ca_name}_CA.pem \
-		 		$StoreRoot/public/ca/certs/${ca_name}_CRL.pem \
-		 		> $StoreRoot/public/ca/certs/${ca_name}_CA_CRL.pem 
+   /home/engines/scripts/engine/create_csr.sh
 fi		 	
 
 sudo -n /home/engines/scripts/engine/sudo/_remove_cert.sh $cert_dir/${common_name}.crt 
