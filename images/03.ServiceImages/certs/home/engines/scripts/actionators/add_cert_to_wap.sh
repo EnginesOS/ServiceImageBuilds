@@ -1,6 +1,6 @@
 #!/bin/sh
  . /home/engines/functions/checks.sh
-required_values="common_name cert_type fqdn"
+required_values="common_name ca_name fqdn"
 check_required_values
 
 
