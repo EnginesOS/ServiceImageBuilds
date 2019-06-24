@@ -40,14 +40,17 @@ for service in `ls $InstalledRoot/services/`
      then
       echo -n ,
    fi
-   if test -f $InstalledRoot/services/${service}/certs/store.$service
-    then
-    	store=`cat $InstalledRoot/services/${service}/certs/store.$service`
+     if -f $InstalledRoot/$consumer_type_path/${consumer}/certs/store.$cert_name.meta
+       then
+       . $InstalledRoot/$consumer_type_path/${consumer}/certs/store.$cert_name.meta
+     elif test -f $InstalledRoot/services/${service}/certs/store.$service
+       then
+    	ca_name=`cat $InstalledRoot/services/${service}/certs/store.$service`
     	else 
-    	 store='""'
+    	 ca_name='""'
     fi
     get_alt_names
-   echo -n '{"service_name":"'$service'","CN":"'$common_name'","alt_names":'$alt_names',"store":'$store'}'
+   echo -n '{"service_name":"'$service'","CN":"'$common_name'","alt_names":'$alt_names',"ca_name":'$ca_name'}'
    n=1
  fi
 done

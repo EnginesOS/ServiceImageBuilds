@@ -48,7 +48,7 @@ echo -n '{"certs":['
    			then
    			 . $StoreRoot/$ca_name/certs/$cert.meta
  		  fi         
-        cert_name=`basename $cert_name` # get rid of ./
+        cert=`basename $cert` # get rid of ./
       	get_alt_names
       	 common_name=`cat $StoreRoot/$ca_name/certs/$cert.crt \
        | openssl x509 -noout -subject |sed "/^.*CN=/s///" `

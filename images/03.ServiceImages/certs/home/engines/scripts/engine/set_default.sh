@@ -1,9 +1,12 @@
 #!/bin/bash
 
 echo set_default.sh $*
-install_target=$1
-ca_name=$2
-cert_name=$3
+
+ca_name=$1
+cert_name=$2
+install_target=$3
+
+. /home/engines/scripts/engine/cert_dirs.sh
 
 if test install_target = default
  then
@@ -16,7 +19,7 @@ function install_service {
  echo Install Service install_target=$target
 dest_name=`basename $install_target`
 
-err=`sudo -n  /home/engines/scripts/engine/sudo/_assign_certificate.sh ${install_target} ${ca_name} ${cert_name} ${dest_name}`
+err=`sudo -n  /home/engines/scripts/engine/sudo/_assign_certificate.sh  ${ca_name} ${cert_name} ${install_target} ${dest_name}`
 r=$?
  if test $r -ne 0
   then

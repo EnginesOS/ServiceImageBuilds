@@ -46,11 +46,14 @@ else
         then
          echo -n ,
       fi
-     if test -f $InstalledRoot/$consumer_type_path/${consumer}/certs/store.$cert_name
-      then
-      	store=`cat $InstalledRoot/$consumer_type_path/${consumer}/certs/store.$cert_name`
+      if -f $InstalledRoot/$consumer_type_path/${consumer}/certs/store.$cert_name.meta
+       then
+       . $InstalledRoot/$consumer_type_path/${consumer}/certs/store.$cert_name.meta
+      elif test -f $InstalledRoot/$consumer_type_path/${consumer}/certs/store.$cert_name
+       then
+      	ca_name=`cat $InstalledRoot/$consumer_type_path/${consumer}/certs/store.$cert_name`
       	else 
-      	 store='""'
+      	 ca_name='""'
       fi
        if test $consumer = $cert_name
         then
@@ -59,7 +62,7 @@ else
          default=false
        fi   
        consumer_type=`echo $consumer_type_path | sed "s/s$//"`
-     echo -n '{"consumer":"'$consumer'","consumer_type":"'$consumer_type'","cert_name":"'$cert_name'","CN":"'$common_name'","alt_names":'$alt_names',"store":'$store',"default":"'$default'"}'
+     echo -n '{"consumer":"'$consumer'","consumer_type":"'$consumer_type'","cert_name":"'$cert_name'","CN":"'$common_name'","alt_names":'$alt_names',"ca_name":'$ca_name',"default":"'$default'"}'
      n=1
    done
   done
