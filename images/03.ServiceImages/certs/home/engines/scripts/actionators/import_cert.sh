@@ -45,7 +45,7 @@ if ! test -z ${install_target}
     then
      /home/engines/scripts/engine/set_default.sh all imported ${common_name}
     else      
-     sudo -n /home/engines/scripts/engine/sudo/_install_target.sh ${install_target} imported ${common_name} ${common_name}
+     sudo -n /home/engines/scripts/engine/sudo/_assign_certificate.sh ${install_target} imported ${common_name} ${common_name}
    fi  
 fi
  
