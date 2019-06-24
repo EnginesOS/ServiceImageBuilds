@@ -4,7 +4,7 @@ required_values="common_name cert_type fqdn"
 check_required_values
 
 
-err=`sudo -n /home/engines/scripts/engine/sudo/_assign_certificate.sh services/wap ${ca_name} ${common_name} ${fqdn}`
+err=`sudo -n /home/engines/scripts/engine/sudo/_assign_certificate.sh ${ca_name} ${common_name} services/wap ${fqdn}`
 r=$?
  if test $r -ne 0
   then

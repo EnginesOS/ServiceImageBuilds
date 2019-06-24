@@ -1,27 +1,27 @@
 #!/bin/bash
 
-#${cert_path} ${common_name} ${dest_name}
 
-#. /home/engines/scripts/engine/cert_dirs.sh
+echo _assign_certificate.sh $*  >>/tmp/install_called
 
-echo _install_target.sh $*  >>/tmp/install_called
-install_target=$1
-ca_name=$2
-cert_name=$3
+
+#need 
+#ca_name 
+#destination_name  
+#install_target (format ctype/cname )
+#cert_name
+ca_name=$1
+cert_name=$2
+install_target=$3
 destination_name=$4
 
 resolve_cert_dir
 resolve_key_dir
 
-if test $cert_type = user
- then
-  cert_type=generated 
-  cert_name=user/$cert_name
-fi  
+
 
 if test "$destination_name" = default
  then
-  /home/engines/scripts/engine/set_default.sh $install_target ${cert_type} ${cert_name} 
+  /home/engines/scripts/engine/set_default.sh ${ca_name} ${cert_name} $install_target 
   exit
 fi
 
@@ -42,7 +42,12 @@ function set_uid {
   elif test $ctype = apps
    then
    	engine=`basename ${install_target}`
-      id=`grep `cat /home/engines/etc/containers/apps/${engine}/frame_work` /home/engines/system/framework_user_uids |awk '{print $3}'`
+   	  if test -f  /home/engines/etc/containers/apps/${engine}/uid
+   	   then 
+   	    id=`cat /home/engines/etc/containers/apps/${engine}/uid`
+   	    else
+          id=`grep `cat /home/engines/etc/containers/apps/${engine}/frame_work` /home/engines/system/framework_user_uids |awk '{print $3}'`
+      fi    
   elif test $ctype = system_services
    then
      id=21000
@@ -56,14 +61,12 @@ function install_cert {
  mkdir -p `dirname $InstalledRoot/${install_target}/certs/${destination_name}`
  mkdir -p `dirname $InstalledRoot/${install_target}/keys/${destination_name}`
 
- cp $StoreRoot/$cert_type/certs/${cert_name}.crt $InstalledRoot/${install_target}/certs/${destination_name}.crt 
- cp $StoreRoot/$cert_type/keys/${cert_name}.key $InstalledRoot/${install_target}/keys/${destination_name}.key
-
+ cp $cert_path/${cert_name}.crt $InstalledRoot/${install_target}/certs/${destination_name}.crt 
+ cp $key_path/${cert_name}.key $InstalledRoot/${install_target}/keys/${destination_name}.key
+ cp $cert_dir/${common_name}.meta $InstalledRoot/${install_target}/certs/
  chown $id $InstalledRoot/${install_target}/keys/${destination_name}.key $InstalledRoot/${install_target}/certs/${destination_name}.crt 
  chmod og-rw $InstalledRoot/${install_target}/keys/${destination_name}.key 
  chmod og-w $InstalledRoot/${install_target}/certs/${destination_name}.crt
-
- echo '{"cert_type":"'$cert_type'","store_path":"'$cert_name'"}' > $InstalledRoot/${install_target}/certs/`dirname ${destination_name}`/store.`basename ${destination_name}`
 }
 
 set_uid
