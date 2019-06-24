@@ -7,27 +7,37 @@ if ! test -d /home/certs/store/pending_csr/
   mkdir /home/certs/store/pending_csr/
 fi
 
+if ! test $StoreRoot/private/$ca_name/${ca_name}_CA.key
+ then
+  echo'{"status":"error","message":"no such CA '$ca_name'"}'
+  echo'{"status":"error","message":"no such CA '$ca_name'"}' >/tmp/ere
+  exit 2
+fi
+
 export StorePref key_dir cert_dir common_name country state city organisation person cert_type container_type parent_engine ca_name
 
 owner_type=$container_type
 owner=$parent_engine
+
+resolve_cert_dir
+resolve_key_dir
+
+set >/tmp/.create_cert
+
+mkdir -p $key_dir $cert_dir
 
 echo "cert_type=$cert_type 
 	owner_type=$container_type
 	owner=$parent_engine
 	ca_name=$ca_name " > $cert_dir/${common_name}.meta
 	
-
-resolve_cert_dir
-resolve_key_dir
-
-mkdir -p $key_dir $cert_dir
 /home/engines/scripts/engine/create_csr.sh
 
 if ! test -f $pending_csr_dir/${common_name}.csr 
   then
+  	echo '{"status":"error","message":"Failed to load CSR for '${common_name}'"}' >>/tmp/ere
  	echo '{"status":"error","message":"Failed to load CSR for '${common_name}'"}'
- 	exit 2
+ 	exit 3
 fi
 
 openssl x509 -req \
@@ -43,8 +53,9 @@ openssl x509 -req \
 # -extfile  $setup_dir/${common_name}_config
 if test $? -ne 0
  then
- 	echo '{"status":"error","message":"Failed to load Sign CSR for '${common_name}'"}'
- 	exit 2
+ 	echo '{"status":"error","message":"Failed to load Sign CSR for '${common_name}'"}'>>/tmp/ere
+ 	echo '{"status":"error","message":"Failed to load Sign CSR for '${common_name}'"}' 
+ 	exit 4
 fi
 
 if ! test -d $completed_csr_dir 
@@ -56,15 +67,11 @@ mv $pending_csr_dir/${common_name}.csr $completed_csr_dir/
 
 common_name=`cat  $cert_dir/${common_name}.crt.tmp | openssl x509 -noout -subject |sed "/.*CN.*= /s///"| sed "/\*\./s///"`
  
-echo mv $cert_dir/${common_name}.crt.tmp $cert_dir/${common_name}.crt  >/tmp/certscp
 
 mv $cert_dir/${common_name}.crt.tmp $cert_dir/${common_name}.crt 
  
- if test $isUserCert -eq 1
- then
- 	cert_path=user     
- else
-  cert_path=${container_type}s/${parent_engine}
+ 
+
    if ! test -z ${install_target}
     then
      if test ${install_target} = default
@@ -73,7 +80,6 @@ mv $cert_dir/${common_name}.crt.tmp $cert_dir/${common_name}.crt
      elif test ${install_target} = wap
       then
      	 dest_name=${common_name}
-     	 cert_path=services/wap
      else
        dest_name=${common_name}    
      fi
@@ -81,12 +87,15 @@ mv $cert_dir/${common_name}.crt.tmp $cert_dir/${common_name}.crt
      dest_name=${common_name} 
    fi
    
- echo /home/engines/scripts/engine/_install_target.sh ${cert_path} $ca_name ${StorePref}/${common_name} ${dest_name}
- echo /home/engines/scripts/engine/_install_target.sh ${cert_path} $ca_name ${StorePref}/${common_name} ${dest_name} >>/tmp/callinstall
- sudo -n /home/engines/scripts/engine/sudo/_install_target.sh ${cert_path} $ca_name ${StorePref}/${common_name} ${dest_name}
+   
+  if test -z $container_type -o -z $parent_engine
+    then 
+ 		echo /home/engines/scripts/engine/_assign_certificate.sh ${cert_path} $ca_name ${common_name} ${dest_name}
+ 		echo /home/engines/scripts/engine/_install_target.sh ${cert_path} $ca_name ${StorePref}/${common_name} ${dest_name} >>/tmp/callinstall
+ 		sudo -n /home/engines/scripts/engine/_assign_certificate.sh ${cert_path} ${common_name} ${dest_name}
+ 		exit $?
+  fi		
   
-  exit $?
-fi
-
 
 exit 0
+

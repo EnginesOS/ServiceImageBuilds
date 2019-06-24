@@ -1,12 +1,15 @@
 #!/bin/sh
-. /home/certs/store/default_cert_details
+ . /home/engines/scripts/engine/cert_dirs.sh
+ load_cert_defaults
  . /home/engines/functions/checks.sh
+common_name=$cert_name
 
-required_values="install_target container_type parent_engine common_name country state city organisation person"
+required_values="container_type parent_engine common_name country state city organisation person"
 check_required_values
+install_target=$container_type/$parent_engine
 cert_type=generated
 export cert_type wild cert_usage container_type install_target parent_engine common_name country state city organisation person ca_name cert_usage
-if cert_usage = ca
+if $cert_usage = ca
  then
   /home/engines/scripts/engine/create_ca.sh
  else

@@ -4,7 +4,7 @@
  
 get_alt_names ()
 {
-names=`cat $StoreRoot/$cert_type/certs/$store/$cert.crt \
+names=`cat $StoreRoot/$ca_name/certs/$cert.crt \
        | openssl x509 -text |grep DNS: | sed "s/DNS://g" | sed "s/,/ /g" `
        an=0
        for name in $names
@@ -26,13 +26,16 @@ names=`cat $StoreRoot/$cert_type/certs/$store/$cert.crt \
          fi 
 }
 i=0
+ca_names=`ls $StoreRoot/public/ca/certs/ |grep CA\.pem | sed "/_CA.pem/s///"`
+ca_names="$ca_names external_ca imported"
+
 echo -n '{"certs":['
- for cert_type in `ls $StoreRoot`
+ for ca_name in $ca_names
   do
-  if test -d $StoreRoot/$cert_type/certs/
+  if test -d $StoreRoot/$ca_name/certs/
    then
-    cd $StoreRoot/$cert_type/certs/
-    certs=`find . -name "*.crt" |grep -v default | sed "/\.crt/s///g"`
+    cd $StoreRoot/$ca_name/certs/
+    certs=`find . -name "*.crt" | sed "/\.crt/s///g"`
       for cert in $certs
        do
       	if test $i -eq 0
@@ -41,16 +44,15 @@ echo -n '{"certs":['
       	else
       		echo -n ,
       	fi
-      	store=`dirname $cert |sed "/^\.\//s///"`
-     
-      owner=`basename $store`
-      owner_type=`dirname $store | sed "s/s$//"`     
-      	
-      	cert=`basename $cert`
+      	   if test -f $StoreRoot/$ca_name/certs/$cert.meta
+   			then
+   			 . $StoreRoot/$ca_name/certs/$cert.meta
+ 		  fi         
+        cert_name=`basename $cert_name` # get rid of ./
       	get_alt_names
-      	 common_name=`cat $StoreRoot/$cert_type/certs/$store/$cert.crt \
+      	 common_name=`cat $StoreRoot/$ca_name/certs/$cert.crt \
        | openssl x509 -noout -subject |sed "/^.*CN=/s///" `
-        echo -n '{"cert_name":"'$cert'","CN":"'$common_name'","alt_names":'$alt_names',"owner_type":"'${owner_type}'","owner":"'${owner}'","store":"'$store'", "cert_type":"'$cert_type'"}'
+        echo -n '{"cert_name":"'$cert'","CN":"'$common_name'","alt_names":'$alt_names',"owner_type":"'${owner_type}'","owner":"'${owner}'","ca_name":"'$ca_name'", "cert_type":"'$cert_type'"}'
       done
   fi
   done

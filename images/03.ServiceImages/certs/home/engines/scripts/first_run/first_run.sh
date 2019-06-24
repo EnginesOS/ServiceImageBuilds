@@ -1,8 +1,9 @@
 #!/bin/sh
 
 cd /home/certs/store/
-
- for dir in 'pending_csr saved completed_csr imported external_ca/certs external_ca/keys'
+ touch  /home/certs/home/.rnd
+ 
+ for dir in 'system/pending_csr system/saved system/completed_csr imported external_ca/completed_csr external_ca/pending_csr  external_ca/certs external_ca/keys'
  do
    if ! test -d $dir
     then 

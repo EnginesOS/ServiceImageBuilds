@@ -2,7 +2,7 @@
 
 ln -s /home/engines/etc/ssl/keys/ivpn.key /etc/ipsec.d/private/
 ln -s /home/engines/etc/ssl/certs/ivpn.crt /etc/ipsec.d/certs/  
-ln -s /home/engines/etc/ssl/CA/engines_internal_ca.crt  /etc/ipsec.d/cacerts/     
+ln -s /home/engines/etc/ssl/CA/IPSEC_VPN_CA.pem  /etc/ipsec.d/cacerts/     
 
 domain=`cat /home/engines/etc/ssl/certs/ivpn.crt | openssl x509 -noout -subject  |sed "/^.*CN=/s///"`
 
@@ -26,7 +26,7 @@ cat /home/engines/templates/eap-radius.conf | sed "/SECRET/s//$secret/" \
   > /etc/strongswan.d/charon/eap-radius.conf
   
 cat /home/engines/templates/ipsec.conf.tmpl | sed "/COMMON_NAME/s//$domain/"\
- | sed "/RW_SUBNET/s//$subnet/"   | sed "/RW_MASK/s//$mask/"> /etc/ipsec.head
+ | sed "/RW_SUBNET/s//$subnet/" | sed "/RW_MASK/s//$mask/"> /etc/ipsec.head
  
 cp /etc/ipsec.head /etc/ipsec.conf
  
