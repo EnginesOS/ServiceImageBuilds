@@ -66,7 +66,7 @@ function install_cert {
 
  cp $cert_dir/${cert_name}.crt $InstalledRoot/${install_target}/certs/${destination_name}.crt 
  cp $key_dir/${cert_name}.key $InstalledRoot/${install_target}/keys/${destination_name}.key
- cp $cert_dir/${common_name}.meta $InstalledRoot/${install_target}/certs/
+ cp $cert_dir/${cert_name}.meta $InstalledRoot/${install_target}/certs/${destination_name}.meta
  chown $id $InstalledRoot/${install_target}/keys/${destination_name}.key $InstalledRoot/${install_target}/certs/${destination_name}.crt 
  chmod og-rw $InstalledRoot/${install_target}/keys/${destination_name}.key 
  chmod og-w $InstalledRoot/${install_target}/certs/${destination_name}.crt
