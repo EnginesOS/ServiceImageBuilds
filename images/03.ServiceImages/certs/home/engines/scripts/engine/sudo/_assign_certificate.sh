@@ -1,8 +1,6 @@
 #!/bin/bash
 
-
-echo _assign_certificate.sh $*  >>/tmp/install_called
-
+#echo _assign_certificate.sh $*  >>/tmp/install_called
 
 #need 
 #ca_name 
@@ -14,13 +12,9 @@ cert_name=$2
 install_target=$3
 destination_name=$4
 
-
-
 . /home/engines/scripts/engine/cert_dirs.sh
 resolve_cert_dir
 resolve_key_dir
-
-
 
 if test "$destination_name" = default
  then

@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 echo set_default.sh $*
 
 ca_name=$1

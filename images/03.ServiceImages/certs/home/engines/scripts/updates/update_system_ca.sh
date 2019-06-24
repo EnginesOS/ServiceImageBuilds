@@ -11,6 +11,7 @@ fi
   mkdir -p system/saved
   
   
+  
 cd /home/certs/store/private
 mkdir -p system/keys
 
@@ -30,5 +31,20 @@ cat /home/engines/templates/openssl.cnf | sed "/CA_NAME/s//system/g" >  system/o
  fi
  
 touch /home/engines/scripts/updates/had_problem/$script_name
+
+cd /home/certs/store
+store_files=`find . -name "store*"`
+for file in $store_files
+ do 
+	ca_name=`cat $file |cut -f4 -d\"`
+	cert_name=`cat $file |cut -f8 -d\"`
+	file_name=`basename $file | cut -f1 -d.`
+	store_dir=`dirname $file`
+	echo "ca_name=$ca_name
+		  cert_name=$cert_name " > $store_dir/$file_name.meta
+done
+
+
+
 
  
