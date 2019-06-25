@@ -1,2 +1,2 @@
 tempdir=/backup_temp
-
+GPG_OPTS='--pinentry-mode loopback'

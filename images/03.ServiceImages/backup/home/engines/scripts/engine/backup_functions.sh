@@ -3,7 +3,7 @@ set_dest_uri()
 {
 if test $dest_proto = "local"
  then
-  dest_uri=file:///var/lib/engines/local_backup_dests/$dest_folder         
+  dest_uri=file:///var/lib/engines/local_backup_dests/$dest_folder/$backup_id         
 elif test $dest_proto = "s3"	
  then
   dest_uri="s3+http://" 
