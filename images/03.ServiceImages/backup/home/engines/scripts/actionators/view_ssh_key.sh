@@ -7,6 +7,4 @@ keys_dir=/home/backup/.ssh
 required_values="key_host"
 check_required_values
 
-
-
 cat $keys_dir/$key_host.pub
