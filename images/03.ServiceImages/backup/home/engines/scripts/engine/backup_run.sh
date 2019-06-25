@@ -4,7 +4,11 @@
 echo backup_run > /home/engines/run/flags/backup_run
 
 . /home/engines/scripts/configurators/saved/backup_email
-
+if test -f $Backup_ConfigDir/$backup/ssh_key
+ then
+  key_name=`cat $Backup_ConfigDir/$backup/ssh_key`
+   extra_options="--ssh-options='"'-oProtocol=2 -oIdentityFile=/home/backup/.ssh/$key_name'"'"
+fi    
 for backup in `ls $Backup_ConfigDir |grep -v duply_conf`
  do         
  echo "Running Backup $backup"              
@@ -26,7 +30,7 @@ for backup in `ls $Backup_ConfigDir |grep -v duply_conf`
 	   backup_type=full
 	fi
 
-	/home/engines/scripts/engine/run_duply.sh $backup backup   $backup_type --s3-use-new-style > $Backup_LogDir/$bfn           
+	/home/engines/scripts/engine/run_duply.sh $backup backup $extra_options $backup_type --s3-use-new-style > $Backup_LogDir/$bfn           
 	result=`grep "Finished state FAILED"  $Backup_LogDir/$bfn`
 	if test $? -ne 0
 	 then
