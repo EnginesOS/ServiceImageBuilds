@@ -24,9 +24,12 @@ fi
 
 cat /home/engines/scripts/configurators/saved/system_backup  >>/var/log/backup/addbackup.log
 
-
-if test -d /home/engines/scripts/configurators/saved/default_destination
+if ! test -d /home/engines/scripts/configurators/saved/default_destination
  then
+ 	save_system_settings
+    echo '{"status:"warning","message":"please set backup default settings"}'
+    exit 1
+ else
   . /home/engines/scripts/configurators/saved/default_destination/settings
 
     if test "$1" = rebuild
@@ -35,14 +38,6 @@ if test -d /home/engines/scripts/configurators/saved/default_destination
      else
        save_system_settings
      fi
-  
-   dest=$dest_proto://$dest_address/$dest_folder
-   user=$dest_user
-   pass=$dest_pass
-    if test $dest_proto = "s3"
-     then	
-      dest_proto="s3+http://"
-   fi
   
    if test  $include_system = "true"
     then					
@@ -53,12 +48,8 @@ if test -d /home/engines/scripts/configurators/saved/default_destination
      cp /home/engines/templates/backup/system_post.sh $Backup_ConfigDir/system/post
      mkdir -p /tmp/system_backup
      src=/tmp/system_backup
-     echo "SOURCE=$src" > $Backup_ConfigDir/system/conf           	
-     _dest=$dest/system
-     echo "TARGET=$_dest" >> $Backup_ConfigDir/system/conf
-     echo "TARGET_USER="'"$user"'" >> $Backup_ConfigDir/system/conf
-     echo "TARGET_PASS="'"$pass"'" >> $Backup_ConfigDir/system/conf
-     
+     backup_id=system     
+	 write_duply_config
     service=registry
   	add_service
   fi
@@ -94,10 +85,8 @@ if test -d /home/engines/scripts/configurators/saved/default_destination
       chmod og-rx $Backup_ConfigDir/logs
       /home/engines/scripts/services/prep_conf.sh $Backup_ConfigDir/logs/conf
       _dest=$dest/logs
-      echo "TARGET='$_dest'" >>$Backup_ConfigDir/logs/conf
-      echo "TARGET_USER='$user'" >>$Backup_ConfigDir/logs/conf
-      echo "TARGET_PASS='$pass'" >>$Backup_ConfigDir/logs/conf
-      echo "SOURCE=/backup_src/logs/" >>$Backup_ConfigDir/logs/conf
+	  backup_id=logs
+      write_duply_config
   fi
   				
   if test $include_files = "true"
@@ -107,10 +96,8 @@ if test -d /home/engines/scripts/configurators/saved/default_destination
   	chmod og-rx $Backup_ConfigDir/engines_fs
   	/home/engines/scripts/services/prep_conf.sh $Backup_ConfigDir/engines_fs/conf
   	_dest=$dest/engines_files
-  	echo "TARGET='$_dest'" >>$Backup_ConfigDir/engines_fs/conf
-  	echo "TARGET_USER='$user'" >>$Backup_ConfigDir/engines_fs/conf
-  	echo "TARGET_PASS='$pass'" >>$Backup_ConfigDir/engines_fs/conf
-  	echo "SOURCE=/backup_src/volumes/fs/" >>$Backup_ConfigDir/engines_fs/conf
+  	backup_id=engines_fs
+	write_duply_config
   fi
  exit 0
 fi

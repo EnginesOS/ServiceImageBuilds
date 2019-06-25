@@ -2,6 +2,8 @@
 . /home/engines/scripts/engine/backup_dirs.sh
 
  
+. /home/engines/scripts/engine/backup_functions.sh
+
  . /home/engines/functions/checks.sh
 check_required_values
 
@@ -9,8 +11,8 @@ echo name $backup_name
 echo parent $parent
 echo src_type $src_type
 
-dirname=${parent}_${backup_name}_${src_type}
-dirname=${Backup_ConfigDir}/$dirname
+backup_id=${parent}_${backup_name}_${src_type}
+dirname=${Backup_ConfigDir}/$backup_id
 
 echo -n $backup_type > $dirname/backup_type
 
@@ -42,23 +44,7 @@ else
  cat /home/engines/templates/backup/duply_post > $dirname/post   
 fi
 
-if test $dest_proto = "local"
- then
-  #path=`echo $3 |cut -f4 -d:`
-  dest=file:///var/lib/engines/local_backup_dests/$dest_folder         
-elif test $dest_proto = "s3"	
- then
-  dest_proto="s3+http://" 
-else
-  dest="$dest_proto://$dest_address/$dest_folder"
-fi
-
-/home/engines/scripts/engine/prep_conf.sh  $dirname/conf
-
-echo "SOURCE='$src'" > $dirname/conf
-echo "TARGET='$dest'" >> $dirname/conf
-echo "TARGET_USER='$dest_user'" >> $dirname/conf
-echo "TARGET_PASS='$dest_pass'" >> $dirname/conf
+write_duply_config
 
 chmod u+x  $dirname/pre
 chmod u+x  $dirname/post
