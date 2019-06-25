@@ -1,6 +1,5 @@
 #!/bin/sh
 
-
 if test -f /home/engines/scripts/configurators/saved/default_destination/settings
 then
 . :q

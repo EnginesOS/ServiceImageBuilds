@@ -2,8 +2,7 @@
 
 if test -f /home/engines/scripts/configurators/saved/system_backup/settings
  then
-  		. /home/engines/scripts/configurators/saved/system_backup/settings    
-  	  
+  		. /home/engines/scripts/configurators/saved/system_backup/settings     	  
       echo '{"include_logs":"'$include_logs'",
       "include_files":"'$include_files'",
       "include_services":"'$include_services'",

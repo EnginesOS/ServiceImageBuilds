@@ -15,10 +15,10 @@ res=` cat /tmp/.tt | gpg --allow-secret-key-import --import - 2>&1`
 
 if test $? -ne 0
  then
-  echo Error with import $res
-  rm /tmp/.tt
-  exit 127
-  fi 
+   echo '{"status":"error","message":"Error with import '$res'"}'
+   rm /tmp/.tt
+   exit 2
+fi 
   
 rm /tmp/.tt
   
@@ -30,8 +30,8 @@ if test -z $key_id
  then
   echo $priv_key |\
   sed "/\\\r/s///g" | sed "/\\\n/s//\n/g"  >/tmp/p
-  echo import failed $res
-  exit 127
+   echo '{"status":"error","message":"Error with import failed to get key id '$res'"}'
+   exit 2
 fi
 
 echo $key_id > /home/backup/.gnupg/key_id
@@ -42,4 +42,5 @@ echo $backup_password > /home/backup/.gnupg/pass
 
 echo "OK"
 exit 0
+
 	  

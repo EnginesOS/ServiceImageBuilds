@@ -1,7 +1,5 @@
 #!/bin/sh
 
-
-  
 mkdir -p /home/engines/scripts/configurators/saved/default_destination
 
   echo "dest_address=$dest_address

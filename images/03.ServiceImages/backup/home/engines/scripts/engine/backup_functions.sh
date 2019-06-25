@@ -10,8 +10,6 @@ elif test $dest_proto = "s3"
 else
   dest_uri="$dest_proto://$dest_address/$dest_folder"
 fi
-
-
 }
 
 write_duply_config()
@@ -56,3 +54,5 @@ save_system_settings()
 	  include_system=$include_system
 	  frequency=$frequency 	" > /home/engines/scripts/configurators/saved/system_backup/settings
 }
+
+

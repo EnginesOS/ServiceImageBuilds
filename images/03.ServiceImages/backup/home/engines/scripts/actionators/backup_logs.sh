@@ -57,3 +57,4 @@ echo -n '{"name":"'$name'","date":"'$log_date'"}'
 done
  echo ']}'
  
+ 

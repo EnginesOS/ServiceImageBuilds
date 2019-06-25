@@ -17,8 +17,8 @@ check_required_values
  
  if ! test -f /home/backup/.gnupg/pass_${key_id}
   then
-   echo "missing saved password"
- 	exit 1
+    echo '{"status":"error","message":"Missing saved password"}'
+   exit 2
  fi
  
  echo ${key_id} > /home/backup/.gnupg/key_id

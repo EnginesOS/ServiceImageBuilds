@@ -1,15 +1,9 @@
 #!/bin/sh 
 . /home/engines/scripts/engine/backup_dirs.sh
-
- 
 . /home/engines/scripts/engine/backup_functions.sh
 
  . /home/engines/functions/checks.sh
 check_required_values
-
-echo name $backup_name
-echo parent $parent
-echo src_type $src_type
 
 backup_id=${parent}_${backup_name}_${src_type}
 dirname=${Backup_ConfigDir}/$backup_id
