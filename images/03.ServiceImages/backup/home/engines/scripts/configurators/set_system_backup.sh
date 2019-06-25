@@ -84,6 +84,7 @@ if ! test -d /home/engines/scripts/configurators/saved/default_destination
       mkdir -p $Backup_ConfigDir/logs
       chmod og-rx $Backup_ConfigDir/logs
       /home/engines/scripts/services/prep_conf.sh $Backup_ConfigDir/logs/conf
+      src=/backup_src/logs
       _dest=$dest/logs
 	  backup_id=logs
       write_duply_config
@@ -96,6 +97,7 @@ if ! test -d /home/engines/scripts/configurators/saved/default_destination
   	chmod og-rx $Backup_ConfigDir/engines_fs
   	/home/engines/scripts/services/prep_conf.sh $Backup_ConfigDir/engines_fs/conf
   	_dest=$dest/engines_files
+    src=/backup_src/volumes/
   	backup_id=engines_fs
 	write_duply_config
   fi
