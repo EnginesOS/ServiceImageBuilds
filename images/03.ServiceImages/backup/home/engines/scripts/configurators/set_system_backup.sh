@@ -16,6 +16,7 @@ fi
   then
     . /home/engines/scripts/configurators/saved/backup_email
   else
+    save_system_settings
     echo '{"status:"warning","message":"please set backup notification email"}'
     exit 1
 fi
@@ -30,7 +31,7 @@ if test -d /home/engines/scripts/configurators/saved/default_destination
 
     if test "$1" = rebuild
      then
- 		. /home/engines/scripts/configurators/saved/system_backup/settings    
+ 		. /home/engines/scripts/configurators/saved/system_backup/settings 
      else
        save_system_settings
      fi
@@ -52,11 +53,11 @@ if test -d /home/engines/scripts/configurators/saved/default_destination
      cp /home/engines/templates/backup/system_post.sh $Backup_ConfigDir/system/post
      mkdir -p /tmp/system_backup
      src=/tmp/system_backup
-     echo "SOURCE='$src'" >> $Backup_ConfigDir/system/conf           	
+     echo "SOURCE=$src" > $Backup_ConfigDir/system/conf           	
      _dest=$dest/system
-     echo "TARGET='$_dest'" >> $Backup_ConfigDir/system/conf
-     echo "TARGET_USER='$user'" >> $Backup_ConfigDir/system/conf
-     echo "TARGET_PASS='$pass'" >> $Backup_ConfigDir/system/conf
+     echo "TARGET=$_dest" >> $Backup_ConfigDir/system/conf
+     echo "TARGET_USER="'"$user"'" >> $Backup_ConfigDir/system/conf
+     echo "TARGET_PASS="'"$pass"'" >> $Backup_ConfigDir/system/conf
      
     service=registry
   	add_service

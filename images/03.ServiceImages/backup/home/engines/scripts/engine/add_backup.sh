@@ -42,10 +42,10 @@ else
  cat /home/engines/templates/backup/duply_post > $dirname/post   
 fi
 
-if test $dest_proto = "file"
+if test $dest_proto = "local"
  then
   #path=`echo $3 |cut -f4 -d:`
-  dest=/var/lib/engines/local_backup_dests/$dest_folder         
+  dest=file:///var/lib/engines/local_backup_dests/$dest_folder         
 elif test $dest_proto = "s3"	
  then
   dest_proto="s3+http://" 
@@ -55,7 +55,7 @@ fi
 
 /home/engines/scripts/engine/prep_conf.sh  $dirname/conf
 
-echo "SOURCE='$src'" >> $dirname/conf
+echo "SOURCE='$src'" > $dirname/conf
 echo "TARGET='$dest'" >> $dirname/conf
 echo "TARGET_USER='$dest_user'" >> $dirname/conf
 echo "TARGET_PASS='$dest_pass'" >> $dirname/conf
