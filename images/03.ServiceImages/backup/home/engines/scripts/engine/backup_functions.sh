@@ -16,6 +16,9 @@ if test $dest_proto = sftp -o $dest_proto = scp
    if ! test -z $key_name
     then
      echo -n $key_name > $Backup_ConfigDir/$backup_id/key_name
+   elif test -f ~/.ssh/$dest_address
+    then
+      echo -n $dest_address > $Backup_ConfigDir/$backup_id/key_name
    elif test -f $Backup_ConfigDir/$backup_id/key_name
     then
      rm $Backup_ConfigDir/$backup_id/key_name
