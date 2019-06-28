@@ -5,7 +5,7 @@
 if test -f $StoreRoot/private/ca/keys/${ca_name}_CA.key
 	then	
 		echo '{"status":"Error","message":"CA '$ca_name' Exists"}'
-		exit 127
+		exit 2
  #cp $StoreRoot/public/ca/certs/$ca_name.pem  $StoreRoot/public/ca/certs/$ca_name.pem.bak
 
  #cp $StoreRoot/private/ca/keys/$ca_name.key  $StoreRoot/private/ca/keys/$ca_name.key.bak
@@ -26,7 +26,7 @@ echo "cert_type=$cert_type
 	ca_name=$ca_name " > $StoreRoot/$ca_name/${ca_name}.meta
 	
 load_cert_defaults
-set >/tmp/.create_ca
+
 echo $country >/home/engines/scripts/configurators/saved/$ca_name.ca_setup
 echo $state >>/home/engines/scripts/configurators/saved/$ca_name.ca_setup
 echo $city >>/home/engines/scripts/configurators/saved/$ca_name.ca_setup
@@ -37,11 +37,12 @@ echo $organisation >>/home/engines/scripts/configurators/saved/$ca_name.ca_setup
 echo $domain_name CA  >>/home/engines/scripts/configurators/saved/$ca_name.ca_setup
 echo "" >>/home/engines/scripts/configurators/saved/$ca_name.ca_setup
 echo "" >>/home/engines/scripts/configurators/saved/$ca_name.ca_setup
-cat /home/engines/scripts/configurators/saved/$ca_name.ca_setup
+#cat /home/engines/scripts/configurators/saved/$ca_name.ca_setup
 
 mkdir -p $StoreRoot/private/$ca_name $StoreRoot/$ca_name
  
-cat /home/engines/templates/openssl.cnf | sed "/CA_NAME/s//$ca_name/g" > /$StoreRoot/private/$ca_name/open_ssl.cnf
+cat /home/engines/templates/openssl.cnf \
+	| sed "/CA_NAME/s//$ca_name/g" > /$StoreRoot/private/$ca_name/open_ssl.cnf
  
 openssl genrsa -out $StoreRoot/private/$ca_name/${ca_name}_CA.key 2048 
 if ! test -f $StoreRoot/private/$ca_name/${ca_name}_CA.key
