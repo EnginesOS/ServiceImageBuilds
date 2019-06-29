@@ -1,12 +1,10 @@
 #!/bin/sh
 
-
-  
 mkdir -p /home/engines/scripts/configurators/saved/default_destination
 
   echo "dest_address=$dest_address
    	    dest_folder=$dest_folder
-        dest_pass=\'$dest_pass\' 
+        dest_pass=$dest_pass 
         dest_proto=$dest_proto 
         dest_user=$dest_user" > /home/engines/scripts/configurators/saved/default_destination/settings
         

@@ -141,7 +141,7 @@ elif test $type = engine
   if test -z $source
    then
     echo "missing engine name"
-    exit 127
+    exit 2
    fi
   restore_system  
   volume_restore
@@ -149,7 +149,7 @@ elif test $type = engine
   restore_engine
 else
  echo "Unknown Restore Type"
- exit 127   
+ exit 2   
 fi
 
 rm /home/engines/run/flags/restore
