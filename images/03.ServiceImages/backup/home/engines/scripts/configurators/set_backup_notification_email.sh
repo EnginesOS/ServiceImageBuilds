@@ -1,6 +1,5 @@
 #!/bin/sh
 
-
 echo  backup_email=$backup_email >/home/engines/scripts/configurators/saved/backup_email
 
 if ! test -f /home/backup/.gnupg/key_created

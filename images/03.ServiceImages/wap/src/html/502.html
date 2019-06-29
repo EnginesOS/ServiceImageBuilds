@@ -7,25 +7,56 @@
 <meta content="utf-8" http-equiv="encoding">
 </head>
 <body
-	style='font-family: Arial; text-align: center; background-color: #5481df; color: #fff;'>
-	<h3>Please wait for the application to respond</h3>
-	<p id='notice'>
-		Retry in <span id='time_counter'>15</span> second<span id='pluralizer'>s</span>
-	</p>
+    style='font-family: Arial, Helvetica, "Nimbus Sans L", sans-serif; text-align: center; background-color: #fff; color: #48D;'>
+    <h3>Please wait for the application to respond</h3>
+    <p id='notice'>
+        Retry in <span id='time_counter'>15</span> second<span id='pluralizer'>s</span>
+    </p>
+
+    <div id="page_loading_spinner">
+    <svg width="100" height="100">
+      <g transform="scale(0.33333)">
+        <path d="
+          M 150,300
+          L 280,225
+          L 280,75
+          L 150,0
+          L 20,75
+          L 20,225
+          L 150,300
+          M 40,150
+          A 110,110 0 1,0 260,150
+          A 110,110 0 1,0 40,150
+          Z"
+          style="fill:#48D;stroke-width:0" fill-rule="evenodd">
+          <animateTransform id="page_loading_spinner_transform"
+     attributeName="transform"
+                                    from="0 150 150"
+                                    to="360 150 150"
+                                    dur="2s"
+                                    repeatCount="indefinite"/>
+        </path>
+      </g>
+    </svg>
+
+  </div>
+
+
+
+
 </body>
 </html>
 
 <script>
-
 var reload = function() {
-
   setTimeout(function () {
     var t_holder = document.getElementById('time_counter');
     var t = (parseInt(t_holder.innerHTML) - 1);
     var p_holder = document.getElementById('pluralizer');
     if (t == 0) {
       document.getElementById('notice').innerHTML = 'Retrying...'
-      window.location.reload();
+ document.getElementById('page_loading_spinner_transform').setAttribute("type", "rotate");
+            setTimeout(function() { window.location.reload(); }, 1000);
     } else if (t == 1) {
       p_holder.innerHTML = ''
       t_holder.innerHTML = t;
@@ -36,9 +67,6 @@ var reload = function() {
       reload();
     };
   }, 1000);
-
 };
-
 reload();
-
 </script>

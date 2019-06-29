@@ -7,6 +7,6 @@ keys_dir=/home/backup/.ssh
 required_values="host"
 check_required_values
 
-
+ssh-keygen  -P "" -f $keys_dir/$host >/dev/null
 
 cat $keys_dir/$host.pub

@@ -4,22 +4,22 @@
 
 cd $Backup_LogDir
 n=0
-if test -z $backup_name  
- then
-  echo -n '{"backup_logs":['
-fi
-if test -z $date  
- then
-   echo -n '{"backup_logs":['
-fi
-
+#if test -z $backup_name  
+# then
+#  echo -n '{"backup_logs":['
+#fi
+#if test -z $date  
+# then
+#   echo -n '{"backup_logs":['
+#fi
+echo -n '{"backup_logs":['
 for log_file in ` ls *_*`
 do
 
 if ! test -z $backup_name 
  then
  log_file=`echo $log_file |grep $backup_name`
-  if test -z  $log_file
+  if test -z $log_file
    then
     continue
   fi 
@@ -56,4 +56,5 @@ echo -n '{"name":"'$name'","date":"'$log_date'"}'
 
 done
  echo ']}'
+ 
  

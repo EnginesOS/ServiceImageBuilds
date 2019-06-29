@@ -1,5 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
+tar -cpf - /var/lib/dovecot /var/mail 
 
-tar -cpf - /var/lib/dovecot  /var/mail 
-rm /tmp/database.sql 

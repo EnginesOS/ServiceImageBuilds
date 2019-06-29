@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 echo -n $1 > /home/engines/run/flags/current_backup
 echo -n $2 > /home/engines/run/flags/current_operation
