@@ -8,6 +8,7 @@ default_transport = smtp
 append_dot_mydomain = no
 
  
+message_size_limit=MAX_EMAIL_SIZE
 
 # Uncomment the next line to generate "delayed mail" warnings
 #delay_warning_time = 4h

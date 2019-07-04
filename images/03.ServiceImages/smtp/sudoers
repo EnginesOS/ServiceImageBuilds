@@ -6,9 +6,11 @@ postfix ALL=(root) NOPASSWD: /home/engines/scripts/engine/sudo/_transport_over_r
 postfix ALL=(root) NOPASSWD: /home/engines/scripts/engine/sudo/_set_mailname.sh
 
 postfix ALL=(root) NOPASSWD: /home/engines/scripts/configurators/sudo/_set_notifications_email.sh
+postfix ALL=(root) NOPASSWD: /home/engines/scripts/configurators/sudo/_build_main_cf.sh
+postfix ALL = (root) NOPASSWD: /home/engines/scripts/configurators/sudo/_rebuild_main.sh
 
 postfix ALL=(root) NOPASSWD: /home/engines/scripts/signal/sudo/_kill_postfix.sh
-postfix ALL = (root) NOPASSWD: /home/engines/scripts/signal/sudo/_kill_sleep.sh
+postfix ALL=(root) NOPASSWD: /home/engines/scripts/signal/sudo/_kill_sleep.sh
 postfix ALL=(root) NOPASSWD: /home/engines/scripts/signal/sudo/_signal.sh
 
 postfix ALL=(opendkim) NOPASSWD: /usr/sbin/opendkim
@@ -22,4 +24,4 @@ postfix ALL = (opendkim) NOPASSWD: /home/engines/scripts/actionators/sudo/_rm_do
 postfix ALL = (opendkim) NOPASSWD: /home/engines/scripts/actionators/sudo/_import_domain_dkim.sh
 
 postfix ALL = (opendkim) NOPASSWD: /home/engines/scripts/engine/sudo/rebuild_dkim.key.sh
- 
+
