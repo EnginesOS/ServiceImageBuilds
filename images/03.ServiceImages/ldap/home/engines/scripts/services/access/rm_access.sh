@@ -33,4 +33,22 @@ if test $? -eq 0
  else
   cat  LDAP_OUTF
 fi 
+if test -z $group_membership
+ exit 0
+fi
+
+if test $container_type = app
+ then 
+  root_ou=ou=Applications,ou=Groups,dc=engines,dc=internal
+ elif test $container_type = service
+  root_ou=ou=Services,ou=Groups,dc=engines,dc=internal
+ else echo "invalid container_type"
+  exit 2
+ fi  
+ 
+member_id=${parent_engine}
+group_dn="$group_membership,$root_ou"
+export $member_id $group_dn
+
+/home/engines/scripts/services/access/rm_group_membership.sh
 
