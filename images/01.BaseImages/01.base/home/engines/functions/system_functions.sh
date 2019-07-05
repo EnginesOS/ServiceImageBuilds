@@ -114,3 +114,11 @@ if test -f /home/engines/scripts/engine/custom_stop.sh
 fi
 }
 
+wait_for_signal()
+{
+    while ! test -f /home/engines/run/flags/sig_term -o -f /home/engines/run/flags/sig_quit 
+     do
+      sleep 3600 &
+      wait
+     done
+}
