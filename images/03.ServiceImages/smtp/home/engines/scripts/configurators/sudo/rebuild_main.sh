@@ -31,17 +31,12 @@ if test -f /home/engines/scripts/configurators/saved/enforce_spf
     cp /home/engines/template/spf/tag_spf_policy.conf /etc/postfix-policyd-spf-python/policyd-spf.conf
    fi
 fi  
-if test -f /home/engines/scripts/configurators/saved/mail_message_size
- then
-   max_email_size=`cat /home/engines/scripts/configurators/saved/mail_message_size`
- else
-    max_email_size=10240000
-fi
+
+
 rbl_conf=`cat /home/engines/scripts/configurators/saved/rbls.conf`
 cat /home/engines/templates/email/main.cf | sed "/RBL_CONF/s//$rbl_conf/" \
 									      |	sed "/SPF/s//$spf_conf/"  \
 									      |	sed "/HOSTNAME_CHECKS/s//$hostname_checking/"  \
-									      | sed "/MAX_EMAIL_SIZE/s//$max_email_size/" \ 
 											> /etc/postfix/main.cf
 
 if test -f /home/engines/scripts/configurators/saved/enforce_dkim
