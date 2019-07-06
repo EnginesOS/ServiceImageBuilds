@@ -22,7 +22,13 @@ required_values="domain_name"
 check_required_values 
 
 echo -n ${domain_name} >/home/engines/scripts/configurators/saved/domain
-echo -n $deliver_local > /home/engines/scripts/configurators/saved/deliver_local
+if $deliver_local = true
+ then
+  echo -n $deliver_local > /home/engines/scripts/configurators/saved/deliver_local
+else 
+ rm /home/engines/scripts/configurators/saved/deliver_local
+fi
+
 sudo -n /home/engines/scripts/engine/sudo/_set_mailname.sh smtp.${domain_name}
 
 for map_file in generic sender_canonical aliases/aliases
