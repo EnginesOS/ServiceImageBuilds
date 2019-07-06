@@ -22,6 +22,7 @@ required_values="domain_name"
 check_required_values 
 
 echo -n ${domain_name} >/home/engines/scripts/configurators/saved/domain
+
 if $deliver_local = true
  then
   echo -n $deliver_local > /home/engines/scripts/configurators/saved/deliver_local
