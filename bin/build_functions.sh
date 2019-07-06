@@ -41,7 +41,7 @@ if test $? -eq 0
 	   docker push ${tag}
 	   if test $? -eq 0 
 	   then
-	    built_images="$built_images " $tag
+	    built_images="$built_images $tag"
 	    touch last_built
 	  fi
 	 else
