@@ -17,7 +17,7 @@ fi
 echo -n $container_type > /home/cron/entries/${parent_engine}/$title/container_type
 echo -n $action_type > /home/cron/entries/${parent_engine}/$title/action_type
 echo -n $notification_address > /home/cron/entries/${parent_engine}/$title/notification_address
-echo -n $when > /home/cron/entries/${parent_engine}/$title/when
+echo -n "$when" > /home/cron/entries/${parent_engine}/$title/when
 
 if test $action_type = "web"
  then
@@ -33,7 +33,8 @@ elif test $action_type = "action"
     cmd="curl -k https://172.17.0.1:2380/v0/schedule/${container_type}/${parent_engine}/$title/run"
 fi
 
-echo "$cmd " > /home/cron/entries/${parent_engine}/$title/cmd
+echo -n "$cmd " > /home/cron/entries/${parent_engine}/$title/cmd
+echo -n "$title" > /home/cron/entries/${parent_engine}/$title/title
 
 /home/engines/scripts/engine/rebuild_crontab.sh
 
