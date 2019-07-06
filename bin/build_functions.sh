@@ -39,8 +39,15 @@ if test $? -eq 0
 	if ! test -z $pushbuild 
 	  then
 	   docker push ${tag}
+	   if test $? -eq 0 
+	   then
+	    built_images="$built_images " $tag
+	    touch last_built
+	  fi
+	 else
+	   touch last_built
 	fi
-  touch last_built
+  
   docker rmi $( docker images -f "dangling=true" -q) &>/dev/null
 else
   echo "Failed to build $tag in $class/$dir"
