@@ -8,5 +8,5 @@ openldap ALL=(root) NOPASSWD: /home/engines/scripts/first_run/sudo/_first_run.sh
 openldap ALL=(root) NOPASSWD: /home/engines/scripts/first_run/sudo/_init_ous_configured.sh
 openldap ALL=(root) NOPASSWD: /home/engines/scripts/backup/sudo/_backup.sh
 openldap ALL=(root) NOPASSWD: /home/engines/scripts/backup/sudo/_restore.sh
-
+openldap ALL=(root) NOPASSWD: /home/engines/scripts/backup/sudo/_replace.sh
 

@@ -22,8 +22,8 @@ RUN groupadd -g 22016 cron &&\
 	make install &&\
 	rm -r /tmp/fcron-3.2.1 &&\
 	rm /tmp/fcron-3.2.1.src.tar.gz &&\
-	mkdir -p /home/cron/doc /home/cron/man /home/cron/spool /home/cron/log/ &&\
-	chown -R cron /home/cron/ &&\
+	mkdir -p /home/cron/doc /home/cron/man /home/cron/spool /home/engines/scripts/configurators/saved/ /home/cron/log/ &&\
+	chown -R cron /home/cron/ /home/engines/scripts/configurators/saved/ &&\
 	cd /home/cron &&\
 	chown root /home/cron/etc/fcron.conf &&\
 	chmod og-w /home/cron/etc/fcron.conf &&\

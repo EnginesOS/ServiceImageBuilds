@@ -12,3 +12,11 @@ uid: admin
 uidnumber: 5000
 userpassword: {SASL}admin@ENGINES.INTERNAL
 
+dn: cn=Authenticators,ou=SecurityGroups,ou=Engines,dc=engines,dc=internal
+cn: Authenticators
+member: cn=Administrator,ou=People,dc=engines,dc=internal
+objectclass: groupOfNames
+objectclass: top
+
+
+

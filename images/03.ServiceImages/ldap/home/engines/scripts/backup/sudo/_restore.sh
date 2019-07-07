@@ -1,11 +1,20 @@
 #!/bin/sh
 
-if test -z $1
- then
-   kill -TERM ` cat /home/engines/run/slapd.pid /home/engines/run/saslauthd.pid`
-   rm  /var/lib/ldap/{data,lock}.mdb
-else
-   ldapdelete -r $*
-fi  
+kinit -kt /etc/krb5kdc/keys/ldap.keytab
+pid=`cat /home/engines/run/slapd.pid`
+ kill -TERM $pid
+ kill -0 $pid
+ while test $? eq 0
+  do
+    sleep 5
+    kill -0 $pid
+ done
+    
+cat - | slapadd -v -c 
+result=$?
 
-cat - | slapadd -F /etc/ldap/slapd.d
+kdestroy
+
+
+
+exit $result

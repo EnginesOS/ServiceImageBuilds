@@ -14,7 +14,8 @@ fi
 cront=`echo "$LINE" | cut -f1-5 -d" "`
 cronl=`echo "$LINE" | cut -f6- -d" "`
 tim=`echo $cront | sed "/STAR/s//*/g"`
-echo '{"'$cronl'":"'"$tim"'"}'
+echo '{"command":"'$cronl'",
+		"when":"'"$tim"'"}'
 
 done
 echo ']}'

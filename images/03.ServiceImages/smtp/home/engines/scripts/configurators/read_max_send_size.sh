@@ -6,5 +6,6 @@ else
  max_size=10240000
 fi 
 
- 
- 
+echo '{"max_size":"'$max_size'"}'
+
+exit 0 
