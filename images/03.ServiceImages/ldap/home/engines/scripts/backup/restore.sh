@@ -2,8 +2,16 @@
 
 touch /home/engines/run/flags/backup
 exit_code=0
-
-cat - | sudo -n /home/engines/scripts/backup/sudo/_restore.sh 
+ 
+echo $0 $1 $2 >/tmp/called
+replace=$1
+section=$2
+if $1 == replace
+ then
+  cat - | sudo -n /home/engines/scripts/backup/sudo/_replace.sh $2
+else
+  cat - | sudo -n /home/engines/scripts/backup/sudo/_restore.sh $2
+fi
 
 if test $? -ne 0
  then 
