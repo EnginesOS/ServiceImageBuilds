@@ -3,10 +3,9 @@ changetype: modify
 add: olcModuleLoad
 olcModuleLoad: ppolicy.so
 
-dn: cn=module,cn=config
-objectClass: olcModuleList
-cn: module
-olcModulePath: /usr/lib/ldap
+dn: cn=module{0},cn=config
+changetype: modify
+add: olcModuleLoad
 olcModuleLoad: memberof
 
 
