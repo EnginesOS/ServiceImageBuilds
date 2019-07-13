@@ -4,7 +4,7 @@ ADD home home
 RUN  apt-mark unhold tzdata &&\
 	/usr/sbin/usermod -u 22671 www-data &&\
 	apt-get update -y &&\
-	cat /etc/apt/sources.list &\\
+	cat /etc/apt/sources.list &&\
 	apt-get install -y tomcat9 &&\
 	ln -s /var/log/tomcat9 /usr/share/tomcat9/logs &&\
  	ln -s /etc/tomcat9 /usr/share/tomcat9/conf &&\
