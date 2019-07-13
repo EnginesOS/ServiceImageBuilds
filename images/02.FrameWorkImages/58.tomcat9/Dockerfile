@@ -1,4 +1,4 @@
-FROM engines/openjdk9:$release
+FROM engines/openjdk11:$release
 
 ADD home home
 RUN  apt-mark unhold tzdata &&\
