@@ -52,10 +52,10 @@ transport_maps = hash:/etc/postfix/maps/transport
 smtp_generic_maps = hash:/etc/postfix/maps/generic
 
 
-SASL_SMART_HOST_ENABLE smtp_sasl_auth_enable = yes
-SASL_SMART_HOST_ENABLE smtp_use_tls=yes
-SASL_SMART_HOST_ENABLE smtp_sasl_security_options = noanonymous
-SASL_SMART_HOST_ENABLE smtp_sasl_password_maps = hash:/etc/postfix/maps/smarthost_passwd
+SASL_SMART_HOST_ENABLEsmtp_sasl_auth_enable = yes
+SASL_SMART_HOST_ENABLEsmtp_use_tls=yes
+SASL_SMART_HOST_ENABLEsmtp_sasl_security_options = noanonymous
+SASL_SMART_HOST_ENABLEsmtp_sasl_password_maps = hash:/etc/postfix/maps/smarthost_passwd
 
 
 smtpd_client_restrictions=permit_mynetworks,permit_sasl_authenticated,check_relay_domains,reject
