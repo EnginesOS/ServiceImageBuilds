@@ -13,7 +13,7 @@ if test -f /home/engines/scripts/configurators/saved/grey_listing_enabled
   echo -n ",check_policy_service inet:127.0.0.1:60000 " >>  /home/engines/scripts/configurators/saved/rbls.conf
  
 fi
-echo  ",permit"  >>  /home/engines/scripts/configurators/saved/rbls.conf
+echo -n ",permit"  >>  /home/engines/scripts/configurators/saved/rbls.conf
 
 if test -f /home/engines/scripts/configurators/saved/hostname_checks
  then
@@ -32,11 +32,30 @@ if test -f /home/engines/scripts/configurators/saved/enforce_spf
    fi
 fi  
 
+if test -f /home/engines/scripts/configurators/saved/mail_message_size
+ then
+   max_email_size=`cat /home/engines/scripts/configurators/saved/mail_message_size`
+ else
+    max_email_size=10240000
+fi
+
+smart_host_enable='#'
+if test -f  /home/engines/scripts/configurators/saved/smarthost
+ then
+  . /home/engines/scripts/configurators/saved/smarthost
+ if ! test $auth_type = none
+  then
+   smart_host_enable=' '
+ fi
+fi  
+
 
 rbl_conf=`cat /home/engines/scripts/configurators/saved/rbls.conf`
 cat /home/engines/templates/email/main.cf | sed "/RBL_CONF/s//$rbl_conf/" \
 									      |	sed "/SPF/s//$spf_conf/"  \
 									      |	sed "/HOSTNAME_CHECKS/s//$hostname_checking/"  \
+									      | sed "/MAX_EMAIL_SIZE/s//$max_email_size/" \
+									      | sed "/SASL_SMART_HOST_ENABLE/s//$smart_host_enable/" \
 											> /etc/postfix/main.cf
 
 if test -f /home/engines/scripts/configurators/saved/enforce_dkim
