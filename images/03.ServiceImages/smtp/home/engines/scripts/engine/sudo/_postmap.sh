@@ -7,6 +7,7 @@ if ! test -f "/home/postfix/$1"
     chown postfix "/home/postfix/$1"
   else  
     touch "/home/postfix/$1"
+    chown postfix "/home/postfix/$1"
   fi   
  fi 
 cp "/home/postfix/$1" /etc/postfix/maps/
