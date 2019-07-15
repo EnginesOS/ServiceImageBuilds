@@ -45,13 +45,13 @@ if test -f  /home/engines/scripts/configurators/saved/smarthost
   . /home/engines/scripts/configurators/saved/smarthost
  if ! test $auth_type = none
   then
-   smart_host_enable=' '
+   smart_host_enable=''
  fi
 fi  
 
 
 rbl_conf=`cat /home/engines/scripts/configurators/saved/rbls.conf`
-cat /home/engines/templates/email/main.cf | sed "/RBL_CONF/s//$rbl_conf/" \
+cat /home/engines/templates/main.cf | sed "/RBL_CONF/s//$rbl_conf/" \
 									      |	sed "/SPF/s//$spf_conf/"  \
 									      |	sed "/HOSTNAME_CHECKS/s//$hostname_checking/"  \
 									      | sed "/MAX_EMAIL_SIZE/s//$max_email_size/" \

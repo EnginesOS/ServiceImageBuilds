@@ -4,7 +4,8 @@ ADD home home
 ENV ContUser rstudio
 ENV ContGrp rstudio
 
-RUN apt-get -y update &&\
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9 &&\
+	add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/' &&\
 	echo "deb http://cran.rstudio.com/bin/linux/ubuntu bionic/" | tee -a /etc/apt/sources.list &&\
 	gpg --keyserver keyserver.ubuntu.com --recv-key E084DAB9 &&\
 	gpg -a --export E084DAB9 | apt-key add - &&\
