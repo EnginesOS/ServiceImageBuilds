@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 sudo -n /home/engines/scripts/startup/sudo/_setup_dirs.sh
 
