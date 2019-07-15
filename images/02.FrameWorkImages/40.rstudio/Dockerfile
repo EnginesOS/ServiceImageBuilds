@@ -13,8 +13,8 @@ RUN apt-get -y update &&\
 	                   r-base-dev &&\
 	R -e "install.packages('shiny', repos='http://cran.rstudio.com/')" &&\
 	apt-get install -y gdebi-core &&\
-	wget http://download3.rstudio.org/ubuntu-12.04/x86_64/shiny-server-1.5.3.838-amd64.deb &&\
-	gdebi shiny-server-1.5.3.838-amd64.deb &&\
+	wget ubuntu-14.04/x86_64/shiny-server-1.5.11.3-amd64.deb &&\
+	gdebi shiny-server-1.5.11.3-amd64.deb &&\
 	apt-get clean -y &&\
 	groupadd rstudio &&\
 	useradd -u 22675  -g rstudio -d /home/rstudio -m -G containers rstudio
