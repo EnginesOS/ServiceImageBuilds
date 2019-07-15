@@ -3,10 +3,8 @@
  . /home/engines/functions/checks.sh  
      echo "smart_hostname=$smart_hostname
            smart_host_port=$smart_host_port
-           smarthost_username=$smarthost_username
-           smarthost_password=$smarthost_password" >> /home/engines/scripts/configurators/saved/smarthost
-       
-     
+           smart_host_user=$smart_host_user
+           smart_host_passwd=$smart_host_passwd" > /home/engines/scripts/configurators/saved/smarthost
      
 required_values="smart_hostname"
 check_required_values 
@@ -23,7 +21,9 @@ else
 	rm /home/postfix/transport.smart
 	rm /home/postfix/transport
 fi 
-if test $deliver_local -eq 1
+
+
+if test -f /home/engines/scripts/configurators/saved/deliver_local
  then
   if test -f /home/engines/scripts/configurators/saved/domain
    then
@@ -49,16 +49,16 @@ sudo -n /home/engines/scripts/engine/sudo/_postmap.sh transport
 if ! test -z $mail_name
  then
   echo $mail_name > /etc/postfix/mailname
+  sudo -n /home/engines/scripts/engine/sudo/_set_mailname.sh $mail_name
 fi
 
-sudo -n /home/engines/scripts/engine/sudo/_set_mailname.sh $mail_name
- 
 
-if test -z $smarthost_password
+
+if test -z $smart_host_passwd
  then 	
   rm /home/postfix/smarthost_passwd
 else
- echo "$smarthost_hostname $smarthost_username:$smarthost_password" > /home/postfix/smarthost_passwd
+ echo "$smart_hostname $smart_host_user:$smart_host_passwd" > /home/postfix/smarthost_passwd
 fi
 sudo -n /home/engines/scripts/engine/sudo/_transport_over_ride.sh
 sudo -n /home/engines/scripts/engine/sudo/_postmap.sh smarthost_passwd     
