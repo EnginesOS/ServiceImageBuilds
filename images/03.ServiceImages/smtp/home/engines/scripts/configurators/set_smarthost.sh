@@ -4,6 +4,7 @@
      echo "smart_hostname=$smart_hostname
            smart_host_port=$smart_host_port
            smart_host_user=$smart_host_user
+           auth_type=$auth_type
            smart_host_passwd=$smart_host_passwd" > /home/engines/scripts/configurators/saved/smarthost
      
 required_values="smart_hostname"
@@ -35,7 +36,6 @@ fi
 if test -f /etc/postfix/maps/transport.over_ride
  then
   cat /etc/postfix/maps/transport.over_ride >> /etc/postfix/maps/transport
-  fi
 fi 
 sudo -n /home/engines/scripts/engine/sudo/_postmap.sh transport
 
