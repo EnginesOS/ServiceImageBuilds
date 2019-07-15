@@ -51,6 +51,7 @@ if ! test -d /home/engines/scripts/configurators/saved/default_destination
      backup_id=system     
 	 write_duply_config
     service=registry
+    export service
   	add_service
   fi
   

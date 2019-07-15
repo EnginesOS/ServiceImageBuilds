@@ -6,9 +6,9 @@ if test $dest_proto = "local"
   dest_uri=file:///var/lib/engines/local_backup_dests/$dest_folder/$backup_id         
 elif test $dest_proto = "s3"	
  then
-  dest_uri="s3+http://" 
+  dest_uri="s3://$dest_address/$dest_folder/$backup_id" 
 else
-  dest_uri="$dest_proto://$dest_address/$dest_folder"
+  dest_uri="$dest_proto://$dest_address/$dest_folder/$backup_id"
 fi
 
 if test $dest_proto = sftp -o $dest_proto = scp
@@ -29,24 +29,27 @@ fi
 
 write_duply_config()
 {
+
 /home/engines/scripts/engine/prep_conf.sh $Backup_ConfigDir/$backup_id/conf
 set_dest_uri
 echo "SOURCE=$src" >>$Backup_ConfigDir/$backup_id/conf
 echo "TARGET=$dest_uri" >>$Backup_ConfigDir/$backup_id/conf
 echo "TARGET_USER=$dest_user"  >>$Backup_ConfigDir/$backup_id/conf
 echo "TARGET_PASS=$dest_pass"  >>$Backup_ConfigDir/$backup_id/conf
+echo "export AWS_ACCESS_KEY_ID=$dest_user" >>$Backup_ConfigDir/$backup_id/conf
+echo "export AWS_SECRET_ACCESS_KEY=$dest_pass" >>$Backup_ConfigDir/$backup_id/conf
 
 }
 
 add_service()
 {
 src=/tmp/backup_$service/
-
+export service
 mkdir -p ${Backup_ConfigDir}/${service}
 chmod og-rx $Backup_ConfigDir/$service
 echo -n $service >$Backup_ConfigDir/$service/service
-cp /home/engines/templates/backup/service_pre.sh $Backup_ConfigDir/$service/pre
-cp /home/engines/templates/backup/service_post.sh  $Backup_ConfigDir/$service/post
+cat /home/engines/templates/backup/service_pre.sh | sed "/SERVICE/s//$service/g" > $Backup_ConfigDir/$service/pre
+cat /home/engines/templates/backup/service_post.sh | sed "/SERVICE/s//$service/g" > $Backup_ConfigDir/$service/post
 chmod u+x $Backup_ConfigDir/$service/pre
 chmod u+x $Backup_ConfigDir/$service/post
 
