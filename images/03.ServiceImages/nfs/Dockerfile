@@ -16,6 +16,7 @@ RUN chmod 600 /etc/nss-mysql-root.conf &&\
 	                   inetutils-syslogd \
 	                   portmap \
 	                   flex \
+	                   liburcu-dev \	                   
 	                   libkrb5-dev \
 	                   libtirpc1 &&\
 	cd /tmp &&\

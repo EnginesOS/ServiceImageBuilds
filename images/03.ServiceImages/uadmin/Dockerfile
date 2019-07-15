@@ -15,9 +15,12 @@ RUN groupadd -g  22033 uadmin &&\
 						autoconf \
 						libltdl-dev \
 						zlib1g-dev &&\
-	gem install --no-rdoc --no-ri git bundle  \
-	 			gctools  sinatra thin  sinatra-contrib &&\		
- 	/home/engines/scripts/build/post_build_clean.sh
+    gem install bundler &&\  				   
+    gem install bundle &&\
+    gem update &&\
+    gem update --system &&\
+    gem install --no-rdoc --no-ri git bundle  \
+  		     gctools sinatra thin sinatra-contrib 
 	
 	
 COPY  home/ /home
@@ -27,7 +30,8 @@ RUN chmod og-rw /etc/sudoers.d/uadmin &&\
 	gem install net-ldap &&\
 	git clone https://github.com/lachdoug/user_admin.git /home/app &&\
 	/home/engines/scripts/engine/deploy.sh &&\
-	chown -R uadmin /home/app
+	chown -R uadmin /home/app &&\
+	/home/engines/scripts/build/post_build_clean.sh
 
 
 ENV ContUser uadmin

@@ -3,7 +3,7 @@ FROM  engines/servicebase:$release
 RUN usermod www-data -u 22005 &&\
 	/home/engines/scripts/build/no_init.sh &&\			
 	apt-get update -y &&\
-	apt-get -y   python-pip libsasl2-dev python-dev libldap2-dev  &&\
+	apt-get -y install python-pip libsasl2-dev python-dev libldap2-dev  &&\
 	pip install python-ldap &&\
 	usermod -G containers -a www-data &&\
 	mkdir /home/app &&\
