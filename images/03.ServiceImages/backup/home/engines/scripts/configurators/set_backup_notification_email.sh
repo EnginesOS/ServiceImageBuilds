@@ -9,7 +9,7 @@ fi
 
 if test -f /home/engines/scripts/configurators/saved/system_backup
  then
- 	/home/engines/scripts/configurators/set_system_backup.sh 
+ 	/home/engines/scripts/configurators/set_system_backup.sh rebuild
 fi
 
 
