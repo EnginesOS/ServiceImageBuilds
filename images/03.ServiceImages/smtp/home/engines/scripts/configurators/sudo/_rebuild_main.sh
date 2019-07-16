@@ -43,10 +43,13 @@ smart_host_enable='#'
 if test -f  /home/engines/scripts/configurators/saved/smarthost
  then
   . /home/engines/scripts/configurators/saved/smarthost
- if ! test $auth_type = none
-  then
-   smart_host_enable=''
- fi
+  if test $enabled = true
+   then
+    if ! test $auth_type = none
+     then
+      smart_host_enable=''
+    fi   
+  fi  
 fi  
 
 
