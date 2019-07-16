@@ -11,7 +11,7 @@ RUN groupadd -g 22016 cron &&\
 	                   gcc \
 	                   make &&\
 	cd /tmp &&\
-  	get http://fcron.free.fr/archives/fcron-3.2.1.src.tar.gz &&\
+  	wget http://fcron.free.fr/archives/fcron-3.2.1.src.tar.gz &&\
   	tar -xzpf fcron-3.2.1.src.tar.gz &&\
   	cd fcron-3.2.1 &&\
   	./configure --with-run-non-privileged --with-rootname=cron\
