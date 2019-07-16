@@ -6,14 +6,17 @@ if ! test -f /home/backup/.gnupg/pass
  	mkdir /home/backup/.gnupg/
  	cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 7 | head -n 1 >/home/backup/.gnupg/pass
 	pass=`cat /home/backup/.gnupg/pass`
-	email=`cat /home/engines/scripts/configurators/saved/backup_email`
+	if test -f /home/engines/scripts/configurators/saved/backup_email
+     then
+      . /home/engines/scripts/configurators/saved/backup_email
+    fi  
 
- 	if test -z $email
+ 	if test -z $backup_reports_email
  	then
  		exit 
  	fi
  	
-	cat /home/engines/templates/backup/backupkey.tmpl | sed "/EMAIL/s//$email/" | sed "/PASS/s//$pass/" > /tmp/key.tmpl
+	cat /home/engines/templates/backup/backupkey.tmpl | sed "/EMAIL/s//$backup_reports_email/" | sed "/PASS/s//$pass/" > /tmp/key.tmpl
  	gpg --gen-key --batch /tmp/key.tmpl
  	rm /tmp/key.tmpl
    

@@ -20,6 +20,7 @@ fi
     echo '{"status:"warning","message":"please set backup notification email"}'
     exit 1
 fi
+
 . /home/engines/scripts/engine/backup_dirs.sh
 
 cat /home/engines/scripts/configurators/saved/system_backup  >>/var/log/backup/addbackup.log
