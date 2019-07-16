@@ -4,6 +4,7 @@
 echo backup_run > /home/engines/run/flags/backup_run
 
 . /home/engines/scripts/configurators/saved/backup_email
+
 if test -f $Backup_ConfigDir/$backup/ssh_key
  then
   key_name=`cat $Backup_ConfigDir/$backup/ssh_key`
@@ -16,11 +17,9 @@ for backup in `ls $Backup_ConfigDir |grep -v duply_conf`
 	ts=`date +%d_%m_%y`
 	bfn=${backup}_${ts}.log        	
         		
-	if test -f $Backup_ConfigDir/$backup/email
+	if test -f $Backup_ConfigDir/$backup/backup_reports_email
 	 then 
-	  email=`cat $Backup_ConfigDir/$backup/email`
-	else
-	  email=$backup_email
+	  backup_reports_email=`cat $Backup_ConfigDir/$backup/email`
 	fi
      
 	if test -f $Backup_ConfigDir/$backup/backup_type
@@ -39,9 +38,9 @@ for backup in `ls $Backup_ConfigDir |grep -v duply_conf`
  	 subject="$backup: $result " 
 	fi     
          	
-	echo $email >> $Backup_LogDir/$bfn
+	echo $backup_reports_email >> $Backup_LogDir/$bfn
 	echo "Subject:$subject" > /tmp/email                 
-	cat /tmp/email $Backup_LogDir/$bfn | sendmail -t $email -f $email
+	cat /tmp/email $Backup_LogDir/$bfn | sendmail -t $backup_reports_email -f $backup_reports_email
 done 
 
 rm /home/engines/run/flags/backup_run

@@ -1,0 +1,23 @@
+identity="http://id.current.engines.org/"
+
+administrator=1
+
+auth_method="LDAP"
+[user_info]
+name="jvodanovich"
+given_name="James" 
+family_name="Vodanovich"
+middle_name="Lees"
+nickname="vodan"
+email="james@engines.org"
+gender="male"
+birthday="12/31/2000"
+zoneinfo="Australia/Sydney"
+locale="en-AU"
+phone_number="+61400000000"
+address["formatted"]="1 George Street, Sydney NSW 2000, Australia"
+address["street_address"]="1 George Street"
+address["locality"]="Sydney"
+address["region"]="NSW"
+address["postal_code"]="2000"
+address["country"]="Australia"
