@@ -17,22 +17,19 @@ if test $enabled = true
  then
   required_values="smart_hostname auth_type"
   check_required_values
-
   if ! test -z $smart_host_port
     then
 	 smart_host_port=25
   fi
+  
  echo "*	smtp:$smart_hostname:$smart_host_port"  > /home/postfix/transport.smart
- cp /home/postfix/transport.smart /home/postfix/transport 
- 
-   if test -z $smart_host_passwd
-    then 	
-     rm /home/postfix/smarthost_passwd
-   else
+  if test -z $smart_host_passwd
+   then 	
+    rm /home/postfix/smarthost_passwd
+  else
     echo "$smart_hostname $smart_host_user:$smart_host_passwd" > /home/postfix/smarthost_passwd
     sudo -n /home/engines/scripts/engine/sudo/_postmap.sh smarthost_passwd     
-   fi
-   
+  fi   
 else
 	rm /home/postfix/transport.smart
 	rm /home/postfix/transport
