@@ -15,4 +15,4 @@ fi
 
 echo -n $max_size > /home/engines/scripts/configurators/saved/mail_message_size
  
-sudo -n /home/engines/scripts/configurators/sudo/_build_main_cf.sh
+sudo -n /home/engines/scripts/configurators/sudo/_rebuild_main.sh

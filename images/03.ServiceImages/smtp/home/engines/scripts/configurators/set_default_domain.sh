@@ -37,37 +37,37 @@ do
  build_templated_mapfile
 done
  
-
+/home/engines/scripts/configurators/build_transport.sh
 	
-cp /home/engines/templates/transport /home/postfix/maps/
-
-if test -f /etc/postfix/transport.smart 
- then
-  if test `wc -c /etc/postfix/transport.smart | cut -f 1 -d" " ` -gt 4
-   then
-	cat /etc/postfix/transport.smart >> /home/postfix/maps/transport 
-  fi
-fi
-
-if ! test -z $deliver_local 
- then
-  if test  $deliver_local = true 
-   then                 
-	 echo ${domain_name} :[email.engines.internal]	>> /home/postfix/maps/transport 			
-   fi
-fi	
-if test -f /etc/postfix/maps/transport.over_ride
- then
-  cp /etc/postfix/maps/transport.over_ride /etc/postfix/maps/transport
-  if test -f /etc/postfix/transport.smart 
-   then
-    if test `wc -c /etc/postfix/transport.smart | cut -f 1 -d" " ` -gt 4
-     then
-	   cat /etc/postfix/transport.smart >> /home/postfix/maps/transport 
-    fi
-  fi
-fi 
-sudo -n /home/engines/scripts/engine/sudo/_transport_over_ride.sh
-sudo -n /home/engines/scripts/engine/sudo/_postmap.sh transport
+#cp /home/engines/templates/transport /home/postfix/maps/
+#
+#if test -f /etc/postfix/transport.smart 
+# then
+#  if test `wc -c /etc/postfix/transport.smart | cut -f 1 -d" " ` -gt 4
+#   then
+#	cat /etc/postfix/transport.smart >> /home/postfix/maps/transport 
+#  fi
+#fi
+#
+#if ! test -z $deliver_local 
+# then
+#  if test $deliver_local = true 
+#   then                 
+#	 echo ${domain_name} :[email.engines.internal] >> /home/postfix/maps/transport 			
+#   fi
+#fi	
+#if test -f /etc/postfix/maps/transport.over_ride
+# then
+#  cp /etc/postfix/maps/transport.over_ride /home/postfix/maps/transport 
+#  if test -f /home/postfix/maps/transport.smart 
+#   then
+#    if test `wc -c home/postfix/maps/transport.smart | cut -f 1 -d" " ` -gt 4
+#     then
+#	   cat home/postfix/maps/transport.smart >> /home/postfix/maps/transport 
+#    fi
+#  fi
+#fi 
+#sudo -n /home/engines/scripts/engine/sudo/_transport_over_ride.sh
+#sudo -n /home/engines/scripts/engine/sudo/_postmap.sh transport
 
 exit $?
