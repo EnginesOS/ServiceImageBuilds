@@ -10,7 +10,9 @@ RUN usermod www-data -u 22005 &&\
 	                  libsasl2-dev \
 	                  python-dev \
 	                  libldap2-dev  &&\
-	pip install wheel python-ldap &&\
+	pip install wheel &&\
+	python setup.py bdist_wheel &&\
+	pip install python-ldap &&\
 	usermod -G containers -a www-data &&\
 	mkdir /home/app &&\
 	cd /tmp &&\
