@@ -19,7 +19,7 @@ RUN groupadd -g  22033 uadmin &&\
     gem install bundle &&\
     gem update &&\
     gem update --system &&\
-    gem install --no-rdoc --no-ri git bundle  \
+    gem install git bundle  \
   		     gctools sinatra thin sinatra-contrib 
 	
 	
