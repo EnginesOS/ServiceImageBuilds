@@ -6,6 +6,8 @@ then
 	 echo '{"smart_hostname":"'$smart_hostname'",
            "smart_host_port":"'$smart_host_port'",
            "smart_host_user":"'$smart_host_user'",
+           "auth_type":"'$auth_type'",
+           "enabled":"'$enabled'",
            "smart_host_passwd":"'$smart_host_passwd'"} '
 else
 	echo '{"smarthost_hostname":"Not Set"}'
