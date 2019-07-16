@@ -75,10 +75,8 @@ if ! test -d /home/engines/scripts/configurators/saved/default_destination
   			  then
   				 continue
   			 fi 
-  			echo ADD SERVICE $service
   			add_service 
   		done	  						
-
   fi
   				
   if test $include_logs = "true"

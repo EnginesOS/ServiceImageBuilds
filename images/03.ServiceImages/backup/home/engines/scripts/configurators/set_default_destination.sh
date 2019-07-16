@@ -17,7 +17,7 @@ fi
 if test -f /home/engines/scripts/configurators/saved/system_backup/settings
  then
     . /home/engines/scripts/configurators/saved/system_backup/settings
- 	/home/engines/scripts/configurators/set_system_backup.sh 
+ 	/home/engines/scripts/configurators/set_system_backup.sh rebuild
 fi
 
 
