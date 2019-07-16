@@ -9,7 +9,7 @@ export KILL_SCRIPT
 . /home/engines/functions/trap.sh
 
 service_first_run_check
-sudo -n /home/engines/scripts/engine/sudo/_transport_over_ride.sh
+
 /home/engines/scripts/startup/init_dbs.sh
 
 sudo -nu opendkim /home/engines/scripts/engine/sudo/rebuild_dkim.key.sh

@@ -27,7 +27,7 @@ if $deliver_local = true
  then
   echo -n $deliver_local > /home/engines/scripts/configurators/saved/deliver_local
 else 
- rm /home/engines/scripts/configurators/saved/deliver_local
+  rm /home/engines/scripts/configurators/saved/deliver_local
 fi
 
 sudo -n /home/engines/scripts/engine/sudo/_set_mailname.sh smtp.${domain_name}
@@ -71,3 +71,4 @@ done
 #sudo -n /home/engines/scripts/engine/sudo/_postmap.sh transport
 
 exit $?
+

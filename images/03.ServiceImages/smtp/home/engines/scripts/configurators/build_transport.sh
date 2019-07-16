@@ -1,5 +1,12 @@
 #!/bin/sh
 
+if test -f /home/postfix/transport.smart
+ then
+   cp /home/postfix/transport.smart /home/postfix/transport
+ else
+  rm  /home/postfix/transport
+fi  
+
 if test -f /home/engines/scripts/configurators/saved/deliver_local
  then
   if test -f /home/engines/scripts/configurators/saved/domain
