@@ -20,6 +20,7 @@ fi
     echo '{"status:"warning","message":"please set backup notification email"}'
     exit 1
 fi
+
 . /home/engines/scripts/engine/backup_dirs.sh
 
 cat /home/engines/scripts/configurators/saved/system_backup  >>/var/log/backup/addbackup.log
@@ -74,10 +75,8 @@ if ! test -d /home/engines/scripts/configurators/saved/default_destination
   			  then
   				 continue
   			 fi 
-  			echo ADD SERVICE $service
   			add_service 
   		done	  						
-
   fi
   				
   if test $include_logs = "true"

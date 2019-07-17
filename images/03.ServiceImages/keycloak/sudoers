@@ -1,0 +1,6 @@
+
+openid ALL = (root) NOPASSWD: /home/engines/scripts/first_run/_setup.sh
+
+
+#must have blank after last sudoers line
+

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-echo  backup_email=$backup_email >/home/engines/scripts/configurators/saved/backup_email
+echo  backup_reports_email=$backup_reports_email >/home/engines/scripts/configurators/saved/backup_email
 
 if ! test -f /home/backup/.gnupg/key_created
  then
@@ -9,7 +9,7 @@ fi
 
 if test -f /home/engines/scripts/configurators/saved/system_backup
  then
- 	/home/engines/scripts/configurators/set_system_backup.sh 
+ 	/home/engines/scripts/configurators/set_system_backup.sh rebuild
 fi
 
 

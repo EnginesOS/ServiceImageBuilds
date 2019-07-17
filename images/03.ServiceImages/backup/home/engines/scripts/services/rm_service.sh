@@ -14,7 +14,7 @@ Backup_ConfigDir=/home/backup/.duply/
 
 ts=`date`
 echo "$ts:rm $*" >>/var/log/backup/addbackup.log
-dirname=${parent}_${backup_name}_${src_type}
+dirname=${parent_engine}_${backup_name}_${src_type}
 dirname=${Backup_ConfigDir}/$dirname
 rm -r $dirname
 export Backup_ConfigDir
@@ -24,5 +24,5 @@ export dest_user
 export dest_pass
 export parent_engine
 
- shift
+# WTF ->  shift
  

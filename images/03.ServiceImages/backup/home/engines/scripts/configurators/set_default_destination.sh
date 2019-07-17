@@ -13,10 +13,10 @@ if ! test -f /home/backup/.gnupg/key_created
   echo "Please set backup notification "
   exit 0
 fi
-if test -f /home/engines/scripts/configurators/saved/system_backup
+
+if test -f /home/engines/scripts/configurators/saved/system_backup/settings
  then
-    . /home/engines/scripts/configurators/saved/system_backup/settings
- 	/home/engines/scripts/configurators/set_system_backup.sh 
+ 	/home/engines/scripts/configurators/set_system_backup.sh rebuild
 fi
 
 

@@ -22,7 +22,7 @@ export dirname
 
 if ! test -z "$email"
 then
- echo $email >$dirname/email 	
+ echo $email >$dirname/backup_reports_email 	
 fi
 
 if test $backup_type = incr

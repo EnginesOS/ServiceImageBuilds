@@ -6,12 +6,9 @@ ENV ContGrp rstudio
 
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9 &&\
 	add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/' &&\
-	echo "deb http://cran.rstudio.com/bin/linux/ubuntu bionic/" | tee -a /etc/apt/sources.list &&\
-	gpg --keyserver keyserver.ubuntu.com --recv-key E084DAB9 &&\
-	gpg -a --export E084DAB9 | apt-key add - &&\
 	apt-get -y update &&\
 	apt-get -y install r-base \
-	                   r-base-dev &&\
+	            r-base-dev &&\
 	R -e "install.packages('shiny', repos='http://cran.rstudio.com/')" &&\
 	apt-get install -y gdebi-core &&\
 	wget ubuntu-14.04/x86_64/shiny-server-1.5.11.3-amd64.deb &&\
