@@ -1,5 +1,6 @@
 #!/bin/sh
 
+temp_file=`mktemp`
 . /home/engines/functions/checks.sh
 . /home/engines/scripts/engine/backup_dirs.sh
  
@@ -25,8 +26,8 @@ if test $src_type = 'engine'
    /home/engines/scripts/engine/add_backup.sh ${parent_engine}:system
    n=1
    curl -k https://172.17.0.1:2380/v0/backup/engine/services/${parent_engine}\
- | tr -d "\n\r"  |sed "/:/s//=/g" | sed "/,/s//\n/g"  | tr -d "{}\""  >/tmp/.src
-   . /tmp/.src
+ | tr -d "\n\r"  |sed "/:/s//=/g" | sed "/,/s//\n/g"  | tr -d "{}\""  > $temp_file
+   . $temp_file
    service=`eval echo service$n`
 	 while ! test -z $service
  	 do
@@ -41,5 +42,6 @@ elif test $backup_type = 'engine_only'
 else
    /home/engines/scripts/engine/add_backup.sh ${parent_engine}/service/${publisher_namespace}/${type_path}/${service_handle}
 fi
+rm $temp_file
  exit 0
  

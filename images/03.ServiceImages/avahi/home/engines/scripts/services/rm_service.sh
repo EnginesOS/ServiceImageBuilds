@@ -15,7 +15,7 @@ if test -f /home/avahi/hosts/${hostname}.${default_mdns_domain}
 	rm /home/avahi/hosts/${hostname}.${default_mdns_domain}
 fi	
  
-ls /home/avahi/hosts/ > /home/avahi/hosts_list
+/home/engine/scripts/build_hosts.sh
 kill -HUP `cat /home/engines/run/avahi-publisher.pid`
   
 echo Success
