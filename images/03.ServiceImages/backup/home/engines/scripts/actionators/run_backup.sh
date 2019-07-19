@@ -1,5 +1,10 @@
 #!/bin/sh
 
+if test -z $backup_name 
+then
+ $backup_name = all
+fi
+ 
 cd /home/backup
 if test -f $Backup_ConfigDir/$backup/ssh_key
  then

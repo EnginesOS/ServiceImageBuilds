@@ -71,24 +71,6 @@ common_name=`cat $cert_dir/${common_name}.crt.tmp | openssl x509 -noout -subject
  
 
 mv $cert_dir/${common_name}.crt.tmp $cert_dir/${common_name}.crt 
- 
- 
-
-#  if ! test -z ${parent_engine}
-#   then
-#    if test ${install_target} = default
-#     then
-#      dest_name=${parent_engine}
-#    elif test ${parent_engine} = wap
-#     then
-#    	 dest_name=${common_name}
-#    else
-#      dest_name=${common_name}    
-#    fi
-#  else
-#    dest_name=${common_name} 
-#  fi
-   
    
   if test -z $container_type -o -z $parent_engine
     then  		
@@ -96,6 +78,5 @@ mv $cert_dir/${common_name}.crt.tmp $cert_dir/${common_name}.crt
  		exit $?
   fi		
   
-
 exit 0
 

@@ -1,0 +1,8 @@
+#Defaults  env_keep += "SIGNAL CONTAINER_NAME PID_FILE PID_FILES exit_code"
+
+bind ALL = (root) NOPASSWD: /usr/sbin/named
+bind ALL = (root) NOPASSWD: /home/engines/scripts/engine/sudo/_setup.sh
+bind ALL = (root) NOPASSWD: /home/engines/scripts/signal/_signal.sh
+bind ALL = (root) NOPASSWD: /home/engines/scripts/signal/sudo/_kill_bind.sh
+#must have blank after last sudoers line
+
