@@ -60,7 +60,7 @@ cat $template | sed "/SERVERS/s//$servers/" \
 | sed "/ENABLE_SSLCA/s//$ENABLE_SSLCA/" \
 | sed "/CA_FILE/s//$ca_file/" \
 | sed "/SSLVERIFY/s//$ssl_verify/"\
-| sed "/CRL_FILE/s//$crl_file/" > /tmp/site.res
+| sed "/CRL_FILE/s//$crl_file/" > /tmp/$fqdn.res
 www_path=`echo $internal_dir  |sed "s/^\///" |sed "s/\/$//"`
 
 
@@ -70,7 +70,7 @@ rewrite=""
     rewrite='rewrite \^\/'$www_path'\/\(\.\*\) \/'$www_path'\/\$1  break;\
         rewrite \^\/\(\.\*\) $fqdn\/'$www_path'\/\$1  break; '
 fi
-cat /tmp/site.res | sed "/FOLDER/s//$rewrite/" >  /tmp/site.path
+cat /tmp/$fqdn.res | sed "/FOLDER/s//$rewrite/" >  /tmp/$fqdn.path
 
 domain=`echo $fqdn  | cut -f2- -d.`
 if test "$proto" = default 
@@ -102,7 +102,7 @@ if test "$proto" = default
 	     		then
 	     			rm -f /etc/nginx/sites-enabled/http_${fqdn}.site
 	     	fi
-	    cat /tmp/site.path  | sed "/CERTNAME/s//$cert_name/" > /etc/nginx/sites-enabled/${proto}_${fqdn}.site
+	    cat /tmp/${fqdn}.path  | sed "/CERTNAME/s//$cert_name/" > /etc/nginx/sites-enabled/${proto}_${fqdn}.site
 	 else  #Proto is http
 		if test -f /etc/nginx/sites-enabled/http_${fqdn}.site
 	     		then
@@ -116,13 +116,13 @@ if test "$proto" = default
 	     		then
 	     			rm -f /etc/nginx/sites-enabled/https_${fqdn}.site
 	     	fi
-	 	cp /tmp/site.path /etc/nginx/sites-enabled/${proto}_${fqdn}.site
+	 	cp /tmp/$fqdn.path /etc/nginx/sites-enabled/${proto}_${fqdn}.site
 fi
 
 mkdir -p /tmp/last_run
-cp 	/tmp/site.* /tmp/last_run
+cp 	/tmp/* /tmp/last_run
 
-rm /tmp/site.*
+rm /tmp/*
 
 	 if ! test -d /var/log/nginx/$fqdn/https/
 	 	then
