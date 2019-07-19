@@ -21,7 +21,7 @@ RUN /usr/sbin/usermod -u 22671 www-data &&\
 	mkdir /tmp/composer &&\
 	cd /tmp/composer &&\
 	curl -sS https://getcomposer.org/installer | php &&\
-	mv composer.phar /usr/bin/composer /usr/local/bin &&\
+	mv composer.phar  /usr/local/bin &&\
  	/home/engines/scripts/build/post_build_clean.sh
 	
 
