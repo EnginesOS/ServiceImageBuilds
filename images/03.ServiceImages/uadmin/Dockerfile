@@ -32,7 +32,8 @@ RUN chmod og-rw /etc/sudoers.d/uadmin &&\
 	/home/engines/scripts/engine/deploy.sh &&\
 	chown -R uadmin /home/app &&\
 	/home/engines/scripts/build/post_build_clean.sh
-
+	
+ENV DATABASE_URL $rails_flavor://$dbuser:$dbpasswd@$dbhost/$dbname
 
 ENV ContUser uadmin
 ENV ContGrp uadmin
