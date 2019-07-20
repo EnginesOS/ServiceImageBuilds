@@ -1,8 +1,7 @@
 #!/bin/sh
 
 
-/usr/sbin/nginx &
-
+. /home/engines/functions/trap.sh
 startup_complete
 
 wait
