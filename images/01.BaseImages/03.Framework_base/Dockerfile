@@ -28,7 +28,9 @@ RUN	useradd -u 11111 data-user &&\
 	chgrp containers $HOME &&\
 	chmod g+w $HOME &&\
 	chmod -R go-rw /etc/sudoers /etc/sudoers.d/ &&\
-	rm -rf /tmp/*
+	rm -rf /tmp/* &&\
+	mkdir /home/users &&\
+	ln -s /home/users/ /home/fs/users &&\
 
 
 
