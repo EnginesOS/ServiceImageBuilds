@@ -1,8 +1,8 @@
 FROM engines/rstudio:$release
 
 ADD home home
-ENV ContUser shiny
-ENV ContGrp shiny
+ENV ContUser rstudio
+ENV ContGrp rstudio
 
 RUN	R -e "install.packages('shiny', repos='http://cran.rstudio.com/')" &&\
 	R -e "install.packages('rmarkdown')" &&\
