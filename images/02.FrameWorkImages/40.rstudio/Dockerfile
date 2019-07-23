@@ -12,6 +12,5 @@ RUN groupadd rstudio &&\
 	apt-get -y install r-base \
 	            r-base-dev \
 	            texlive-full \
-	            build-dep \
 	            r-base-core \
 	            gdebi-core
