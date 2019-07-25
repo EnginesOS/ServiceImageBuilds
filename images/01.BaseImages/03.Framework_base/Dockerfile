@@ -30,8 +30,8 @@ RUN apt-get update -y &&\
 	chmod -R go-rw /etc/sudoers /etc/sudoers.d/ &&\
 	rm -rf /tmp/* &&\
 	mkdir /home/users &&\
-	ln -s /home/users/ /home/fs/users &&\
-	echo "session optional pam_mkhomedir.so skel=/etc/skel umask=077" >> /etc/pam.d/common-session
+	ln -s /home/users/ /home/fs/users
+	
 
 
 
