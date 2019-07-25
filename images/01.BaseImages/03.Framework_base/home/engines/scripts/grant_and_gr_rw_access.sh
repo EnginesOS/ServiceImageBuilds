@@ -9,5 +9,5 @@ else
 	recursive=""
 fi
 
-sudo -n /home/engines/scripts/_grant_and_gr_rw_access.sh $recursive $path
+sudo -n /home/engines/scripts/sudo/_grant_and_gr_rw_access.sh $recursive $path
 
