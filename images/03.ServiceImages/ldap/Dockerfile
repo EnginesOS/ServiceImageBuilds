@@ -14,7 +14,7 @@ RUN apt-get -y update &&\
 				       krb5-user \
 				       slapd \
 				       ldap-utils \
-				       makepasswd
+				       whois
 ADD home /home
 #ADD  sudoers /etc/sudoers.d/ldap
 ADD  src/etc /etc
