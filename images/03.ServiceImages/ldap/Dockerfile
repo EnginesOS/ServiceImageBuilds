@@ -13,7 +13,8 @@ RUN apt-get -y update &&\
 				       krb5-config \
 				       krb5-user \
 				       slapd \
-				       ldap-utils 
+				       ldap-utils \
+				       makepasswd
 
 ADD home home
 
