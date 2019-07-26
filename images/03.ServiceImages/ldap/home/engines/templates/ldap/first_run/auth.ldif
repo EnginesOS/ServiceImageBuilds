@@ -21,6 +21,5 @@ olcAuthzRegexp: {3}"uid=([^,]*),cn=engines.internal,cn=gssapi,cn=auth" "ldap:///
 add: olcPasswordCryptSaltFormat
 olcPasswordCryptSaltFormat: $6$%.16s
 -
-dn: olcDatabase={-1}frontend,cn=config
 replace: olcPasswordHash
 olcPasswordHash: {CRYPT}
