@@ -18,10 +18,10 @@ export KRB5_KTNAME=/etc/krb5kdc/keys/ldap.keytab
 
 password=`dd if=/dev/urandom count=16 bs=1  | od -h | awk '{ print $2$3$4$5$6$7$8}'`
 echo -n $password > /var/lib/ldap/.tok
-shapass=`echo -n $password  | openssl dgst -sha1 -binary | openssl enc -base64`
-
+#shapass=`echo -n $password  | openssl dgst -sha1 -binary | openssl enc -base64`
+shapass=`mkpasswd --rounds 500000 -m sha-512 --salt `head -c 40 /dev/random | base64 | sed -e 's/+/./g' |  cut -b 10-25` $password`
 cat /home/engines/templates/ldap/first_run/init_pre_password.ldif >  /tmp/init.ldif
-echo olcRootPW: {SHA}$shapass >> /tmp/init.ldif
+echo olcRootPW: {CRYPT}$shapass >> /tmp/init.ldif
 #| sed "s/PASSWORD/$shapass/" > /tmp/init.ldif
 cat /home/engines/templates/ldap/first_run/init_post_password.ldif >>  /tmp/init.ldif
 echo Setup config
