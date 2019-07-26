@@ -1,5 +1,5 @@
 FROM engines/servicebase:$release
-Maintainer image.maintainer@engines.onl
+MAINTAINER image.maintainer@engines.onl
 
 RUN apt-get -y update &&\
 	groupadd -g 22030 openldap &&\
@@ -15,24 +15,19 @@ RUN apt-get -y update &&\
 				       slapd \
 				       ldap-utils \
 				       makepasswd
-
-ADD home home
+ADD home /home
+#ADD  sudoers /etc/sudoers.d/ldap
+ADD  src/etc /etc
+ADD  src/usr /usr
+#This is not the final filename but sasl must be disabled until ldap schema is ready
+#COPY src/sasl2_slapd.conf /usr/lib/sasl2/
+#COPY src/slapd.conf /home/engines/etc
 
 RUN	/home/engines/scripts/build/post_build_clean.sh &&\
  	mkdir /var/run/slapd &&\
  	chown openldap /var/run/slapd  &&\
- 	usermod -a -G sasl openldap
- 	
-
-ADD  sudoers /etc/sudoers.d/ldap
-ADD  src/ldap.conf /etc/ldap/
-#ADD  src/slapd.d /home/slapd.d
-
-#This is not the final filename but sasl must be disabled until ldap schema is ready
-COPY src/sasl2_slapd.conf /usr/lib/sasl2/
-COPY src/slapd.conf /home/engines/etc
-
-RUN  chmod -R go-rw /etc/sudoers /etc/sudoers.d/ 
+ 	usermod -a -G sasl openldap &&\
+ 	chmod -R go-rw /etc/sudoers /etc/sudoers.d/ 
 
 ENV ContUser openldap
 ENV ContGrp openldap
