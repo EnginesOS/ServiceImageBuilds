@@ -66,6 +66,6 @@ COPY src/ /
 RUN	 chmod -R go-w /etc/mail/ &&\
 	echo y y |sendmailconfig --no-reload &&\
 	chmod g+w /var/spool/mqueue &&\
-	chmod -R go-rw /etc/sudoers /etc/sudoers.d/system
+	chmod -R go-rw /etc/sudoers 
 
 
