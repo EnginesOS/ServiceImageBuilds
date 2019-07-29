@@ -11,7 +11,7 @@ if test -f .env
   . .env
 fi
 export BuildDate
-
+echo BUILDATe $BuildDate
 cat Dockerfile | sed "/\$release/s//$release/" \
 			   | sed "/\$edition/s//$edition/" > Dockerfile.$release
 
