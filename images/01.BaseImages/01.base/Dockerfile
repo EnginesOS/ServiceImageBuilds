@@ -1,9 +1,8 @@
 FROM engines/bionicbeaverbase:$release
 
-COPY src/usr/sbin/invoke-rc.d /usr/sbin/
-ADD home /home/
-	
 
+ADD home /home
+COPY src/usr/sbin/invoke-rc.d /usr/sbin/
 
 RUN	echo '#!/bin/sh' >/usr/sbin/policy-rc.d &&\
 	echo exit 101 >> /usr/sbin/policy-rc.d &&\
