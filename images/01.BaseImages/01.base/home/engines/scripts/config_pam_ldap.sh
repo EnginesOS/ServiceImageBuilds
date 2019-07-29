@@ -1,5 +1,5 @@
 #!/bin/sh
-cat /home/engines/templates/ldap.conf | while read LINE
+cat /home/engines/templates/etc/ldap.conf | while read LINE
  do
     eval echo "$LINE" >> /tmp/ldap.conf
  done
