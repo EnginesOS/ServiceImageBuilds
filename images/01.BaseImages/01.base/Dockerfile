@@ -66,7 +66,7 @@ RUN	echo '#!/bin/sh' >/usr/sbin/policy-rc.d &&\
  	 
 #COPY src/etc/mail/submit.mc /etc/mail
 #COPY src/etc/mail/sendmail.mc /etc/mail
-COPY src/ /
+ADD src/ /
 RUN	echo y y |sendmailconfig --no-reload &&\ 	
 	chmod g+w /var/spool/mqueue &&\
 	chmod -R go-rw /etc/sudoers /etc/sudoers.d/system
