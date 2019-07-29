@@ -24,8 +24,7 @@ RUN	echo '#!/bin/sh' >/usr/sbin/policy-rc.d &&\
 	apt-get -y dist-upgrade &&\
 	apt-get -y update &&\
 	/home/engines/scripts/build/no_init.sh &&\
-	apt-get -y --fix-missing install ldap-utils \
-									 sendmail-bin \
+	apt-get -y --fix-missing install sendmail-bin \
 			           			     ca-certificates \
 		 						     krb5-user \
 	 								 krb5-config \
@@ -65,14 +64,15 @@ RUN	echo '#!/bin/sh' >/usr/sbin/policy-rc.d &&\
 	ln -s /home/engines/etc/ssl/CA /usr/share/ca-certificates/engines &&\
  	echo engines/engines_internal_ca.crt >> /etc/ca-certificates.conf
  	 
-COPY src/etc/mail/submit.mc /etc/mail
-COPY src/etc/mail/sendmail.mc /etc/mail
- 	
+#COPY src/etc/mail/submit.mc /etc/mail
+#COPY src/etc/mail/sendmail.mc /etc/mail
+COPY src/ /
 RUN	echo y y |sendmailconfig --no-reload &&\ 	
-	chmod g+w /var/spool/mqueue 
+	chmod g+w /var/spool/mqueue &&\
+	chmod -R go-rw /etc/sudoers /etc/sudoers.d/system
 	
-ADD sudoers /etc/sudoers.d/system
-ADD src/etc/krb5.conf /etc/
-ADD src/etc/rsyslog.conf /etc/		
+#ADD sudoers /etc/sudoers.d/system
+#ADD src/etc/krb5.conf /etc/
+#ADD src/etc/rsyslog.conf /etc/		
 
 
