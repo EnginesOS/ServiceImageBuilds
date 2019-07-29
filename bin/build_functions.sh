@@ -14,6 +14,7 @@ export BuildDate
 echo BUILDATe $BuildDate
 cat Dockerfile | sed "/\$release/s//$release/" \
 			   | sed "/\$edition/s//$edition/" > Dockerfile.$release
+			   
 
 if test -f nocache
  then
@@ -148,6 +149,8 @@ function get_edition_and_release {
  else
     release=latest
   fi
+  
+  export release
   
 if test -f edition
  then

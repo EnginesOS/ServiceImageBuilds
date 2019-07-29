@@ -1,10 +1,9 @@
 FROM engines/bionicbeaverbase:$release
 
 COPY src/usr/sbin/invoke-rc.d /usr/sbin/
-
 ADD home /home/
 	
-ENV	build ${BuildDate}
+
 
 RUN	echo '#!/bin/sh' >/usr/sbin/policy-rc.d &&\
 	echo exit 101 >> /usr/sbin/policy-rc.d &&\
@@ -66,6 +65,7 @@ RUN	echo '#!/bin/sh' >/usr/sbin/policy-rc.d &&\
  	 
 #COPY src/etc/mail/submit.mc /etc/mail
 #COPY src/etc/mail/sendmail.mc /etc/mail
+
 ADD src/ /
 RUN	echo y y |sendmailconfig --no-reload &&\ 	
 	chmod g+w /var/spool/mqueue &&\
