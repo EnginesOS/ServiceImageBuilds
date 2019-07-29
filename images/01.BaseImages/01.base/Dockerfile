@@ -41,7 +41,11 @@ RUN	echo '#!/bin/sh' >/usr/sbin/policy-rc.d &&\
 	 								 dnsutils \
 	 								 wget \
 	 								 bzip2 \
-	 								 zlibc &&\ 
+	 								 zlibc  \
+	 				   				sudo \
+	 				   				libnss-ldap \
+	 				   				libpam-ldap \
+	 				   				ldap-utils &&\ 
 	apt-get -y clean &&\
 	mkdir -p /var/run &&\
 	mkdir -p /etc/apt/apt.conf.d/ &&\

@@ -4,4 +4,5 @@ Defaults  env_keep +=" ContUser KRB5_KTNAME SIGNAL CONTAINER_NAME PID_FILE PID_F
 %containers ALL=(ALL) NOPASSWD: /home/engines/scripts/system/_update_ca.sh
 %containers ALL=(ALL) NOPASSWD: /home/engines/scripts/system/_setup_logging.sh
 %containers ALL=(ALL) NOPASSWD: /home/engines/scripts/system/_set_rundir_perms.sh
+%containers ALL=(ALL) NOPASSWD: /home/engines/scripts/sudo/_config_pam_ldap.sh
 #must have blank after last sudoers line
