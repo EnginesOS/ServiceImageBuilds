@@ -6,7 +6,7 @@ n=0
 
 for domain in $domains
 do
- if test $n == 0
+ if test $n -eq 0
   then 
    n=2
  else
