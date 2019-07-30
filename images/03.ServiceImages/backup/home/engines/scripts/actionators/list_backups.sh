@@ -12,7 +12,7 @@ if test -d $Backup_ConfigDir/
     then  
      for backup in $backups
       do
-       if test $n == 0
+       if test $n -eq 0
         then 
           n=2
        else

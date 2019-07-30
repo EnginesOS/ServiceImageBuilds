@@ -8,7 +8,6 @@ check_required_values
 
 mkdir -p /home/cron/entries/${parent_engine}/$title
 
-
 if test  ${container_type} = app
  then
  	container_type=engine
