@@ -23,7 +23,7 @@ export backup_type
 
 if test $src_type = 'engine'
  then
-   /home/engines/scripts/engine/add_backup.sh ${parent_engine}:system
+   /home/engines/scripts/engine/add_backup.sh ${parent_engine}
    n=1
    services=`curl -k https://172.17.0.1:2380/v0/backup/engine/services/${parent_engine}\
  | tr -d "\n\r" | sed "/,/s//\n/g"  | tr -d "{}\""  | cut -f2 -d:`
@@ -32,10 +32,10 @@ if test $src_type = 'engine'
  	 do
        /home/engines/scripts/engine/add_backup.sh $service
  	 done
- 	/home/engines/scripts/engine/add_backup.sh config:${parent_engine}	
+ 	/home/engines/scripts/engine/add_backup.sh ${parent_engine}	add 
 elif test $backup_type = 'engine_only'
   then
-    /home/engines/scripts/engine/add_backup.sh config:${parent_engine}
+    /home/engines/scripts/engine/add_backup.sh ${parent_engine} add
 else
    /home/engines/scripts/engine/add_backup.sh ${parent_engine}/service/${publisher_namespace}/${type_path}/${service_handle}
 fi
