@@ -8,7 +8,7 @@ check_required_values
 backup_id=${parent}_${backup_name}_${src_type}
 dirname=${Backup_ConfigDir}/$backup_id
 
-echo -n $backup_type > $dirname/backup_type
+echo ADD Backup $1
 
 echo dirname $dirname
 
@@ -19,6 +19,8 @@ fi
 
 mkdir -p $dirname
 export dirname
+
+echo -n $backup_type > $dirname/backup_type
 
 if ! test -z "$email"
 then
@@ -33,7 +35,7 @@ else
  echo $backup_type >>/tmp/bt
  mkdir -p /tmp/backup
  src=/tmp/backup
- echo $1 >   $dirname/pre_cmd_path
+ echo $1 > $dirname/pre_cmd_path
  cat /home/engines/templates/backup/duply_pre > $dirname/pre
  cat /home/engines/templates/backup/duply_post > $dirname/post   
 fi
