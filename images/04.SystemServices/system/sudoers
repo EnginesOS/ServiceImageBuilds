@@ -12,7 +12,7 @@ engines ALL = (root) NOPASSWD: /home/engines/scripts/system/_kill_syslog.sh
 engines ALL = (root) NOPASSWD: /opt/engines/system/scripts/backup/sudo/_system_files.sh
 engines ALL = (root) NOPASSWD: /opt/engines/system/scripts/backup/sudo/_archive_engine_bundle.sh
 engines ALL = (root) NOPASSWD: /opt/engines/system/scripts/backup/sudo/_import_engine_bundle.sh
-                              
+engines ALL = (root) NOPASSWD:  /opt/engines/system/scripts/backup/sudo/_clear_engine_bundle.sh                     
 #ALL ALL = (root) NOPASSWD: ALL
 
 
