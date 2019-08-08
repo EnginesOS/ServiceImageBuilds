@@ -4,6 +4,10 @@ FROM  engines/servicebase:$release
 RUN /usr/sbin/addgroup --gid 21999 edocker &&\
 	/usr/sbin/addgroup --gid 909 docker &&\
 	/home/engines/scripts/build/no_init.sh &&\	
+	apt-get install -y dirmngr gnupg  apt-transport-https &&\
+ 	apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 561F9B9CAC40B2F7 &&\
+	echo deb https://oss-binaries.phusionpassenger.com/apt/passenger bionic main >/etc/apt/sources.list.d/passenger.list &&\ 
+	chmod 600 /etc/apt/sources.list.d/passenger.list &&\
 	apt-get update -y &&\
 	apt-get -y install ruby-dev \
 						telnet \
@@ -19,11 +23,6 @@ RUN /usr/sbin/addgroup --gid 21999 edocker &&\
 	mkdir -p /opt/engines/run/system/ &&\
 	chown -R engines /opt/engines/run/system/ /home/engines /var/log/ &&\
 	usermod -G docker -a engines &&\
-	apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 561F9B9CAC40B2F7 &&\
- 	apt-get update -y &&\
-	apt-get install -y apt-transport-https  &&\
-	echo deb https://oss-binaries.phusionpassenger.com/apt/passenger bionic main >/etc/apt/sources.list.d/passenger.list &&\
-	chmod 600 /etc/apt/sources.list.d/passenger.list &&\
 	gem install passenger &&\
 	apt-get install -y nginx-common \
 	                   nginx-extras \
