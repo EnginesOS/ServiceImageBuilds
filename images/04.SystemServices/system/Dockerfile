@@ -24,27 +24,28 @@ RUN /usr/sbin/addgroup --gid 21999 edocker &&\
 	apt-get install -y apt-transport-https  &&\
 	echo deb https://oss-binaries.phusionpassenger.com/apt/passenger bionic main >/etc/apt/sources.list.d/passenger.list &&\
 	chmod 600 /etc/apt/sources.list.d/passenger.list &&\
-	apt-get update -y &&\
 	apt-get install -y passenger-dev &&\
 	gem install passenger &&\
 	apt-get install -y nginx-common \
 	                   nginx-extras \
-	                   nginx &&\
+	                   nginx \
+					   libnginx-mod-http-passenger &&\
  	mkdir -p /var/www/.passenger &&\
- 	chown www-data /var/www/.passenger &&\
+ 	chown engines /var/www/.passenger &&\
 	usermod -G containers -a www-data &&\
- 	chown www-data /var/lib/nginx/ &&\
+ 	chown engines /var/lib/nginx/ &&\
  	passenger-config  build-native-support &&\
+ 	touch /home/.env_vars  &&\
+ 	chown engines /home/.env_vars /var/run/ &&\
 	gem install --no-rdoc --no-ri git bundle rest-client net_http_unix excon \
 	 			gctools yajl-ruby sinatra thin rubytree  sinatra-contrib \
 			 	warden data_mapper dm-sqlite-adapter ffi-yajl sqlite3 rb-inotify puma timers net-ldap &&\		
  	/home/engines/scripts/build/post_build_clean.sh
 	
 ADD home home
-ADD src/profile /home/engines/.profile
-COPY src/etc/nginx/ /etc/nginx
-COPY src/ruby_env /home/
-ADD sudoers /etc/sudoers.d/system 
+COPY src/etc/ /etc
+
+
 ENV ContUser engines
 ENV ContGrp ruby
 
@@ -52,24 +53,14 @@ ENV ContGrp ruby
 RUN mkdir -p /home/app/db &&\
  	chown engines /home/app/db 	 &&\
 	chown root /etc/sudoers.d/system &&\
-	chmod og-rw /etc/sudoers.d/system 
-
-WORKDIR /home/app/
-
-#RUN	git init
-
-#ADD src/gitconfig /home/app/.git/config
-
-RUN mkdir -p /home/engines/.ssh/system /home/app/tmp/ /home/app/public &&\	
+	chmod og-rw /etc/sudoers.d/system &&\
+	mv /home/engines/profile /home/engines/.profile &&\
+    mkdir -p /home/engines/.ssh/system /home/app/tmp/ /home/app/public &&\	
 	touch /home/.env_vars &&\
 	chown 21000 /home/.env_vars &&\
  	chown -R 21000 /home/app/ /home/engines/scripts/configurators/saved &&\
  	usermod -G containers -a engines
- 	
-#USER 21000
-#RUN  cd /home/app &&\
-	# git pull origin master
-	 
+
 
 ENV PATH /usr/local/bin:/usr/bin:/bin:/usr/sbin
 ENV HOME /home/engines/

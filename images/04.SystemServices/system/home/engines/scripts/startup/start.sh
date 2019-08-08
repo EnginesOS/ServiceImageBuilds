@@ -12,7 +12,7 @@ if test -z $THREADED
  fi   
  if test -f /home/engines/etc/ssl/keys/system.key 
   then
-	thin $THREADED --ssl --ssl-key-file /home/engines/etc/ssl//keys/system.key --ssl-cert-file /home/engines/etc/ssl/certs/system.crt -C /home/app/config.yml -R /home/app/config.ru start >> /var/log/system.log &
+	thin $THREADED --ssl --ssl-key-file /home/engines/etc/ssl/keys/system.key --ssl-cert-file /home/engines/etc/ssl/certs/system.crt -C /home/app/config.yml -R /home/app/config.ru start >> /var/log/system.log &
   else
 	thin $THREADED -C /home/app/config.yml -R /home/app/config.ru start > /var/log/system.log &
  fi
@@ -32,16 +32,22 @@ puma $options &
 
 start_passenger()
 {
-#cp /home/ruby_env /home/.env_vars
-#  for env_name in `cat /home/app.env `
-#  	do
-#   	  if ! test -z  "${!env_name}"
-#        then
-#  	      echo  "passenger_env_var $env_name \"${!env_name}\";" >> /home/.env_vars
-#  	  fi
-#  	done 
+if test -f /home/engines/etc/ssl/keys/system.key 
+  then
+    options="-c /etc/nginx/nginx_https.conf"
+   else
+      options="-c /etc/nginx/nginx_http.conf"
+   fi   
+cp /home/ruby_env /home/.env_vars
+  for env_name in `cat /home/app.env `
+  	do
+   	  if ! test -z  "${!env_name}"
+        then
+  	      echo  "passenger_env_var $env_name \"${!env_name}\";" >> /home/.env_vars
+  	  fi
+  	done 
 
- nginx &
+ nginx $options &
 echo $! >  $PID_FILE
 }
 export RUBY_GC_MALLOC_LIMIT_GROWTH_FACTOR=1.1
