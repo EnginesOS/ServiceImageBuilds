@@ -24,7 +24,6 @@ RUN /usr/sbin/addgroup --gid 21999 edocker &&\
 	apt-get install -y apt-transport-https  &&\
 	echo deb https://oss-binaries.phusionpassenger.com/apt/passenger bionic main >/etc/apt/sources.list.d/passenger.list &&\
 	chmod 600 /etc/apt/sources.list.d/passenger.list &&\
-	apt-get install -y passenger-dev &&\
 	gem install passenger &&\
 	apt-get install -y nginx-common \
 	                   nginx-extras \
