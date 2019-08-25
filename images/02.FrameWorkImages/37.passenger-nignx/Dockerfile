@@ -10,9 +10,8 @@ RUN /usr/sbin/usermod -u 22671 www-data &&\
 	apt-get install -y apt-transport-https  &&\
 	echo deb https://oss-binaries.phusionpassenger.com/apt/passenger bionic main >/etc/apt/sources.list.d/passenger.list &&\ 
 	chmod 600 /etc/apt/sources.list.d/passenger.list &&\
-	apt-get update -y
-	 
-RUN 	gem install passenger &&\
+	apt-get update -y &&\
+	gem install passenger &&\
 	apt-get install -y nginx-common \						
 	                   nginx-extras \
 	                   nginx \
