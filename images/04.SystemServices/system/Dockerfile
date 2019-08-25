@@ -60,7 +60,7 @@ RUN mkdir -p /home/app/db &&\
  	usermod -G containers -a engines
 
 
-ENV PATH /usr/local/bin:/usr/bin:/bin:/usr/sbin
+ENV PATH /usr/local/bin:/usr/bin:/bin:/usr/sbin:/bin:/sbin/
 ENV HOME /home/engines/
 		
 USER 21000
