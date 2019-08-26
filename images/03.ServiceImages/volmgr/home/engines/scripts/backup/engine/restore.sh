@@ -1,18 +1,22 @@
 #!/bin/sh
 
-
-if test -z $parent_engine
+if ! test $1
  then
-  echo "parent_engine cannot be blank
-  exit -1
+  if test -z $service_handle
+   then
+   	service_handle=$1
+  fi 	
 fi
 
-if test -z $service_handle
+   
+if ! test $2
  then
-  echo "service_handle cannot be blank
-  exit -1
+  if test -z $parent_engine
+   then
+    parent_engine=$2
+   fi
 fi
-  
+
 
  mkdir -p /tmp/big/
 Archive=/tmp/big/archive

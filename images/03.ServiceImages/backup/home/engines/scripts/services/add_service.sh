@@ -1,6 +1,6 @@
 #!/bin/sh
 
-temp_file=`mktemp`
+
 . /home/engines/functions/checks.sh
 . /home/engines/scripts/engine/backup_dirs.sh
  
@@ -23,25 +23,22 @@ export backup_type
 
 if test $src_type = 'engine'
  then
-   /home/engines/scripts/engine/add_backup.sh ${parent_engine}:system
+   /home/engines/scripts/engine/add_backup.sh ${parent_engine}
    n=1
-   curl -k https://172.17.0.1:2380/v0/backup/engine/services/${parent_engine}\
- | tr -d "\n\r"  |sed "/:/s//=/g" | sed "/,/s//\n/g"  | tr -d "{}\""  > $temp_file
-   . $temp_file
-   service=`eval echo service$n`
-	 while ! test -z $service
+   services=`curl -k https://172.17.0.1:2380/v0/backup/engine/services/${parent_engine}\
+ | tr -d "\n\r" | sed "/,/s//\n/g"  | tr -d "{}\""  | cut -f2 -d:`
+   
+  for service in $services
  	 do
-       /home/engines/scripts/engine/add_backup.sh `eval echo service$n`
-       n=`expr $n + 1`
-       service=`eval echo service$n`
+       /home/engines/scripts/engine/add_backup.sh $service
  	 done
- 	/home/engines/scripts/engine/add_backup.sh config:${parent_engine}	
+ 	/home/engines/scripts/engine/add_backup.sh ${parent_engine}	add 
 elif test $backup_type = 'engine_only'
   then
-    /home/engines/scripts/engine/add_backup.sh config:${parent_engine}
+    /home/engines/scripts/engine/add_backup.sh ${parent_engine} add
 else
    /home/engines/scripts/engine/add_backup.sh ${parent_engine}/service/${publisher_namespace}/${type_path}/${service_handle}
 fi
-rm $temp_file
+
  exit 0
  

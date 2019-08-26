@@ -18,6 +18,10 @@ RUN /usr/sbin/usermod -u 22671 www-data &&\
 	chown www-data /var/www/ &&\
 	usermod -G smmsp -a www-data &&\
 	pecl channel-update pecl.php.net &&\
+	mkdir /tmp/composer &&\
+	cd /tmp/composer &&\
+	curl -sS https://getcomposer.org/installer | php &&\
+	mv composer.phar  /usr/local/bin &&\
  	/home/engines/scripts/build/post_build_clean.sh
 	
 

@@ -1,5 +1,5 @@
 FROM  engines/frameworkbase:$release
-ADD sources.list /etc/apt/ 
+
 ADD home/engines /home/engines
 RUN apt-get update -y &&\
 	apt-get install -y zlib1g \

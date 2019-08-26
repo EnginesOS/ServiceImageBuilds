@@ -3,12 +3,12 @@
 
 #FIXME check curent password
 password=`cat -`
-shapass=`echo -n $password  | openssl dgst -sha1 -binary | openssl enc -base64`
 
-cat /home/engines/templates/ldap/admin_user_pass.ldif | while read LINE
-do
- eval echo "$LINE" >> $LDIF_FILE
-done
+salt=`head -c 40 /dev/random | base64 | sed -e 's/+/./g' |  cut -b 10-25`
+cat /home/engines/templates/ldap/admin_user_pass.ldif > $LDIF_FILE
+crypt=`mkpasswd --rounds 500000 -m sha-512 --salt $salt $password`
+echo 'userpassword: {CRYPT}'$crypt >> $LDIF_FILE
+
 kinit -kt /etc/krb5kdc/keys/ldap.keytab 
 ldapmodify -H ldapi:/// -f $LDIF_FILE
 result=$?

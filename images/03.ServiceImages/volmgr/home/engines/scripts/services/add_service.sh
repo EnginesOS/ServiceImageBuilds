@@ -45,7 +45,7 @@ elif test -z $is_secret
     #fi      
   sudo -n /home/engines/scripts/services/sudo/_create_volume.sh
 else
-   sudo -n /home/engines/scripts/services/sudo/_create_secret.sh
+   sudo -n /home/engines/scripts/services/sudo/_create_secret.sh $length
 fi
 
 if test $? -eq 0

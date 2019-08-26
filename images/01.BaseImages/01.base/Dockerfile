@@ -1,10 +1,8 @@
 FROM engines/bionicbeaverbase:$release
 
-COPY src/usr/sbin/invoke-rc.d /usr/sbin/
 
-ADD home /home/
-	
-ENV	build ${BuildDate}
+COPY home /home
+COPY src/usr/sbin/invoke-rc.d /usr/sbin/
 
 RUN	echo '#!/bin/sh' >/usr/sbin/policy-rc.d &&\
 	echo exit 101 >> /usr/sbin/policy-rc.d &&\
@@ -24,8 +22,7 @@ RUN	echo '#!/bin/sh' >/usr/sbin/policy-rc.d &&\
 	apt-get -y dist-upgrade &&\
 	apt-get -y update &&\
 	/home/engines/scripts/build/no_init.sh &&\
-	apt-get -y --fix-missing install ldap-utils \
-									 sendmail-bin \
+	apt-get -y --fix-missing install sendmail-bin \
 			           			     ca-certificates \
 		 						     krb5-user \
 	 								 krb5-config \
@@ -41,7 +38,11 @@ RUN	echo '#!/bin/sh' >/usr/sbin/policy-rc.d &&\
 	 								 dnsutils \
 	 								 wget \
 	 								 bzip2 \
-	 								 zlibc &&\ 
+	 								 zlibc  \
+	 				   				sudo \
+	 				   				libnss-ldap \
+	 				   				libpam-ldap \
+	 				   				ldap-utils &&\ 
 	apt-get -y clean &&\
 	mkdir -p /var/run &&\
 	mkdir -p /etc/apt/apt.conf.d/ &&\
@@ -60,15 +61,11 @@ RUN	echo '#!/bin/sh' >/usr/sbin/policy-rc.d &&\
 	mkdir -p  /home/engines/etc/ssl/CA &&\
 	ln -s /home/engines/etc/ssl/CA /usr/share/ca-certificates/engines &&\
  	echo engines/engines_internal_ca.crt >> /etc/ca-certificates.conf
- 	 
-COPY src/etc/mail/submit.mc /etc/mail
-COPY src/etc/mail/sendmail.mc /etc/mail
- 	
-RUN	echo y y |sendmailconfig --no-reload &&\ 	
-	chmod g+w /var/spool/mqueue 
-	
-ADD sudoers /etc/sudoers.d/system
-ADD src/etc/krb5.conf /etc/
-ADD src/etc/rsyslog.conf /etc/		
+
+COPY src/ /
+RUN	 chmod -R go-w /etc/mail/ &&\
+	echo y y |sendmailconfig --no-reload &&\
+	chmod g+w /var/spool/mqueue &&\
+	chmod -R go-rw /etc/sudoers 
 
 
