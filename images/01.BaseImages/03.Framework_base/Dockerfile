@@ -24,6 +24,6 @@ RUN apt-get update -y &&\
 	chmod g+w $HOME &&\
 	chmod -R go-rw /etc/sudoers /etc/sudoers.d/ &&\
 	rm -rf /tmp/* &&\
-	mkdir /home/users &&\	
+	mkdir /home/users /home/fs &&\	
 	ln -s /home/users/ /home/fs/users
 	
