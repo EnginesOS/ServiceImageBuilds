@@ -5,7 +5,7 @@ ADD home home
 ENV ContUser python
 ENV ContGrp python
 RUN apt-get update -y &&\
-	apt-get install -y apache \
-	libapache2-mod-wsgi 
+	apt-get install -y apache2 \
+	libapache2-mod-wsgi-py3
  	
 ADD home home

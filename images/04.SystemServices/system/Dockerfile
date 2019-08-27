@@ -35,6 +35,8 @@ RUN /usr/sbin/addgroup --gid 21999 edocker &&\
  	passenger-config  build-native-support &&\
  	touch /home/.env_vars  &&\
  	chown engines /home/.env_vars /var/run/ &&\
+    gem update &&\
+    gem update --system &&\
 	gem install --no-rdoc --no-ri git bundle rest-client net_http_unix excon \
 	 			gctools yajl-ruby sinatra thin rubytree  sinatra-contrib \
 			 	warden data_mapper dm-sqlite-adapter ffi-yajl sqlite3 rb-inotify puma timers net-ldap &&\		

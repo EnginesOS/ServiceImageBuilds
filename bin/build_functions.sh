@@ -3,7 +3,7 @@ echo "Building $tag"
 
 if test -f setup.sh
  then 
-  ./setup.sh
+  release=$release ./setup.sh
 fi
 
 if test -f .env
