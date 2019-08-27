@@ -10,6 +10,7 @@ RUN /home/engines/scripts/build/no_init.sh &&\
 	groupadd -g 22023 registry &&\
 	useradd -u 22023 -g registry -d /home/registry -m -G containers registry &&\
  	/home/engines/scripts/build/post_build_clean.sh ;\
+    echo 'gem: --no-document' >> ~/.gemrc &&\
     gem update &&\
     gem update --system &&\
 	gem install bundle gctools rest-client sinatra thin yajl-ruby rubytree ffi-yajl sinatra-contrib
