@@ -81,5 +81,8 @@ echo System Shutdown $TS
 
 shutdown_complete
 
-
+if test -f /home/engines/run/flags/wait_before_shutdown
+ then 
+  sleep 500
+fi  
 
