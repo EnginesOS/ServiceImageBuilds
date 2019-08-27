@@ -13,7 +13,7 @@ RUN /home/engines/scripts/build/no_init.sh &&\
     echo 'gem: --no-document' >> ~/.gemrc &&\
     gem update &&\
     gem update --system &&\
-	gem install bundle gctools rest-client sinatra thin yajl-ruby rubytree ffi-yajl sinatra-contrib
+	gem install bundle gctools rest-client sinatra thin yajl-ruby rubytree ffi-yajl sinatra-contrib sinatra-cross_origin
 
 COPY home home	
 

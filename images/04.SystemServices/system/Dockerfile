@@ -39,7 +39,7 @@ RUN /usr/sbin/addgroup --gid 21999 edocker &&\
     gem update --system &&\
     echo 'gem: --no-document' >> ~/.gemrc &&\
 	gem install git bundle rest-client net_http_unix excon \
-	 			gctools yajl-ruby sinatra thin rubytree  sinatra-contrib \
+	 			gctools yajl-ruby sinatra thin rubytree  sinatra-contrib sinatra-cross_origin\
 			 	warden data_mapper dm-sqlite-adapter ffi-yajl sqlite3 rb-inotify puma timers net-ldap &&\		
  	/home/engines/scripts/build/post_build_clean.sh
 	
