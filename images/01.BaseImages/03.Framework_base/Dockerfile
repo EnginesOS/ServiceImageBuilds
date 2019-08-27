@@ -11,7 +11,7 @@ RUN apt-get update -y &&\
 	 				   imagemagick \
 	 				   gawk \
 	 				   sqlite3 \
-	 				   bison \
+	 				   bison &&\
 	mkdir -p /home/fs &&\ 
 	useradd -u 11111 data-user &&\
 	chgrp containers /var/log/ &&\
@@ -24,6 +24,6 @@ RUN apt-get update -y &&\
 	chmod g+w $HOME &&\
 	chmod -R go-rw /etc/sudoers /etc/sudoers.d/ &&\
 	rm -rf /tmp/* &&\
-	mkdir /home/users /home/fs &&\	
+	mkdir /home/users  &&\	
 	ln -s /home/users/ /home/fs/users
 	
