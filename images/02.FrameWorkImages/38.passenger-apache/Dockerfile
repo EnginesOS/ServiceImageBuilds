@@ -14,7 +14,7 @@ RUN /usr/sbin/usermod -u 22671 www-data &&\
 	echo deb https://oss-binaries.phusionpassenger.com/apt/passenger bionic main >/etc/apt/sources.list.d/passenger.list &&\ 
 	chmod 600 /etc/apt/sources.list.d/passenger.list &&\
     rm etc/apache2/sites-enabled/* &&\
-	gem install --no-rdoc --no-ri passenger &&\
+	gem install  passenger &&\
     passenger-install-apache2-module -a --languages ruby,nodejs,python &&\
 	mkdir -p /var/log/apache2 &&\
 	chown -R www-data /var/log/apache2 &&\
