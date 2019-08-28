@@ -19,9 +19,15 @@ if ! test -f ./first_run.key
 fi        
         
 /home/engines/scripts/engine/deployment.sh
+if test -f /home/engines/run/flags/use_ssl
+ then
+  bundle exec thin --ssl --ssl-key-file ./first_run.key --ssl-cert-file ./first_run.crt -R ./config.ru start > /var/log/firstrun.log &
+  echo $! >$PID_FILE
+else
+  bundle exec thin -R ./config.ru start > /var/log/firstrun.log &
+  echo $! >$PID_FILE
+fi
 
-bundle exec thin --ssl --ssl-key-file ./first_run.key --ssl-cert-file ./first_run.crt -R ./config.ru start > /var/log/firstrun.log &
-echo $! >$PID_FILE
 startup_complete
 
 wait 
