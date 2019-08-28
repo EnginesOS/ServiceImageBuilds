@@ -1,7 +1,7 @@
 #!/bin/sh
  . /home/engines/functions/checks.sh
 
-ca_name=system_CA
+ca_name=system
 export ca_name
 
 required_values="domain_name country state city organisation person "
