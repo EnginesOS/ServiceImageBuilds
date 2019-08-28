@@ -51,7 +51,15 @@ openssl x509 -req \
 	-out $cert_dir/${common_name}.crt.tmp \
 	-days 500  \
 	-extensions req_ext
-	
+	echo openssl x509 -req \
+	-in $pending_csr_dir/${common_name}.csr \
+	-sha256 \
+	-CA  $StoreRoot/public/ca/certs/${ca_name}_CA.pem \
+	-CAkey $StoreRoot/private/$ca_name/${ca_name}_CA.key \
+	-CAcreateserial \
+	-out $cert_dir/${common_name}.crt.tmp \
+	-days 500  \
+	-extensions req_ext > /tmp/sslcmd
 # -extfile  $setup_dir/${common_name}_config
 if test $? -ne 0
  then
