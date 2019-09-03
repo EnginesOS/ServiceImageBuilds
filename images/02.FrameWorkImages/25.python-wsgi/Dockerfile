@@ -8,4 +8,4 @@ RUN apt-get update -y &&\
 	apt-get install -y apache2 \
 	libapache2-mod-wsgi-py3
  	
-ADD home home
+ADD src/etc  etc

@@ -1,0 +1,5 @@
+/usr/local/lib/python*/dist-packages/
+/var/log/apache2/
+/var/run/apache2/
+/var/lock/apache2/
+/home/app/venv
