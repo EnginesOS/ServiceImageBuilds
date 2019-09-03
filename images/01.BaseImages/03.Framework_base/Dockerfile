@@ -1,8 +1,8 @@
 FROM  engines/base:$release
 
 ADD home /home
-ADD engines_sudoers /etc/sudoers.d/engines
-ADD sources.list /etc/apt/
+ADD src/etc /etc
+ENV HOME /home/home_dir
 
 RUN apt-get update -y &&\
 	apt-get install -y mysql-client \
@@ -11,14 +11,9 @@ RUN apt-get update -y &&\
 	 				   imagemagick \
 	 				   gawk \
 	 				   sqlite3 \
-	 				   bison \
-	 				   sudo &&\
-	mkdir -p /home/fs 
-	
-
-ENV HOME /home/home_dir
-
-RUN	useradd -u 11111 data-user &&\
+	 				   bison &&\
+	mkdir -p /home/fs &&\ 
+	useradd -u 11111 data-user &&\
 	chgrp containers /var/log/ &&\
 	chmod g+w /var/log/ &&\
 	mkdir -p /home/engines/scripts/actionators/saved/ &&\
@@ -28,7 +23,7 @@ RUN	useradd -u 11111 data-user &&\
 	chgrp containers $HOME &&\
 	chmod g+w $HOME &&\
 	chmod -R go-rw /etc/sudoers /etc/sudoers.d/ &&\
-	rm -rf /tmp/*
-
-
-
+	rm -rf /tmp/* &&\
+	mkdir /home/users  &&\	
+	ln -s /home/users/ /home/fs/users
+	

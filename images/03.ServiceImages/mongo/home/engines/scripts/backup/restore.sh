@@ -1,7 +1,7 @@
-#!/bin/bash
+#!/bin/sh
 cd /tmp
 cat - | tar -xpf - dump
-passwd=`cat  /data/db/.priv/db_master_pass
+passwd=`cat  /data/db/.priv/db_master_pass`
 cd dump
 mongorestore  -h mongo --password $passwd -u admin  --oplog 
 if test $? -ne 0

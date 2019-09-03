@@ -1,4 +1,5 @@
 
+
 set_dest_uri()
 {
 if test $dest_proto = "local"

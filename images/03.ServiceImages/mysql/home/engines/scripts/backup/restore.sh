@@ -29,7 +29,7 @@ cat - | mysqlimport -B $opts -h 127.0.0.1 -u rma
 if test $? -ne 0
  then 
    cat  /tmp/restore.run
-   exit 127
+   exit 2
 fi
 
 mysqladmin -u rma flush-privileges

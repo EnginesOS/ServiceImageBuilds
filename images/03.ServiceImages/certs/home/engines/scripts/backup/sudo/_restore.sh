@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 cd /
 tar -xpf - 2> /tmp/tar.errs
 r=$?

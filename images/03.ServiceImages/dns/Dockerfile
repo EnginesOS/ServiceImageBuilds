@@ -29,7 +29,7 @@ RUN chown bind /var/run/named &&\
 
 USER bind
 
-RUN mkdir -p /home/bind/domain_list/lan /home/bind/domain_list/gw
+RUN mkdir -p /home/bind/domain_list/lan /home/bind/domain_list/wan
 
 ENV ContUser bind
 ENV ContGrp bind

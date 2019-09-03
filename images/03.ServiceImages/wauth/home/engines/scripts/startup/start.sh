@@ -1,17 +1,19 @@
 #!/bin/sh
 
-
-/usr/sbin/nginx &
-
+PID_FILE=/home/engines/run/ldap-auth-daemon.pid
+export PID_FILE
+. /home/engines/functions/trap.sh
 startup_complete
 
-wait
+
 exit_code=$?
-/home/app/nginx-ldap-auth-daemon.py -h 0.0.0.0\
+/home/app/nginx-ldap-auth-daemon.py --host 0.0.0.0\
 									-b "ou=people,dc=engines,dc=internal"\
 									-u ldap://ldap:389 \
-									 -f uid=%(username)s) \
 									 -D $ldap_dn\
-									 -w $ldap_password
+									 -w $ldap_password &
+									 
+ echo $! > $PID_FILE
+wait									
 									 
 shutdown_complete

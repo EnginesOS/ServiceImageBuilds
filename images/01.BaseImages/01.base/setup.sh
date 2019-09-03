@@ -2,4 +2,5 @@
 BuildDate=`date +%y%m%d`
 export BuildDate
 
-echo BuildDate=$BuildDate >.env
+echo export BuildDate=$BuildDate >.env
+echo ENV	build ${BuildDate} >> Dockerfile.$release
