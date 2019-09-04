@@ -4,12 +4,17 @@
  . /home/engines/functions/checks.sh
  if test -z $common_name
   then
-    common_name=$cert_usage
+    common_name=$cert_name
  fi   
  if test -z $cert_usage
   then
     cert_usage=cert
  fi   
+ if test -z $ca_name
+ then
+ ca_name=system
+fi
+ 
 required_values="container_type parent_engine common_name country state city organisation person"
 check_required_values
 install_target=$container_type/$parent_engine
