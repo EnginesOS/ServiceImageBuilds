@@ -110,13 +110,29 @@ mv /usr/lib/sasl2/sasl2_slapd.conf /usr/lib/sasl2/slapd.conf
 kinit -kt /etc/krb5kdc/keys/ldap.keytab 
 
 ldapadd -h ldap -f /home/engines/templates/ldap/first_run/initial_ous.ldif
+exit_code=$?
+
+if test $exit_code -ne 0
+ then
+  echo Failed initial_ous.ldif
+  kdestroy
+  exit $exit_code
 ldapadd -h ldap -f /home/engines/templates/ldap/first_run/group_ous.ldif
+exit_code=$?
+fi
+
+if test $exit_code -ne 0
+ then
+  echo Failed group_ous.ldif
+  kdestroy
+  exit $exit_code
+  fi
 ldapadd -h ldap -f /home/engines/templates/ldap/first_run/add_admin.ldif
 
 exit_code=$?
 if test $exit_code -ne 0
  then
-  echo Failed initial_ous.ldif
+  echo Failed add_admin.ldif
   kdestroy
   exit $exit_code
 fi  
