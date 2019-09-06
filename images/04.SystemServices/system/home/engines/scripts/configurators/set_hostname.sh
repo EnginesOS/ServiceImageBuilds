@@ -21,5 +21,5 @@ if  test -z ${domain_name}
 fi
 /opt/engines/system/scripts/system/set_hostname.sh $hostname.$domain_name
 
-echo hostname $hostname.$domain_name > /tmp/set_hostname
+echo  $hostname.$domain_name > /tmp/set_hostname
 exit 0

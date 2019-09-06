@@ -13,6 +13,7 @@ if test -d /etc/opendkim/keys/
     if test $n -ne 0
      then
       echo -n ","
+    else
       n=1
     fi  
     echo -n '"'$domain'"'
