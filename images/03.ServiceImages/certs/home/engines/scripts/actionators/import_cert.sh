@@ -19,11 +19,11 @@ if ! test -z $password
   mv $ImportedRoot/keys/btmp.key $ImportedRoot/keys/tmp.key
 fi
 
-common_name=`cat $ImportedRoot/certs/tmp.crt | openssl x509 -noout -subject  |sed "/^.*CN=/s///"| sed "/\*\./s///"`
 
-if test -z ${common_name}
+if test -z ${optional_cn}
  then
-  if test -z ${optional_cn}
+ common_name=`cat $ImportedRoot/certs/tmp.crt | openssl x509 -noout -subject  |sed "/^.*CN=/s///"| sed "/\*\./s///"`
+  if test -z ${common_name}
    then
      echo '{"status":"error","message":"Missing common_name"}'
      rm $ImportedRoot/keys/tmp.key $ImportedRoot/certs/tmp.crt
