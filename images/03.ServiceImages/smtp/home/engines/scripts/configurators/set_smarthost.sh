@@ -36,6 +36,7 @@ else
 fi 
 
 /home/engines/scripts/configurators/build_transport.sh
+sudo -n /home/engines/scripts/configurators/sudo/_rebuild_main.sh
 #
 #if test -f /home/engines/scripts/configurators/saved/deliver_local
 # then

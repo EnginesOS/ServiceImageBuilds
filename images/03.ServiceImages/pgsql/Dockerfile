@@ -6,15 +6,17 @@ RUN groupadd -g  22002 postgres &&\
 	apt-get update -y &&\
 	apt-get -y install postgresql \
 				       postgresql-contrib \
-				       libpq-dev &&\
+				       libpq-dev &&\	       
  	/home/engines/scripts/build/post_build_clean.sh
  	
 ADD home home
 
 RUN mv /var/lib/postgresql /var/lib/postgresql_firstrun &&\
- 	sed "/ssl-cert-snakeoil\.pem/s//engines\.crt/"  /etc/postgresql/${PGSQL_VERSION}/main/postgresql.conf > /etc/postgresql/${PGSQL_VERSION}/main/postgresql.conf.new &&\ 	 
+	sed "/^ssl = on/s//ssl = off/"  /etc/postgresql/${PGSQL_VERSION}/main/postgresql.conf > /etc/postgresql/${PGSQL_VERSION}/main/postgresql.conf.new &&\ 	 
+	cp /etc/postgresql/${PGSQL_VERSION}/main/postgresql.conf.new /etc/postgresql/${PGSQL_VERSION}/main/postgresql.conf &&\ 
+ 	sed "/\/etc\/ssl\/ssl-cert-snakeoil\.pem/s//\/home\/engines\/etc\/ssl\/certs\/engines\.crt/"  /etc/postgresql/${PGSQL_VERSION}/main/postgresql.conf > /etc/postgresql/${PGSQL_VERSION}/main/postgresql.conf.new &&\ 	 
  	cp /etc/postgresql/${PGSQL_VERSION}/main/postgresql.conf.new /etc/postgresql/${PGSQL_VERSION}/main/postgresql.conf &&\ 
- 	sed "/ssl-cert-snakeoil\.key/s//engines\.key/"  /etc/postgresql/${PGSQL_VERSION}/main/postgresql.conf > /etc/postgresql/${PGSQL_VERSION}/main/postgresql.conf.new &&\
+ 	sed "/\/etc\/ssl\/ssl-cert-snakeoil\.pem/s//\/home\/engines\/etc\/ssl\/keys\/engines\.key/"  /etc/postgresql/${PGSQL_VERSION}/main/postgresql.conf > /etc/postgresql/${PGSQL_VERSION}/main/postgresql.conf.new &&\
  	cp /etc/postgresql/${PGSQL_VERSION}/main/postgresql.conf.new /etc/postgresql/${PGSQL_VERSION}/main/postgresql.conf &&\
  	echo "listen_addresses = '*'" >> /etc/postgresql/${PGSQL_VERSION}/main/postgresql.conf &&\
  	echo "host all all 172.17.0.0/16  md5" >> /etc/postgresql/${PGSQL_VERSION}/main/pg_hba.conf &&\

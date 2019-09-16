@@ -16,7 +16,7 @@ fi
 
 
 
-/usr/lib/postgresql/9.5/bin/postgres -D /var/lib/postgresql/9.5/main -c config_file=/etc/postgresql/9.5/main/postgresql.conf &
+/usr/lib/postgresql/${PGSQL_VERSION}/bin/postgres -D /var/lib/postgresql/${PGSQL_VERSION}/main -c config_file=/etc/postgresql/${PGSQL_VERSION}/main/postgresql.conf &
 echo $! > $PID_FILE
 
 startup_complete

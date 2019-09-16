@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/bin/sh
 
-pass=`dd if=/dev/urandom count=6 bs=1  | od -h | awk '{ print $2$3$4}'`
+pass=`dd if=/dev/urandom count=6 bs=1 | od -h | awk '{ print $2$3$4}'`
  	#Run First Time on persistent DB
  	
 mkdir /var/run/postgresql/
@@ -8,7 +8,7 @@ mkdir /var/run/postgresql/
  if ! test -f /var/lib/postgresql/conf
  then
 	cp -rp /var/lib/postgresql_firstrun/* /var/lib/postgresql/ 
-   /usr/lib/postgresql/9.5/bin/postgres -D /var/lib/postgresql/9.5/main -c config_file=/etc/postgresql/9.5/main/postgresql.conf &
+   /usr/lib/postgresql/${PGSQL_VERSION}/bin/postgres -D /var/lib/postgresql/${PGSQL_VERSION}/main -c config_file=/etc/postgresql/${PGSQL_VERSION}/main/postgresql.conf &
    pid=$!
 
    echo "*:*:*:root:$pass" > /var/lib/postgresql/.pass
@@ -21,9 +21,9 @@ mkdir /var/run/postgresql/
 	 echo "Alter ROLE rma WITH superuser;" >> /tmp/t.sql
 	 echo "Alter ROLE rma WITH   login;" >> /tmp/t.sql
 	 echo "CREATE DATABASE rma OWNER = rma ;" >> /tmp/t.sql
-	 psql </tmp/t.sql	 
+	 psql </tmp/t.sql
 	 kill -TERM $pid
-	 wait $pid	  	
-     touch /home/engines/run/flags/first_run_done   	 	 	 
+	 wait $pid
+     touch /home/engines/run/flags/first_run_done
  fi
  	
