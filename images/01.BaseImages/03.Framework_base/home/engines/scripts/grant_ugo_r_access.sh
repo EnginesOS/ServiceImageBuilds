@@ -9,4 +9,4 @@ else
 fi
 
 path=`echo $entered_path |sed '/[ ;\\\"\`]/s///g ' | sed '/\.\./s///g'`
-sudo -n -u data-user /home/engines/scripts/sudo/_grant_ugo_rw_access.sh $recursive $path
+sudo -n -u data-user /home/engines/scripts/sudo/_grant_ugo_r_access.sh $recursive $path
