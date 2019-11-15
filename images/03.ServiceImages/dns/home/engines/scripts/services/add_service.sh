@@ -25,7 +25,7 @@
     echo Success
     exit 0
   fi
-if test $ip = false
+if test "$ip" = false
  then
   echo "No IP"
   exit 1
