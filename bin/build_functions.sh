@@ -11,7 +11,7 @@ if test -f .env
   . .env
 fi
 export BuildDate
-echo BUILDATe $BuildDate
+echo BUILDATE $BuildDate
 cat Dockerfile | sed "/\$release/s//$release/" \
 			   | sed "/\$edition/s//$edition/" > Dockerfile.$release
 			   
@@ -28,6 +28,7 @@ if ! test -z $del_first
 	docker rmi $tag
 fi	 
 
+echo docker $args
 if test -z $TEE
  then
   docker $args  >& build.log
@@ -146,6 +147,8 @@ function get_edition_and_release {
  if test -f release
   then
    release=`cat release`
+   export release
+   echo building $release
  else
     release=latest
   fi
