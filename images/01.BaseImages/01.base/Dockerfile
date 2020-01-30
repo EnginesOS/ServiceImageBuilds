@@ -21,6 +21,7 @@ RUN	echo '#!/bin/sh' >/usr/sbin/policy-rc.d &&\
 	apt-get -y upgrade &&\
 	apt-get -y dist-upgrade &&\
 	apt-get -y update &&\
+	cat /etc/apt/sources.list &&\
 	/home/engines/scripts/build/no_init.sh &&\
 	apt-get -y --fix-missing install sendmail-bin \
 			           			     ca-certificates \
