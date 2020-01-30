@@ -16,12 +16,12 @@ RUN	echo '#!/bin/sh' >/usr/sbin/policy-rc.d &&\
 	echo 'Acquire::GzipIndexes "true";Acquire::CompressionTypes::Order:: "gz";' > /etc/apt/apt.conf.d/docker-gzip-indexes &&\
 	sed -i 's/^#\s*\(deb.*universe\)$/\1/g' /etc/apt/sources.list &&\
  	apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ED8E640A&&\
- 	echo "deb http://security.ubuntu.com/ubuntu bionic-security main restricted universe" >  /etc/apt/sources.list.d/security.list &&\
+ 	echo "deb http://security.ubuntu.com/ubuntu bionic-security main restricted universe" >  /etc/apt/sources.list.d/security.list &&\ 	
+	cat /etc/apt/sources.list &&\
 	apt-get -y update &&\
 	apt-get -y upgrade &&\
 	apt-get -y dist-upgrade &&\
 	apt-get -y update &&\
-	cat /etc/apt/sources.list &&\
 	/home/engines/scripts/build/no_init.sh &&\
 	apt-get -y --fix-missing install sendmail-bin \
 			           			     ca-certificates \
