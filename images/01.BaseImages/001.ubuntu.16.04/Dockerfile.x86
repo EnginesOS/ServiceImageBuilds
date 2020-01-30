@@ -23,6 +23,7 @@ RUN echo '#!/bin/sh' > /usr/sbin/policy-rc.d &&\
 	echo "console-setup   console-setup/charmap47 select  UTF-8" > encoding.conf &&\
 	debconf-set-selections encoding.conf &&\
 	rm encoding.conf &&\
+	cat /etc/apt/sources.list  &&\
 	apt-get -y update &&\
 	apt-get -y upgrade &&\
     apt-get -y autoremove
