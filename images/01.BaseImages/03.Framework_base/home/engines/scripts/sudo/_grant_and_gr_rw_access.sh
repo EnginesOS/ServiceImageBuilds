@@ -9,7 +9,9 @@ else
 fi
 path=`echo $entered_path |sed '/[ ;\\\"\`]/s///g ' | sed '/\.\./s///g'`
 #FIXME needs to handle target of symbolic link
-echo chmod g+w $recursive /home/$path
+echo chmod g+wr $recursive /home/$path
 chgrp data-user $recursive /home/$path
 
- chmod g+w $recursive /home/$path
+ chmod g+wr $recursive /home/$path
+ 
+ 

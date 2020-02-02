@@ -4,6 +4,8 @@
 %containers ALL=(data-user) NOPASSWD: /home/engines/scripts/sudo/_grant_ugo_rw_access.sh
 %containers ALL=(data-user) NOPASSWD: /home/engines/scripts/sudo/_revoke_ugo_r_access.sh
 %containers ALL=(data-user) NOPASSWD: /home/engines/scripts/sudo/_grant_ugo_r_access.sh
+%containers ALL=(data-user) NOPASSWD: /home/engines/scripts/sudo/_revoke_ug_r_access.sh
+%containers ALL=(data-user) NOPASSWD: /home/engines/scripts/sudo/_grant_ug_r_access.sh
 %containers ALL=(data-user) NOPASSWD: /home/engines/scripts/sudo/_grant_rw_access.sh 
 %containers ALL=(ALL) NOPASSWD: /home/engines/scripts/make_persistent.sh
 

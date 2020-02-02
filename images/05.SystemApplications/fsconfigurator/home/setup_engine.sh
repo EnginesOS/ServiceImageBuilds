@@ -6,6 +6,7 @@ echo Setup Engine user $fw_user
 #VOLUME /home/fs
 #VOLUME /dest/fs
 
+set
 
 logs=`ls /var/log/`
 
@@ -20,7 +21,7 @@ mkdir -p /client/state/flags
 chown $fw_user -R /client/state
 touch client/state/flags/fsconfigurated
 chgrp 22020  -R /client/state
-chmod g+w  -R /client/state
+chmod g+w -R /client/state
 
 
 cd /home/fs_src/

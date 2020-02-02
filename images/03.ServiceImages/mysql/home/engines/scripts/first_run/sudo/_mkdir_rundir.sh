@@ -9,7 +9,7 @@ fi
 
 if ! test -d  /var/log/mysql/
  then
- 	echo "setup run dir"
+ 	echo "setup log dir"
  	mkdir -p /var/log/mysql
  	chown mysql /var/log/mysql/ 	
 fi

@@ -10,13 +10,15 @@ if test -f /home/engines/scripts/configurators/saved/rw_subnet
 then
  subnet=`cat /home/engines/scripts/configurators/saved/rw_subnet`
 else
- subnet=10.1.1.0
+ subnet=10.1.1.0 > /home/engines/scripts/configurators/saved/rw_subnet
+ echo -n $subnet 
 fi
 if test -f /home/engines/scripts/configurators/saved/rw_mask
 then
  mask=`cat /home/engines/scripts/configurators/saved/rw_mask`
 else
  mask=24
+ echo -n $mask > /home/engines/scripts/configurators/saved/rw_mask
 fi
 chown -R ivpn /home/ivpn/entries/
 
@@ -30,5 +32,5 @@ cat /home/engines/templates/ipsec.conf.tmpl | sed "/COMMON_NAME/s//$domain/"\
  
 cp /etc/ipsec.head /etc/ipsec.conf
  
-chmod og-rwx /etc/ipsec.d/private/ivpn.key /etc/ipsec.conf /etc/strongswan.d/charon/eap-radius.conf /etc/ipsec.conf
+chmod og-rwx /etc/ipsec.conf /etc/strongswan.d/charon/eap-radius.conf /etc/ipsec.conf
  

@@ -6,8 +6,8 @@ add_user_vpn()
 
 password=`echo -n "${password}" | iconv -t utf16le | openssl md4|cut -f2 -d" "`
 
- #echo "${vpn_name} : EAP \"${password}\"" > /home/ivpn/entries/users/${vpn_name}/secret
- echo "${vpn_name} : NTLM \"${password}\"" > /home/ivpn/entries/users/${vpn_name}/secret
+ echo "${vpn_name} : EAP \"${password}\"" > /home/ivpn/entries/users/${vpn_name}/secret
+ #echo "${vpn_name} : NTLM \"${password}\"" > /home/ivpn/entries/users/${vpn_name}/secret
  echo "" >> /home/ivpn/entries/users/${vpn_name}/secret
 
 }
@@ -28,8 +28,8 @@ if test -d /home/ivpn/entries/users/${vpn_name}/
 fi
  
 mkdir -p /home/ivpn/entries/users/${vpn_name}
-cat $PARAMS_FILE | sed "s/,\"password\":\".*\",/,/" > /home/ivpn/entries/users/${vpn_name}/details
-rm  $PARAMS_FILE 
+#cat $PARAMS_FILE | sed "s/,\"password\":\".*\",/,/" > /home/ivpn/entries/users/${vpn_name}/details
+#rm  $PARAMS_FILE 
 add_user_vpn
 
 err=`sudo -n /home/engines/scripts/actionators/sudo/_add_vpn_user.sh`
