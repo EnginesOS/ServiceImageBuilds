@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 pass=`dd if=/dev/urandom count=6 bs=1  | od -h | awk '{ print $2$3$4}'`
 echo -n $pass > /var/lib/mysql/.pass
 

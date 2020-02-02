@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 #usage -y|n {section}  
 #defaults to -n (delete existing data)
 # -y will merge

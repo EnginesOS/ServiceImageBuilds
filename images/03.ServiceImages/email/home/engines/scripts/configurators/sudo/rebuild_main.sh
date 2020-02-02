@@ -41,7 +41,7 @@ rbl_conf=`cat /home/engines/scripts/configurators/saved/rbls.conf`
 cat /home/engines/templates/email/main.cf | sed "/RBL_CONF/s//$rbl_conf/" \
 									      |	sed "/SPF/s//$spf_conf/"  \
 									      |	sed "/HOSTNAME_CHECKS/s//$hostname_checking/"  \
-									      | sed "/MAX_EMAIL_SIZE/s//$max_email_size/" \ 
+									      | sed "/MAX_EMAIL_SIZE/s//$max_email_size/" \
 											> /etc/postfix/main.cf
 
 if test -f /home/engines/scripts/configurators/saved/enforce_dkim
