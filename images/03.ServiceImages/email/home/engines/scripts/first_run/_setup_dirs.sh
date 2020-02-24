@@ -10,5 +10,8 @@ if ! test -d  /etc/postfix/maps/aliases/
    mkdir /etc/postfix/maps/aliases/
     touch /etc/postfix/maps/aliases/aliases    
 fi
+mkdir -p /var/spool/postfix/pid/
+
+chown postfix /var/spool/postfix/pid/
 
 chown postfix /etc/postfix/maps/aliases/
