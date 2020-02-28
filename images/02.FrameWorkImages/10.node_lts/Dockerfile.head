@@ -1,0 +1,9 @@
+FROM engines/frameworkbuild:$release
+
+ADD home home
+ENV ContUser node
+ENV ContGrp node
+ENV NODE_VERSION 12.16.1
+ENV SRC_URL=https://nodejs.org/dist/v12.16.1/node-v12.16.1-linux-x64.tar.xz
+
+
