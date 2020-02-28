@@ -2,8 +2,9 @@
 RUN mkdir /node_js_src &&\
 	cd /node_js_src &&\
 	wget -N ${SRC_URL}  &&\
-	tar -xvf node-${NODE_VERSION}.tar.gz &&\
-	rm node-${NODE_VERSION}.tar.gz &&\
+	if [ -z $SUFIX ] ; then  export SUFIX=tar.gz ;  fi`
+	tar -xvf node-${NODE_VERSION}.$SUFIX &&\
+	rm node-${NODE_VERSION}.$SUFIX &&\
 	cd node-* &&\
 	./configure &&\
 	make &&\
