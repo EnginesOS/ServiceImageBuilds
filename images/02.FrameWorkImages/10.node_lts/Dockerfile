@@ -16,6 +16,7 @@ RUN mkdir /node_js_src &&\
 	if [ -z $ARCHIVE ] ; then export ARCHIVE=node-v${NODE_VERSION}.tar.gz ;  fi &&\
 	tar -xvf $ARCHIVE &&\
 	rm $ARCHIVE &&\
+	ls . &&\
 	cd node-v* &&\
 	ls . &&\
 	cp -rp * /usr/local/&&\
