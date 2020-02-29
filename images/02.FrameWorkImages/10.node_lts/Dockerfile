@@ -13,10 +13,11 @@ ENV SRC_URL=https://nodejs.org/dist/v12.16.1/node-v12.16.1-linux-x64.tar.xz
 RUN mkdir /node_js_src &&\
 	cd /node_js_src &&\
 	wget -N ${SRC_URL}  &&\
-	if [ -z $ARCHIVE ] ; then export ARCHIVE=node-v${NODE_VERSION}-linux-x64.tar.gz ;  fi &&\
+	if [ -z $ARCHIVE ] ; then export ARCHIVE=node-v${NODE_VERSION}.tar.gz ;  fi &&\
 	tar -xvf $ARCHIVE &&\
 	rm $ARCHIVE &&\
-	cd node-v*&&\
+	cd node-v* &&\
+	ls . &&\
 	cp -rp * /usr/local/&&\
 	groupadd node ;\
  	useradd -g node -d /home/node -m -G containers node ;\
