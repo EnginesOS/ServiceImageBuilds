@@ -1,5 +1,6 @@
 FROM engines/frameworkbase:$release
 ENV OPENJDK_VERSION 11
+ENV JAVA_HOME /usr/lib/jvm/java-11-openjdk-amd64
 ADD home home
 RUN apt-mark unhold tzdata &&\
 	/usr/sbin/usermod -u 22671 www-data &&\
