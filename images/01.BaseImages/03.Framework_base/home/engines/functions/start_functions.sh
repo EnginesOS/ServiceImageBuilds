@@ -66,7 +66,7 @@ fi
 }
 
 framework_start(){
-if test -f /home/engines/scripts/startup/framework
+if test -f /home/engines/scripts/startup/framework_start.sh
  then
    /home/engines/scripts/startup/framework
  fi
