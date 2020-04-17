@@ -25,19 +25,6 @@ framework_start
 
 blocking
 
-#for non apache framework (or use custom start)
-if test -f /home/engines/scripts/start/startwebapp.sh 
- then
-   launch_app
-elif test -f /usr/sbin/apache2ctl
- then
-   export APACHE_PID_FILE=$PID_FILE
-   start_apache
-elif test -d /etc/nginx
- then
-   start_nginx	
-fi
-
 startup_complete
 wait 
 exit_code=$?
