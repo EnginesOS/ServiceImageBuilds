@@ -13,15 +13,20 @@ chmod g+w /home/engines/run/flags/started /home/engines/run/flags/startup_comple
 debug_catch_crash
 }
 
-
-blocking()
-{
-if test -f /home/engines/injections/app/blocking.sh 
-  then
-	 /home/engines/injections/app/blocking.sh  &
-	 echo -n " $!" >>  $PID_FILE
+custom_start(){
+ if test -f  /home/engines/scripts/custom_start.sh
+ then
+ 	/home/engines/scripts/custom_start.sh
 fi
+
+if ! test -z $exit_start
+ then
+  shutdown_complete
+fi  
+
 }
+
+
 
 shutdown_complete()
 {

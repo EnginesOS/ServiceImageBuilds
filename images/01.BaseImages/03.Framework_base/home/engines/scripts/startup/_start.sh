@@ -17,10 +17,8 @@ first_run
 
 restart_required
 
-pre_running
-
 custom_start
- 
+  
 framework_start
 
 blocking
@@ -28,5 +26,6 @@ blocking
 startup_complete
 wait 
 exit_code=$?
+sleep 30
 shutdown_complete
 exit $exit_code

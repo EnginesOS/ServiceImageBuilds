@@ -7,5 +7,5 @@
 
 /usr/sbin/apache2ctl -DFOREGROUND &       
 echo -n " $!" >  $PID_FILE
-echo started
+echo Apache started
 
