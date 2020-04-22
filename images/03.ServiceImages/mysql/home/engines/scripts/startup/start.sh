@@ -1,7 +1,7 @@
 #!/bin/sh
 
 
-PID_FILE=/home/engines/run/mysqld.pid
+PID_FILE=/var/run/mysqld.pid
 
 export PID_FILE
 . /home/engines/functions/trap.sh
