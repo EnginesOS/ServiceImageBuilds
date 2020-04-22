@@ -1,2 +1,4 @@
 /Dockerfile.latest
 /build.log
+/Dockerfile.k
+/last_built
