@@ -1,6 +1,3 @@
-/no_init.sh~
-/.env
-/Dockerfile.
 /Dockerfile.latest
 /build.log
 /last_built
