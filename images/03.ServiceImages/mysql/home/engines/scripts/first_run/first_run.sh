@@ -1,5 +1,5 @@
 #!/bin/sh
-pass=`dd if=/dev/urandom count=6 bs=1  | od -h | awk '{ print $2$3$4}'`
+pass=`dd if=/dev/urandom count=12 bs=1  | od -h | awk '{ print $2$3$4}'`
 echo -n $pass > /var/lib/mysql/.pass
 
 sudo -n /home/engines/scripts/first_run/sudo/_mkdir_rundir.sh
@@ -8,7 +8,7 @@ if ! test -d /var/lib/mysql/mysql
  then
    cd /home/mysql   
 	mysqld --initialize-insecure  --explicit_defaults_for_timestamp 	 
-	 /usr/sbin/mysqld --basedir=/usr --datadir=/var/lib/mysql --plugin-dir=/usr/lib/mysql/plugin --user=mysql --log-error=/var/log/mysql/error.log --pid-file=/home/engines/run/mysqld.pid --socket=/var/run/mysqld/mysqld.sock &
+	 /usr/sbin/mysqld --basedir=/usr --datadir=/var/lib/mysql --plugin-dir=/usr/lib/mysql/plugin --user=mysql --log-error=/var/log/mysql/error.log --pid-file=$PID_FILE --socket=/var/run/mysqld/mysqld.sock &
      pid=$! 
      sleep 20 
        while ! test -n /var/run/mysqld/mysqld.sock 	
