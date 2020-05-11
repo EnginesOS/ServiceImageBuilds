@@ -1,0 +1,1 @@
+define(`SMART_HOST', `smtp.engines.internal')

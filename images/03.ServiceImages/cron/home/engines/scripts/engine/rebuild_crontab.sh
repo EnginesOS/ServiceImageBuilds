@@ -10,7 +10,7 @@ rm /home/cron/spool/cron.orig
     else
       note_address=$note
     fi
-if !test -z $note_address
+if ! test -z $note_address
  then
    title=`cat $job/title`   
    note_details='|sendmail -f cron@'$defaultdomain' -s "Cron '$title'" '$note_address
