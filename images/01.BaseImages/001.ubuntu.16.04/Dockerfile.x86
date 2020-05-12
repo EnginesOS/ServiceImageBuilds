@@ -1,8 +1,6 @@
-#FROM engines/xenial:current
 FROM suet/core-bionic
 ENV DEBIAN_FRONTEND noninteractive
-COPY dpkg.conf.d /etc/dpkg/dpkg.cfg.d
-ADD sources.list /etc/apt/
+ADD src /
 ENV	base_build ${BuildDate}
 
 ENV EnginesRelease ${EnginesRelease}
@@ -14,17 +12,8 @@ RUN echo '#!/bin/sh' > /usr/sbin/policy-rc.d &&\
 	dpkg-divert --local --rename --add /sbin/initctl &&\
 	cp -a /usr/sbin/policy-rc.d /sbin/initctl &&\
 	sed -i 's/^exit.*/exit 0/' /sbin/initctl &&\
-	echo 'force-unsafe-io' > /etc/dpkg/dpkg.cfg.d/docker-apt-speedup &&\
-	echo 'DPkg::Post-Invoke { "rm -f /var/cache/apt/archives/*.deb /var/cache/apt/archives/partial/*.deb /var/cache/apt/*.bin || true"; };' > /etc/apt/apt.conf.d/docker-clean &&\
-	echo 'APT::Update::Post-Invoke { "rm -f /var/cache/apt/archives/*.deb /var/cache/apt/archives/partial/*.deb /var/cache/apt/*.bin || true"; };' >> /etc/apt/apt.conf.d/docker-clean &&\
-	echo 'Dir::Cache::pkgcache ""; Dir::Cache::srcpkgcache "";' >> /etc/apt/apt.conf.d/docker-clean &&\
-	echo 'Acquire::GzipIndexes "true"; Acquire::CompressionTypes::Order:: "gz";' > /etc/apt/apt.conf.d/docker-gzip-indexes &&\
  	sed -i 's/^#\s*\(deb.*universe\)$/\1/g' /etc/apt/sources.list &&\
 	rm -rf /var/cache/apt/archives &&\
 	echo "console-setup   console-setup/charmap47 select  UTF-8" > encoding.conf &&\
 	debconf-set-selections encoding.conf &&\
-	rm encoding.conf &&\
-	cat /etc/apt/sources.list  &&\
-	apt-get -y update &&\
-	apt-get -y upgrade &&\
-    apt-get -y autoremove
+	rm encoding.conf 
