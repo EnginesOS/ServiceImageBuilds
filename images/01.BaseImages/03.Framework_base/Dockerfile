@@ -21,6 +21,7 @@ RUN apt-get update -y &&\
 	chmod g+w /home/engines/scripts/actionators/saved/ &&\	
 	mkdir $HOME &&\
 	chgrp containers $HOME &&\
+	chgrp -R containers /home/engines/scripts &&\
 	chmod g+w $HOME &&\
 	chmod -R go-rw /etc/sudoers /etc/sudoers.d/ &&\
 	rm -rf /tmp/* &&\
