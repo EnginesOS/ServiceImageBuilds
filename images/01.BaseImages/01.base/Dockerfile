@@ -17,7 +17,6 @@ RUN	echo '#!/bin/sh' >/usr/sbin/policy-rc.d &&\
 	sed -i 's/^#\s*\(deb.*universe\)$/\1/g' /etc/apt/sources.list &&\
  	apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ED8E640A&&\
  	echo "deb http://security.ubuntu.com/ubuntu bionic-security main restricted universe" >  /etc/apt/sources.list.d/security.list &&\ 	
-	cat /etc/apt/sources.list &&\
 	apt-get -y update &&\
 	apt-get -y upgrade &&\
 	apt-get -y dist-upgrade &&\

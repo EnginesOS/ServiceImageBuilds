@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 echo chown ${user}.${group} /var/fs/local/${parent_engine}/${service_name} >/tmp/cmd
 chown ${user}.${group} /var/fs/local/${parent_engine}/${service_name}
  if ! test -z "$grp_write"

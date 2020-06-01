@@ -16,7 +16,7 @@ sudo -nu opendkim /home/engines/scripts/engine/sudo/rebuild_dkim.key.sh
 sudo -n -u opendkim /usr/sbin/opendkim  -l -W -v
 echo $! > /home/engines/run/opendkim.pid 
 
-sudo -n /home/engines/scripts/startup/sudo/_start_postfix.sh 
+sudo -n /home/engines/scripts/startup/sudo/start_postfix.sh 
 r=$?
 
 if test $r -eq 0
