@@ -27,7 +27,7 @@ fi
 /home/engines/scripts/startup/init_dbs.sh
 /home/engines/scripts/engine/init_ldap_config.sh
 
-sudo -n /home/engines/scripts/startup//sudo/_start_postfix.sh &
+sudo -n /home/engines/scripts/startup/sudo/_start_postfix.sh &
 startup_complete
 
 # FIXME be mroe intelligent on waiting for process to start

@@ -5,10 +5,22 @@ startup_complete()
 touch /home/engines/run/flags/startup_complete
 touch /home/engines/run/flags/started
 echo startup_complete > /home/engines/run/flags/state
+touch /home/engines/run/flags/started_once
+
 echo "Startup Complete"
 chgrp containers /home/engines/run/flags/started /home/engines/run/flags/startup_complete
 chmod g+w /home/engines/run/flags/started /home/engines/run/flags/startup_complete
 debug_catch_crash
+}
+
+
+blocking()
+{
+if test -f /home/engines/injections/app/blocking.sh 
+  then
+	 /home/engines/injections/app/blocking.sh  &
+	 echo -n " $!" >>  $PID_FILE
+fi
 }
 
 shutdown_complete()

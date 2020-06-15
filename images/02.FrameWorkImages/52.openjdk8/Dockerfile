@@ -1,5 +1,5 @@
 FROM engines/frameworkbase:$release
-
+ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
 ADD home home
 RUN apt-mark unhold tzdata &&\
 	/usr/sbin/usermod -u 22671 www-data &&\

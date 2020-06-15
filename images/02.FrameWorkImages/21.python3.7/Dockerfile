@@ -11,6 +11,7 @@ RUN groupadd -g 22674 python &&\
 	apt-get update -y &&\
 	apt-get install -y python \
 					   python-dev \
+					   python3.7-dev \
 					   python3.7 \
 					   python3-pip  &&\
     cd /tmp &&\
