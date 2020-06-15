@@ -1,2 +1,4 @@
 /Dockerfile.latest
 /build.log
+/Dockerfile.current
+/Dockerfile.spaces
