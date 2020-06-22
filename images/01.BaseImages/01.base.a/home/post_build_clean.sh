@@ -1,4 +1,6 @@
-#/bin/bash
+#!/bin/sh
+
+
 
 apt-get clean 
 apt-get autoremove 

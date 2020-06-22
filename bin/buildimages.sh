@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/sh
 
 . bin/build_functions.sh
 clear_old 
