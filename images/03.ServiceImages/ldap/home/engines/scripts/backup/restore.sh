@@ -6,7 +6,7 @@ exit_code=0
 echo $0 $1 $2 >/tmp/called
 replace=$1
 section=$2
-if $1 == replace
+if test "$1" == replace
  then
   cat - | sudo -n /home/engines/scripts/backup/sudo/_replace.sh $2
 else
