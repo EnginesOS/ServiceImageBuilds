@@ -11,7 +11,7 @@ section=$2
 if ! test -z $replace
  then
   opts=--delete
- elif test $replace = -y
+ elif test '$replace' = -y
   then
    opts=--replace
   else
@@ -23,7 +23,7 @@ if ! test -z $section
  opts="$opts --one-database $section"
  fi
  
-cat - | mysqlimport -B $opts -h 127.0.0.1 -u rma  
+cat - | mysqlimport -B $opts -h 127.0.0.1 -u rma  > /tmp/restore.run 2>&1
 
 
 if test $? -ne 0
