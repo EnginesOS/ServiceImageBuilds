@@ -1,0 +1,6 @@
+/Dockerfile.current
+/last_built
+/Dockerfile.production
+/Dockerfile.spaces
+/Dockerfile.latest
+/build.log

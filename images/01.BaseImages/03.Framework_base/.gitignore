@@ -1,10 +1,7 @@
-/no_init.sh~
-/.env
 /build.log
-/Dockerfile.
 /Dockerfile.current
 /last_built
 /Dockerfile.v2
+/Dockerfile.production
 /Dockerfile.spaces
 /Dockerfile.latest
-/Dockerfile.production
