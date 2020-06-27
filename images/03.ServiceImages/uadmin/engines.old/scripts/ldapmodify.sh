@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/bash
 
 
 sudo /home/engines/scripts/sudo/_ldapmodify.sh $* &> /tmp/ldap.mod.out

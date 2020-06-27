@@ -1,4 +1,4 @@
-##/bin/bash
+##!/bin/bash
 #
 #kinit -kt /etc/krb5kdc/keys/uadmin.keytab 
 #ldapmodify -h ldap -f /home/templates/incre_uid.ldif 

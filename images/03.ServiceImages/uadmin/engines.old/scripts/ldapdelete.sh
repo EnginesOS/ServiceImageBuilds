@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/bash
 
 sudo /home/engines/scripts/sudo/_ldapdelete.sh $* &> /tmp/ldap.del.out
 #if test $ldap_result -eq 0
