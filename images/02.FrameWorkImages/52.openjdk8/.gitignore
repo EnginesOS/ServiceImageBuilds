@@ -2,3 +2,4 @@
 /build.log
 /Dockerfile.current
 /Dockerfile.spaces
+/Dockerfile.production
