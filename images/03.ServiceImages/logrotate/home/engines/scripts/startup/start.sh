@@ -6,14 +6,11 @@ export PID_FILE
 startup_complete
 
 sleep 120
-sudo -n /usr/sbin/logrotate
-echo "Log Rotated Started"
+
 date
 
-
-
-
 sudo /usr/sbin/logrotate -f /home/logrotate.conf &
+echo "Log Rotated Started"
 pid=$!
 echo $pid >$PID_FILE
 
