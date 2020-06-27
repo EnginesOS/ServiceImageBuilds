@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+/Dockerfile.
+/Dockerfile.current
+=======
+>>>>>>> refs/remotes/origin/current
 /release
 /Dockerfile.
 /Dockerfile.current

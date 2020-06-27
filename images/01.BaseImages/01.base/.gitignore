@@ -1,5 +1,15 @@
 /no_init.sh~
 /.env
+<<<<<<< HEAD
+/build.log
+/Dockerfile.
+/Dockerfile.current
+/last_built
+/Dockerfile.v2
+/Dockerfile.spaces
+/Dockerfile.latest
+/Dockerfile.production
+=======
 /Dockerfile.
 /Dockerfile.k
 /Dockerfile.latest
@@ -8,4 +18,8 @@
 /Dockerfile.current
 /Dockerfile.spaces
 /Dockerfile.v2
+<<<<<<< HEAD
 /Dockerfile.production
+=======
+>>>>>>> refs/remotes/origin/current
+>>>>>>> refs/remotes/origin/production

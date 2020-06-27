@@ -1,3 +1,12 @@
+<<<<<<< HEAD
+/build.log
+/Dockerfile.current
+/last_built
+/Dockerfile.v2
+/Dockerfile.production
+/Dockerfile.spaces
+/Dockerfile.latest
+=======
 /Dockerfile.latest
 /build.log
 /Dockerfile.k
@@ -5,4 +14,8 @@
 /Dockerfile.current
 /Dockerfile.spaces
 /Dockerfile.v2
+<<<<<<< HEAD
 /Dockerfile.production
+=======
+>>>>>>> refs/remotes/origin/current
+>>>>>>> refs/remotes/origin/production

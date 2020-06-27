@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 n=0
 sleep 5
 while test $n -ne 5

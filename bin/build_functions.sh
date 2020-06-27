@@ -195,6 +195,7 @@ if test -f dependancies
  fi
 }
 function process_build_dir {
+echo Building $dir
 cd $dir
  if test -f TAG
    then        	

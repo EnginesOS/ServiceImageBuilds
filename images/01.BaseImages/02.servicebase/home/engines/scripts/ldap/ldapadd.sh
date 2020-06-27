@@ -1,4 +1,5 @@
-#/bin/bash
+#!/bin/sh
+
 
 . /home/engines/functions/ldap/support_functions.sh
 

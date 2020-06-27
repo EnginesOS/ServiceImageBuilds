@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+/build.log
+=======
+>>>>>>> refs/remotes/origin/current
 /Dockerfile.current
 /Dockerfile.latest
 /build.log
