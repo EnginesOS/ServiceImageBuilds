@@ -1,5 +1,12 @@
+<<<<<<< HEAD
 /Dockerfile.spaces
 /Dockerfile.production
 /Dockerfile.current
 /Dockerfile.latest
 /build.log
+=======
+/Dockerfile.latest
+/build.log
+/Dockerfile.current
+/Dockerfile.spaces
+>>>>>>> refs/remotes/origin/current

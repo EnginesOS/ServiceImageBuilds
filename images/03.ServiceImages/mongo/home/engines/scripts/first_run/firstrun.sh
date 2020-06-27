@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 db_password=`dd if=/dev/urandom count=6 bs=1  | od -h | awk '{ print $2$3$4}'`
 
 cat /home/tmpls/first_run.tmpl | sed "/DBPASSWD/s//$db_password/"  > /tmp/first_run.js

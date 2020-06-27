@@ -27,6 +27,8 @@ port_in_redirect off;
     proxy_read_timeout 86400;
      proxy_set_header X-Real-IP $remote_addr;    
      proxy_set_header Host $host;
+    proxy_set_header X-Forwarded-Host  $host;
+     proxy_set_header X-Forwarded-Port  $server_port; 
      proxy_set_header X-Forwarded-Proto HTTP;
      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; 
      add_header Strict-Transport-Security "max-age=31536000; includeSubdomains";

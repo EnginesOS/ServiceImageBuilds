@@ -1,4 +1,3 @@
-#FROM ubuntu:14.04
 FROM engines/xenialbase:$release 
 
 ENV DEBIAN_FRONTEND noninteractive

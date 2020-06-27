@@ -17,15 +17,18 @@ server {
     proxy_set_header Connection "upgrade";  
    #  proxy_set_header Connection $connection_upgrade;
     proxy_set_header Connection upgrade;
+    proxy_cache_bypass  $http_upgrade;
     proxy_http_version 1.1;
-    proxy_redirect off;
     proxy_buffering off;    
     proxy_read_timeout 86400;
     proxy_set_header X-Real-IP $remote_addr;    
-    proxy_set_header Host $host; 
-    proxy_set_header X-Forwarded-Proto HTTP;
+    proxy_set_header Host $host;    
+    proxy_set_header X-Forwarded-Proto $scheme;
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; 
-   add_header Accept-Ranges bytes;
+    proxy_set_header X-Forwarded-Host  $host;
+    proxy_set_header X-Forwarded-Port  $server_port;     
+    add_header Accept-Ranges bytes;  
+     proxy_set_header Referer $http_referer;
   }
   access_log /var/log/nginx/FQDN/http/access.log;
   error_log /var/log/nginx/FQDN/http/error.log;
@@ -62,15 +65,19 @@ port_in_redirect off;
     proxy_set_header Upgrade $http_upgrade;
    #  proxy_set_header Connection $connection_upgrade;
     proxy_set_header Connection upgrade;
+    proxy_cache_bypass  $http_upgrade;
     proxy_http_version 1.1;
     proxy_redirect off;
     proxy_buffering off;    
     proxy_read_timeout 86400;
     proxy_set_header X-Real-IP $remote_addr;    
     proxy_set_header Host $host;
-     proxy_set_header X-Forwarded-Proto https;
+    proxy_set_header X-Forwarded-Proto https;
+    proxy_set_header Referer $http_referer;
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; 
-    proxy_redirect     off;
+    proxy_set_header X-Forwarded-Host  $host;
+    proxy_set_header X-Forwarded-Port  $server_port;
+   # wrong  proxy_redirect     off;
  }
  location /502.html{
  } 
