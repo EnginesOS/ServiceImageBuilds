@@ -7,6 +7,9 @@ if ! test -d $StoreRoot/system
  then
   mkdir $StoreRoot/system 
   cd $StoreRoot
-  mv generated saved user completed_csr system
+   for d in saved user completed_csr 
+    do
+      mv $d system
+    done
    chown certs  -R system
 fi  
