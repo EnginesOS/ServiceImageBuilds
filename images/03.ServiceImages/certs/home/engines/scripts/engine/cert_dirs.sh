@@ -13,8 +13,6 @@ InstalledRoot=$StoreRoot/live
 ImportedRoot=$StoreRoot/imported
 CERT_DEFAULTS_FILE=$StoreRoot/default_cert_details
 
-
-
 resolve_key_dir()
 {
 item_type=key

@@ -12,7 +12,7 @@ COPY src/openssl.cnf /etc/ssl/
 
 RUN mkdir -p /home/certs/saved /home/certs/store/ca /home/certs/store/keys /home/certs/store/certs /home/certs/home &&\
 	chown certs -R /home/certs/saved /home/certs/store/ /home/engines/scripts/configurators/saved/ /home/certs/home &&\
-	chgrp -R containers /home/engines/scripts/actionators/ &&\
+	chgrp -R containers /home/engines/scripts/ &&\
 	chmod -R go-rw /etc/sudoers /etc/sudoers.d/
 
 	
