@@ -4,6 +4,7 @@ PID_FILE=/home/engines/run/sleep.pid
 export PID_FILE
 . /home/engines/functions/trap.sh
 
+service_first_run_check
 
 startup_complete
 
