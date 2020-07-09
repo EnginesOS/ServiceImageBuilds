@@ -21,7 +21,7 @@ cat /home/engines/templates/openssl.cnf | sed "/CA_NAME/s//system/g" >  system/o
  touch /home/certs/store/system/index.txt
  echo 9992 > /home/certs/store/system/crlnumber
  touch /home/certs/store/system/index.txt.attr
- touch /home/certs/home/.rnd
+ touch /home/certs/home/store/.rnd
  
 /home/engines/scripts/engine/build_crl.sh system
  if test $? -eq 0

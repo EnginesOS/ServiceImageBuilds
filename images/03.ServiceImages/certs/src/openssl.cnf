@@ -1,7 +1,7 @@
 # This definition stops the following lines choking if HOME isn't
 # defined.
 HOME                    = /home/certs/store/
-RANDFILE                = $ENV::HOME/.rnd
+RANDFILE                = $ENV::HOME/store/.rnd
 email_in_dn = no
 
 # Extra OBJECT IDENTIFIER info:
