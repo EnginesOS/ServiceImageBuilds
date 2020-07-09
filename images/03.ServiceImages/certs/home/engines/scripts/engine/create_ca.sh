@@ -40,7 +40,7 @@ echo "" >>/home/engines/scripts/configurators/saved/$ca_name.ca_setup
 #cat /home/engines/scripts/configurators/saved/$ca_name.ca_setup
 
 mkdir -p $StoreRoot/private/$ca_name $StoreRoot/$ca_name
- 
+touch $StoreRoot/private/$ca_name/.rnd
 cat /home/engines/templates/openssl.cnf \
 	| sed "/CA_NAME/s//$ca_name/g" > /$StoreRoot/private/$ca_name/open_ssl.cnf
  
