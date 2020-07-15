@@ -11,7 +11,7 @@ check_required_values
  								| sed "/DBUSER/s//$db_username/" \
  								| sed "/DBPASSWD/s//$db_password/"  > /tmp/create_cmd.js
  pass=`cat  /data/db/.priv/db_master_pass`		
- mongo -p $pass -u admin --authenticationDatabase admin < /tmp/create_cmd.js&> /tmp/res
+ mongo -p $pass -u admin --authenticationDatabase admin < /tmp/create_cmd.js2>&1 > /tmp/res
 res=`cat /tmp/res`
 
 echo $res | grep -v ERROR

@@ -42,7 +42,7 @@ for class in $class_list
 done
 
 echo Clearing unlinked images
-docker rmi $( docker images -f "dangling=true" -q) &>/dev/null
+docker rmi $( docker images -f "dangling=true" -q) 2>&1 >/dev/null
 echo Built $built_images
 
 

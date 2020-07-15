@@ -1,14 +1,19 @@
-#!/bin/bash
+#!/bin/sh
+. /home/engines/functions/ldap/support_functions.sh
 LDIF_FILE=`mktemp`
 sha_pass=`slappasswd -h {SHA} -s $ldap_password`
 cat /home/engines/templates/ldap/services/add_host_entry.ldif | while read LINE
 do
  eval echo "$LINE" >> $LDIF_FILE
 done
+echo "" >> $LDIF_FILE
+echo "" >> $LDIF_FILE
+
 cp $LDIF_FILE /tmp/create_account
-cat $LDIF_FILE | /home/engines/scripts/ldap/ldapadd.sh
+cat $LDIF_FILE | sudo /home/engines/scripts/ldap/sudo/_ldapadd.sh $* 2>&1 > $LDAP_OUTF
 
 if test -z $group_membership
+ then
  exit 0
 fi
 

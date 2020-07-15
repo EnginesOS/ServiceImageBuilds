@@ -1,3 +1,3 @@
 #!/bin/sh
 
-sudo -n /home/engines/scripts/signal/sudo/_stop_dovecot.sh $SIGNAL $PID_FILE &>/dev/null
+sudo -n /home/engines/scripts/signal/sudo/_stop_dovecot.sh $SIGNAL $PID_FILE 2>&1 >/dev/null

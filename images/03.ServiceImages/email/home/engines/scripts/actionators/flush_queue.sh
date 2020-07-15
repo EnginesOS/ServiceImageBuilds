@@ -1,6 +1,6 @@
 #!/bin/sh
 perr=`mktemp`
-postqueue -f &> $perr
+postqueue -f 2>&1 > $perr
 result=$?
 string_for_json=`cat $perr`
 rm $perr

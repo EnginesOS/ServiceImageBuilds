@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo /home/engines/scripts/sudo/_ldapdelete.sh $* &> /tmp/ldap.del.out
+sudo /home/engines/scripts/sudo/_ldapdelete.sh $* 2>&1 > /tmp/ldap.del.out
 #if test $ldap_result -eq 0
 # then
 #  echo '{"Result":"OK","ReturnCode",0}'

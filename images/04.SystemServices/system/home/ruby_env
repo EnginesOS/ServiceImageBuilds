@@ -1,4 +1,4 @@
 #Needs to be dynamic based on ram allocated to container
 passenger_env_var RUBY_GC_HEAP_GROWTH_FACTOR 1.1;
-passenger_env_var PATH /usr/local/bin:/usr/bin:/bin:/usr/sbin:/bin:/sbin/
+passenger_env_var PATH /usr/local/bin:/usr/bin:/bin:/usr/sbin:/bin:/sbin/;
 

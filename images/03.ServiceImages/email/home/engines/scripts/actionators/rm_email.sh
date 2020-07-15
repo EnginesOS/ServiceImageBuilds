@@ -8,7 +8,7 @@ if test -z $queue_id
 fi
 
 perr=`mktemp`
-sudo -n /home/engines/scripts/actionators/sudo/_rm_email.sh   $queue_id &>  $perr
+sudo -n /home/engines/scripts/actionators/sudo/_rm_email.sh   $queue_id 2>&1 >  $perr
 result=$?
 string_for_json=`cat  $perr`
 rm  $perr

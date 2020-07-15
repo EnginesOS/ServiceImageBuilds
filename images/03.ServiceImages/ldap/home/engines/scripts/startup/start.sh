@@ -14,6 +14,12 @@ while ! test -f /home/engines/run/flags/sig_term -o -f /home/engines/run/flags/s
 
    startup_complete
 
+  
+if ! test -f /home/engines/run/flags/init_ous_configured
+ then
+  /home/engines/scripts/first_run/init_ous_configured.sh &
+fi  
+
   wait
   exit_code=$?
 

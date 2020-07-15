@@ -13,6 +13,8 @@ RUN groupadd -g  22033 uadmin &&\
 						libssl-dev \
 						libreadline-dev \
 						autoconf \
+						libgdbm-dev \
+						ruby-qdbm \
 						libltdl-dev \
 						zlib1g-dev &&\
     gem install bundler &&\  				   

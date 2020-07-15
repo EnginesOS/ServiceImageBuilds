@@ -1,4 +1,4 @@
-#/!bin/bash
+#/!bin/sh
 
 
 dn="cn=$cn,ou=$parent_engine,ou=$top_ou,ou=Groups,dc=engines,dc=internal"

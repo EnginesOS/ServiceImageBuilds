@@ -1,0 +1,19 @@
+#Defaults  env_keep += "SIGNAL CONTAINER_NAME PID_FILE PID_FILES exit_code"
+Defaults  env_keep += "parent_engine service_handle service_name user group permissions  grp_write container_type engine_path volume_src  "
+volmgr ALL = (root) NOPASSWD: /home/engines/scripts/services/sudo/_update_service.sh
+volmgr ALL = (root) NOPASSWD: /home/engines/scripts/services/sudo/_create_volume.sh
+volmgr ALL = (root) NOPASSWD: /home/engines/scripts/services/sudo/_delete_volume.sh
+
+volmgr ALL = (root) NOPASSWD: /home/engines/scripts/backup/sudo/_backup.sh 
+volmgr ALL = (root) NOPASSWD: /home/engines/scripts/backup/sudo/_restore.sh
+        
+volmgr ALL = (root) NOPASSWD: /home/engines/scripts/services/sudo/_create_secret.sh
+volmgr ALL = (root) NOPASSWD: /home/engines/scripts/services/sudo/_delete_secret.sh
+volmgr ALL = (root) NOPASSWD: /home/engines/scripts/backup/engine/sudo/_backup.sh
+volmgr ALL = (root) NOPASSWD: /home/engines/scripts/backup/engine/sudo/_restore.sh
+volmgr ALL = (root) NOPASSWD: /home/engines/scripts/services/sudo/_create_homes.sh
+volmgr ALL = (root) NOPASSWD: /home/engines/scripts/services/sudo/_create_all_homes.sh
+volmgr ALL = (root) NOPASSWD: /home/engines/scripts/services/sudo/_remove_homes.sh
+volmgr ALL = (root) NOPASSWD: /home/engines/scripts/services/sudo/_remove_all_homes.sh
+#must have blank after last sudoers line
+

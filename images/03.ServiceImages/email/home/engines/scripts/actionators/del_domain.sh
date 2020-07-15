@@ -10,7 +10,7 @@ fi
 
 dn_tmpl=`cat /home/engines/templates/ldap/del_domain.ldif`
 dn=`eval echo $dn_tmpl `
-/home/engines/scripts/ldap/ldapdelete.sh $dn &> $LDAP_OUTF
+/home/engines/scripts/ldap/ldapdelete.sh $dn 2>&1 > $LDAP_OUTF
 result=$?
 
 process_ldap_result

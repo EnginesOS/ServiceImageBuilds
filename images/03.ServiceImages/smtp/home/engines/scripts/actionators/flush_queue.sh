@@ -1,7 +1,7 @@
 #!/bin/sh
 
 fq=`mktemp`
-postqueue -f &> $fq
+postqueue -f 2>&1 > $fq
 
 result=$?
 

@@ -2,7 +2,7 @@
 
 
 kinit -kt /etc/krb5kdc/keys/${CONTAINER_NAME}.keytab 
-/usr/bin/ldapadd -h ldap $*  
+cat - | /usr/bin/ldapadd -h ldap $*  
 ldap_result=$?
 kdestroy
 exit $ldap_result

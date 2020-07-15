@@ -24,9 +24,12 @@ LDIF_FILE=`mktemp`
    do
      eval echo "$LINE" >> $LDIF_FILE
    done
+   
+echo "" >> $LDIF_FILE
+echo "" >> $LDIF_FILE
 
 LDAP_OUTF=`mktemp`
-cat $LDIF_FILE |sudo /home/engines/scripts/ldap/sudo/_ldapmodify.sh  &> $LDAP_OUTF
+cat $LDIF_FILE |sudo /home/engines/scripts/ldap/sudo/_ldapmodify.sh  2>&1 > $LDAP_OUTF
 if test $? -eq 0
  then
   rm  $LDAP_OUTF $LDIF_FILE

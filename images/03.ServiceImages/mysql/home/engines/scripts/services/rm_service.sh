@@ -20,7 +20,7 @@ SQL="${Q1}${Q2}${Q3}"
 
 #echo "$SQL"
 
-$MYSQL   -urma  -e "$SQL"  $database_name &> /tmp/res
+$MYSQL   -urma  -e "$SQL"  $database_name 2>&1 > /tmp/res
 res=`cat /tmp/res`
 
 echo $res | grep -v ERROR

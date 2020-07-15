@@ -52,7 +52,7 @@ trap_term()
                 		echo no wait for  \"$pid\"
         		else
                 		#echo wait \"$pid\"
-                		wait $pid   >& /dev/null
+                		wait $pid    2>&1 > /dev/null
 				fi			
 		fi
 	  touch /home/engines/run/flags/termed	 			
@@ -121,7 +121,7 @@ trap_quit()
 		if test -f $PID_FILE
 	 		then
 	 			echo "Warning stale $PID_FILE"
-	 			rm -f $PID_FILE 1&>/dev/null
+	 			rm -f $PID_FILE 2>&1 >/dev/null
 		fi
 	 			
 	

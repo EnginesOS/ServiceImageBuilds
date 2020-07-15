@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-sudo /home/engines/scripts/sudo/_ldapmodify.sh $* &> /tmp/ldap.mod.out
+sudo /home/engines/scripts/sudo/_ldapmodify.sh $* 2>&1 > /tmp/ldap.mod.out
 #if test $ldap_result -eq 0
 # then
 #  echo '{"Result":"OK","ReturnCode",0}'

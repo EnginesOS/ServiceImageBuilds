@@ -32,6 +32,11 @@ puma $options &
 
 start_passenger()
 {
+if ! test -f /var/log/nginx 
+ then
+  mkdir -p /var/log/nginx
+fi
+
 if test -f /home/engines/etc/ssl/keys/system.key 
   then
     options="-c /etc/nginx/nginx_https.conf"

@@ -1,4 +1,4 @@
-#!bin/bash
+#!bin/sh
 
 #if ! engine group ou exist
 #create engine group ou
@@ -13,7 +13,10 @@ if ! test $? -eq 0
      eval echo "$LINE" >> $LDIF_FILE
    done
 
- cat $LDIF_FILE |sudo /home/engines/scripts/ldap/sudo/_ldapadd.sh $* &> $LDAP_OUTF
+echo "" >> $LDIF_FILE
+echo "" >> $LDIF_FILE
+
+ cat $LDIF_FILE |sudo /home/engines/scripts/ldap/sudo/_ldapadd.sh $* 2>&1 > $LDAP_OUTF
 
 r=$?
 
@@ -41,7 +44,11 @@ cat /home/engines/templates/ldap/services/add_group.ldif | while read LINE
 do
  eval echo "$LINE" >> $LDIF_FILE
 done
-cat $LDIF_FILE | /home/engines/scripts/ldap/ldapadd.sh 
+
+echo "" >> $LDIF_FILE
+echo "" >> $LDIF_FILE
+
+cat $LDIF_FILE | sudo /home/engines/scripts/ldap/sudo/_ldapadd.sh $* 2>&1 > $LDAP_OUTF
 r=$?
 
 if test $r -ne 0

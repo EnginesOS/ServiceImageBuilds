@@ -1,2 +1,2 @@
 #!/bin/sh
-sudo -n /home/engines/scripts/signal/sudo/_signal.sh &>/dev/null
+sudo -n /home/engines/scripts/signal/sudo/_signal.sh 2>&1 >/dev/null

@@ -16,14 +16,14 @@ RUN chmod 600 /etc/nss-mysql-root.conf &&\
 	                   inetutils-syslogd \
 	                   portmap \
 	                   flex \
-	                   liburcu-dev \	  
-	                                    
+	                   liburcu-dev \	  	                                 
 	                   libkrb5-dev \
+	                   python3-distutils \
 	                   libtirpc1 &&\
 	cd /tmp &&\
 	git clone --depth 1 https://github.com/nfs-ganesha/nfs-ganesha.git &&\
 	cd nfs-ganesha &&\
-	git checkout -b V2.2-stable &&\
+	git checkout -b V3-stable &&\
 	git submodule update --init &&\
 	mkdir build &&\
 	cd build &&\

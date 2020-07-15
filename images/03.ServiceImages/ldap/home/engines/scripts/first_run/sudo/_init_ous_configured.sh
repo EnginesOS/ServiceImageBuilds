@@ -117,16 +117,18 @@ if test $exit_code -ne 0
   echo Failed initial_ous.ldif
   kdestroy
   exit $exit_code
-ldapadd -h ldap -f /home/engines/templates/ldap/first_run/group_ous.ldif
-exit_code=$?
 fi
 
+ldapadd -h ldap -f /home/engines/templates/ldap/first_run/group_ous.ldif
+exit_code=$?
+  
 if test $exit_code -ne 0
  then
   echo Failed group_ous.ldif
   kdestroy
   exit $exit_code
   fi
+  
 ldapadd -h ldap -f /home/engines/templates/ldap/first_run/add_admin.ldif
 
 exit_code=$?
@@ -136,6 +138,16 @@ if test $exit_code -ne 0
   kdestroy
   exit $exit_code
 fi  
+
+#ldapmodify -h ldap -f /home/engines/templates/ldap/first_run/add_admin_to_authenticators.ldif
+#exit_code=$?
+#if test $exit_code -ne 0
+# then
+#  echo Failed add_admin_to_authenticators.ldif
+#  kdestroy
+#  exit $exit_code
+#fi 
+ 
 kdestroy
 
  if test $exit_code -eq 0

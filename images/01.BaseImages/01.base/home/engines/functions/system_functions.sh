@@ -81,7 +81,7 @@ if ! test -f /home/engines/run/flags/first_run.done
      then
      echo first_run > /home/engines/run/flags/state
        echo "Running First Run"     
-	   /home/engines/scripts/first_run/first_run.sh &> /home/engines/run/flags/first_run.log
+	   /home/engines/scripts/first_run/first_run.sh 2>&1 > /home/engines/run/flags/first_run.log
 	   res=$?
 	   cat /home/engines/run/flags/first_run.log
 	     if test $res -eq 0 

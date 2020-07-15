@@ -31,7 +31,7 @@ fi
 echo docker $args
 if test -z $TEE
  then
-  docker $args  >& build.log
+  docker $args   2>&1 > build.log
 else
   docker $args  | tee build.log
 fi
@@ -51,10 +51,10 @@ if test $? -eq 0
 	   touch last_built
 	fi
   
-  docker rmi $( docker images -f "dangling=true" -q) &>/dev/null
+  docker rmi $( docker images -f "dangling=true" -q) 2>&1 >/dev/null
 else
   echo "Failed to build $tag in $class/$dir"
-  docker rmi $( docker images -f "dangling=true" -q) &>/dev/null
+  docker rmi $( docker images -f "dangling=true" -q) 2>&1 >/dev/null
   exit 127
 fi				
 }
@@ -64,7 +64,7 @@ es=`docker ps -aq`
 
 if ! test ${#es} -gt 1
  then
-  docker stop $es &> /dev/null
+  docker stop $es 2>&1 > /dev/null
    docker rm $es 
 fi
 
@@ -73,7 +73,7 @@ images=`docker images |grep none | awk '{print $3}'`
 
 if ! test ${#images} -gt 1
  then
-  docker rmi $images &> /dev/null
+  docker rmi $images 2>&1 > /dev/null
 fi
 }
 

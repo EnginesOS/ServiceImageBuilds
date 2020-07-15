@@ -34,7 +34,7 @@ if ! test -z $debug
 	echo "$SQL"
 fi
 
-psql < /tmp/.c.sql  &> /tmp/res
+psql < /tmp/.c.sql  2>&1 > /tmp/res
 
 if test $? -ge 0
  then 
