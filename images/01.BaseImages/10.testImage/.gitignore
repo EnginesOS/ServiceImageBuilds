@@ -5,3 +5,4 @@
 /Dockerfile.current
 /Dockerfile.spaces
 /Dockerfile.production
+/Dockerfile.master
