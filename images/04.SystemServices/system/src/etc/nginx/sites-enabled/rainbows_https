@@ -1,0 +1,51 @@
+
+
+upstream rainbows {
+  server unix:/tmp/rainbows.sock fail_timeout=0;
+}
+
+server {
+    listen 2381;
+    port_in_redirect off;
+  client_max_body_size 4G;
+    server_name _;
+    add_header Accept-Ranges bytes;
+    # FIX ME Make HST settable on by default
+    # add_header Strict-Transport-Security "max-age=31536000; includeSubdomains";
+    proxy_read_timeout 300s;
+    ssl on;
+    ssl_session_cache    shared:SSL:1m;
+    ssl_session_timeout  10m;
+    ssl_certificate /home/engines/etc/ssl/certs/system.crt;
+    ssl_certificate_key /home/engines/etc/ssl/keys/system.key ;
+    proxy_ssl_session_reuse off;
+    ssl_protocols        SSLv3 TLSv1 TLSv1.1 TLSv1.2;
+    ssl_ciphers RC4:HIGH:!aNULL:!MD5;
+    ssl_prefer_server_ciphers on;
+    access_log /var/log/naccess.log;
+    error_log /var/log/nerror.log;
+    error_page 502 /502.html;
+    error_page 400 /400ssl.html;
+
+try_files $uri/index.html $uri.html $uri @app;
+
+  root /home/app/;
+
+location @app  {
+
+    proxy_pass http://rainbows;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
+    proxy_http_version 1.1;
+    proxy_redirect off;
+    proxy_buffering off;
+    proxy_read_timeout 86400;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header Host $host;
+    proxy_set_header X-Forwarded-Host  $host;
+   proxy_set_header X-Forwarded-Port  $server_port;
+    proxy_set_header X-Forwarded-Proto https;
+    proxy_set_header X-Forwarded-For $remote_addr;
+    }
+
+  }

@@ -10,11 +10,14 @@ if test -z $THREADED
  else
     THREADED=--threaded
  fi   
+ 
  if test -f /home/engines/etc/ssl/keys/system.key 
   then
 	thin $THREADED --ssl --ssl-key-file /home/engines/etc/ssl/keys/system.key --ssl-cert-file /home/engines/etc/ssl/certs/system.crt -C /home/app/config.yml -R /home/app/config.ru start >> /var/log/system.log &
+	echo $! > $PID_FILE
   else
 	thin $THREADED -C /home/app/config.yml -R /home/app/config.ru start > /var/log/system.log &
+	echo $! > $PID_FILE
  fi
 }
 
@@ -27,6 +30,36 @@ if test -f /home/engines/etc/ssl/keys/system.key
       options="-C /home/app/puma_nocert.rb"
    fi   
 puma $options &
+echo -n $! > $PID_FILE
+
+}
+
+start_rainbows()
+{
+cd /home/app
+
+/home/engines/scripts/first_run/first_run.sh
+
+if test -f /home/engines/etc/ssl/keys/system.key 
+  then
+     rainbows -p 8080 -o 127.0.0.1 -c /home/app/rainbows_haproxy.rb &
+    #rainbows -c /home/app/rainbows_nginx.rb &
+    sleep 2
+    echo -n $! > $PID_FILE    
+     haproxy -f /etc/haproxy/haproxy.cfg  &
+     pid=$!
+     if test $? -ne 0
+      then
+        sleep 3
+        haproxy -f /etc/haproxy/haproxy.cfg  &
+        pid=$!
+     fi
+    echo -n " $pid" > $PID_FILE
+   # nginx -c /etc/nginx/nginx_rainbows_https.conf &
+   else
+     rainbows -p 2380 -o 0.0.0.0 -c /home/app/rainbows_first_run.rb &
+    echo -n $! > $PID_FILE
+   fi 
 
 }
 
@@ -66,17 +99,25 @@ PID_FILE=/home/engines/run/system.pid
 export PID_FILE
 . /home/engines/functions/trap.sh
 
+service_first_run_check
+
 cd /home
 if test -f /home/engines/run/flags/puma
  then
   start_puma
  elif test -f /home/engines/run/flags/passenger
   then
+   echo "Using Passenger"
    start_passenger
+ elif test -f /home/engines/run/flags/start_thin
+  then
+   echo "Using Thin"
+   start_thin
  else 
-  start_thin
+   echo "Using Rainbows"
+ start_rainbows  
 fi  
-echo $! > $PID_FILE
+
 
 #touch /home/engines/run/flags/startup_complete  done in code
 wait 

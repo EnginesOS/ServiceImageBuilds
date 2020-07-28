@@ -18,6 +18,7 @@ RUN /usr/sbin/addgroup --gid 21999 edocker &&\
 						libreadline-dev \
 						autoconf \
 						libltdl-dev \
+						haproxy \ 
 						zlib1g-dev &&\
 	useradd -u 21000  -g edocker -d /home/engines -M -G containers engines &&\
 	mkdir -p /opt/engines/run/system/ &&\
@@ -40,7 +41,7 @@ RUN /usr/sbin/addgroup --gid 21999 edocker &&\
     echo 'gem: --no-document' >> ~/.gemrc &&\
 	gem install git bundle rest-client net_http_unix excon \
 	 			gctools yajl-ruby sinatra thin rubytree  sinatra-contrib sinatra-cross_origin\
-			 	warden data_mapper dm-sqlite-adapter ffi-yajl sqlite3 rb-inotify puma timers net-ldap &&\		
+			 	warden data_mapper dm-sqlite-adapter ffi-yajl sqlite3 rb-inotify puma rainbows timers net-ldap &&\		
  	/home/engines/scripts/build/post_build_clean.sh
 	
 ADD home home
@@ -56,12 +57,14 @@ RUN mkdir -p /home/app/db &&\
 	chown root /etc/sudoers.d/system &&\
 	chmod og-rw /etc/sudoers.d/system &&\
 	mv /home/engines/profile /home/engines/.profile &&\
-    mkdir -p /home/engines/.ssh/system /home/app/tmp/ /home/app/public &&\	
+    mkdir -p /home/engines/.ssh/system /home/app/tmp/ /home/app/public /run/haproxy/ /var/lib/haproxy &&\	
 	touch /home/.env_vars &&\
 	chown 21000 /home/.env_vars &&\
  	chown -R 21000 /home/app/ /home/engines/scripts/configurators/saved &&\
- 	usermod -G containers -a engines
-
+ 	usermod -G containers -a engines &&\
+ 	chgrp -R containers  /home/engines/scripts &&\
+    chown engines /run/haproxy /var/lib/haproxy
+    
 
 ENV PATH /usr/local/bin:/usr/bin:/bin:/usr/sbin:/bin:/sbin/
 ENV HOME /home/engines/
