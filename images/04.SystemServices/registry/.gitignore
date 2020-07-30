@@ -4,3 +4,4 @@
 /Dockerfile.spaces
 /Dockerfile.production
 /last_built
+/Dockerfile.master
