@@ -18,7 +18,9 @@ RUN /usr/sbin/addgroup --gid 21999 edocker &&\
 						libreadline-dev \
 						autoconf \
 						libltdl-dev \
-						haproxy \ 
+						haproxy \
+						libgdbm5 \
+						libgdbm-dev \
 						zlib1g-dev &&\
 	useradd -u 21000  -g edocker -d /home/engines -M -G containers engines &&\
 	mkdir -p /opt/engines/run/system/ &&\

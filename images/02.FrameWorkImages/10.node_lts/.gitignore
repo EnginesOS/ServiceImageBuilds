@@ -6,3 +6,4 @@
 /Dockerfile.spaces
 /Dockerfile.v2
 /Dockerfile.master
+/Dockerfile.production
