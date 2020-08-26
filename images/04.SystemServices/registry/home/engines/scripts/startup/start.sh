@@ -14,7 +14,8 @@ git pull
 cd ..
  rm -f /tmp/registry.lock
 chmod og-rwx /opt/engines/run/service_manager/services.yaml*
-thin -C config.yaml -R config.ru start > /var/log/registry.log &
+rainbows  -p 4567 -c rainbows.rb &
+#thin -C config.yaml -R config.ru start > /var/log/registry.log &
 pid=$!
 echo $pid > $PID_FILE
 #--threaded
