@@ -5,6 +5,8 @@ RUN /home/engines/scripts/build/no_init.sh &&\
 	apt-get -y install build-essential \
 					   ruby-dev \
 					   libssl-dev \
+					   libkrb5-dev\
+					   libkadm5clnt-mit11\
 					   libreadline-dev \
 					   zlib1g-dev &&\
 	groupadd -g 22023 registry &&\
@@ -13,9 +15,10 @@ RUN /home/engines/scripts/build/no_init.sh &&\
     echo 'gem: --no-document' >> ~/.gemrc &&\
     gem update &&\
     gem update --system &&\
-	gem install bundle gctools rest-client sinatra thin yajl-ruby rubytree ffi-yajl sinatra-contrib sinatra-cross_origin
+	gem install bundle gctools rest-client sinatra thin yajl-ruby rubytree ffi-yajl sinatra-contrib sinatra-cross_origin rainbows
 
 COPY home home	
+COPY src/ /
 
 RUN	mkdir -p /home/registry &&\
 	cd /home/registry &&\

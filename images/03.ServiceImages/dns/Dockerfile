@@ -25,12 +25,12 @@ RUN chown bind /var/run/named &&\
 	chown bind /home/engines/scripts/configurators/saved /home/bind/engines/forwarders &&\
 	mkdir -p /etc/bind/keys/ /home/bind/engines/domains /home/bind/engines/zones/ &&\
 	chown bind -R /etc/bind/keys/ /etc/bind/named.conf.default-zones  /var/lib/bind/engines/engines.dnsrecords /home/bind/engines/domains.hosted /home/bind/engines/zones/ /home/bind/engines/domains// &&\
-	chmod -R go-rw /etc/sudoers /etc/sudoers.d/ 
-
+	chmod -R go-rw /etc/sudoers /etc/sudoers.d/  &&\
+    mkdir -p /home/bind/domain_list/lan /home/bind/domain_list/wan &&\
+	chgrp -R containers /home/engines/scripts
+	
 USER bind
 
-RUN mkdir -p /home/bind/domain_list/lan /home/bind/domain_list/wan &&\
-	chgrp -R containers /home/engines/scripts
 
 ENV ContUser bind
 ENV ContGrp bind
