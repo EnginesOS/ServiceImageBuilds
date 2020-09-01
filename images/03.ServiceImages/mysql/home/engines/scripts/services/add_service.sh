@@ -25,10 +25,10 @@ Q3="Grant Create User on *.* to '$db_username'@'%';"
 Q4="FLUSH PRIVILEGES;"
 if ! test -z $full_access
  then
-	if test $full_access = true
+	if test $full_access = full
   	 then
- 	   Q5="UPDATE mysql.user SET Super_Priv='Y' WHERE user='$dbusername' AND host='%'; \
- 	    GRANT ALL PRIVILEGES ON *.* TO  '$dbusername'@'%'; 
+ 	   Q5="UPDATE mysql.user SET Super_Priv='Y' WHERE user='$db_username' AND host='%'; \
+ 	    GRANT ALL PRIVILEGES ON *.* TO  '$db_username'@'%'; 
  	    FLUSH PRIVILEGES;"
     elif test $full_access = grant 
  	 then
@@ -38,7 +38,7 @@ if ! test -z $full_access
 
 SQL="${Q1}${Q2}${Q3}${Q4}${Q5}"
 
-#echo "$SQL"
+echo "$SQL" >/tmp/$database_name.sql
 
 $MYSQL   -urma  -e "$SQL" 2>&1 > /tmp/res
 res=`cat /tmp/res`

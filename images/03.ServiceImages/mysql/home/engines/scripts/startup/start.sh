@@ -16,6 +16,8 @@ if test -f  /var/run/mysqld/mysqld.sock.lock
    rm  /var/run/mysqld/mysqld.sock.lock
 fi 	
 
+/home/engines/scripts/engine/build_config.sh
+
 /usr/sbin/mysqld --defaults-file=/etc/mysql/my.cnf --basedir=/usr --datadir=/var/lib/mysql --plugin-dir=/usr/lib/mysql/plugin --user=mysql --log-error=/var/log/mysql/error.log --pid-file=$PID_FILE --socket=/var/run/mysqld/mysqld.sock --bind-address=0.0.0.0 --port=3306 &
 
 startup_complete

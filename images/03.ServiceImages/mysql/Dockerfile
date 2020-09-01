@@ -15,7 +15,8 @@ RUN groupadd -g 22006 mysql &&\
 
 ADD home home
 ADD sudoers /etc/sudoers.d/mysqld
-RUN chmod og-rwx /etc/sudoers.d/mysqld
+RUN chmod og-rwx /etc/sudoers.d/mysqld &&\
+    chgrp -R containers /home/engines/scripts
 EXPOSE 3306
 
 ENV ContUser mysql

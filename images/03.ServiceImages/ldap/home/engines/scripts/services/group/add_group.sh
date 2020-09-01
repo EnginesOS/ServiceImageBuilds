@@ -40,7 +40,7 @@ if test -z $cn
   cn=$parent_engine
 fi 
 gidNumber=`/home/engines/scripts/ldap/next_gid.sh`
-cat /home/engines/templates/ldap/services/add_group.ldif | while read LINE
+cat /home/engines/templates/ldap/services/add_${ldap_group_type}_group.ldif | while read LINE
 do
  eval echo "$LINE" >> $LDIF_FILE
 done

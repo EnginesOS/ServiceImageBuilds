@@ -1,1 +1,3 @@
 mysql ALL = (root) NOPASSWD: /home/engines/scripts/first_run/sudo/_mkdir_rundir.sh
+mysql ALL = (root) NOPASSWD: /home/engines/scripts/engine/sudo/_install_config.sh
+

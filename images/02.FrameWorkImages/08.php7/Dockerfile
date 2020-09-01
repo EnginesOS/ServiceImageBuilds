@@ -26,4 +26,4 @@ RUN /usr/sbin/usermod -u 22671 www-data &&\
 	
 
 
-ENV PHP_VERSION	7.x
+ENV PHP_VERSION	7.2
