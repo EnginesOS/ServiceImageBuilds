@@ -1,0 +1,21 @@
+
+
+ 	
+ server {
+    listen 2380;
+    server_name "Engines System";
+    add_header Accept-Ranges bytes;
+    ssl off;
+   #  add_header Strict-Transport-Security "max-age=31536000; includeSubdomains";
+    proxy_read_timeout 300s;
+    
+    include /home/.env_vars;
+   
+ 	passenger_enabled on;
+ 	passenger_load_shell_envvars on;
+ 	passenger_app_env production;
+ 	root /home/app/public;  
+  
+    access_log /var/log/access.log;
+    error_log /var/log/error.log;      
+}
