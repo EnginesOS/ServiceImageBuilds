@@ -1,0 +1,6 @@
+dn: cn=$cn,ou=$parent_engine,ou=${top_ou},ou=Groups,dc=engines,dc=internal
+cn: $cn
+objectclass: groupOfUniqueNames
+objectclass: top
+uniqueMember: cn=Administrator,ou=People,dc=engines,dc=internal
+
