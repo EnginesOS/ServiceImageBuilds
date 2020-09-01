@@ -8,7 +8,8 @@ ENV LUA_VERSION 5.3
 RUN groupadd -g 22676 lua &&\
 	useradd -u 22676  -g lua -d /home/lua -m -G containers lua&&\
 	apt-get update -y &&\
-	apt-get install -y  lua${LUA_VERSION} \
+	apt-get install -y lua${LUA_VERSION} \
+					   liblua${LUA_VERSION}-dev \
 		               libtolua-dev \
 		               libidn11-dev \
 		               libssl-dev &&\
