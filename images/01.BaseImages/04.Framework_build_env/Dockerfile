@@ -22,7 +22,7 @@ RUN apt-get update -y &&\
 	                   g++ \
 	                   gcc \
 	                   make \
-	                   libc6-dev \
+	                   libc-dev \
 	                   patch \
 	                   libreadline6-dev \
 	                   autoconf \

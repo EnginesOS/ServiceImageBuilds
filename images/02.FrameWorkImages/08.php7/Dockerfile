@@ -1,13 +1,12 @@
 FROM engines/apache:$release
 #FROM engines/frameworkbase:$release
-ADD src/sources.list /etc/apt/
+
 
 ADD home home
 
 RUN /usr/sbin/usermod -u 22671 www-data &&\
 	apt-get update -y &&\
 	apt-get install -y libapache2-mod-php \
-					   php-gettext \
 					   php-mbstring \
 					   php-mysql \
 					   php-gd \
@@ -24,6 +23,5 @@ RUN /usr/sbin/usermod -u 22671 www-data &&\
 	mv composer.phar  /usr/local/bin &&\
  	/home/engines/scripts/build/post_build_clean.sh
 	
+ENV PHP_VERSION	7.4
 
-
-ENV PHP_VERSION	7.2

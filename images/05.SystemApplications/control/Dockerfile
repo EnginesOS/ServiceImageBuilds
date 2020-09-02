@@ -4,9 +4,10 @@ USER 0
 
 RUN /usr/sbin/usermod -u 22050 www-data &&\
      ls -la  /var/lib/dpkg/lock-frontend &&\
-	apt-get -y install libkrb5-dev memcachedb haproxy &&\
+	apt-get -y install libkrb5-dev  haproxy &&\
  	/home/engines/scripts/build/post_build_clean.sh
-
+ 	
+#memcachedb
 
 ENV ContUser www-data
 ENV ContGrp ruby

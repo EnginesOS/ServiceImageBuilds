@@ -1,4 +1,4 @@
-FROM engines/bionicbeaverbase:$release
+FROM engines/focalbase:$release
 
 
 COPY home /home
@@ -15,13 +15,13 @@ RUN	echo '#!/bin/sh' >/usr/sbin/policy-rc.d &&\
 	echo 'Dir::Cache::pkgcache ""; Dir::Cache::srcpkgcache "";' >> /etc/apt/apt.conf.d/docker-clean &&\
 	echo 'Acquire::GzipIndexes "true";Acquire::CompressionTypes::Order:: "gz";' > /etc/apt/apt.conf.d/docker-gzip-indexes &&\
 	sed -i 's/^#\s*\(deb.*universe\)$/\1/g' /etc/apt/sources.list &&\
- 	apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ED8E640A&&\
- 	echo "deb http://security.ubuntu.com/ubuntu bionic-security main restricted universe" >  /etc/apt/sources.list.d/security.list &&\ 	
+ 	echo "deb http://security.ubuntu.com/ubuntu focal-security main restricted universe" >  /etc/apt/sources.list.d/security.list &&\ 	
 	cat /etc/apt/sources.list &&\
 	apt-get -y update &&\
 	apt-get -y upgrade &&\
 	apt-get -y dist-upgrade &&\
 	apt-get -y update &&\
+	apt-get -y upgrade &&\
 	/home/engines/scripts/build/no_init.sh &&\
 	apt-get -y --fix-missing install sendmail-bin \
 			           			     ca-certificates \
@@ -53,10 +53,9 @@ RUN	echo '#!/bin/sh' >/usr/sbin/policy-rc.d &&\
 	groupadd -g 22020 containers &&\ 
 	apt-get -y remove  build-essential &&\
 	/home/engines/scripts/build/install_utf8_langauges.sh &&\
-	rm -r /tmp/* /home/engines/scripts/build/install_utf8_langauges.sh &&\
+	rm  /home/engines/scripts/build/install_utf8_langauges.sh &&\
 	rm /etc/rsyslog.d/50-default.conf &&\ 
-	apt-get -y clean &&\	
-	rm -rf /tmp/* &&\
+	apt-get -y clean &&\
  	mkdir /var/run/engines &&\
  	chgrp containers /var/run/engines && chmod g+w /var/run/engines  &&\
 	mkdir -p  /home/engines/etc/ssl/CA &&\

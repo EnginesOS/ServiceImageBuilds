@@ -1,5 +1,4 @@
-#FROM engines/xenial:current
-#FROM suet/core-bionic
+
 FROM ubuntu:focal
 ENV DEBIAN_FRONTEND noninteractive
 COPY dpkg.conf.d /etc/dpkg/dpkg.cfg.d
