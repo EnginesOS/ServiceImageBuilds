@@ -49,7 +49,7 @@ if test -z $no_inarpra
 fi
  cp  $dns_cmd_file /tmp/add_inapra_$fqdn_str
 
-nsupdate -k /etc/bind/keys/ddns.private $dns_cmd_file
+nsupdate $dns_cmd_file
 r=$?
 if test $r -eq 0
  then

@@ -8,6 +8,7 @@ RUN groupadd -g 22016 cron &&\
 	useradd -u 22016  -g cron -d /home/cron -m -G containers cron&&\
 	apt-get  update &&\
 	apt-get -y install build-essential \
+					   vim  \
 	                   gcc \
 	                   make &&\
 	cd /tmp &&\

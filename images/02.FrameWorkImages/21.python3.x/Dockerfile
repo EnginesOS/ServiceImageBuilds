@@ -16,7 +16,7 @@ RUN groupadd -g 22674 python &&\
 					   python3-pip  &&\
     cd /tmp &&\
 	 python${python_version} -m pip install pip --upgrade &&\
-	 python${python_version}-m pip install setuptools --upgrade &&\
+	 python${python_version} -m pip install setuptools --upgrade &&\
 	 python${python_version} -m pip install virtualenv --upgrade &&\
 	chown python.python -R /usr/local/lib/python*/dist-packages/ &&\
 	usermod -G python -a www-data &&\

@@ -1,16 +1,15 @@
 
-};
 
 zone "NET.IN-ADDR.ARPA" {
 type master;
 file "/var/lib/bind/engines/engines.in-addr.arpa.dnsrecords";
-allow-update { key DDNS_UPDATE; };
+allow-update { 127.0.0.1; };
 
 };
 
 zone "engines.internal" {
 type master;
 file "/var/lib/bind/engines/engines.dnsrecords";
-allow-update { key DDNS_UPDATE; };
+allow-update { 127.0.0.1; };
 
 };

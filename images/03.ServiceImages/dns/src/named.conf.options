@@ -4,7 +4,7 @@ options {
      allow-recursion { trusted; };
      allow-query { any; };
      allow-query-cache { trusted; };
-
+     allow-update { 127.0.0.1; };
    	include "/home/bind/engines/forwarders";
    	
         dnssec-validation auto;

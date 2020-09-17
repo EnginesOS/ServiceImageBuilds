@@ -19,7 +19,7 @@ RUN chmod 600 /etc/nss-mysql-root.conf &&\
 	                   liburcu-dev \	  	                                 
 	                   libkrb5-dev \
 	                   python3-distutils \
-	                   libtirpc1 &&\
+	                   libtirpc-common &&\
 	cd /tmp &&\
 	git clone --depth 1 https://github.com/nfs-ganesha/nfs-ganesha.git &&\
 	cd nfs-ganesha &&\

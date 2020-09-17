@@ -2,14 +2,12 @@ FROM engines/servicebase:$release
 
 RUN apt-get -y update &&\
 	/home/engines/scripts/build/no_init.sh &&\
-	apt-get -y install mysql-client \
+	apt-get -y install mysql-client  --no-install-recommends \
 	                   vim \
 	                   lftp \
 	                   python \
 	                   duply \ 
-	                   python-boto \
 	                   ncftp \
-	                   python-paramiko \
 	                   python-gobject-2 \
 	                   build-essential \
 	                   gcc \ 

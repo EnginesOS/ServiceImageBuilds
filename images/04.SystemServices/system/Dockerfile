@@ -6,7 +6,7 @@ RUN /usr/sbin/addgroup --gid 21999 edocker &&\
 	/home/engines/scripts/build/no_init.sh &&\	
 	apt-get install -y dirmngr gnupg  apt-transport-https &&\
  	apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 561F9B9CAC40B2F7 &&\
-	echo deb https://oss-binaries.phusionpassenger.com/apt/passenger bionic main >/etc/apt/sources.list.d/passenger.list &&\ 
+	echo deb https://oss-binaries.phusionpassenger.com/apt/passenger focal main >/etc/apt/sources.list.d/passenger.list &&\ 
 	chmod 600 /etc/apt/sources.list.d/passenger.list &&\
 	apt-get update -y &&\
 	apt-get -y install ruby-dev \

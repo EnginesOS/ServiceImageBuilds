@@ -26,7 +26,8 @@ ADD sudoers /etc/sudoers.d/dovecot
 ADD home home
 #COPY src/pam.d/dovecot /etc/pam.d/
 
-RUN  chmod -R go-rw /etc/sudoers /etc/sudoers.d/
+RUN  openssl dhparam -out /etc/dovecot/dh.pem 2048 &&\
+     chmod -R go-rw /etc/sudoers /etc/sudoers.d/
 
 USER dovecot
 

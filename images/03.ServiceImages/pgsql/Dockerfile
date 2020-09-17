@@ -1,5 +1,5 @@
 FROM  engines/servicebase:$release
-ENV PGSQL_VERSION 10
+ENV PGSQL_VERSION 12
 RUN groupadd -g  22002 postgres &&\
 	useradd -u 22002  -g postgres -d /home/postgres -m -G containers postgres &&\
 	/home/engines/scripts/build/no_init.sh &&\			

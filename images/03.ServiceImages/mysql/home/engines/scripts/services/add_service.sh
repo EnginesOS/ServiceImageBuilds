@@ -19,24 +19,26 @@ if test -z "$char_set"
 fi
 
 Q1="CREATE DATABASE IF NOT EXISTS ${BTICK}$database_name${BTICK}   DEFAULT CHARACTER SET $char_set
-  DEFAULT COLLATE $collation ;"
-Q2="GRANT ALL  PRIVILEGES ON ${BTICK}$database_name${BTICK}.* TO '$db_username'@'%' IDENTIFIED BY '$db_password';"
-Q3="Grant Create User on *.* to '$db_username'@'%';"
-Q4="FLUSH PRIVILEGES;"
+  DEFAULT COLLATE $collation ; Create User '$db_username'@'%' IDENTIFIED BY '$db_password';"
+
 if ! test -z $full_access
  then
 	if test $full_access = full
   	 then
- 	   Q5="UPDATE mysql.user SET Super_Priv='Y' WHERE user='$db_username' AND host='%'; \
- 	    GRANT ALL PRIVILEGES ON *.* TO  '$db_username'@'%'; 
+ 	   Q2="UPDATE mysql.user SET Super_Priv='Y' WHERE user='$db_username'; \
+ 	    GRANT ALL PRIVILEGES ON *.* TO  ${BTICK}$db_username${BTICK}@${BTICK}%${BTICK}; 
  	    FLUSH PRIVILEGES;"
     elif test $full_access = grant 
  	 then
- 	   Q5="GRANT ALL  PRIVILEGES ON ${BTICK}*.*${BTICK} TO '$db_username'@'%' IDENTIFIED BY '$db_password' WITH GRANT OPTION;"
+ 	   Q2="GRANT ALL  PRIVILEGES ON *.* TO ${BTICK}$db_username${BTICK}@${BTICK}%${BTICK} WITH GRANT OPTION;"	   
+       Q3="Grant Create User on ${BTICK}$database_name${BTICK}.*  to '$db_username'@'%';"
  	fi
+ 	else
+ 	Q2="GRANT ALL PRIVILEGES ON ${BTICK}$database_name${BTICK}.* TO '$db_username'@'%';"
  fi
 
-SQL="${Q1}${Q2}${Q3}${Q4}${Q5}"
+Q4="FLUSH PRIVILEGES;"
+SQL="${Q1}${Q2}${Q3}${Q4}"
 
 echo "$SQL" >/tmp/$database_name.sql
 
