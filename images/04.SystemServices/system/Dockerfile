@@ -5,11 +5,14 @@ RUN /usr/sbin/addgroup --gid 21999 edocker &&\
 	/usr/sbin/addgroup --gid 909 docker &&\
 	/home/engines/scripts/build/no_init.sh &&\	
 	apt-get install -y dirmngr gnupg  apt-transport-https &&\
+	wget -qO - https://apt.releases.hashicorp.com/gpg | apt-key add -  &&\
+	echo "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main" >/etc/apt/sources.list.d/consul.list &&\
  	apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 561F9B9CAC40B2F7 &&\
 	echo deb https://oss-binaries.phusionpassenger.com/apt/passenger focal main >/etc/apt/sources.list.d/passenger.list &&\ 
 	chmod 600 /etc/apt/sources.list.d/passenger.list &&\
 	apt-get update -y &&\
 	apt-get -y install ruby-dev \
+						consul\
 						telnet \
 						libsqlite3-dev \
 						libcurl4-openssl-dev \
@@ -41,7 +44,7 @@ RUN /usr/sbin/addgroup --gid 21999 edocker &&\
     gem update &&\
     gem update --system &&\
     echo 'gem: --no-document' >> ~/.gemrc &&\
-	gem install git bundle rest-client net_http_unix excon \
+	gem install git bundle rest-client net_http_unix excon diplomat \
 	 			gctools yajl-ruby sinatra thin rubytree  sinatra-contrib sinatra-cross_origin\
 			 	warden data_mapper dm-sqlite-adapter ffi-yajl sqlite3 rb-inotify puma rainbows timers net-ldap &&\		
  	/home/engines/scripts/build/post_build_clean.sh
