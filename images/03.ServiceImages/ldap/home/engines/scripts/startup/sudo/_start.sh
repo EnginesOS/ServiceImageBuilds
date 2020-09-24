@@ -16,7 +16,7 @@ if test -f /home/engines/run/flags/debug_level
 fi  
 
 /usr/sbin/slapd $debug -h "ldap://0.0.0.0/  ldapi:///" 
-echo $! /home/engines/run/slapd.pid
+echo $! > /home/engines/run/slapd.pid
 
 
 

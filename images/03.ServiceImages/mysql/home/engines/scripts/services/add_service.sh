@@ -33,8 +33,10 @@ if ! test -z $full_access
  	   Q2="GRANT ALL  PRIVILEGES ON *.* TO ${BTICK}$db_username${BTICK}@${BTICK}%${BTICK} WITH GRANT OPTION;"	   
        Q3="Grant Create User on ${BTICK}$database_name${BTICK}.*  to '$db_username'@'%';"
  	fi
- 	else
- 	Q2="GRANT ALL PRIVILEGES ON ${BTICK}$database_name${BTICK}.* TO '$db_username'@'%';"
+ fi
+ if test -z $full_access
+ then
+   Q2="GRANT ALL PRIVILEGES ON ${BTICK}$database_name${BTICK}.* TO '$db_username'@'%';"
  fi
 
 Q4="FLUSH PRIVILEGES;"
